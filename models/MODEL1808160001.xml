@@ -1,0 +1,489 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="Terentyeva2015___Mechanisms_of_XII_activation" metaid="COPASI0" name="Terentyeva2015 - Mechanisms of XII activation">
+    <notes>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Mathematical model of the mechanism and kinetics of blood coagulation factor XII.</p>
+  </body>
+    </notes>
+    <annotation>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+        <rdf:Description rdf:about="#COPASI0">
+	<dc:creator>
+	<rdf:Bag>
+	<rdf:li rdf:parseType="Resource">
+	<vCard:N rdf:parseType="Resource">
+	<vCard:Family>Roberts</vCard:Family>
+	<vCard:Given>Matthew Grant</vCard:Given>
+	</vCard:N>
+	<vCard:EMAIL>mroberts@ebi.ac.uk</vCard:EMAIL>
+	<vCard:ORG rdf:parseType="Resource">
+	<vCard:Orgname>EMBL-EBI</vCard:Orgname>
+	</vCard:ORG>
+	</rdf:li>
+	</rdf:Bag>
+	</dc:creator>
+	<dcterms:created rdf:parseType="Resource">
+	<dcterms:W3CDTF>2018-08-15T17:33:48Z</dcterms:W3CDTF>
+	</dcterms:created>
+	<dcterms:modified rdf:parseType="Resource">
+	<dcterms:W3CDTF>2018-08-15T17:33:48Z</dcterms:W3CDTF>
+	</dcterms:modified>
+	<bqbiol:isPartOf>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/go/GO:0007596"/>
+	</rdf:Bag>
+	</bqbiol:isPartOf>
+	<bqbiol:isDescribedBy>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/pubmed/26187095"/>
+	</rdf:Bag>
+	</bqbiol:isDescribedBy>
+	</rdf:Description>
+	
+      </rdf:RDF>
+      <COPASI xmlns="http://www.copasi.org/static/sbml">
+        <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+          <rdf:Description rdf:about="#COPASI0">
+            <dcterms:bibliographicCitation>
+              <rdf:Description>
+                <CopasiMT:isDescribedBy rdf:resource="urn:miriam:pubmed:26187095"/>
+              </rdf:Description>
+            </dcterms:bibliographicCitation>
+            <dcterms:created>
+              <rdf:Description>
+                <dcterms:W3CDTF>2018-08-15T17:33:48Z</dcterms:W3CDTF>
+              </rdf:Description>
+            </dcterms:created>
+            <dcterms:creator>
+              <rdf:Description>
+                <vCard:EMAIL>mroberts@ebi.ac.uk</vCard:EMAIL>
+                <vCard:N>
+                  <rdf:Description>
+                    <vCard:Family>Roberts</vCard:Family>
+                    <vCard:Given>Matthew Grant</vCard:Given>
+                  </rdf:Description>
+                </vCard:N>
+                <vCard:ORG>
+                  <rdf:Description>
+                    <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+                  </rdf:Description>
+                </vCard:ORG>
+              </rdf:Description>
+            </dcterms:creator>
+            <CopasiMT:isPartOf rdf:resource="urn:miriam:go:GO:0007596"/>
+          </rdf:Description>
+        </rdf:RDF>
+      </COPASI>
+    </annotation>
+      <listOfFunctionDefinitions>
+      <functionDefinition id="rateOf">
+        <annotation>
+          <symbols xmlns="http://sbml.org/annotations/symbols" definition="http://en.wikipedia.org/wiki/Derivative"/>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <lambda>
+            <bvar>
+              <ci> a </ci>
+            </bvar>
+            <notanumber/>
+          </lambda>
+        </math>
+            </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition id="volume" name="volume">
+        <listOfUnits>
+          <unit exponent="1" kind="litre" multiplier="1" scale="-3"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="time" name="time">
+        <listOfUnits>
+          <unit exponent="1" kind="second" multiplier="60" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance" name="substance">
+        <listOfUnits>
+          <unit exponent="1" kind="mole" multiplier="1" scale="-9"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment constant="true" id="compartment" name="compartment" size="1" spatialDimensions="3"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="true" compartment="compartment" constant="false" id="XIIa" initialConcentration="10" metaid="COPASI1" name="XIIa">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI1">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:40:22Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="true" compartment="compartment" constant="false" id="XIIa_activation" initialConcentration="0" metaid="COPASI2" name="XIIa_activation">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI2">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:41:03Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="true" compartment="compartment" constant="false" id="XIIa_fragmentation" initialConcentration="100" metaid="COPASI3" name="XIIa_fragmentation">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI3">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:43:11Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="true" compartment="compartment" constant="false" id="XIIa_surface_induced" initialConcentration="0" metaid="COPASI4" name="XIIa_surface-induced">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI4">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:41:53Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="true" compartment="compartment" constant="false" id="XIIa_autoactivation" initialConcentration="0" metaid="COPASI5" name="XIIa_autoactivation">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI5">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:42:11Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="true" compartment="compartment" constant="false" id="XII_bound" initialConcentration="254.522433128543" metaid="COPASI6" name="XII_bound">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI6">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:44:22Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="true" compartment="compartment" constant="false" id="XII" initialConcentration="285" metaid="COPASI7" name="XII">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI7">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:41:26Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="true" compartment="compartment" constant="false" id="S" initialConcentration="50" metaid="COPASI8" name="S">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI8">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:43:52Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="compartment" constant="false" id="A" initialConcentration="50" metaid="COPASI9" name="A">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI9">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-15T17:48:48Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter constant="true" id="k_spont" metaid="COPASI10" name="k_spont" value="0.5">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI10">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-16T09:09:11Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="k_bound" name="k_bound" value="12"/>
+      <parameter constant="true" id="k_free" name="k_free" value="0"/>
+      <parameter constant="true" id="k_fragm" name="k_fragm" value="8"/>
+      <parameter constant="true" id="N" metaid="COPASI11" name="N" value="76">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI11">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-16T09:09:10Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="k_12" name="k_12" value="170"/>
+      <parameter constant="true" id="k_A" name="k_A" value="307000"/>
+      <parameter constant="false" id="Amidolytic" metaid="COPASI12" name="Amidolytic" value="110">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI12">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-16T09:05:18Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="false" id="XIIf" metaid="COPASI13" name="XIIf" value="100">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI13">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2018-08-16T09:06:08Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="XIIf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <ci> XIIa_fragmentation </ci>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="Amidolytic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus/>
+            <ci> XIIa </ci>
+            <ci> XIIf </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="XII_bound">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> S </ci>
+              <ci> XII </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <ci> k_12 </ci>
+                  <ci> N </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> XII </ci>
+                    <ci> k_12 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> A </ci>
+                    <ci> k_A </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> S </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <rateRule variable="XIIa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus/>
+            <apply>
+              <ci> rateOf </ci>
+              <ci> XIIa_activation </ci>
+            </apply>
+            <apply>
+              <ci> rateOf </ci>
+              <ci> XIIa_fragmentation </ci>
+            </apply>
+          </apply>
+        </math>
+            </rateRule>
+      <rateRule variable="XIIa_activation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus/>
+            <apply>
+              <ci> rateOf </ci>
+              <ci> XIIa_surface_induced </ci>
+            </apply>
+            <apply>
+              <ci> rateOf </ci>
+              <ci> XIIa_autoactivation </ci>
+            </apply>
+          </apply>
+        </math>
+            </rateRule>
+      <rateRule variable="XIIa_fragmentation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <ci> k_fragm </ci>
+              </apply>
+              <ci> XIIa_fragmentation </ci>
+              <ci> XIIa </ci>
+            </apply>
+            <ci> S </ci>
+          </apply>
+        </math>
+            </rateRule>
+      <rateRule variable="XIIa_surface_induced">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <times/>
+            <ci> k_spont </ci>
+            <ci> XII_bound </ci>
+          </apply>
+        </math>
+            </rateRule>
+      <rateRule variable="XIIa_autoactivation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> k_bound </ci>
+                <ci> XII_bound </ci>
+                <ci> XIIa </ci>
+              </apply>
+              <ci> S </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> k_free </ci>
+              <ci> XII </ci>
+              <ci> XIIa </ci>
+            </apply>
+          </apply>
+        </math>
+            </rateRule>
+      <rateRule variable="XII">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <ci> rateOf </ci>
+                <ci> XIIa_surface_induced </ci>
+              </apply>
+            </apply>
+            <apply>
+              <ci> rateOf </ci>
+              <ci> XIIa_autoactivation </ci>
+            </apply>
+          </apply>
+        </math>
+            </rateRule>
+      <rateRule variable="S">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <times/>
+            <apply>
+              <minus/>
+              <apply>
+                <divide/>
+                <cn> 1 </cn>
+                <ci> N </ci>
+              </apply>
+            </apply>
+            <apply>
+              <ci> rateOf </ci>
+              <ci> XII </ci>
+            </apply>
+          </apply>
+        </math>
+            </rateRule>
+    </listOfRules>
+  </model>
+</sbml>

@@ -1,0 +1,944 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="Nikolopoulou2018___Tumour_immune_dynamics_with_an_immune_checkpoint_inhibitor" metaid="COPASI0" name="Nikolopoulou2018 - Tumour-immune dynamics with an immune checkpoint inhibitor">
+    <notes>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>This is a mathematical model investigating the effects of continuous and intermittent PD-L1 and anti-PD-L1 therapy upon tumor-immune dynamics.</p>
+  </body>
+    </notes>
+    <annotation>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+        <rdf:Description rdf:about="#COPASI0">
+	<dc:creator>
+	<rdf:Bag>
+	<rdf:li rdf:parseType="Resource">
+	<vCard:N rdf:parseType="Resource">
+	<vCard:Family>Meyer</vCard:Family>
+	<vCard:Given>Johannes</vCard:Given>
+	</vCard:N>
+	<vCard:EMAIL>johannes.p.meyer@gmail.com</vCard:EMAIL>
+	<vCard:ORG rdf:parseType="Resource">
+	<vCard:Orgname>EMBL-EBI</vCard:Orgname>
+	</vCard:ORG>
+	</rdf:li>
+	</rdf:Bag>
+	</dc:creator>
+	<dcterms:created rdf:parseType="Resource">
+	<dcterms:W3CDTF>2019-08-22T14:44:05Z</dcterms:W3CDTF>
+	</dcterms:created>
+	<dcterms:modified rdf:parseType="Resource">
+	<dcterms:W3CDTF>2019-08-22T14:44:05Z</dcterms:W3CDTF>
+	</dcterms:modified>
+	<bqmodel:isDescribedBy>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/doi/10.1080/23737867.2018.1440978"/>
+	</rdf:Bag>
+	</bqmodel:isDescribedBy>
+	<bqbiol:hasProperty>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/mamo/MAMO_0000046"/>
+	</rdf:Bag>
+	</bqbiol:hasProperty>
+	<bqbiol:hasProperty>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/ncit/C94697"/>
+	</rdf:Bag>
+	</bqbiol:hasProperty>
+	</rdf:Description>
+	
+      </rdf:RDF>
+      <COPASI xmlns="http://www.copasi.org/static/sbml">
+        <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+          <rdf:Description rdf:about="#COPASI0">
+            <bqbiol:hasProperty rdf:resource="urn:miriam:mamo:MAMO_0000046"/>
+            <bqbiol:hasProperty rdf:resource="urn:miriam:ncit:C94697"/>
+            <dcterms:bibliographicCitation>
+              <rdf:Description>
+                <CopasiMT:isDescribedBy rdf:resource="urn:miriam:doi:10.1080/23737867.2018.1440978"/>
+              </rdf:Description>
+            </dcterms:bibliographicCitation>
+            <dcterms:created>
+              <rdf:Description>
+                <dcterms:W3CDTF>2019-08-22T14:44:05Z</dcterms:W3CDTF>
+              </rdf:Description>
+            </dcterms:created>
+            <dcterms:creator>
+              <rdf:Description>
+                <vCard:EMAIL>johannes.p.meyer@gmail.com</vCard:EMAIL>
+                <vCard:N>
+                  <rdf:Description>
+                    <vCard:Family>Meyer</vCard:Family>
+                    <vCard:Given>Johannes</vCard:Given>
+                  </rdf:Description>
+                </vCard:N>
+                <vCard:ORG>
+                  <rdf:Description>
+                    <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+                  </rdf:Description>
+                </vCard:ORG>
+              </rdf:Description>
+            </dcterms:creator>
+          </rdf:Description>
+        </rdf:RDF>
+      </COPASI>
+    </annotation>
+      <listOfFunctionDefinitions>
+      <functionDefinition id="Function_for_Cancer_Cells_Death_T_Cells" metaid="COPASI23" name="Function_for_Cancer_Cells_Death_T_Cells">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI23">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:16:47Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <lambda>
+            <bvar>
+              <ci> eta </ci>
+            </bvar>
+            <bvar>
+              <ci> C </ci>
+            </bvar>
+            <bvar>
+              <ci> T </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> eta </ci>
+              <ci> C </ci>
+              <ci> T </ci>
+            </apply>
+          </lambda>
+        </math>
+            </functionDefinition>
+      <functionDefinition id="Function_for_T_Cells_Activation_IL_12" metaid="COPASI24" name="Function_for_T_Cells_Activation_IL-12">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI24">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:57:27Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <lambda>
+            <bvar>
+              <ci> F_1_Q </ci>
+            </bvar>
+            <bvar>
+              <ci> lambda_TI_12 </ci>
+            </bvar>
+            <bvar>
+              <ci> T_N </ci>
+            </bvar>
+            <bvar>
+              <ci> I_12 </ci>
+            </bvar>
+            <bvar>
+              <ci> K_I_12 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> F_1_Q </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> lambda_TI_12 </ci>
+                  <ci> T_N </ci>
+                  <ci> I_12 </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> K_I_12 </ci>
+                  <ci> I_12 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+            </functionDefinition>
+      <functionDefinition id="Function_for_T_Cells_Stimulation_IL_2" metaid="COPASI25" name="Function_for_T_Cells_Stimulation_IL-2">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI25">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:00:40Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <lambda>
+            <bvar>
+              <ci> F_1_Q </ci>
+            </bvar>
+            <bvar>
+              <ci> lambda_TI_2 </ci>
+            </bvar>
+            <bvar>
+              <ci> T </ci>
+            </bvar>
+            <bvar>
+              <ci> I_2 </ci>
+            </bvar>
+            <bvar>
+              <ci> K_I_2 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> F_1_Q </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> lambda_TI_2 </ci>
+                  <ci> T </ci>
+                  <ci> I_2 </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> K_I_2 </ci>
+                  <ci> I_2 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+            </functionDefinition>
+      <functionDefinition id="Function_for_Cancer_Cells_Growth" metaid="COPASI26" name="Function_for_Cancer_Cells_Growth">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI26">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:17:27Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <lambda>
+            <bvar>
+              <ci> lambda_C </ci>
+            </bvar>
+            <bvar>
+              <ci> C </ci>
+            </bvar>
+            <bvar>
+              <ci> C_K </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> lambda_C </ci>
+              <ci> C </ci>
+              <apply>
+                <minus/>
+                <cn> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> C </ci>
+                  <ci> C_K </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+            </functionDefinition>
+      <functionDefinition id="Function_for_Anti_PD_1_Effective_Level" metaid="COPASI27" name="Function_for_Anti-PD-1_Effective_Level">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI27">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:04:59Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <lambda>
+            <bvar>
+              <ci> A </ci>
+            </bvar>
+            <ci> A </ci>
+          </lambda>
+        </math>
+            </functionDefinition>
+      <functionDefinition id="Function_for_Anti_PD_1_Depletion_PD_1_Blocking" metaid="COPASI28" name="Function_for_Anti-PD-1_Depletion_PD-1_Blocking">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI28">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:05:49Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <lambda>
+            <bvar>
+              <ci> mu_PA </ci>
+            </bvar>
+            <bvar>
+              <ci> P </ci>
+            </bvar>
+            <bvar>
+              <ci> A </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mu_PA </ci>
+              <ci> P </ci>
+              <ci> A </ci>
+            </apply>
+          </lambda>
+        </math>
+            </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition id="volume" name="volume">
+        <listOfUnits>
+          <unit exponent="1" kind="litre" multiplier="1" scale="-3"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="time" name="time">
+        <listOfUnits>
+          <unit exponent="1" kind="second" multiplier="86400" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance" name="substance">
+        <listOfUnits>
+          <unit exponent="1" kind="item" multiplier="1" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment constant="true" id="compartment" name="compartment" size="1" spatialDimensions="3"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="false" compartment="compartment" constant="false" id="C" initialConcentration="0.3968" metaid="COPASI1" name="C">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI1">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:07:59Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="compartment" constant="false" id="T" initialConcentration="0.006" metaid="COPASI2" name="T">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI2">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:10:04Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </species>
+      <species boundaryCondition="false" compartment="compartment" constant="false" id="A" initialConcentration="0" name="A"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter constant="true" id="lambda_C" name="lambda_C" value="0.425"/>
+      <parameter constant="true" id="C_K" name="C_K" value="0.8725"/>
+      <parameter constant="true" id="eta" name="eta" value="57.5"/>
+      <parameter constant="true" id="lambda_TI_12" name="lambda_TI_12" value="8.81"/>
+      <parameter constant="true" id="T_N" metaid="COPASI3" name="T_N" value="0.0006">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI3">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:23:41Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="I_12" name="I_12" value="1.5E-10"/>
+      <parameter constant="true" id="K_I_12" name="K_I_12" value="1.5E-10"/>
+      <parameter constant="true" id="lambda_TI_2" metaid="COPASI4" name="lambda_TI_2" value="0.5">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI4">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:21:11Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="I_2" name="I_2" value="2.37E-11"/>
+      <parameter constant="true" id="K_I_2" name="K_I_2" value="2.37E-11"/>
+      <parameter constant="true" id="K_TQ" metaid="COPASI5" name="K_TQ" value="1.365E-18">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI5">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:37:13Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="rho_L" name="rho_L" value="1.1615E-6"/>
+      <parameter constant="true" id="rho_P" name="rho_P" value="5.84E-7"/>
+      <parameter constant="true" id="epsilon_C" name="epsilon_C" value="50.5"/>
+      <parameter constant="true" id="d_T" metaid="COPASI6" name="d_T" value="0.025">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI6">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:22:43Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="mu_PA" name="mu_PA" value="105954000"/>
+      <parameter constant="true" id="gamma_A" name="gamma_A" value="1E-10"/>
+      <parameter constant="true" id="d_A" name="d_A" value="0.7115"/>
+      <parameter constant="true" id="gamma" metaid="COPASI7" name="gamma" value="10">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI7">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:40:23Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="false" id="kappa" metaid="COPASI8" name="kappa" value="2.323E-9">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI8">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:21:12Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="sigma" metaid="COPASI9" name="sigma" value="0.002">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI9">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:21:37Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="alpha_PL" metaid="COPASI10" name="alpha_PL" value="1E-6">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI10">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:35:41Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="true" id="d_Q" metaid="COPASI11" name="d_Q" value="1">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI11">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:35:52Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="false" id="Q" metaid="COPASI12" name="Q" value="1.631572467648E-16">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI12">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:38:08Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="false" id="P" metaid="COPASI13" name="P" value="3.504E-9">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI13">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:38:39Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter constant="false" id="F_1_Q" metaid="COPASI14" name="F_1_Q" value="0.00829675029876899">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI14">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:47:00Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+            </parameter>
+      <parameter id="ModelValue_10" name="Initial for K_TQ" value="1.365E-18">
+        <annotation>
+          <initialValue xmlns="http://copasi.org/initialValue" parent="K_TQ"/>
+        </annotation>
+            </parameter>
+      <parameter id="ModelValue_13" name="Initial for epsilon_C" value="50.5">
+        <annotation>
+          <initialValue xmlns="http://copasi.org/initialValue" parent="epsilon_C"/>
+        </annotation>
+            </parameter>
+      <parameter id="ModelValue_18" name="Initial for gamma" value="10">
+        <annotation>
+          <initialValue xmlns="http://copasi.org/initialValue" parent="gamma"/>
+        </annotation>
+            </parameter>
+      <parameter id="ModelValue_11" name="Initial for rho_L" value="1.1615E-6">
+        <annotation>
+          <initialValue xmlns="http://copasi.org/initialValue" parent="rho_L"/>
+        </annotation>
+            </parameter>
+      <parameter id="ModelValue_12" name="Initial for rho_P" value="5.84E-7">
+        <annotation>
+          <initialValue xmlns="http://copasi.org/initialValue" parent="rho_P"/>
+        </annotation>
+            </parameter>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="ModelValue_10">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <ci> K_TQ </ci>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="ModelValue_13">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <ci> epsilon_C </ci>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="ModelValue_18">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <ci> gamma </ci>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="ModelValue_11">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <ci> rho_L </ci>
+        </math>
+            </initialAssignment>
+      <initialAssignment symbol="ModelValue_12">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <ci> rho_P </ci>
+        </math>
+            </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfRules>
+      <assignmentRule variable="P">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <times/>
+            <apply>
+              <minus/>
+              <ci> ModelValue_12 </ci>
+              <apply>
+                <times/>
+                <ci> ModelValue_18 </ci>
+                <ci> A </ci>
+              </apply>
+            </apply>
+            <ci> T </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="kappa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <times/>
+            <ci> sigma </ci>
+            <ci> ModelValue_11 </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="Q">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <times/>
+            <ci> kappa </ci>
+            <ci> P </ci>
+            <apply>
+              <plus/>
+              <ci> T </ci>
+              <apply>
+                <times/>
+                <ci> ModelValue_13 </ci>
+                <ci> C </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="F_1_Q">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide/>
+            <cn> 1 </cn>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <ci> Q </ci>
+                <ci> ModelValue_10 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="Cancer_Cells_Death_T_Cells" metaid="COPASI15" name="Cancer_Cells_Death_T_Cells" reversible="false">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI15">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:14:33Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+              <listOfReactants>
+          <speciesReference species="C" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="T"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Function_for_Cancer_Cells_Death_T_Cells </ci>
+                <ci> eta </ci>
+                <ci> C </ci>
+                <ci> T </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="Cancer_Cells_Growth" metaid="COPASI16" name="Cancer_Cells_Growth" reversible="false">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI16">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:17:14Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+              <listOfProducts>
+          <speciesReference species="C" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Function_for_Cancer_Cells_Growth </ci>
+                <ci> lambda_C </ci>
+                <ci> C </ci>
+                <ci> C_K </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="T_Cells_Activation_IL_12" metaid="COPASI17" name="T_Cells_Activation_IL-12" reversible="false">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI17">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T15:18:35Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+              <listOfProducts>
+          <speciesReference species="T" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Function_for_T_Cells_Activation_IL_12 </ci>
+                <ci> F_1_Q </ci>
+                <ci> lambda_TI_12 </ci>
+                <ci> T_N </ci>
+                <ci> I_12 </ci>
+                <ci> K_I_12 </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="T_Cells_Stimulation_IL_2" metaid="COPASI18" name="T_Cells_Stimulation_IL-2" reversible="false">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI18">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:00:17Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+              <listOfProducts>
+          <speciesReference species="T" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Function_for_T_Cells_Stimulation_IL_2 </ci>
+                <ci> F_1_Q </ci>
+                <ci> lambda_TI_2 </ci>
+                <ci> T </ci>
+                <ci> I_2 </ci>
+                <ci> K_I_2 </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="T_Cell_Death" metaid="COPASI19" name="T_Cell_Death" reversible="false">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI19">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:02:42Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+              <listOfReactants>
+          <speciesReference species="T" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> d_T </ci>
+              <ci> T </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="Anti_PD_1_Effective_Level" metaid="COPASI20" name="Anti-PD-1_Effective_Level" reversible="false">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI20">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:04:39Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+              <listOfProducts>
+          <speciesReference species="A" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Function_for_Anti_PD_1_Effective_Level </ci>
+                <ci> A </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="Anti_PD_1_Depletion_PD_1_Blocking" metaid="COPASI21" name="Anti-PD-1_Depletion_PD-1_Blocking" reversible="false">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI21">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:05:19Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+              <listOfReactants>
+          <speciesReference species="A" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Function_for_Anti_PD_1_Depletion_PD_1_Blocking </ci>
+                <ci> mu_PA </ci>
+                <ci> P </ci>
+                <ci> A </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="Anti_PD_1_Natural_Degradation" metaid="COPASI22" name="Anti-PD-1_Natural_Degradation" reversible="false">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI22">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-08-22T16:06:45Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+              <listOfReactants>
+          <speciesReference species="A" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> d_A </ci>
+              <ci> A </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
