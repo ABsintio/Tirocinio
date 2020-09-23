@@ -4,12 +4,6 @@ from time import time
 
 filename = "models/BIOMD0000000005_url.xml"
 rr = roadrunner.RoadRunner(filename)
-rr.setIntegrator('rk45')
-rr.integrator.absolute_tolerance = 1e-08
-rr.integrator.relative_tolerance = 1e-08
-rr.integrator.initial_time_step  = 1.0e-02
-rr.integrator.maximum_time_step  = 1e+06
-rr.integrator.minimum_time_step  = 1e-12
 
 transientStart = time()
 result = rr.simulate(0, 100)

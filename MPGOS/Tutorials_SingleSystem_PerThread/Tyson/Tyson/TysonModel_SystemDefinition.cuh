@@ -23,6 +23,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_EventFunctio
         Precision     T, Precision    dT, Precision*    TD, Precision*   X, \
         Precision* cPAR, Precision* sPAR,       int* sPARi, Precision* ACC, int* ACCi
 ) {
+    EF[0] = X[1];
+    EF[1] = X[0];
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterEventDetection(

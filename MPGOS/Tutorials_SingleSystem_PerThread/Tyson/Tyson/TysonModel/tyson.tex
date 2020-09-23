@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{calc}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+
+\geometry{a4paper, layoutwidth=23cm, layoutheight=32cm}
+\addtolength{\hoffset}{-1.2cm}
+\newcommand{\der}[1]{\frac{\mathrm{d}#1}{\mathrm{d}t}}
+
+\title{Tyson Cell Cycle Equation Model}
+\author{Riccardo La Marca}
+\date{9 settembre 2020}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Sigle System Per-Thread}
+Risoluzione di \textit{equazioni differenziali ordinarie} (ODE) indipendenti della seguente forma
+\begin{equation}
+    \frac{\mathrm{d}}{\mathrm{d}t}X(t) = f(X,\;t,\;P)
+\end{equation}
+dove $X(t) \in \mathbb{R}^n$ (\textbf{spazio degli stati}), $t$ è il tempo mentre $P \in \mathbb{R}^m$ è un vettore di parametri. È importante che il vettore delle funzioni $f(\dots)$ rimanga lo stesso per tutte le simulazioni. Infatti il solver risolve alcune istanze dello stesso sistema simultaneamente ma con differenti insiemi di parametri e/o condizioni iniziali. La strategia di parallelismo è molto semplice: una singola istanza dell Eq.1 viene risolta da un singolo \textit{GPU Thread}.  
+
+È molto importante notare che il vettore $P$, detto anche \textbf{vettore dei parametri}, è suddiviso a sua volta in tre sottocategorie: (1) \textbf{$P_{cp}$}, o \textit{control parameter}; (2) \textbf{$P_{sp}$}, o \textit{shared parameters}; (3) \textbf{$P_{ac}$}, o \textit{accessories}. Possiamo quindi rappresentare il vettore $P$ come 
+\begin{equation*}
+    P = (P_{cp},\;P_{sp},\;P_{ac}) \in \mathbb{R}^m
+\end{equation*}
+dove $P_{cp} \in \mathbb{R}^p$, $P_{sp} \in \mathbb{R}^t$ e $P_{ac} \in \mathbb{R}^q$ tale per cui $p + t + q = m$.
+\subsubsection*{Control Parameter}
+L'insieme dei parametri di controllo sono differenti da istanza ad istanza. Ogni \textit{sistema indipendente} (o istanza) ha il proprio $P_{cp}$. Per questo, dato un sistema di ODE, consideriamo come parametri di controllo quelle variabili che non hanno un valore costante ma bensì un range di valori.
+\subsubsection*{Shared Parameter}
+Sono parametri comuni per tutte le istanze del sistema. Il loro valore è costante per ogni istanza. Definire parametri comuni come \textit{shared} riduce significatamente il numero di transazione a \textit{bassa memoria}. Questo può essere molto importante in applicazioni con limitata memoria. Ci sono due tipi di parametri condivisi: \textbf{integer} e \textbf{floating point} (la cui precisione è controllata dall'utente).
+\subsubsection*{Accessories}
+Essi sono parametri programmabili dall'utente e \textit{multi-purpose}. Non sono strettamente parametri dell'Eq. 1 ma piuttosto archivi che possono essere aggiornati dopo ogni time step e event detection riuscito. Per questo il numero di accessori è indipendente dalle equazioni e sono sotto il controllo dell'utente. Essi sono un tool molto efficiente per calcolare, monitorare e salvare continuamente proprietà speciali delle \textit{soluzioni/traiettorie} senza il bisogno di salvare un \textit{dense output} per ogni istanza. Questo può essere cruciale per alte performance. Come per i parametri condivi, gli accessori possono essere di due tipi: \textbf{integer} e \textbf{floating point}.
+\subsection{Esempio: Duffing Equations}
+Prendiamo il seguente sistema di ODE.
+\begin{equation}
+    {\large
+        \begin{cases}
+            \frac{\mathrm{d}}{\mathrm{d}t}x_1(t) = x_2\\
+            \frac{\mathrm{d}}{\mathrm{d}t}x_2(t) = x_1 - x_1^3 - kx_2 + B\cos(t)
+        \end{cases}
+    }
+\end{equation}
+dove $k \in [0.2,\;0.3]$, mentre $B = 0.3$. Per la loro natura possiamo classificare questi due parametri rispettivamente in parametro di controllo (ha un range di valori) e parametro condiviso (è una costante), ottenendo $P_{cp} = \{k\}$ e $P_{sp} = \{B\}$ di tipo floating point. Ovviamente $X(t) = [x_1, \;x_2] \in \mathbb{R}^2$.
+
+\section{Tyson Cell Cycle Equations Model}
+Il sistema di ODE che modella il ciclo cellulare è il seguente
+\begin{equation}
+    {\large
+        \begin{cases}
+            \der{[C2]} = k_6[M] - k_8[\sim P][C2] + k_9[CP]\\
+            \der{[CP]} = -k_3[CP][Y] + k_8[\sim P][C2] - k_9[CP]\\
+            \der{[pM]} = k_3[CP][Y] - [pM]f([M]) + k_5[\sim P][M]\\
+            \der{[M]}  = [pM]f([M]) - k_5[\sim P][M] - k_6[M]\\
+            \der{[Y]}  = k_1[aa]/[CT] - k_2[Y] - k_3[CP][Y]\\
+            \der{[YP]} = -k_7[YP] + k_6[M]\\
+            [CT]       = [C2] + [CP] + [M] + [pM]\\
+            [YT]       = [Y]  + [YP] + [M] + [pM]
+        \end{cases}
+    }
+\end{equation}
+Tutti i significati e i valori dei parametri $k_i$ sono inseriti nelle seguenti tabelle, tranne $[aa]$ e $[\sim P]$ che sono costanti. Prima però specifichiamo la funzione $f([M])$ detta anche \textbf{funzione di attivazione del cdc2-kinase}, la cui formula è la seguente.
+\begin{equation}
+    f([M]) = k_4' + k_4\Biggl(\frac{[M]}{[CT]}\Biggr)^2
+\end{equation}
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{cc}
+        \begin{tabular}{|c|c|}
+            \hline
+            \textbf{Symbol} & \textbf{Meaning}\\
+            \hline\hline
+            C2 & cdc2k\\
+            CP & cdc2k\_p\\
+            M  & p\_cyclin\_cdc2\\
+            pM & p\_cyclin\_cdc2\_p\\
+            Y  & cyclin\\
+            YP & p\_cyclin\\
+            CT & total\_cdc2\\
+            YT & total\_cyclin\\
+            \hline
+        \end{tabular} & \begin{tabular}{|c|c|}
+            \hline
+            \textbf{Symbol} & \textbf{Values}\\
+            \hline\hline
+            $k_1[aa]/[CT]$ & 0.015 $min^{-1}$\\
+            $k_2$          & 0\\
+            $k_3[CT]$      & 200 $min^{-1}$\\
+            $k_4$          & 180 $min^{-1}$\\
+            $k_4'$         & 0.018 $min^{-1}$\\
+            $k_5[\sim P]$  & 0\\
+            $k_6$          & 1 $min^{-1}$\\
+            $k_7$          & 0.6 $min^{-1}$\\
+            $k_8[\sim P]$  & $>>$ $k_9$ = 1e+06\\
+            $k_9$          & $>>$ $k_6$ = 1000\\ 
+            \hline
+        \end{tabular}\\
+    \end{tabular}
+\end{table}
+Detto ciò vediamo come il sistema di ODE possa essere ridotto al sistema che abbiamo visto nella Sezione 1. Prendiamo infatti come vettore dello spazio degli stati, tutte le variabili che vediamo essere nella parte sinistra delle equazioni. Consdieriamo quindi
+\begin{equation*}
+    X(t) = \Bigl[[C2],\;[CP],\;[M],\;[pM],\;[Y],\;[YP]\Bigr] \in \mathbb{R}^6
+\end{equation*}
+mentre avremo come parametri condivisi tutti quelli che hanno un valore costante nella seconda tabella e come parametri di controllo tutti gli altri, ottenendo 
+\begin{equation*}
+    P_{sp} = \{k_1[aa]/[CT],\;k_2,\;k_3[CT],\;k_4,\;k_4',\;k_5[\sim P],\;k_6,\;k_7,\;k_8[\sim P],\;k_9\}
+\end{equation*}
+Dal momento che in alcune ODE viene utilizzato anche il valore di $[CT]$, per esempio nella terza e nella quarta, possiamo utilizzare un \textit{accessorio} che ci consenta di immagazzinarne il valore man mano che avanza la simulazione. Alla fine avremo: 6 variabili in $X(t)$, 10 parametri condivisi e 1 accessorio.
+\end{document}
