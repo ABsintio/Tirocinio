@@ -10,12 +10,10 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
     Precision*    F, Precision*    X, Precision     T, \
     Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi
 ) {
-    F[0] = sPAR[6]*X[2] - sPAR[8]*X[0] + sPAR[9]*X[1];
-    F[1] = -sPAR[2]*X[1]*X[4] + sPAR[8]*X[0] - sPAR[9]*X[1];
-    F[2] = X[3]*(sPAR[4] + sPAR[3]*(ACC[2]*ACC[2])) - sPAR[5]*X[2] - sPAR[6]*X[2];
-    F[3] = sPAR[2]*X[1]*X[4] - X[3]*(sPAR[4] + sPAR[3]*(ACC[2]*ACC[2])) + sPAR[5]*X[2];
-    F[4] = sPAR[0] - sPAR[1]*X[4] - sPAR[2]*X[1]*X[4];
-    F[5] = -sPAR[7]*X[5] + sPAR[6]*X[2];
+    F[0] = sPAR[3]*(X[2] - X[0])*((sPAR[4]/sPAR[3]) + X[0]*X[0]) - sPAR[6]*X[0];
+    F[1] = sPAR[0] - sPAR[1]*(X[1] - X[2]) - sPAR[6]*X[0];
+    F[2] = sPAR[2]*(1 - X[2])*(X[1] - X[2]) - sPAR[6]*X[0];
+    F[3] = sPAR[0] - sPAR[1]*(X[1] - X[2]) - sPAR[7]*(X[3] - X[1]);
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_EventFunction(
@@ -30,8 +28,6 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
     Precision    &T, Precision   &dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    ACC[0] = X[0] + X[1] + X[2] + X[3];
-    ACC[1] = X[2] + X[3] + X[4] + X[5];
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterSuccessfulTimeStep(
@@ -39,8 +35,6 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterS
     Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    ACC[2] = X[2] / ACC[0];
-    ACC[3] = ACC[1] / ACC[0];
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
@@ -50,10 +44,6 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
 ) {
     T     = TD[0];
     DOIDX = 0;
-    ACC[0] = 1.0;
-    ACC[1] = 0.25;
-    ACC[2] = 0.0;
-    ACC[3] = 0.0;
 }
 
 template <class Precision> __forceinline__ __device__ void PerThread_Finalization(\

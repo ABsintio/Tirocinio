@@ -46,8 +46,8 @@ int main()
 	number automatically which has the closest required version. Then this serial number can be associated
 	to a ProblemSolver object.
 	*/
-	int MajorRevision  = 7;
-	int MinorRevision  = 5;
+	int MajorRevision  = 6;
+	int MinorRevision  = 1;
 
 	// Return a device number having its revision number closest to CC3.5.
 	int SelectedDevice = SelectDeviceByClosestRevision(MajorRevision, MinorRevision);

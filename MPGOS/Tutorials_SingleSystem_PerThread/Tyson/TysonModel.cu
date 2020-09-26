@@ -13,15 +13,15 @@ using namespace std;
 
 #define SOLVER RKCK45
 #define PRECISION double
-const int NT   = 23040;
-const int SD   = 6;     // [C2], [CP], [M], [pM], [Y], [YP]
+const int NT   = 1;
+const int SD   = 4;
 const int NCP  = 1;
 const int NSP  = 10;
 const int NISP = 0;
 const int NE   = 2;
-const int NA   = 4;
+const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100;
+const int NDO  = 100000;
 
 void FillSolverObject(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>&, 
@@ -38,27 +38,14 @@ void SaveData(
 	
 	for (int tid=0; tid<NumberOfThreads; tid++)
 	{
-        // GetHost -> valore del parametro.
-        DataFile.width(Width); DataFile << "[C2]" << ',';
-        DataFile.width(Width); DataFile << "[CP]" << ',';
-        DataFile.width(Width); DataFile << "[M]" << ',';
-        DataFile.width(Width); DataFile << "[pM]" << ',';
-        DataFile.width(Width); DataFile << "[Y]" << ',';
-        DataFile.width(Width); DataFile << "[YP]" << ',';
-		DataFile.width(Width); DataFile << "[CT]" << ',';
-		DataFile.width(Width); DataFile << "[YT]" << ',';
-        DataFile.width(Width); DataFile << "[M]/[CT]" << ',';
-        DataFile.width(Width); DataFile << "[YT]/[CT]" << endl;
-		DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
+        DataFile.width(Width); DataFile << "u" << ',';
+        DataFile.width(Width); DataFile << "v" << ',';
+        DataFile.width(Width); DataFile << "w" << ',';
+        DataFile.width(Width); DataFile << "y" << endl;
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 2) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 3) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 4) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 5) << ',';
-		DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
-		DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 2) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 3) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 3);
 		DataFile << '\n';
 	}
 }
@@ -66,25 +53,34 @@ void SaveData(
 int main() {
 
     int NumberOfProblems = 1;
-    int BlockSize        = 128;
+    int BlockSize        = 32;
 
     ListCUDADevices();
 
-    int MajorVersion = 7;
-    int MinorVersion = 5;
+    int MajorVersion = 6;
+    int MinorVersion = 1;
 
     int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);
     PrintPropertiesOfSpecificDevice(SelectedDevice);
     
-    PRECISION InitialCondition_C2 = 0;
-    PRECISION InitialCondition_CP = 0.75;
-    PRECISION InitialCondition_M  = 0;
-    PRECISION InitialCondition_pM = 0.25;
-    PRECISION InitialCondition_Y  = 0;
-    PRECISION InitialCondition_YP = 0;
+    // Concentrazioni iniziali
+    PRECISION C2 = 0;
+    PRECISION CP = 0.75;
+    PRECISION M  = 0;
+    PRECISION pM = 0.25;
+    PRECISION Y  = 0;
+    PRECISION YP = 0;
+    PRECISION CT = 1.0;
+    PRECISION YT = 0.25;
+    
+    // Valore iniziali delle variabili da integrare
+    PRECISION InitialCondition_u = M/CT;
+    PRECISION InitialCondition_v = (Y + pM + M)/CT;
+    PRECISION InitialCondition_w = (pM + M)/CT;
+    PRECISION InitialCondition_y = YT/CT;
     vector<PRECISION> Parameter_X = {
-        InitialCondition_C2, InitialCondition_CP, InitialCondition_M,
-        InitialCondition_pM, InitialCondition_Y, InitialCondition_YP
+        InitialCondition_u, InitialCondition_v,
+        InitialCondition_w, InitialCondition_y
     };
 
     PRECISION Parameter_k1aaCT    = 0.015;
@@ -93,7 +89,7 @@ int main() {
     PRECISION Parameter_k4        = 180;
     PRECISION Parameter_k4prime   = 0.018;
     PRECISION Parameter_k5tildeP  = 0;
-    PRECISION Parameter_k6        = 1;
+    PRECISION Parameter_k6        = 2;
     PRECISION Parameter_K7        = 0.6;
     PRECISION Parameter_k8tildeP  = 1e+06;
     PRECISION Parameter_k9        = 1000;
@@ -150,7 +146,8 @@ int main() {
     }
 
     clock_t SimulationEnd = clock();
-	cout << "Total simulation time: " << 1000.0*(SimulationEnd-SimulationStart) / CLOCKS_PER_SEC << "ms" << endl << endl;
+	cout << "Total simulation time: " << 1000.0*(SimulationEnd-SimulationStart) / CLOCKS_PER_SEC << "ms";
+    cout << endl;
 	
     DataFile.close();
     
@@ -174,7 +171,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 6);
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 100);  
 
         int i = 0;
         for (PRECISION x : Variable_X) {
@@ -182,14 +179,7 @@ void FillSolverObject(
         }
 
         Solver.SetHost(ProblemNumber, ActualTime, 0.0);
-
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
-
-        Solver.SetHost(ProblemNumber, Accessories, 0, 1.0);
-        Solver.SetHost(ProblemNumber, Accessories, 1, 0.25);
-        Solver.SetHost(ProblemNumber, Accessories, 2, 0.0);
-        Solver.SetHost(ProblemNumber, Accessories, 3, 0.25);
-
         Solver.SetHost(ProblemNumber, DenseIndex, 0 );
 		
 		ProblemNumber++;
