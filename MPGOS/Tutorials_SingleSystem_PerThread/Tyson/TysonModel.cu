@@ -13,7 +13,7 @@ using namespace std;
 
 #define SOLVER RKCK45
 #define PRECISION double
-const int NT   = 1;
+const int NT   = 10000;
 const int SD   = 4;
 const int NCP  = 1;
 const int NSP  = 10;
@@ -21,7 +21,7 @@ const int NISP = 0;
 const int NE   = 2;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100000;
+const int NDO  = 100;
 
 void FillSolverObject(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>&, 
@@ -52,7 +52,7 @@ void SaveData(
 
 int main() {
 
-    int NumberOfProblems = 1;
+    int NumberOfProblems = NT;
     int BlockSize        = 32;
 
     ListCUDADevices();
@@ -89,7 +89,7 @@ int main() {
     PRECISION Parameter_k4        = 180;
     PRECISION Parameter_k4prime   = 0.018;
     PRECISION Parameter_k5tildeP  = 0;
-    PRECISION Parameter_k6        = 2;
+    PRECISION Parameter_k6        = 1;
     PRECISION Parameter_K7        = 0.6;
     PRECISION Parameter_k8tildeP  = 1e+06;
     PRECISION Parameter_k9        = 1000;
@@ -146,7 +146,7 @@ int main() {
     }
 
     clock_t SimulationEnd = clock();
-	cout << "Total simulation time: " << 1000.0*(SimulationEnd-SimulationStart) / CLOCKS_PER_SEC << "ms";
+    cout << "Total simulation time: " << 1000.0*(SimulationEnd-SimulationStart) / CLOCKS_PER_SEC << "ms";
     cout << endl;
 	
     DataFile.close();

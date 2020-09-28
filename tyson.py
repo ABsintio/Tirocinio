@@ -1,16 +1,18 @@
 import roadrunner
 import matplotlib.pyplot as plt
-from time import time
+import time
 
 filename = "models/BIOMD0000000005_url.xml"
 rr = roadrunner.RoadRunner(filename)
 
-transientStart = time()
-result = rr.simulate(0, 100)
+transientStart = time.process_time()
+for i in range(10000):
+	result = rr.simulate(0, 100)
 
-transientEnd = time()
+transientEnd = time.process_time()
 print(f"Finished simulation in: {transientEnd - transientStart}")
 
+"""
 # Get result
 times = result["time"]
 cdc2k_result = result["[C2]"]
@@ -32,4 +34,4 @@ YT_on_CT = [x/y for x, y in zip(total_cyclin, total_cdc2)]
 plt.plot(times, M_on_CT,  marker='o', label="[M]/[CT]")
 plt.plot(times, YT_on_CT, marker='o', label="[YT]/[CT]")
 plt.legend(loc="upper left")
-plt.show()
+plt.show()"""
