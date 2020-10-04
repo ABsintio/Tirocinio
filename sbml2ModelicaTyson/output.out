@@ -1,20 +1,5 @@
------ PARSING FILE: Class.elmt_cell.mo -----
+----- PARSING FILE: Class_elmt_cell.mo -----
 
-
-assert(elmt_cell > =  0, "Compartment size became negative. Make sure this is a valid bahaviour.")
-der(elmt_cell) =  0
-elmt_M =  elmt_M_conc
-elmt_CT =  elmt_CT_conc
-elmt_C2 =  elmt_C2_conc
-elmt_Y =  elmt_Y_conc
-elmt_EmptySet =  elmt_EmptySet_conc
-elmt_CP =  elmt_CP_conc
-elmt_pM =  elmt_pM_conc
-elmt_YT =  elmt_YT_conc
-elmt_YP =  elmt_YP_conc
-elmt_CT_amount =  (elmt_C2 + elmt_CP + elmt_M + elmt_pM) * elmt_cell
-der(elmt_EmptySet_amount) =  0
-elmt_YT_amount =  (elmt_Y + elmt_YP + elmt_M + elmt_pM) * elmt_cell
 der(elmt_M_amount) =  ((elmt_Reaction9 * elmt_product19) + (- (elmt_Reaction5 * elmt_reactant10)) + (- (elmt_Reaction1 * elmt_reactant0)))
 der(elmt_C2_amount) =  ((elmt_Reaction3 * elmt_product6) + (- (elmt_Reaction2 * elmt_reactant3)) + (elmt_Reaction1 * elmt_product1))
 der(elmt_Y_amount) =  ((- (elmt_Reaction7 * elmt_reactant14)) + (elmt_Reaction6 * elmt_product13) + (- (elmt_Reaction4 * elmt_reactant8)))
@@ -22,9 +7,19 @@ der(elmt_CP_amount) =  ((- (elmt_Reaction4 * elmt_reactant7)) + (- (elmt_Reactio
 der(elmt_pM_amount) =  ((- (elmt_Reaction9 * elmt_reactant18)) + (elmt_Reaction5 * elmt_product11) + (elmt_Reaction4 * elmt_product9))
 der(elmt_YP_amount) =  ((- (elmt_Reaction8 * elmt_reactant16)) + (elmt_Reaction1 * elmt_product2))
 
------ BUILDING ODE SYSTEM -----
+----- BUILDING ODE SYSTEM FOR: Class_elmt_cell.mo -----
 
 
+Initial Equation (
+	elmt_cell =  1.0
+	elmt_M_conc =  (0.0 / elmt_cell)
+	elmt_C2_conc =  (0.0 / elmt_cell)
+	elmt_Y_conc =  (0.0 / elmt_cell)
+	elmt_EmptySet_conc =  (0.0 / elmt_cell)
+	elmt_CP_conc =  (0.75 / elmt_cell)
+	elmt_pM_conc =  (0.25 / elmt_cell)
+	elmt_YP_conc =  (0.0 / elmt_cell)
+)
 Init ODE(
 	F[0] =  0, "Compartment size became negative. Make sure this is a valid bahaviour.")
 	F[1] =  0
@@ -82,32 +77,59 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 ----- PARSING FILE: Reactions.mo -----
 
 
-elmt_Reaction9 =  (elmt_cell * elmt_pM * (elmt_Reaction9_elmt_k4prime + (elmt_Reaction9_elmt_k4 * Functions.pow((elmt_M / elmt_CT), 2.0))))
-elmt_Reaction8 =  (elmt_cell * elmt_Reaction8_elmt_k7 * elmt_YP)
-elmt_Reaction7 =  (elmt_cell * elmt_Reaction7_elmt_k2 * elmt_Y)
-elmt_Reaction6 =  (elmt_cell * elmt_Reaction6_elmt_k1aa)
-elmt_Reaction5 =  (elmt_cell * elmt_Reaction5_elmt_k5notP * elmt_M)
-elmt_Reaction4 =  (elmt_cell * elmt_CP * elmt_Reaction4_elmt_k3 * elmt_Y)
-elmt_Reaction3 =  (elmt_cell * elmt_CP * elmt_Reaction3_elmt_k9)
-elmt_Reaction2 =  (elmt_cell * elmt_C2 * elmt_Reaction2_elmt_k8notP)
-elmt_Reaction1 =  (elmt_cell * elmt_Reaction1_elmt_k6 * elmt_M)
-der(elmt_product9) =  0
-der(elmt_product6) =  0
-der(elmt_reactant3) =  0
-der(elmt_product11) =  0
-der(elmt_reactant5) =  0
-der(elmt_reactant8) =  0
-der(elmt_reactant7) =  0
-der(elmt_reactant14) =  0
-der(elmt_product1) =  0
-der(elmt_reactant16) =  0
-der(elmt_reactant10) =  0
-der(elmt_product4) =  0
-der(elmt_reactant12) =  0
-der(elmt_reactant0) =  0
-der(elmt_product2) =  0
-der(elmt_reactant18) =  0
-der(elmt_product15) =  0
-der(elmt_product13) =  0
-der(elmt_product19) =  0
-der(elmt_product17) =  0
+----- BUILDING ODE SYSTEM FOR: Reactions.mo -----
+
+
+Initial Equation (
+	elmt_product9 =  1.0
+	elmt_product6 =  1.0
+	elmt_reactant3 =  1.0
+	elmt_product11 =  1.0
+	elmt_reactant5 =  1.0
+	elmt_reactant8 =  1.0
+	elmt_reactant7 =  1.0
+	elmt_reactant14 =  1.0
+	elmt_product1 =  1.0
+	elmt_reactant16 =  1.0
+	elmt_reactant10 =  1.0
+	elmt_product4 =  1.0
+	elmt_reactant12 =  1.0
+	elmt_reactant0 =  1.0
+	elmt_product2 =  1.0
+	elmt_reactant18 =  1.0
+	elmt_product15 =  1.0
+	elmt_product13 =  1.0
+	elmt_product19 =  1.0
+	elmt_product17 =  1.0
+)
+Init ODE(
+	F[0] =  (elmt_cell * elmt_pM * (elmt_Reaction9_elmt_k4prime + (elmt_Reaction9_elmt_k4 * Functions.pow((elmt_M / elmt_CT), 2.0))))
+	F[1] =  (elmt_cell * elmt_Reaction8_elmt_k7 * elmt_YP)
+	F[2] =  (elmt_cell * elmt_Reaction7_elmt_k2 * elmt_Y)
+	F[3] =  (elmt_cell * elmt_Reaction6_elmt_k1aa)
+	F[4] =  (elmt_cell * elmt_Reaction5_elmt_k5notP * elmt_M)
+	F[5] =  (elmt_cell * elmt_CP * elmt_Reaction4_elmt_k3 * elmt_Y)
+	F[6] =  (elmt_cell * elmt_CP * elmt_Reaction3_elmt_k9)
+	F[7] =  (elmt_cell * elmt_C2 * elmt_Reaction2_elmt_k8notP)
+	F[8] =  (elmt_cell * elmt_Reaction1_elmt_k6 * elmt_M)
+	F[9] =  0
+	F[10] =  0
+	F[11] =  0
+	F[12] =  0
+	F[13] =  0
+	F[14] =  0
+	F[15] =  0
+	F[16] =  0
+	F[17] =  0
+	F[18] =  0
+	F[19] =  0
+	F[20] =  0
+	F[21] =  0
+	F[22] =  0
+	F[23] =  0
+	F[24] =  0
+	F[25] =  0
+	F[26] =  0
+	F[27] =  0
+	F[28] =  0
+)
