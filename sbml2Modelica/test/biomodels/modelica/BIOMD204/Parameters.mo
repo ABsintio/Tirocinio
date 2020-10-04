@@ -1,0 +1,107 @@
+within BIOMD204;
+class Parameters
+
+    Real elmt_f3(unit = "") "f3";
+    Real elmt_d1(unit = "") "d1";
+    Real elmt_d2(unit = "") "d2";
+    Real elmt_f1(unit = "") "f1";
+    Real elmt_f(unit = "") "f";
+    Real elmt_f2(unit = "") "f2";
+    Real elmt_k1c(unit = "") "k1c";
+    Real elmt_h1(unit = "") "h1";
+    Real elmt_k3c(unit = "") "k3c";
+    Real elmt_h2(unit = "") "h2";
+    Real elmt_eta3(unit = "") "eta3";
+    Real elmt_eta1(unit = "") "eta1";
+    Real elmt_a2(unit = "") "a2";
+    Real elmt_eta7(unit = "") "eta7";
+    Real elmt_a3(unit = "") "a3";
+    Real elmt_eta5(unit = "") "eta5";
+    Real elmt_c2(unit = "") "c2";
+    Real elmt_a1(unit = "") "a1";
+    Real elmt_c3(unit = "") "c3";
+    Real elmt_gamma4(unit = "") "gamma4";
+    Real elmt_gamma3(unit = "") "gamma3";
+    Real elmt_gamma2(unit = "") "gamma2";
+    Real elmt_gamma1(unit = "") "gamma1";
+    Real elmt_e2(unit = "") "e2";
+    Real elmt_c1(unit = "") "c1";
+    Real elmt_e1(unit = "") "e1";
+    Real elmt_k2c(unit = "") "k2c";
+    Real elmt_g1(unit = "") "g1";
+    Real elmt_b3(unit = "") "b3";
+    Real elmt_b1(unit = "") "b1";
+    Real elmt_d3(unit = "") "d3";
+    Real elmt_b2(unit = "") "b2";
+
+
+    initial equation
+        elmt_f3 = 0.05;
+        elmt_d1 = 0.0011;
+        elmt_d2 = 0.001;
+        elmt_f1 = 0.001;
+        elmt_f = 1000.0;
+        elmt_f2 = 0.001;
+        elmt_k1c = 0.05;
+        elmt_h1 = 0.0011;
+        elmt_k3c = 5.0;
+        elmt_h2 = 1.0;
+        elmt_eta3 = 1.0E-4;
+        elmt_eta1 = 1.0E-4;
+        elmt_a2 = 0.01;
+        elmt_eta7 = 1.0E-4;
+        elmt_a3 = 0.5;
+        elmt_eta5 = 1.0E-4;
+        elmt_c2 = 0.01;
+        elmt_a1 = 1.0;
+        elmt_c3 = 0.5;
+        elmt_gamma4 = 0.01;
+        elmt_gamma3 = 1.0;
+        elmt_gamma2 = 1.0;
+        elmt_gamma1 = 1.0;
+        elmt_e2 = 0.1;
+        elmt_c1 = 1.0;
+        elmt_e1 = 0.01;
+        elmt_k2c = 0.001;
+        elmt_g1 = 0.1;
+        elmt_b3 = 0.001;
+        elmt_b1 = 0.0011;
+        elmt_d3 = 0.001;
+        elmt_b2 = 0.001;
+
+
+    equation
+        der(elmt_f3) = 0;
+        der(elmt_d1) = 0;
+        der(elmt_d2) = 0;
+        der(elmt_f1) = 0;
+        der(elmt_f) = 0;
+        der(elmt_f2) = 0;
+        der(elmt_k1c) = 0;
+        der(elmt_h1) = 0;
+        der(elmt_k3c) = 0;
+        der(elmt_h2) = 0;
+        der(elmt_eta3) = 0;
+        der(elmt_eta1) = 0;
+        der(elmt_a2) = 0;
+        der(elmt_eta7) = 0;
+        der(elmt_a3) = 0;
+        der(elmt_eta5) = 0;
+        der(elmt_c2) = 0;
+        der(elmt_a1) = 0;
+        der(elmt_c3) = 0;
+        der(elmt_gamma4) = 0;
+        der(elmt_gamma3) = 0;
+        der(elmt_gamma2) = 0;
+        der(elmt_gamma1) = 0;
+        der(elmt_e2) = 0;
+        der(elmt_c1) = 0;
+        der(elmt_e1) = 0;
+        der(elmt_k2c) = 0;
+        der(elmt_g1) = 0;
+        der(elmt_b3) = 0;
+        der(elmt_b1) = 0;
+        der(elmt_d3) = 0;
+        der(elmt_b2) = 0;
+
+end Parameters;

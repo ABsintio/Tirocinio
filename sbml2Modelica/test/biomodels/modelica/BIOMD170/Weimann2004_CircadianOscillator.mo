@@ -1,0 +1,90 @@
+within BIOMD170;
+model Weimann2004_CircadianOscillator "Weimann2004_CircadianOscillator" annotation(Documentation(info="<annotation>
+      <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">
+	
+      </rdf:RDF>
+    </annotation>"));
+
+    Parameters Params;
+    Reactions Reacs;
+    Class_elmt_Cytoplasm elmt_Cytoplasm;
+    Class_elmt_Nucleus elmt_Nucleus;
+
+    equation
+        Params.elmt_y6 = elmt_Nucleus.elmt_y6;
+        Params.elmt_y7 = elmt_Nucleus.elmt_y7;
+        Params.elmt_y5 = elmt_Cytoplasm.elmt_y5;
+        Params.elmt_y3 = elmt_Nucleus.elmt_y3;
+        Reacs.elmt_k5b = Params.elmt_k5b;
+        Reacs.elmt_k7d = Params.elmt_k7d;
+        Reacs.elmt_k7a = Params.elmt_k7a;
+        Reacs.elmt_k1d = Params.elmt_k1d;
+        Reacs.elmt_k3d = Params.elmt_k3d;
+        Reacs.elmt_k5d = Params.elmt_k5d;
+        Reacs.elmt_trans_per2_cry = Params.elmt_trans_per2_cry;
+        Reacs.elmt_Nucleus = elmt_Nucleus.elmt_Nucleus;
+        Reacs.elmt_k3t = Params.elmt_k3t;
+        Reacs.elmt_k5t = Params.elmt_k5t;
+        Reacs.elmt_Cytoplasm = elmt_Cytoplasm.elmt_Cytoplasm;
+        Reacs.elmt_k6a = Params.elmt_k6a;
+        Reacs.elmt_trans_Bmal1 = Params.elmt_trans_Bmal1;
+        Reacs.elmt_k2d = Params.elmt_k2d;
+        Reacs.elmt_k4d = Params.elmt_k4d;
+        Reacs.elmt_k2b = Params.elmt_k2b;
+        Reacs.elmt_k6d = Params.elmt_k6d;
+        Reacs.elmt_y6 = elmt_Nucleus.elmt_y6;
+        Reacs.elmt_y7 = elmt_Nucleus.elmt_y7;
+        Reacs.elmt_y4 = elmt_Cytoplasm.elmt_y4;
+        Reacs.elmt_y5 = elmt_Cytoplasm.elmt_y5;
+        Reacs.elmt_k2t = Params.elmt_k2t;
+        Reacs.elmt_y2 = elmt_Cytoplasm.elmt_y2;
+        Reacs.elmt_y3 = elmt_Nucleus.elmt_y3;
+        Reacs.elmt_q = Params.elmt_q;
+        Reacs.elmt_y1 = elmt_Cytoplasm.elmt_y1;
+        Reacs.elmt_k6t = Params.elmt_k6t;
+        elmt_Cytoplasm.elmt_product9 = Reacs.elmt_product9;
+        elmt_Cytoplasm.elmt_reactant1 = Reacs.elmt_reactant1;
+        elmt_Cytoplasm.elmt_reactant4 = Reacs.elmt_reactant4;
+        elmt_Cytoplasm.elmt_product7 = Reacs.elmt_product7;
+        elmt_Cytoplasm.elmt_reactant3 = Reacs.elmt_reactant3;
+        elmt_Cytoplasm.elmt_Bmal1_mRNA_degradation = Reacs.elmt_Bmal1_mRNA_degradation;
+        elmt_Cytoplasm.elmt_product11 = Reacs.elmt_product11;
+        elmt_Cytoplasm.elmt_BMAL1_nuclear_import = Reacs.elmt_BMAL1_nuclear_import;
+        elmt_Cytoplasm.elmt_per2_cry_transcription = Reacs.elmt_per2_cry_transcription;
+        elmt_Cytoplasm.elmt_product0 = Reacs.elmt_product0;
+        elmt_Cytoplasm.elmt_reactant10 = Reacs.elmt_reactant10;
+        elmt_Cytoplasm.elmt_per2_cry_complex_formation = Reacs.elmt_per2_cry_complex_formation;
+        elmt_Cytoplasm.elmt_reactant12 = Reacs.elmt_reactant12;
+        elmt_Cytoplasm.elmt_reactant13 = Reacs.elmt_reactant13;
+        elmt_Cytoplasm.elmt_product2 = Reacs.elmt_product2;
+        elmt_Cytoplasm.elmt_Bmal1_transcription = Reacs.elmt_Bmal1_transcription;
+        elmt_Cytoplasm.elmt_BMAL1_translation = Reacs.elmt_BMAL1_translation;
+        elmt_Cytoplasm.elmt_per2_cry_nuclear_import = Reacs.elmt_per2_cry_nuclear_import;
+        elmt_Cytoplasm.elmt_product16 = Reacs.elmt_product16;
+        elmt_Cytoplasm.elmt_cytoplasmic_BMAL1_degradation = Reacs.elmt_cytoplasmic_BMAL1_degradation;
+        elmt_Cytoplasm.elmt_cytoplasmic_per2_cry_complex_degradation = Reacs.elmt_cytoplasmic_per2_cry_complex_degradation;
+        elmt_Cytoplasm.elmt_per2_cry_mRNA_degradation = Reacs.elmt_per2_cry_mRNA_degradation;
+        elmt_Cytoplasm.elmt_BMAL1_nuclear_export = Reacs.elmt_BMAL1_nuclear_export;
+        elmt_Cytoplasm.elmt_per2_cry_nuclear_export = Reacs.elmt_per2_cry_nuclear_export;
+        elmt_Nucleus.elmt_nuclear_BMAL1_degradation = Reacs.elmt_nuclear_BMAL1_degradation;
+        elmt_Nucleus.elmt_BMAL1_activation = Reacs.elmt_BMAL1_activation;
+        elmt_Nucleus.elmt_reactant20 = Reacs.elmt_reactant20;
+        elmt_Nucleus.elmt_reactant6 = Reacs.elmt_reactant6;
+        elmt_Nucleus.elmt_BMAL1_deactivation = Reacs.elmt_BMAL1_deactivation;
+        elmt_Nucleus.elmt_product21 = Reacs.elmt_product21;
+        elmt_Nucleus.elmt_BMAL1_nuclear_import = Reacs.elmt_BMAL1_nuclear_import;
+        elmt_Nucleus.elmt_reactant8 = Reacs.elmt_reactant8;
+        elmt_Nucleus.elmt_reactant15 = Reacs.elmt_reactant15;
+        elmt_Nucleus.elmt_reactant17 = Reacs.elmt_reactant17;
+        elmt_Nucleus.elmt_product5 = Reacs.elmt_product5;
+        elmt_Nucleus.elmt_reactant22 = Reacs.elmt_reactant22;
+        elmt_Nucleus.elmt_nuclear_per2_cry_complex_degradation = Reacs.elmt_nuclear_per2_cry_complex_degradation;
+        elmt_Nucleus.elmt_per2_cry_nuclear_import = Reacs.elmt_per2_cry_nuclear_import;
+        elmt_Nucleus.elmt_reactant18 = Reacs.elmt_reactant18;
+        elmt_Nucleus.elmt_product14 = Reacs.elmt_product14;
+        elmt_Nucleus.elmt_Active_BMAL1_degradation = Reacs.elmt_Active_BMAL1_degradation;
+        elmt_Nucleus.elmt_product19 = Reacs.elmt_product19;
+        elmt_Nucleus.elmt_BMAL1_nuclear_export = Reacs.elmt_BMAL1_nuclear_export;
+        elmt_Nucleus.elmt_per2_cry_nuclear_export = Reacs.elmt_per2_cry_nuclear_export;
+
+end Weimann2004_CircadianOscillator;

@@ -1,0 +1,91 @@
+within BIOMD355;
+model Abell2011_CalciumSignaling_WithAdaptation "Abell2011_CalciumSignaling_WithAdaptation" annotation(Documentation(info="<annotation>
+  <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">
+	
+  </rdf:RDF>
+</annotation>"));
+
+    Parameters Params;
+    Reactions Reacs;
+    Class_elmt_mitochondria elmt_mitochondria;
+    Class_elmt_ER_store elmt_ER_store;
+    Class_elmt_cytosol elmt_cytosol;
+    Class_elmt_outside elmt_outside;
+
+    equation
+        Reacs.elmt_mw7cb2644a_384a_4bbb_93fd_fd686e01d7cb = elmt_cytosol.elmt_mw7cb2644a_384a_4bbb_93fd_fd686e01d7cb;
+        Reacs.elmt_g = elmt_cytosol.elmt_g;
+        Reacs.elmt_mwa3072851_e3e4_4767_ac41_49fa7c0de7a7 = Params.elmt_mwa3072851_e3e4_4767_ac41_49fa7c0de7a7;
+        Reacs.elmt_mwe3841c25_6042_49c2_9feb_90cbf6751167 = Params.elmt_mwe3841c25_6042_49c2_9feb_90cbf6751167;
+        Reacs.elmt_mwd21d3f76_d133_4053_8e44_02a538657e0a = Params.elmt_mwd21d3f76_d133_4053_8e44_02a538657e0a;
+        Reacs.elmt_mw0ebc76ad_49d7_4845_8f88_04d443fbe7f3 = elmt_cytosol.elmt_mw0ebc76ad_49d7_4845_8f88_04d443fbe7f3;
+        Reacs.elmt_mwfe8e89cf_3c67_4dd5_939e_b4cfee2e0778 = Params.elmt_mwfe8e89cf_3c67_4dd5_939e_b4cfee2e0778;
+        Reacs.elmt_mw013a7c64_a9ec_483c_b3b8_ed658337ee95 = elmt_mitochondria.elmt_mw013a7c64_a9ec_483c_b3b8_ed658337ee95;
+        Reacs.elmt_mw92b257b7_00af_4fd6_a11b_8e4655a4ba65 = Params.elmt_mw92b257b7_00af_4fd6_a11b_8e4655a4ba65;
+        Reacs.elmt_CaI = elmt_cytosol.elmt_CaI;
+        Reacs.elmt_mw219cf65d_18cc_4f7e_ab5a_5b87cda6fc43 = Params.elmt_mw219cf65d_18cc_4f7e_ab5a_5b87cda6fc43;
+        Reacs.elmt_R = Params.elmt_R;
+        Reacs.elmt_mwd8bf5d8f_ad00_4119_bde1_91015ef2cd7c = Params.elmt_mwd8bf5d8f_ad00_4119_bde1_91015ef2cd7c;
+        Reacs.elmt_mwd3b36919_202a_4fed_a3c8_1a3a60594404 = Params.elmt_mwd3b36919_202a_4fed_a3c8_1a3a60594404;
+        Reacs.elmt_mwf998b218_be11_4aa4_81ae_41141861fb42 = Params.elmt_mwf998b218_be11_4aa4_81ae_41141861fb42;
+        Reacs.elmt_CaS = elmt_ER_store.elmt_CaS;
+        Reacs.elmt_mwaf195932_a72c_4552_8cf2_b349b15d39c4 = elmt_cytosol.elmt_mwaf195932_a72c_4552_8cf2_b349b15d39c4;
+        Reacs.elmt_mw3a93c3a6_623a_44fe_84e9_a47823defd1f = Params.elmt_mw3a93c3a6_623a_44fe_84e9_a47823defd1f;
+        Reacs.elmt_L = Params.elmt_L;
+        Reacs.elmt_mw78dd80b8_e003_4c62_81d1_547d001767af = Params.elmt_mw78dd80b8_e003_4c62_81d1_547d001767af;
+        Reacs.elmt_E = Params.elmt_E;
+        Reacs.elmt_F = Params.elmt_F;
+        Reacs.elmt_mw004dcb62_da5f_41c7_a7bd_033574894f48 = Params.elmt_mw004dcb62_da5f_41c7_a7bd_033574894f48;
+        Reacs.elmt_D = Params.elmt_D;
+        Reacs.elmt_A = Params.elmt_A;
+        Reacs.elmt_k2 = Params.elmt_k2;
+        Reacs.elmt_B = Params.elmt_B;
+        Reacs.elmt_mw0ad64e84_bb75_4be4_a9c3_2d4741b0f45f = Params.elmt_mw0ad64e84_bb75_4be4_a9c3_2d4741b0f45f;
+        Reacs.elmt_mwfbff577a_4e9c_40fe_8777_eb0ceade28c9 = Params.elmt_mwfbff577a_4e9c_40fe_8777_eb0ceade28c9;
+        Reacs.elmt_IP3 = elmt_cytosol.elmt_IP3;
+        elmt_mitochondria.elmt_ERtoMito = Reacs.elmt_ERtoMito;
+        elmt_mitochondria.elmt_reactant20 = Reacs.elmt_reactant20;
+        elmt_mitochondria.elmt_mw1c50c3d1_dab9_423a_8373_6a4c75479b54 = Reacs.elmt_mw1c50c3d1_dab9_423a_8373_6a4c75479b54;
+        elmt_mitochondria.elmt_mwa61047ec_49c1_47b2_b78e_4d84a33d432a = Reacs.elmt_mwa61047ec_49c1_47b2_b78e_4d84a33d432a;
+        elmt_mitochondria.elmt_product19 = Reacs.elmt_product19;
+        elmt_mitochondria.elmt_product17 = Reacs.elmt_product17;
+        elmt_ER_store.elmt_JChannel = Reacs.elmt_JChannel;
+        elmt_ER_store.elmt_JPump = Reacs.elmt_JPump;
+        elmt_ER_store.elmt_ERtoMito = Reacs.elmt_ERtoMito;
+        elmt_ER_store.elmt_reactant3 = Reacs.elmt_reactant3;
+        elmt_ER_store.elmt_reactant18 = Reacs.elmt_reactant18;
+        elmt_ER_store.elmt_product2 = Reacs.elmt_product2;
+        elmt_cytosol.elmt_mw89d547e1_8d48_4cd2_ba3d_e4390294089d = Reacs.elmt_mw89d547e1_8d48_4cd2_ba3d_e4390294089d;
+        elmt_cytosol.elmt_JPump = Reacs.elmt_JPump;
+        elmt_cytosol.elmt_product12 = Reacs.elmt_product12;
+        elmt_cytosol.elmt_mw1f122e51_99cb_4a32_a12e_4c2921920a17 = Reacs.elmt_mw1f122e51_99cb_4a32_a12e_4c2921920a17;
+        elmt_cytosol.elmt_product10 = Reacs.elmt_product10;
+        elmt_cytosol.elmt_mw530793e3_76b2_4483_be11_e94364306712 = Reacs.elmt_mw530793e3_76b2_4483_be11_e94364306712;
+        elmt_cytosol.elmt_kPhosphatase = Reacs.elmt_kPhosphatase;
+        elmt_cytosol.elmt_mw8021d532_dd9b_4e34_a865_c2bb1689b0b5 = Reacs.elmt_mw8021d532_dd9b_4e34_a865_c2bb1689b0b5;
+        elmt_cytosol.elmt_mw700bd02b_9fc4_47e7_864a_967c03874dd6 = Reacs.elmt_mw700bd02b_9fc4_47e7_864a_967c03874dd6;
+        elmt_cytosol.elmt_mw5658298a_d96a_4b97_9a4f_6f06dad35824 = Reacs.elmt_mw5658298a_d96a_4b97_9a4f_6f06dad35824;
+        elmt_cytosol.elmt_reactant9 = Reacs.elmt_reactant9;
+        elmt_cytosol.elmt_JChannel = Reacs.elmt_JChannel;
+        elmt_cytosol.elmt_reactant1 = Reacs.elmt_reactant1;
+        elmt_cytosol.elmt_product8 = Reacs.elmt_product8;
+        elmt_cytosol.elmt_product6 = Reacs.elmt_product6;
+        elmt_cytosol.elmt_mw1c50c3d1_dab9_423a_8373_6a4c75479b54 = Reacs.elmt_mw1c50c3d1_dab9_423a_8373_6a4c75479b54;
+        elmt_cytosol.elmt_mwbdcd6a40_1ae7_4c86_a99f_1fba0b8beaf7 = Reacs.elmt_mwbdcd6a40_1ae7_4c86_a99f_1fba0b8beaf7;
+        elmt_cytosol.elmt_reactant5 = Reacs.elmt_reactant5;
+        elmt_cytosol.elmt_product21 = Reacs.elmt_product21;
+        elmt_cytosol.elmt_reactant7 = Reacs.elmt_reactant7;
+        elmt_cytosol.elmt_reactant14 = Reacs.elmt_reactant14;
+        elmt_cytosol.elmt_reactant15 = Reacs.elmt_reactant15;
+        elmt_cytosol.elmt_kPLC = Reacs.elmt_kPLC;
+        elmt_cytosol.elmt_product0 = Reacs.elmt_product0;
+        elmt_cytosol.elmt_reactant16 = Reacs.elmt_reactant16;
+        elmt_cytosol.elmt_reactant11 = Reacs.elmt_reactant11;
+        elmt_cytosol.elmt_product4 = Reacs.elmt_product4;
+        elmt_cytosol.elmt_mwa61047ec_49c1_47b2_b78e_4d84a33d432a = Reacs.elmt_mwa61047ec_49c1_47b2_b78e_4d84a33d432a;
+        elmt_cytosol.elmt_inhibition_parameter2 = Reacs.elmt_inhibition_parameter2;
+        elmt_cytosol.elmt_inhibition_parameter1 = Reacs.elmt_inhibition_parameter1;
+        elmt_cytosol.elmt_product13 = Reacs.elmt_product13;
+        elmt_cytosol.elmt_mw06f8fde4_d97b_4d5f_b71e_d93aa53e9932 = Reacs.elmt_mw06f8fde4_d97b_4d5f_b71e_d93aa53e9932;
+
+end Abell2011_CalciumSignaling_WithAdaptation;
