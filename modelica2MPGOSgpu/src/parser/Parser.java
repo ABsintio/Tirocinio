@@ -4,25 +4,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.*;
 import java.util.HashMap;
+import biomodel.math.*;
 import biomodel.math.odes.*;
-import biomodel.math.iEquation;
-import biomodel.math.ODE;
-
-/**
- * Tre:
- * 1. Equazioni con parte sinitra derivata
- * 2. Equazioni senza parte sinistra derivata
- * 3. Equazioni di assegnazione
- * 4.
- */
 
 public class Parser {
     private static final String START_EQUATION   = "\\s+equation";
     private static final String START_ALGORITHM  = "\\s+algorithm";
     private static final String INITIAL_EQUATION = "\\s+initial equation";
     private static final String END_FILE         = "end\\s*\\S+";
-    private static final String EQ_RHS_RE        = "([^0-9]{1,}\\w*[(+*)-]{1,}){1,}";
-    private static final String EQ_LHS_RE        = "der\\(\\w+\\)";
+    private static final String ODE_EQUATION     = "der[(]\\w+[)]\\s*=.*[(+*)-]+$";
+    private static final String aEQ_EQUATION     = "\\w+\\s*=.*";
     public File workingDir;
 
     public Parser(String in) {
@@ -77,9 +68,9 @@ public class Parser {
         return iEqns;
     }
 
-    public HashMap<String, ArrayList<ODE>> parseEquations() throws InterruptedException {
+    public HashMap<String, ArrayList<Equation>> parseEquations() throws InterruptedException {
         File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class\\_elmt\\_\\w+\\.mo"));
-        HashMap<String, ArrayList<ODE>> eqns = new HashMap<>();
+        HashMap<String, ArrayList<Equation>> eqns = new HashMap<>();
         assert classElmtFiles != null;
         for (File f: classElmtFiles) {
             Thread threadPerClassElmtFile = new Thread(new Runnable() {
@@ -94,8 +85,8 @@ public class Parser {
         return eqns;
     }
 
-    public ArrayList<ODE> parseFileEquations(String inFile) {
-        ArrayList<ODE> eqns = new ArrayList<>();
+    public ArrayList<Equation> parseFileEquations(String inFile) {
+        ArrayList<Equation> eqns = new ArrayList<>();
         try (FileReader stream = new FileReader(inFile)){
             BufferedReader buff = new BufferedReader(stream);
             String line = buff.readLine();
@@ -112,8 +103,14 @@ public class Parser {
                     int lenSecondString = splittedEq[1].length();
                     LeftHandSide  lhs = new LeftHandSide(splittedEq[0].strip());
                     RigthHandSide rhs = new RigthHandSide(splittedEq[1].substring(0, lenSecondString - 1));
-                    ODE ode = new ODE(lhs, rhs);
-                    eqns.add(ode);
+                    String equation = lhs.lhsString.concat(" = " + rhs.rhsString);
+                    Equation eq = null;
+                    if (Pattern.matches(ODE_EQUATION, equation)) {
+                        eq = new ODE(lhs, rhs);
+                    } else if (Pattern.matches(aEQ_EQUATION, equation)) {
+                        eq = new aEquation(lhs, rhs);
+                    }
+                    if (eq != null) eqns.add(eq);
                 }
                 line = buff.readLine();
             }
@@ -123,24 +120,31 @@ public class Parser {
         return eqns;
     }
 
-
-
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8016/";
         Parser p = new Parser(in);
         try {
             HashMap<String, ArrayList<iEquation>> iEqns = p.parseInitialEquation();
-            HashMap<String, ArrayList<ODE>> eqns = p.parseEquations();
+            HashMap<String, ArrayList<Equation>> eqns = p.parseEquations();
             for (String fileName : eqns.keySet()) {
-                ArrayList<ODE> eqs = eqns.get(fileName);
+                ArrayList<Equation> eqs = eqns.get(fileName);
                 ArrayList<iEquation> ieqs = iEqns.get(fileName);
-                ODESystem ode = new ODESystem(ieqs, eqs);
+                ArrayList<ODE> odeEq = (ArrayList<ODE>) Equation.filter(eqs, EQType.ODE);
+                ArrayList<aEquation> aEq = (ArrayList<aEquation>) Equation.filter(eqs, EQType.aEQ);
+                ODESystem ode = new ODESystem(ieqs, odeEq);
                 ode.buildMPGOS_PerThread_String();
-                System.out.println(ode.getMPGOS_PerThread_OdeFunction());
+                //System.out.println(ode.getMPGOS_PerThread_OdeFunction());
+                /*System.out.println("Initial Equation");
+                ieqs.forEach((x) -> System.out.println(x.getEquation()));
+                System.out.println("\nDifferential Equations");
+                odeEq.forEach((x) -> System.out.println(x.getEquation()));
+                System.out.println("\nAssociation Equation");
+                aEq.forEach((x) -> System.out.println(x.getEquation()));
+                System.out.println("\n");*/
             }
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
     }
-
 }
