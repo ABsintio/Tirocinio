@@ -85,6 +85,12 @@ public class Parser {
         return eqns;
     }
 
+    @SuppressWarnings("unchecked")
+    public ArrayList<aEquation> parseReactions() {
+        String reactFile = this.workingDir.getAbsolutePath() + "/Reactions.mo";
+        return (ArrayList<aEquation>) Equation.filter(this.parseFileEquations(reactFile), EQType.aEQ);
+    }
+
     public ArrayList<Equation> parseFileEquations(String inFile) {
         ArrayList<Equation> eqns = new ArrayList<>();
         try (FileReader stream = new FileReader(inFile)){
@@ -146,5 +152,11 @@ public class Parser {
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
+
+        ArrayList<aEquation> eqns = p.parseReactions();
+        for (aEquation eq: eqns) {
+            System.out.println(eq.getEquation());
+        }
+
     }
 }
