@@ -16,7 +16,7 @@ MPGOS_PerThread_OdeFunction = """
 template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(    
     int tid, int NT, \                                                              
     Precision*    F, Precision*    X, Precision     T, \                            
-    Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int*A ACCi   
+    Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi   
 ) {                                                                                 
 %s                                                                                  
 }                                                                                   
