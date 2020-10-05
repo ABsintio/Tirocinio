@@ -1,4 +1,4 @@
-package ODEs;
+package biomodel.math.odes;
 
 public class RigthHandSide {
     public String rhsString;

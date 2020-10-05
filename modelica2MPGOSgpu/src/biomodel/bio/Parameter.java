@@ -1,4 +1,4 @@
-package BioModel.bio;
+package biomodel.bio;
 
 public class Parameter {
 }

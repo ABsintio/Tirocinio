@@ -1,10 +1,13 @@
-package ODEs;
+package biomodel.math.odes;
 
+import biomodel.math.ODE;
+import biomodel.math.iEquation;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Ode {
-    public HashMap<LeftHandSide, RigthHandSide> ode;     // Rappresenta il sistema di equazioni
-    public HashMap<LeftHandSide, RigthHandSide> iEqns;   // Rappresenta le equazioni iniziali
+public class ODESystem {
+    public ArrayList<ODE> ode;           // Rappresenta il sistema di equazioni
+    public ArrayList<iEquation> iEqns;   // Rappresenta le equazioni iniziali
     private String MPGOS_PerThread_OdeFunction =         // Definisce il sistema di equazioni per MPGOS
             "template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(\n" +
             "\tint tid, int NT, \\\n"+
@@ -13,7 +16,7 @@ public class Ode {
             ") {\n" +
             "%s\n}";
 
-    public Ode(HashMap<LeftHandSide, RigthHandSide> iEqns, HashMap<LeftHandSide, RigthHandSide> system) {
+    public ODESystem(ArrayList<iEquation> iEqns, ArrayList<ODE> system) {
         this.ode = system;
         this.iEqns = iEqns;
     }
@@ -21,8 +24,8 @@ public class Ode {
     public void buildMPGOS_PerThread_String() {
         String forFormatting = "";
         int i = 0;
-        for (RigthHandSide r: this.ode.values()) {
-            forFormatting = forFormatting.concat(String.format("\tF[%d] = %s\n", i++, r.rhsString));
+        for (ODE ode: this.ode) {
+            forFormatting = forFormatting.concat(String.format("\tF[%d] = %s\n", i++, ode.getRhs().rhsString));
         }
         this.MPGOS_PerThread_OdeFunction = String.format(this.MPGOS_PerThread_OdeFunction, forFormatting);
     }

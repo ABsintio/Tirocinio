@@ -1,10 +1,20 @@
 package parser;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.regex.*;
 import java.util.HashMap;
+import biomodel.math.odes.*;
+import biomodel.math.iEquation;
+import biomodel.math.ODE;
 
-import ODEs.*;
+/**
+ * Tre:
+ * 1. Equazioni con parte sinitra derivata
+ * 2. Equazioni senza parte sinistra derivata
+ * 3. Equazioni di assegnazione
+ * 4.
+ */
 
 public class Parser {
     private static final String START_EQUATION   = "\\s+equation";
@@ -20,18 +30,25 @@ public class Parser {
         this.workingDir  = new File(in);
     }
 
-    public HashMap<String, HashMap<LeftHandSide, RigthHandSide>> parseInitialEquation() {
+    public HashMap<String, ArrayList<iEquation>> parseInitialEquation() throws InterruptedException {
         File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class\\_elmt\\_\\w+\\.mo"));
-        HashMap<String, HashMap<LeftHandSide, RigthHandSide>> iEqns = new HashMap<>();
+        HashMap<String, ArrayList<iEquation>> iEqns = new HashMap<>();
         assert classElmtFiles != null;
         for (File f: classElmtFiles) {
-            iEqns.put(f.getName(), this.parseFileInitialEquation(f.getAbsolutePath()));
+            Thread threadPerClassElmtFile = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    iEqns.put(f.getName(), parseFileInitialEquation(f.getAbsolutePath()));
+                }
+            });
+            threadPerClassElmtFile.start();
+            threadPerClassElmtFile.join();
         }
         return iEqns;
     }
 
-    private HashMap<LeftHandSide, RigthHandSide> parseFileInitialEquation(String file) {
-        HashMap<LeftHandSide, RigthHandSide> iEqns = new HashMap<>();
+    private ArrayList<iEquation> parseFileInitialEquation(String file) {
+        ArrayList<iEquation> iEqns = new ArrayList<>();
         try (FileReader stream = new FileReader(file)){
             BufferedReader buff = new BufferedReader(stream);
             String line = buff.readLine();
@@ -49,7 +66,8 @@ public class Parser {
                     int lenSecondString = splittedEq[1].length();
                     LeftHandSide  lhs = new LeftHandSide(splittedEq[0].strip());
                     RigthHandSide rhs = new RigthHandSide(splittedEq[1].substring(0, lenSecondString - 1));
-                    iEqns.put(lhs,rhs);
+                    iEquation ieq = new iEquation(lhs, rhs);
+                    iEqns.add(ieq);
                 }
                 line = buff.readLine();
             }
@@ -59,18 +77,25 @@ public class Parser {
         return iEqns;
     }
 
-    public HashMap<String, HashMap<LeftHandSide, RigthHandSide>> parseEquations() {
+    public HashMap<String, ArrayList<ODE>> parseEquations() throws InterruptedException {
         File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class\\_elmt\\_\\w+\\.mo"));
-        HashMap<String, HashMap<LeftHandSide, RigthHandSide>> eqns = new HashMap<>();
+        HashMap<String, ArrayList<ODE>> eqns = new HashMap<>();
         assert classElmtFiles != null;
         for (File f: classElmtFiles) {
-            eqns.put(f.getName(), this.parseFileEquations(f.getAbsolutePath()));
+            Thread threadPerClassElmtFile = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    eqns.put(f.getName(), parseFileEquations(f.getAbsolutePath()));
+                }
+            });
+            threadPerClassElmtFile.start();
+            threadPerClassElmtFile.join();
         }
         return eqns;
     }
 
-    public HashMap<LeftHandSide, RigthHandSide> parseFileEquations(String inFile) {
-        HashMap<LeftHandSide, RigthHandSide> eqns = new HashMap<>();
+    public ArrayList<ODE> parseFileEquations(String inFile) {
+        ArrayList<ODE> eqns = new ArrayList<>();
         try (FileReader stream = new FileReader(inFile)){
             BufferedReader buff = new BufferedReader(stream);
             String line = buff.readLine();
@@ -87,7 +112,8 @@ public class Parser {
                     int lenSecondString = splittedEq[1].length();
                     LeftHandSide  lhs = new LeftHandSide(splittedEq[0].strip());
                     RigthHandSide rhs = new RigthHandSide(splittedEq[1].substring(0, lenSecondString - 1));
-                    eqns.put(lhs,rhs);
+                    ODE ode = new ODE(lhs, rhs);
+                    eqns.add(ode);
                 }
                 line = buff.readLine();
             }
@@ -97,17 +123,23 @@ public class Parser {
         return eqns;
     }
 
+
+
     public static void main(String[] args) {
         String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8016/";
         Parser p = new Parser(in);
-        HashMap<String, HashMap<LeftHandSide, RigthHandSide>> iEqns = p.parseInitialEquation();
-        HashMap<String, HashMap<LeftHandSide, RigthHandSide>> eqns = p.parseEquations();
-        for (String fileName: eqns.keySet()) {
-            HashMap<LeftHandSide, RigthHandSide> eqs  = eqns.get(fileName);
-            HashMap<LeftHandSide, RigthHandSide> ieqs = iEqns.get(fileName);
-            Ode ode = new Ode(ieqs, eqs);
-            ode.buildMPGOS_PerThread_String();
-            System.out.println(ode.getMPGOS_PerThread_OdeFunction());
+        try {
+            HashMap<String, ArrayList<iEquation>> iEqns = p.parseInitialEquation();
+            HashMap<String, ArrayList<ODE>> eqns = p.parseEquations();
+            for (String fileName : eqns.keySet()) {
+                ArrayList<ODE> eqs = eqns.get(fileName);
+                ArrayList<iEquation> ieqs = iEqns.get(fileName);
+                ODESystem ode = new ODESystem(ieqs, eqs);
+                ode.buildMPGOS_PerThread_String();
+                System.out.println(ode.getMPGOS_PerThread_OdeFunction());
+            }
+        } catch (InterruptedException ie) {
+            ie.printStackTrace();
         }
     }
 
