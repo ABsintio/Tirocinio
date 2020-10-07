@@ -1,8 +1,11 @@
 package biomodel.math.odes;
 
 public class RigthHandSide {
-    public String rhsString;
+    private final String rhsString;
     public RigthHandSide(String rhsString) {
         this.rhsString = rhsString;
+    }
+    public String getRhsString() {
+        return rhsString;
     }
 }

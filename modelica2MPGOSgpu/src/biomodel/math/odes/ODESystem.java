@@ -25,7 +25,7 @@ public class ODESystem {
         String forFormatting = "";
         int i = 0;
         for (ODE ode: this.ode) {
-            forFormatting = forFormatting.concat(String.format("\tF[%d] = %s\n", i++, ode.getRhs().rhsString));
+            forFormatting = forFormatting.concat(String.format("\tF[%d] = %s\n", i++, ode.getRhs().getRhsString()));
         }
         this.MPGOS_PerThread_OdeFunction = String.format(this.MPGOS_PerThread_OdeFunction, forFormatting);
     }

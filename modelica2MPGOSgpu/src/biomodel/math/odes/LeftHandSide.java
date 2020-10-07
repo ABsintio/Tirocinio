@@ -1,8 +1,11 @@
 package biomodel.math.odes;
 
 public class LeftHandSide {
-    public String lhsString;
+    private final String lhsString;
     public LeftHandSide(String lhsString) {
         this.lhsString = lhsString;
+    }
+    public String getLhsString() {
+        return lhsString;
     }
 }

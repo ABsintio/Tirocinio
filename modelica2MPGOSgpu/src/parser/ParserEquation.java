@@ -1,9 +1,13 @@
 package parser;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.regex.*;
 import java.util.HashMap;
+
+import biomodel.bio.Reactant;
+import biomodel.bio.Reaction;
 import biomodel.math.*;
 import biomodel.math.odes.*;
 
@@ -169,7 +173,7 @@ public class ParserEquation {
                     int lenSecondString = splittedEq[1].length();
                     LeftHandSide  lhs = new LeftHandSide(splittedEq[0].strip());
                     RigthHandSide rhs = new RigthHandSide(splittedEq[1].substring(0, lenSecondString - 1));
-                    String equation = lhs.lhsString.concat(" = " + rhs.rhsString);
+                    String equation = lhs.getLhsString().concat(" = " + rhs.getRhsString());
                     Equation eq = null;
                     if (Pattern.matches(ODE_EQUATION, equation)) {
                         eq = new ODE(lhs, rhs);
@@ -214,10 +218,13 @@ public class ParserEquation {
         }
 
         ParserReaction pr = new ParserReaction(in);
-        ArrayList<aEquation> eqns = pr.parseReactions();
-        for (aEquation eq: eqns) {
-            System.out.println(eq.getEquation());
+        ArrayList<Reaction> reactions = pr.buildReactionSystem();
+        ArrayList<Reactant> reactants = pr.buildReactantSystem();
+        for (Reaction r: reactions) {
+            System.out.println(r);
         }
-
+        for (Reactant r: reactants) {
+            System.out.println(r);
+        }
     }
 }

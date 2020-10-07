@@ -12,7 +12,7 @@ public abstract class Equation {
         rhs = r;
     }
     public String getEquation() {
-        return String.format("%s = %s", lhs.lhsString, rhs.rhsString);
+        return String.format("%s = %s", lhs.getLhsString(), rhs.getRhsString());
     };
     public LeftHandSide getLhs() { return lhs; }
     public RigthHandSide getRhs() { return rhs; }
