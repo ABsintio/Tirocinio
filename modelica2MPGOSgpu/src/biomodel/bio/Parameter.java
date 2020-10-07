@@ -1,9 +1,10 @@
 package biomodel.bio;
 
-import biomodel.math.iEquation;
-import biomodel.math.odes.LeftHandSide;
-import biomodel.math.odes.RigthHandSide;
+import biomodel.math.equation.iEquation;
+import biomodel.math.equation.odes.LeftHandSide;
+import biomodel.math.equation.odes.RigthHandSide;
 
+// Rappresentano gli accessori
 public class Parameter extends iEquation {
     public Parameter(LeftHandSide l, RigthHandSide r){
         super(l, r);

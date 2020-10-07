@@ -1,4 +1,4 @@
-package biomodel.math;
+package biomodel.math.equation;
 
 public enum EQType {
     ODE("OrdinaryDifferentialEquation"),

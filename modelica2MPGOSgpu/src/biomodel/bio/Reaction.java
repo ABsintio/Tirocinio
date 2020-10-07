@@ -1,8 +1,8 @@
 package biomodel.bio;
 
-import biomodel.math.odes.RigthHandSide;
-import biomodel.math.odes.LeftHandSide;
-import biomodel.math.aEquation;
+import biomodel.math.equation.odes.RigthHandSide;
+import biomodel.math.equation.odes.LeftHandSide;
+import biomodel.math.equation.aEquation;
 
 public class Reaction extends aEquation {
     public Reaction(LeftHandSide l, RigthHandSide r) {

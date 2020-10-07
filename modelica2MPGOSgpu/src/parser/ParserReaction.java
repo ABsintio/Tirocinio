@@ -1,9 +1,9 @@
 package parser;
 
-import biomodel.math.EQType;
-import biomodel.math.Equation;
-import biomodel.math.aEquation;
-import biomodel.math.iEquation;
+import biomodel.math.equation.EQType;
+import biomodel.math.equation.Equation;
+import biomodel.math.equation.aEquation;
+import biomodel.math.equation.iEquation;
 import biomodel.bio.Reaction;
 import biomodel.bio.Reactant;
 import java.util.ArrayList;

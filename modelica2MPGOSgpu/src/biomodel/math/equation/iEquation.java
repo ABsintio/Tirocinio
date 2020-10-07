@@ -1,7 +1,8 @@
-package biomodel.math;
+package biomodel.math.equation;
 
-import biomodel.math.odes.LeftHandSide;
-import biomodel.math.odes.RigthHandSide;
+import biomodel.math.equation.Equation;
+import biomodel.math.equation.odes.LeftHandSide;
+import biomodel.math.equation.odes.RigthHandSide;
 
 public class iEquation extends Equation {
     private float rhsInt;
@@ -20,5 +21,13 @@ public class iEquation extends Equation {
 
     public float getRhsInt() {
         return rhsInt;
+    }
+
+    @Override
+    public String toString() {
+        return "iEquation{" +
+                "lhs=" + lhs.getLhsString() +
+                ", rhs=" + rhs.getRhsString() +
+                '}';
     }
 }

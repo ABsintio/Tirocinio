@@ -1,15 +1,13 @@
 package parser;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.regex.*;
 import java.util.HashMap;
-
 import biomodel.bio.Reactant;
 import biomodel.bio.Reaction;
-import biomodel.math.*;
-import biomodel.math.odes.*;
+import biomodel.math.equation.*;
+import biomodel.math.equation.odes.*;
 
 /**
  * La classe Parser fornisce metodi per il parsing delle equazioni all'interno dei
@@ -23,7 +21,7 @@ import biomodel.math.odes.*;
  * Le equazioni differenziali ordinarie sono quelle che andranno a formare il sistema
  * di ODE che descrive matematicamente l'evoluzione del modello biologico in studio.
  * Le singole equazioni ODE sono contenute nel package biomodel.math, mentre la classe
- * che descrive un intero sistema ODE è contenuto nel package biomodel.math.odes.
+ * che descrive un intero sistema ODE è contenuto nel package biomodel.math.equation.odes.
  * Facendo riferimento ai files prodotti da sbml2Modelica riscontriamo che le ODE di
  * nostro interesse si trovino solo nei file del tipo Class_elmt_[a-zA-Z0-9]*.mo.
  *
@@ -57,7 +55,7 @@ public class ParserEquation {
     /**
      * Metodo che serve a parsare le equazioni di inizializzazione sui file che contengono
      * il sistema ODE. Crea un HashMap che usa come chiavi il nome dei file dai quali ha
-     * parsato le equazioni, e come valori ArrayList di biomodel.math.iEquation, classe che
+     * parsato le equazioni, e come valori ArrayList di biomodel.math.equation.iEquation, classe che
      * rappresenta le equazioni di inizializzazione. Dal momento che possono essere parsati diversi
      * file (a discrezione del sistema), per ogni run del metodo che parsa viene creato un
      * oggetto Thread al fine di parallelizzare il processo il più possibile. Notare la
@@ -87,7 +85,7 @@ public class ParserEquation {
 
     /**
      * Niente di particolare, semplicemente parsa il file dato in input per ottenere
-     * un Array di biomodel.math.iEquation, da utilizzare per inizializzare il sistema ODE.
+     * un Array di biomodel.math.equation.iEquation, da utilizzare per inizializzare il sistema ODE.
      * @param file nome del file da parsare
      * @return Insieme di equazioni di inizializzazione presenti in file
      */
@@ -109,7 +107,7 @@ public class ParserEquation {
                     String[] splittedEq = line.split("=");
                     int lenSecondString = splittedEq[1].length();
                     LeftHandSide  lhs = new LeftHandSide(splittedEq[0].strip());
-                    RigthHandSide rhs = new RigthHandSide(splittedEq[1].substring(0, lenSecondString - 1));
+                    RigthHandSide rhs = new RigthHandSide(splittedEq[1].substring(0, lenSecondString - 1).strip());
                     iEquation ieq = new iEquation(lhs, rhs);
                     iEqns.add(ieq);
                 }
@@ -124,7 +122,7 @@ public class ParserEquation {
     /**
      * Metodo che serve a parsare le altre due tipologie di equazioni (ODE, assegnazione) dai file
      * che contengono le ODE del sistema. La differenza principale è il tipo di ritorno: ArrayList di
-     * biomodel.math.Equation. Questa è una classe astratta che serve a dare uno scheletro da cui
+     * biomodel.math.equation.Equation. Questa è una classe astratta che serve a dare uno scheletro da cui
      * partire a tutte le tipologie di equazioni e fornisce metodi utili per gestirle. Quindi questo
      * metodo mette insieme tutte e due le tipologie creando sempre un HashMap, come nel caso delle
      * equazioni di inizializzazione. Il discorso sulla parallelizzazione invece è lo stesso.
@@ -151,7 +149,7 @@ public class ParserEquation {
 
     /**
      * Niente di particolare, semplicemente parsa il file dato in input per ottenere
-     * un Array di biomodel.math.Equation, da utilizzare per inizializzare il sistema ODE.
+     * un Array di biomodel.math.equation.Equation, da utilizzare per inizializzare il sistema ODE.
      * @param inFile nome del file da parsare
      * @return Insieme di equazioni (ODE, assegnazione) presenti in file
      */
@@ -172,7 +170,7 @@ public class ParserEquation {
                     String[] splittedEq = line.split("=");
                     int lenSecondString = splittedEq[1].length();
                     LeftHandSide  lhs = new LeftHandSide(splittedEq[0].strip());
-                    RigthHandSide rhs = new RigthHandSide(splittedEq[1].substring(0, lenSecondString - 1));
+                    RigthHandSide rhs = new RigthHandSide(splittedEq[1].substring(0, lenSecondString - 1).strip());
                     String equation = lhs.getLhsString().concat(" = " + rhs.getRhsString());
                     Equation eq = null;
                     if (Pattern.matches(ODE_EQUATION, equation)) {
@@ -190,32 +188,62 @@ public class ParserEquation {
         return eqns;
     }
 
+    /**
+     * Funzione ausiliaria per aggregare tutte le equazioni (aEq, ODE, iEq) all'interno di un
+     * unico HashMap, di modo che possano essere reperibili in maniera più leggile, senza dover
+     * ogni volta cicliare all'interno degli HashMap ritornati dalle varie funzioni di parsing.
+     * L'HashMap di ritorno avrà tre chiavi: (1) aEquations, per indicare le equazioni di
+     * assegnamento; (2) ODE, per indicare le equazioni differenziali; (3) iEquations, per
+     * indicare le equazioni di inizializzazione. Ad ogni chiave è connesso un ArrayList che
+     * contiene tutte le equazioni che sono stati identificate rispettivamente.
+     * @param eqs valore di ritorno della funzione parseEquations
+     * @param iEqs valore di ritorno della funzione parseInitialEquations
+     * @return Ritorna un HashMap con chiavi tipi di equazioni e allegati degli ArrayList.
+     */
+    @SuppressWarnings("unchecked")
+    public HashMap<String, ArrayList<? extends Equation>> mergeEquations(
+            HashMap<String, ArrayList<Equation>> eqs,
+            HashMap<String, ArrayList<iEquation>> iEqs
+    ) {
+        HashMap<String, ArrayList<? extends Equation>> mergedEqs = new HashMap<>();
+        String aEqsString = "aEquations";
+        String ODEString  = "ODE";
+        String iEqsStirng = "iEquations";
+        ArrayList<aEquation> aEquations = new ArrayList<>();
+        ArrayList<ODE> odes = new ArrayList<>();
+        ArrayList<iEquation> iEquations = new ArrayList<>();
+        for (String fileName: eqs.keySet()) {
+            odes.addAll((ArrayList<ODE>) Equation.filter(eqs.get(fileName), EQType.ODE));
+            aEquations.addAll((ArrayList<aEquation>) Equation.filter(eqs.get(fileName), EQType.aEQ));
+            iEquations.addAll(iEqs.get(fileName));
+        }
+        mergedEqs.put(aEqsString, aEquations);
+        mergedEqs.put(ODEString, odes);
+        mergedEqs.put(iEqsStirng, iEquations);
+        return mergedEqs;
+    }
+
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8016/";
         ParserEquation p = new ParserEquation(in);
         try {
-            HashMap<String, ArrayList<iEquation>> iEqns = p.parseInitialEquation();
-            HashMap<String, ArrayList<Equation>> eqns = p.parseEquations();
-            for (String fileName : eqns.keySet()) {
-                ArrayList<Equation> eqs = eqns.get(fileName);
-                ArrayList<iEquation> ieqs = iEqns.get(fileName);
-                ArrayList<ODE> odeEq = (ArrayList<ODE>) Equation.filter(eqs, EQType.ODE);
-                ArrayList<aEquation> aEq = (ArrayList<aEquation>) Equation.filter(eqs, EQType.aEQ);
-                ODESystem ode = new ODESystem(ieqs, odeEq);
-                ode.buildMPGOS_PerThread_String();
-                //System.out.println(ode.getMPGOS_PerThread_OdeFunction());
-                /*System.out.println("Initial Equation");
-                ieqs.forEach((x) -> System.out.println(x.getEquation()));
-                System.out.println("\nDifferential Equations");
-                odeEq.forEach((x) -> System.out.println(x.getEquation()));
-                System.out.println("\nAssociation Equation");
-                aEq.forEach((x) -> System.out.println(x.getEquation()));
-                System.out.println("\n");*/
-            }
+            HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(
+                    p.parseEquations(),
+                    p.parseInitialEquation());
+            ODESystem odeSystem = new ODESystem(
+                    (ArrayList<iEquation>) equations.get("iEquations"),
+                    (ArrayList<ODE>)       equations.get("ODE")
+                    );
+            odeSystem.buildMPGOS_PerThread_String();
+            System.out.println(odeSystem.getMPGOS_PerThread_OdeFunction());
+            System.out.println("\n");
+            equations.get("iEquations").forEach(System.out::println);
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
+
+        System.out.println("\n");
 
         ParserReaction pr = new ParserReaction(in);
         ArrayList<Reaction> reactions = pr.buildReactionSystem();
@@ -226,5 +254,10 @@ public class ParserEquation {
         for (Reactant r: reactants) {
             System.out.println(r);
         }
+
+        System.out.println("\n");
+
+        ParserParameter.main(null);
+
     }
 }

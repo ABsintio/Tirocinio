@@ -1,4 +1,4 @@
-package biomodel.math.odes;
+package biomodel.math.equation.odes;
 
 public class LeftHandSide {
     private final String lhsString;

@@ -1,8 +1,8 @@
 package biomodel.bio;
 
-import biomodel.math.iEquation;
-import biomodel.math.odes.RigthHandSide;
-import biomodel.math.odes.LeftHandSide;
+import biomodel.math.equation.iEquation;
+import biomodel.math.equation.odes.RigthHandSide;
+import biomodel.math.equation.odes.LeftHandSide;
 
 public class Reactant extends iEquation {
     public Reactant(LeftHandSide l, RigthHandSide r) {

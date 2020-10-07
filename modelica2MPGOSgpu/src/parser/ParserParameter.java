@@ -1,8 +1,8 @@
 package parser;
 
 import biomodel.bio.Parameter;
-import biomodel.math.odes.LeftHandSide;
-import biomodel.math.odes.RigthHandSide;
+import biomodel.math.equation.odes.LeftHandSide;
+import biomodel.math.equation.odes.RigthHandSide;
 
 import java.io.FileReader;
 import java.io.File;

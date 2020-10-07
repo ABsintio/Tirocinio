@@ -1,9 +1,8 @@
-package biomodel.math.odes;
+package biomodel.math.equation.odes;
 
-import biomodel.math.ODE;
-import biomodel.math.iEquation;
+import biomodel.math.equation.ODE;
+import biomodel.math.equation.iEquation;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ODESystem {
     public ArrayList<ODE> ode;           // Rappresenta il sistema di equazioni
@@ -25,7 +24,7 @@ public class ODESystem {
         String forFormatting = "";
         int i = 0;
         for (ODE ode: this.ode) {
-            forFormatting = forFormatting.concat(String.format("\tF[%d] = %s\n", i++, ode.getRhs().getRhsString()));
+            forFormatting = forFormatting.concat(String.format("\tF[%d] = %s;\n", i++, ode.getRhs().getRhsString()));
         }
         this.MPGOS_PerThread_OdeFunction = String.format(this.MPGOS_PerThread_OdeFunction, forFormatting);
     }

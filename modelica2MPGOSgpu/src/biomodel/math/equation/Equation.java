@@ -1,7 +1,7 @@
-package biomodel.math;
+package biomodel.math.equation;
 
-import biomodel.math.odes.LeftHandSide;
-import biomodel.math.odes.RigthHandSide;
+import biomodel.math.equation.odes.LeftHandSide;
+import biomodel.math.equation.odes.RigthHandSide;
 import java.util.ArrayList;
 
 public abstract class Equation {

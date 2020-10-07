@@ -1,6 +1,6 @@
 package mpgos;
 
-import biomodel.math.odes.ODESystem;
+import biomodel.math.equation.odes.ODESystem;
 
 public class SystemDefinition {
     public ODESystem ode;
