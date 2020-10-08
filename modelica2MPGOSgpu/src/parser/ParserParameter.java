@@ -25,8 +25,8 @@ public class ParserParameter {
             String line = buff.readLine();
             while (line != null) {
                 if (Pattern.matches(PARAMETER_RE, line)) {
-                    if (line.matches(".*[(]unit \"\"[)].*")) {
-                        line = line.replaceAll("[(]unit \"\"[)]", "");
+                    if (line.matches(".*[(]unit \".*\"[)].*")) {
+                        line = line.replaceAll("[(]unit \".*\"[)]", "");
                     }
                     line = line.strip().replace("parameter Real ", "");
                     String[] splitteLine = line.split("=");
@@ -44,7 +44,7 @@ public class ParserParameter {
     }
 
     public static void main(String[] args) {
-        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8016/";
+        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8062/";
         //String in = "/home/yorunoomo/Scrivania/Tirocinio/sbml2ModelicaTyson/";
         ParserParameter pP = new ParserParameter(in);
         ArrayList<Parameter> params = pP.parseParameters();

@@ -3,73 +3,44 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 	Precision*    F, Precision*    X, Precision     T, \
 	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi
 ) {
-	F[0] = ((- (elmt_rPn2 * elmt_reactant14)) + (elmt_rP2n * elmt_product13));
-	F[1] = ((elmt_rM * elmt_product1) + (- (elmt_rmRNAd * elmt_reactant16)));
-	F[2] = ((elmt_rP01 * elmt_product5) + (- (elmt_rP12 * elmt_reactant8)) + (- (elmt_rP10 * elmt_reactant6)) + (elmt_rP21 * elmt_product11));
-	F[3] = ((elmt_rPn2 * elmt_product15) + (elmt_rP12 * elmt_product9) + (- (elmt_rVd * elmt_reactant18)) + (- (elmt_rP21 * elmt_reactant10)) + (- (elmt_rP2n * elmt_reactant12)));
-	F[4] = ((- (elmt_rP01 * elmt_reactant4)) + (elmt_rP10 * elmt_product7) + (elmt_rTL * elmt_product3));
+	F[0] = ((elmt_Enzyme_synthesis * elmt_product0) + (- (elmt_Enzyme_dilution * elmt_reactant1)));
+	F[1] = ((- (elmt_tryptophan_consumption * elmt_reactant3)) + (elmt_tryptophan_synthesis * elmt_product2) + (- (elmt_tryptophan_dilution * elmt_reactant4)));
 
 }
 
 
-iEquation{lhs=elmt_default, rhs=1.0E-15}
-iEquation{lhs=elmt_EmptySet_conc, rhs=(0.0 / elmt_default)}
-iEquation{lhs=elmt_compartment_0000004, rhs=1.0E-15}
-iEquation{lhs=elmt_Pn_conc, rhs=0.25}
-iEquation{lhs=elmt_CYTOPLASM, rhs=1.0E-15}
-iEquation{lhs=elmt_M_conc, rhs=0.1}
-iEquation{lhs=elmt_P1_conc, rhs=0.25}
-iEquation{lhs=elmt_P2_conc, rhs=0.25}
-iEquation{lhs=elmt_P0_conc, rhs=0.25}
+iEquation{lhs=elmt_compartment, rhs=1.0}
+iEquation{lhs=elmt_Enz_conc, rhs=0.0}
+iEquation{lhs=elmt_Ts_conc, rhs=0.0}
 
 
-Reaction{lhs=elmt_rPn2, rhs=(elmt_rPn2_elmt_k2 * elmt_Pn * elmt_compartment_0000004)}
-Reaction{lhs=elmt_rP01, rhs=((elmt_CYTOPLASM * elmt_rP01_elmt_V1 * elmt_P0) / (elmt_rP01_elmt_K1 + elmt_P0))}
-Reaction{lhs=elmt_rP12, rhs=((elmt_CYTOPLASM * elmt_rP12_elmt_V3 * elmt_P1) / (elmt_rP12_elmt_K3 + elmt_P1))}
-Reaction{lhs=elmt_rVd, rhs=((elmt_CYTOPLASM * elmt_rVd_elmt_Vd * elmt_P2) / (elmt_rVd_elmt_Kd + elmt_P2))}
-Reaction{lhs=elmt_rP10, rhs=((elmt_CYTOPLASM * elmt_rP10_elmt_V2 * elmt_P1) / (elmt_rP10_elmt_K2 + elmt_P1))}
-Reaction{lhs=elmt_rP21, rhs=((elmt_CYTOPLASM * elmt_rP21_elmt_V4 * elmt_P2) / (elmt_rP21_elmt_K4 + elmt_P2))}
-Reaction{lhs=elmt_rM, rhs=((elmt_default * elmt_rM_elmt_Vs * Functions.pow(elmt_rM_elmt_KI, elmt_rM_elmt_n)) / (Functions.pow(elmt_rM_elmt_KI, elmt_rM_elmt_n) + Functions.pow(elmt_Pn, elmt_rM_elmt_n)))}
-Reaction{lhs=elmt_rmRNAd, rhs=((elmt_rmRNAd_elmt_Vm * elmt_M * elmt_CYTOPLASM) / (elmt_rmRNAd_elmt_Km + elmt_M))}
-Reaction{lhs=elmt_rP2n, rhs=(elmt_rP2n_elmt_k1 * elmt_P2 * elmt_CYTOPLASM)}
-Reaction{lhs=elmt_rTL, rhs=(elmt_rTL_elmt_ks * elmt_M * elmt_default)}
-Reactant{name=elmt_product9, value=1.0}
-Reactant{name=elmt_reactant2, value=1.0}
+aEquation{lhs=elmt_Enz, rhs=elmt_Enz_conc}
+aEquation{lhs=elmt_Ts, rhs=elmt_Ts_conc}
+aEquation{lhs=elmt_Tt, rhs=elmt_Tt_conc}
+aEquation{lhs=elmt_To, rhs=elmt_To_conc}
+aEquation{lhs=elmt_Tt_amount, rhs=(elmt_To + elmt_Ts) * elmt_compartment}
+aEquation{lhs=elmt_To_amount, rhs=((elmt_Tomax * elmt_Tex) / ((elmt_Tex * (1.0 + (elmt_Ts / elmt_f_val))) + elmt_e_val)) * elmt_compartment}
+
+
+Reaction{lhs=elmt_tryptophan_consumption, rhs=((elmt_compartment * elmt_tryptophan_consumption_elmt_g * elmt_Ts) / (elmt_tryptophan_consumption_elmt_Kg + elmt_Ts))}
+Reaction{lhs=elmt_tryptophan_synthesis, rhs=((elmt_compartment * elmt_tryptophan_synthesis_elmt_k2 * elmt_Enz * elmt_tryptophan_synthesis_elmt_Ki2) / (elmt_tryptophan_synthesis_elmt_Ki2 + elmt_Tt))}
+Reaction{lhs=elmt_Enzyme_synthesis, rhs=((elmt_compartment * elmt_Enzyme_synthesis_elmt_k1 * Functions.pow(elmt_Enzyme_synthesis_elmt_ki1, elmt_Enzyme_synthesis_elmt_nH) * elmt_Enzyme_synthesis_elmt_Ot) / (Functions.pow(elmt_Enzyme_synthesis_elmt_ki1, elmt_Enzyme_synthesis_elmt_nH) + Functions.pow(elmt_Tt, elmt_Enzyme_synthesis_elmt_nH)))}
+Reaction{lhs=elmt_Enzyme_dilution, rhs=(elmt_compartment * elmt_Enzyme_dilution_elmt_mu * elmt_Enz)}
+Reaction{lhs=elmt_tryptophan_dilution, rhs=(elmt_compartment * elmt_tryptophan_dilution_elmt_mu * elmt_Ts)}
+Reactant{name=elmt_reactant1, value=1.0}
 Reactant{name=elmt_reactant4, value=1.0}
-Reactant{name=elmt_product7, value=1.0}
-Reactant{name=elmt_reactant6, value=1.0}
-Reactant{name=elmt_product11, value=1.0}
-Reactant{name=elmt_reactant8, value=1.0}
-Reactant{name=elmt_reactant14, value=1.0}
-Reactant{name=elmt_product1, value=1.0}
-Reactant{name=elmt_reactant16, value=1.0}
-Reactant{name=elmt_product5, value=1.0}
-Reactant{name=elmt_reactant10, value=1.0}
-Reactant{name=elmt_reactant0, value=1.0}
-Reactant{name=elmt_reactant12, value=1.0}
-Reactant{name=elmt_product3, value=1.0}
-Reactant{name=elmt_reactant18, value=1.0}
-Reactant{name=elmt_product15, value=1.0}
-Reactant{name=elmt_product13, value=1.0}
-Reactant{name=elmt_product19, value=1.0}
-Reactant{name=elmt_product17, value=1.0}
+Reactant{name=elmt_reactant3, value=1.0}
+Reactant{name=elmt_product0, value=1.0}
+Reactant{name=elmt_product2, value=1.0}
 
 
-Parameter{name=elmt_rPn2_elmt_k2, value=1.3}
-Parameter{name=elmt_rP01_elmt_K1, value=2.0}
-Parameter{name=elmt_rP01_elmt_V1, value=3.2}
-Parameter{name=elmt_rP12_elmt_V3, value=5.0}
-Parameter{name=elmt_rP12_elmt_K3, value=2.0}
-Parameter{name=elmt_rVd_elmt_Vd, value=0.95}
-Parameter{name=elmt_rVd_elmt_Kd, value=0.2}
-Parameter{name=elmt_rP10_elmt_V2, value=1.58}
-Parameter{name=elmt_rP10_elmt_K2, value=2.0}
-Parameter{name=elmt_rP21_elmt_V4, value=2.5}
-Parameter{name=elmt_rP21_elmt_K4, value=2.0}
-Parameter{name=elmt_rM_elmt_n, value=4.0}
-Parameter{name=elmt_rM_elmt_Vs, value=0.76}
-Parameter{name=elmt_rM_elmt_KI, value=1.0}
-Parameter{name=elmt_rmRNAd_elmt_Km, value=0.5}
-Parameter{name=elmt_rmRNAd_elmt_Vm, value=0.65}
-Parameter{name=elmt_rP2n_elmt_k1, value=1.9}
-Parameter{name=elmt_rTL_elmt_ks, value=0.38}
+Parameter{name=elmt_tryptophan_consumption_elmt_g, value=25.0}
+Parameter{name=elmt_tryptophan_consumption_elmt_Kg, value=0.2}
+Parameter{name=elmt_tryptophan_synthesis_elmt_Ki2, value=810.0}
+Parameter{name=elmt_tryptophan_synthesis_elmt_k2, value=25.0}
+Parameter{name=elmt_Enzyme_synthesis_elmt_Ot, value=0.0033}
+Parameter{name=elmt_Enzyme_synthesis_elmt_k1, value=65.0}
+Parameter{name=elmt_Enzyme_synthesis_elmt_ki1, value=3.53}
+Parameter{name=elmt_Enzyme_synthesis_elmt_nH, value=1.92}
+Parameter{name=elmt_Enzyme_dilution_elmt_mu, value=0.01}
+Parameter{name=elmt_tryptophan_dilution_elmt_mu, value=0.01}

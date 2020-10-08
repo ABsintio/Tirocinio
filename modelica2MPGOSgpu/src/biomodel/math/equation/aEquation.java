@@ -9,4 +9,12 @@ public class aEquation extends Equation {
     }
     @Override
     public boolean isaEquation(){ return true; }
+
+    @Override
+    public String toString() {
+        return "aEquation{" +
+                "lhs=" + lhs.getLhsString() +
+                ", rhs=" + rhs.getRhsString() +
+                '}';
+    }
 }

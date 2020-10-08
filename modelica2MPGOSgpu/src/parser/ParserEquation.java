@@ -225,7 +225,7 @@ public class ParserEquation {
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8016/";
+        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8062/";
         ParserEquation p = new ParserEquation(in);
         try {
             HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(
@@ -239,6 +239,8 @@ public class ParserEquation {
             System.out.println(odeSystem.getMPGOS_PerThread_OdeFunction());
             System.out.println("\n");
             equations.get("iEquations").forEach(System.out::println);
+            System.out.println("\n");
+            equations.get("aEquations").forEach(System.out::println);
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
