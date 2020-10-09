@@ -44,7 +44,7 @@ public class ParserParameter {
     }
 
     public static void main(String[] args) {
-        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8062/";
+        String in  = "/home/yorunoomo/Scrivania/Tirocinio/sbml2ModelicaTyson/";
         //String in = "/home/yorunoomo/Scrivania/Tirocinio/sbml2ModelicaTyson/";
         ParserParameter pP = new ParserParameter(in);
         ArrayList<Parameter> params = pP.parseParameters();

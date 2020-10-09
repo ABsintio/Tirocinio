@@ -225,7 +225,7 @@ public class ParserEquation {
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx8062/";
+        String in  = "/home/yorunoomo/Scrivania/Tirocinio/sbml2ModelicaTyson/";
         ParserEquation p = new ParserEquation(in);
         try {
             HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(

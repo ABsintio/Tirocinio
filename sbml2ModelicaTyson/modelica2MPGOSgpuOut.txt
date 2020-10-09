@@ -1,0 +1,79 @@
+template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
+	int tid, int NT, \
+	Precision*    F, Precision*    X, Precision     T, \
+	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi
+) {
+	F[0] = ((elmt_Reaction9 * elmt_product19) + (- (elmt_Reaction5 * elmt_reactant10)) + (- (elmt_Reaction1 * elmt_reactant0)));
+	F[1] = ((elmt_Reaction3 * elmt_product6) + (- (elmt_Reaction2 * elmt_reactant3)) + (elmt_Reaction1 * elmt_product1));
+	F[2] = ((- (elmt_Reaction7 * elmt_reactant14)) + (elmt_Reaction6 * elmt_product13) + (- (elmt_Reaction4 * elmt_reactant8)));
+	F[3] = ((- (elmt_Reaction4 * elmt_reactant7)) + (- (elmt_Reaction3 * elmt_reactant5)) + (elmt_Reaction2 * elmt_product4));
+	F[4] = ((- (elmt_Reaction9 * elmt_reactant18)) + (elmt_Reaction5 * elmt_product11) + (elmt_Reaction4 * elmt_product9));
+	F[5] = ((- (elmt_Reaction8 * elmt_reactant16)) + (elmt_Reaction1 * elmt_product2));
+
+}
+
+
+iEquation{lhs=elmt_cell, rhs=1.0}
+iEquation{lhs=elmt_M_conc, rhs=(0.0 / elmt_cell)}
+iEquation{lhs=elmt_C2_conc, rhs=(0.0 / elmt_cell)}
+iEquation{lhs=elmt_Y_conc, rhs=(0.0 / elmt_cell)}
+iEquation{lhs=elmt_EmptySet_conc, rhs=(0.0 / elmt_cell)}
+iEquation{lhs=elmt_CP_conc, rhs=(0.75 / elmt_cell)}
+iEquation{lhs=elmt_pM_conc, rhs=(0.25 / elmt_cell)}
+iEquation{lhs=elmt_YP_conc, rhs=(0.0 / elmt_cell)}
+
+
+aEquation{lhs=elmt_M, rhs=elmt_M_conc}
+aEquation{lhs=elmt_CT, rhs=elmt_CT_conc}
+aEquation{lhs=elmt_C2, rhs=elmt_C2_conc}
+aEquation{lhs=elmt_Y, rhs=elmt_Y_conc}
+aEquation{lhs=elmt_EmptySet, rhs=elmt_EmptySet_conc}
+aEquation{lhs=elmt_CP, rhs=elmt_CP_conc}
+aEquation{lhs=elmt_pM, rhs=elmt_pM_conc}
+aEquation{lhs=elmt_YT, rhs=elmt_YT_conc}
+aEquation{lhs=elmt_YP, rhs=elmt_YP_conc}
+aEquation{lhs=elmt_CT_amount, rhs=(elmt_C2 + elmt_CP + elmt_M + elmt_pM) * elmt_cell}
+aEquation{lhs=elmt_YT_amount, rhs=(elmt_Y + elmt_YP + elmt_M + elmt_pM) * elmt_cell}
+
+
+Reaction{lhs=elmt_Reaction9, rhs=(elmt_cell * elmt_pM * (elmt_Reaction9_elmt_k4prime + (elmt_Reaction9_elmt_k4 * Functions.pow((elmt_M / elmt_CT), 2.0))))}
+Reaction{lhs=elmt_Reaction8, rhs=(elmt_cell * elmt_Reaction8_elmt_k7 * elmt_YP)}
+Reaction{lhs=elmt_Reaction7, rhs=(elmt_cell * elmt_Reaction7_elmt_k2 * elmt_Y)}
+Reaction{lhs=elmt_Reaction6, rhs=(elmt_cell * elmt_Reaction6_elmt_k1aa)}
+Reaction{lhs=elmt_Reaction5, rhs=(elmt_cell * elmt_Reaction5_elmt_k5notP * elmt_M)}
+Reaction{lhs=elmt_Reaction4, rhs=(elmt_cell * elmt_CP * elmt_Reaction4_elmt_k3 * elmt_Y)}
+Reaction{lhs=elmt_Reaction3, rhs=(elmt_cell * elmt_CP * elmt_Reaction3_elmt_k9)}
+Reaction{lhs=elmt_Reaction2, rhs=(elmt_cell * elmt_C2 * elmt_Reaction2_elmt_k8notP)}
+Reaction{lhs=elmt_Reaction1, rhs=(elmt_cell * elmt_Reaction1_elmt_k6 * elmt_M)}
+Reactant{name=elmt_product9, value=1.0}
+Reactant{name=elmt_product6, value=1.0}
+Reactant{name=elmt_reactant3, value=1.0}
+Reactant{name=elmt_product11, value=1.0}
+Reactant{name=elmt_reactant5, value=1.0}
+Reactant{name=elmt_reactant8, value=1.0}
+Reactant{name=elmt_reactant7, value=1.0}
+Reactant{name=elmt_reactant14, value=1.0}
+Reactant{name=elmt_product1, value=1.0}
+Reactant{name=elmt_reactant16, value=1.0}
+Reactant{name=elmt_reactant10, value=1.0}
+Reactant{name=elmt_product4, value=1.0}
+Reactant{name=elmt_reactant12, value=1.0}
+Reactant{name=elmt_reactant0, value=1.0}
+Reactant{name=elmt_product2, value=1.0}
+Reactant{name=elmt_reactant18, value=1.0}
+Reactant{name=elmt_product15, value=1.0}
+Reactant{name=elmt_product13, value=1.0}
+Reactant{name=elmt_product19, value=1.0}
+Reactant{name=elmt_product17, value=1.0}
+
+
+Parameter{name=elmt_Reaction9_elmt_k4prime, value=0.018}
+Parameter{name=elmt_Reaction9_elmt_k4, value=180.0}
+Parameter{name=elmt_Reaction8_elmt_k7, value=0.6}
+Parameter{name=elmt_Reaction7_elmt_k2, value=0.0}
+Parameter{name=elmt_Reaction6_elmt_k1aa, value=0.015}
+Parameter{name=elmt_Reaction5_elmt_k5notP, value=0.0}
+Parameter{name=elmt_Reaction4_elmt_k3, value=200.0}
+Parameter{name=elmt_Reaction3_elmt_k9, value=1000.0}
+Parameter{name=elmt_Reaction2_elmt_k8notP, value=1000000.0}
+Parameter{name=elmt_Reaction1_elmt_k6, value=1.0}
