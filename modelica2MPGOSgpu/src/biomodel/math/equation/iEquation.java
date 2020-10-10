@@ -1,6 +1,5 @@
 package biomodel.math.equation;
 
-import biomodel.math.equation.Equation;
 import biomodel.math.equation.odes.LeftHandSide;
 import biomodel.math.equation.odes.RigthHandSide;
 
