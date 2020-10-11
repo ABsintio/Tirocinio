@@ -5,8 +5,8 @@ import biomodel.math.equation.iEquation;
 import java.util.ArrayList;
 
 public class ODESystem {
-    public ArrayList<ODE> ode;           // Rappresenta il sistema di equazioni
-    public ArrayList<iEquation> iEqns;   // Rappresenta le equazioni iniziali
+    private ArrayList<ODE> ode;           // Rappresenta il sistema di equazioni
+    private ArrayList<iEquation> iEqns;   // Rappresenta le equazioni iniziali
     private String MPGOS_PerThread_OdeFunction =         // Definisce il sistema di equazioni per MPGOS
             "template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(\n" +
             "\tint tid, int NT, \\\n"+
@@ -19,7 +19,6 @@ public class ODESystem {
         this.ode = system;
         this.iEqns = iEqns;
     }
-
     public void buildMPGOS_PerThread_String() {
         String forFormatting = "";
         int i = 0;
@@ -28,8 +27,7 @@ public class ODESystem {
         }
         this.MPGOS_PerThread_OdeFunction = String.format(this.MPGOS_PerThread_OdeFunction, forFormatting);
     }
-
-    public String getMPGOS_PerThread_OdeFunction() {
-        return this.MPGOS_PerThread_OdeFunction;
-    }
+    public String getMPGOS_PerThread_OdeFunction() {return this.MPGOS_PerThread_OdeFunction;}
+    public ArrayList<ODE> getOde(){ return this.ode; }
+    public ArrayList<iEquation> getIEqns(){ return this.iEqns; }
 }

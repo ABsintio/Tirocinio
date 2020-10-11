@@ -1,13 +1,14 @@
 package biomodel.math.function;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import biomodel.math.equation.iEquation;
 import biomodel.math.equation.odes.LeftHandSide;
 import biomodel.math.equation.odes.RigthHandSide;
 
 public class Function {
-    public final ArrayList<String> inputs;
-    public final ArrayList<String> outputs;
+    public ArrayList<String> inputs;
+    public ArrayList<String> outputs;
     public final ArrayList<iEquation> otherParameters;
     public final LeftHandSide name;
     public final RigthHandSide algortihm;
@@ -20,6 +21,21 @@ public class Function {
         this.otherParameters = other;
         this.name = lhs;
         this.algortihm = rhs;
+    }
+    public Function(String in, String out, LeftHandSide lhs, RigthHandSide rhs, ArrayList<iEquation> other) {
+        this.inputs = new ArrayList<>(Collections.singletonList(in));
+        this.outputs = new ArrayList<>(Collections.singletonList(out));
+        this.name = lhs;
+        this.algortihm = rhs;
+        this.otherParameters = other;
+    }
+
+    public void setInputs(ArrayList<String> inputs) {
+        this.inputs = inputs;
+    }
+
+    public void setOutputs(ArrayList<String> outputs) {
+        this.outputs = outputs;
     }
 
     @Override

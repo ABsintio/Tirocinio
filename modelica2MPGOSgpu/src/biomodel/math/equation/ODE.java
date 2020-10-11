@@ -9,4 +9,9 @@ public class ODE extends Equation {
     }
     @Override
     public boolean isODE(){ return true; }
+    @Override
+    public String toString() {
+        return "ODE(lhs=" + this.lhs.getLhsString() + ", " + 
+                   "rhs=" + this.rhs.getRhsString() + ")";
+    }
 }

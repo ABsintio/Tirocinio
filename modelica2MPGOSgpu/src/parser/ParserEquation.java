@@ -45,6 +45,8 @@ public class ParserEquation {
     private static final String END_FILE         = "end\\s*\\S+";
     private static final String ODE_EQUATION     = "der[(]\\w+[)]\\s*=.*[(+*)-]+$";
     private static final String aEQ_EQUATION     = "\\w+\\s*=.*";
+    private static final String EVENT_STRING     = "\\s+when.*";
+    private static final String END_EVENT_STRING = "\\s+end when;.*";
     public File workingDir;
 
     public ParserEquation(String in) {
@@ -160,13 +162,14 @@ public class ParserEquation {
             String line = buff.readLine();
             boolean start = false, end = false;
             while (line != null && !end) {
-                if (Pattern.matches(START_EQUATION, line)) start = true;
+                if (Pattern.matches(START_EQUATION, line) || Pattern.matches(END_EVENT_STRING, line)) start = true;
                 else if (Pattern.matches(START_ALGORITHM, line) ||
-                        Pattern.matches(END_FILE, line)) {
+                         Pattern.matches(END_FILE, line)) {
                     end = true;
                 }
+                else if (Pattern.matches(EVENT_STRING, line)) start = false;
                 if (start && !line.contains("equation") &&
-                        !line.equals("") && !end) {
+                        !line.equals("") && !end && !line.contains("end when")) {
                     String[] splittedEq = line.split("=");
                     int lenSecondString = splittedEq[1].length();
                     LeftHandSide  lhs = new LeftHandSide(splittedEq[0].strip());
@@ -223,9 +226,31 @@ public class ParserEquation {
         return mergedEqs;
     }
 
+    /**
+     * Questo metodo crea il sistema di equazioni differenziali, unendo tutti i risultati
+     * del parsing dei vari file di tipo Class_elmt_[a-zA-Z0-9]*.mo.
+     * @return Il sistema di equazioni differenziali ottenuto
+     */
+    @SuppressWarnings("unchecked")
+    public ODESystem buildODESystem() {
+        try {
+            HashMap<String, ArrayList<? extends Equation>> equations = this.mergeEquations(
+                    this.parseEquations(),
+                    this.parseInitialEquation());
+            ODESystem odeSystem = new ODESystem(
+                    (ArrayList<iEquation>) equations.get("iEquations"),
+                    (ArrayList<ODE>)       equations.get("ODE")
+                    );
+            return odeSystem;
+        } catch (InterruptedException ie) {
+            ie.printStackTrace();
+        }
+        return null;
+    }
+
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        String in  = "/home/yorunoomo/Scrivania/Tirocinio/sbml2ModelicaTyson/";
+        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx07125/";
         ParserEquation p = new ParserEquation(in);
         try {
             HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(
@@ -236,6 +261,8 @@ public class ParserEquation {
                     (ArrayList<ODE>)       equations.get("ODE")
                     );
             odeSystem.buildMPGOS_PerThread_String();
+            odeSystem.getOde().forEach(System.out::println);
+            System.out.println("\n");
             System.out.println(odeSystem.getMPGOS_PerThread_OdeFunction());
             System.out.println("\n");
             equations.get("iEquations").forEach(System.out::println);
