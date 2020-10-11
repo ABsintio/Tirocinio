@@ -253,7 +253,12 @@ public class ParserEquation {
         String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx07125/";
         ParserEquation p = new ParserEquation(in);
         try {
-            HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(
+            HashMap<String, ArrayList<Equation>> eq = p.parseEquations();
+            for (String fileName: eq.keySet()) {
+                System.out.println(fileName);
+                eq.get(fileName).forEach(System.out::println);
+            }
+            /*HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(
                     p.parseEquations(),
                     p.parseInitialEquation());
             ODESystem odeSystem = new ODESystem(
@@ -267,12 +272,12 @@ public class ParserEquation {
             System.out.println("\n");
             equations.get("iEquations").forEach(System.out::println);
             System.out.println("\n");
-            equations.get("aEquations").forEach(System.out::println);
+            equations.get("aEquations").forEach(System.out::println);*/
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
 
-        System.out.println("\n");
+        /*System.out.println("\n");
 
         ParserReaction pr = new ParserReaction(in);
         ArrayList<Reaction> reactions = pr.buildReactionSystem();
@@ -286,7 +291,7 @@ public class ParserEquation {
 
         System.out.println("\n");
 
-        ParserParameter.main(null);
+        ParserParameter.main(null);*/
 
     }
 }
