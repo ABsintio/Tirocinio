@@ -4,8 +4,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.*;
 import java.util.HashMap;
-import biomodel.bio.Reactant;
-import biomodel.bio.Reaction;
 import biomodel.math.equation.*;
 import biomodel.math.equation.odes.*;
 
@@ -251,17 +249,12 @@ public class ParserEquation {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx07125/";
-        ParserEquation p = new ParserEquation(in);
+        /*ParserEquation p = new ParserEquation(in);
         try {
-            HashMap<String, ArrayList<Equation>> eq = p.parseEquations();
-            for (String fileName: eq.keySet()) {
-                System.out.println(fileName);
-                eq.get(fileName).forEach(System.out::println);
-            }
-            /*HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(
+            HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(
                     p.parseEquations(),
                     p.parseInitialEquation());
-            ODESystem odeSystem = new ODESystem(
+            /*ODESystem odeSystem = new ODESystem(
                     (ArrayList<iEquation>) equations.get("iEquations"),
                     (ArrayList<ODE>)       equations.get("ODE")
                     );
@@ -272,12 +265,12 @@ public class ParserEquation {
             System.out.println("\n");
             equations.get("iEquations").forEach(System.out::println);
             System.out.println("\n");
-            equations.get("aEquations").forEach(System.out::println);*/
+            equations.get("aEquations").forEach(System.out::println);
         } catch (InterruptedException ie) {
             ie.printStackTrace();
         }
 
-        /*System.out.println("\n");
+        System.out.println("\n");
 
         ParserReaction pr = new ParserReaction(in);
         ArrayList<Reaction> reactions = pr.buildReactionSystem();
@@ -292,6 +285,16 @@ public class ParserEquation {
         System.out.println("\n");
 
         ParserParameter.main(null);*/
+        ParserAlgorithm pA = new ParserAlgorithm(in);
+        try {
+            HashMap<String, ArrayList<aEquation>> result = pA.parseAlgorithm();
+            for (String fN: result.keySet()) {
+                System.out.println(fN);
+                result.get(fN).forEach(System.out::println);
+            }
+        } catch (InterruptedException ie) {
+            ie.printStackTrace();
+        }
 
     }
 }
