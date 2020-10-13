@@ -3,6 +3,8 @@ package parser.files;
 import java.util.HashMap;
 import java.util.ArrayList;
 import biomodel.math.equation.iEquation;
+import biomodel.math.equation.aEquation;
+import biomodel.math.equation.ODE;
 
 /**
  * Ogni istanza di ClassElmtFile conterrà tutte le informazioni su un singolo parsing di un 
@@ -15,21 +17,33 @@ import biomodel.math.equation.iEquation;
  *    quelle contenute nella sezione "initial equation", in quanto tutte le inizializzazioni 
  *    fatte nelle altre sezioni verranno effettuate ad ogni time step successivo.
  *
+ * 3. Le equazioni di assegnamento del file. Queste comprendono non solo quelle parsate da 
+ * 	  ParserEquation ma anche quelle di ParseAlgorithm. Saranno necessarie per la corretta
+ * 	  formulazione delle ODE.
  */
 public class ClassElmtFile {
 	public final String nome;						// Nome del file parsato
 	public final String modelObjectName;			// Nome che compare nel file che collega tutti i componenti
 	private final HashMap<String, String> inputs;	// Coppia (input, fileName)
-	private final ArrayList<iEquation> iEqs; 		// Lista di equazioni iniziali
+	private final ArrayList<iEquation> iEqs; 		// Lista di equazioni iniziali parsate da ParserEquation
+	private final ArrayList<aEquation> aEqs;		// Lista delle equazioni parsate da ParserEquation
+	private final ArrayList<ODE>	 ODEEqs;		// Lista delle equazioni differenziali parsate da ParserEquation
+	private final ArrayList<aEquation> aAlg;		// Lista delle equazioni parsate da ParserAlgorithm
 	public ClassElmtFile(
 		String name, String mon,
 		HashMap<String, String> ins,
-		ArrayList<iEquation> ieqns
+		ArrayList<iEquation> ieqns,
+		ArrayList<aEquation> aeqns,
+		ArrayList<ODE>	     oeqns,
+		ArrayList<aEquation> aalg
 	) {
 		this.modelObjectName = mon;
 		this.nome = name;
 		this.inputs = ins;
 		this.iEqs = ieqns;
+		this.aEqs = aeqns;
+		this.ODEEqs = oeqns;
+		this.aAlg = aalg;
 	}
 	public HashMap<String, String> getIntpus(){ return this.inputs; }
 	public String getFileFromInput(String in){
@@ -44,5 +58,8 @@ public class ClassElmtFile {
 		}
 		return inputsByFn;
 	}
-	public ArrayList<iEquation> getIEqs(){ return this.iEqs; }
+	public ArrayList<iEquation> getIEqs(){ return this.iEqs;   }
+	public ArrayList<aEquation> getAEqs(){ return this.aEqs;   }
+	public ArrayList<ODE>		getODEs(){ return this.ODEEqs; }
+	public ArrayList<aEquation> getAAlg(){ return this.aAlg;   }
 }
