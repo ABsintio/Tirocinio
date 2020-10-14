@@ -6,10 +6,12 @@ import java.util.regex.*;
 import java.util.HashMap;
 import biomodel.math.equation.*;
 import biomodel.math.equation.odes.*;
+import parser.files.ClassElmtFile;
+import util.XMLModelName;
 
 /**
  * La classe Parser fornisce metodi per il parsing delle equazioni all'interno dei
- * file modelica ".mo" generati da sbml2Modelica. Le equazioni che devono essere
+ * file modelica ClassElmt generati da sbml2Modelica. Le equazioni che devono essere
  * parsate sono fondamentalmente di tre tipi:
  *
  * 1. Equazioni differenziali ordinarie -> der(x) = y (y equazione algebrica)
@@ -36,7 +38,7 @@ import biomodel.math.equation.odes.*;
  * interesse a rappresentano l'inizializzazione di parametri (costanti) che servono
  * per il calcolo delle derivate e/o delle reazioni.
  */
-public class ParserEquation {
+public class ParserClassElmt {
     private static final String START_EQUATION   = "\\s+equation";
     private static final String START_ALGORITHM  = "\\s+algorithm";
     private static final String INITIAL_EQUATION = "\\s+initial equation";
@@ -45,9 +47,10 @@ public class ParserEquation {
     private static final String aEQ_EQUATION     = "\\w+\\s*=.*";
     private static final String EVENT_STRING     = "\\s+when.*";
     private static final String END_EVENT_STRING = "\\s+end when;.*";
+    private static final String INPUT_STRING     = "\\s+input.*";
     public File workingDir;
 
-    public ParserEquation(String in) {
+    public ParserClassElmt(String in) {
         assert new File(in).isDirectory(); // Controllo che l'input sia una directory.
         this.workingDir  = new File(in);
     }
@@ -246,55 +249,67 @@ public class ParserEquation {
         return null;
     }
 
+    public HashMap<String, ArrayList<String>> parseInput() throws InterruptedException {
+        HashMap<String, ArrayList<String>> inputs = new HashMap<>();
+        File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class\\_elmt\\_\\w+\\.mo"));
+        for (File stream: classElmtFiles) {
+            Thread threadPerClassElmt = new Thread(new Runnable(){
+                @Override 
+                public void run(){
+                    inputs.put(stream.getName(), parseFileIntpus(stream.getAbsolutePath()));
+                }
+            });
+            threadPerClassElmt.start();
+            threadPerClassElmt.join();
+        }
+        return inputs;
+    }
+
+    private ArrayList<String> parseFileIntpus(String filename) {
+        ArrayList<String> inputsString = new ArrayList<>();
+        try (FileReader stream = new FileReader(new File(filename))) {
+            BufferedReader buff = new BufferedReader(stream);
+            String line = buff.readLine();
+            while (line != null) {
+                if (Pattern.matches(INPUT_STRING, line)) {
+                    String[] splittedStr = line.strip().split(" ");
+                    int lenStr = splittedStr[2].length();
+                    inputsString.add(splittedStr[2].strip().substring(0, lenStr - 1));
+                }
+                line = buff.readLine();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return inputsString;
+    }
+
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx07125/";
-        /*ParserEquation p = new ParserEquation(in);
+        String xmlFile = "/home/yorunoomo/Scrivania/Tirocinio/models/BIOMD0000000125.xml";
+        
+        // Prova di funzionamento di ClassElmtFile
+        ParserClassElmt pE = new ParserClassElmt(in);
         try {
-            HashMap<String, ArrayList<? extends Equation>> equations = p.mergeEquations(
-                    p.parseEquations(),
-                    p.parseInitialEquation());
-            /*ODESystem odeSystem = new ODESystem(
-                    (ArrayList<iEquation>) equations.get("iEquations"),
-                    (ArrayList<ODE>)       equations.get("ODE")
-                    );
-            odeSystem.buildMPGOS_PerThread_String();
-            odeSystem.getOde().forEach(System.out::println);
-            System.out.println("\n");
-            System.out.println(odeSystem.getMPGOS_PerThread_OdeFunction());
-            System.out.println("\n");
-            equations.get("iEquations").forEach(System.out::println);
-            System.out.println("\n");
-            equations.get("aEquations").forEach(System.out::println);
-        } catch (InterruptedException ie) {
-            ie.printStackTrace();
-        }
+            HashMap<String, ArrayList<String>> inputLists = pE.parseInput();
+            /*String modelName = XMLModelName.getModelName(xmlFile);
+            HashMap<String, ArrayList<iEquation>> iEqs = pE.parseInitialEquation();
+            HashMap<String, ArrayList<Equation>> eEqs = pE.parseEquations();
 
-        System.out.println("\n");
-
-        ParserReaction pr = new ParserReaction(in);
-        ArrayList<Reaction> reactions = pr.buildReactionSystem();
-        ArrayList<Reactant> reactants = pr.buildReactantSystem();
-        for (Reaction r: reactions) {
-            System.out.println(r);
-        }
-        for (Reactant r: reactants) {
-            System.out.println(r);
-        }
-
-        System.out.println("\n");
-
-        ParserParameter.main(null);*/
-        ParserAlgorithm pA = new ParserAlgorithm(in);
-        try {
-            HashMap<String, ArrayList<aEquation>> result = pA.parseAlgorithm();
-            for (String fN: result.keySet()) {
+            ClassElmtFile[] classElmtFiles = new ClassElmtFile[eEqs.size()];
+            int i = 0;
+            for (String fileName: eEqs.keySet()) {
+                // Get aEquation e ODE 
+                
+            }*/
+            for (String fN: inputLists.keySet()) {
                 System.out.println(fN);
-                result.get(fN).forEach(System.out::println);
+                inputLists.get(fN).forEach(System.out::println);
+                System.out.println("\n");
             }
-        } catch (InterruptedException ie) {
-            ie.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 }

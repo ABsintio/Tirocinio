@@ -19,7 +19,8 @@ import biomodel.math.equation.ODE;
  *
  * 3. Le equazioni di assegnamento del file. Queste comprendono non solo quelle parsate da 
  * 	  ParserEquation ma anche quelle di ParseAlgorithm. Saranno necessarie per la corretta
- * 	  formulazione delle ODE.
+ * 	  formulazione delle ODE. Queste saranno divise in tre categorie: aEqs, ODEEqs e aAlg
+ * 	  parsati rispettivamente da ParserEquation e ParserAlgorithm
  */
 public class ClassElmtFile {
 	public final String nome;						// Nome del file parsato

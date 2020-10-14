@@ -8,7 +8,7 @@ import biomodel.bio.Reaction;
 import biomodel.bio.Reactant;
 import java.util.ArrayList;
 
-public class ParserReaction extends ParserEquation {
+public class ParserReaction extends ParserClassElmt {
     private String reactionFileName;
 
     public ParserReaction(String inDir) {

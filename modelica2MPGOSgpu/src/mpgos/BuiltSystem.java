@@ -30,7 +30,7 @@ public class BuiltSystem { // Costruisce il sistema di file per essere simulato 
     private void setAll() {
         ParserReaction pR = new ParserReaction(this.workingDir);
         ParserParameter pP = new ParserParameter(this.workingDir);
-        ParserEquation pE  = new ParserEquation(this.workingDir);
+        ParserClassElmt pE  = new ParserClassElmt(this.workingDir);
         this.reactions = pR.buildReactionSystem();
         this.reactants = pR.buildReactantSystem();
         this.sPAR = pP.parseParameters();
