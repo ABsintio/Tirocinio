@@ -3,21 +3,27 @@ package parser;
 import biomodel.bio.Parameter;
 import biomodel.math.equation.odes.LeftHandSide;
 import biomodel.math.equation.odes.RigthHandSide;
-
+import biomodel.math.equation.iEquation;
 import java.io.FileReader;
-import java.io.File;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class ParserParameter {
+public class ParserParameter extends ParserClassElmt {
     private static final String PARAMETER_RE = "\\s+parameter.*";
     private final String reactionsFile;
+    private final String parameterFile;
     public ParserParameter(String in) {
-        assert (new File(in)).isDirectory();
-        this.reactionsFile = (new File(in)).getAbsolutePath() + "/Reactions.mo";
+        super(in);
+        this.reactionsFile = this.workingDir.getAbsolutePath() + "/Reactions.mo";
+        this.parameterFile = this.workingDir.getAbsolutePath() + "/Parameters.mo";
     }
+    
+    /**
+     * Il metodo parseParameters parsa i parametri costanti contenuti nel file Reactions.mo
+     * @return Lista di parametri costanti
+     */
     public ArrayList<Parameter> parseParameters() {
         ArrayList<Parameter> params = new ArrayList<>();
         try (FileReader stream = new FileReader(this.reactionsFile)){
@@ -41,6 +47,14 @@ public class ParserParameter {
             io.printStackTrace();
         }
         return params;
+    }
+
+    /**
+     * Il metodo parseInitialEquations parsa le equazioni iniziali presenti nel file Parameters.mo
+     * @return 
+     */
+    public ArrayList<iEquation> parseInitialEquations() {
+        return this.parseFileInitialEquation(this.parameterFile);
     }
 
     public static void main(String[] args) {

@@ -31,20 +31,21 @@ public class ClassElmtFile {
 	private final ArrayList<ODE>	 ODEEqs;		// Lista delle equazioni differenziali parsate da ParserEquation
 	private final ArrayList<aEquation> aAlg;		// Lista delle equazioni parsate da ParserAlgorithm
 	public ClassElmtFile(
-		String name, String mon,
+		String 					mon,
+		String 					name,
 		HashMap<String, String> ins,
-		ArrayList<iEquation> ieqns,
-		ArrayList<aEquation> aeqns,
-		ArrayList<ODE>	     oeqns,
-		ArrayList<aEquation> aalg
+		ArrayList<iEquation>    ieqns,
+		ArrayList<aEquation> 	aeqns,
+		ArrayList<ODE>	     	oeqns,
+		ArrayList<aEquation> 	aalg
 	) {
 		this.modelObjectName = mon;
-		this.nome = name;
-		this.inputs = ins;
-		this.iEqs = ieqns;
-		this.aEqs = aeqns;
-		this.ODEEqs = oeqns;
-		this.aAlg = aalg;
+		this.nome   		 = name;
+		this.inputs 		 = ins;
+		this.iEqs 			 = ieqns;
+		this.aEqs 	   		 = aeqns;
+		this.ODEEqs 		 = oeqns;
+		this.aAlg 			 = aalg;
 	}
 	public HashMap<String, String> getIntpus(){ return this.inputs; }
 	public String getFileFromInput(String in){

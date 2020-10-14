@@ -1,0 +1,91 @@
+within BIOMD108;
+model model_0000001 "Kowald2006_SOD" annotation(Documentation(info="<annotation>
+  <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">
+	
+  </rdf:RDF>
+</annotation>"));
+
+    Parameters Params;
+    Reactions Reacs;
+    Class_elmt_compartment_0000001 elmt_compartment_0000001;
+
+    equation
+        Params.elmt_species_0000016 = elmt_compartment_0000001.elmt_species_0000016;
+        Params.elmt_species_0000002 = elmt_compartment_0000001.elmt_species_0000002;
+        Params.elmt_species_0000001 = elmt_compartment_0000001.elmt_species_0000001;
+        Reacs.elmt_Cu_I_ZnSOD = Params.elmt_Cu_I_ZnSOD;
+        Reacs.elmt_HO2star = Params.elmt_HO2star;
+        Reacs.elmt_species_0000011 = elmt_compartment_0000001.elmt_species_0000011;
+        Reacs.elmt_species_0000006 = elmt_compartment_0000001.elmt_species_0000006;
+        Reacs.elmt_species_0000007 = elmt_compartment_0000001.elmt_species_0000007;
+        Reacs.elmt_species_0000008 = elmt_compartment_0000001.elmt_species_0000008;
+        Reacs.elmt_species_0000009 = elmt_compartment_0000001.elmt_species_0000009;
+        Reacs.elmt_k12 = Params.elmt_k12;
+        Reacs.elmt_k11 = Params.elmt_k11;
+        Reacs.elmt_k10 = Params.elmt_k10;
+        Reacs.elmt_k13a = Params.elmt_k13a;
+        Reacs.elmt_k1 = Params.elmt_k1;
+        Reacs.elmt_k13b = Params.elmt_k13b;
+        Reacs.elmt_k19 = Params.elmt_k19;
+        Reacs.elmt_k18 = Params.elmt_k18;
+        Reacs.elmt_compartment_0000001 = elmt_compartment_0000001.elmt_compartment_0000001;
+        Reacs.elmt_k17 = Params.elmt_k17;
+        Reacs.elmt_k9 = Params.elmt_k9;
+        Reacs.elmt_k6 = Params.elmt_k6;
+        Reacs.elmt_k7 = Params.elmt_k7;
+        Reacs.elmt_species_0000002 = elmt_compartment_0000001.elmt_species_0000002;
+        Reacs.elmt_k4 = Params.elmt_k4;
+        Reacs.elmt_k5 = Params.elmt_k5;
+        Reacs.elmt_k2 = Params.elmt_k2;
+        Reacs.elmt_species_0000001 = elmt_compartment_0000001.elmt_species_0000001;
+        Reacs.elmt_k3 = Params.elmt_k3;
+        Reacs.elmt_species_0000017 = elmt_compartment_0000001.elmt_species_0000017;
+        elmt_compartment_0000001.elmt_reactant20 = Reacs.elmt_reactant20;
+        elmt_compartment_0000001.elmt_product11 = Reacs.elmt_product11;
+        elmt_compartment_0000001.elmt_reactant25 = Reacs.elmt_reactant25;
+        elmt_compartment_0000001.elmt_reactant28 = Reacs.elmt_reactant28;
+        elmt_compartment_0000001.elmt_reactant22 = Reacs.elmt_reactant22;
+        elmt_compartment_0000001.elmt_reactant23 = Reacs.elmt_reactant23;
+        elmt_compartment_0000001.elmt_fast = Reacs.elmt_fast;
+        elmt_compartment_0000001.elmt_reactant18 = Reacs.elmt_reactant18;
+        elmt_compartment_0000001.elmt_product27 = Reacs.elmt_product27;
+        elmt_compartment_0000001.elmt_product26 = Reacs.elmt_product26;
+        elmt_compartment_0000001.elmt_reactant9 = Reacs.elmt_reactant9;
+        elmt_compartment_0000001.elmt_product24 = Reacs.elmt_product24;
+        elmt_compartment_0000001.elmt_reaction_0000001 = Reacs.elmt_reaction_0000001;
+        elmt_compartment_0000001.elmt_reactant2 = Reacs.elmt_reactant2;
+        elmt_compartment_0000001.elmt_product8 = Reacs.elmt_product8;
+        elmt_compartment_0000001.elmt_reactant1 = Reacs.elmt_reactant1;
+        elmt_compartment_0000001.elmt_reactant3 = Reacs.elmt_reactant3;
+        elmt_compartment_0000001.elmt_reactant6 = Reacs.elmt_reactant6;
+        elmt_compartment_0000001.elmt_product21 = Reacs.elmt_product21;
+        elmt_compartment_0000001.elmt_reactant7 = Reacs.elmt_reactant7;
+        elmt_compartment_0000001.elmt_reaction_3 = Reacs.elmt_reaction_3;
+        elmt_compartment_0000001.elmt_reactant14 = Reacs.elmt_reactant14;
+        elmt_compartment_0000001.elmt_reaction_4 = Reacs.elmt_reaction_4;
+        elmt_compartment_0000001.elmt_reactant15 = Reacs.elmt_reactant15;
+        elmt_compartment_0000001.elmt_product0 = Reacs.elmt_product0;
+        elmt_compartment_0000001.elmt_reaction_1 = Reacs.elmt_reaction_1;
+        elmt_compartment_0000001.elmt_reaction_2 = Reacs.elmt_reaction_2;
+        elmt_compartment_0000001.elmt_reactant10 = Reacs.elmt_reactant10;
+        elmt_compartment_0000001.elmt_product5 = Reacs.elmt_product5;
+        elmt_compartment_0000001.elmt_product4 = Reacs.elmt_product4;
+        elmt_compartment_0000001.elmt_reaction_0 = Reacs.elmt_reaction_0;
+        elmt_compartment_0000001.elmt_reactant12 = Reacs.elmt_reactant12;
+        elmt_compartment_0000001.elmt_reaction_14 = Reacs.elmt_reaction_14;
+        elmt_compartment_0000001.elmt_reaction_9 = Reacs.elmt_reaction_9;
+        elmt_compartment_0000001.elmt_reaction_7 = Reacs.elmt_reaction_7;
+        elmt_compartment_0000001.elmt_reactant29 = Reacs.elmt_reactant29;
+        elmt_compartment_0000001.elmt_reaction_8 = Reacs.elmt_reaction_8;
+        elmt_compartment_0000001.elmt_reaction_5 = Reacs.elmt_reaction_5;
+        elmt_compartment_0000001.elmt_reaction_6 = Reacs.elmt_reaction_6;
+        elmt_compartment_0000001.elmt_product16 = Reacs.elmt_product16;
+        elmt_compartment_0000001.elmt_product13 = Reacs.elmt_product13;
+        elmt_compartment_0000001.elmt_reaction_12 = Reacs.elmt_reaction_12;
+        elmt_compartment_0000001.elmt_reaction_13 = Reacs.elmt_reaction_13;
+        elmt_compartment_0000001.elmt_product19 = Reacs.elmt_product19;
+        elmt_compartment_0000001.elmt_reaction_10 = Reacs.elmt_reaction_10;
+        elmt_compartment_0000001.elmt_product17 = Reacs.elmt_product17;
+        elmt_compartment_0000001.elmt_reaction_11 = Reacs.elmt_reaction_11;
+
+end model_0000001;

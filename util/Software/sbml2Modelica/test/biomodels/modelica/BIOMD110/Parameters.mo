@@ -1,0 +1,101 @@
+within BIOMD110;
+class Parameters
+
+    Real elmt_a(unit = "") "";
+    Real elmt_bi(unit = "") "";
+    Real elmt_Tau(unit = "") "";
+    Real elmt_aw(unit = "") "";
+    Real elmt_k16u(unit = "") "";
+    Real elmt_cw(unit = "") "";
+    Real elmt_k16(unit = "") "";
+    Real elmt_k15(unit = "") "";
+    Real elmt_k14(unit = "") "";
+    Real elmt_k13(unit = "") "";
+    Real elmt_k12(unit = "") "";
+    Real elmt_az(unit = "") "";
+    Real elmt_k11(unit = "") "";
+    Real elmt_k10(unit = "") "";
+    Real elmt_cz(unit = "") "";
+    Real elmt_k7u(unit = "") "";
+    Real elmt_k1(unit = "") "";
+    Real elmt_ci(unit = "") "";
+    Real elmt_k8(unit = "") "";
+    Real elmt_k9(unit = "") "";
+    Real elmt_k6(unit = "") "";
+    Real elmt_k7(unit = "") "";
+    Real elmt_k4(unit = "") "";
+    Real elmt_k5(unit = "") "";
+    Real elmt_k2(unit = "") "";
+    Real elmt_k3(unit = "") "";
+    Real elmt_ai(unit = "") "";
+    Real elmt_bw(unit = "") "";
+    Real elmt_k2u(unit = "") "";
+    Real elmt_bz(unit = "") "";
+
+
+    initial equation
+        elmt_a = 4.0;
+        elmt_bi = 0.1;
+        elmt_Tau = 25.0;
+        elmt_aw = 10.0;
+        elmt_k16u = 25.0;
+        elmt_cw = 1.0;
+        elmt_k16 = 2.0;
+        elmt_k15 = 1.0;
+        elmt_k14 = 1.0;
+        elmt_k13 = 1.0;
+        elmt_k12 = 0.0;
+        elmt_az = 10.0;
+        elmt_k11 = 1.0;
+        elmt_k10 = 10.0;
+        elmt_cz = 1.0;
+        elmt_k7u = 0.0;
+        elmt_k1 = 300.0;
+        elmt_ci = 1.0;
+        elmt_k8 = 100.0;
+        elmt_k9 = 1.0;
+        elmt_k6 = 1.0;
+        elmt_k7 = 10.0;
+        elmt_k4 = 30.0;
+        elmt_k5 = 0.1;
+        elmt_k2 = 5.0;
+        elmt_k3 = 30.0;
+        elmt_ai = 10.0;
+        elmt_bw = 0.1;
+        elmt_k2u = 50.0;
+        elmt_bz = 0.1;
+
+
+    equation
+        der(elmt_a) = 0;
+        der(elmt_bi) = 0;
+        der(elmt_Tau) = 0;
+        der(elmt_aw) = 0;
+        der(elmt_k16u) = 0;
+        der(elmt_cw) = 0;
+        der(elmt_k16) = 0;
+        der(elmt_k15) = 0;
+        der(elmt_k14) = 0;
+        der(elmt_k13) = 0;
+        der(elmt_k12) = 0;
+        der(elmt_az) = 0;
+        der(elmt_k11) = 0;
+        der(elmt_k10) = 0;
+        der(elmt_cz) = 0;
+        der(elmt_k7u) = 0;
+        der(elmt_k1) = 0;
+        der(elmt_ci) = 0;
+        der(elmt_k8) = 0;
+        der(elmt_k9) = 0;
+        der(elmt_k6) = 0;
+        der(elmt_k7) = 0;
+        der(elmt_k4) = 0;
+        der(elmt_k5) = 0;
+        der(elmt_k2) = 0;
+        der(elmt_k3) = 0;
+        der(elmt_ai) = 0;
+        der(elmt_bw) = 0;
+        der(elmt_k2u) = 0;
+        der(elmt_bz) = 0;
+
+end Parameters;

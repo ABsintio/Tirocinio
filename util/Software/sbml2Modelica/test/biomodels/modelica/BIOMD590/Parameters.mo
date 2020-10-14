@@ -1,0 +1,101 @@
+within BIOMD590;
+class Parameters
+
+    Real elmt_g_pyr(unit = "") "g_pyr";
+    Real elmt_vmax8(unit = "") "vmax8";
+    Real elmt_vmax7(unit = "") "vmax7";
+    Real elmt_bc(unit = "") "[bc]";
+    Real elmt_vmax10(unit = "") "vmax10";
+    Real elmt_K_q(unit = "") "K_q";
+    Real elmt_vmax2(unit = "") "vmax2";
+    Real elmt_asp(unit = "") "[asp]";
+    Real elmt_vmax1(unit = "") "vmax1";
+    Real elmt_vmax4(unit = "") "vmax4";
+    Real elmt_K_atp(unit = "") "K_atp";
+    Real elmt_vmax3(unit = "") "vmax3";
+    Real elmt_d(unit = "") "d";
+    Real elmt_vmax6(unit = "") "vmax6";
+    Real elmt_vmax5(unit = "") "vmax5";
+    Real elmt_K_bc(unit = "") "K_bc";
+    Real elmt_K_m10(unit = "") "K_m10";
+    Real elmt_K_Mp(unit = "") "K_Mp";
+    Real elmt_K_m8(unit = "") "K_m8";
+    Real elmt_atp(unit = "") "[atp]";
+    Real elmt_K_asp(unit = "") "K_asp";
+    Real elmt_prpp(unit = "") "[prpp]";
+    Real elmt_glu(unit = "") "[glu]";
+    Real elmt_K_m6(unit = "") "K_m6";
+    Real elmt_K_utp(unit = "") "K_utp";
+    Real elmt_K_m7(unit = "") "K_m7";
+    Real elmt_K_m4(unit = "") "K_m4";
+    Real elmt_K_m5(unit = "") "K_m5";
+    Real elmt_K_m2(unit = "") "K_m2";
+    Real elmt_K_m3(unit = "") "K_m3";
+
+
+    initial equation
+        elmt_g_pyr = 0.198306450999093;
+        elmt_vmax8 = 0.162943604164789;
+        elmt_vmax7 = 5.83104141997666;
+        elmt_bc = 1.52264278250403;
+        elmt_vmax10 = 6.55543523218919;
+        elmt_K_q = 0.05784981576165;
+        elmt_vmax2 = 2.44590712912244;
+        elmt_asp = 0.0972544685826559;
+        elmt_vmax1 = 3.61602627459517;
+        elmt_vmax4 = 91.7802875108298;
+        elmt_K_atp = 1.28940553329954;
+        elmt_vmax3 = 28.6613123782585;
+        elmt_d = 0.1;
+        elmt_vmax6 = 34.9720846528477;
+        elmt_vmax5 = 5227.49670547203;
+        elmt_K_bc = 2.3716657188714;
+        elmt_K_m10 = 0.0267841313759584;
+        elmt_K_Mp = 5.48714446027226;
+        elmt_K_m8 = 0.00435621076587497;
+        elmt_atp = 0.150650172583633;
+        elmt_K_asp = 0.168308889432487;
+        elmt_prpp = 0.181644900226225;
+        elmt_glu = 0.54620785996429;
+        elmt_K_m6 = 20.3406449182435;
+        elmt_K_utp = 1.413855257896;
+        elmt_K_m7 = 0.166382738667754;
+        elmt_K_m4 = 0.0160033122150611;
+        elmt_K_m5 = 0.0195216150005324;
+        elmt_K_m2 = 2.00489353757245;
+        elmt_K_m3 = 1.27179181717468;
+
+
+    equation
+        der(elmt_g_pyr) = 0;
+        der(elmt_vmax8) = 0;
+        der(elmt_vmax7) = 0;
+        der(elmt_bc) = 0;
+        der(elmt_vmax10) = 0;
+        der(elmt_K_q) = 0;
+        der(elmt_vmax2) = 0;
+        der(elmt_asp) = 0;
+        der(elmt_vmax1) = 0;
+        der(elmt_vmax4) = 0;
+        der(elmt_K_atp) = 0;
+        der(elmt_vmax3) = 0;
+        der(elmt_d) = 0;
+        der(elmt_vmax6) = 0;
+        der(elmt_vmax5) = 0;
+        der(elmt_K_bc) = 0;
+        der(elmt_K_m10) = 0;
+        der(elmt_K_Mp) = 0;
+        der(elmt_K_m8) = 0;
+        der(elmt_atp) = 0;
+        der(elmt_K_asp) = 0;
+        der(elmt_prpp) = 0;
+        der(elmt_glu) = 0;
+        der(elmt_K_m6) = 0;
+        der(elmt_K_utp) = 0;
+        der(elmt_K_m7) = 0;
+        der(elmt_K_m4) = 0;
+        der(elmt_K_m5) = 0;
+        der(elmt_K_m2) = 0;
+        der(elmt_K_m3) = 0;
+
+end Parameters;

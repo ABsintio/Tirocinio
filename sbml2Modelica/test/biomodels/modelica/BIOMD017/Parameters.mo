@@ -1,9 +1,0 @@
-within BIOMD017;
-class Parameters
-
-    initial equation
-
-
-    equation
-
-end Parameters;

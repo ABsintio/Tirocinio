@@ -1,0 +1,91 @@
+within BIOMD196;
+model Srividhya2006_CellCycle "Srividhya2006_CellCycle" annotation(Documentation(info="<annotation>
+	<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">
+	
+	</rdf:RDF>
+	</annotation>"));
+
+    Parameters Params;
+    Reactions Reacs;
+    Class_elmt_cell elmt_cell;
+    Class_elmt_event0 elmt_event0;
+
+    equation
+        Reacs.elmt_m = elmt_cell.elmt_m;
+        Reacs.elmt_Pre_MPF = elmt_cell.elmt_Pre_MPF;
+        Reacs.elmt_vM4 = Params.elmt_vM4;
+        Reacs.elmt_j3 = Params.elmt_j3;
+        Reacs.elmt_vM3 = Params.elmt_vM3;
+        Reacs.elmt_vM2 = Params.elmt_vM2;
+        Reacs.elmt_j4 = Params.elmt_j4;
+        Reacs.elmt_a = Params.elmt_a;
+        Reacs.elmt_vM1 = Params.elmt_vM1;
+        Reacs.elmt_j1 = Params.elmt_j1;
+        Reacs.elmt_j2 = Params.elmt_j2;
+        Reacs.elmt_Ka = Params.elmt_Ka;
+        Reacs.elmt_a4 = Params.elmt_a4;
+        Reacs.elmt_B3 = Params.elmt_B3;
+        Reacs.elmt_a2 = Params.elmt_a2;
+        Reacs.elmt_B1 = Params.elmt_B1;
+        Reacs.elmt_B2 = Params.elmt_B2;
+        Reacs.elmt_vf = Params.elmt_vf;
+        Reacs.elmt_a1 = Params.elmt_a1;
+        Reacs.elmt_x5 = elmt_cell.elmt_x5;
+        Reacs.elmt_x6 = elmt_cell.elmt_x6;
+        Reacs.elmt_x3 = elmt_cell.elmt_x3;
+        Reacs.elmt_x4 = elmt_cell.elmt_x4;
+        Reacs.elmt_x1 = elmt_cell.elmt_x1;
+        Reacs.elmt_x2 = elmt_cell.elmt_x2;
+        Reacs.elmt_Bc = Params.elmt_Bc;
+        Reacs.elmt_j1_2 = Params.elmt_j1_2;
+        Reacs.elmt_j4_2 = Params.elmt_j4_2;
+        Reacs.elmt_j3_2 = Params.elmt_j3_2;
+        Reacs.elmt_j2_2 = Params.elmt_j2_2;
+        Reacs.elmt_mu = Params.elmt_mu;
+        Reacs.elmt_tau = Params.elmt_tau;
+        Reacs.elmt_vM3_2 = Params.elmt_vM3_2;
+        Reacs.elmt_vM4_2 = Params.elmt_vM4_2;
+        Reacs.elmt_vM1_2 = Params.elmt_vM1_2;
+        Reacs.elmt_vM2_2 = Params.elmt_vM2_2;
+        Reacs.elmt_kf = Params.elmt_kf;
+        Reacs.elmt_kd = Params.elmt_kd;
+        Reacs.elmt_kc = Params.elmt_kc;
+        elmt_cell.elmt_wee1phosphorylation = Reacs.elmt_wee1phosphorylation;
+        elmt_cell.elmt_product10 = Reacs.elmt_product10;
+        elmt_cell.elmt_wee1dephosphorylation = Reacs.elmt_wee1dephosphorylation;
+        elmt_cell.elmt_reactant21 = Reacs.elmt_reactant21;
+        elmt_cell.elmt_c = Params.elmt_c;
+        elmt_cell.elmt_MPFdissociation = Reacs.elmt_MPFdissociation;
+        elmt_cell.elmt__2 = Reacs.elmt__2;
+        elmt_cell.elmt_totAPC = Params.elmt_totAPC;
+        elmt_cell.elmt_reactant9 = Reacs.elmt_reactant9;
+        elmt_cell.elmt_MPFPreMPFtransition = Reacs.elmt_MPFPreMPFtransition;
+        elmt_cell.elmt_totcdc25 = Params.elmt_totcdc25;
+        elmt_cell.elmt_totwee1 = Params.elmt_totwee1;
+        elmt_cell.elmt_PreMPFMPFtransition = Reacs.elmt_PreMPFMPFtransition;
+        elmt_cell.elmt_cyclinsythesis = Reacs.elmt_cyclinsythesis;
+        elmt_cell.elmt_product8 = Reacs.elmt_product8;
+        elmt_cell.elmt_reactant1 = Reacs.elmt_reactant1;
+        elmt_cell.elmt_cdc25phosphorylation = Reacs.elmt_cdc25phosphorylation;
+        elmt_cell.elmt_reactant4 = Reacs.elmt_reactant4;
+        elmt_cell.elmt_product23 = Reacs.elmt_product23;
+        elmt_cell.elmt_reactant5 = Reacs.elmt_reactant5;
+        elmt_cell.elmt_product20 = Reacs.elmt_product20;
+        elmt_cell.elmt_reactant7 = Reacs.elmt_reactant7;
+        elmt_cell.elmt_cyclindegradation = Reacs.elmt_cyclindegradation;
+        elmt_cell.elmt_product0 = Reacs.elmt_product0;
+        elmt_cell.elmt_reactant17 = Reacs.elmt_reactant17;
+        elmt_cell.elmt_cdc25dephosphorylation = Reacs.elmt_cdc25dephosphorylation;
+        elmt_cell.elmt_reactant11 = Reacs.elmt_reactant11;
+        elmt_cell.elmt_cellmass = Reacs.elmt_cellmass;
+        elmt_cell.elmt_product3 = Reacs.elmt_product3;
+        elmt_cell.elmt_APCdephosphorylation = Reacs.elmt_APCdephosphorylation;
+        elmt_cell.elmt_cyclincdkcomplexformation = Reacs.elmt_cyclincdkcomplexformation;
+        elmt_cell.elmt_product16 = Reacs.elmt_product16;
+        elmt_cell.elmt_product14 = Reacs.elmt_product14;
+        elmt_cell.elmt_event0 = elmt_event0.trigger;
+        elmt_event0.elmt_m = elmt_cell.elmt_m;
+        elmt_event0.elmt_x3 = elmt_cell.elmt_x3;
+
+        elmt_cell.assign_elmt_m = elmt_event0.value_elmt_m;
+end Srividhya2006_CellCycle;

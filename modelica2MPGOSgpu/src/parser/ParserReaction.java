@@ -13,11 +13,7 @@ public class ParserReaction extends ParserClassElmt {
 
     public ParserReaction(String inDir) {
         super(inDir);
-        this.setReactionFileName();
-    }
-
-    private void setReactionFileName(){
-        reactionFileName = this.workingDir.getAbsolutePath() + "/Reactions.mo";
+        this.reactionFileName = this.workingDir.getAbsolutePath() + "/Reactions.mo";
     }
 
     @SuppressWarnings("unchecked")
@@ -27,6 +23,10 @@ public class ParserReaction extends ParserClassElmt {
 
     private ArrayList<iEquation> parseInitialReactions() {
         return this.parseFileInitialEquation(this.reactionFileName);
+    }
+
+    public ArrayList<String> parseInputs() {
+        return this.parseFileIntpus(this.reactionFileName);
     }
 
     public ArrayList<Reaction> buildReactionSystem() {
@@ -42,4 +42,5 @@ public class ParserReaction extends ParserClassElmt {
         iEqs.forEach(x -> reactants.add(new Reactant(x.getLhs(), x.getRhs())));
         return reactants;
     }
+
 }

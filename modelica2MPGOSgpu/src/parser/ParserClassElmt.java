@@ -70,7 +70,7 @@ public class ParserClassElmt {
      * @throws InterruptedException Il Thread viene interrotto
      */
     public HashMap<String, ArrayList<iEquation>> parseInitialEquation() throws InterruptedException {
-        File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class\\_elmt\\_\\w+\\.mo"));
+        File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class_elmt_\\w+\\.mo"));
         HashMap<String, ArrayList<iEquation>> iEqns = new HashMap<>();
         assert classElmtFiles != null;
         for (File f: classElmtFiles) {
@@ -134,7 +134,7 @@ public class ParserClassElmt {
      * @throws InterruptedException Il Thread viene interrotto
      */
     public HashMap<String, ArrayList<Equation>> parseEquations() throws InterruptedException {
-        File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class\\_elmt\\_\\w+\\.mo"));
+        File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class_elmt_\\w+\\.mo"));
         HashMap<String, ArrayList<Equation>> eqns = new HashMap<>();
         assert classElmtFiles != null;
         for (File f: classElmtFiles) {
@@ -248,10 +248,19 @@ public class ParserClassElmt {
         }
         return null;
     }
-
+    
+    /**
+     * Il metodo parseInput() ha il compito di estrapolare da tutti i file Class_eltm_<nome>.mo
+     * gli input di quella classe. Ovviamente come negli altri casi andrà a creare un HashMap
+     * che conterrà come chiavi il nome dei file parsati e come valore un array di valori per
+     * quel file.
+     * @return Lista di tutti gli input per i rispettivi file parsati
+     * @throws InterruptedException Il Thread viene interrotto
+     */
     public HashMap<String, ArrayList<String>> parseInput() throws InterruptedException {
         HashMap<String, ArrayList<String>> inputs = new HashMap<>();
-        File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class\\_elmt\\_\\w+\\.mo"));
+        File[] classElmtFiles = this.workingDir.listFiles((dir, s) -> s.matches("Class_elmt_\\w+\\.mo"));
+        assert classElmtFiles != null;
         for (File stream: classElmtFiles) {
             Thread threadPerClassElmt = new Thread(new Runnable(){
                 @Override 
@@ -265,7 +274,13 @@ public class ParserClassElmt {
         return inputs;
     }
 
-    private ArrayList<String> parseFileIntpus(String filename) {
+    /** 
+     * Il metodo parseFileIntpus è il metodo che effettivamente esegue il lavoro di parsing
+     * su di un singolo file. Essenzialmente riconosce quali righe dei file .mo specificano
+     * gli input e mano a mano inserire tutte quelle trovate in una lista ritornandola.
+     * @return Lista di tutti gli input per un singolo file
+     */
+    public ArrayList<String> parseFileIntpus(String filename) {
         ArrayList<String> inputsString = new ArrayList<>();
         try (FileReader stream = new FileReader(new File(filename))) {
             BufferedReader buff = new BufferedReader(stream);
@@ -286,18 +301,20 @@ public class ParserClassElmt {
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MBIOMDx07125/";
+        String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MResult/S2MBIOMDx07125/";
         String xmlFile = "/home/yorunoomo/Scrivania/Tirocinio/models/BIOMD0000000125.xml";
         
         // Prova di funzionamento di ClassElmtFile
         ParserClassElmt pE = new ParserClassElmt(in);
+        ParserAlgorithm pA = new ParserAlgorithm(in);
         try {
-            HashMap<String, ArrayList<String>> inputLists = pE.parseInput();
-            /*String modelName = XMLModelName.getModelName(xmlFile);
-            HashMap<String, ArrayList<iEquation>> iEqs = pE.parseInitialEquation();
-            HashMap<String, ArrayList<Equation>> eEqs = pE.parseEquations();
+            HashMap<String, ArrayList<String>> inputLists = pE.parseInput();            // Inputs
+            String modelName = XMLModelName.getModelName(xmlFile);                      // Model Object Name
+            HashMap<String, ArrayList<iEquation>> iEqs    = pE.parseInitialEquation();  // iEquations
+            HashMap<String, ArrayList<Equation>> eEqs     = pE.parseEquations();        // aEquation + ODE
+            HashMap<String, ArrayList<aEquation>> aAlg    = pA.parseAlgorithm();        // aAlgorithm
 
-            ClassElmtFile[] classElmtFiles = new ClassElmtFile[eEqs.size()];
+            /*ClassElmtFile[] classElmtFiles = new ClassElmtFile[eEqs.size()];
             int i = 0;
             for (String fileName: eEqs.keySet()) {
                 // Get aEquation e ODE 

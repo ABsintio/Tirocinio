@@ -1,0 +1,101 @@
+within BIOMD100;
+class Parameters
+
+    Real elmt_K1(unit = "") "";
+    Real elmt_p(unit = "") "";
+    Real elmt_m(unit = "") "";
+    Real elmt_n(unit = "") "";
+    Real elmt_Ka5(unit = "m-3.0.") "";
+    Real elmt_Ky(unit = "m-3.0.") "";
+    Real elmt_Ka6(unit = "m-3.0.") "";
+    Real elmt_Vm5(unit = "m-3.0..s-1.0") "";
+    Real elmt_Vpm2(unit = "s-1.0") "";
+    Real elmt_Vm3(unit = "m-3.0..s-1.0") "";
+    Real elmt_Ka1(unit = "m-3.0.") "";
+    Real elmt_Vm2(unit = "m-3.0..s-1.0") "";
+    Real elmt_K5(unit = "m-3.0.") "";
+    Real elmt_Ka2(unit = "m-3.0.") "";
+    Real elmt_K2(unit = "m-3.0.") "";
+    Real elmt_Ka(unit = "m-3.0.") "";
+    Real elmt_Vpm1(unit = "s-1.0") "";
+    Real elmt_v1(unit = "m-3.0..s-1.0") "";
+    Real elmt_Kf(unit = "s-1.0") "";
+    Real elmt_Kp2(unit = "") "";
+    Real elmt_epsilon(unit = "s-1.0") "";
+    Real elmt_Kd(unit = "m-3.0.") "";
+    Real elmt_alpha(unit = "") "";
+    Real elmt_v0(unit = "m-3.0..s-1.0") "";
+    Real elmt_beta(unit = "") "";
+    Real elmt_K(unit = "s-1.0") "";
+    Real elmt_G(unit = "m-3.0.") "";
+    Real elmt_Kz(unit = "m-3.0.") "";
+    Real elmt_gamma(unit = "") "";
+    Real elmt_V4(unit = "m-3.0..s-1.0") "";
+
+
+    initial equation
+        elmt_K1 = 0.1;
+        elmt_p = 2.0;
+        elmt_m = 2.0;
+        elmt_n = 4.0;
+        elmt_Ka5 = 0.5;
+        elmt_Ky = 0.2;
+        elmt_Ka6 = 0.5;
+        elmt_Vm5 = 30.0;
+        elmt_Vpm2 = 0.6;
+        elmt_Vm3 = 20.0;
+        elmt_Ka1 = 10000.0;
+        elmt_Vm2 = 6.0;
+        elmt_K5 = 1.0;
+        elmt_Ka2 = 10000.0;
+        elmt_K2 = 0.1;
+        elmt_Ka = 0.2;
+        elmt_Vpm1 = 1.5;
+        elmt_v1 = 2.0;
+        elmt_Kf = 1.0;
+        elmt_Kp2 = 0.2;
+        elmt_epsilon = 0.1;
+        elmt_Kd = 0.4;
+        elmt_alpha = 9.0;
+        elmt_v0 = 2.0;
+        elmt_beta = 0.5;
+        elmt_K = 10.0;
+        elmt_G = 10000.0;
+        elmt_Kz = 0.5;
+        elmt_gamma = 9.0;
+        elmt_V4 = 2.0;
+
+
+    equation
+        der(elmt_K1) = 0;
+        der(elmt_p) = 0;
+        der(elmt_m) = 0;
+        der(elmt_n) = 0;
+        der(elmt_Ka5) = 0;
+        der(elmt_Ky) = 0;
+        der(elmt_Ka6) = 0;
+        der(elmt_Vm5) = 0;
+        der(elmt_Vpm2) = 0;
+        der(elmt_Vm3) = 0;
+        der(elmt_Ka1) = 0;
+        der(elmt_Vm2) = 0;
+        der(elmt_K5) = 0;
+        der(elmt_Ka2) = 0;
+        der(elmt_K2) = 0;
+        der(elmt_Ka) = 0;
+        der(elmt_Vpm1) = 0;
+        der(elmt_v1) = 0;
+        der(elmt_Kf) = 0;
+        der(elmt_Kp2) = 0;
+        der(elmt_epsilon) = 0;
+        der(elmt_Kd) = 0;
+        der(elmt_alpha) = 0;
+        der(elmt_v0) = 0;
+        der(elmt_beta) = 0;
+        der(elmt_K) = 0;
+        der(elmt_G) = 0;
+        der(elmt_Kz) = 0;
+        der(elmt_gamma) = 0;
+        der(elmt_V4) = 0;
+
+end Parameters;
