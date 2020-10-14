@@ -8,5 +8,5 @@ public enum Constant {
     PI(Math.PI),
     EPSILON(2.2204E-16),
     ETA(1.0E-4);
-    Constant(double x){};
+    Constant(double x){}
 }
