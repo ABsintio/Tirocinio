@@ -24,14 +24,12 @@ import biomodel.math.equation.ODE;
  */
 public class ClassElmtFile {
 	public final String nome;						// Nome del file parsato
-	public final String modelObjectName;			// Nome che compare nel file che collega tutti i componenti
 	private final HashMap<String, String> inputs;	// Coppia (input, fileName)
 	private final ArrayList<iEquation> iEqs; 		// Lista di equazioni iniziali parsate da ParserEquation
 	private final ArrayList<aEquation> aEqs;		// Lista delle equazioni parsate da ParserEquation
 	private final ArrayList<ODE>	 ODEEqs;		// Lista delle equazioni differenziali parsate da ParserEquation
 	private final ArrayList<aEquation> aAlg;		// Lista delle equazioni parsate da ParserAlgorithm
 	public ClassElmtFile(
-		String 					mon,
 		String 					name,
 		HashMap<String, String> ins,
 		ArrayList<iEquation>    ieqns,
@@ -39,7 +37,6 @@ public class ClassElmtFile {
 		ArrayList<ODE>	     	oeqns,
 		ArrayList<aEquation> 	aalg
 	) {
-		this.modelObjectName = mon;
 		this.nome   		 = name;
 		this.inputs 		 = ins;
 		this.iEqs 			 = ieqns;

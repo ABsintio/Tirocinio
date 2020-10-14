@@ -1,14 +1,12 @@
 package parser;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import java.util.ArrayList;
 import util.XMLModelName;
+import util.Tuple;
 
 /**
  * La classe ParserModelRelationship, come dice anche il nome, serve per tracciare le relazioni
@@ -22,6 +20,7 @@ import util.XMLModelName;
  */
 public class ParserModelRelationship {
     private static final String START_EQUATION     = "\\s+equation";
+    private static final String END_FILE           = "end\\s*\\S+";
     private static final String REACTION_FILE      = "\\s+Reactions.*";
     private static final String PARAMETER_FILE     = "\\s+Parameters.*";
     private static final String CLASS_ELMT_FILE    = "\\s+Class_elmt_.*";
@@ -66,7 +65,7 @@ public class ParserModelRelationship {
                 {
                     String[] splittedStr = line.strip().split("\\s");
                     int lenSeconStr = splittedStr[1].strip().length();
-                    varNames.put(splittedStr[0].strip(), splittedStr[1].substring(0, lenSeconStr - 1).strip());
+                    varNames.put(splittedStr[1].substring(0, lenSeconStr - 1).strip(), splittedStr[0].strip());
                 }
                 line = buff.readLine();
             }
@@ -76,6 +75,61 @@ public class ParserModelRelationship {
         return varNames;
     }
 
+    /**
+     * Il metodo getClassVarsDependencies permette di risolvere il secondo sottoproblema. Tramite
+     * tale metodo possiamo ottenere tutte le dipendenze presenti tra le variabili dei diversi
+     * file contenuti nella directory dove abbiamo memorizzato i risultato della conversione S2M.
+     * Le dipendenze ritornate dalla funzione sono sottoforma di HashMap di un HashMap. La chiave
+     * del "dizionario" più esterno è la classe alla quale appartengono quelle variabili, che è
+     * anche il nome del file che contiene la classe (una grande facilitazione), Il valore associato
+     * ad una specifica chiave è un'ulteriore mapping tra il nome della variabile del file ed una
+     * istanza dell'oggetto Tupla che contiene le informazioni rispettivamente della variabile da
+     * cui la chiave prende il valore in input ed il file/classe che contiene la seconda variabile.
+     * In pratica possiamo dire che la struttura del HashMap di ritorno sarà del tipo
+     * {
+     *     <filename/classname_x> : {
+     *         <varname_x> : Tuple(<varname_y>, <filename/classname_y>)
+     *         ...
+     *     }
+     *     ...
+     * }
+     * @return Una Mapping dettagliato delle dipendeze tra i file Modelica del modello.
+     */
+    public HashMap<String, HashMap<String, Tuple>> getClassVarsDepencies() {
+        HashMap<String, HashMap<String, Tuple>> varsDep = new HashMap<>();
+        HashMap<String, String> varnames = this.getVarNameFromFilenameDefinitions();
+        try (FileReader stream = new FileReader(new File(this.modelName))){
+            BufferedReader buff = new BufferedReader(stream);
+            String line = buff.readLine();
+            boolean start = false, end = false;
+            while (line != null && !end) {
+                if (Pattern.matches(START_EQUATION, line)) start = true;
+                else if (Pattern.matches(END_FILE, line)) end = true;
+                if (start && !end && !line.contains("equation") && !line.equals("")) {
+                    String[] splittedStr = line.strip().split("=");
+                    int lenSecondStr = splittedStr[1].length();
+                    String[] splittedLhs = splittedStr[0].strip().split("\\.");
+                    String[] splittedRhs = splittedStr[1].substring(0, lenSecondStr - 1).strip().split("\\.");
+                    String filenameLhs   = varnames.get(splittedLhs[0].strip());
+                    String varLhs        = splittedLhs[1].strip();
+                    String filenameRhs   = varnames.get(splittedRhs[0].strip());
+                    String varRhs        = splittedRhs[1].strip();
+                    if (varsDep.containsKey(filenameLhs)) {
+                        varsDep.get(filenameLhs).put(varLhs, new Tuple(filenameRhs, varRhs));
+                    } else {
+                        varsDep.put(filenameLhs, new HashMap<>(){{
+                            put(varLhs, new Tuple(filenameLhs, varRhs));
+                        }});
+                    }
+                }
+                line = buff.readLine();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return varsDep;
+    }
+
     public static void main(String[] args) {
         String in  = "/home/yorunoomo/Scrivania/Tirocinio/S2MResult/S2MBIOMDx07125/";
         String xmlFile = "/home/yorunoomo/Scrivania/Tirocinio/models/BIOMD0000000125.xml";
@@ -83,6 +137,16 @@ public class ParserModelRelationship {
         HashMap<String, String> varNames = pMR.getVarNameFromFilenameDefinitions();
         for (String filename: varNames.keySet()) {
             System.out.println(filename + " " + varNames.get(filename));
+        }
+        System.out.println("\n");
+        HashMap<String, HashMap<String, Tuple>> result = pMR.getClassVarsDepencies();
+        for (String f: result.keySet()) {
+            System.out.println("-> " + f);
+            HashMap<String, Tuple> hashMap = result.get(f);
+            for (String s: hashMap.keySet()) {
+                Tuple t = hashMap.get(s);
+                System.out.println(s + " -> ( " + t.getX() + ", " + t.getY() + " )");
+            }
         }
     }
 }
