@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 import re
 
 INIT_EQ = r"\w+\.*\w+\s*=\s*\d+\.\d+"
-ODE_EQ  = r"der[(].*[)]\s*=.*[(+*)-]+"
+EQ  = r"(der[(].*[)]|\w+\.*\w+)\s*=.*[(+*)-]+"
 
 class Parser:
 	def __init__(self, xml_filename):
@@ -50,7 +50,7 @@ class Parser:
 			text = child.text.strip()
 			if re.match(INIT_EQ, text):
 				self.initeqs.append(text)
-			elif re.match(ODE_EQ, text):
+			elif re.match(EQ, text):
 				self.ode.append(text)
 
 	def parsealgorithms(self):
