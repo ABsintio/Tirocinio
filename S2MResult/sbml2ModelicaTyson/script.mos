@@ -1,0 +1,13 @@
+loadModel(Modelica);
+
+loadFile("package.mo"); 
+loadFile("BIOMD0000000005.mo"); 
+
+loadFile("Class_elmt_cell.mo");
+loadFile("Constants.mo"); 
+loadFile("Functions.mo"); 
+loadFile("Parameters.mo"); 
+
+//dumpXMLDAE(sbml2ModelicaTyson.BIOMD0000000005, translationLevel="backEnd"); // genera un xml con equazioni human-friendly
+
+dumpXMLDAE(sbml2ModelicaTyson.BIOMD0000000005, translationLevel="backEnd",addMathMLCode=true);getErrorString(); // genera le equazioni in formato MathML, sicuramente piu' facile da parsare
