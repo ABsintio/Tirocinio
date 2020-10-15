@@ -1,4 +1,8 @@
 import xml.etree.ElementTree as ET
+import re
+
+INIT_EQ = r"\w+\.*\w+\s*=\s*\d+\.\d+"
+ODE_EQ  = r"der[(].*[)]\s*=.*[(+*)-]+"
 
 class Parser:
 	def __init__(self, xml_filename):
@@ -6,7 +10,8 @@ class Parser:
 		self.root = ET.parse(xml_filename).getroot()
 		self.varswithbind = []
 		self.varswithoutbind = []
-		self.eqs = []
+		self.initeqs = []
+		self.ode = []
 		self.algs = []
 
 	def __str__(self):
@@ -18,8 +23,11 @@ class Parser:
 		for var in self.varswithbind:
 			x, y = var
 			string += "\t\t{} -> {}\n".format(str(x), str(y))
-		string += "\t}, Equations: {\n"
-		for eq in self.eqs:
+		string += "\t}, Initial Equations: {\n"
+		for eq in self.initeqs:
+			string += "\t\t{}\n".format(str(eq))
+		string += "\t}, ODE: {\n"
+		for eq in self.ode:
 			string += "\t\t{}\n".format(str(eq))
 		string += "\t}, Algorithms: {\n"
 		for alg in self.algs:
@@ -39,7 +47,11 @@ class Parser:
 
 	def parseequations(self):
 		for child in self.root.iter("equation"):
-			self.eqs.append(child.text.strip()[:-1])
+			text = child.text.strip()
+			if re.match(INIT_EQ, text):
+				self.initeqs.append(text)
+			elif re.match(ODE_EQ, text):
+				self.ode.append(text)
 
 	def parsealgorithms(self):
 		for child in self.root.iter("algorithm"):
