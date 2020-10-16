@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import re
+from typing import List
 
 
 #--------------------------# DEFIINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
@@ -80,9 +81,21 @@ template <class Precision> __forceinline__ __device__ void PerThread_Finalizatio
 				           						   
 
 class Var:
-	def __init__(self, nome, initvalue=None):
+	""" Classe che descrive una variabile qualsiasi, con nome, valore e valoreiniziale se esiste """
+	def __init__(self, nome:str, value:str, initvalue=None):
 		self.nome = nome
+		self.value = value
 		self.init = initvalue
+
+	def __str__(self) -> str:
+		string = f"{self.nome}(value={self.value}, iValue={self.init})"
+		return string
+
+	@staticmethod
+	def forEach(l:List[any], func) -> None:
+		for x in l:
+			func(x)
+
 
 class ACC(Var):
 	"""
@@ -91,8 +104,9 @@ class ACC(Var):
 	memorizzate molte informazioni quali traiettorie o altri dati
 	senza doverli salvare ogni volta nel dense output.
 	"""
-	def __init__(self, nome, initvalue):
-		super().__init__(nome, initvalue)
+	def __init__(self, nome, value, initvalue):
+		super().__init__(nome, value, initvalue)
+
 
 class sPAR(Var):
 	"""
@@ -100,8 +114,9 @@ class sPAR(Var):
 	Essi sono principalmente parametri costanti che non variano 
 	durante la simulazione, oppure tra diverse simulazioni. 
 	"""
-	def __init__(self, nome, initvalue):
-		super().__init__(nome, initvalue)
+	def __init__(self, nome, value, initvalue):
+		super().__init__(nome, value, initvalue)
+
 
 class cPAR(Var):
 	"""
@@ -111,13 +126,14 @@ class cPAR(Var):
 	all'interno del range nel quale sono definit. Solitamente hanno un 
 	massimo e un minimo valore che non possono oltrepassare.
 	"""
-	def __init__(self, nome, initvalue):
-		super().__init__(nome, initvalue)
+	def __init__(self, nome, value, initvalue):
+		super().__init__(nome, value, initvalue)
+
 
 class X(Var):
 	""" X è una classe che rappresenta le variabili delle ODE. """
-	def __init__(self, nome, initvalue):
-		super().__init__(nome, initvalue)
+	def __init__(self, nome, value, initvalue):
+		super().__init__(nome, value, initvalue)
 
 
 #--------------------------# DEFINIZIONE DEL PARSER PER ESTRAPOLARE DALL'XML IL SISTEMA DI ODE # --------------------------#
@@ -134,7 +150,7 @@ class Parser:
 		self.algs = []
 		self.equation = []
 
-	def __str__(self):
+	def __str__(self) -> str:
 		string = self.modelname + "( \n"
 		string += "\tVariables (No bindExpression): {\n"
 		for var in self.varswithoutbind:
@@ -158,7 +174,7 @@ class Parser:
 		string += "\t}\n)"
 		return string
 
-	def parsevar(self):
+	def parsevar(self) -> None:
 		for child in self.root.iter("variable"):
 			t = [child.attrib['name'], None]
 			for iter in child.iter("bindExpression"):
@@ -168,7 +184,7 @@ class Parser:
 			else:
 				self.varswithbind.append(tuple(t))
 
-	def parseequations(self):
+	def parseequations(self) -> None:
 		for child in self.root.iter("equation"):
 			text = child.text.strip()
 			if re.match(INIT_EQ, text):
@@ -178,18 +194,18 @@ class Parser:
 			elif re.match(EQ_EQ, text):
 				self.equation.append(text)
 
-	def parsealgorithms(self):
+	def parsealgorithms(self) -> None:
 		for child in self.root.iter("algorithm"):
 			text = child.text.replace("algorithm", "").replace(" ", "").strip()
 			for subtext in text.split("\n"):
 				self.algs.append(subtext.strip()[:-1])
 
-	def parse(self):
+	def parse(self) -> None:
 		self.parsevar()
 		self.parseequations()
 		self.parsealgorithms()
 
-	def createACC(self):
+	def createACC(self) -> List[ACC]:
 		"""
 		Prende la parte sinistra do quello che ha parsato 
 		ed inserito nella variabile degli algoritmi e crea
@@ -199,9 +215,62 @@ class Parser:
 		eseguite in un vero e proprio parallelismo, per questo
 		l'aggiornamento delle variabili 
 		""" 
+		accs = []
+		for alg in self.algs:
+			splittedAlg = alg.split(":=")
+			# Non è detto che l'algoritmo è della forma x := y
+			# ma questo implica anche il fatto che non sia un
+			# algoritmo. Dal momento che nell'XML sono formattati in questo modo
+			try:
+				lhs = splittedAlg[0].strip()
+				rhs = splittedAlg[1].strip()
+				ieqs = list(filter(lambda x: x.split("=")[0].strip() == lhs, self.initeqs))[0]
+				acc = ACC(lhs, rhs, ieqs.split("=")[1].strip())
+				accs.append(acc)
+			except IndexError as ie:
+				pass
+
+		return accs
+	
+	def create_sPAR(self) -> List[sPAR]:
+		"""
+		Prende tutte le equazioni iniziali e considera solo quelle 
+		la cui parte sinistra non compare in alcuna equazione o algoritmo.
+		Ossia prende tutte quelle il cui valore rimane costante per 
+		tutto il tempo della simulazione e nelle varie simulazioni. 
+		"""
+		def check_contains_ieq_in_eq(ieq, eqs, algs):
+			"""
+			Controlla se la parte sinitra di ieq appare com
+			parte sinitra di un altra equazione presente nella sezione
+			delle equazioni oppure degli algoritmi.
+			:param str ieq: parte sinitra di una equazione iniziale 
+			:param List[str] eqs: insieme di equazioni
+			:param List[str] algs: insieme di equazioni della sezione algorithm
+			:return: true / false
+			"""
+			feqs = lambda x: ieq in x.split("=")[0].strip()
+			falg = lambda x: ieq == x.split(":=")[0].strip()
+			return any(list(map(lambda x: feqs(x), eqs))) or any(list(map(lambda x: falg(x), algs)))
+
+		spars = []
+		for ieq in self.initeqs:
+			try:
+				splittedIEQ = ieq.split("=")
+				lhs = splittedIEQ[0].strip()
+				rhs = splittedIEQ[1].strip()
+				if not check_contains_ieq_in_eq(lhs, self.ode + self.equation, self.algs):
+					spars.append(sPAR(lhs, rhs, None))
+			except IndexError as ie:
+				pass
+		
+		return spars
 
 
 if __name__ == "__main__":
 	p = Parser("S2MBIOMDx07125.model_0000001.xml")
 	p.parse()
-	print(p)
+	spars = p.create_sPAR()
+	accs  = p.createACC()
+	Var.forEach(spars, print)
+	Var.forEach(accs,  print)
