@@ -123,7 +123,7 @@ class cPAR(Var):
 	A differenza dei parametri condivisi, i parametri di controllo
 	hanno la principale capacità di cambiare nel corso delle simulazioni
 	di modo da dirigere la traiettoria del sistema in qualunque direzione
-	all'interno del range nel quale sono definit. Solitamente hanno un 
+	all'interno del range nel quale sono definiti. Solitamente hanno un 
 	massimo e un minimo valore che non possono oltrepassare.
 	"""
 	def __init__(self, nome, value, initvalue):
@@ -224,8 +224,9 @@ class Parser:
 			try:
 				lhs = splittedAlg[0].strip()
 				rhs = splittedAlg[1].strip()
-				ieqs = list(filter(lambda x: x.split("=")[0].strip() == lhs, self.initeqs))[0]
-				acc = ACC(lhs, rhs, ieqs.split("=")[1].strip())
+				f = lambda x: x.split("=")[0].strip() == lhs
+				ieqs = list(filter(lambda x: f(x), self.initeqs))
+				acc = ACC(lhs, rhs, ieqs[0].split("=")[1].strip() if ieqs else rhs)
 				accs.append(acc)
 			except IndexError as ie:
 				pass
@@ -241,8 +242,8 @@ class Parser:
 		"""
 		def check_contains_ieq_in_eq(ieq, eqs, algs):
 			"""
-			Controlla se la parte sinitra di ieq appare com
-			parte sinitra di un altra equazione presente nella sezione
+			Controlla se la parte sinistra di ieq appare com
+			parte sinitra di un'altra equazione presente nella sezione
 			delle equazioni oppure degli algoritmi.
 			:param str ieq: parte sinitra di una equazione iniziale 
 			:param List[str] eqs: insieme di equazioni
@@ -266,11 +267,46 @@ class Parser:
 		
 		return spars
 
+	def create_cPAR(self):
+		"""
+		I parametri cPAR sono quelli che cambiano nel tempo e di conseguenza
+		li andiamo a prendere nella sezione equation, ma che non siano le 
+		equazioni differenziali, ma le aEquation ossia le equazioni di associazione.
+		"""
+		cpars = []
+		for eq in self.equation:
+			splittedEQ = eq.split("=")
+			lhs = splittedEQ[0].strip()
+			rhs = splittedEQ[1].strip()
+			
+
+	def createX(self):
+		"""
+		Crea il vettore delle variabili che compaiono nella parte sinistra
+		delle equazioni differenziali. Queste verranno prese nella lista
+		delle ODE parsate dall'XML precedentemente
+		"""
+		xs = []
+		for ode in self.ode:
+			splittedODE = ode.split("=")
+			lhs = splittedODE[0].strip().split("(")[-1].split(")")[0].strip()
+			rhs = splittedODE[1].strip()
+			# Prendo il valore iniziale, se esiste,
+			# della variabile da derivare
+			initvalue = 0.0
+			for ieqs in self.initeqs:
+				if lhs in ieqs: initvalue = ieqs.split("=")[1].strip()
+			xs.append(X(lhs, rhs, initvalue))
+		
+		return xs
+
 
 if __name__ == "__main__":
-	p = Parser("S2MBIOMDx07125.model_0000001.xml")
+	p = Parser("./S2MBIOMDx07125/S2MBIOMDx07125.model_0000001.xml")
 	p.parse()
 	spars = p.create_sPAR()
 	accs  = p.createACC()
+	xs    = p.createX()
 	Var.forEach(spars, print)
 	Var.forEach(accs,  print)
+	Var.forEach(xs,    print)
