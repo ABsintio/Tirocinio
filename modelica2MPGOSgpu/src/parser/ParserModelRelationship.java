@@ -118,7 +118,7 @@ public class ParserModelRelationship {
                         varsDep.get(filenameLhs).put(varLhs, new Tuple(filenameRhs, varRhs));
                     } else {
                         varsDep.put(filenameLhs, new HashMap<>(){{
-                            put(varLhs, new Tuple(filenameLhs, varRhs));
+                            put(varLhs, new Tuple(filenameRhs, varRhs));
                         }});
                     }
                 }

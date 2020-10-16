@@ -1,12 +1,133 @@
 import xml.etree.ElementTree as ET
 import re
 
+				           ####################################################################
+#--------------------------# DEFIINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
+				           ####################################################################
+
+
 INIT_EQ = r"\w+\.*\w+\s*=\s*\d+\.\d+"
-EQ  = r"(der[(].*[)]|\w+\.*\w+)\s*=.*[(+*)-]+"
+ODE_EQ  = r"der[(].*[)]\s*=.*[(+*)-]+"
+EQ_EQ   = r"\w+\.*\w+\s*=.*[(+*)-]+"
+
+
+				           ####################################################################
+#--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#
+				           ####################################################################
+
 
 MPGOS_PerThread_OdeFunction = """
-Da completare
+template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
+	int tid, int NT, \\
+	Precision*    F, Precision*    X, Precision     T, \\
+	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
+) {
+%s
+}
 """
+
+MPGOS_PerThread_EventFunction = """
+template<class Precision> __forceinline__ __device__ void PerThread_EventFunction(
+	int tid, int NT, Precision*	  EF, \\
+	Precision     T, Precision    dT, Precision    TD, Precision*	X, \\
+	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
+) {
+%s
+}
+"""
+
+MPGOS_PerThread_ActionAfterEventDetection = """
+template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterEventDetection(
+    int tid, int NT, int IDX, int& UDT, \\
+    Precision    &T, Precision   &dT, Precision*    TD, Precision*   X, \\
+    Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
+) {
+%s
+}
+"""
+
+MPGOS_PerThread_ActionAfterSuccessfulTimeStep = """
+template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterSuccessfulTimeStep(
+    int tid, int NT, int& UDT, \\
+    Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \\
+    Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
+) {
+%s
+}
+"""
+
+MPGOS_PerThread_Initialization = """
+template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
+    int tid, int NT, int& DOIDX, \\
+    Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \\
+    Precision* cPAR, Precision* sPAR,       int* sPARi, Precision* ACC, int* ACCi
+) {
+    T     = TD[0];
+    DOIDX = 0;
+%s
+}
+"""
+
+MPGOS_PerThread_Finalization = """
+template <class Precision> __forceinline__ __device__ void PerThread_Finalization(
+    int tid, int NT, int& DOIDX, \\
+    Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \\
+    Precision* cPAR, Precision* sPAR,       int* sPARi, Precision* ACC, int* ACCi
+) {
+%s	
+}
+"""
+
+				           ####################################################################
+#--------------------------# DEFINIZIONE DI PARAMETRI E DELLE VARIABILI NECESSARIE AD MPGOS   # --------------------------#
+				           ####################################################################
+
+class Var:
+	def __init__(self, nome, initvalue=None):
+		self.nome = nome
+		self.init = initvalue
+
+class ACC(Var):
+	"""
+	Parametri programmabili dall'utente e multi-purpose. Sono
+	molto efficienti dal momento che tramite essi possono essere
+	memorizzate molte informazioni quali traiettorie o altri dati
+	senza doverli salvare ogni volta nel dense output.
+	"""
+	def __init__(self, nome, initvalue):
+		super().__init__(nome, initvalue)
+
+class sPAR(Var):
+	"""
+	Sono i parametri condivisi tra l'host (CPU) e il device (GPU).
+	Essi sono principalmente parametri costanti che non variano 
+	durante la simulazione, oppure tra diverse simulazioni. 
+	"""
+	def __init__(self, nome, initvalue):
+		super().__init__(nome, initvalue)
+
+class cPAR(Var):
+	"""
+	A differenza dei parametri condivisi, i parametri di controllo
+	hanno la principale capacità di cambiare nel corso delle simulazioni
+	di modo da dirigere la traiettoria del sistema in qualunque direzione
+	all'interno del range nel quale sono definit. Solitamente hanno un 
+	massimo e un minimo valore che non possono oltrepassare.
+	"""
+	def __init__(self, nome, initvalue):
+		super().__init__(nome, initvalue)
+
+class X(Var):
+	""" X è una classe che rappresenta le variabili delle ODE. """
+	def __init__(self, nome, initvalue):
+		super().__init__(nome, initvalue)
+
+
+				           #####################################################################
+#--------------------------# DEFINIZIONE DEL PARSER PER ESTRAPOLARE DALL'XML IL SISTEMA DI ODE # --------------------------#
+				           #####################################################################
+
+
 
 class Parser:
 	def __init__(self, xml_filename):
@@ -18,7 +139,6 @@ class Parser:
 		self.ode = []
 		self.algs = []
 		self.equation = []
-
 
 	def __str__(self):
 		string = self.modelname + "( \n"
@@ -59,11 +179,10 @@ class Parser:
 			text = child.text.strip()
 			if re.match(INIT_EQ, text):
 				self.initeqs.append(text)
-			elif re.match(EQ, text):
-				if text.startswith("der("):
+			elif re.match(ODE_EQ, text):
 					self.ode.append(text)
-				else:
-					self.equation.append(text)
+			elif re.match(EQ_EQ, text):
+				self.equation.append(text)
 
 	def parsealgorithms(self):
 		for child in self.root.iter("algorithm"):
@@ -75,6 +194,18 @@ class Parser:
 		self.parsevar()
 		self.parseequations()
 		self.parsealgorithms()
+
+	def createACC(self):
+		"""
+		Prende la parte sinistra do quello che ha parsato 
+		ed inserito nella variabile degli algoritmi e crea
+		diverse istanze della classe ACC. Il motivo principale
+		è che gli algoritmi in Modelica vengono eseguiti in 
+		sequenza e dopo le equazioni, che a differenza sono
+		eseguite in un vero e proprio parallelismo, per questo
+		l'aggiornamento delle variabili 
+		""" 
+
 
 if __name__ == "__main__":
 	p = Parser("S2MBIOMDx07125.model_0000001.xml")
