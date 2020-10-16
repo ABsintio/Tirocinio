@@ -4,6 +4,10 @@ import re
 INIT_EQ = r"\w+\.*\w+\s*=\s*\d+\.\d+"
 EQ  = r"(der[(].*[)]|\w+\.*\w+)\s*=.*[(+*)-]+"
 
+MPGOS_PerThread_OdeFunction = """
+Da completare
+"""
+
 class Parser:
 	def __init__(self, xml_filename):
 		self.modelname = xml_filename.split(".")[-2]
@@ -13,6 +17,8 @@ class Parser:
 		self.initeqs = []
 		self.ode = []
 		self.algs = []
+		self.equation = []
+
 
 	def __str__(self):
 		string = self.modelname + "( \n"
@@ -28,6 +34,9 @@ class Parser:
 			string += "\t\t{}\n".format(str(eq))
 		string += "\t}, ODE: {\n"
 		for eq in self.ode:
+			string += "\t\t{}\n".format(str(eq))
+		string += "\t}, Equation: {\n"
+		for eq in self.equation:
 			string += "\t\t{}\n".format(str(eq))
 		string += "\t}, Algorithms: {\n"
 		for alg in self.algs:
@@ -51,7 +60,10 @@ class Parser:
 			if re.match(INIT_EQ, text):
 				self.initeqs.append(text)
 			elif re.match(EQ, text):
-				self.ode.append(text)
+				if text.startswith("der("):
+					self.ode.append(text)
+				else:
+					self.equation.append(text)
 
 	def parsealgorithms(self):
 		for child in self.root.iter("algorithm"):
