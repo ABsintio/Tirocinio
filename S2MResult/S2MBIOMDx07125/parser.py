@@ -1,20 +1,17 @@
 import xml.etree.ElementTree as ET
 import re
 
-				           ####################################################################
+
 #--------------------------# DEFIINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
-				           ####################################################################
 
 
 INIT_EQ = r"\w+\.*\w+\s*=\s*\d+\.\d+"
 ODE_EQ  = r"der[(].*[)]\s*=.*[(+*)-]+"
 EQ_EQ   = r"\w+\.*\w+\s*=.*[(+*)-]+"
 
-
-				           ####################################################################
+				           
 #--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#
-				           ####################################################################
-
+				           
 
 MPGOS_PerThread_OdeFunction = """
 template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
@@ -78,9 +75,9 @@ template <class Precision> __forceinline__ __device__ void PerThread_Finalizatio
 }
 """
 
-				           ####################################################################
+
 #--------------------------# DEFINIZIONE DI PARAMETRI E DELLE VARIABILI NECESSARIE AD MPGOS   # --------------------------#
-				           ####################################################################
+				           						   
 
 class Var:
 	def __init__(self, nome, initvalue=None):
@@ -123,11 +120,8 @@ class X(Var):
 		super().__init__(nome, initvalue)
 
 
-				           #####################################################################
 #--------------------------# DEFINIZIONE DEL PARSER PER ESTRAPOLARE DALL'XML IL SISTEMA DI ODE # --------------------------#
-				           #####################################################################
-
-
+				       
 
 class Parser:
 	def __init__(self, xml_filename):
