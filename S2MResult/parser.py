@@ -334,7 +334,9 @@ class Parser:
 			splittedEQ = eq.split("=")
 			lhs = splittedEQ[0].strip()
 			rhs = splittedEQ[1].strip()
-			
+			cpars.append(cPAR(lhs, rhs, None))
+		
+		return cpars
 
 	def createX(self):
 		"""
@@ -358,28 +360,47 @@ class Parser:
 		
 
 if __name__ == "__main__":
-	argv = sys.argv # Prende gli argomenti dati in input da cmdline
-	workingdir = argv[1] # Parametro 1 per la workingdir   (tutto il path)
-	sbmlmodel   = argv[2] # Parametro 2 per il modello sbml (tutto il path)
-	
 	try:
-		print("CREATING XML FILE ...")
-		modelname = omcscript_dumpXMLDAE(workingdir, sbmlmodel)
-	except Exception as e:
-		del workingdir
-		del sbmlmodel
-		print("Qualcosa è andato storto ...")
-		print(e.getMessage())
+		argv = sys.argv # Prende gli argomenti dati in input da cmdline
+		msg = "Inserire in ordine solo i seguenti parametri: \n" + \
+			  "1) 1 se si vuole creare l'xml, 0 altrimenti \n" + \
+			  "2) Il path all'XML esistente se si vuole l'opzione 0 del primo parametro\n" + \
+			  "3) "
+		xmltest = argv[1]
+		path2xml = ""
+		if int(xmltest) == 1: 
+			assert len(argv) == 4
+			workingdir  = argv[2] # Parametro 2 per la workingdir   (tutto il path)
+			sbmlmodel   = argv[3] # Parametro 3 per il modello sbml (tutto il path)
+			try:
+				print("CREATING XML FILE ...")
+				path2xml = omcscript_dumpXMLDAE(workingdir, sbmlmodel)
+			except Exception as e:
+				print("Qualcosa è andato storto ...")
+				print(e.getMessage())
+				sys.exit(1)
+		else:
+			path2xml = argv[2]
+		
+		p = Parser(path2xml)
+		p.parse()
+		spars = p.create_sPAR()
+		accs  = p.createACC()
+		xs    = p.createX()
+		cpars = p.create_cPAR()
+		print("\nsPAR Parameters")
+		Var.forEach(spars, print)
+		print("\nACC Parameters")
+		Var.forEach(accs,  print)
+		print("\nX Variables")
+		Var.forEach(xs,    print)
+		print("\ncPAR Parameters")
+		Var.forEach(cpars, print)
+	except FileNotFoundError as fnfe:
+		print("Il path all'XML è errato ...")
+	except IndexError as e:
+		print(msg)
+	except AssertionError as ae:
+		print(msg)
+	finally:
 		sys.exit(1)
-	
-	p = Parser(modelname)
-	p.parse()
-	spars = p.create_sPAR()
-	accs  = p.createACC()
-	xs    = p.createX()
-	print("\nsPAR Parameters")
-	Var.forEach(spars, print)
-	print("\nACC Parameters")
-	Var.forEach(accs,  print)
-	print("\nX Variables")
-	Var.forEach(xs,    print)
