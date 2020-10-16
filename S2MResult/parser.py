@@ -1,8 +1,61 @@
 import xml.etree.ElementTree as ET
 import re
 from typing import List
+import os
+from os import path
+import sys
 
 
+#--------------------------# DEFIINIZIONE DELLA FUNZIONE DI CREAZIONE DELL'XML NEL CASO IN CUI NON ESISTA # --------------------------#
+
+
+def contains_modelica(workdir:str) -> bool:
+	"""
+	Controlla che nella working dir siano effettivamente
+	presenti i file modelica che ci dovrebbero essere 
+	nelle directory create da sbml2Modelica
+	"""
+	return "Functions.mo" in os.listdir(workdir) and \
+		   "Reactions.mo" in os.listdir(workdir) and \
+		   "package.mo"   in os.listdir(workdir) and \
+		   "Constants.mo" in os.listdir(workdir)
+		   
+def getmodelnamefromsbml(sbml:str) -> str:
+	"""
+	Prende in input l'sbml e restituisce il nome del modello
+	di modo da potre creare il comando nello script modelica.
+	"""
+	root = ET.parse(sbml).getroot()
+	modelname = list(root)[0].attrib['id']
+	return modelname
+
+def omcscript_dumpXMLDAE(workingdir:str, sbml:str) -> str:
+	"""
+	Funzione che crea uno script.mos per poter creare
+	il file XML nel caso in cui esso non sia presente.
+	Ritorna il nome dell'xml del modello
+	"""
+	assert path.isdir(workingdir) # La directory in input deve essere effettivamente una directory
+	assert contains_modelica(workingdir) # La directory deve essere un risultato di sbml2Modelica
+	assert path.isfile(sbml) # Il nome dell'sbml deve essere effettivamente un file
+	modelfile = workingdir.split("/")[-1] + "." + getmodelnamefromsbml(sbml)
+	script_filename = path.join(workingdir, "script.mos")
+	with open(script_filename, mode="w") as stream:
+		stream.write("loadModel(Modelica);\n")
+		stream.write("getErrorString();\n")
+		for file in os.listdir(workingdir):
+			command = "loadFile(\"%s\");\n" % (file)
+			stream.write(command)
+			stream.write("getErrorString();\n")
+		command = f"dumpXMLDAE({modelfile}, translationLevel=\"optimiser\", addMathMLCode=true);\n"
+		stream.write(command)
+		stream.write("getErrorString();\n")
+	
+	os.system("omc %s" % (script_filename))
+	
+	return modelfile + ".xml"
+	
+	
 #--------------------------# DEFIINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
 
 
@@ -299,14 +352,27 @@ class Parser:
 			xs.append(X(lhs, rhs, initvalue))
 		
 		return xs
-
+		
 
 if __name__ == "__main__":
-	p = Parser("./S2MBIOMDx07125/S2MBIOMDx07125.model_0000001.xml")
+	argv = sys.argv # Prende gli argomenti dati in input da cmdline
+	workingdir = argv[1] # Parametro 1 per la workingdir   (tutto il path)
+	sbmlmodel   = argv[2] # Parametro 2 per il modello sbml (tutto il path)
+	
+	try:
+		modelname = omcscript_dumpXMLDAE(workingdir, sbmlmodel)
+	except Exception as e:
+		del workingdir
+		del sbmlmodel
+		print("Qualcosa è andato storto ...")
+		print(e.getMessage())
+		sys.exit(1)
+	
+	"""p = Parser(modelname)
 	p.parse()
 	spars = p.create_sPAR()
 	accs  = p.createACC()
 	xs    = p.createX()
 	Var.forEach(spars, print)
 	Var.forEach(accs,  print)
-	Var.forEach(xs,    print)
+	Var.forEach(xs,    print)"""
