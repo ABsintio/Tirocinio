@@ -44,16 +44,19 @@ def omcscript_dumpXMLDAE(workingdir:str, sbml:str) -> str:
 		stream.write("loadModel(Modelica);\n")
 		stream.write("getErrorString();\n")
 		for file in os.listdir(workingdir):
-			command = "loadFile(\"%s\");\n" % (file)
-			stream.write(command)
-			stream.write("getErrorString();\n")
+			if file.endswith(".mo"):
+				command = "loadFile(\"%s\");\n" % (file)
+				stream.write(command)
+				stream.write("getErrorString();\n")
 		command = f"dumpXMLDAE({modelfile}, translationLevel=\"optimiser\", addMathMLCode=true);\n"
 		stream.write(command)
 		stream.write("getErrorString();\n")
 	
-	os.system("omc %s" % (script_filename))
+	os.chdir(workingdir)
+	os.system("omc script.mos > log.out")
+	os.chdir("..")
 	
-	return modelfile + ".xml"
+	return path.abspath(path.join(workingdir, modelfile + ".xml"))
 	
 	
 #--------------------------# DEFIINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
@@ -360,6 +363,7 @@ if __name__ == "__main__":
 	sbmlmodel   = argv[2] # Parametro 2 per il modello sbml (tutto il path)
 	
 	try:
+		print("CREATING XML FILE ...")
 		modelname = omcscript_dumpXMLDAE(workingdir, sbmlmodel)
 	except Exception as e:
 		del workingdir
@@ -368,11 +372,14 @@ if __name__ == "__main__":
 		print(e.getMessage())
 		sys.exit(1)
 	
-	"""p = Parser(modelname)
+	p = Parser(modelname)
 	p.parse()
 	spars = p.create_sPAR()
 	accs  = p.createACC()
 	xs    = p.createX()
+	print("\nsPAR Parameters")
 	Var.forEach(spars, print)
+	print("\nACC Parameters")
 	Var.forEach(accs,  print)
-	Var.forEach(xs,    print)"""
+	print("\nX Variables")
+	Var.forEach(xs,    print)
