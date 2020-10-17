@@ -35,9 +35,9 @@ def omcscript_dumpXMLDAE(workingdir:str, sbml:str) -> str:
 	il file XML nel caso in cui esso non sia presente.
 	Ritorna il nome dell'xml del modello
 	"""
-	assert path.isdir(workingdir) # La directory in input deve essere effettivamente una directory
+	assert path.isdir(workingdir) 		 # La directory in input deve essere effettivamente una directory
 	assert contains_modelica(workingdir) # La directory deve essere un risultato di sbml2Modelica
-	assert path.isfile(sbml) # Il nome dell'sbml deve essere effettivamente un file
+	assert path.isfile(sbml) 			 # Il nome dell'sbml deve essere effettivamente un file
 	modelfile = workingdir.split("/")[-1] + "." + getmodelnamefromsbml(sbml)
 	script_filename = path.join(workingdir, "script.mos")
 	with open(script_filename, mode="w") as stream:
@@ -202,10 +202,11 @@ class X(Var):
 class Function:
 	""" Classe che descrive una funzione """
 	def __init__(self, nome, alg, io):
-		self.nome = nome			 # nome della funzione
-		self.inputs = io['input']    # lista dei parametri in input
-		self.outputs = io['output']  # lista dei parametri in output
-		self.alg = alg		         # algoritmo che descrive la funzione
+		self.nome = nome			 		   # nome della funzione
+		self.eqname = self.nome.split(".")[-1] # nome che dovrà apparire nell'equazione formattata
+		self.inputs = io['input']    		   # lista dei parametri in input
+		self.outputs = io['output']  		   # lista dei parametri in output
+		self.alg = alg		         		   # algoritmo che descrive la funzione
 
 	def __str__(self):
 		string = f"{self.nome}(input={self.inputs}, output={self.outputs}):\n" + \
@@ -372,7 +373,7 @@ class Parser:
 				ieqs = list(filter(lambda x: f(x), self.initeqs))
 				acc = ACC(lhs, rhs, ieqs[0].split("=")[1].strip() if ieqs else rhs)
 				accs.append(acc)
-			except IndexError as ie:
+			except IndexError:
 				pass
 
 		return accs
@@ -407,7 +408,7 @@ class Parser:
 				rhs = splittedIEQ[1].strip()
 				if not check_contains_ieq_in_eq(lhs, self.ode + self.equation, self.algs):
 					spars.append(sPAR(lhs, rhs, None))
-			except IndexError as ie:
+			except IndexError:
 				pass
 		
 		return spars
@@ -450,6 +451,46 @@ class Parser:
 		return xs
 
 	
+	def formatequationwfunc(self):
+		""" 
+		Formatta le equazioni che presentano funzioni. Tutte le equazioni vengono formattate nel
+		seguente modo: partendo dalla chiamata a funzione presente nelle equazioni/algoritmi, 
+		solitamente indicata con <modello>.Functions.<nome_funzione>(...), questa viene semplicemente
+		trasformata in <nome_funzione>(...), presupponendo il fatto che MPGOS supporti le funzioni utilizzate.
+		"""
+		def replacewithfunction(nome:str, eqnome:str, string:str, pattern:str) -> str:
+			""" Tale funzione rimpiazza tutte le funzioni presenti con la definizione per il format """
+			searchLists = re.findall(pattern, string)
+			replacedLists = searchLists
+			try:
+				replacedLists = list(map(lambda x: x.replace(nome, eqnome), searchLists))
+				for j, e in enumerate(replacedLists):
+					string = string.replace(searchLists[j], e)
+			except IndexError:
+				pass
+			return string
+
+		for fun in self.functions:
+			nome 	  = fun.nome
+			eqnome 	  = fun.eqname
+			i = 0
+			# Formattiamo le equazioni
+			for i in range(0, len(self.equation)):
+				pattern = r"{}[(][a-zA-Z0-9_,\.\s]+[)]".format(nome)
+				self.equation[i] = replacewithfunction(nome, eqnome, self.equation[i], pattern)
+				print(self.equation[i])
+			# Formattiamo gli algoritmi
+			for i in range(0, len(self.algs)):
+				pattern = r"{}[(][a-zA-Z0-9_,\.\s]+[)]".format(nome)
+				self.algs[i] = replacewithfunction(nome, eqnome, self.algs[i], pattern)
+				print(self.algs[i])
+			#Formattiamo le ODE
+			for i in range(0, len(self.ode)):
+				pattern = r"{}[(][a-zA-Z0-9_,\.\s]+[)]".format(nome)
+				self.ode[i] = replacewithfunction(nome, eqnome, self.ode[i], pattern)
+				print(self.ode[i])
+				
+
 	def buildODE(self):
 		accs  = self.createACC()
 		xs    = self.createX()
@@ -475,26 +516,27 @@ if __name__ == "__main__":
 				path2xml = omcscript_dumpXMLDAE(workingdir, sbmlmodel)
 			except Exception as e:
 				print("Qualcosa è andato storto ...")
-				print(e.getMessage())
+				print(e)
 				sys.exit(1)
 		else:
 			path2xml = argv[2]
 		
 		p = Parser(path2xml)
 		p.parse()
-		print(p)
-		"""spars = p.create_sPAR()
-		accs  = p.createACC()
-		xs    = p.createX()
-		cpars = p.create_cPAR()
-		print("\nsPAR Parameters")
-		Var.forEach(spars, print)
-		print("\nACC Parameters")
-		Var.forEach(accs,  print)
-		print("\nX Variables")
-		Var.forEach(xs,    print)
-		print("\ncPAR Parameters")
-		Var.forEach(cpars, print)"""
+		#print(p)
+		# spars = p.create_sPAR()
+		# accs  = p.createACC()
+		# xs    = p.createX()
+		# cpars = p.create_cPAR()
+		# print("\nsPAR Parameters")
+		# Var.forEach(spars, print)
+		# print("\nACC Parameters")
+		# Var.forEach(accs,  print)
+		# print("\nX Variables")
+		# Var.forEach(xs,    print)
+		# print("\ncPAR Parameters")
+		# Var.forEach(cpars, print)
+		p.formatequationwfunc()
 	except FileNotFoundError as fnfe:
 		print("Il path all'XML è errato ...")
 	except IndexError as e:
