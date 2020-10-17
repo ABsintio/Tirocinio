@@ -164,8 +164,10 @@ class ACC(Var):
 	memorizzate molte informazioni quali traiettorie o altri dati
 	senza doverli salvare ogni volta nel dense output.
 	"""
-	def __init__(self, nome, value, initvalue):
+	def __init__(self, nome, value, initvalue, id):
 		super().__init__(nome, value, initvalue)
+		self.id = id
+		self.MPGOSname = "ACC"
 
 
 class sPAR(Var):
@@ -174,8 +176,10 @@ class sPAR(Var):
 	Essi sono principalmente parametri costanti che non variano 
 	durante la simulazione, oppure tra diverse simulazioni. 
 	"""
-	def __init__(self, nome, value, initvalue):
+	def __init__(self, nome, value, initvalue, id):
 		super().__init__(nome, value, initvalue)
+		self.id = id
+		self.MPGOSname = "sPAR"
 
 
 class cPAR(Var):
@@ -186,14 +190,18 @@ class cPAR(Var):
 	all'interno del range nel quale sono definiti. Solitamente hanno un 
 	massimo e un minimo valore che non possono oltrepassare.
 	"""
-	def __init__(self, nome, value, initvalue):
+	def __init__(self, nome, value, initvalue, id):
 		super().__init__(nome, value, initvalue)
+		self.id = id
+		self.MPGOSname = "cPAR"
 
 
 class X(Var):
 	""" X è una classe che rappresenta le variabili delle ODE. """
-	def __init__(self, nome, value, initvalue):
+	def __init__(self, nome, value, initvalue, id):
 		super().__init__(nome, value, initvalue)
+		self.id = id
+		self.MPGOSname = "X"
 
 
 #--------------------------# DEFINIZIONE DEL PARSER PER ESTRAPOLARE DALL'XML IL SISTEMA DI ODE # --------------------------#
@@ -361,7 +369,7 @@ class Parser:
 		l'aggiornamento delle variabili 
 		""" 
 		accs = []
-		for alg in self.algs:
+		for i, alg in enumerate(self.algs):
 			splittedAlg = alg.split(":=")
 			# Non è detto che l'algoritmo è della forma x := y
 			# ma questo implica anche il fatto che non sia un
@@ -371,7 +379,7 @@ class Parser:
 				rhs = splittedAlg[1].strip()
 				f = lambda x: x.split("=")[0].strip() == lhs
 				ieqs = list(filter(lambda x: f(x), self.initeqs))
-				acc = ACC(lhs, rhs, ieqs[0].split("=")[1].strip() if ieqs else rhs)
+				acc = ACC(lhs, rhs, ieqs[0].split("=")[1].strip() if ieqs else rhs, i)
 				accs.append(acc)
 			except IndexError:
 				pass
@@ -401,13 +409,13 @@ class Parser:
 			return any(list(map(lambda x: feqs(x), eqs))) or any(list(map(lambda x: falg(x), algs)))
 
 		spars = []
-		for ieq in self.initeqs:
+		for i, ieq in enumerate(self.initeqs):
 			try:
 				splittedIEQ = ieq.split("=")
 				lhs = splittedIEQ[0].strip()
 				rhs = splittedIEQ[1].strip()
 				if not check_contains_ieq_in_eq(lhs, self.ode + self.equation, self.algs):
-					spars.append(sPAR(lhs, rhs, None))
+					spars.append(sPAR(lhs, rhs, None, i))
 			except IndexError:
 				pass
 		
@@ -421,11 +429,11 @@ class Parser:
 		equazioni differenziali, ma le aEquation ossia le equazioni di associazione.
 		"""
 		cpars = []
-		for eq in self.equation:
+		for i, eq in enumerate(self.equation):
 			splittedEQ = eq.split("=")
 			lhs = splittedEQ[0].strip()
 			rhs = splittedEQ[1].strip()
-			cpars.append(cPAR(lhs, rhs, None))
+			cpars.append(cPAR(lhs, rhs, None, i))
 		
 		return cpars
 
@@ -437,7 +445,7 @@ class Parser:
 		delle ODE parsate dall'XML precedentemente
 		"""
 		xs = []
-		for ode in self.ode:
+		for i, ode in enumerate(self.ode):
 			splittedODE = ode.split("=")
 			lhs = splittedODE[0].strip().split("(")[-1].split(")")[0].strip()
 			rhs = splittedODE[1].strip()
@@ -446,7 +454,7 @@ class Parser:
 			initvalue = 0.0
 			for ieqs in self.initeqs:
 				if lhs in ieqs: initvalue = ieqs.split("=")[1].strip()
-			xs.append(X(lhs, rhs, initvalue))
+			xs.append(X(lhs, rhs, initvalue, i))
 		
 		return xs
 
@@ -473,22 +481,17 @@ class Parser:
 		for fun in self.functions:
 			nome 	  = fun.nome
 			eqnome 	  = fun.eqname
+			pattern   = r"{}[(][a-zA-Z0-9_,\.\s]+[)]".format(nome)
 			i = 0
 			# Formattiamo le equazioni
 			for i in range(0, len(self.equation)):
-				pattern = r"{}[(][a-zA-Z0-9_,\.\s]+[)]".format(nome)
 				self.equation[i] = replacewithfunction(nome, eqnome, self.equation[i], pattern)
-				print(self.equation[i])
 			# Formattiamo gli algoritmi
 			for i in range(0, len(self.algs)):
-				pattern = r"{}[(][a-zA-Z0-9_,\.\s]+[)]".format(nome)
 				self.algs[i] = replacewithfunction(nome, eqnome, self.algs[i], pattern)
-				print(self.algs[i])
 			#Formattiamo le ODE
 			for i in range(0, len(self.ode)):
-				pattern = r"{}[(][a-zA-Z0-9_,\.\s]+[)]".format(nome)
 				self.ode[i] = replacewithfunction(nome, eqnome, self.ode[i], pattern)
-				print(self.ode[i])
 				
 
 	def buildODE(self):
