@@ -62,9 +62,13 @@ def omcscript_dumpXMLDAE(workingdir:str, sbml:str) -> str:
 #--------------------------# DEFIINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
 
 
-INIT_EQ = r"\w+\.*\w+\s*=\s*\d+\.\d+"
-ODE_EQ  = r"der[(].*[)]\s*=.*[(+*)-]+"
-EQ_EQ   = r"\w+\.*\w+\s*=.*[(+*)-]+"
+INIT_EQ   = r"\w+\.*\w+\s*=\s*\d+\.\d+"		# Pattern per matching delle equazioni iniziali
+ODE_EQ    = r"der[(].*[)]\s*=.*[(+*)-]+"	# Pattern per matching delle ODE
+EQ_EQ     = r"\w+\.*\w+\s*=.*[(+*)-]+"		# Pattern per matching delle Equazioni di assegnazione
+INPUT_F   = r"\s+input\s*.*"				# Pattern per matching degli input delle funzioni/classi/model
+OUTPUT_F  = r"\s+output.*"					# Pattern per matching degli output delle funzioni/classi/model
+START_ALG = r"\s*algorithm"					# Pattern per matching dello start di una algoritmo
+END 	  = r"\s*end.*"						# Pattern per matching della fine di una funzione/classe/model
 
 				           
 #--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#
@@ -193,11 +197,33 @@ class X(Var):
 
 
 #--------------------------# DEFINIZIONE DEL PARSER PER ESTRAPOLARE DALL'XML IL SISTEMA DI ODE # --------------------------#
-				       
+
+
+class Function:
+	""" Classe che descrive una funzione """
+	def __init__(self, nome, alg, io):
+		self.nome = nome			 # nome della funzione
+		self.inputs = io['input']    # lista dei parametri in input
+		self.outputs = io['output']  # lista dei parametri in output
+		self.alg = alg		         # algoritmo che descrive la funzione
+
+	def __str__(self):
+		string = f"{self.nome}(input={self.inputs}, output={self.outputs}):\n" + \
+			f"\t\t\t{self.alg}"
+		return string
+
 
 class Parser:
-	def __init__(self, xml_filename):
-		self.modelname = xml_filename.split(".")[-2]
+	"""
+	Classe che rappresenta in parser per il file XML derivato da dumpXMLDAE.
+	Il parser presenta funzioni in grado di parsare: le equazioni iniziali, 
+	le equazioni normali, le ODE, gli algoritmi e le funzioni. Una volta fatto
+	il parsing dei diversi oggetti vegono creati i rispettivi parametri X, sPAR,
+	ACC, cPAR i quali corrispondono rispettivamente a: ACC -> algoritmi, 
+	sPAR -> Equazioni iniziali costanti, cPAR -> Equazioni di assegnazione, X -> ODE.
+	"""
+	def __init__(self, xml_filename:str):
+		self.modelname = xml_filename.split(".")[-2] + "." + xml_filename.split(".")[-3]
 		self.root = ET.parse(xml_filename).getroot()
 		self.varswithbind = []
 		self.varswithoutbind = []
@@ -205,6 +231,8 @@ class Parser:
 		self.ode = []
 		self.algs = []
 		self.equation = []
+		self.functions = []
+
 
 	def __str__(self) -> str:
 		string = self.modelname + "( \n"
@@ -227,10 +255,15 @@ class Parser:
 		string += "\t}, Algorithms: {\n"
 		for alg in self.algs:
 			string += "\t\t{}\n".format(str(alg))
+		string += "\t}, Functions: {\n"
+		for fun in self.functions:
+			string += "\t\t{}\n".format(fun.__str__())
 		string += "\t}\n)"
 		return string
 
+
 	def parsevar(self) -> None:
+		""" Funzione di parsing di tutte le variabili presenti nel modello """
 		for child in self.root.iter("variable"):
 			t = [child.attrib['name'], None]
 			for iter in child.iter("bindExpression"):
@@ -240,7 +273,18 @@ class Parser:
 			else:
 				self.varswithbind.append(tuple(t))
 
+
 	def parseequations(self) -> None:
+		"""
+		Funzione di parsing di tutte le equazioni presenti nel modello. Nell'XML
+		ogni equazione è descritta dal tag <equation> che contiene come testo
+		principale la descrizione dell'equazione. Tutti gli altri tag figli 
+		ci danno indicazioni sulle singole variabili utilizzate nell'equazione.
+		Da queste possiamo distinguere tre tipologie di equazioni: le equazioni
+		iniziali della forma x=<numero float>; le equazioni di assegnazione della
+		forma x=y (con y concatenazione di lettere, numeri, operazioni e funzioni);
+		le equazioni differenziali ordinarie della forma der(x) = y.
+		"""
 		for child in self.root.iter("equation"):
 			text = child.text.strip()
 			if re.match(INIT_EQ, text):
@@ -250,16 +294,60 @@ class Parser:
 			elif re.match(EQ_EQ, text):
 				self.equation.append(text)
 
+
 	def parsealgorithms(self) -> None:
+		"""
+		Funzione di parsing di tutti gli algoritmi presenti nel modello. Nell'XML
+		solitamente abbiamo un solo tag <algorithm> che racchiude tutti gli algoritmi
+		nel suo testo.
+		"""
 		for child in self.root.iter("algorithm"):
 			text = child.text.replace("algorithm", "").replace(" ", "").strip()
 			for subtext in text.split("\n"):
 				self.algs.append(subtext.strip()[:-1])
 
+	
+	def parsefunctions(self) -> None:
+		"""
+		Funzione di parsing delle functions presenti nel modello. Nell'XML sono definite
+		dal tag <functions> che racchiude tutte le funzioni. Python fortunatamente ci 
+		mette e disposizione il metodo iter(<pattern>) che inserendo come pattern="function"
+		ci preleva direttamente tutte le funzioni definite dal tag <function>. Il nome della
+		funzione è presente nell'attributo 'name' del tag, mentre il testo della funzione
+		è presente nell'unico tag figlio di <function>, ossia <ModelicaInterpretation>.
+		Per ogni funzione viene quindi creato un oggetto Function che prenderà in input:
+		il nome della funzione; l'algoritmo della funzione; un dizionario diviso in input e 
+		output della funzione.
+		"""
+		for child in self.root.iter("function"):
+			children = list(child)[0]
+			functext = children.text
+			io = {"input": [], "output": []}
+			for line in functext.split("\n"):
+				if re.match(INPUT_F, line): io["input"].append(line.split(" ")[-1][:-1].strip())
+				elif re.match(OUTPUT_F, line): io["output"].append(line.split(" ")[-1][:-1].strip())
+			alg = ""
+			start, end = False, False
+			for line in functext.split("\n"):
+				if end: break
+				if re.match(START_ALG, line): start = True
+				elif re.match(END, line): end = True
+				if start and not end and "algorithm" not in line:
+					alg += line + "\n"
+			f = Function(child.attrib['name'], alg[:-1], io)
+			self.functions.append(f)
+
+
 	def parse(self) -> None:
+		"""
+		La funzione parse, mette insieme tutti le funzioni di parsing per eseguire
+		un parsing completo di tutto il modello e creare le rispettive istanze.
+		"""
 		self.parsevar()
 		self.parseequations()
 		self.parsealgorithms()
+		self.parsefunctions()
+
 
 	def createACC(self) -> List[ACC]:
 		"""
@@ -289,6 +377,7 @@ class Parser:
 
 		return accs
 	
+
 	def create_sPAR(self) -> List[sPAR]:
 		"""
 		Prende tutte le equazioni iniziali e considera solo quelle 
@@ -323,6 +412,7 @@ class Parser:
 		
 		return spars
 
+
 	def create_cPAR(self):
 		"""
 		I parametri cPAR sono quelli che cambiano nel tempo e di conseguenza
@@ -337,6 +427,7 @@ class Parser:
 			cpars.append(cPAR(lhs, rhs, None))
 		
 		return cpars
+
 
 	def createX(self):
 		"""
@@ -357,6 +448,14 @@ class Parser:
 			xs.append(X(lhs, rhs, initvalue))
 		
 		return xs
+
+	
+	def buildODE(self):
+		accs  = self.createACC()
+		xs    = self.createX()
+		cpars = self.create_cPAR()
+		spars = self.create_sPAR()
+
 		
 
 if __name__ == "__main__":
@@ -364,8 +463,7 @@ if __name__ == "__main__":
 		argv = sys.argv # Prende gli argomenti dati in input da cmdline
 		msg = "Inserire in ordine solo i seguenti parametri: \n" + \
 			  "1) 1 se si vuole creare l'xml, 0 altrimenti \n" + \
-			  "2) Il path all'XML esistente se si vuole l'opzione 0 del primo parametro\n" + \
-			  "3) "
+			  "2) Il path all'XML esistente se si vuole l'opzione 0 del primo parametro"
 		xmltest = argv[1]
 		path2xml = ""
 		if int(xmltest) == 1: 
@@ -384,7 +482,8 @@ if __name__ == "__main__":
 		
 		p = Parser(path2xml)
 		p.parse()
-		spars = p.create_sPAR()
+		print(p)
+		"""spars = p.create_sPAR()
 		accs  = p.createACC()
 		xs    = p.createX()
 		cpars = p.create_cPAR()
@@ -395,12 +494,16 @@ if __name__ == "__main__":
 		print("\nX Variables")
 		Var.forEach(xs,    print)
 		print("\ncPAR Parameters")
-		Var.forEach(cpars, print)
+		Var.forEach(cpars, print)"""
 	except FileNotFoundError as fnfe:
 		print("Il path all'XML è errato ...")
 	except IndexError as e:
 		print(msg)
 	except AssertionError as ae:
+		msg += "\n3) Il path assoluto della working directory che presenta i .mo\n" + \
+			   "4) Il path assoluto dell'xml che descrive l'sbml" 
 		print(msg)
+	except Exception as e:
+		print(e)
 	finally:
 		sys.exit(1)
