@@ -142,19 +142,28 @@ template <class Precision> __forceinline__ __device__ void PerThread_Finalizatio
 
 class Var:
 	""" Classe che descrive una variabile qualsiasi, con nome, valore e valoreiniziale se esiste """
-	def __init__(self, nome:str, value:str, initvalue=None):
+	def __init__(self, nome:str, value:str, id, initvalue=None):
 		self.nome = nome
 		self.value = value
 		self.init = initvalue
+		self.MPGOSname = "Var"
+		self.id = id
 
 	def __str__(self) -> str:
-		string = f"{self.nome}(value={self.value}, iValue={self.init})"
+		string = f"{self.nome}(value={self.value}, iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()})"
 		return string
 
 	@staticmethod
 	def forEach(l:List[any], func) -> None:
 		for x in l:
 			func(x)
+
+	def createMPGOSname(self):
+		return self.MPGOSname + "[" + str(self.id) + "]"
+
+	
+	def setid(self, id:int) -> None:
+		self.id = id
 
 
 class ACC(Var):
@@ -165,8 +174,7 @@ class ACC(Var):
 	senza doverli salvare ogni volta nel dense output.
 	"""
 	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, initvalue)
-		self.id = id
+		super().__init__(nome, value, id, initvalue)
 		self.MPGOSname = "ACC"
 
 
@@ -177,8 +185,7 @@ class sPAR(Var):
 	durante la simulazione, oppure tra diverse simulazioni. 
 	"""
 	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, initvalue)
-		self.id = id
+		super().__init__(nome, value, id, initvalue)
 		self.MPGOSname = "sPAR"
 
 
@@ -191,16 +198,14 @@ class cPAR(Var):
 	massimo e un minimo valore che non possono oltrepassare.
 	"""
 	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, initvalue)
-		self.id = id
+		super().__init__(nome, value, id, initvalue)
 		self.MPGOSname = "cPAR"
 
 
 class X(Var):
 	""" X è una classe che rappresenta le variabili delle ODE. """
 	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, initvalue)
-		self.id = id
+		super().__init__(nome, value, id, initvalue)
 		self.MPGOSname = "X"
 
 
@@ -419,6 +424,15 @@ class Parser:
 			except IndexError:
 				pass
 		
+		# E' possibile che le equazioni iniziali si trovino anche tra le variabili con bindExpression
+		j = spars[-1].id + 1
+		for vbind in self.varswithbind:
+			try:
+				spars.append(sPAR(vbind[0], float(vbind[1]), None, j))
+				j += 1
+			except ValueError:
+				pass
+		
 		return spars
 
 
@@ -428,14 +442,21 @@ class Parser:
 		li andiamo a prendere nella sezione equation, ma che non siano le 
 		equazioni differenziali, ma le aEquation ossia le equazioni di associazione.
 		"""
-		cpars = []
-		for i, eq in enumerate(self.equation):
+		cpars, spars = [], []
+		j = 0
+		k = 0
+		for eq in self.equation:
 			splittedEQ = eq.split("=")
 			lhs = splittedEQ[0].strip()
 			rhs = splittedEQ[1].strip()
-			cpars.append(cPAR(lhs, rhs, None, i))
+			try:
+				spars.append(sPAR(lhs, float(rhs), None, j))
+				j += 1
+			except ValueError:
+				cpars.append(cPAR(lhs, rhs, None, k))
+				k += 1
 		
-		return cpars
+		return cpars, spars
 
 
 	def createX(self):
@@ -492,13 +513,35 @@ class Parser:
 			#Formattiamo le ODE
 			for i in range(0, len(self.ode)):
 				self.ode[i] = replacewithfunction(nome, eqnome, self.ode[i], pattern)
-				
+	
 
-	def buildODE(self):
-		accs  = self.createACC()
-		xs    = self.createX()
-		cpars = self.create_cPAR()
-		spars = self.create_sPAR()
+	def buildAlgorithm(self, params:List[any]):
+		pass
+
+
+	def buildODE(self, params:List[any]):
+		pass
+
+
+	def buildEquation(self, params:List[any]):
+		pass
+
+
+	def buildSystem(self) -> tuple:
+		self.formatequationwfunc()	             # Formatto le equazioni inserendo le funzioni
+		accs  = self.createACC()	             # Prendo i parametri ACC
+		xs    = self.createX()		             # Prendo i parametri X
+		spars = self.create_sPAR()	             # Prendo i parametri sPAR
+		cpars, sparstmp = self.create_cPAR()	 # Prendo i parametri cPAR
+		lastidx = spars[-1].id
+		for i, tmp in enumerate(sparstmp): tmp.setid(lastidx + i  + 1)
+		spars += sparstmp
+		params = [
+			# 0     1      2      3
+			 xs, accs, spars, cpars
+		]
+		return accs, xs, spars, cpars
+
 
 		
 
@@ -526,7 +569,7 @@ if __name__ == "__main__":
 		
 		p = Parser(path2xml)
 		p.parse()
-		#print(p)
+		# print(p)
 		# spars = p.create_sPAR()
 		# accs  = p.createACC()
 		# xs    = p.createX()
@@ -539,7 +582,9 @@ if __name__ == "__main__":
 		# Var.forEach(xs,    print)
 		# print("\ncPAR Parameters")
 		# Var.forEach(cpars, print)
-		p.formatequationwfunc()
+		# p.formatequationwfunc()
+		for x in p.buildSystem():
+			Var.forEach(x, print)
 	except FileNotFoundError as fnfe:
 		print("Il path all'XML è errato ...")
 	except IndexError as e:
