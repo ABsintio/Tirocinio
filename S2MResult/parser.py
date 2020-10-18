@@ -74,6 +74,7 @@ END 	  = r"\s*end.*"						# Pattern per matching della fine di una funzione/clas
 #--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#
 				           
 
+# X
 MPGOS_PerThread_OdeFunction = """
 template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 	int tid, int NT, \\
@@ -104,6 +105,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
 }
 """
 
+# ACC, cPAR
 MPGOS_PerThread_ActionAfterSuccessfulTimeStep = """
 template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterSuccessfulTimeStep(
     int tid, int NT, int& UDT, \\
@@ -157,6 +159,13 @@ class Var:
 	def forEach(l:List[any], func) -> None:
 		for x in l:
 			func(x)
+	
+	@staticmethod
+	def createCodeLineMPGOS(*l:List[any]) -> str:
+		lista = []
+		for x in l:
+			lista.append("".join(list(map(lambda y: f"\t{y.createMPGOSname()} = {y.value};\n", x))))
+		return "".join(lista)
 
 	def createMPGOSname(self):
 		return self.MPGOSname + "[" + str(self.id) + "]"
@@ -369,6 +378,7 @@ class Parser:
 		l'aggiornamento delle variabili 
 		""" 
 		accs = []
+		accsdict = dict()
 		for i, alg in enumerate(self.algs):
 			splittedAlg = alg.split(":=")
 			# Non è detto che l'algoritmo è della forma x := y
@@ -381,10 +391,11 @@ class Parser:
 				ieqs = list(filter(lambda x: f(x), self.initeqs))
 				acc = ACC(lhs, rhs, ieqs[0].split("=")[1].strip() if ieqs else rhs, i)
 				accs.append(acc)
+				accsdict[lhs] = acc
 			except IndexError:
 				pass
 
-		return accs
+		return accs, accsdict
 	
 	def create_sPAR(self) -> List[sPAR]:
 		"""
@@ -408,13 +419,16 @@ class Parser:
 			return any(list(map(lambda x: feqs(x), eqs))) or any(list(map(lambda x: falg(x), algs)))
 
 		spars = []
+		sparsdict = dict()
 		for i, ieq in enumerate(self.initeqs):
 			try:
 				splittedIEQ = ieq.split("=")
 				lhs = splittedIEQ[0].strip()
 				rhs = splittedIEQ[1].strip()
 				if not check_contains_ieq_in_eq(lhs, self.ode + self.equation, self.algs):
-					spars.append(sPAR(lhs, rhs, None, i))
+					spar = sPAR(lhs, rhs, None, i)
+					spars.append(spar)
+					sparsdict[lhs] = spar
 			except IndexError:
 				pass
 		
@@ -422,12 +436,14 @@ class Parser:
 		j = spars[-1].id + 1
 		for vbind in self.varswithbind:
 			try:
-				spars.append(sPAR(vbind[0], str(float(vbind[1])), None, j))
+				spar = sPAR(vbind[0], str(float(vbind[1])), None, j)
+				spars.append(spar)
+				sparsdict[vbind[0]] = spar
 				j += 1
 			except ValueError:
 				pass
 		
-		return spars
+		return spars, sparsdict
 
 	def create_cPAR(self):
 		"""
@@ -436,6 +452,7 @@ class Parser:
 		equazioni differenziali, ma le aEquation ossia le equazioni di associazione.
 		"""
 		cpars, spars = [], []
+		cparsdict, sparsdict = dict(), dict()
 		j = 0
 		k = 0
 		for eq in self.equation:
@@ -443,13 +460,17 @@ class Parser:
 			lhs = splittedEQ[0].strip()
 			rhs = splittedEQ[1].strip()
 			try:
-				spars.append(sPAR(lhs, str(float(rhs)), None, j))
+				spar = sPAR(lhs, str(float(rhs)), None, j)
+				spars.append(spar)
+				sparsdict[lhs] = spar
 				j += 1
 			except ValueError:
-				cpars.append(cPAR(lhs, rhs, None, k))
+				cpar = cPAR(lhs, rhs, None, k)
+				cpars.append(cpar)
+				cparsdict[lhs] = cpar
 				k += 1
 		
-		return cpars, spars
+		return cpars, cparsdict, spars, sparsdict
 
 	def createX(self):
 		"""
@@ -458,6 +479,7 @@ class Parser:
 		delle ODE parsate dall'XML precedentemente
 		"""
 		xs = []
+		xsdict = dict()
 		for i, ode in enumerate(self.ode):
 			splittedODE = ode.split("=")
 			lhs = splittedODE[0].strip().split("(")[-1].split(")")[0].strip()
@@ -467,9 +489,11 @@ class Parser:
 			initvalue = 0.0
 			for ieqs in self.initeqs:
 				if lhs in ieqs: initvalue = ieqs.split("=")[1].strip()
-			xs.append(X(lhs, rhs, initvalue, i))
+			x = X(lhs, rhs, initvalue, i)
+			xs.append(x)
+			xsdict[lhs] = x
 		
-		return xs
+		return xs, xsdict
 	
 	def formatequationwfunc(self):
 		""" 
@@ -505,47 +529,86 @@ class Parser:
 			for i in range(0, len(self.ode)):
 				self.ode[i] = replacewithfunction(nome, eqnome, self.ode[i], pattern)
 
-	def buildACCvalue(self, params:List[any]):
+	def buildParamValue(self, params:List[Var], paramsdict:dict):
 		"""
-		Prende dalla lista dei parametri gli ACC e ne modifica il campo value
+		Prende ogni parametro e ne modifica il campo value
 		inserendo al posto dell'equazione già presente in formato leggibile, 
 		un'equazione in formato MPGOS, ossia facendo riferimento a tutte le variabili
 		tramite il proprio MPGOSname. Quindi se abbiamo un'equazione di questo tipo
 		a = b + c, con MPGOSname(b) = Y[1] e MPGOSname(c) = Z[2] -> a = Y[1] + Z[2].
 		:param params: Lista dei parametri composti da xs, accs, spars, cpars
 		"""
-		accs = params[1] # Le posizioni all'intero del vettore dei parametri sono fissate
-		for acc in accs:
-			value = acc.value
-			MPGOSname = acc.createMPGOSname()
-			for i in range(2, len(params)):
-				paramlist = params[i]
-				for param in paramlist:
-					print(re.findall(r"\w+\.*\w+", param.value))
-			break
-
-	def buildODE(self, params:List[any]):
-		pass
-
-	def buildEquation(self, params:List[any]):
-		pass
+		for param in params:
+			value = param.value
+			variables = re.findall(r"\w+\.+\w+", value)
+			for var in variables:
+				for dicts in paramsdict:
+					try:
+						value = value.replace(var, dicts[var].createMPGOSname())
+						break
+					except KeyError:
+						pass
+			param.setvalue(value)
 
 	def buildSystem(self) -> tuple:
-		self.formatequationwfunc()	             # Formatto le equazioni inserendo le funzioni
-		accs  = self.createACC()	             # Prendo i parametri ACC
-		xs    = self.createX()		             # Prendo i parametri X
-		spars = self.create_sPAR()	             # Prendo i parametri sPAR
-		cpars, sparstmp = self.create_cPAR()	 # Prendo i parametri cPAR
+		"""
+		Funzione che formatta il sistema di ODE e ritorna la lista di tutti i 
+		parametri con value formattato in maniera "vettoriale"
+		"""
+		self.formatequationwfunc()	                         # Formatto le equazioni inserendo le funzioni
+		accs, accsdict   			  = self.createACC()	 # Prendo i parametri ACC
+		xs, xsdict                    = self.createX()		 # Prendo i parametri X
+		spars, sparsdict 	          = self.create_sPAR()	 # Prendo i parametri sPAR
+		cpars, cparsdict, sparstmp, _ = self.create_cPAR()	 # Prendo i parametri cPAR
 		lastidx = spars[-1].id
 		for i, tmp in enumerate(sparstmp): tmp.setid(lastidx + i  + 1)
 		spars += sparstmp
-		params = [
-			# 0     1      2      3
-			 xs, accs, spars, cpars
+		sparsdict = {x.nome: x for x in spars}
+		paramsdict = [
+			#    0,        1,         2,         3
+			xsdict, accsdict, sparsdict, cparsdict
 		]
+		self.buildParamValue(accs, paramsdict)
+		self.buildParamValue(xs, paramsdict)
+		self.buildParamValue(spars, paramsdict)
+		self.buildParamValue(cpars, paramsdict)
 		return accs, xs, spars, cpars
 
-		
+
+#--------------------------# DEFINIZIONE DELLA CLASSE PER LA BUILD DELLA DEFINIZIONE DEL SISTEMA # --------------------------#
+
+
+class SystemDefinition:
+	""" Classe per la costruzione della definizione del sistema (File SystemDefinition.cuh) """
+	def __init__(self, xmlfile):
+		self.xmlfile = xmlfile
+		self.parser = Parser(xmlfile)
+		self.parser.parse()
+		self.accs, self.xs, self.spars, self.cpars = self.parser.buildSystem() # Prende tutti i parametri
+
+	def buildMPGOS_PerThread_OdeFunction(self):
+		""" Formatta la stringa per la funzione PerThread_OdeFunction """
+		global MPGOS_PerThread_OdeFunction
+		string = Var.createCodeLineMPGOS(self.xs)
+		return MPGOS_PerThread_OdeFunction % (string)
+	
+	def buildMPGOS_PerThread_EventFunction(self):
+		""" Formatta la stringa per la funzione PerThread_EventFunction """
+		global MPGOS_PerThread_EventFunction
+		pass
+
+	def buildMPGOS_PerThread_ActionAfterEventDetection(self):
+		""" Formatta la stringa per la funzione PerThread_ActionAfterEventDetection """
+		global MPGOS_PerThread_ActionAfterEventDetection
+		pass
+
+	def buildMPGOS_PerThread_ActionAfterSuccessfulTimeStep(self):
+		""" Formatta la stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep """
+		global MPGOS_PerThread_ActionAfterSuccessfulTimeStep
+		string = Var.createCodeLineMPGOS(self.accs, self.cpars)
+		return MPGOS_PerThread_ActionAfterSuccessfulTimeStep % (string)
+
+
 
 if __name__ == "__main__":
 	try:
@@ -569,25 +632,9 @@ if __name__ == "__main__":
 		else:
 			path2xml = argv[2]
 		
-		p = Parser(path2xml)
-		p.parse()
-		# print(p)
-		# spars = p.create_sPAR()
-		# accs  = p.createACC()
-		# xs    = p.createX()
-		# cpars = p.create_cPAR()
-		# print("\nsPAR Parameters")
-		# Var.forEach(spars, print)
-		# print("\nACC Parameters")
-		# Var.forEach(accs,  print)
-		# print("\nX Variables")
-		# Var.forEach(xs,    print)
-		# print("\ncPAR Parameters")
-		# Var.forEach(cpars, print)
-		# p.formatequationwfunc()
-		# p.buildACCvalue(p.buildSystem())
-		for param in p.buildSystem():
-			print(Var.forEach(param, print))
+		system = SystemDefinition(path2xml)
+		print(system.buildMPGOS_PerThread_OdeFunction())
+		print(system.buildMPGOS_PerThread_ActionAfterSuccessfulTimeStep())
 	except FileNotFoundError as fnfe:
 		print("Il path all'XML è errato ...")
 	except IndexError as e:
