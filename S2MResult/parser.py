@@ -160,10 +160,12 @@ class Var:
 
 	def createMPGOSname(self):
 		return self.MPGOSname + "[" + str(self.id) + "]"
-
 	
 	def setid(self, id:int) -> None:
 		self.id = id
+	
+	def setvalue(self, value:str) -> None:
+		self.value = value
 
 
 class ACC(Var):
@@ -247,7 +249,6 @@ class Parser:
 		self.equation = []
 		self.functions = []
 
-
 	def __str__(self) -> str:
 		string = self.modelname + "( \n"
 		string += "\tVariables (No bindExpression): {\n"
@@ -275,7 +276,6 @@ class Parser:
 		string += "\t}\n)"
 		return string
 
-
 	def parsevar(self) -> None:
 		""" Funzione di parsing di tutte le variabili presenti nel modello """
 		for child in self.root.iter("variable"):
@@ -286,7 +286,6 @@ class Parser:
 				self.varswithoutbind.append(t[0])
 			else:
 				self.varswithbind.append(tuple(t))
-
 
 	def parseequations(self) -> None:
 		"""
@@ -308,7 +307,6 @@ class Parser:
 			elif re.match(EQ_EQ, text):
 				self.equation.append(text)
 
-
 	def parsealgorithms(self) -> None:
 		"""
 		Funzione di parsing di tutti gli algoritmi presenti nel modello. Nell'XML
@@ -320,7 +318,6 @@ class Parser:
 			for subtext in text.split("\n"):
 				self.algs.append(subtext.strip()[:-1])
 
-	
 	def parsefunctions(self) -> None:
 		"""
 		Funzione di parsing delle functions presenti nel modello. Nell'XML sono definite
@@ -351,7 +348,6 @@ class Parser:
 			f = Function(child.attrib['name'], alg[:-1], io)
 			self.functions.append(f)
 
-
 	def parse(self) -> None:
 		"""
 		La funzione parse, mette insieme tutti le funzioni di parsing per eseguire
@@ -361,7 +357,6 @@ class Parser:
 		self.parseequations()
 		self.parsealgorithms()
 		self.parsefunctions()
-
 
 	def createACC(self) -> List[ACC]:
 		"""
@@ -391,7 +386,6 @@ class Parser:
 
 		return accs
 	
-
 	def create_sPAR(self) -> List[sPAR]:
 		"""
 		Prende tutte le equazioni iniziali e considera solo quelle 
@@ -428,13 +422,12 @@ class Parser:
 		j = spars[-1].id + 1
 		for vbind in self.varswithbind:
 			try:
-				spars.append(sPAR(vbind[0], float(vbind[1]), None, j))
+				spars.append(sPAR(vbind[0], str(float(vbind[1])), None, j))
 				j += 1
 			except ValueError:
 				pass
 		
 		return spars
-
 
 	def create_cPAR(self):
 		"""
@@ -450,14 +443,13 @@ class Parser:
 			lhs = splittedEQ[0].strip()
 			rhs = splittedEQ[1].strip()
 			try:
-				spars.append(sPAR(lhs, float(rhs), None, j))
+				spars.append(sPAR(lhs, str(float(rhs)), None, j))
 				j += 1
 			except ValueError:
 				cpars.append(cPAR(lhs, rhs, None, k))
 				k += 1
 		
 		return cpars, spars
-
 
 	def createX(self):
 		"""
@@ -478,7 +470,6 @@ class Parser:
 			xs.append(X(lhs, rhs, initvalue, i))
 		
 		return xs
-
 	
 	def formatequationwfunc(self):
 		""" 
@@ -502,7 +493,7 @@ class Parser:
 		for fun in self.functions:
 			nome 	  = fun.nome
 			eqnome 	  = fun.eqname
-			pattern   = r"{}[(][a-zA-Z0-9_,\.\s]+[)]".format(nome)
+			pattern   = r"{}".format(nome)
 			i = 0
 			# Formattiamo le equazioni
 			for i in range(0, len(self.equation)):
@@ -513,19 +504,31 @@ class Parser:
 			#Formattiamo le ODE
 			for i in range(0, len(self.ode)):
 				self.ode[i] = replacewithfunction(nome, eqnome, self.ode[i], pattern)
-	
 
-	def buildAlgorithm(self, params:List[any]):
-		pass
-
+	def buildACCvalue(self, params:List[any]):
+		"""
+		Prende dalla lista dei parametri gli ACC e ne modifica il campo value
+		inserendo al posto dell'equazione già presente in formato leggibile, 
+		un'equazione in formato MPGOS, ossia facendo riferimento a tutte le variabili
+		tramite il proprio MPGOSname. Quindi se abbiamo un'equazione di questo tipo
+		a = b + c, con MPGOSname(b) = Y[1] e MPGOSname(c) = Z[2] -> a = Y[1] + Z[2].
+		:param params: Lista dei parametri composti da xs, accs, spars, cpars
+		"""
+		accs = params[1] # Le posizioni all'intero del vettore dei parametri sono fissate
+		for acc in accs:
+			value = acc.value
+			MPGOSname = acc.createMPGOSname()
+			for i in range(2, len(params)):
+				paramlist = params[i]
+				for param in paramlist:
+					print(re.findall(r"\w+\.*\w+", param.value))
+			break
 
 	def buildODE(self, params:List[any]):
 		pass
 
-
 	def buildEquation(self, params:List[any]):
 		pass
-
 
 	def buildSystem(self) -> tuple:
 		self.formatequationwfunc()	             # Formatto le equazioni inserendo le funzioni
@@ -541,7 +544,6 @@ class Parser:
 			 xs, accs, spars, cpars
 		]
 		return accs, xs, spars, cpars
-
 
 		
 
@@ -583,8 +585,9 @@ if __name__ == "__main__":
 		# print("\ncPAR Parameters")
 		# Var.forEach(cpars, print)
 		# p.formatequationwfunc()
-		for x in p.buildSystem():
-			Var.forEach(x, print)
+		# p.buildACCvalue(p.buildSystem())
+		for param in p.buildSystem():
+			print(Var.forEach(param, print))
 	except FileNotFoundError as fnfe:
 		print("Il path all'XML è errato ...")
 	except IndexError as e:
