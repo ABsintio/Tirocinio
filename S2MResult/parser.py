@@ -69,6 +69,7 @@ INPUT_F   = r"\s+input\s*.*"				# Pattern per matching degli input delle funzion
 OUTPUT_F  = r"\s+output.*"					# Pattern per matching degli output delle funzioni/classi/model
 START_ALG = r"\s*algorithm"					# Pattern per matching dello start di una algoritmo
 END 	  = r"\s*end.*"						# Pattern per matching della fine di una funzione/classe/model
+ZERO_DER  = r"\s*der[(].*[)]\s*=\s*0.0"		# Pattern per matching delle derivate pari a 0
 
 				           
 #--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#
@@ -136,6 +137,19 @@ template <class Precision> __forceinline__ __device__ void PerThread_Finalizatio
 ) {
 %s	
 }
+"""
+
+MPGOS_Model_SystemDefinition = """
+#ifndef %s_PERTHREAD_SYSTEMDEFINITION_H
+#define %s_PERTHREAD_SYSTEMDEFINITION_H
+
+#include <fstream>
+#include <iostream>
+#include <string>
+
+%s
+
+#endif
 """
 
 
@@ -247,8 +261,9 @@ class Parser:
 	ACC, cPAR i quali corrispondono rispettivamente a: ACC -> algoritmi, 
 	sPAR -> Equazioni iniziali costanti, cPAR -> Equazioni di assegnazione, X -> ODE.
 	"""
-	def __init__(self, xml_filename:str):
-		self.modelname = xml_filename.split(".")[-2] + "." + xml_filename.split(".")[-3]
+	def __init__(self, xml_filename:str, workingdir:str):
+		self.modelname = xml_filename.split(".")[-3] + "." + xml_filename.split(".")[-2]
+		self.workingdir = workingdir
 		self.root = ET.parse(xml_filename).getroot()
 		self.varswithbind = []
 		self.varswithoutbind = []
@@ -310,11 +325,16 @@ class Parser:
 		for child in self.root.iter("equation"):
 			text = child.text.strip()
 			if re.match(INIT_EQ, text):
-				self.initeqs.append(text)
+				if list(filter(lambda x: x.split("=")[0] == text.split("=")[0], self.initeqs)) == []:
+					self.initeqs.append(text)
 			elif re.match(ODE_EQ, text):
-					self.ode.append(text)
+				self.ode.append(text)
 			elif re.match(EQ_EQ, text):
 				self.equation.append(text)
+			elif re.match(ZERO_DER, text):
+				modified_text = text.replace("der(", "").replace(")", "")
+				if list(filter(lambda x: x.split("=")[0] == modified_text.split("=")[0], self.initeqs)) == []:
+					self.initeqs.append(modified_text)
 
 	def parsealgorithms(self) -> None:
 		"""
@@ -548,6 +568,7 @@ class Parser:
 						break
 					except KeyError:
 						pass
+				
 			param.setvalue(value)
 
 	def buildSystem(self) -> tuple:
@@ -580,9 +601,10 @@ class Parser:
 
 class SystemDefinition:
 	""" Classe per la costruzione della definizione del sistema (File SystemDefinition.cuh) """
-	def __init__(self, xmlfile):
+	def __init__(self, xmlfile, workdir):
 		self.xmlfile = xmlfile
-		self.parser = Parser(xmlfile)
+		self.workdir = workdir
+		self.parser = Parser(xmlfile, workdir)
 		self.parser.parse()
 		self.accs, self.xs, self.spars, self.cpars = self.parser.buildSystem() # Prende tutti i parametri
 
@@ -595,12 +617,12 @@ class SystemDefinition:
 	def buildMPGOS_PerThread_EventFunction(self):
 		""" Formatta la stringa per la funzione PerThread_EventFunction """
 		global MPGOS_PerThread_EventFunction
-		pass
+		return MPGOS_PerThread_EventFunction % ("")
 
 	def buildMPGOS_PerThread_ActionAfterEventDetection(self):
 		""" Formatta la stringa per la funzione PerThread_ActionAfterEventDetection """
 		global MPGOS_PerThread_ActionAfterEventDetection
-		pass
+		return MPGOS_PerThread_ActionAfterEventDetection % ("")
 
 	def buildMPGOS_PerThread_ActionAfterSuccessfulTimeStep(self):
 		""" Formatta la stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep """
@@ -608,6 +630,42 @@ class SystemDefinition:
 		string = Var.createCodeLineMPGOS(self.accs, self.cpars)
 		return MPGOS_PerThread_ActionAfterSuccessfulTimeStep % (string)
 
+	def buildMPGOS_PerThread_Initialization(self):
+		""" Formatta la stringa per la funzione PerThread_Initialization """
+		global MPGOS_PerThread_Initialization
+		return MPGOS_PerThread_Initialization % ("")
+
+	def buildMPGOS_PerThread_Finalization(self):
+		""" Formatta la stringa per la funzione PerThread_Finalization """
+		global MPGOS_PerThread_Finalization
+		return MPGOS_PerThread_Finalization % ("")
+
+	def getparameters(self) -> list:
+		""" Ritorna la lista dei parametri """
+		return [self.accs, self.xs, self.spars, self.cpars]
+
+	def createSystemDefinitionFile(self):
+		""" Crea il file <Model>_SystemDefinition.cuh nel quale è presente il sistema di ODE """
+		global MPGOS_Model_SystemDefinition
+		functions = "{}\n{}\n{}\n{}\n{}\n{}\n".format(
+			self.buildMPGOS_PerThread_OdeFunction(),
+			self.buildMPGOS_PerThread_EventFunction(),
+			self.buildMPGOS_PerThread_ActionAfterEventDetection(),
+			self.buildMPGOS_PerThread_ActionAfterSuccessfulTimeStep(),
+			self.buildMPGOS_PerThread_Initialization(),
+			self.buildMPGOS_PerThread_Finalization()
+		)
+		directory, model = self.parser.modelname.split("/")[-1].split(".")
+		newdir = path.abspath(directory) + "/" + model + "_MPGOS"
+		try:
+			os.mkdir(newdir)
+		except Exception:
+			pass
+		currentdir = os.getcwd()
+		os.chdir(newdir)
+		with open(model + "_SystemDefinition.cuh", mode="w") as stream:
+			stream.write(MPGOS_Model_SystemDefinition % (model, model, functions))
+		os.chdir(currentdir)
 
 
 if __name__ == "__main__":
@@ -618,6 +676,7 @@ if __name__ == "__main__":
 			  "2) Il path all'XML esistente se si vuole l'opzione 0 del primo parametro"
 		xmltest = argv[1]
 		path2xml = ""
+		workingdir = ""
 		if int(xmltest) == 1: 
 			assert len(argv) == 4
 			workingdir  = argv[2] # Parametro 2 per la workingdir   (tutto il path)
@@ -631,11 +690,12 @@ if __name__ == "__main__":
 				sys.exit(1)
 		else:
 			path2xml = argv[2]
-		
-		system = SystemDefinition(path2xml)
-		print(system.buildMPGOS_PerThread_OdeFunction())
-		print(system.buildMPGOS_PerThread_ActionAfterSuccessfulTimeStep())
+			workingdir = "./" + path2xml.split("/")[-2]
+
+		system = SystemDefinition(path2xml, workingdir)
+		system.createSystemDefinitionFile()
 	except FileNotFoundError as fnfe:
+		print(fnfe)
 		print("Il path all'XML è errato ...")
 	except IndexError as e:
 		print(msg)
