@@ -1,9 +1,18 @@
 from parser import Parser, Var
 import os
 from os import path
+from notifier import Notifier, notifier
+import time
+import sys
 
-#--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#
-				           
+
+#--------------------------# DEFINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
+
+
+NOTIFICATION = True if int(sys.argv[-1]) == 1 else False
+
+
+#--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#	           
 
 # X
 MPGOS_PerThread_OdeFunction = """
@@ -85,12 +94,12 @@ MPGOS_Model_SystemDefinition = """
 
 #--------------------------# DEFINIZIONE DELLA CLASSE PER LA BUILD DELLA DEFINIZIONE DEL SISTEMA # --------------------------#
 
+
 class SystemDefinition:
     """ Classe per la costruzione della definizione del sistema (File SystemDefinition.cuh) """
-    def __init__(self, xmlfile, workdir):
+    def __init__(self, xmlfile):
         self.xmlfile = xmlfile
-        self.workdir = workdir
-        self.parser = Parser(xmlfile, workdir)
+        self.parser = Parser(xmlfile)
         self.parser.parse()
         self.accs, self.xs, self.spars, self.cpars = self.parser.buildSystem() # Prende tutti i parametri
 
@@ -130,6 +139,19 @@ class SystemDefinition:
         """ Ritorna la lista dei parametri """
         return [self.accs, self.xs, self.spars, self.cpars]
 
+    def createnewdir(self):
+        """ Ritorna il path della nuova directory dove salvare i file """
+        directory, model = self.parser.modelname.split(".")
+        newdir = "/".join(directory.split("/")[:-1]) + "/" + model + "_MPGOS"
+        return newdir
+
+    @notifier(
+        NOTIFICATION, 
+        "Build SistemDefinition File",
+        "Creazione del file di definizione del sistema con tutte le relative funzioni",
+        "Build SystemDefinition File",
+        "Terminata creazione del file di definizione del sistema"
+    )
     def createSystemDefinitionFile(self):
         """ Crea il file <Model>_SystemDefinition.cuh nel quale è presente il sistema di ODE """
         global MPGOS_Model_SystemDefinition
@@ -142,13 +164,19 @@ class SystemDefinition:
             self.buildMPGOS_PerThread_Finalization()
         )
         directory, model = self.parser.modelname.split(".")
-        newdir = "/".join(directory.split("/")[:-1]) + "/" + model + "_MPGOS"
         try:
-            os.mkdir(newdir)
-        except Exception as e:
-            print(e)
+            os.mkdir(self.createnewdir())
+        except FileExistsError as e:
+            n = Notifier("modelica2GPU")
+            n.setupforerror("Error: FileExistsError", e.__str__())
+            n.show()
+            time.sleep(3)
         try:
-            with open(newdir + "/" + model + "_SystemDefinition.cuh", mode="w") as stream:
+            with open(self.createnewdir() + "/" + model + "_SystemDefinition.cuh", mode="w") as stream:
                 stream.write(MPGOS_Model_SystemDefinition % (model, model, functions))
+            return self.createnewdir() + "/" + model + "_SystemDefinition.cuh"
         except Exception as e:
-            print(e)
+            n = Notifier("modelica2GPU")
+            n.setupforerror("Error: Exception", e.__str__())
+            n.show()
+            time.sleep(2)

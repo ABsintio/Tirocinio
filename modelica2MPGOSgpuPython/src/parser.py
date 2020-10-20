@@ -1,47 +1,49 @@
 import xml.etree.ElementTree as ET
 import re
-from typing import List
 import os
 from os import path
 import sys
-	
-
-#--------------------------# DEFIINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
-
-
-INIT_EQ   = r"\w+\.*\w+\s*=\s*\d+\.\d+"		# Pattern per matching delle equazioni iniziali
-ODE_EQ    = r"der[(].*[)]\s*=.*[(+*)-]+"	# Pattern per matching delle ODE
-EQ_EQ     = r"\w+\.*\w+\s*=.*[(+*)-]+"		# Pattern per matching delle Equazioni di assegnazione
-INPUT_F   = r"\s+input\s*.*"				# Pattern per matching degli input delle funzioni/classi/model
-OUTPUT_F  = r"\s+output.*"					# Pattern per matching degli output delle funzioni/classi/model
-START_ALG = r"\s*algorithm"					# Pattern per matching dello start di una algoritmo
-END 	  = r"\s*end.*"						# Pattern per matching della fine di una funzione/classe/model
-ZERO_DER  = r"\s*der[(].*[)]\s*=\s*0.0"		# Pattern per matching delle derivate pari a 0
+from notifier import Notifier, notifier
+import time
 
 
-#--------------------------# DEFINIZIONE DI PARAMETRI E DELLE VARIABILI NECESSARIE AD MPGOS   # --------------------------#
-				           						   
+#--------------------------# DEFINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
+
+
+INIT_EQ      = r"\w+\.*\w+\s*=\s*\d+\.\d+"				 # Pattern per matching delle equazioni iniziali
+ODE_EQ       = r"der[(].*[)]\s*=.*[(+*)-]+"	    		 # Pattern per matching delle ODE
+EQ_EQ        = r"\w+\.*\w+\s*=.*[(+*)-]+"				 # Pattern per matching delle Equazioni di assegnazione
+INPUT_F      = r"\s+input\s*.*"				    		 # Pattern per matching degli input delle funzioni/classi/model
+OUTPUT_F     = r"\s+output.*"							 # Pattern per matching degli output delle funzioni/classi/model
+START_ALG    = r"\s*algorithm"							 # Pattern per matching dello start di una algoritmo
+END 	     = r"\s*end.*"								 # Pattern per matching della fine di una funzione/classe/model
+ZERO_DER     = r"\s*der[(].*[)]\s*=\s*0.0"				 # Pattern per matching delle derivate pari a 0
+NOTIFICATION = True if int(sys.argv[-1]) == 1 else False
+
+
+#--------------------------# DEFINIZIONE DI PARAMETRI E DELLE VARIABILI NECESSARIE AD MPGOS   # --------------------------#				           						   
+
 
 class Var:
 	""" Classe che descrive una variabile qualsiasi, con nome, valore e valoreiniziale se esiste """
-	def __init__(self, nome:str, value:str, id, initvalue=None):
+	def __init__(self, nome, value, id, initvalue=None):
 		self.nome = nome
 		self.value = value
 		self.init = initvalue
 		self.MPGOSname = "Var"
 		self.id = id
 
-	def __str__(self) -> str:
+	def __str__(self):
 		string = f"{self.nome}(value={self.value}, iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()})"
 		return string
 
 	@staticmethod
-	def forEach(l:List[any], func) -> None:
+	def forEach(l, func):
 		for x in l:
 			func(x)
 	
 	@staticmethod
-	def createCodeLineMPGOS(*l:List[any]) -> str:
+	def createCodeLineMPGOS(*l):
 		lista = []
 		for x in l:
 			lista.append("".join(list(map(lambda y: f"\t{y.createMPGOSname()} = {y.value};\n", x))))
@@ -50,10 +52,10 @@ class Var:
 	def createMPGOSname(self):
 		return self.MPGOSname + "[" + str(self.id) + "]"
 	
-	def setid(self, id:int) -> None:
+	def setid(self, id:int):
 		self.id = id
 	
-	def setvalue(self, value:str) -> None:
+	def setvalue(self, value:str):
 		self.value = value
 
 
@@ -127,9 +129,8 @@ class Parser:
 	ACC, cPAR i quali corrispondono rispettivamente a: ACC -> algoritmi, 
 	sPAR -> Equazioni iniziali costanti, cPAR -> Equazioni di assegnazione, X -> ODE.
 	"""
-	def __init__(self, xml_filename:str, workingdir:str):
+	def __init__(self, xml_filename):
 		self.modelname = xml_filename.split(".")[-3] + "." + xml_filename.split(".")[-2]
-		self.workingdir = workingdir
 		self.root = ET.parse(xml_filename).getroot()
 		self.varswithbind = []
 		self.varswithoutbind = []
@@ -139,7 +140,7 @@ class Parser:
 		self.equation = []
 		self.functions = []
 
-	def __str__(self) -> str:
+	def __str__(self):
 		string = self.modelname + "( \n"
 		string += "\tVariables (No bindExpression): {\n"
 		for var in self.varswithoutbind:
@@ -166,7 +167,7 @@ class Parser:
 		string += "\t}\n)"
 		return string
 
-	def parsevar(self) -> None:
+	def parsevar(self):
 		""" Funzione di parsing di tutte le variabili presenti nel modello """
 		for child in self.root.iter("variable"):
 			t = [child.attrib['name'], None]
@@ -177,7 +178,7 @@ class Parser:
 			else:
 				self.varswithbind.append(tuple(t))
 
-	def parseequations(self) -> None:
+	def parseequations(self):
 		"""
 		Funzione di parsing di tutte le equazioni presenti nel modello. Nell'XML
 		ogni equazione è descritta dal tag <equation> che contiene come testo
@@ -207,7 +208,7 @@ class Parser:
 				if list(filter(lambda x: x.split("=")[0] == modified_text.split("=")[0], self.initeqs)) == []:
 					self.initeqs.append(modified_text)
 
-	def parsealgorithms(self) -> None:
+	def parsealgorithms(self):
 		"""
 		Funzione di parsing di tutti gli algoritmi presenti nel modello. Nell'XML
 		solitamente abbiamo un solo tag <algorithm> che racchiude tutti gli algoritmi
@@ -218,7 +219,7 @@ class Parser:
 			for subtext in text.split("\n"):
 				self.algs.append(subtext.strip()[:-1])
 
-	def parsefunctions(self) -> None:
+	def parsefunctions(self):
 		"""
 		Funzione di parsing delle functions presenti nel modello. Nell'XML sono definite
 		dal tag <functions> che racchiude tutte le funzioni. Python fortunatamente ci 
@@ -251,7 +252,14 @@ class Parser:
 	def parseevent(self):
 		pass
 
-	def parse(self) -> None:
+	@notifier(
+		NOTIFICATION,
+		"Starting Parser", 
+		"modelica2GPU incomincia a parsare l'XML in input", 
+		"Ending Parser"  , 
+		"modelica2GPU ha terminato di parsare l'XML in input"
+	)
+	def parse(self):
 		"""
 		La funzione parse, mette insieme tutti le funzioni di parsing per eseguire
 		un parsing completo di tutto il modello e creare le rispettive istanze.
@@ -262,7 +270,7 @@ class Parser:
 		self.parsefunctions()
 		self.parseevent()
 
-	def createACC(self) -> List[ACC]:
+	def createACC(self):
 		"""
 		Prende la parte sinistra do quello che ha parsato 
 		ed inserito nella variabile degli algoritmi e crea
@@ -292,7 +300,7 @@ class Parser:
 
 		return accs, accsdict
 	
-	def create_sPAR(self) -> List[sPAR]:
+	def create_sPAR(self):
 		"""
 		Prende tutte le equazioni iniziali e considera solo quelle 
 		la cui parte sinistra non compare in alcuna equazione o algoritmo.
@@ -424,7 +432,7 @@ class Parser:
 			for i in range(0, len(self.ode)):
 				self.ode[i] = replacewithfunction(nome, eqnome, self.ode[i], pattern)
 
-	def buildParamValue(self, params:List[Var], paramsdict:dict):
+	def buildParamValue(self, params, paramsdict):
 		"""
 		Prende ogni parametro e ne modifica il campo value
 		inserendo al posto dell'equazione già presente in formato leggibile, 
@@ -446,7 +454,14 @@ class Parser:
 				
 			param.setvalue(value)
 
-	def buildSystem(self) -> tuple:
+	@notifier(
+		NOTIFICATION,
+		"Build System", 
+		"Creazione e formattazione dei parametri ACC, sPAR, cPAR e X",
+		"Build System",
+		"Terminata fase di creazione e formattazione"
+	)
+	def buildSystem(self):
 		"""
 		Funzione che formatta il sistema di ODE e ritorna la lista di tutti i 
 		parametri con value formattato in maniera "vettoriale"
