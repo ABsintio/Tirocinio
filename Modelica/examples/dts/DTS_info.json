@@ -1,0 +1,22 @@
+{"format":"Transformational debugger info","version":1,
+"info":{"name":"DTS","description":"Discrete Time System"},
+"variables":{
+"$whenCondition1":{"comment":"sample(1, T, T)","kind":"discrete","type":"Boolean","unit":"","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":19,"lineEnd":19,"colStart":1,"colEnd":13},"within":["DTS"]}},
+"A[1,1]":{"comment":"","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":5,"lineEnd":5,"colStart":1,"colEnd":42},"within":["Real"]}},
+"A[2,1]":{"comment":"","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":5,"lineEnd":5,"colStart":1,"colEnd":42},"within":["Real"]}},
+"A[2,2]":{"comment":"","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":5,"lineEnd":5,"colStart":1,"colEnd":42},"within":["Real"]}},
+"T":{"comment":"","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":3,"lineEnd":3,"colStart":1,"colEnd":21},"within":["Real"]}}
+},
+"equations":[{"eqIndex":0,"tag":"dummy"},
+{"eqIndex":1,"section":"initial","tag":"assign","defines":["$whenCondition1"],"uses":[],"equation":["false"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":19,"lineEnd":19,"colStart":1,"colEnd":13},"within":["DTS"]}},
+{"eqIndex":2,"section":"initial","tag":"assign","defines":["x[1]"],"uses":[],"equation":["1.0"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":12,"lineEnd":12,"colStart":1,"colEnd":11},"within":["DTS"]}},
+{"eqIndex":3,"section":"initial","tag":"assign","defines":["$PRE.x[1]"],"uses":["x[1]"],"equation":["x[1]"],"source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+{"eqIndex":4,"section":"initial","tag":"assign","defines":["x[2]"],"uses":[],"equation":["2.0"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":12,"lineEnd":12,"colStart":1,"colEnd":11},"within":["DTS"]}},
+{"eqIndex":5,"section":"initial","tag":"assign","defines":["$PRE.x[2]"],"uses":["x[2]"],"equation":["x[2]"],"source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+{"eqIndex":6,"section":"regular","tag":"assign","defines":["$whenCondition1"],"uses":["T"],"equation":["sample(1, T, T)"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":19,"lineEnd":19,"colStart":1,"colEnd":13},"within":["DTS"]}},
+{"eqIndex":7,"section":"regular","tag":"when","defines":["x[2]"],"uses":["$whenCondition1","x[2]","A[2,2]","x[1]","A[2,1]"],"equation":["A[2,1] * pre(x[1]) + A[2,2] * pre(x[2])"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":19,"lineEnd":19,"colStart":1,"colEnd":13},"within":["DTS"]}},
+{"eqIndex":8,"section":"regular","tag":"when","defines":["x[1]"],"uses":["$whenCondition1","x[2]","A[1,2]","x[1]","A[1,1]"],"equation":["A[1,1] * pre(x[1]) + A[1,2] * pre(x[2])"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/dts/dts.mo","lineStart":19,"lineEnd":19,"colStart":1,"colEnd":13},"within":["DTS"]}}
+],
+"functions":[
+]
+}

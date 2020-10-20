@@ -1,0 +1,32 @@
+loadModel(Modelica);
+getErrorString();
+
+loadFile("constants.mo");
+getErrorString();
+
+loadFile("ad.mo");
+getErrorString();
+
+loadFile("monitor.mo");
+getErrorString();
+
+loadFile("fifo.mo");
+getErrorString();
+
+loadFile("controller.mo");
+getErrorString();
+
+loadFile("system.mo");
+getErrorString();
+
+simulate(System, stopTime=1000);
+getErrorString();
+
+plot({fifo.x}, externalWindow=true);
+getErrorString();
+
+//plot({fifo.u}, externalWindow=true);
+//getErrorString();
+
+plot({fifo.p_out, fifo.p_in, fifo.u}, externalWindow=true);
+getErrorString();

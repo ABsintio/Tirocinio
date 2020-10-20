@@ -1,0 +1,31 @@
+loadModel(Modelica);
+getErrorString();
+
+loadFile("constants.mo");
+getErrorString();
+
+loadFile("ad.mo");
+getErrorString();
+
+loadFile("system.mo");
+getErrorString();
+
+loadFile("plant.mo");
+getErrorString();
+
+loadFile("controller.mo");
+getErrorString();
+
+loadFile("monitor.mo");
+getErrorString();
+
+simulate(System, stopTime=10);
+getErrorString();
+
+plot({plant.x, plant.d}, externalWindow=true);
+getErrorString();
+
+plot({plant.u, monitor.y}, externalWindow=true);
+getErrorString();
+
+

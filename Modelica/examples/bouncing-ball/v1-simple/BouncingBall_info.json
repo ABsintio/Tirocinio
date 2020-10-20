@@ -1,0 +1,23 @@
+{"format":"Transformational debugger info","version":1,
+"info":{"name":"BouncingBall","description":"The 'classic' bouncing ball model"},
+"variables":{
+"h":{"comment":"","kind":"state","type":"Real","unit":"m","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":8,"lineEnd":8,"colStart":3,"colEnd":11},"within":["Real"]}},
+"der(h)":{"comment":"","kind":"derivative","type":"Real","unit":"m.s-1","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":8,"lineEnd":8,"colStart":3,"colEnd":11},"within":["Real"]}},
+"$whenCondition1":{"comment":"h < 0.0","kind":"discrete","type":"Boolean","unit":"","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":19,"lineEnd":19,"colStart":5,"colEnd":25},"within":["BouncingBall"]}},
+"e":{"comment":"Coefficient of restitution","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":5,"lineEnd":5,"colStart":3,"colEnd":52},"within":["Real"]}}
+},
+"equations":[{"eqIndex":0,"tag":"dummy"},
+{"eqIndex":1,"section":"initial","tag":"assign","defines":["v"],"uses":["$START.v"],"equation":["$START.v"],"source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+{"eqIndex":2,"section":"initial","tag":"assign","defines":["der(h)"],"uses":["v"],"equation":["v"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":15,"lineEnd":15,"colStart":3,"colEnd":13},"within":["BouncingBall"]}},
+{"eqIndex":3,"section":"initial","tag":"assign","defines":["$PRE.v"],"uses":["v"],"equation":["v"],"source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+{"eqIndex":4,"section":"initial","tag":"assign","defines":["der(v)"],"uses":[],"equation":["-9.81"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":16,"lineEnd":16,"colStart":3,"colEnd":17},"within":["BouncingBall"]}},
+{"eqIndex":5,"section":"initial","tag":"assign","defines":["h"],"uses":["h0"],"equation":["h0"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":12,"lineEnd":12,"colStart":3,"colEnd":9},"within":["BouncingBall"]}},
+{"eqIndex":6,"section":"initial","tag":"assign","defines":["$whenCondition1"],"uses":["h"],"equation":["h < 0.0"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":19,"lineEnd":19,"colStart":5,"colEnd":25},"within":["BouncingBall"]}},
+{"eqIndex":7,"section":"regular","tag":"assign","defines":["$whenCondition1"],"uses":["h"],"equation":["h < 0.0"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":19,"lineEnd":19,"colStart":5,"colEnd":25},"within":["BouncingBall"]}},
+{"eqIndex":8,"section":"regular","tag":"assign","defines":["der(v)"],"uses":[],"equation":["-9.81"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":16,"lineEnd":16,"colStart":3,"colEnd":17},"within":["BouncingBall"]}},
+{"eqIndex":9,"section":"regular","tag":"assign","defines":["der(h)"],"uses":["v"],"equation":["v"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":15,"lineEnd":15,"colStart":3,"colEnd":13},"within":["BouncingBall"]}},
+{"eqIndex":10,"section":"regular","tag":"when","defines":["v"],"uses":["$whenCondition1","v","e"],"equation":["(-e) * pre(v)"],"source":{"info":{"file":"/home/enrico/Dropbox/teaching/2017/verifica-validazione-sistemi-2017/modelica/examples/bouncing-ball/v1-simple/BouncingBall.mo","lineStart":19,"lineEnd":19,"colStart":5,"colEnd":25},"within":["BouncingBall"]}}
+],
+"functions":[
+]
+}

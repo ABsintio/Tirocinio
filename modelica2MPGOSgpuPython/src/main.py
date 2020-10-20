@@ -15,7 +15,7 @@ import time
 NOTIFICATION = True if int(sys.argv[-1]) == 1 else False
 
 
-#--------------------------# DEFIINIZIONE DELLA FUNZIONE DI CREAZIONE DELL'XML NEL CASO IN CUI NON ESISTA # --------------------------#
+#--------------------------# DEFINIZIONE DELLA FUNZIONE DI CREAZIONE DELL'XML NEL CASO IN CUI NON ESISTA # --------------------------#
 
 
 def contains_modelica(workdir):
@@ -24,10 +24,7 @@ def contains_modelica(workdir):
 	presenti i file modelica che ci dovrebbero essere 
 	nelle directory create da sbml2Modelica
 	"""
-	return "Functions.mo" in os.listdir(workdir) and \
-		   "Reactions.mo" in os.listdir(workdir) and \
-		   "package.mo"   in os.listdir(workdir) and \
-		   "Constants.mo" in os.listdir(workdir)
+	return any(list(filter(lambda x: x.endswith(".mo"), os.listdir(workdir))))
 		   
 def getmodelnamefromsbml(sbml):
 	"""
@@ -99,6 +96,7 @@ def main():
 			except Exception as identifier:
 				notif.setupforerror("Errore: Conversion", identifier.__str__())
 				notif.show()
+				print(identifier)
 				sys.exit(1)
 		else:
 			path2xml = argv[2]
@@ -111,6 +109,7 @@ def main():
 	except IndexError as ie:
 		notif.setupforerror("Errore: IndexError", ie.__str__())
 		notif.show()
+		print(ie)
 		print(msg)
 	except AssertionError:
 		msg += "\n3) Il path assoluto della working directory che presenta i file .mo del modello generati da sbml2Modelica\n" + \

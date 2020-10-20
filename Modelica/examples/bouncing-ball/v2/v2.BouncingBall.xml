@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dae xmlns:p1="http://www.w3.org/1998/Math/MathML"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                                xsi:noNamespaceSchemaLocation="http://home.dei.polimi.it/donida/Projects/AutoEdit/Images/DAE.xsd">
+<variables dimension="8">
+<orderedVariables dimension="5">
+<variablesList>
+<variable id="1" name="v" variability="continuousState" direction="none" type="Real" differentiatedIndex="1" fixed="false" flow="NonConnector" stream="NonStreamConnector">
+<attributesValues>
+<unit string="&quot;m/s&quot;">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<cn type="constant"> m/s 
+</cn>
+</math>
+</MathML>
+</unit>
+</attributesValues>
+</variable>
+<variable id="2" name="h" variability="continuousState" direction="none" type="Real" differentiatedIndex="1" derivativeName="v" fixed="false" flow="NonConnector" stream="NonStreamConnector">
+<attributesValues>
+<unit string="&quot;m&quot;">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<cn type="constant"> m 
+</cn>
+</math>
+</MathML>
+</unit>
+</attributesValues>
+</variable>
+<variable id="3" name="done" variability="discrete" direction="none" type="Boolean" fixed="false" flow="NonConnector" stream="NonStreamConnector">
+</variable>
+<variable id="4" name="$whenCondition1" variability="discrete" direction="none" type="Boolean" fixed="true" flow="NonConnector" stream="NonStreamConnector" comment="h &lt; 0.0">
+<attributesValues>
+<fixed string="true">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<true/>
+</apply>
+</math>
+</MathML>
+</fixed>
+</attributesValues>
+</variable>
+<variable id="5" name="$whenCondition2" variability="discrete" direction="none" type="Boolean" fixed="true" flow="NonConnector" stream="NonStreamConnector" comment="h &lt; -0.001">
+<attributesValues>
+<fixed string="true">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<true/>
+</apply>
+</math>
+</MathML>
+</fixed>
+</attributesValues>
+</variable>
+</variablesList>
+</orderedVariables>
+<knownVariables dimension="3">
+<variablesList>
+<variable id="1" name="e" variability="parameter" direction="none" type="Real" fixed="true" flow="NonConnector" stream="NonStreamConnector" comment="Coefficient of restitution">
+<bindExpression string="0.8">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<cn type="real"> 0.8 
+</cn>
+</math>
+</MathML>
+</bindExpression>
+</variable>
+<variable id="2" name="h0" variability="parameter" direction="none" type="Real" fixed="true" flow="NonConnector" stream="NonStreamConnector" comment="Initial height">
+<bindExpression string="1.0">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<cn type="real"> 1.0 
+</cn>
+</math>
+</MathML>
+</bindExpression>
+<attributesValues>
+<unit string="&quot;m&quot;">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<cn type="constant"> m 
+</cn>
+</math>
+</MathML>
+</unit>
+</attributesValues>
+</variable>
+<variable id="3" name="eps" variability="constant" direction="none" type="Real" fixed="true" flow="NonConnector" stream="NonStreamConnector" comment="Small height">
+<bindExpression string="0.001">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<cn type="real"> 0.001 
+</cn>
+</math>
+</MathML>
+</bindExpression>
+<attributesValues>
+<unit string="&quot;m&quot;">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<cn type="constant"> m 
+</cn>
+</math>
+</MathML>
+</unit>
+</attributesValues>
+</variable>
+</variablesList>
+</knownVariables>
+</variables>
+<equations dimension="5">
+<equation id="1">v = der(h)
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<equivalent/>
+<ci> v 
+</ci>
+<apply>
+<diff/>
+<ci> h 
+</ci>
+</apply>
+</apply>
+</math>
+</MathML>
+</equation>
+<equation id="2">der(v) = if done then 0.0 else -9.81
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<equivalent/>
+<apply>
+<diff/>
+<ci> v 
+</ci>
+</apply>
+<apply>
+<piecewise>
+<piece>
+<cn type="real"> 0.0 
+</cn>
+<ci> done 
+</ci>
+</piece>
+<otherwise>
+<cn type="real"> -9.81 
+</cn>
+</otherwise>
+</piecewise>
+</apply>
+</apply>
+</math>
+</MathML>
+</equation>
+<whenEquation id="3">
+<WhenOperator>
+done := h &lt; -0.001
+</WhenOperator>
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<equivalent/>
+<ci> done 
+</ci>
+<apply>
+<lt/>
+<ci> h 
+</ci>
+<cn type="real"> -0.001 
+</cn>
+</apply>
+</apply>
+</math>
+</MathML>
+<whenEquationCondition>
+{$whenCondition1, $whenCondition2}
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<transpose/>
+<vector>
+<ci> $whenCondition1 
+</ci>
+<ci> $whenCondition2 
+</ci>
+</vector>
+</apply>
+</math>
+</MathML>
+</whenEquationCondition>
+</whenEquation>
+<equation id="4">$whenCondition1 = h &lt; 0.0
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<equivalent/>
+<ci> $whenCondition1 
+</ci>
+<apply>
+<lt/>
+<ci> h 
+</ci>
+<cn type="real"> 0.0 
+</cn>
+</apply>
+</apply>
+</math>
+</MathML>
+</equation>
+<equation id="5">$whenCondition2 = h &lt; -0.001
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<equivalent/>
+<ci> $whenCondition2 
+</ci>
+<apply>
+<lt/>
+<ci> h 
+</ci>
+<cn type="real"> -0.001 
+</cn>
+</apply>
+</apply>
+</math>
+</MathML>
+</equation>
+</equations>
+<simpleEquations dimension="1">
+<whenEquation id="1">
+<WhenOperator>
+reinit(v, (-e) * (if h &lt; -0.001 then 0.0 else pre(v)))
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<reinit/>
+<ci> v 
+</ci>
+<apply>
+<times/>
+<apply>
+<minus/>
+<ci> e 
+</ci>
+</apply>
+<apply>
+<piecewise>
+<piece>
+<cn type="real"> 0.0 
+</cn>
+<apply>
+<lt/>
+<ci> h 
+</ci>
+<cn type="real"> -0.001 
+</cn>
+</apply>
+</piece>
+<otherwise>
+<apply>
+<pre/>
+<ci> v 
+</ci>
+</apply>
+</otherwise>
+</piecewise>
+</apply>
+</apply>
+</apply>
+</math>
+</MathML>
+</WhenOperator>
+<whenEquationCondition>
+{$whenCondition1, $whenCondition2}
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<transpose/>
+<vector>
+<ci> $whenCondition1 
+</ci>
+<ci> $whenCondition2 
+</ci>
+</vector>
+</apply>
+</math>
+</MathML>
+</whenEquationCondition>
+</whenEquation>
+</simpleEquations>
+<initialEquations dimension="2">
+<equation id="1">h = h0
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<equivalent/>
+<ci> h 
+</ci>
+<ci> h0 
+</ci>
+</apply>
+</math>
+</MathML>
+</equation>
+<equation id="2">done = false
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<equivalent/>
+<ci> done 
+</ci>
+<apply>
+<false/>
+</apply>
+</apply>
+</math>
+</MathML>
+</equation>
+</initialEquations>
+<zeroCrossingList dimension="2">
+<zeroCrossingElement string="h &lt; 0.0">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<lt/>
+<ci> h 
+</ci>
+<cn type="real"> 0.0 
+</cn>
+</apply>
+</math>
+</MathML>
+<involvedEquations>
+<equationId>
+4
+</equationId>
+</involvedEquations>
+</zeroCrossingElement>
+<zeroCrossingElement string="h &lt; -0.001">
+<MathML>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<lt/>
+<ci> h 
+</ci>
+<cn type="real"> -0.001 
+</cn>
+</apply>
+</math>
+</MathML>
+<involvedEquations>
+<equationId>
+5
+</equationId>
+</involvedEquations>
+</zeroCrossingElement>
+</zeroCrossingList>
+<functions>
+</functions>
+</dae>

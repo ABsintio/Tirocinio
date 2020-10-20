@@ -467,6 +467,7 @@ class Parser:
 		parametri con value formattato in maniera "vettoriale"
 		"""
 		self.formatequationwfunc()	                         # Formatto le equazioni inserendo le funzioni
+		print(self)
 		accs, accsdict   			  = self.createACC()	 # Prendo i parametri ACC
 		xs, xsdict                    = self.createX()		 # Prendo i parametri X
 		spars, sparsdict 	          = self.create_sPAR()	 # Prendo i parametri sPAR

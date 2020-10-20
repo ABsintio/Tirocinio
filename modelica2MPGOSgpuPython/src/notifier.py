@@ -3,14 +3,7 @@ from os import path
 import sys
 from functools import wraps
 import time
-
-while 1:
-    try:
-        import notify2
-        break
-    except ImportError:
-        pythonstring = "python.exe" if os.sys.platform == "win32" else "python3"
-        os.system(f"{pythonstring} -m pip install notify2")
+import notify2
 
 
 #--------------------------# DEFINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
