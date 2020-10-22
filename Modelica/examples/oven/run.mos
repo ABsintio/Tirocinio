@@ -1,6 +1,9 @@
 loadModel(Modelica);
 getErrorString();
 
+loadFile("package.mo");
+getErrorString();
+
 loadFile("constants.mo");
 getErrorString();
 
@@ -19,13 +22,5 @@ getErrorString();
 loadFile("monitor.mo");
 getErrorString();
 
-simulate(System, stopTime=10);
+dumpXMLDAE(oven.system, translationLevel="optimiser", addMathMLCode=true);
 getErrorString();
-
-plot({plant.x, plant.d}, externalWindow=true);
-getErrorString();
-
-plot({plant.u, monitor.y}, externalWindow=true);
-getErrorString();
-
-

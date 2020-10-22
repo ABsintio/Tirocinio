@@ -1,7 +1,8 @@
+within oven;
+class controller
+	extends Modelica.Icons.ExamplesPackage;
 
-class Controller
-
-Constants k;
+constants k;
 
 parameter Real T = 0.1;
 
@@ -39,7 +40,7 @@ end if;
 end when ;
 
 
-end Controller;
+end controller;
 
 
 

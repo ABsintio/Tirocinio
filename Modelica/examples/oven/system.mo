@@ -1,9 +1,10 @@
-
-class System
-
-Controller ctr;
-Plant plant;
-Monitor monitor;
+within oven;
+model system
+	extends Modelica.Icons.ExamplesPackage;
+	
+controller ctr;
+plant plantt;
+monitor monitorr;
 
 // Exhogenous Inputs
 Real d;
@@ -12,11 +13,9 @@ equation
 
 d = 200*sin(2*3.14*1*time);
 
+plantt.d = d;
+plantt.x = ctr.x;
+plantt.u = ctr.u;
+monitorr.x = plantt.x;
 
-
-plant.d = d;
-plant.x = ctr.x;
-plant.u = ctr.u;
-monitor.x = plant.x;
-
-end System;
+end system;

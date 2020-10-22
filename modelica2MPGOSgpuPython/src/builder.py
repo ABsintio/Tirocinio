@@ -9,7 +9,7 @@ import sys
 #--------------------------# DEFINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
 
 
-NOTIFICATION = True if int(sys.argv[-1]) == 1 else False
+NOTIFICATION = True if int(sys.argv[-2]) == 1 else False
 
 
 #--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#	           
@@ -97,42 +97,68 @@ MPGOS_Model_SystemDefinition = """
 
 class SystemDefinition:
     """ Classe per la costruzione della definizione del sistema (File SystemDefinition.cuh) """
-    def __init__(self, xmlfile):
+    def __init__(self, xmlfile, logger):
         self.xmlfile = xmlfile
-        self.parser = Parser(xmlfile)
+        self.parser = Parser(xmlfile, logger)
         self.parser.parse()
         self.accs, self.xs, self.spars, self.cpars = self.parser.buildSystem() # Prende tutti i parametri
+        self.logger = logger
+        self.logger.info("Chiamata a builder.SystemDefinition", "Chiamata a builder.SystemDefinition")
 
     def buildMPGOS_PerThread_OdeFunction(self):
         """ Formatta la stringa per la funzione PerThread_OdeFunction """
         global MPGOS_PerThread_OdeFunction
+        # START LOGGING
+        msg = "Formatta la stringa per la funzione PerThread_OdeFunction"
+        self.logger.debug(msg, msg)
+        # END LOGGING
         string = Var.createCodeLineMPGOS(self.xs)
         return MPGOS_PerThread_OdeFunction % (string)
 
     def buildMPGOS_PerThread_EventFunction(self):
         """ Formatta la stringa per la funzione PerThread_EventFunction """
         global MPGOS_PerThread_EventFunction
+        # START LOGGING
+        msg = "Formatta la stringa per la funzione PerThread_EventFunction"
+        self.logger.debug(msg, msg)
+        # END LOGGING
         return MPGOS_PerThread_EventFunction % ("")
 
     def buildMPGOS_PerThread_ActionAfterEventDetection(self):
         """ Formatta la stringa per la funzione PerThread_ActionAfterEventDetection """
         global MPGOS_PerThread_ActionAfterEventDetection
+        # START LOGGING
+        msg = "Formatta la stringa per la funzione PerThread_ActionAfterEventDetection"
+        self.logger.debug(msg, msg)
+        # END LOGGING
         return MPGOS_PerThread_ActionAfterEventDetection % ("")
 
     def buildMPGOS_PerThread_ActionAfterSuccessfulTimeStep(self):
         """ Formatta la stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep """
         global MPGOS_PerThread_ActionAfterSuccessfulTimeStep
+        # START LOGGING
+        msg = "Formatta la stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep"
+        self.logger.debug(msg, msg)
+        # END LOGGING
         string = Var.createCodeLineMPGOS(self.accs, self.cpars)
         return MPGOS_PerThread_ActionAfterSuccessfulTimeStep % (string)
 
     def buildMPGOS_PerThread_Initialization(self):
         """ Formatta la stringa per la funzione PerThread_Initialization """
         global MPGOS_PerThread_Initialization
+        # START LOGGING
+        msg = "Formatta la stringa per la funzione PerThread_Initialization"
+        self.logger.debug(msg, msg)
+        # END LOGGING
         return MPGOS_PerThread_Initialization % ("")
 
     def buildMPGOS_PerThread_Finalization(self):
         """ Formatta la stringa per la funzione PerThread_Finalization """
         global MPGOS_PerThread_Finalization
+        # START LOGGING
+        msg = "Formatta la stringa per la funzione PerThread_Finalization "
+        self.logger.debug(msg, msg)
+        # END LOGGING
         return MPGOS_PerThread_Finalization % ("")
 
     def getparameters(self):
@@ -155,6 +181,10 @@ class SystemDefinition:
     def createSystemDefinitionFile(self):
         """ Crea il file <Model>_SystemDefinition.cuh nel quale è presente il sistema di ODE """
         global MPGOS_Model_SystemDefinition
+        # START LOGGING 
+        msg = "Creazione del file di definizione del sistema con tutte le relative funzioni"
+        self.logger.debug(msg, msg)
+        # END LOGGING
         functions = "{}\n{}\n{}\n{}\n{}\n{}\n".format(
             self.buildMPGOS_PerThread_OdeFunction(),
             self.buildMPGOS_PerThread_EventFunction(),
@@ -167,16 +197,28 @@ class SystemDefinition:
         try:
             os.mkdir(self.createnewdir())
         except FileExistsError as e:
+            # START NOTIFYINH
             n = Notifier("modelica2GPU")
             n.setupforerror("Error: FileExistsError", e.__str__())
             n.show()
+            # END NOTIFYING
+            # START LOGGING 
+            msg = "Errore durante la creazione del file -> " + e.__str__()
+            self.logger.debug(msg, msg)
+            # END LOGGING
             time.sleep(3)
         try:
             with open(self.createnewdir() + "/" + model + "_SystemDefinition.cuh", mode="w") as stream:
                 stream.write(MPGOS_Model_SystemDefinition % (model, model, functions))
             return self.createnewdir() + "/" + model + "_SystemDefinition.cuh"
         except Exception as e:
+            # START NOTIFYING
             n = Notifier("modelica2GPU")
             n.setupforerror("Error: Exception", e.__str__())
             n.show()
+            # END NOTIFYING
+            # START LOGGING 
+            msg = "Errore durante la scrittura nel file -> " + e.__str__()
+            self.logger.debug(msg, msg)
+            # END LOGGING
             time.sleep(2)

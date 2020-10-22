@@ -18,7 +18,7 @@ OUTPUT_F     = r"\s+output.*"							 # Pattern per matching degli output delle f
 START_ALG    = r"\s*algorithm"							 # Pattern per matching dello start di una algoritmo
 END 	     = r"\s*end.*"								 # Pattern per matching della fine di una funzione/classe/model
 ZERO_DER     = r"\s*der[(].*[)]\s*=\s*0.0"				 # Pattern per matching delle derivate pari a 0
-NOTIFICATION = True if int(sys.argv[-1]) == 1 else False
+NOTIFICATION = True if int(sys.argv[-2]) == 1 else False
 
 
 #--------------------------# DEFINIZIONE DI PARAMETRI E DELLE VARIABILI NECESSARIE AD MPGOS   # --------------------------#				           						   
@@ -129,8 +129,10 @@ class Parser:
 	ACC, cPAR i quali corrispondono rispettivamente a: ACC -> algoritmi, 
 	sPAR -> Equazioni iniziali costanti, cPAR -> Equazioni di assegnazione, X -> ODE.
 	"""
-	def __init__(self, xml_filename):
+	def __init__(self, xml_filename, logger):
 		self.modelname = xml_filename.split(".")[-3] + "." + xml_filename.split(".")[-2]
+		self.logger = logger
+		self.logger.info("Chiamata a parser.Parser", "Chiamata a parser.Parser")
 		self.root = ET.parse(xml_filename).getroot()
 		self.varswithbind = []
 		self.varswithoutbind = []
@@ -169,6 +171,10 @@ class Parser:
 
 	def parsevar(self):
 		""" Funzione di parsing di tutte le variabili presenti nel modello """
+		# START LOGGING
+		msg = "Parsing delle variabili con e senza bindExpression"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		for child in self.root.iter("variable"):
 			t = [child.attrib['name'], None]
 			for iter in child.iter("bindExpression"):
@@ -189,6 +195,10 @@ class Parser:
 		forma x=y (con y concatenazione di lettere, numeri, operazioni e funzioni);
 		le equazioni differenziali ordinarie della forma der(x) = y.
 		"""
+		# START LOGGING
+		msg = "Parsing delle equazioni iniziali, ODE e equazioni algebriche"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		for child in self.root.iter("equation"):
 			text = child.text.strip()
 			if re.match(INIT_EQ, text):
@@ -214,6 +224,10 @@ class Parser:
 		solitamente abbiamo un solo tag <algorithm> che racchiude tutti gli algoritmi
 		nel suo testo.
 		"""
+		# START LOGGING
+		msg = "Parsing degli algoritmi"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		for child in self.root.iter("algorithm"):
 			text = child.text.replace("algorithm", "").replace(" ", "").strip()
 			for subtext in text.split("\n"):
@@ -231,6 +245,10 @@ class Parser:
 		il nome della funzione; l'algoritmo della funzione; un dizionario diviso in input e 
 		output della funzione.
 		"""
+		# START LOGGING
+		msg = "Parsing delle funzioni"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		for child in self.root.iter("function"):
 			children = list(child)[0]
 			functext = children.text
@@ -264,11 +282,19 @@ class Parser:
 		La funzione parse, mette insieme tutti le funzioni di parsing per eseguire
 		un parsing completo di tutto il modello e creare le rispettive istanze.
 		"""
+		# START LOGGING
+		msg = "modelica2GPU incomincia a parsare l'XML in input"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		self.parsevar()
 		self.parseequations()
 		self.parsealgorithms()
 		self.parsefunctions()
 		self.parseevent()
+		# START LOGGING
+		msg = "modelica2GPU ha terminato di parsare l'XML in input"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 
 	def createACC(self):
 		"""
@@ -280,6 +306,10 @@ class Parser:
 		eseguite in un vero e proprio parallelismo, per questo
 		l'aggiornamento delle variabili 
 		""" 
+		# START LOGGING
+		msg = "Creazione delle variabili ACC"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		accs = []
 		accsdict = dict()
 		for i, alg in enumerate(self.algs):
@@ -321,6 +351,10 @@ class Parser:
 			falg = lambda x: ieq == x.split(":=")[0].strip()
 			return any(list(map(lambda x: feqs(x), eqs))) or any(list(map(lambda x: falg(x), algs)))
 
+		# START LOGGING
+		msg = "Creazione delle variabili sPAR"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		spars = []
 		sparsdict = dict()
 		for i, ieq in enumerate(self.initeqs):
@@ -354,6 +388,10 @@ class Parser:
 		li andiamo a prendere nella sezione equation, ma che non siano le 
 		equazioni differenziali, ma le aEquation ossia le equazioni di associazione.
 		"""
+		# START LOGGING
+		msg = "Creazione delle variabili cPAR"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		cpars, spars = [], []
 		cparsdict, sparsdict = dict(), dict()
 		j = 0
@@ -381,6 +419,10 @@ class Parser:
 		delle equazioni differenziali. Queste verranno prese nella lista
 		delle ODE parsate dall'XML precedentemente
 		"""
+		# START LOGGING
+		msg = "Creazione delle variabili X"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		xs = []
 		xsdict = dict()
 		for i, ode in enumerate(self.ode):
@@ -417,6 +459,10 @@ class Parser:
 				pass
 			return string
 
+		# START LOGGING
+		msg = "Formattazione delle equazioni che presentano funzioni esterne"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		for fun in self.functions:
 			nome 	  = fun.nome
 			eqnome 	  = fun.eqname
@@ -441,6 +487,10 @@ class Parser:
 		a = b + c, con MPGOSname(b) = Y[1] e MPGOSname(c) = Z[2] -> a = Y[1] + Z[2].
 		:param params: Lista dei parametri composti da xs, accs, spars, cpars
 		"""
+		# START LOGGING
+		msg = "Costruzione del campo value di ogni parametro tra ACC, sPAR, cPAR e X"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		for param in params:
 			value = param.value
 			variables = re.findall(r"\w+\.+\w+", value)
@@ -466,8 +516,11 @@ class Parser:
 		Funzione che formatta il sistema di ODE e ritorna la lista di tutti i 
 		parametri con value formattato in maniera "vettoriale"
 		"""
+		# START LOGGING
+		msg = "Iniziata fase di creazione e formattazione dei parametri ACC, sPAR, cPAR e X"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		self.formatequationwfunc()	                         # Formatto le equazioni inserendo le funzioni
-		print(self)
 		accs, accsdict   			  = self.createACC()	 # Prendo i parametri ACC
 		xs, xsdict                    = self.createX()		 # Prendo i parametri X
 		spars, sparsdict 	          = self.create_sPAR()	 # Prendo i parametri sPAR
@@ -484,4 +537,8 @@ class Parser:
 		self.buildParamValue(xs, paramsdict)
 		self.buildParamValue(spars, paramsdict)
 		self.buildParamValue(cpars, paramsdict)
+		# START LOGGING
+		msg = "terminata fase di creazione e formattazione dei parametri ACC, sPAR, cPAR e X"
+		self.logger.debug(msg, msg)
+		# END LOGGING
 		return accs, xs, spars, cpars

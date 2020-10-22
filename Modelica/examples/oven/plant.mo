@@ -1,5 +1,6 @@
-
-class Plant
+within oven;
+class plant
+	extends Modelica.Icons.ExamplesPackage;
 
 parameter Real x0 = 400;  // °C 
 
@@ -18,7 +19,7 @@ equation
 
 der(x) = u*a - b + d;
 
-end Plant;
+end plant;
 
 
 

@@ -8,5 +8,16 @@ initial_equation = root.find("initialEquations") # initialEquation
 simple_equation  = root.find("simpleEquations")  # simpleEquation
 equations = root.find("equations")               # equations
 
-for iter_initial in root.find("initialEquations"):
-    print(iter_initial.attrib['id'])
+xml_equation_list = [initial_equation, simple_equation, equations]
+
+for element_list in xml_equation_list:
+    print(element_list.tag)
+    for element in element_list:
+        if element.tag == "equation":
+            print("type: equations\nvalue: {}".format(element.text))
+        elif element.tag == "whenEquation":
+            string = ""
+            for x in element[::2]:
+                string += "{}: {}\n".format(x.tag, x.text)
+            print("type: whenEquations\n{}".format(string))
+    print("\n")
