@@ -1,23 +1,37 @@
-import xml.etree.ElementTree as ET
+class ScalarVariable:
+    """ Rappresenta una ScalarVariable all'interno dell'XML """
+    def __init__(self, name,             # Nome univoco della variabile
+                       valueIdentifier,  # Identificativo fra le variabili
+                       variability,      # Indica la variabilità della variabile (constant, parameter, ..., continous)
+                       causality,        # Come la variabile è visibile fuori dal modello (input, output, internal, none)
+                       alias,            # Inserisce l'alias, se esiste, settando propriamente il valueIdentifier
+                       description=None  # Descrizione opzionale della variabile
+                ):
+        self.name            = name
+        self.valueIdentifier = valueIdentifier
+        self.variability     = variability
+        self.causality       = causality
+        self.alias           = alias
+        self.description     = description
 
-file = "v2.BouncingBall.xml"
-tree = ET.parse(file)
-root = tree.getroot()
 
-initial_equation = root.find("initialEquations") # initialEquation
-simple_equation  = root.find("simpleEquations")  # simpleEquation
-equations = root.find("equations")               # equations
+class RealScalarVariable(ScalarVariable):
+    """ Rappresenta una variabile Real """
+    def __init__(self, *scalarvalue,  # Dati per ScalarVariable
+                       min=None,      # Valore minimo per la variabile
+                       max=None,      # Valore massimo per la variabile
+                       start=None,    # Valore di partenza. Solo se presenta start nel file modelica
+                       fixed=False    # Definisce il comportamento di start.
+                ):
+        super(RealScalarVariable, self).__init__(*scalarvalue)
+        self.range   = (min, max)
+        self.start   = start
+        self.fixed   = fixed
 
-xml_equation_list = [initial_equation, simple_equation, equations]
 
-for element_list in xml_equation_list:
-    print(element_list.tag)
-    for element in element_list:
-        if element.tag == "equation":
-            print("type: equations\nvalue: {}".format(element.text))
-        elif element.tag == "whenEquation":
-            string = ""
-            for x in element[::2]:
-                string += "{}: {}\n".format(x.tag, x.text)
-            print("type: whenEquations\n{}".format(string))
-    print("\n")
+class BooleanScalarVariable(ScalarVariable):
+    """ Rappresenta una variabile Boolean """
+    def __init__(self, *scalarvalue, start=None, fixed=False):
+        super(BooleanScalarVariable, self).__init__(*scalarvalue)
+        self.start = start
+        self.fixed = fixed

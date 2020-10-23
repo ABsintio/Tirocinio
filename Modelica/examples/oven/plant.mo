@@ -1,6 +1,5 @@
 within oven;
 class plant
-	extends Modelica.Icons.ExamplesPackage;
 
 parameter Real x0 = 400;  // °C 
 

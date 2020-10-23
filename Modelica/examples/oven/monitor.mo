@@ -1,6 +1,5 @@
 within oven;
 class monitor
-	extends Modelica.Icons.ExamplesPackage;
 
 input Real x;  // plant state (Temperature)
 output Boolean y;

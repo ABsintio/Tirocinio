@@ -1,6 +1,5 @@
 within oven;
 class controller
-	extends Modelica.Icons.ExamplesPackage;
 
 constants k;
 

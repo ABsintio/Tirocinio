@@ -1,0 +1,581 @@
+{
+    "OpenModelicaModelDescription": {
+        "@xmlns:exp": "https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd",
+        "@xmlns:equ": "https://svn.jmodelica.org/trunk/XML/daeEquations.xsd",
+        "@xmlns:fun": "https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd",
+        "@xmlns:opt": "https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd",
+        "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "@fmiVersion": "1.0",
+        "@modelName": "BouncingBall",
+        "@modelIdentifier": "BouncingBall",
+        "@guid": "{d9444bee-d04e-4bd2-b495-4cb5033d941d}",
+        "@generationDateAndTime": "2020-10-22T21:39:57",
+        "@variableNamingConvention": "structured",
+        "@numberOfContinuousStates": "2",
+        "@numberOfEventIndicators": "2",
+        "VendorAnnotations": {
+            "Tool": {
+                "@name": "OpenModelica Compiler OpenModelica 1.16.0~dev.beta4"
+            }
+        },
+        "DefaultExperiment": {
+            "@startTime": "0.0",
+            "@stopTime": "1.0",
+            "@tolerance": "1e-06"
+        },
+        "ModelVariables": {
+            "ScalarVariable": [
+                {
+                    "@name": "h",
+                    "@description": "Height",
+                    "@valueReference": "0",
+                    "@variability": "continuous",
+                    "@causality": "internal",
+                    "@alias": "noAlias",
+                    "Real": {
+                        "@unit": "m"
+                    },
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "h"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "state"
+                },
+                {
+                    "@name": "v",
+                    "@description": "Velocity",
+                    "@valueReference": "1",
+                    "@variability": "continuous",
+                    "@causality": "internal",
+                    "@alias": "noAlias",
+                    "Real": {
+                        "@start": "0.0",
+                        "@fixed": "true",
+                        "@unit": "m/s"
+                    },
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "v"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "state"
+                },
+                {
+                    "@name": "der(h)",
+                    "@description": "der(Height)",
+                    "@valueReference": "2",
+                    "@variability": "continuous",
+                    "@causality": "internal",
+                    "@alias": "noAlias",
+                    "Real": {
+                        "@unit": "m.s-1"
+                    },
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "h"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "derivative"
+                },
+                {
+                    "@name": "der(v)",
+                    "@description": "der(Velocity)",
+                    "@valueReference": "3",
+                    "@variability": "continuous",
+                    "@causality": "internal",
+                    "@alias": "noAlias",
+                    "Real": {
+                        "@unit": "m.s-2"
+                    },
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "v"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "derivative"
+                },
+                {
+                    "@name": "$whenCondition1",
+                    "@description": "h < 0.0",
+                    "@valueReference": "4",
+                    "@variability": "discrete",
+                    "@causality": "internal",
+                    "@alias": "noAlias",
+                    "Boolean": null,
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "$whenCondition1"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "algebraic"
+                },
+                {
+                    "@name": "$whenCondition2",
+                    "@description": "h < -0.001",
+                    "@valueReference": "5",
+                    "@variability": "discrete",
+                    "@causality": "internal",
+                    "@alias": "noAlias",
+                    "Boolean": null,
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "$whenCondition2"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "algebraic"
+                },
+                {
+                    "@name": "done",
+                    "@description": "Flag when to turn off gravity",
+                    "@valueReference": "6",
+                    "@variability": "discrete",
+                    "@causality": "internal",
+                    "@alias": "noAlias",
+                    "Boolean": null,
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "done"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "algebraic"
+                },
+                {
+                    "@name": "e",
+                    "@description": "Coefficient of restitution",
+                    "@valueReference": "7",
+                    "@variability": "parameter",
+                    "@causality": "parameter",
+                    "@alias": "noAlias",
+                    "Real": {
+                        "@start": "0.8",
+                        "@fixed": "true"
+                    },
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "e"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "independentParameter"
+                },
+                {
+                    "@name": "h0",
+                    "@description": "Initial height",
+                    "@valueReference": "8",
+                    "@variability": "parameter",
+                    "@causality": "parameter",
+                    "@alias": "noAlias",
+                    "Real": {
+                        "@start": "1.0",
+                        "@fixed": "true",
+                        "@unit": "m"
+                    },
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "h0"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "independentParameter"
+                },
+                {
+                    "@name": "eps",
+                    "@description": "Small height",
+                    "@valueReference": "9",
+                    "@variability": "constant",
+                    "@causality": "internal",
+                    "@alias": "noAlias",
+                    "Real": {
+                        "@unit": "m"
+                    },
+                    "QualifiedName": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "eps"
+                        }
+                    },
+                    "isLinearTimedVariables": {
+                        "TimePoint": {
+                            "@index": "0",
+                            "@isLinear": "true"
+                        }
+                    },
+                    "VariableCategory": "independentConstant"
+                }
+            ]
+        },
+        "equ:BindingEquations": {
+            "equ:BindingEquation": [
+                {
+                    "equ:Parameter": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "e"
+                        }
+                    },
+                    "equ:BindingExp": {
+                        "exp:RealLiteral": "0.8"
+                    }
+                },
+                {
+                    "equ:Parameter": {
+                        "exp:QualifiedNamePart": {
+                            "@name": "h0"
+                        }
+                    },
+                    "equ:BindingExp": {
+                        "exp:RealLiteral": "1.0"
+                    }
+                }
+            ]
+        },
+        "equ:DynamicEquations": {
+            "equ:Equation": [
+                {
+                    "exp:Sub": {
+                        "exp:Identifier": {
+                            "exp:QualifiedNamePart": {
+                                "@name": "$whenCondition2"
+                            }
+                        },
+                        "exp:LogLt": {
+                            "exp:Identifier": {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "h"
+                                }
+                            },
+                            "exp:RealLiteral": "-0.001"
+                        }
+                    }
+                },
+                {
+                    "exp:Sub": {
+                        "exp:Identifier": {
+                            "exp:QualifiedNamePart": {
+                                "@name": "$whenCondition1"
+                            }
+                        },
+                        "exp:LogLt": {
+                            "exp:Identifier": {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "h"
+                                }
+                            },
+                            "exp:RealLiteral": "0.0"
+                        }
+                    }
+                },
+                {
+                    "exp:Sub": {
+                        "exp:Der": {
+                            "exp:Identifier": {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "v"
+                                }
+                            }
+                        },
+                        "fun:If": {
+                            "fun:Condition": {
+                                "exp:Identifier": {
+                                    "exp:QualifiedNamePart": {
+                                        "@name": "done"
+                                    }
+                                }
+                            },
+                            "fun:Statements": {
+                                "exp:RealLiteral": "0.0"
+                            },
+                            "fun:Else": {
+                                "exp:RealLiteral": "-9.81"
+                            }
+                        }
+                    }
+                },
+                {
+                    "exp:Sub": {
+                        "exp:Der": {
+                            "exp:Identifier": {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "h"
+                                }
+                            }
+                        },
+                        "exp:Identifier": {
+                            "exp:QualifiedNamePart": {
+                                "@name": "v"
+                            }
+                        }
+                    }
+                }
+            ],
+            "equ:When": [
+                {
+                    "equ:Condition": {
+                        "exp:Identifier": [
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "$whenCondition2"
+                                }
+                            },
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "$whenCondition1"
+                                }
+                            }
+                        ]
+                    },
+                    "equ:Equation": {
+                        "exp:Sub": {
+                            "exp:Identifier": {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "done"
+                                }
+                            },
+                            "exp:LogLt": {
+                                "exp:Identifier": {
+                                    "exp:QualifiedNamePart": {
+                                        "@name": "h"
+                                    }
+                                },
+                                "exp:RealLiteral": "-0.001"
+                            }
+                        }
+                    }
+                },
+                {
+                    "equ:Condition": {
+                        "exp:Identifier": [
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "$whenCondition2"
+                                }
+                            },
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "$whenCondition1"
+                                }
+                            }
+                        ]
+                    },
+                    "equ:Equation": {
+                        "exp:Reinit": {
+                            "exp:Identifier": {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "v"
+                                }
+                            },
+                            "exp:Mul": {
+                                "exp:Neg": {
+                                    "exp:Identifier": {
+                                        "exp:QualifiedNamePart": {
+                                            "@name": "e"
+                                        }
+                                    }
+                                },
+                                "fun:If": {
+                                    "fun:Condition": {
+                                        "exp:LogLt": {
+                                            "exp:Identifier": {
+                                                "exp:QualifiedNamePart": {
+                                                    "@name": "h"
+                                                }
+                                            },
+                                            "exp:RealLiteral": "-0.001"
+                                        }
+                                    },
+                                    "fun:Statements": {
+                                        "exp:RealLiteral": "0.0"
+                                    },
+                                    "fun:Else": {
+                                        "exp:Pre": {
+                                            "exp:Identifier": {
+                                                "exp:QualifiedNamePart": {
+                                                    "@name": "v"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "equ:InitialEquations": {
+            "equ:Equation": [
+                {
+                    "exp:Sub": {
+                        "exp:Identifier": {
+                            "exp:QualifiedNamePart": {
+                                "@name": "v"
+                            }
+                        },
+                        "exp:RealLiteral": "0.0"
+                    }
+                },
+                {
+                    "exp:Sub": {
+                        "exp:Identifier": [
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "v"
+                                }
+                            },
+                            {
+                                "exp:QualifiedNamePart": [
+                                    {
+                                        "@name": "$START"
+                                    },
+                                    {
+                                        "@name": "v"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "exp:Sub": {
+                        "exp:Identifier": [
+                            {
+                                "exp:QualifiedNamePart": [
+                                    {
+                                        "@name": "$PRE"
+                                    },
+                                    {
+                                        "@name": "v"
+                                    }
+                                ]
+                            },
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "v"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "exp:Sub": null
+                },
+                {
+                    "exp:Sub": {
+                        "exp:Identifier": {
+                            "exp:QualifiedNamePart": {
+                                "@name": "done"
+                            }
+                        },
+                        "exp:BooleanLiteral": "0"
+                    }
+                },
+                {
+                    "exp:Sub": {
+                        "exp:Identifier": [
+                            {
+                                "exp:QualifiedNamePart": [
+                                    {
+                                        "@name": "$PRE"
+                                    },
+                                    {
+                                        "@name": "done"
+                                    }
+                                ]
+                            },
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "done"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "exp:Sub": null
+                },
+                {
+                    "exp:Sub": {
+                        "exp:Identifier": [
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "h"
+                                }
+                            },
+                            {
+                                "exp:QualifiedNamePart": {
+                                    "@name": "h0"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "exp:Sub": null
+                },
+                {
+                    "exp:Sub": null
+                }
+            ]
+        },
+        "fun:Algorithm": null,
+        "fun:RecordsList": null,
+        "fun:FunctionsList": null,
+        "opt:Optimization": {
+            "opt:TimePoints": {
+                "opt:TimePoint": null
+            },
+            "opt:PathConstraints": null
+        }
+    }
+}

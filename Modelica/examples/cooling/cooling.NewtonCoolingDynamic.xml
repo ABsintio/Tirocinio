@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="cooling.NewtonCoolingDynamic"
+  modelIdentifier="cooling_NewtonCoolingDynamic"
+  guid="{548344ac-389c-40f3-a02a-0c0dd51d4dc1}"
+  generationDateAndTime="2020-10-23T16:02:32"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="1"
+  numberOfEventIndicators="1"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.0~dev.beta4"> </Tool>
+  </VendorAnnotations>
+
+
+  <ModelVariables>
+    <ScalarVariable name="T" description="Temperature" valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real  min="0.0"  unit="K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="T"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(T)" description="der(Temperature)" valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="s-1.K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="T"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="T_inf" description="Ambient temperature" valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="298.15" fixed="false" min="0.0"  unit="K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="T_inf"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="A" description="Surface area" valueReference="3" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true" min="0.0"  unit="m2" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="A"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="T0" description="Initial temperature" valueReference="4" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="363.15" fixed="true" min="0.0"  unit="K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="T0"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="c_p" description="Specific heat" valueReference="5" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.2" fixed="true" min="0.0"  unit="J/(K.kg)" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="c_p"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="h" description="Convective cooling coefficient" valueReference="6" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.7" fixed="true" min="0.0"  unit="W/(m2.K)" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="h"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="m" description="Mass of thermal capacitance" valueReference="7" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.1" fixed="true" min="0.0"  unit="kg" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="m"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="A"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="T0"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>363.15</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="c_p"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.2</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="h"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.7</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="m"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="T_inf"/>
+        </exp:Identifier>
+        <fun:If>
+          <fun:Condition>
+            <exp:LogLeq>
+              <exp:Time>time</exp:Time>
+              <exp:RealLiteral>0.5</exp:RealLiteral>
+            </exp:LogLeq> 
+          </fun:Condition>
+          <fun:Statements>
+            <exp:RealLiteral>298.15</exp:RealLiteral>
+          </fun:Statements>
+          <fun:Else>
+            <exp:Add>
+              <exp:RealLiteral>298.15</exp:RealLiteral>
+              <exp:Mul>
+                <exp:RealLiteral>-20.0</exp:RealLiteral>
+                <exp:Add>
+                  <exp:RealLiteral>-0.5</exp:RealLiteral>
+                  <exp:Time>time</exp:Time>
+                </exp:Add>
+              </exp:Mul>
+            </exp:Add>
+          </fun:Else>
+        </fun:If>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="T"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Div>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="h"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="A"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="T_inf"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="T"/>
+                </exp:Identifier>
+              </exp:Sub>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="m"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="c_p"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="T_inf"/>
+        </exp:Identifier>
+        <exp:RealLiteral>298.15</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="T"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="T0"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>

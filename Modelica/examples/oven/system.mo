@@ -1,7 +1,5 @@
 within oven;
 model system
-	extends Modelica.Icons.ExamplesPackage;
-	
 controller ctr;
 plant plantt;
 monitor monitorr;
