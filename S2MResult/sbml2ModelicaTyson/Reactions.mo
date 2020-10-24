@@ -1,6 +1,5 @@
 within sbml2ModelicaTyson;
 class Reactions
-    extends Modelica.Icons.SourcesPackage;
 
 
     input Real elmt_cell;

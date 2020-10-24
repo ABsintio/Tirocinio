@@ -1,37 +1,46 @@
-class ScalarVariable:
-    """ Rappresenta una ScalarVariable all'interno dell'XML """
-    def __init__(self, name,             # Nome univoco della variabile
-                       valueIdentifier,  # Identificativo fra le variabili
-                       variability,      # Indica la variabilità della variabile (constant, parameter, ..., continous)
-                       causality,        # Come la variabile è visibile fuori dal modello (input, output, internal, none)
-                       alias,            # Inserisce l'alias, se esiste, settando propriamente il valueIdentifier
-                       description=None  # Descrizione opzionale della variabile
-                ):
-        self.name            = name
-        self.valueIdentifier = valueIdentifier
-        self.variability     = variability
-        self.causality       = causality
-        self.alias           = alias
-        self.description     = description
+import xml.etree.ElementTree as ET
+import variables
+import operators
+import exceptions.builtExceptions
 
 
-class RealScalarVariable(ScalarVariable):
-    """ Rappresenta una variabile Real """
-    def __init__(self, *scalarvalue,  # Dati per ScalarVariable
-                       min=None,      # Valore minimo per la variabile
-                       max=None,      # Valore massimo per la variabile
-                       start=None,    # Valore di partenza. Solo se presenta start nel file modelica
-                       fixed=False    # Definisce il comportamento di start.
-                ):
-        super(RealScalarVariable, self).__init__(*scalarvalue)
-        self.range   = (min, max)
-        self.start   = start
-        self.fixed   = fixed
+# ----------------------------------------------------- # XML NAMESPACES # ------------------------------------------------------------- #
 
 
-class BooleanScalarVariable(ScalarVariable):
-    """ Rappresenta una variabile Boolean """
-    def __init__(self, *scalarvalue, start=None, fixed=False):
-        super(BooleanScalarVariable, self).__init__(*scalarvalue)
-        self.start = start
-        self.fixed = fixed
+EQUATION_NS   = "{https://svn.jmodelica.org/trunk/XML/daeEquations.xsd}"    # Namespace per Dynamic, Bingind e Initial Equations
+EXPRESSION_NS = "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}"  # Namespace per le espressioni (operatori)
+FUNCTIONS_NS  = "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}"    # Namespace per le funzioni e gli algoritmi
+OPTIMIZ_NS    = "{https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd}" # Namespace per il tag di ottimizzazione
+
+
+# ----------------------------------------------------- # CLASSI PER IL PARSING # ------------------------------------------------------ #
+
+
+class Equation(operators.BinaryOperator):
+    def __init__(self, l, r):
+        super().__init__(l, r)
+    
+    def __str__(self): return self.l.__str__() + "=" + self.r.__str__()
+
+
+class Parser:
+    """ Classe che esegue il parser dell'XML """
+    def __init__(self, filename):
+        self.root = ET.parse(filename).getroot()
+        self.dynamic_equations = []
+        self.binding_equations = []
+        self.initial_equations = []
+        self.scalar_variables  = []
+    
+    def parse_dynamic_equations(self):
+        """ Esegue il parsing di tutti i tag <equ:DynamicEquations> """
+        dynamic_equations_roottag = list(filter(lambda x: x.tag == f"{EQUATION_NS}DynamicEquations", list(self.root)))[0]
+        for x in list(dynamic_equations_roottag):
+            for y in list(x):
+                for z in list(y):
+                    print(z.tag)
+
+
+if __name__ == "__main__":
+    p = Parser("BouncingBall.xml")
+    p.parse_dynamic_equations()

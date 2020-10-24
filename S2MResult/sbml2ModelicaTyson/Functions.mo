@@ -1,6 +1,5 @@
 within sbml2ModelicaTyson;
 class Functions
-    extends Modelica.Icons.UtilitiesPackage;
 
 
     function acosh

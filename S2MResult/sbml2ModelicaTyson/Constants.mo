@@ -1,7 +1,5 @@
 within sbml2ModelicaTyson;
 class Constants
-    extends Modelica.Constants;
-
 
     constant Real AVOGADRO(unit = "mol-1") = 6.022141E23;
     constant Real INFINITY = Modelica.Constants.inf;

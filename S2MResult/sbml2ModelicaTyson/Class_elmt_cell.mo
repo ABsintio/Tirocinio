@@ -1,6 +1,5 @@
 within sbml2ModelicaTyson;
 class Class_elmt_cell
-    extends Modelica.Icons.VariantsPackage;
 
 
     input Real elmt_product11;
