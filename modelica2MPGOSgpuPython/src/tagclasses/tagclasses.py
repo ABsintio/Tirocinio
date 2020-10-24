@@ -285,7 +285,7 @@ class IfThenElse:
     @staticmethod
     def parse_condition(condition_tag):
         """ Parsa il blocco condition """
-        pass
+        
         
     def parse_statement1(self):
         """ Parsa il blocco statements """
