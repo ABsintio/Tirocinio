@@ -69,7 +69,7 @@ class Neg(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
 
-    def __str__(self): return "-" + self.value
+    def __str__(self): return "-" + self.value.__str__()
 
 
 # ----------------------------------------- # DEFINIZIONE OPERATORI BOOLEANI SEMPLICI  # ----------------------------------------- #
@@ -80,7 +80,7 @@ class And(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left + " && " + self.right
+    def __str__(self): return self.left.__str__() + " && " + self.right.__str__()
 
 
 class Or(BinaryOperator):
@@ -88,7 +88,7 @@ class Or(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left + " || " + self.right
+    def __str__(self): return self.left.__str__() + " || " + self.right.__str__()
 
 
 class Not(UnaryOperator):
@@ -96,7 +96,7 @@ class Not(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
 
-    def __str__(self): return "!" + self.value
+    def __str__(self): return "!" + self.value.__str__()
 
 
 # ----------------------------------------- # DEFINIZIONE OPERATORI DI RELAZIONE # ----------------------------------------- #
@@ -107,7 +107,7 @@ class LogLt(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left + " < " + self.right
+    def __str__(self): return self.left.__str__() + " < " + self.right.__str__()
 
 
 class LogLeq(BinaryOperator):
@@ -115,7 +115,7 @@ class LogLeq(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left + " <= " + self.right
+    def __str__(self): return self.left.__str__() + " <= " + self.right.__str__()
 
 
 class LogGt(BinaryOperator):
@@ -123,7 +123,7 @@ class LogGt(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left + " > " + self.right
+    def __str__(self): return self.left.__str__() + " > " + self.right.__str__()
 
 
 class LogGeq(BinaryOperator):
@@ -131,7 +131,7 @@ class LogGeq(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left + " >= " + self.right
+    def __str__(self): return self.left.__str__() + " >= " + self.right.__str__()
 
 
 class LogEq(BinaryOperator):
@@ -139,7 +139,7 @@ class LogEq(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left + " == " + self.right
+    def __str__(self): return self.left.__str__() + " == " + self.right.__str__()
 
 
 class LogNeq(BinaryOperator):
@@ -147,7 +147,7 @@ class LogNeq(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left + " != " + self.right
+    def __str__(self): return self.left.__str__() + " != " + self.right.__str__()
 
 
 # ----------------------------------------- # DEFINIZIONE FUNZIONI PRINCIPALI  # ----------------------------------------- #
@@ -158,7 +158,7 @@ class Der(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "der(" + self.value + ")"
+    def __str__(self): return "der(" + self.value.__str__() + ")"
 
 
 class Sin(UnaryOperator):
@@ -166,7 +166,7 @@ class Sin(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "sin(" + self.value + ")"
+    def __str__(self): return "sin(" + self.value.__str__() + ")"
 
 
 class Asin(UnaryOperator):
@@ -174,7 +174,7 @@ class Asin(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "asin(" + self.value + ")"
+    def __str__(self): return "asin(" + self.value.__str__() + ")"
 
 
 class Sinh(UnaryOperator):
@@ -182,7 +182,7 @@ class Sinh(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "sinh(" + self.value + ")"
+    def __str__(self): return "sinh(" + self.value.__str__() + ")"
 
 
 class Cos(UnaryOperator):
@@ -190,7 +190,7 @@ class Cos(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "cos(" + self.value + ")"
+    def __str__(self): return "cos(" + self.value.__str__() + ")"
 
 
 class Acos(UnaryOperator):
@@ -198,7 +198,7 @@ class Acos(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "acos(" + self.value + ")"
+    def __str__(self): return "acos(" + self.value.__str__() + ")"
 
 
 class Cosh(UnaryOperator):
@@ -206,7 +206,7 @@ class Cosh(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "cosh(" + self.value + ")"
+    def __str__(self): return "cosh(" + self.value.__str__() + ")"
 
 
 class Tan(UnaryOperator):
@@ -214,7 +214,7 @@ class Tan(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "tan(" + self.value + ")"
+    def __str__(self): return "tan(" + self.value.__str__() + ")"
 
 
 class Atan(UnaryOperator):
@@ -222,7 +222,7 @@ class Atan(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "atan(" + self.value + ")"
+    def __str__(self): return "atan(" + self.value.__str__() + ")"
 
 
 class Tanh(UnaryOperator):
@@ -230,7 +230,7 @@ class Tanh(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "tanh(" + self.value + ")"
+    def __str__(self): return "tanh(" + self.value.__str__() + ")"
 
 
 class Sqrt(UnaryOperator):
@@ -238,7 +238,7 @@ class Sqrt(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return "sqrt(" + self.value + ")"
+    def __str__(self): return "sqrt(" + self.value.__str__() + ")"
 
 
 class Exp(UnaryOperator):
@@ -249,11 +249,37 @@ class Exp(UnaryOperator):
     def __str__(self): return Pow(math.pi, self.value).__str__()
 
 
-# ----------------------------------------- # FUNZIONE DI PARSING DELLE EQUAZIONI  # ----------------------------------------- #
+# ----------------------------------------- # CLASSI CHE DEFINISCONO ALTRI TAG GENERICI # ----------------------------------------------- #
 
 
-def parse_equations():
-    pass
+class Equation(BinaryOperator):
+    """ Rappresenta il tag dell'equazione """
+    def __init__(self, l, r):
+        super().__init__(l, r)
+    
+    def __str__(self): return self.left.__str__() + "=" + self.right.__str__()
+
+
+class Identifier:
+    """ Rappresenta l'operatore di identificazione di una variabile in un'equazione """
+    def __init__(self, id_tag_element):
+        self.id_tag_element = id_tag_element
+    
+    def __str__(self):
+        return ".".join(list(map(lambda x: x.attrib['name'], list(self.id_tag_element))))
+
+
+class Literal(UnaryOperator):
+    """ Rappresenta il tag unario per i valori letterali. Quindi 1, 1.1, "1" """
+    def __init__(self, value):
+        super().__init__(value)
+    
+    def __str__(self): return self.value.__str__()
+
+
+class IfThenElse:
+    """ Rappresenta il blocco di tag <fun:If> ... </fun:If> """
+    
 
 
 # ----------------------------------------- # FUNZIONE DI SELEZIONE DELLA CLASSE  # ----------------------------------------- #
@@ -261,34 +287,41 @@ def parse_equations():
 
 OPERATOR_CLASSES = {
     # UnaryOperator
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Der"    : (Der,    1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Sin"    : (Sin,    1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Sinh"   : (Sinh,   1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Asin"   : (Asin,   1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Cos"    : (Cos,    1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Cosh"   : (Cosh,   1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Acos"   : (Acos,   1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Tan"    : (Tan,    1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Tanh"   : (Tanh,   1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Atan"   : (Atan,   1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Not"    : (Not,    1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Neg"    : (Neg,    1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Sqrt"   : (Sqrt,   1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Exp"    : (Exp,    1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sin"            : (Sin,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sinh"           : (Sinh,       1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Asin"           : (Asin,       1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Cos"            : (Cos,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Cosh"           : (Cosh,       1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Acos"           : (Acos,       1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Tan"            : (Tan,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Tanh"           : (Tanh,       1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Atan"           : (Atan,       1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Not"            : (Not,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Neg"            : (Neg,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sqrt"           : (Sqrt,       1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Exp"            : (Exp,        1),
     # BinaryOperator
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Add"    : (Add,    0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Sub"    : (Sub,    0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Mul"    : (Mul,    0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Div"    : (Div,    0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:And"    : (And,    0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Or"     : (Or,     0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:Pow"    : (Pow,    0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:LogLt"  : (LogLt,  0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:LogLeq" : (LogLeq, 0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:LogGt"  : (LogGt,  0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:LogGeq" : (LogGeq, 0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:LogEq"  : (LogEq,  0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}:LogNeq" : (LogNeq, 0)
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Add"            : (Add,        0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sub"            : (Sub,        0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Mul"            : (Mul,        0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Div"            : (Div,        0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}And"            : (And,        0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Or"             : (Or,         0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pow"            : (Pow,        0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogLt"          : (LogLt,      0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogLeq"         : (LogLeq,     0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogGt"          : (LogGt,      0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogGeq"         : (LogGeq,     0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogEq"          : (LogEq,      0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogNeq"         : (LogNeq,     0),
+    # Other generic tag classes
+    "{https://svn.jmodelica.org/trunk/XML/daeEquations.xsd}Equation"         : (Equation,   0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Identifier"     : (Identifier, 2),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}RealLiteral"    : (Literal,    1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}IntegerLiteral" : (Literal,    1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}StringLiteral"  : (Literal,    1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}BooleanLiteral" : (Literal,    1)
 }
 
 
