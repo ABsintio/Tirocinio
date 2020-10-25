@@ -1,4 +1,20 @@
 import math
+import exceptions.builtExceptions
+
+
+# ----------------------------------------------------- # XML NAMESPACES # ------------------------------------------------------------- #
+
+
+EQUATION_NS   = "{https://svn.jmodelica.org/trunk/XML/daeEquations.xsd}"    # Namespace per Dynamic, Bingind e Initial Equations
+EXPRESSION_NS = "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}"  # Namespace per le espressioni (operatori)
+FUNCTIONS_NS  = "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}"    # Namespace per le funzioni e gli algoritmi
+OPTIMIZ_NS    = "{https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd}" # Namespace per il tag di ottimizzazione
+LITERALS = [
+    f"{EXPRESSION_NS}RealLiteral",
+    f"{EXPRESSION_NS}IntegerLiteral",
+    f"{EXPRESSION_NS}BooleanLiteral",
+    f"{EXPRESSION_NS}StringLiteral"
+]
 
 
 # ----------------------------------------- # CLASSI DI DEFINIZIONE GENERALE DEGLI OPERATORI # ----------------------------------------- #
@@ -277,25 +293,37 @@ class Literal(UnaryOperator):
     def __str__(self): return self.value.__str__()
 
 
+class Pre(UnaryOperator):
+    """ Rappresenta l'operatore pre, che serve ad ottenere il valore precedente di una variabile """
+    def __init__(self, value):
+        super().__init__(value)
+    
+    def __str__(self): return f"pre({self.value.__str__()})"
+
+
 class IfThenElse:
     """ Rappresenta il blocco di tag <fun:If> ... </fun:If> """
     def __init__(self, if_tag_element):
         self.if_tag_element = if_tag_element
-
-    @staticmethod
-    def parse_condition(condition_tag):
+    
+    def parse_condition(self, condition_tag):
         """ Parsa il blocco condition """
+        return _parsetag(condition_tag)
         
-        
-    def parse_statement1(self):
+    def parse_statement1(self, statement_tag):
         """ Parsa il blocco statements """
-        pass
+        return _parsetag(statement_tag)
 
-    def parse_statement2(self):
+    def parse_statement2(self, else_tag):
         """ Parsa il blocco Else """
-        pass
+        return _parsetag(else_tag)
 
-    def __str__(self): return ""
+    def __str__(self):
+        """ Costruzione della stringa com <condition> ? <statement1> : <statement2> """
+        condition  = self.parse_condition(self.if_tag_element[0][0])
+        statement1 = self.parse_statement1(self.if_tag_element[1][0])
+        statement2 = self.parse_statement2(self.if_tag_element[2][0])
+        return f"({condition.__str__()} ? {statement1.__str__()} : {statement2.__str__()})"
 
 
 # ----------------------------------------- # FUNZIONE DI SELEZIONE DELLA CLASSE  # ----------------------------------------- #
@@ -338,10 +366,33 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}IntegerLiteral" : (Literal,    1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}StringLiteral"  : (Literal,    1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}BooleanLiteral" : (Literal,    1),
-    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}If"               : (IfThenElse, 3)
+    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}If"               : (IfThenElse, 3),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pre"            : (Pre,        1)
 }
 
 
 def getclass(tag):
     """ Dato in input un tag, ritorna un operatore """
     return OPERATOR_CLASSES[tag]
+
+
+def _parsetag(tag):
+    """
+    #TODO: Inserire una descrizione decente
+    """
+    if tag.tag == f"{EQUATION_NS}Equation":
+        subtag_element = list(list(tag)[0])
+        return Equation(_parsetag(subtag_element[0]), _parsetag(subtag_element[1]))
+    if tag.tag in LITERALS:
+        return Literal(tag.text)
+    else:
+        try:
+            class_op, arity = getclass(tag.tag)
+            if arity == 2 or arity == 3:
+                return class_op(tag)
+            if arity == 1:
+                return class_op(_parsetag(tag[0]))
+            sub_element = list(tag)
+            return class_op(_parsetag(sub_element[0]), _parsetag(sub_element[1]))
+        except KeyError:
+            raise exceptions.builtExceptions.OperatorNotFoundException(tag.tag)
