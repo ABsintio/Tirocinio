@@ -265,6 +265,22 @@ class Exp(UnaryOperator):
     def __str__(self): return Pow(math.pi, self.value).__str__()
 
 
+class Log(UnaryOperator):
+    """ Rappresenta la funzione logaritmo """
+    def __init__(self, value):
+        super().__init__(value)
+    
+    def __str__(self): return f"log({self.value.__str__()})"
+
+
+class Log10(UnaryOperator):
+    """ Rappresenta la funzione logaritmo in base 10 """
+    def __init__(self, value):
+        super().__init__(value)
+    
+    def __str__(self): return f"log10({self.value.__str__()})"
+
+
 # ----------------------------------------- # CLASSI CHE DEFINISCONO ALTRI TAG GENERICI # ----------------------------------------------- #
 
 
@@ -301,22 +317,51 @@ class Pre(UnaryOperator):
     def __str__(self): return f"pre({self.value.__str__()})"
 
 
+class Reinit(BinaryOperator):
+    """ Rappresenta l'operatore reinit, che server per reinizializzare una variabile ad un dato valore """
+    def __init__(self, l, r):
+        super().__init__(l, r)
+    
+    def __str__(self): return Equation(self.left, self.right).__str__()
+
+
+class Time(UnaryOperator):
+    """ Rappesenta il tempo """
+    def __init__(self, value):
+        super().__init__(value)
+    
+    def __str__(self): return self.value.__str__()
+
+
 class IfThenElse:
-    """ Rappresenta il blocco di tag <fun:If> ... </fun:If> """
+    """ Rappresenta il blocco di tag 
+    <fun:If>
+        <exp:Condition>
+            <exp:[Binary|Unary]Operator>
+                ...
+            </exp:[Binary|Unary]Operator>
+        </exp:Condition>
+        <exp:Statement>
+            <exp:[Real|Integer|Boolean|String]Literal> ... </exp:[Real|Integer|Boolean|String]Literal>
+        </exp:Statement>
+        <exp:Else>
+            <exp:[Real|Integer|Boolean|String]Literal> ... </exp:[Real|Integer|Boolean|String]Literal>
+        </exp:Else>
+    </fun:If> """
     def __init__(self, if_tag_element):
         self.if_tag_element = if_tag_element
     
     def parse_condition(self, condition_tag):
         """ Parsa il blocco condition """
-        return _parsetag(condition_tag)
+        return _parsetag_eq(condition_tag)
         
     def parse_statement1(self, statement_tag):
         """ Parsa il blocco statements """
-        return _parsetag(statement_tag)
+        return _parsetag_eq(statement_tag)
 
     def parse_statement2(self, else_tag):
         """ Parsa il blocco Else """
-        return _parsetag(else_tag)
+        return _parsetag_eq(else_tag)
 
     def __str__(self):
         """ Costruzione della stringa com <condition> ? <statement1> : <statement2> """
@@ -328,7 +373,17 @@ class IfThenElse:
 
 # ----------------------------------------- # FUNZIONE DI SELEZIONE DELLA CLASSE  # ----------------------------------------- #
 
-
+"""
+Il Dizionario OPERATOR_CLASSES presenta un insieme di classi che descrivono alcuni dei tag 
+principali che è possibile trovare nell'XML. Dal momento che dovranno essere gestiti degli 
+XML semplici e con alcune limitazioni, ad esempio considerando solo funzioni come pre, sample
+e reinit, possiamo memorizzare alcuni tag che sono utilizzati molto spesso all'interno dell'XML.
+Diciamo che genericamente avremo che tutti gli operatori che possiamo considerare unari sono 
+caratterizzati dal numero 1, mentre tutti quelli binari dal numero 0. Tutti gli altri operatori
+che hanno caratteristiche un pò diverse sono caratterizzati da numeri diversi e crescenti. 
+Per esempio, Identifier è caratterizzato dal 2, mentre L'If dal 3. 
+Documentazione: {http://www.diva-portal.org/smash/get/diva2:557431/FULLTEXT01}
+"""
 OPERATOR_CLASSES = {
     # UnaryOperator
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,        1),
@@ -345,6 +400,8 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Neg"            : (Neg,        1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sqrt"           : (Sqrt,       1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Exp"            : (Exp,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Log"            : (Log,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Log10"          : (Log10,      1),
     # BinaryOperator
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Add"            : (Add,        0),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sub"            : (Sub,        0),
@@ -367,7 +424,9 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}StringLiteral"  : (Literal,    1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}BooleanLiteral" : (Literal,    1),
     "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}If"               : (IfThenElse, 3),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pre"            : (Pre,        1)
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pre"            : (Pre,        1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Reinit"         : (Reinit,     0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Time"           : (Time,       1)
 }
 
 
@@ -376,23 +435,30 @@ def getclass(tag):
     return OPERATOR_CLASSES[tag]
 
 
-def _parsetag(tag):
+def _parsetag_eq(tag):
     """
-    #TODO: Inserire una descrizione decente
+    Tale funzione prende in input un tag e crea un albero sintattico utilizzando
+    le classi che sono presenti nel dizionario OPERATOR_CLASSES. Serve principalmente 
+    per parsare le equazioni in quanto hanno una struttura di un tipo ben specifico
+    a differenza di elementi quali: ModelVariables, oppure Functions o ancora Algorithms.
     """
-    if tag.tag == f"{EQUATION_NS}Equation":
-        subtag_element = list(list(tag)[0])
-        return Equation(_parsetag(subtag_element[0]), _parsetag(subtag_element[1]))
-    if tag.tag in LITERALS:
-        return Literal(tag.text)
-    else:
-        try:
+    try:
+        if tag.tag == f"{EQUATION_NS}Equation":
+            if tag[0].tag == f"{EXPRESSION_NS}Sub":
+                subtag_element = list(list(tag)[0])
+                return Equation(_parsetag_eq(subtag_element[0]), _parsetag_eq(subtag_element[1]))
+            if tag[0].tag == f"{EXPRESSION_NS}Reinit":
+                return Reinit(_parsetag_eq(tag[0][0]), _parsetag_eq(tag[0][1]))
+        if tag.tag in LITERALS:
+            return Literal(tag.text)
+        if tag.tag == f"{EXPRESSION_NS}Time": return Time(tag.text)
+        else:
             class_op, arity = getclass(tag.tag)
             if arity == 2 or arity == 3:
                 return class_op(tag)
             if arity == 1:
-                return class_op(_parsetag(tag[0]))
+                return class_op(_parsetag_eq(tag[0]))
             sub_element = list(tag)
-            return class_op(_parsetag(sub_element[0]), _parsetag(sub_element[1]))
-        except KeyError:
-            raise exceptions.builtExceptions.OperatorNotFoundException(tag.tag)
+            return class_op(_parsetag_eq(sub_element[0]), _parsetag_eq(sub_element[1]))
+    except KeyError:
+        raise exceptions.builtExceptions.OperatorNotFoundException(tag.tag)

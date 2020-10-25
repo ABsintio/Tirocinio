@@ -23,7 +23,7 @@ class RealScalarVariable(ScalarVariable):
                        start=None,    # Valore di partenza. Solo se presenta start nel file modelica
                        fixed=False    # Definisce il comportamento di start.
                 ):
-        super(RealScalarVariable, self).__init__(*scalarvalue)
+        super().__init__(*scalarvalue)
         self.range   = (min, max)
         self.start   = start
         self.fixed   = fixed
@@ -32,6 +32,14 @@ class RealScalarVariable(ScalarVariable):
 class BooleanScalarVariable(ScalarVariable):
     """ Rappresenta una variabile Boolean """
     def __init__(self, *scalarvalue, start=None, fixed=False):
-        super(BooleanScalarVariable, self).__init__(*scalarvalue)
+        super().__init__(*scalarvalue)
+        self.start = start
+        self.fixed = fixed
+
+
+class IntegerScalarVariable(ScalarVariable):
+    """ Rappresenta una variabile Integer """
+    def __init__(self, *scalarvalue, start=None, fixed=False):
+        super().__init__(*scalarvalue)
         self.start = start
         self.fixed = fixed
