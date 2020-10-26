@@ -15,3 +15,30 @@ MAPPING VariableCategory |-> MPGOS type
         algebraic ---------> ACC  (Real), ACCi  (Integer)
         ind.Param/Const ---> sPAR (Real), sPARi (Integer)
 
+
+SINTASSI QUALIFIEDNAME TAG
+
+<exp:QualifiedName>
+  <exp:QualifiedNamePart name="..." />
+  ...
+  [ # Opzionale
+    <exp:QualifiedNamePart name="..." >
+      <exp:ArraySubscripts>
+        <exp:IndexExpression>
+          <##targetnamespace:targetnametag> ... </##targetnamespace:targetnametag>
+        </exp:IndexExpression>
+      </exp:ArraySubscripts>
+    </exp:QualifiedNamePart>
+  ]
+</exp:QualifiedName>
+
+SINTASSI SCALARVARIABLE TAG
+
+<ScalarVariable>
+  {<Real ... /> | <Integer ... /> | <Boolean ... />} # Sceglie uno dei tre
+  <exp:QualifiedName> ... </exp:QualifiedName>
+  <VariableCategory> {derivative | algbraic | state | independentParameter | independentConstant} </VariableCategory>
+</ScalarVariable>
+
+SINTASSI INITIALEQUATIONS
+

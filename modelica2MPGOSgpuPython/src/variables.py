@@ -6,9 +6,9 @@ from tagclasses import tagclasses
 
 
 class VariableCategory:
-	STATE 				  = "state"
-	DERIVATIVE			  = "derivative"
-	ALGEBRAIC  			  = "algebraic"
+	STATE                 = "state"
+	DERIVATIVE            = "derivative"
+	ALGEBRAIC             = "algebraic"
 	INDEPENDENT_PARAMETER = "independentParameter"
 	INDEPENDENT_CONSTANT  = "independentConstant"
 
@@ -16,11 +16,11 @@ class VariableCategory:
 	def getcategory(cat_str):
 		try:
 			return {
-				"state" 	 		   : VariableCategory.STATE,
-				"derivative" 		   : VariableCategory.DERIVATIVE,
+				"state"                : VariableCategory.STATE,
+				"derivative"           : VariableCategory.DERIVATIVE,
 				"independentParameter" : VariableCategory.INDEPENDENT_PARAMETER,
 				"independentConstant"  : VariableCategory.INDEPENDENT_CONSTANT,
-				"algebraic"			   : VariableCategory.ALGEBRAIC
+				"algebraic"            : VariableCategory.ALGEBRAIC
 			}[cat_str]
 		except KeyError:
 			raise builtExceptions.VariableCategoryNotFound(cat_str)
@@ -29,13 +29,13 @@ class VariableCategory:
 class ScalarVariable:
 	""" Rappresenta una ScalarVariable all'interno XML """
 	def __init__(self, name,			# Nome univoco della variabile
-					   variability,	    # Indica la variabilità della variabile (constant, parameter, ..., continuous)
-					   alias,			# Inserisce l'alias, se esiste, settando propriamente il valueIdentifier	
-					   categoryType,    # Categoria alla quale appartiene la variabile 
-					   qualifiedName,   # Il nome al quale fa riferimento la variabile.
-					   				    # È importante notare che il qualifiedName sia uguale per variabili che puntano alla stessa variaible
-										# ad esempio la variabile "x" e la variabile "der(x)" hanno lo stesso qN = "x"
-					   description=None # Descrizione opzionale della variabile
+                       variability,	    # Indica la variabilità della variabile (constant, parameter, ..., continuous)
+                       alias,			# Inserisce l'alias, se esiste, settando propriamente il valueIdentifier	
+                       categoryType,    # Categoria alla quale appartiene la variabile 
+                       qualifiedName,   # Il nome al quale fa riferimento la variabile.
+                       				    # È importante notare che il qualifiedName sia uguale per variabili che puntano alla stessa variaible
+                       				    # ad esempio la variabile "x" e la variabile "der(x)" hanno lo stesso qN = "x"
+                       description=None # Descrizione opzionale della variabile
 				):
 		self.name 			 = name
 		self.variability     = variability
@@ -72,7 +72,7 @@ class BooleanScalarVariable(ScalarVariable):
 		self.fixed = fixed
 
 	@staticmethod
-	def bool2str(bool_value): return "1.0" if bool_value else "0.0"
+	def bool2str(bool_value): return "1" if bool_value else "0"
 
 
 class IntegerScalarVariable(ScalarVariable):
@@ -128,15 +128,17 @@ def _parsetag_var(scalar_variable_tag):
 
 class Var:
 	""" Classe che descrive una variabile qualsiasi, con nome, valore e valoreiniziale se esiste """
-	def __init__(self, nome, value, id, initvalue=None):
+	def __init__(self, nome, id, qualifiedName, alias, value=None, initvalue=None):
 		self.nome = nome
 		self.value = value
 		self.init = initvalue
+		self.qualifiedName = qualifiedName
+		self.alias = alias
 		self.MPGOSname = "Var"
 		self.id = id
 
 	def __str__(self):
-		string = f"{self.nome}(value={self.value}, iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()})"
+		string = f"{self.nome}(value={self.value}, qN={self.qualifiedName}, alias={self.alias}, iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()})"
 		return string
 
 	@staticmethod
@@ -170,15 +172,15 @@ class ACC(Var):
 	estrapolati dall'XML come "algebraic". ACC viene utilizzata 
 	per quelle variabili che hanno valori Reali.
 	"""
-	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, id, initvalue)
+	def __init__(self, *varparam):
+		super().__init__(*varparam)
 		self.MPGOSname = "ACC"
 
 
 class ACCi(Var):
 	""" Sono esattamente le variabili ACC ma hanno valori interi. """
-	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, id, initvalue)
+	def __init__(self, *varparam):
+		super().__init__(*varparam)
 		self.MPGOSname = "ACCi"
 
 
@@ -189,15 +191,15 @@ class sPAR(Var):
 	durante la simulazione, oppure tra diverse simulazioni. 
 	Verranno estrapolati dall'XML come IndipendentParameter/Constants
 	"""
-	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, id, initvalue)
+	def __init__(self, *varparam):
+		super().__init__(*varparam)
 		self.MPGOSname = "sPAR"
 
 
 class sPARi(Var):
 	""" Sono esattamente le variabili sPAR ma hanno valori interi. """
-	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, id, initvalue)
+	def __init__(self, *varparam):
+		super().__init__(*varparam)
 		self.MPGOSname = "sPARi"
 
 
@@ -209,8 +211,8 @@ class cPAR(Var):
 	all'interno del range nel quale sono definiti. Solitamente hanno un 
 	massimo e un minimo valore che non possono oltrepassare.
 	"""
-	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, id, initvalue)
+	def __init__(self, *varparam):
+		super().__init__(*varparam)
 		self.MPGOSname = "cPAR"
 
 
@@ -219,8 +221,8 @@ class X(Var):
 	X è una classe che rappresenta le variabili delle ODE.
 	Verranno estrapolati dall'XML come state. 
 	"""
-	def __init__(self, nome, value, initvalue, id):
-		super().__init__(nome, value, id, initvalue)
+	def __init__(self, *varparam):
+		super().__init__(*varparam)
 		self.MPGOSname = "X"
 
 
@@ -230,6 +232,6 @@ class F(Var):
 	Ossia la parte con der(x). Verranno estrapolate dall'XML
 	come "derivative"
 	""" 
-	def __init__(self, nome, value, id, initvalue):
-		super().__init__(nome, value, id, initvalue)
+	def __init__(self, *varparam):
+		super().__init__(*varparam)
 		self.MPGOSname = "F"
