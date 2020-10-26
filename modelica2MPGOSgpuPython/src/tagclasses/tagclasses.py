@@ -334,20 +334,7 @@ class Time(UnaryOperator):
 
 
 class IfThenElse:
-    """ Rappresenta il blocco di tag 
-    <fun:If>
-        <exp:Condition>
-            <exp:[Binary|Unary]Operator>
-                ...
-            </exp:[Binary|Unary]Operator>
-        </exp:Condition>
-        <exp:Statement>
-            <exp:[Real|Integer|Boolean|String]Literal> ... </exp:[Real|Integer|Boolean|String]Literal>
-        </exp:Statement>
-        <exp:Else>
-            <exp:[Real|Integer|Boolean|String]Literal> ... </exp:[Real|Integer|Boolean|String]Literal>
-        </exp:Else>
-    </fun:If> """
+    """ Rappresenta il blocco di tag <fun:If>...</fun:If>"""
     def __init__(self, if_tag_element):
         self.if_tag_element = if_tag_element
     
@@ -430,9 +417,12 @@ OPERATOR_CLASSES = {
 }
 
 
-def getclass(tag):
+def getoperatorclass(tag):
     """ Dato in input un tag, ritorna un operatore """
-    return OPERATOR_CLASSES[tag]
+    try:
+        return OPERATOR_CLASSES[tag.tag]
+    except KeyError:
+        raise exceptions.builtExceptions.OperatorNotFoundException(tag.tag)
 
 
 def _parsetag_eq(tag):
@@ -442,23 +432,20 @@ def _parsetag_eq(tag):
     per parsare le equazioni in quanto hanno una struttura di un tipo ben specifico
     a differenza di elementi quali: ModelVariables, oppure Functions o ancora Algorithms.
     """
-    try:
-        if tag.tag == f"{EQUATION_NS}Equation":
-            if tag[0].tag == f"{EXPRESSION_NS}Sub":
-                subtag_element = list(list(tag)[0])
-                return Equation(_parsetag_eq(subtag_element[0]), _parsetag_eq(subtag_element[1]))
-            if tag[0].tag == f"{EXPRESSION_NS}Reinit":
-                return Reinit(_parsetag_eq(tag[0][0]), _parsetag_eq(tag[0][1]))
-        if tag.tag in LITERALS:
-            return Literal(tag.text)
-        if tag.tag == f"{EXPRESSION_NS}Time": return Time(tag.text)
-        else:
-            class_op, arity = getclass(tag.tag)
-            if arity == 2 or arity == 3:
-                return class_op(tag)
-            if arity == 1:
-                return class_op(_parsetag_eq(tag[0]))
-            sub_element = list(tag)
-            return class_op(_parsetag_eq(sub_element[0]), _parsetag_eq(sub_element[1]))
-    except KeyError:
-        raise exceptions.builtExceptions.OperatorNotFoundException(tag.tag)
+    if tag.tag == f"{EQUATION_NS}Equation":
+        if tag[0].tag == f"{EXPRESSION_NS}Sub":
+            subtag_element = list(list(tag)[0])
+            return Equation(_parsetag_eq(subtag_element[0]), _parsetag_eq(subtag_element[1]))
+        if tag[0].tag == f"{EXPRESSION_NS}Reinit":
+            return Reinit(_parsetag_eq(tag[0][0]), _parsetag_eq(tag[0][1]))
+    if tag.tag in LITERALS: return Literal(tag.text)
+    if tag.tag == f"{EXPRESSION_NS}Time": return Time(tag.text)
+    else:
+        class_op, arity = getoperatorclass(tag)
+        if arity == 2 or arity == 3:
+            return class_op(tag)
+        if arity == 1:
+            return class_op(_parsetag_eq(tag[0]))
+        sub_element = list(tag)
+        return class_op(_parsetag_eq(sub_element[0]), _parsetag_eq(sub_element[1]))
+        
