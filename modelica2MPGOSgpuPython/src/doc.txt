@@ -32,6 +32,19 @@ SINTASSI QUALIFIEDNAME TAG
   ]
 </exp:QualifiedName>
 
+
+SINTASSI DYNAMICEQUATIONS TAG
+
+<equ:DynamicEquations>
+  <equ:Equation>
+    [<exp:Der>] # Opzionale
+      <exp:Identifier><exp:QualifiedNamePart ... > ... </exp:QualifiedNamePart>
+    [</exp:Der>]
+    <exp:targetnametag> ... </exp:targetnametag>
+  </equ:Equation>
+</equ:DynamicEquations>
+
+
 SINTASSI SCALARVARIABLE TAG
 
 <ScalarVariable>
@@ -40,5 +53,8 @@ SINTASSI SCALARVARIABLE TAG
   <VariableCategory> {derivative | algbraic | state | independentParameter | independentConstant} </VariableCategory>
 </ScalarVariable>
 
-SINTASSI INITIALEQUATIONS
+SINTASSI INITIALEQUATIONS TAG
 
+<equ:InitialEquations>
+  <equ:Equation> ... </equ:Equation>
+</equ:InitialEquations>

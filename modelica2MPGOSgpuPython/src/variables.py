@@ -47,6 +47,13 @@ class ScalarVariable:
 
 	def __str__(self): return type(self).__name__ + "(" + ", ".join([f"{k}={v}" for k, v in self.__dict__.items()]) + ")"
 
+	@staticmethod
+	def getvar(var_list, var_name):
+		try:
+			return list(filter(lambda x: x.name == var_name, var_list))[0]
+		except Exception:
+			return None
+
 
 """
 Valori tolti:
@@ -64,6 +71,10 @@ class RealScalarVariable(ScalarVariable):
 		self.fixed = fixed
 
 
+	def setstart(self, value):
+		self.start = value
+		self.fixed = True
+
 class BooleanScalarVariable(ScalarVariable):
 	""" Rappresenta una variabile Boolean """
 	def __init__(self, start=None, fixed=None, *scalarvalue):
@@ -75,12 +86,21 @@ class BooleanScalarVariable(ScalarVariable):
 	def bool2str(bool_value): return "1" if bool_value else "0"
 
 
+	def setstart(self, value):
+		self.start = value
+		self.fixed = True
+
+
 class IntegerScalarVariable(ScalarVariable):
 	""" Rappresenta una variabile Integer """
 	def __init__(self, start=None, fixed=None, *scalarvalue):
 		super().__init__(*scalarvalue)
 		self.start = start
 		self.fixed = fixed
+
+	def setstart(self, value):
+		self.start = value
+		self.fixed = True
 	
 
 VARIABLES = {

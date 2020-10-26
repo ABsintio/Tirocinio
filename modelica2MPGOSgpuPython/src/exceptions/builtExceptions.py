@@ -44,3 +44,19 @@ class VariableTypeNotFound(Exception):
         super().__init__(message)
     
     def __str__(self): return f"{self.typo} -> {self.message}"
+
+
+class VariableDoesNotExists(Exception):
+    """
+    Exception raised for errors in variable name search
+
+    Attributes:
+        name -- string that represent the name of a variable
+        message  -- explanation of the error
+    """
+    def __init__(self, name, message="Variable name not found"):
+        self.name = name
+        self.message = message
+        super().__init__(message)
+    
+    def __str__(self): return f"{self.name} -> {self.message}"

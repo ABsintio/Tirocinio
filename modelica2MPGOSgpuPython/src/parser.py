@@ -92,23 +92,43 @@ class Parser:
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
                 self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x))
                 print(self.dynamic_equations['equations'][-1])
-            # Parsing degli eventi
+            #TODO: Parsing degli eventi
 
     
     def parse_initial_equations(self):
-        """ Esegue il parsing di tutti i tag interni a <equ:InitialEquations> """
+        """ 
+        Esegue il parsing di tutti i tag interni a <equ:InitialEquations> ed associati i valori
+        estrapolati dalle equazioni iniziali alle variabili che non hanno l'attributo start diverso da None.
+        """
         initial_equantions_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}InitialEquations", self.root)
         for x in initial_equantions_roottag:
             # Controlliamo che non siano tag vuoti, ossia <equ:Equation><exp:Sub></exp:Sub></equ:Equation>
             if list(x[0]): self.initial_equations.append(tagclasses._parsetag_eq(x))
+        # Prendo le variabili coinvolte nelle equazioni iniziali
+        variable_list = [variables.ScalarVariable.getvar(self.scalar_variables, ieqs.left.__str__()) for ieqs in self.initial_equations]
+        # Inserisco i valori iniziali nelle variabili che non ne presentano
+        for v, e in zip(variable_list, self.initial_equations):
+            if v is not None and v.start is None:
+                v.setstart(e.right.__str__())
+
+    
+    def parse_userdefined_function(self):
+        """ Esegue il parsing delle funzioni definite dall'utente trattate con il tag <fun:FunctionCall> """
+        # TODO: FunctionLists Parser
+
+    
+    def parseXML(self):
+        """ Chiama i diversi metodi di parsing dell'XML """
+        self.parse_scalar_variables()
+        self.parse_initial_equations()
+        self.parse_dynamic_equations()
+
 
 
 if __name__ == "__main__":
     p = Parser("./XMLs/BouncingBall.xml")
     p.parse_scalar_variables()
-    lista = p.associate_var2MPGOSparameter()
-    #variables.Var.forEach(lista, lambda x: variables.Var.forEach(x, print))
-    #print()
-    #p.parse_dynamic_equations()
     p.parse_initial_equations()
-    variables.Var.forEach(p.initial_equations, print)
+    lista = p.associate_var2MPGOSparameter()
+    variables.Var.forEach(lista, lambda x: variables.Var.forEach(x, print))
+    p.parse_dynamic_equations()
