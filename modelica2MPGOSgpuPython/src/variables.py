@@ -1,4 +1,5 @@
 from exceptions import builtExceptions
+from tagclasses import tagclasses
 
 
 #--------------------------# DEFINIZIONE DELLE CLASSI CHE RAPRESENTANO TAG ALL'INTERNO DELL'XML   # --------------------------#		
@@ -114,7 +115,7 @@ def _parsetag_var(scalar_variable_tag):
 		scalar_variable_tag.attrib['variability'],									   # variability
 		scalar_variable_tag.attrib['alias'],										   # alias
 		VariableCategory.getcategory(scalar_variable_tag[3].text),					   # variableCategory
-		".".join(list(map(lambda y: y.attrib['name'], list(scalar_variable_tag[1]))))  # qualifiedName
+		tagclasses.QualifiedName(scalar_variable_tag[1]).__str__()			           # qualifiedName
 	]
 	# Dopodiché riconosciamo il tipo della variabile (Real, Boolean, Integer) e costruiamo l'istanza associata
 	fixed = scalar_variable_tag[0].attrib.get('fixed')

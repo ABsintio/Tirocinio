@@ -33,18 +33,20 @@ class Parser:
         for x in scalar_valriable_roottag:
             self.scalar_variables.append(variables._parsetag_var(x))
             print(self.scalar_variables[-1])
+
     
     def parse_dynamic_equations(self):
         """ Esegue il parsing di tutti i tag <equ:DynamicEquations> """
         dynamic_equations_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}DynamicEquations", self.root)
         for x in dynamic_equations_roottag:
-            # Per adesso parsiamo le equazioni
+            # Parsing delle equazioni
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
-                eq = tagclasses._parsetag_eq(x)
-                self.dynamic_equations["equations"].append(eq)
-                print(eq)
+                self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x))
+                print(self.dynamic_equations['equations'][-1])
+            # Parsing degli eventi
 
 
 if __name__ == "__main__":
-    p = Parser("./XMLs/BIOMD0000000005.xml")
+    p = Parser("./XMLs/Zeilinger2006_PRR7_PRR9_Y.xml")
     p.parse_scalar_variables()
+    #p.parse_dynamic_equations()

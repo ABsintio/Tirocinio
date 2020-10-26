@@ -1,6 +1,5 @@
 within S2MBIOMDx8095;
 class Parameters
-    extends Modelica.Icons.RecordsPackage;
 
 
     input Boolean elmt_event_0000001;

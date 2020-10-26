@@ -1,6 +1,5 @@
 within S2MBIOMDx8095;
 class Class_elmt_event_0000001 ""
-    extends Modelica.Icons.SignalBus;
 
 
     Boolean trigger;

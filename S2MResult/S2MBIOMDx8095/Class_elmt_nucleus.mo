@@ -1,6 +1,5 @@
 within S2MBIOMDx8095;
 class Class_elmt_nucleus
-    extends Modelica.Icons.VariantsPackage;
 
 
     input Real elmt_R38;

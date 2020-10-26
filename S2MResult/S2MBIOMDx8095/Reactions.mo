@@ -1,6 +1,5 @@
 within S2MBIOMDx8095;
 class Reactions
-    extends Modelica.Icons.SourcesPackage;
 
 
     input Real elmt_nucleus;
