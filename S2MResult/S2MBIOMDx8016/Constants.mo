@@ -1,6 +1,5 @@
 within S2MBIOMDx8016;
 class Constants
-    extends Modelica.Constants;
 
 
     constant Real AVOGADRO(unit = "mol-1") = 6.022141E23;

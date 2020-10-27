@@ -1,6 +1,5 @@
 within S2MBIOMDx8016;
 class Reactions
-    extends Modelica.Icons.SourcesPackage;
 
 
     input Real elmt_compartment_0000004;

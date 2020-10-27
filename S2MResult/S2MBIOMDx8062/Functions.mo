@@ -1,6 +1,5 @@
 within S2MBIOMDx8062;
 class Functions
-    extends Modelica.Icons.UtilitiesPackage;
 
 
     function acosh

@@ -1,6 +1,5 @@
 within S2MBIOMDx8062;
 class Parameters
-    extends Modelica.Icons.RecordsPackage;
 
 
     input Real elmt_Ts;

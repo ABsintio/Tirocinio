@@ -1,4 +1,5 @@
-from parser import Parser, Var
+from parser import Parser
+from tagclasses.variables import *
 import os
 from os import path
 from notifier import Notifier, notifier
@@ -100,7 +101,7 @@ class SystemDefinition:
     def __init__(self, xmlfile, logger):
         self.xmlfile = xmlfile
         self.parser = Parser(xmlfile, logger)
-        self.parser.parse()
+        self.parser.parseXML()
         self.accs, self.xs, self.spars, self.cpars = self.parser.buildSystem() # Prende tutti i parametri
         self.logger = logger
         self.logger.info("Chiamata a builder.SystemDefinition", "Chiamata a builder.SystemDefinition")

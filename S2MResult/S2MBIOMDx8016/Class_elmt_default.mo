@@ -1,6 +1,5 @@
 within S2MBIOMDx8016;
 class Class_elmt_default
-    extends Modelica.Icons.VariantsPackage;
 
 
     Real elmt_default(unit = "") "";

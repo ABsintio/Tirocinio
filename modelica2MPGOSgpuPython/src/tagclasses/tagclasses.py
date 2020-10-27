@@ -27,6 +27,8 @@ class UnaryOperator:
 
     def __str__(self): return "UnaryOperator(" + self.value + ")"
 
+    def setvalue(self, new_value): self.value = new_value
+
 
 class BinaryOperator:
     """ Rappresenta un operatore binario """
@@ -35,6 +37,10 @@ class BinaryOperator:
         self.right = right  # Valore dell'operatore a destra
     
     def __str__(self): return "BinaryOperator(" + self.left + "," + self.right + ")"
+
+    def setleft(self, new_left): self.left = new_left
+
+    def setright(self, new_right): self.right = new_right
 
 
 # ----------------------------------------- # DEFINIZIONE OPERATORI MATEMATICI SEMPLICI  # ----------------------------------------- #
@@ -441,6 +447,14 @@ class When:
     def __str__(self): return f"if ({self.condition})" + "{\n" + f"\t{self.equation}\n" + "}"
 
 
+class Expression(UnaryOperator):
+    """ classe che rappresenta il tag <fun:Expression>...</fun:Expression> """
+    def __init__(self, value):
+        super().__init__(value)
+    
+    def __str__(self): return self.value.__str__()
+
+
 # ----------------------------------------- # FUNZIONE DI SELEZIONE DELLA CLASSE  # ----------------------------------------- #
 
 
@@ -499,7 +513,8 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Reinit"         : (Reinit,        0),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Time"           : (Time,          1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}QualifiedName"  : (QualifiedName, 2),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,  4)
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,  4),
+    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Expression"       : (Expression,    1)
 }
 
 

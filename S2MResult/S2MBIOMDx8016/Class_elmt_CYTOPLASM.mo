@@ -1,6 +1,5 @@
 within S2MBIOMDx8016;
 class Class_elmt_CYTOPLASM
-    extends Modelica.Icons.VariantsPackage;
 
 
     input Real elmt_product11;

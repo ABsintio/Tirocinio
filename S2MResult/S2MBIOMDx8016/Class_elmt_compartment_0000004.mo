@@ -1,6 +1,5 @@
 within S2MBIOMDx8016;
 class Class_elmt_compartment_0000004
-    extends Modelica.Icons.VariantsPackage;
 
 
     input Real elmt_rPn2;

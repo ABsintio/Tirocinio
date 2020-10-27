@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 from tagclasses import tagclasses, variables
 import exceptions.builtExceptions
+import sys # temporane per eseguire i test
+import re
 
 
 # ----------------------------------------------------- # CLASSI PER IL PARSING # ------------------------------------------------------ #
@@ -15,6 +17,7 @@ class Parser:
         self.initial_equations = []
         self.scalar_variables  = []
         self.userdefined_func  = dict()
+        self.algorithms        = []
     
     @staticmethod
     def getTagElementByName(tag_name, tag_root):
@@ -28,64 +31,72 @@ class Parser:
     
     def createACC(self):
         """ Associa a tutte le variabili algebraic un'istanza ACC """
-        acc_id, accs = 0, []
+        acc_id, accs, acc_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                              x.categoryType == variables.VariableCategory.ALGEBRAIC and \
                                                              isinstance(x, variables.RealScalarVariable)]
         for variable in variable_list:
-            accs.append(variables.ACC(variable.name, acc_id, variable.qualifiedName, variable.alias, variable.start))
+            acc = variables.ACC(variable.name, acc_id, variable.qualifiedName, variable.alias, variable.start)
+            accs.append(acc)
             acc_id += 1
+            acc_dict[variable.name] = acc
         
-        return accs
+        return accs, acc_dict
 
     
     def createACCi(self):
         """ Associa a tutte le variabili algebraic con tipo no Real un'istanza ACCi """
-        acci_id, accis = 0, []
+        acci_id, accis, acci_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                              x.categoryType == variables.VariableCategory.ALGEBRAIC and \
                                                              not isinstance(x, variables.RealScalarVariable)]
         for variable in variable_list:
-            accis.append(variables.ACCi(variable.name, acci_id, variable.qualifiedName, variable.alias, variable.start))
+            acci = variables.ACCi(variable.name, acci_id, variable.qualifiedName, variable.alias, variable.start)
+            accis.append(acci)
             acci_id += 1
+            acci_dict[variable.name] = acci
         
-        return accis
+        return accis, acci_dict
 
 
     def create_sPAR(self):
         """ Associa a tutte le variabili independentParameter/Constant un'istanza sPAR """
-        spar_id, spars = 0, []
+        spar_id, spars, spar_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                             (x.categoryType == variables.VariableCategory.INDEPENDENT_CONSTANT or \
                                                              x.categoryType == variables.VariableCategory.INDEPENDENT_PARAMETER) and \
                                                              isinstance(x, variables.RealScalarVariable)]
         
         for variable in variable_list:
-            spars.append(variables.sPAR(variable.name, spar_id, variable.qualifiedName, variable.alias, variable.start))
+            spar = variables.sPAR(variable.name, spar_id, variable.qualifiedName, variable.alias, variable.start)
+            spars.append(spar)
             spar_id += 1
+            spar_dict[variable.name] = spar
         
-        return spars
+        return spars, spar_dict
     
 
     def create_sPARi(self):
         """ Associa a tutte le variabili independentParameter/Constant di tipo no Real un'istanza sPARi """
-        spari_id, sparis = 0, []
+        spari_id, sparis, spari_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                             (x.categoryType == variables.VariableCategory.INDEPENDENT_CONSTANT or \
                                                              x.categoryType == variables.VariableCategory.INDEPENDENT_PARAMETER) and \
                                                              not isinstance(x, variables.RealScalarVariable)]
         
         for variable in variable_list:
-            sparis.append(variables.sPARi(variable.name, spari_id, variable.qualifiedName, variable.alias, variable.start))
+            spari = variables.sPARi(variable.name, spari_id, variable.qualifiedName, variable.alias, variable.start)
+            sparis.append(spari)
             spari_id += 1
+            spari_dict[variable.name] = spari
         
-        return sparis
+        return sparis, spari_dict
 
 
     def createX_and_F(self):
         """ Associa a tutte le variabili derivate un'istanza di tipo F, mentre per quelle di tipo state ->  X"""
-        x_id, xs = 0, []
-        f_id, fs = 0, []
+        x_id, xs, x_dict = 0, [], dict()
+        f_id, fs, f_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias"]
         for variable in variable_list:
             if variable.categoryType == variables.VariableCategory.STATE:
@@ -95,16 +106,20 @@ class Parser:
                 identificativo = x_id
                 if associate_der: identificativo = associate_der[-1].id # Se esiste una tale classe allora imposto l'identificativo
                 x_id += 1 if not associate_der else 0 # altrimenti aumento quello delle variabili X
-                xs.append(variables.X(variable.name, identificativo, variable.qualifiedName, variable.alias, variable.start))
+                x = variables.X(variable.name, identificativo, variable.qualifiedName, variable.alias, variable.start)
+                xs.append(x)
+                x_dict[variable.name] = x
             elif variable.categoryType == variables.VariableCategory.DERIVATIVE:
                 # Faccio la stessa cosa che ho fatto per le variabili X parsato precedentemente
                 associate_x = list(filter(lambda x: x.qualifiedName == variable.qualifiedName, xs))
                 identificativo = f_id 
                 if associate_der: identificativo = associate_x[-1].id
                 f_id += 1 if associate_x else 0
-                fs.append(variables.F(variable.name, identificativo, variable.qualifiedName, variable.alias, variable.start))
+                f = variables.F(variable.name, identificativo, variable.qualifiedName, variable.alias, variable.start)
+                fs.append(f)
+                f_dict[variable.name] = f
 
-        return xs, fs
+        return xs, x_dict, fs, f_dict
 
 
     def associate_var2MPGOSparameter(self):
@@ -116,7 +131,7 @@ class Parser:
         algebraic -> ACC/i.
         """
         
-        return self.createACC(), self.createACCi(), self.create_sPAR(), self.create_sPARi(), *self.createX_and_F()
+        return *self.createACC(), *self.createACCi(), *self.create_sPAR(), *self.create_sPARi(), *self.createX_and_F()
 
     
     def parse_scalar_variables(self):
@@ -134,10 +149,10 @@ class Parser:
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
                 self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x))
             elif x.tag == f"{tagclasses.EQUATION_NS}When":
+                # Parsing degli eventi. Uno per equazione presente nel blocco When
                 self.dynamic_equations["events"].append(tagclasses.When(x))
                 
 
-    
     def parse_initial_equations(self):
         """ 
         Esegue il parsing di tutti i tag interni a <equ:InitialEquations> ed associati i valori
@@ -165,16 +180,49 @@ class Parser:
 
     def parse_algorithm(self):
         """ Esegue il parsing di tutti gli algoritmi. Questi sono interni al tag <fun:Algorithm> """
-        # TODO: Algorithms Parser
-
+        algorithm_roottag = Parser.getTagElementByName(f"{tagclasses.FUNCTIONS_NS}Algorithm", self.root)
+        for x in algorithm_roottag:
+            if x.tag != f"{tagclasses.FUNCTIONS_NS}Assertion":
+                self.algorithms.append(tagclasses._parsetag_eq(x, self.userdefined_func))
     
+
     def parseXML(self):
         """ Chiama i diversi metodi di parsing dell'XML """
         self.parse_scalar_variables()
         self.parse_initial_equations()
         self.parse_userdefined_function()
         self.parse_dynamic_equations()
+        self.parse_algorithm()
 
+    
+    def buildSystem(self):
+        """ Funzione che formatta il sistema di ODE, le equazioni iniziali, gli algoritmi e le altre equazioni """
+        MPGOSparameters    = self.associate_var2MPGOSparameter()
+        accs,   acc_dict   = MPGOSparameters[ 0: 2] # Prendo i parametri ACC   (Reali)
+        accis,  acci_dict  = MPGOSparameters[ 2: 4] # Prendo i parametri ACCi  (Interi)
+        spars,  spar_dict  = MPGOSparameters[ 4: 6] # Prendo i parametri sPAR  (Reali)
+        sparis, spari_dict = MPGOSparameters[ 6: 8] # Prendo i parametri sPARi (Interi)
+        xs,     x_dict     = MPGOSparameters[ 8:10] # Prendo le variabili X 
+        fs,     f_dict     = MPGOSparameters[10:12] # Prendo le variabili F, derivate di X
+
+        params_dict = [acc_dict, acci_dict, spar_dict, spari_dict, x_dict, f_dict]
+        unique_dict = {y: x[y] for x in params_dict for y in x}
+
+        for eq in self.dynamic_equations['equations']:
+            # Prendo tutte le variabili che compongono l'equazione
+            variable_list = re.findall(r"\$*\w+\.*\w*", eq.right.__str__())
+            for x in variable_list:
+                try:
+                    MPGOSparam = unique_dict[x] # Prendo l'oggetto MPGOS corrispondente
+                    # Sostituisco con il parametro MPGOS
+                    eq.setright(eq.right.__str__().replace(x, MPGOSparam.createMPGOSname()))
+                except KeyError:
+                    pass
+            # Infine sostituisci anche la parte a sinitra dell'equazione
+            eq.setleft(eq.left.__str__().replace(eq.left.__str__(), unique_dict[eq.left.__str__()].createMPGOSname()))
+            print(eq)
+
+    
 
     def __str__(self):
         string = "" + \
@@ -182,11 +230,13 @@ class Parser:
             "\n\nINITIAL EQUATIONS\n" + "\n".join([x.__str__() for x in self.initial_equations]) + \
             "\n\nFUNCTIONS\n" + "\n".join([self.userdefined_func[x]._forcpp() for x in self.userdefined_func]) + \
             "\n\nEQUATIONS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["equations"]]) + \
-            "\n\nEVENTS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["events"]])
+            "\n\nEVENTS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["events"]]) + \
+            "\n\nALGORITHMS\n" + "\n".join([x.__str__() for x in self.algorithms])
         return string
 
 
 if __name__ == "__main__":
-    p = Parser("./XMLs/Zeilinger2006_PRR7_PRR9_Y.xml")
+    # temporaneamente prendiamo in input da riga di comando il nome dell'xml
+    p = Parser(sys.argv[1])
     p.parseXML()
-    print(p)
+    p.buildSystem()

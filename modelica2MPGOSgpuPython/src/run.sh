@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# python parser.py 0 ./S2MBIOMDx8016/S2MBIOMDx8016.Goldbeter1995.xml
-# python3 main.py 0 /home/yorunoomo/Scrivania/Tirocinio/S2MResult/S2MBIOMDx07125/S2MBIOMDx07125.model_0000001.xml
-python3 main.py 1 /home/yorunoomo/Scrivania/Tirocinio/S2MResult/S2MBIOMDx8095 /home/yorunoomo/Scrivania/Tirocinio/models/BIOMD0000000095.xml 1 1
-#python3 main.py 0 /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2/v2.BouncingBall.xml 1
+for xml in $(ls XMLs); do
+    python3 parser.py XMLs/${xml} > test/${xml}.out
+done

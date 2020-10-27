@@ -148,9 +148,8 @@ def _parsetag_var(scalar_variable_tag):
 
 class Var:
 	""" Classe che descrive una variabile qualsiasi, con nome, valore e valoreiniziale se esiste """
-	def __init__(self, nome, id, qualifiedName, alias, value=None, initvalue=None):
+	def __init__(self, nome, id, qualifiedName, alias, initvalue=None):
 		self.nome = nome
-		self.value = value
 		self.init = initvalue
 		self.qualifiedName = qualifiedName
 		self.alias = alias
@@ -158,29 +157,19 @@ class Var:
 		self.id = id
 
 	def __str__(self):
-		string = f"{self.nome}(value={self.value}, qN={self.qualifiedName}, alias={self.alias}, iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()})"
+		string = f"{self.nome}(qN={self.qualifiedName}, alias={self.alias}, iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()})"
 		return string
 
 	@staticmethod
 	def forEach(l, func):
 		for x in l:
 			func(x)
-	
-	@staticmethod
-	def createCodeLineMPGOS(*l):
-		lista = []
-		for x in l:
-			lista.append("".join(list(map(lambda y: f"\t{y.createMPGOSname()} = {y.value};\n", x))))
-		return "".join(lista)
 
 	def createMPGOSname(self):
 		return self.MPGOSname + "[" + str(self.id) + "]"
 	
 	def setid(self, id:int):
 		self.id = id
-	
-	def setvalue(self, value:str):
-		self.value = value
 
 
 class ACC(Var):

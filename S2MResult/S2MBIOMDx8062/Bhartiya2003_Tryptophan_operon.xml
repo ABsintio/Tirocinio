@@ -1,0 +1,2143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="Bhartiya2003_Tryptophan_operon"
+  modelIdentifier="Bhartiya2003_Tryptophan_operon"
+  guid="{2f20bec6-1511-4596-b51f-ae75db0be924}"
+  generationDateAndTime="2020-10-27T13:12:40"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="12"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.0"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="Params.elmt_Tex"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="m-3.0." />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Tex"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_Tomax"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="m-3.0." />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Tomax"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_e_val"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="m-3.0." />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_e_val"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_f_val"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="m-3.0." />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_f_val"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_product0"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_product0"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_product2"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_product2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_reactant1"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_reactant1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_reactant3"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_reactant3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_reactant4"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_reactant4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Enz_amount"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Enz_amount"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Ts_amount"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Ts_amount"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_compartment" description="cell" valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(Params.elmt_Tex)"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Tex"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Params.elmt_Tomax)"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Tomax"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Params.elmt_e_val)"  valueReference="14" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_e_val"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Params.elmt_f_val)"  valueReference="15" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_f_val"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Reacs.elmt_product0)"  valueReference="16" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_product0"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Reacs.elmt_product2)"  valueReference="17" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_product2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Reacs.elmt_reactant1)"  valueReference="18" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_reactant1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Reacs.elmt_reactant3)"  valueReference="19" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_reactant3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Reacs.elmt_reactant4)"  valueReference="20" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_reactant4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(elmt_compartment.elmt_Enz_amount)"  valueReference="21" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Enz_amount"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(elmt_compartment.elmt_Ts_amount)"  valueReference="22" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Ts_amount"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(elmt_compartment.elmt_compartment)" description="der(cell)" valueReference="23" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="$TMP_elmt_compartment.elmt_Enz_conc_19"  valueReference="24" variability="continuous" causality="none" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Enz_conc_19"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$TMP_elmt_compartment.elmt_Enz_conc_53"  valueReference="25" variability="continuous" causality="none" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Enz_conc_53"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$TMP_elmt_compartment.elmt_To_conc_19"  valueReference="26" variability="continuous" causality="none" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_To_conc_19"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$TMP_elmt_compartment.elmt_To_conc_53"  valueReference="27" variability="continuous" causality="none" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_To_conc_53"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$TMP_elmt_compartment.elmt_Ts_conc_19"  valueReference="28" variability="continuous" causality="none" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Ts_conc_19"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$TMP_elmt_compartment.elmt_Ts_conc_53"  valueReference="29" variability="continuous" causality="none" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Ts_conc_53"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$TMP_elmt_compartment.elmt_Tt_conc_19"  valueReference="30" variability="continuous" causality="none" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Tt_conc_19"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$TMP_elmt_compartment.elmt_Tt_conc_53"  valueReference="31" variability="continuous" causality="none" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Tt_conc_53"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$cse1"  valueReference="32" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$cse1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$cse2"  valueReference="33" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$cse2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_To_norm" description="To_norm" valueReference="34" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_To_norm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_Ts_norm" description="Ts_norm" valueReference="35" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Ts_norm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_Tt_norm" description="Tt_norm" valueReference="36" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Tt_norm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Enz_conc"  valueReference="37" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Enz_conc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Enzyme_dilution"  valueReference="38" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_dilution"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Enzyme_synthesis"  valueReference="39" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_To_amount"  valueReference="40" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_To_amount"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_To_conc"  valueReference="41" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_To_conc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Ts_conc"  valueReference="42" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Tt_amount"  valueReference="43" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Tt_amount"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Tt_conc"  valueReference="44" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Tt_conc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_tryptophan_consumption"  valueReference="45" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_consumption"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_tryptophan_dilution"  valueReference="46" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_dilution"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_tryptophan_synthesis"  valueReference="47" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_synthesis"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Params.elmt_Enz"  valueReference="48" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Enz_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Enz"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_Enz_norm" description="Enz_norm" valueReference="49" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Enz_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Enz_norm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_To"  valueReference="50" variability="continuous" causality="internal" alias="elmt_compartment.elmt_To_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_To"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_Ts"  valueReference="51" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Ts_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Ts"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Params.elmt_Tt"  valueReference="52" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Tt_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Params"/>
+        <exp:QualifiedNamePart name="elmt_Tt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Enz"  valueReference="53" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Enz_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enz"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Enzyme_dilution" description="Enzyme dilution due to cell growth" valueReference="54" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Enzyme_dilution">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_dilution"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Enzyme_synthesis" description="Anthranilate synthase synthesis" valueReference="55" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Enzyme_synthesis">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Ts"  valueReference="56" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Ts_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Ts"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Tt"  valueReference="57" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Tt_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Tt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_compartment"  valueReference="58" variability="continuous" causality="internal" alias="elmt_compartment.elmt_compartment">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_tryptophan_consumption" description="Tryptophan consumption for protein synthesis" valueReference="59" variability="continuous" causality="internal" alias="elmt_compartment.elmt_tryptophan_consumption">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_consumption"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_tryptophan_dilution" description="Tryptophan dilution due to cell growth" valueReference="60" variability="continuous" causality="internal" alias="elmt_compartment.elmt_tryptophan_dilution">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_dilution"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_tryptophan_synthesis" description="Tryptophan synthesis" valueReference="61" variability="continuous" causality="internal" alias="elmt_compartment.elmt_tryptophan_synthesis">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_synthesis"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Enz" description="Anthranilate synthase" valueReference="62" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Enz_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Enz"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Tex"  valueReference="63" variability="continuous" causality="internal" alias="Params.elmt_Tex">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Tex"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_To" description="exog. Trp" valueReference="64" variability="continuous" causality="internal" alias="elmt_compartment.elmt_To_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_To"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Tomax"  valueReference="65" variability="continuous" causality="internal" alias="Params.elmt_Tomax">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Tomax"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Ts" description="Synthesized tryptophan" valueReference="66" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Ts_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Ts"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_Tt" description="Total tryptophan" valueReference="67" variability="continuous" causality="internal" alias="elmt_compartment.elmt_Tt_conc">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_Tt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_e_val"  valueReference="68" variability="continuous" causality="internal" alias="Params.elmt_e_val">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_e_val"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_f_val"  valueReference="69" variability="continuous" causality="internal" alias="Params.elmt_f_val">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_f_val"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_product0"  valueReference="70" variability="continuous" causality="internal" alias="Reacs.elmt_product0">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_product0"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_product2"  valueReference="71" variability="continuous" causality="internal" alias="Reacs.elmt_product2">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_product2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_reactant1"  valueReference="72" variability="continuous" causality="internal" alias="Reacs.elmt_reactant1">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_reactant1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_reactant3"  valueReference="73" variability="continuous" causality="internal" alias="Reacs.elmt_reactant3">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_reactant3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="elmt_compartment.elmt_reactant4"  valueReference="74" variability="continuous" causality="internal" alias="Reacs.elmt_reactant4">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="elmt_compartment"/>
+        <exp:QualifiedNamePart name="elmt_reactant4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Reacs.elmt_Enzyme_dilution_elmt_mu"  valueReference="75" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_dilution_elmt_mu"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Enzyme_synthesis_elmt_Ot"  valueReference="76" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0033" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_Ot"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Enzyme_synthesis_elmt_k1"  valueReference="77" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="65.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_k1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Enzyme_synthesis_elmt_ki1"  valueReference="78" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.53" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_ki1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_Enzyme_synthesis_elmt_nH"  valueReference="79" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.92" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_nH"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_tryptophan_consumption_elmt_Kg"  valueReference="80" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.2" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_consumption_elmt_Kg"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_tryptophan_consumption_elmt_g"  valueReference="81" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="25.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_consumption_elmt_g"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_tryptophan_dilution_elmt_mu"  valueReference="82" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_dilution_elmt_mu"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_tryptophan_synthesis_elmt_Ki2"  valueReference="83" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="810.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_synthesis_elmt_Ki2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Reacs.elmt_tryptophan_synthesis_elmt_k2"  valueReference="84" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="25.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_synthesis_elmt_k2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_dilution_elmt_mu"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_Ot"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0033</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_k1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>65.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_ki1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.53</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_nH"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.92</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_consumption_elmt_Kg"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.2</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_consumption_elmt_g"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>25.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_dilution_elmt_mu"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_synthesis_elmt_Ki2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>810.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Reacs"/>
+        <exp:QualifiedNamePart name="elmt_tryptophan_synthesis_elmt_k2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>25.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Params"/>
+            <exp:QualifiedNamePart name="elmt_Tex"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Params"/>
+            <exp:QualifiedNamePart name="elmt_e_val"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Params"/>
+            <exp:QualifiedNamePart name="elmt_Tomax"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Params"/>
+            <exp:QualifiedNamePart name="elmt_f_val"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Reacs"/>
+            <exp:QualifiedNamePart name="elmt_reactant1"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Reacs"/>
+            <exp:QualifiedNamePart name="elmt_reactant4"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Reacs"/>
+            <exp:QualifiedNamePart name="elmt_reactant3"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Reacs"/>
+            <exp:QualifiedNamePart name="elmt_product0"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Reacs"/>
+            <exp:QualifiedNamePart name="elmt_product2"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_To_amount"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Params"/>
+                <exp:QualifiedNamePart name="elmt_Tomax"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Params"/>
+                  <exp:QualifiedNamePart name="elmt_Tex"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="elmt_compartment"/>
+                    <exp:QualifiedNamePart name="elmt_compartment"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Params"/>
+                        <exp:QualifiedNamePart name="elmt_Tex"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:RealLiteral>1.0</exp:RealLiteral>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="elmt_compartment"/>
+                            <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Params"/>
+                            <exp:QualifiedNamePart name="elmt_f_val"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                      </exp:Add>
+                    </exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Params"/>
+                      <exp:QualifiedNamePart name="elmt_e_val"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </equ:Equation>  
+        <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Tt_amount"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="elmt_compartment"/>
+                  <exp:QualifiedNamePart name="elmt_To_conc"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="elmt_compartment"/>
+                  <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+                </exp:Identifier>
+              </exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Sub>
+        </equ:Equation>  
+         
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_To_conc_53"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_To_conc"/>
+            </exp:Identifier>
+          </exp:Sub>;
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Tt_conc_53"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Tt_conc"/>
+            </exp:Identifier>
+          </exp:Sub>;
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Ts_conc_53"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+            </exp:Identifier>
+          </exp:Sub>;
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Enz_conc_53"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Enz_conc"/>
+            </exp:Identifier>
+          </exp:Sub>;
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Params"/>
+          <exp:QualifiedNamePart name="elmt_Tt_norm"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.01219512195121951</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_Tt_conc"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$cse2"/>
+        </exp:Identifier>
+        <exp:FunctionCall>
+          <exp:Name>
+            <exp:QualifiedNamePart name="Functions"/>
+            <exp:QualifiedNamePart name="pow"/>
+          </exp:Name>
+          <exp:Arguments>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Tt_conc"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_nH"/>
+            </exp:Identifier>
+          </exp:Arguments>
+        </exp:FunctionCall>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_Enzyme_synthesis"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_k1"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="$cse1"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Reacs"/>
+                  <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_Ot"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="$cse1"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="$cse2"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_Enzyme_dilution"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_Enzyme_dilution_elmt_mu"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Enz_conc"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_Enz_amount"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Enzyme_synthesis"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_product0"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Enzyme_dilution"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_reactant1"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_tryptophan_synthesis"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_tryptophan_synthesis_elmt_k2"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+                <exp:QualifiedNamePart name="elmt_Enz_conc"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Reacs"/>
+                  <exp:QualifiedNamePart name="elmt_tryptophan_synthesis_elmt_Ki2"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Reacs"/>
+                    <exp:QualifiedNamePart name="elmt_tryptophan_synthesis_elmt_Ki2"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="elmt_compartment"/>
+                    <exp:QualifiedNamePart name="elmt_Tt_conc"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_tryptophan_dilution"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_tryptophan_dilution_elmt_mu"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_tryptophan_consumption"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_tryptophan_consumption_elmt_g"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+                <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Reacs"/>
+                  <exp:QualifiedNamePart name="elmt_tryptophan_consumption_elmt_Kg"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="elmt_compartment"/>
+                  <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_Ts_amount"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_tryptophan_synthesis"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_product2"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+                <exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="elmt_compartment"/>
+                    <exp:QualifiedNamePart name="elmt_tryptophan_consumption"/>
+                  </exp:Identifier>
+                </exp:Neg>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Reacs"/>
+                <exp:QualifiedNamePart name="elmt_reactant3"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+                <exp:QualifiedNamePart name="elmt_tryptophan_dilution"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Reacs"/>
+                <exp:QualifiedNamePart name="elmt_reactant4"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Params"/>
+          <exp:QualifiedNamePart name="elmt_Ts_norm"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.01219512195121951</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Params"/>
+          <exp:QualifiedNamePart name="elmt_To_norm"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.01219512195121951</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_To_conc"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+     
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_Enz_conc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Reacs"/>
+          <exp:QualifiedNamePart name="elmt_product2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Reacs"/>
+          <exp:QualifiedNamePart name="elmt_product0"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Reacs"/>
+          <exp:QualifiedNamePart name="elmt_reactant3"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Reacs"/>
+          <exp:QualifiedNamePart name="elmt_reactant4"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Reacs"/>
+          <exp:QualifiedNamePart name="elmt_reactant1"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Params"/>
+          <exp:QualifiedNamePart name="elmt_f_val"/>
+        </exp:Identifier>
+        <exp:RealLiteral>380.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Params"/>
+          <exp:QualifiedNamePart name="elmt_Tomax"/>
+        </exp:Identifier>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Params"/>
+          <exp:QualifiedNamePart name="elmt_e_val"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.9</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Params"/>
+          <exp:QualifiedNamePart name="elmt_Tex"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.14</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_To_amount"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Params"/>
+            <exp:QualifiedNamePart name="elmt_Tomax"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Params"/>
+              <exp:QualifiedNamePart name="elmt_Tex"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Params"/>
+                    <exp:QualifiedNamePart name="elmt_Tex"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="elmt_compartment"/>
+                        <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Params"/>
+                        <exp:QualifiedNamePart name="elmt_f_val"/>
+                      </exp:Identifier>
+                    </exp:Div>
+                  </exp:Add>
+                </exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Params"/>
+                  <exp:QualifiedNamePart name="elmt_e_val"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_To_conc_19"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_To_conc"/>
+            </exp:Identifier>
+          </exp:Sub>;
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Tt_conc_19"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Tt_conc"/>
+            </exp:Identifier>
+          </exp:Sub>;
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Ts_conc_19"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+            </exp:Identifier>
+          </exp:Sub>;
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="$TMP_elmt_compartment.elmt_Enz_conc_19"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Enz_conc"/>
+            </exp:Identifier>
+          </exp:Sub>;
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="elmt_compartment"/>
+                  <exp:QualifiedNamePart name="elmt_To_conc"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="elmt_compartment"/>
+                  <exp:QualifiedNamePart name="elmt_Ts_conc"/>
+                </exp:Identifier>
+              </exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+                <exp:QualifiedNamePart name="elmt_compartment"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="elmt_compartment"/>
+              <exp:QualifiedNamePart name="elmt_Tt_amount"/>
+            </exp:Identifier>
+          </exp:Sub>;
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="elmt_compartment"/>
+          <exp:QualifiedNamePart name="elmt_Enzyme_synthesis"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Reacs"/>
+              <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_k1"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="Functions"/>
+                  <exp:QualifiedNamePart name="pow"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Reacs"/>
+                    <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_ki1"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Reacs"/>
+                    <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_nH"/>
+                  </exp:Identifier>
+                </exp:Arguments>
+              </exp:FunctionCall>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Reacs"/>
+                  <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_Ot"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:FunctionCall>
+                    <exp:Name>
+                      <exp:QualifiedNamePart name="Functions"/>
+                      <exp:QualifiedNamePart name="pow"/>
+                    </exp:Name>
+                    <exp:Arguments>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Reacs"/>
+                        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_ki1"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Reacs"/>
+                        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_nH"/>
+                      </exp:Identifier>
+                    </exp:Arguments>
+                  </exp:FunctionCall>
+                  <exp:FunctionCall>
+                    <exp:Name>
+                      <exp:QualifiedNamePart name="Functions"/>
+                      <exp:QualifiedNamePart name="pow"/>
+                    </exp:Name>
+                    <exp:Arguments>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="elmt_compartment"/>
+                        <exp:QualifiedNamePart name="elmt_Tt_conc"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Reacs"/>
+                        <exp:QualifiedNamePart name="elmt_Enzyme_synthesis_elmt_nH"/>
+                      </exp:Identifier>
+                    </exp:Arguments>
+                  </exp:FunctionCall>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+    <fun:Assertion>
+      <fun:Condition>
+        <exp:LogGeq>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+            <exp:QualifiedNamePart name="elmt_compartment"/>
+          </exp:Identifier>
+          <exp:RealLiteral>0.0</exp:RealLiteral>
+        </exp:LogGeq>
+      </fun:Condition>
+      <fun:Message>
+        <exp:StringLiteral>"Compartment size became negative. Make sure this is a valid bahaviour."</exp:StringLiteral>
+      </fun:Message>
+    </fun:Assertion>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="Functions"/>
+        <exp:QualifiedNamePart name="pow"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="power"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Pow>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="x"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="power"/>
+              </exp:Identifier>
+            </exp:Pow>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+  </fun:FunctionsList>
+
+  <opt:Optimization>
+    <opt:TimePoints>
+      <opt:TimePoint  >
+      </opt:TimePoint>
+    </opt:TimePoints>
+    <opt:PathConstraints>
+    </opt:PathConstraints>
+  </opt:Optimization>
+
+</OpenModelicaModelDescription>
