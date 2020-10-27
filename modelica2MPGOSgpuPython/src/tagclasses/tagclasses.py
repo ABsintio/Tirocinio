@@ -175,14 +175,6 @@ class LogNeq(BinaryOperator):
 # ----------------------------------------- # DEFINIZIONE FUNZIONI PRINCIPALI  # ----------------------------------------- #
 
 
-class Der(UnaryOperator):
-    """ Rappresenta la funzione di derivata """
-    def __init__(self, value):
-        super().__init__(value)
-    
-    def __str__(self): return "der(" + self.value.__str__() + ")"
-
-
 class Sin(UnaryOperator):
     """ Rappresenta la funzione seno """
     def __init__(self, value):
@@ -318,13 +310,24 @@ class QualifiedName:
     def __str__(self): 
         string = ".".join(self._parse_qnp())
         return self.variables_dict[string].createMPGOSname() if self.variables_dict is not None and string in self.variables_dict \
-               else ".".join(self._parse_qnp())
+               else string
 
 
 class Identifier(QualifiedName):
     """ Rappresenta l'operatore di identificazione di una variabile in un'equazione """
     def __init__(self, id_tag_element, variables_dict=None):
         super().__init__(id_tag_element, variables_dict)
+
+
+class Der(QualifiedName):
+    """ Rappresenta l'operatore di derivazione e quindi il tag <exp:Der>...</exp:Der> """
+    def __init__(self, der_tag_element, variables_dict=None):
+        super().__init__(der_tag_element[0], None)
+        self.super_str = super().__str__()
+        self.variables_dict = variables_dict
+
+    def __str__(self): 
+        return self.variables_dict[f"der({self.super_str})"].createMPGOSname()
 
 
 class Literal(UnaryOperator):
@@ -483,7 +486,6 @@ Documentazione: {http://www.diva-portal.org/smash/get/diva2:557431/FULLTEXT01}
 """
 OPERATOR_CLASSES = {
     # UnaryOperator
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,           1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sin"            : (Sin,           1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sinh"           : (Sinh,          1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Asin"           : (Asin,          1),
@@ -526,7 +528,8 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Time"           : (Time,          1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}QualifiedName"  : (QualifiedName, 2),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,  4),
-    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Expression"       : (Expression,    1)
+    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Expression"       : (Expression,    1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,           2),
 }
 
 

@@ -2,7 +2,6 @@ import xml.etree.ElementTree as ET
 from tagclasses import tagclasses, variables
 import exceptions.builtExceptions
 import sys # temporane per eseguire i test
-import re
 
 
 # ----------------------------------------------------- # CLASSI PER IL PARSING # ------------------------------------------------------ #
