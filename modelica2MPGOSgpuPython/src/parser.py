@@ -184,6 +184,6 @@ class Parser:
 
 
 if __name__ == "__main__":
-    p = Parser("./XMLs/MyModel.xml")
+    p = Parser("./XMLs/Zeilinger2006_PRR7_PRR9_Y.xml")
     p.parseXML()
     print(p)
