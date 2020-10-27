@@ -404,6 +404,43 @@ class FunctionCall:
     def __str__(self): return self._parsefuncall_tag().__str__()
 
 
+class When:
+    """ Classe che rappresenta un tag <equ:When> ... </equ:When> """
+    def __init__(self, when_tag):
+        self.when_tag = when_tag
+        self.condition, self.equation = self._parsewhen_tag()
+
+    @staticmethod
+    def parsecondition(identifier_list):
+        """ 
+        Dal momento che le condizioni in or possono andare da 2 ad N è necessaria
+        una funzione di appoggio che iterativamente/ricorsivamente costruisca N - 1
+        oggetti OR concatenati tra di loro, ognuno contenente come parte, sia destra
+        che sinistra, una variabile $whencondition. 
+        """
+        a, b = identifier_list[0], identifier_list[1]
+        index = 2
+        condition = Or(Identifier(a), Identifier(b))
+        while index < len(identifier_list):
+            a, b = condition, identifier_list[index]
+            condition = Or(a, Identifier(b))
+        return condition
+
+    def _parsewhen_tag(self):
+        """ Parsa il tag when estrapolando le condizioni e l'equzione associata """
+        # Come prima cosa parsa le condizioni. La cosa principale è che 
+        # è possibile avere più di una condizione. In quel caso tutte le condizioni
+        # sono in OR, in quanto quelle in AND supponiamo siano gestite all'interno 
+        # di variabili $whencondition.
+        identifier_list = self.when_tag[0].findall("{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Identifier")
+        condition = Identifier(identifier_list[0]) if len(identifier_list) == 1 else When.parsecondition(identifier_list)
+        # Una volta parsate le condizioni posso parsare l'equazione interna.
+        equation = _parsetag_eq(self.when_tag[1])
+        return condition, equation
+    
+    def __str__(self): return f"if ({self.condition})" + "{\n" + f"\t{self.equation}\n" + "}"
+
+
 # ----------------------------------------- # FUNZIONE DI SELEZIONE DELLA CLASSE  # ----------------------------------------- #
 
 

@@ -133,7 +133,9 @@ class Parser:
             # Parsing delle equazioni
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
                 self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x))
-            #TODO: Parsing degli eventi
+            elif x.tag == f"{tagclasses.EQUATION_NS}When":
+                self.dynamic_equations["events"].append(tagclasses.When(x))
+                
 
     
     def parse_initial_equations(self):
@@ -179,7 +181,8 @@ class Parser:
             "VARIABLE\n" + "\n".join([x.__str__() for x in self.scalar_variables]) + \
             "\n\nINITIAL EQUATIONS\n" + "\n".join([x.__str__() for x in self.initial_equations]) + \
             "\n\nFUNCTIONS\n" + "\n".join([self.userdefined_func[x]._forcpp() for x in self.userdefined_func]) + \
-            "\n\nEQUATIONS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["equations"]])
+            "\n\nEQUATIONS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["equations"]]) + \
+            "\n\nEVENTS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["events"]])
         return string
 
 
