@@ -165,11 +165,11 @@ class Var:
 		for x in l:
 			func(x)
 
-	def createMPGOSname(self):
-		return self.MPGOSname + "[" + str(self.id) + "]"
+	def createMPGOSname(self): return self.MPGOSname + "[" + str(self.id) + "]"
 	
-	def setid(self, id:int):
-		self.id = id
+	def setid(self, id:int): self.id = id
+
+	def setivalue(self, new_ivalue): self.init = new_ivalue
 
 
 class ACC(Var):

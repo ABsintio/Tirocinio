@@ -1,38 +1,38 @@
 VARIABLE
-RealScalarVariable(name=h, variability=continuous, alias=noAlias, categoryType=state, qualifiedName=h, description=None, start=h0, fixed=True)
-RealScalarVariable(name=v, variability=continuous, alias=noAlias, categoryType=state, qualifiedName=v, description=None, start=0.0, fixed=true)
-RealScalarVariable(name=der(h), variability=continuous, alias=noAlias, categoryType=derivative, qualifiedName=h, description=None, start=None, fixed=None)
-RealScalarVariable(name=der(v), variability=continuous, alias=noAlias, categoryType=derivative, qualifiedName=v, description=None, start=None, fixed=None)
-BooleanScalarVariable(name=$whenCondition1, variability=discrete, alias=noAlias, categoryType=algebraic, qualifiedName=$whenCondition1, description=None, start=None, fixed=None)
-BooleanScalarVariable(name=$whenCondition2, variability=discrete, alias=noAlias, categoryType=algebraic, qualifiedName=$whenCondition2, description=None, start=None, fixed=None)
-BooleanScalarVariable(name=done, variability=discrete, alias=noAlias, categoryType=algebraic, qualifiedName=done, description=None, start=0, fixed=True)
-RealScalarVariable(name=e, variability=parameter, alias=noAlias, categoryType=independentParameter, qualifiedName=e, description=None, start=0.8, fixed=true)
-RealScalarVariable(name=h0, variability=parameter, alias=noAlias, categoryType=independentParameter, qualifiedName=h0, description=None, start=1.0, fixed=true)
-RealScalarVariable(name=eps, variability=constant, alias=noAlias, categoryType=independentConstant, qualifiedName=eps, description=None, start=None, fixed=None)
+$whenCondition1(qN=$whenCondition1, alias=noAlias, iValue=None, id=0, MPGOSname=ACCi[0])
+$whenCondition2(qN=$whenCondition2, alias=noAlias, iValue=None, id=1, MPGOSname=ACCi[1])
+done(qN=done, alias=noAlias, iValue=None, id=2, MPGOSname=ACCi[2])
+e(qN=e, alias=noAlias, iValue=0.8, id=0, MPGOSname=sPAR[0])
+h0(qN=h0, alias=noAlias, iValue=1.0, id=1, MPGOSname=sPAR[1])
+eps(qN=eps, alias=noAlias, iValue=None, id=2, MPGOSname=sPAR[2])
+h(qN=h, alias=noAlias, iValue=None, id=0, MPGOSname=X[0])
+v(qN=v, alias=noAlias, iValue=0.0, id=1, MPGOSname=X[1])
+der(h)(qN=h, alias=noAlias, iValue=None, id=0, MPGOSname=F[0])
+der(v)(qN=v, alias=noAlias, iValue=None, id=1, MPGOSname=F[1])
 
 INITIAL EQUATIONS
-v=0.0
-v=$START.v
-$PRE.v=v
-done=0
-$PRE.done=done
-h=h0
+X[1]=0.0
+X[1]=$START.v
+$PRE.v=X[1]
+ACCi[2]=0
+$PRE.done=ACCi[2]
+X[0]=sPAR[1]
 
 FUNCTIONS
 
 
 EQUATIONS
-$whenCondition2=h < -0.001
-$whenCondition1=h < 0.0
-der(v)=(done ? 0.0 : -9.81)
-der(h)=v
+ACCi[1]=X[0] < -0.001
+ACCi[0]=X[0] < 0.0
+der(X[1])=(ACCi[2] ? 0.0 : -9.81)
+der(X[0])=X[1]
 
 EVENTS
-if ($whenCondition2 || $whenCondition1){
-	done=h < -0.001
+if (ACCi[1] || ACCi[0]){
+	ACCi[2]=X[0] < -0.001
 }
-if ($whenCondition2 || $whenCondition1){
-	v=((-(e)) * (h < -0.001 ? 0.0 : pre(v)))
+if (ACCi[1] || ACCi[0]){
+	X[1]=((-(sPAR[0])) * (X[0] < -0.001 ? 0.0 : pre(X[1])))
 }
 
 ALGORITHMS

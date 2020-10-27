@@ -18,6 +18,7 @@ class Parser:
         self.scalar_variables  = []
         self.userdefined_func  = dict()
         self.algorithms        = []
+        self.unique_dict       = dict()
     
     @staticmethod
     def getTagElementByName(tag_name, tag_root):
@@ -141,19 +142,19 @@ class Parser:
             self.scalar_variables.append(variables._parsetag_var(x))
 
     
-    def parse_dynamic_equations(self):
+    def parse_dynamic_equations(self, variables_dict):
         """ Esegue il parsing di tutti i tag <equ:DynamicEquations> """
         dynamic_equations_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}DynamicEquations", self.root)
         for x in dynamic_equations_roottag:
             # Parsing delle equazioni
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
-                self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x))
+                self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x, variables_dict))
             elif x.tag == f"{tagclasses.EQUATION_NS}When":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
-                self.dynamic_equations["events"].append(tagclasses.When(x))
+                self.dynamic_equations["events"].append(tagclasses.When(x, variables_dict))
                 
 
-    def parse_initial_equations(self):
+    def parse_initial_equations(self, variables_dict):
         """ 
         Esegue il parsing di tutti i tag interni a <equ:InitialEquations> ed associati i valori
         estrapolati dalle equazioni iniziali alle variabili che non hanno l'attributo start diverso da None.
@@ -161,7 +162,7 @@ class Parser:
         initial_equantions_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}InitialEquations", self.root)
         for x in initial_equantions_roottag:
             # Controlliamo che non siano tag vuoti, ossia <equ:Equation><exp:Sub></exp:Sub></equ:Equation>
-            if list(x[0]): self.initial_equations.append(tagclasses._parsetag_eq(x))
+            if list(x[0]): self.initial_equations.append(tagclasses._parsetag_eq(x, variables_dict))
         # Prendo le variabili coinvolte nelle equazioni iniziali
         variable_list = [variables.ScalarVariable.getvar(self.scalar_variables, ieqs.left.__str__()) for ieqs in self.initial_equations]
         # Inserisco i valori iniziali nelle variabili che non ne presentano
@@ -170,33 +171,26 @@ class Parser:
                 v.setstart(e.right.__str__())
 
     
-    def parse_userdefined_function(self):
+    def parse_userdefined_function(self, variables_dict):
         """ Esegue il parsing delle funzioni definite dall'utente trattate con il tag <fun:FunctionCall> """
         functionlist_rottag = Parser.getTagElementByName(f"{tagclasses.FUNCTIONS_NS}FunctionsList", self.root)
         for x in functionlist_rottag:
-            fun = tagclasses._parsetag_fun(x)
+            fun = tagclasses._parsetag_fun(x, variables_dict)
             self.userdefined_func[fun.name] = fun
     
 
-    def parse_algorithm(self):
+    def parse_algorithm(self, variables_dict):
         """ Esegue il parsing di tutti gli algoritmi. Questi sono interni al tag <fun:Algorithm> """
         algorithm_roottag = Parser.getTagElementByName(f"{tagclasses.FUNCTIONS_NS}Algorithm", self.root)
         for x in algorithm_roottag:
             if x.tag != f"{tagclasses.FUNCTIONS_NS}Assertion":
-                self.algorithms.append(tagclasses._parsetag_eq(x, self.userdefined_func))
+                self.algorithms.append(tagclasses._parsetag_eq(x, variables_dict, self.userdefined_func))
     
 
     def parseXML(self):
         """ Chiama i diversi metodi di parsing dell'XML """
         self.parse_scalar_variables()
-        self.parse_initial_equations()
-        self.parse_userdefined_function()
-        self.parse_dynamic_equations()
-        self.parse_algorithm()
-
-    
-    def buildSystem(self):
-        """ Funzione che formatta il sistema di ODE, le equazioni iniziali, gli algoritmi e le altre equazioni """
+        # Prendo i parametri
         MPGOSparameters    = self.associate_var2MPGOSparameter()
         accs,   acc_dict   = MPGOSparameters[ 0: 2] # Prendo i parametri ACC   (Reali)
         accis,  acci_dict  = MPGOSparameters[ 2: 4] # Prendo i parametri ACCi  (Interi)
@@ -207,26 +201,17 @@ class Parser:
 
         params_dict = [acc_dict, acci_dict, spar_dict, spari_dict, x_dict, f_dict]
         unique_dict = {y: x[y] for x in params_dict for y in x}
-
-        for eq in self.dynamic_equations['equations']:
-            # Prendo tutte le variabili che compongono l'equazione
-            variable_list = re.findall(r"\$*\w+\.*\w*", eq.right.__str__())
-            for x in variable_list:
-                try:
-                    MPGOSparam = unique_dict[x] # Prendo l'oggetto MPGOS corrispondente
-                    # Sostituisco con il parametro MPGOS
-                    eq.setright(eq.right.__str__().replace(x, MPGOSparam.createMPGOSname()))
-                except KeyError:
-                    pass
-            # Infine sostituisci anche la parte a sinitra dell'equazione
-            eq.setleft(eq.left.__str__().replace(eq.left.__str__(), unique_dict[eq.left.__str__()].createMPGOSname()))
-            print(eq)
-
+        self.unique_dict = unique_dict
+        # Parso tutte le altre cose ed intanto formatto le variabili
+        self.parse_initial_equations(unique_dict)
+        self.parse_userdefined_function(unique_dict)
+        self.parse_dynamic_equations(unique_dict)
+        self.parse_algorithm(unique_dict)
     
 
     def __str__(self):
         string = "" + \
-            "VARIABLE\n" + "\n".join([x.__str__() for x in self.scalar_variables]) + \
+            "VARIABLE\n" + "\n".join([self.unique_dict[x].__str__() for x in self.unique_dict]) + \
             "\n\nINITIAL EQUATIONS\n" + "\n".join([x.__str__() for x in self.initial_equations]) + \
             "\n\nFUNCTIONS\n" + "\n".join([self.userdefined_func[x]._forcpp() for x in self.userdefined_func]) + \
             "\n\nEQUATIONS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["equations"]]) + \
@@ -239,4 +224,4 @@ if __name__ == "__main__":
     # temporaneamente prendiamo in input da riga di comando il nome dell'xml
     p = Parser(sys.argv[1])
     p.parseXML()
-    p.buildSystem()
+    print(p)

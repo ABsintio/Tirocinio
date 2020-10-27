@@ -300,8 +300,9 @@ class Equation(BinaryOperator):
 
 class QualifiedName:
     """ Rappresenta il tag <QualifiedName>...</QualifiedName> """
-    def __init__(self, id_tag_element):
+    def __init__(self, id_tag_element, variables_dict=None):
         self.id_tag_element = id_tag_element
+        self.variables_dict = variables_dict
     
     def _parse_qnp(self):
         """ Parsa i tag <exp:QualifiedNamePart> sia auto-chiusi che con <exp:ArraySubscripts> """
@@ -314,13 +315,16 @@ class QualifiedName:
             qualified_name_parts.append(name)
         return qualified_name_parts
     
-    def __str__(self): return ".".join(self._parse_qnp())
+    def __str__(self): 
+        string = ".".join(self._parse_qnp())
+        return self.variables_dict[string].createMPGOSname() if self.variables_dict is not None and string in self.variables_dict \
+               else ".".join(self._parse_qnp())
 
 
 class Identifier(QualifiedName):
     """ Rappresenta l'operatore di identificazione di una variabile in un'equazione """
-    def __init__(self, id_tag_element):
-        super().__init__(id_tag_element)
+    def __init__(self, id_tag_element, variables_dict=None):
+        super().__init__(id_tag_element, variables_dict)
 
 
 class Literal(UnaryOperator):
@@ -357,21 +361,22 @@ class Time(UnaryOperator):
 
 class IfThenElse:
     """ Rappresenta il blocco di tag <fun:If>...</fun:If>"""
-    def __init__(self, function_dict, if_tag_element):
+    def __init__(self, function_dict, if_tag_element, variables_dict):
         self.if_tag_element = if_tag_element
         self.function_dict  = function_dict
+        self.variables_dict = variables_dict
     
     def parse_condition(self, condition_tag):
         """ Parsa il blocco condition """
-        return _parsetag_eq(condition_tag, self.function_dict)
+        return _parsetag_eq(condition_tag, self.variables_dict, self.function_dict)
         
     def parse_statement1(self, statement_tag):
         """ Parsa il blocco statements """
-        return _parsetag_eq(statement_tag, self.function_dict)
+        return _parsetag_eq(statement_tag, self.variables_dict, self.function_dict)
 
     def parse_statement2(self, else_tag):
         """ Parsa il blocco Else """
-        return _parsetag_eq(else_tag, self.function_dict)
+        return _parsetag_eq(else_tag, self.variables_dict, self.function_dict)
 
     def __str__(self):
         """ Costruzione della stringa com <condition> ? <statement1> : <statement2> """
@@ -383,18 +388,19 @@ class IfThenElse:
 
 class FunctionCall:
     """ Classe che rappresenta il tag <exp:FunctionCall> ... <exp:FunctionCall> """
-    def __init__(self, fun_dict, fun_call_tag):
-        self.fun_call_tag = fun_call_tag
-        self.fun_dict     = fun_dict
+    def __init__(self, fun_dict, fun_call_tag, variables_dict):
+        self.fun_call_tag   = fun_call_tag
+        self.fun_dict       = fun_dict
+        self.variables_dict = variables_dict 
     
     def _parsefuncall_tag(self):
         """ Parsa il tag <exp:FunctionCall> ... <exp:FunctionCall> """
-        fun_name = QualifiedName(self.fun_call_tag[0]).__str__() # Prendo il nome della funzione chiamata
+        fun_name = QualifiedName(self.fun_call_tag[0], self.variables_dict).__str__() # Prendo il nome della funzione chiamata
         # Prendo gli input della funzione
         inputs_var = []
         for x in self.fun_call_tag[1]:
             class_op, arity = getoperatorclass(x.tag)
-            el = _parsetag_eq(x)
+            el = _parsetag_eq(x, self.variables_dict)
             inputs_var.append(el.__str__())
         # Controllo che la funzione non sia builtin (ad es. pow, sin, cos, tan, ...)
         try:
@@ -412,12 +418,13 @@ class FunctionCall:
 
 class When:
     """ Classe che rappresenta un tag <equ:When> ... </equ:When> """
-    def __init__(self, when_tag):
+    def __init__(self, when_tag, variables_dict):
         self.when_tag = when_tag
+        self.variables_dict = variables_dict
         self.condition, self.equation = self._parsewhen_tag()
 
     @staticmethod
-    def parsecondition(identifier_list):
+    def parsecondition(identifier_list, variables_dict):
         """ 
         Dal momento che le condizioni in or possono andare da 2 ad N è necessaria
         una funzione di appoggio che iterativamente/ricorsivamente costruisca N - 1
@@ -426,10 +433,10 @@ class When:
         """
         a, b = identifier_list[0], identifier_list[1]
         index = 2
-        condition = Or(Identifier(a), Identifier(b))
+        condition = Or(Identifier(a, variables_dict), Identifier(b, variables_dict))
         while index < len(identifier_list):
             a, b = condition, identifier_list[index]
-            condition = Or(a, Identifier(b))
+            condition = Or(a, Identifier(b, variables_dict))
         return condition
 
     def _parsewhen_tag(self):
@@ -439,12 +446,17 @@ class When:
         # sono in OR, in quanto quelle in AND supponiamo siano gestite all'interno 
         # di variabili $whencondition.
         identifier_list = self.when_tag[0].findall("{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Identifier")
-        condition = Identifier(identifier_list[0]) if len(identifier_list) == 1 else When.parsecondition(identifier_list)
+        condition = Identifier(identifier_list[0], self.variables_dict) if len(identifier_list) == 1 \
+                    else When.parsecondition(identifier_list, self.variables_dict)
         # Una volta parsate le condizioni posso parsare l'equazione interna.
-        equation = _parsetag_eq(self.when_tag[1])
+        equation = _parsetag_eq(self.when_tag[1], self.variables_dict)
         return condition, equation
     
     def __str__(self): return f"if ({self.condition})" + "{\n" + f"\t{self.equation}\n" + "}"
+
+    def setcondition(self, new_condition): self.condition = new_condition
+
+    def setequation(self, new_equation): self.equation = new_equation
 
 
 class Expression(UnaryOperator):
@@ -529,7 +541,7 @@ def getoperatorclass(tag):
 # ----------------------------------------- # FUNZIONE PER IL PARSING DELLE EQUAZIONI # ----------------------------------------- #
 
 
-def _parsetag_eq(tag, function_dict=dict()):
+def _parsetag_eq(tag, variables_dict, function_dict=dict()):
     """
     Tale funzione prende in input un tag e crea un albero sintattico utilizzando
     le classi che sono presenti nel dizionario OPERATOR_CLASSES. Serve principalmente 
@@ -539,18 +551,27 @@ def _parsetag_eq(tag, function_dict=dict()):
     if tag.tag == f"{EQUATION_NS}Equation":
         if tag[0].tag == f"{EXPRESSION_NS}Sub":
             subtag_element = list(list(tag)[0])
-            return Equation(_parsetag_eq(subtag_element[0], function_dict), _parsetag_eq(subtag_element[1], function_dict))
+            return Equation(
+                _parsetag_eq(subtag_element[0], variables_dict, function_dict), 
+                _parsetag_eq(subtag_element[1], variables_dict, function_dict)
+                )
         if tag[0].tag == f"{EXPRESSION_NS}Reinit":
-            return Reinit(_parsetag_eq(tag[0][0], function_dict), _parsetag_eq(tag[0][1], function_dict))
+            return Reinit(
+                _parsetag_eq(tag[0][0], variables_dict, function_dict), 
+                _parsetag_eq(tag[0][1], variables_dict, function_dict)
+                )
     if tag.tag in LITERALS: return Literal(tag.text)
     if tag.tag == f"{EXPRESSION_NS}Time": return Time(tag.text)
     else:
         class_op, arity = getoperatorclass(tag.tag)
-        if arity == 2: return class_op(tag)
-        if arity == 4 or arity == 3: return class_op(function_dict, tag)
-        if arity == 1: return class_op(_parsetag_eq(tag[0], function_dict))
+        if arity == 2: return class_op(tag, variables_dict)
+        if arity == 4 or arity == 3: return class_op(function_dict, tag, variables_dict)
+        if arity == 1: return class_op(_parsetag_eq(tag[0], variables_dict, function_dict))
         sub_element = list(tag)
-        return class_op(_parsetag_eq(sub_element[0], function_dict), _parsetag_eq(sub_element[1], function_dict))
+        return class_op(
+            _parsetag_eq(sub_element[0], variables_dict, function_dict=function_dict), 
+            _parsetag_eq(sub_element[1], variables_dict, function_dict=function_dict)
+            )
 
 
 # ----------------------------------------- # CLASSI PER IL PARSE DELLE FUNZIONI  # ----------------------------------------- #
@@ -586,7 +607,7 @@ OPERATOR_CLASSES['{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Assign']
 # ----------------------------------------- # FUNZIONE PER IL PARSING DELLE FUNZIONI # ----------------------------------------- #
         
 
-def _parsetag_fun(tag):
+def _parsetag_fun(tag, variables_dict):
     """ Parsa una singola funzione e crea un'istanza di tipo Function """
     fun_name = QualifiedName(tag[0]).__str__()                                     # Prima prendo il nome della funzione
     output_var_name = (QualifiedName(tag[1][0]).__str__(), tag[1].attrib['type'])  # Poi prendo l'unica variabil di output
@@ -598,6 +619,6 @@ def _parsetag_fun(tag):
     assign_list = []
     alg_tag = tag.find("{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Algorithm")
     for assign_tag in alg_tag:
-        assign_list.append(Assign(Identifier(assign_tag[0]), _parsetag_eq(assign_tag[1][0])))
+        assign_list.append(Assign(Identifier(assign_tag[0]), _parsetag_eq(assign_tag[1][0], variables_dict)))
     algorithm = "\n".join([x.__str__() for x in assign_list])
     return Function(fun_name, inputs_var, output_var_name, algorithm)

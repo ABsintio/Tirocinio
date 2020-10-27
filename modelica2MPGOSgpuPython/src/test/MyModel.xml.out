@@ -1,23 +1,21 @@
 VARIABLE
-RealScalarVariable(name=Params.a, variability=continuous, alias=noAlias, categoryType=state, qualifiedName=Params.a, description=None, start=0.0246, fixed=True)
-RealScalarVariable(name=Params.b, variability=continuous, alias=noAlias, categoryType=state, qualifiedName=Params.b, description=None, start=0.785, fixed=True)
-RealScalarVariable(name=myclass.x, variability=continuous, alias=noAlias, categoryType=state, qualifiedName=myclass.x, description=None, start=1.0, fixed=True)
-RealScalarVariable(name=myclass.y, variability=continuous, alias=noAlias, categoryType=state, qualifiedName=myclass.y, description=None, start=2.0, fixed=True)
-RealScalarVariable(name=der(Params.a), variability=continuous, alias=noAlias, categoryType=derivative, qualifiedName=Params.a, description=None, start=None, fixed=None)
-RealScalarVariable(name=der(Params.b), variability=continuous, alias=noAlias, categoryType=derivative, qualifiedName=Params.b, description=None, start=None, fixed=None)
-RealScalarVariable(name=der(myclass.x), variability=continuous, alias=noAlias, categoryType=derivative, qualifiedName=myclass.x, description=None, start=(pow(2.68,myclass.x) * (Params.a * myclass.y)), fixed=True)
-RealScalarVariable(name=der(myclass.y), variability=continuous, alias=noAlias, categoryType=derivative, qualifiedName=myclass.y, description=None, start=None, fixed=None)
-RealScalarVariable(name=$cse1, variability=continuous, alias=noAlias, categoryType=algebraic, qualifiedName=$cse1, description=None, start=None, fixed=None)
-RealScalarVariable(name=myclass.z, variability=continuous, alias=noAlias, categoryType=algebraic, qualifiedName=myclass.z, description=None, start=None, fixed=None)
-RealScalarVariable(name=myclass.a, variability=continuous, alias=Params.a, categoryType=algebraic, qualifiedName=myclass.a, description=None, start=None, fixed=None)
-RealScalarVariable(name=myclass.b, variability=continuous, alias=Params.b, categoryType=algebraic, qualifiedName=myclass.b, description=None, start=None, fixed=None)
+$cse1(qN=$cse1, alias=noAlias, iValue=None, id=0, MPGOSname=ACC[0])
+myclass.z(qN=myclass.z, alias=noAlias, iValue=None, id=1, MPGOSname=ACC[1])
+Params.a(qN=Params.a, alias=noAlias, iValue=None, id=0, MPGOSname=X[0])
+Params.b(qN=Params.b, alias=noAlias, iValue=None, id=1, MPGOSname=X[1])
+myclass.x(qN=myclass.x, alias=noAlias, iValue=None, id=2, MPGOSname=X[2])
+myclass.y(qN=myclass.y, alias=noAlias, iValue=None, id=3, MPGOSname=X[3])
+der(Params.a)(qN=Params.a, alias=noAlias, iValue=None, id=0, MPGOSname=F[0])
+der(Params.b)(qN=Params.b, alias=noAlias, iValue=None, id=1, MPGOSname=F[1])
+der(myclass.x)(qN=myclass.x, alias=noAlias, iValue=None, id=2, MPGOSname=F[2])
+der(myclass.y)(qN=myclass.y, alias=noAlias, iValue=None, id=3, MPGOSname=F[3])
 
 INITIAL EQUATIONS
-myclass.y=2.0
-myclass.x=1.0
-Params.b=0.785
-Params.a=0.0246
-der(myclass.x)=(pow(2.68,myclass.x) * (Params.a * myclass.y))
+X[3]=2.0
+X[2]=1.0
+X[1]=0.785
+X[0]=0.0246
+der(X[2])=(pow(2.68,X[2]) * (X[0] * X[3]))
 
 FUNCTIONS
 Functions.pow(output=('y', 'Real'), inputs=[('x', 'Real'), ('power', 'Real')]) do
@@ -25,15 +23,15 @@ Functions.pow(output=('y', 'Real'), inputs=[('x', 'Real'), ('power', 'Real')]) d
 done
 
 EQUATIONS
-$cse1=pow(2.68,myclass.x)
-der(Params.a)=0.0
-der(Params.b)=0.0
-der(myclass.x)=($cse1 * (Params.a * myclass.y))
-der(myclass.y)=(Params.b * myclass.x)
+ACC[0]=pow(2.68,X[2])
+der(X[0])=0.0
+der(X[1])=0.0
+der(X[2])=(ACC[0] * (X[0] * X[3]))
+der(X[3])=(X[1] * X[2])
 
 EVENTS
 
 
 ALGORITHMS
-myclass.z:=$START.myclass.z
-myclass.z:=(myclass.x / myclass.y)
+ACC[1]:=$START.myclass.z
+ACC[1]:=(X[2] / X[3])
