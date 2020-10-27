@@ -45,7 +45,7 @@ class Add(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left.__str__() + " + " + self.right.__str__()
+    def __str__(self): return "(" + self.left.__str__() + " + " + self.right.__str__() + ")"
 
 
 class Sub(BinaryOperator):
@@ -53,7 +53,7 @@ class Sub(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left.__str__() + " - " + self.right.__str__()
+    def __str__(self): return "(" + self.left.__str__() + " - " + self.right.__str__() + ")"
 
 
 class Mul(BinaryOperator):
@@ -85,7 +85,7 @@ class Neg(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
 
-    def __str__(self): return "-" + "(" + self.value.__str__() + ")"
+    def __str__(self): return "(-" + "(" + self.value.__str__() + "))"
 
 
 # ----------------------------------------- # DEFINIZIONE OPERATORI BOOLEANI SEMPLICI  # ----------------------------------------- #
@@ -351,20 +351,21 @@ class Time(UnaryOperator):
 
 class IfThenElse:
     """ Rappresenta il blocco di tag <fun:If>...</fun:If>"""
-    def __init__(self, if_tag_element):
+    def __init__(self, function_dict, if_tag_element):
         self.if_tag_element = if_tag_element
+        self.function_dict  = function_dict
     
     def parse_condition(self, condition_tag):
         """ Parsa il blocco condition """
-        return _parsetag_eq(condition_tag)
+        return _parsetag_eq(condition_tag, self.function_dict)
         
     def parse_statement1(self, statement_tag):
         """ Parsa il blocco statements """
-        return _parsetag_eq(statement_tag)
+        return _parsetag_eq(statement_tag, self.function_dict)
 
     def parse_statement2(self, else_tag):
         """ Parsa il blocco Else """
-        return _parsetag_eq(else_tag)
+        return _parsetag_eq(else_tag, self.function_dict)
 
     def __str__(self):
         """ Costruzione della stringa com <condition> ? <statement1> : <statement2> """
@@ -374,7 +375,37 @@ class IfThenElse:
         return f"({condition.__str__()} ? {statement1.__str__()} : {statement2.__str__()})"
 
 
+class FunctionCall:
+    """ Classe che rappresenta il tag <exp:FunctionCall> ... <exp:FunctionCall> """
+    def __init__(self, fun_dict, fun_call_tag):
+        self.fun_call_tag = fun_call_tag
+        self.fun_dict     = fun_dict
+    
+    def _parsefuncall_tag(self):
+        """ Parsa il tag <exp:FunctionCall> ... <exp:FunctionCall> """
+        fun_name = QualifiedName(self.fun_call_tag[0]).__str__() # Prendo il nome della funzione chiamata
+        # Prendo gli input della funzione
+        inputs_var = []
+        for x in self.fun_call_tag[1]:
+            class_op, arity = getoperatorclass(x.tag)
+            el = _parsetag_eq(x)
+            inputs_var.append(el.__str__())
+        # Controllo che la funzione non sia builtin (ad es. pow, sin, cos, tan, ...)
+        try:
+            name = fun_name.split(".")[-1].capitalize()
+            class_op, _ = getoperatorclass(f"{EXPRESSION_NS}{name}")
+            return class_op(*inputs_var)
+        except exceptions.builtExceptions.OperatorNotFoundException:
+            pass
+        fun = self.fun_dict[fun_name]
+        fun.setinput(inputs_var)
+        return fun
+    
+    def __str__(self): return self._parsefuncall_tag().__str__()
+
+
 # ----------------------------------------- # FUNZIONE DI SELEZIONE DELLA CLASSE  # ----------------------------------------- #
+
 
 """
 Il Dizionario OPERATOR_CLASSES presenta un insieme di classi che descrivono alcuni dei tag 
@@ -430,19 +461,23 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pre"            : (Pre,           1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Reinit"         : (Reinit,        0),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Time"           : (Time,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}QualifiedName"  : (QualifiedName, 2)
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}QualifiedName"  : (QualifiedName, 2),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,  4)
 }
 
 
 def getoperatorclass(tag):
     """ Dato in input un tag, ritorna un operatore """
     try:
-        return OPERATOR_CLASSES[tag.tag]
+        return OPERATOR_CLASSES[tag]
     except KeyError:
-        raise exceptions.builtExceptions.OperatorNotFoundException(tag.tag)
+        raise exceptions.builtExceptions.OperatorNotFoundException(tag)
 
 
-def _parsetag_eq(tag):
+# ----------------------------------------- # FUNZIONE PER IL PARSING DELLE EQUAZIONI # ----------------------------------------- #
+
+
+def _parsetag_eq(tag, function_dict=dict()):
     """
     Tale funzione prende in input un tag e crea un albero sintattico utilizzando
     le classi che sono presenti nel dizionario OPERATOR_CLASSES. Serve principalmente 
@@ -452,17 +487,65 @@ def _parsetag_eq(tag):
     if tag.tag == f"{EQUATION_NS}Equation":
         if tag[0].tag == f"{EXPRESSION_NS}Sub":
             subtag_element = list(list(tag)[0])
-            return Equation(_parsetag_eq(subtag_element[0]), _parsetag_eq(subtag_element[1]))
+            return Equation(_parsetag_eq(subtag_element[0], function_dict), _parsetag_eq(subtag_element[1], function_dict))
         if tag[0].tag == f"{EXPRESSION_NS}Reinit":
-            return Reinit(_parsetag_eq(tag[0][0]), _parsetag_eq(tag[0][1]))
+            return Reinit(_parsetag_eq(tag[0][0], function_dict), _parsetag_eq(tag[0][1], function_dict))
     if tag.tag in LITERALS: return Literal(tag.text)
     if tag.tag == f"{EXPRESSION_NS}Time": return Time(tag.text)
     else:
-        class_op, arity = getoperatorclass(tag)
-        if arity == 2 or arity == 3:
-            return class_op(tag)
-        if arity == 1:
-            return class_op(_parsetag_eq(tag[0]))
+        class_op, arity = getoperatorclass(tag.tag)
+        if arity == 2: return class_op(tag)
+        if arity == 4 or arity == 3: return class_op(function_dict, tag)
+        if arity == 1: return class_op(_parsetag_eq(tag[0], function_dict))
         sub_element = list(tag)
-        return class_op(_parsetag_eq(sub_element[0]), _parsetag_eq(sub_element[1]))
+        return class_op(_parsetag_eq(sub_element[0], function_dict), _parsetag_eq(sub_element[1], function_dict))
+
+
+# ----------------------------------------- # CLASSI PER IL PARSE DELLE FUNZIONI  # ----------------------------------------- #
+
+
+class Function:
+    """ Classe che rappresenta una funzione definita dall'utente estrapolata da <fun:Function> ... </fun:Function> """
+    def __init__(self, name, inputs, output, algorithm):
+        self.name = name        # Nome della funzione
+        self.inputs = inputs    # Inputs come coppia (nome, tipo)
+        self.output = output    # Output come coppia singola (nome, tipo)
+        self.alg = algorithm    # L'algoritmo come sequenza di assign (senza loop, senza if annidati e senza nient'altro)
+    
+    def __str__(self): return f"{self.name}(" + ",".join([x[0] for x in self.inputs]) + ")" 
+    
+    def _forcpp(self): return self.name + f"(output={self.output}, inputs={self.inputs}) do\n\t{self.alg}\ndone"
+
+    def setinput(self, inputs): self.inputs = inputs
+
+
+class Assign(BinaryOperator):
+    """ classe che rappresenta il tag <fun:Assign> ... </fun:Assign> """
+    def __init__(self, l, r):
+        super().__init__(l, r)
+    
+    def __str__(self): return self.left.__str__() + ":=" + self.right.__str__()
+
+
+# Faccio l'update dell'insieme delle classi per gli operatori
+OPERATOR_CLASSES['{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Assign'] = (Assign, 0)
+
+
+# ----------------------------------------- # FUNZIONE PER IL PARSING DELLE FUNZIONI # ----------------------------------------- #
         
+
+def _parsetag_fun(tag):
+    """ Parsa una singola funzione e crea un'istanza di tipo Function """
+    fun_name = QualifiedName(tag[0]).__str__()                                     # Prima prendo il nome della funzione
+    output_var_name = (QualifiedName(tag[1][0]).__str__(), tag[1].attrib['type'])  # Poi prendo l'unica variabil di output
+    # Poi parso tutte le variabili di input
+    inputs_var = []
+    for input_tag in tag.iter("{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}InputVariable"):
+        inputs_var.append((QualifiedName(input_tag[0]).__str__(), input_tag.attrib['type']))
+    # Infine parso l'algoritmo
+    assign_list = []
+    alg_tag = tag.find("{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Algorithm")
+    for assign_tag in alg_tag:
+        assign_list.append(Assign(Identifier(assign_tag[0]), _parsetag_eq(assign_tag[1][0])))
+    algorithm = "\n".join([x.__str__() for x in assign_list])
+    return Function(fun_name, inputs_var, output_var_name, algorithm)

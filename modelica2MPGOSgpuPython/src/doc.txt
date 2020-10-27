@@ -6,6 +6,9 @@
   when sample(...) then
     ...
   end when;
+- No array, solo variabili Real, Boolean, Integer
+- No Loop.
+- User-defined function solo con un singolo output e algoritmo con solo assegnamenti
 
 
 MAPPING VariableCategory |-> MPGOS type
@@ -45,6 +48,20 @@ SINTASSI DYNAMICEQUATIONS TAG
 </equ:DynamicEquations>
 
 
+SINTASSI FUNCTION CALL
+
+<exp:FunctionCall>
+  <exp:Name>
+    <exp:QualifiedNamePart name="..." />
+    ...
+    <exp:QualifiedNamePart name="..." />
+  </exp:Name>
+  <exp:Arguments>
+    (<##targetname:targetnametag>...</##targetname:targetnametag>) 1 to n
+  </exp:Arguments>
+</exp:FunctionCall>
+
+
 SINTASSI SCALARVARIABLE TAG
 
 <ScalarVariable>
@@ -53,8 +70,39 @@ SINTASSI SCALARVARIABLE TAG
   <VariableCategory> {derivative | algbraic | state | independentParameter | independentConstant} </VariableCategory>
 </ScalarVariable>
 
+
 SINTASSI INITIALEQUATIONS TAG
 
 <equ:InitialEquations>
   <equ:Equation> ... </equ:Equation>
 </equ:InitialEquations>
+
+
+SINTASSI ALGORITHM TAG
+
+...
+
+
+SINTASSI FUNCTION TAG
+
+<fun:Function>
+  <fun:Name>
+    <exp:QualifiedNamePart name="..." />
+    ...
+    <exp:QualifiedNamePart name="..." />
+  </fun:Name>
+  <fun:OutputVariable>
+    <fun:Name> ... </fun:Name>
+  </fun:OutputVariable>
+  (<fun:InputVariable>
+    <fun:Name> ... </fun:Name>
+  </fun:InputVariable>) 1 to m
+  <fun:Algorithm>
+    (<fun:Assign>
+      <exp:Identifier> ... </exp:Identifier>
+      <fun:Expression>
+        <##targetnamespace:targetnametag> ... </##targetnamespace:targetnametag>
+      </fun:Expression>
+    </fun:Assign>) 1 to n
+  </fun:Algorithm>
+</fun:Function>
