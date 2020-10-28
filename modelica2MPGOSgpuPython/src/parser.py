@@ -141,19 +141,32 @@ class Parser:
             self.scalar_variables.append(variables._parsetag_var(x))
 
     
-    def parse_dynamic_equations(self, variables_dict):
+    def parse_dynamic_equations(self, variables_dict, MPGOSparameter_dict):
         """ Esegue il parsing di tutti i tag <equ:DynamicEquations> """
         dynamic_equations_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}DynamicEquations", self.root)
+        eqvar_dict   = {x:[] for x in MPGOSparameter_dict} # Creo un dizionario per le equazioni
+        whenvar_dict = {x:[] for x in MPGOSparameter_dict} # Creo un dizionario per gli eventi
+        # Mentre parso inserisco anche nelle variabili MPGOS
         for x in dynamic_equations_roottag:
             # Parsing delle equazioni
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
-                self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x, variables_dict))
+                equ = tagclasses._parsetag_eq(x, variables_dict)
+                self.dynamic_equations["equations"].append(equ)
+                eqvar_dict[equ.left.__str__()].append(equ.right.__str__())
             elif x.tag == f"{tagclasses.EQUATION_NS}When":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
-                self.dynamic_equations["events"].append(tagclasses.When(x, variables_dict))
+                when = tagclasses.When(x, variables_dict)
+                self.dynamic_equations["events"].append(when)
+                equ = when.equation
+                whenvar_dict[equ.left.__str__()].append((when.condition, equ.right.__str__()))
+        for k1, k2 in zip(eqvar_dict.keys(), whenvar_dict.keys()):
+            eqs, whens = eqvar_dict[k1], whenvar_dict[k2]
+            MPGOSparameter_dict[k1].addequation(eqs)
+            MPGOSparameter_dict[k2].addevent(whens)
+        return MPGOSparameter_dict
                 
 
-    def parse_initial_equations(self, variables_dict):
+    def parse_initial_equations(self, variables_dict, MPGOSparameter_dict):
         """ 
         Esegue il parsing di tutti i tag interni a <equ:InitialEquations> ed associati i valori
         estrapolati dalle equazioni iniziali alle variabili che non hanno l'attributo start diverso da None.
@@ -161,13 +174,15 @@ class Parser:
         initial_equantions_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}InitialEquations", self.root)
         for x in initial_equantions_roottag:
             # Controlliamo che non siano tag vuoti, ossia <equ:Equation><exp:Sub></exp:Sub></equ:Equation>
-            if list(x[0]): self.initial_equations.append(tagclasses._parsetag_eq(x, variables_dict))
-        # Prendo le variabili coinvolte nelle equazioni iniziali
-        variable_list = [variables.ScalarVariable.getvar(self.scalar_variables, ieqs.left.__str__()) for ieqs in self.initial_equations]
-        # Inserisco i valori iniziali nelle variabili che non ne presentano
-        for v, e in zip(variable_list, self.initial_equations):
-            if v is not None and v.start is None:
-                v.setstart(e.right.__str__())
+            if list(x[0]): 
+                ieqs = tagclasses._parsetag_eq(x, variables_dict)
+                self.initial_equations.append(ieqs)
+                try:
+                    var = MPGOSparameter_dict[ieqs.left.__str__()]
+                    if var.init is None: var.setivalue(ieqs.right.__str__())
+                except KeyError:
+                    pass
+        return MPGOSparameter_dict
 
     
     def parse_userdefined_function(self, variables_dict):
@@ -178,12 +193,18 @@ class Parser:
             self.userdefined_func[fun.name] = fun
     
 
-    def parse_algorithm(self, variables_dict):
+    def parse_algorithm(self, variables_dict, MPGOSparameter_dict):
         """ Esegue il parsing di tutti gli algoritmi. Questi sono interni al tag <fun:Algorithm> """
         algorithm_roottag = Parser.getTagElementByName(f"{tagclasses.FUNCTIONS_NS}Algorithm", self.root)
+        alsvar_dict = {x:[] for x in MPGOSparameter_dict}
         for x in algorithm_roottag:
             if x.tag != f"{tagclasses.FUNCTIONS_NS}Assertion":
-                self.algorithms.append(tagclasses._parsetag_eq(x, variables_dict, self.userdefined_func))
+                algo = tagclasses._parsetag_eq(x, variables_dict, self.userdefined_func)
+                self.algorithms.append(algo)
+                alsvar_dict[algo.left.__str__()].append(algo.right.__str__())
+        for k, v in alsvar_dict.items():
+            MPGOSparameter_dict[k].addalgo(v)
+        return MPGOSparameter_dict
     
 
     def parseXML(self):
@@ -201,12 +222,15 @@ class Parser:
         params_dict = [acc_dict, acci_dict, spar_dict, spari_dict, x_dict, f_dict]
         unique_dict = {y: x[y] for x in params_dict for y in x}
         self.unique_dict = unique_dict
+        MPGOSparams_dict = {unique_dict[x].createMPGOSname(): unique_dict[x] for x in unique_dict}
         # Parso tutte le altre cose ed intanto formatto le variabili
-        self.parse_initial_equations(unique_dict)
+        MPGOSparams_dict = self.parse_initial_equations(unique_dict, MPGOSparams_dict)
         self.parse_userdefined_function(unique_dict)
-        self.parse_dynamic_equations(unique_dict)
-        self.parse_algorithm(unique_dict)
-    
+        MPGOSparams_dict = self.parse_dynamic_equations(unique_dict, MPGOSparams_dict)
+        MPGOSparams_dict = self.parse_algorithm(unique_dict, MPGOSparams_dict)
+        # Ritorno un dizionario di variabili 
+        self.unique_dict = MPGOSparams_dict
+
 
     def __str__(self):
         string = "" + \
@@ -222,5 +246,5 @@ class Parser:
 if __name__ == "__main__":
     # temporaneamente prendiamo in input da riga di comando il nome dell'xml
     p = Parser(sys.argv[1])
-    p.parseXML()
+    d = p.parseXML()
     print(p)

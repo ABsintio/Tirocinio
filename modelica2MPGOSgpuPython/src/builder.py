@@ -15,7 +15,7 @@ NOTIFICATION = True if int(sys.argv[-2]) == 1 else False
 
 #--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#	           
 
-# X
+# X, F
 MPGOS_PerThread_OdeFunction = """
 template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 	int tid, int NT, \\
@@ -96,7 +96,7 @@ MPGOS_Model_SystemDefinition = """
 #--------------------------# DEFINIZIONE DELLA CLASSE PER LA BUILD DELLA DEFINIZIONE DEL SISTEMA # --------------------------#
 
 
-class SystemDefinition:
+class SystemDefinitionBuilder:
     """ Classe per la costruzione della definizione del sistema (File SystemDefinition.cuh) """
     def __init__(self, xmlfile, logger):
         self.xmlfile = xmlfile

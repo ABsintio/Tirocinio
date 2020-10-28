@@ -148,16 +148,27 @@ def _parsetag_var(scalar_variable_tag):
 
 class Var:
 	""" Classe che descrive una variabile qualsiasi, con nome, valore e valoreiniziale se esiste """
-	def __init__(self, nome, id, qualifiedName, alias, initvalue=None):
+	def __init__(self, nome, id, qualifiedName, alias, 
+					   initvalue=None, involvedEq=[], involvedEvent=[], involvedAlg=[]
+				):
 		self.nome = nome
 		self.init = initvalue
 		self.qualifiedName = qualifiedName
 		self.alias = alias
 		self.MPGOSname = "Var"
 		self.id = id
+		self.involved_equations  = involvedEq
+		self.involved_events	 = involvedEvent
+		self.involved_algorithms = involvedAlg
 
 	def __str__(self):
-		string = f"{self.nome}(qN={self.qualifiedName}, alias={self.alias}, iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()})"
+		equations_str = "\n\t\t".join(self.involved_equations)
+		algorithm_str = "\n\t\t".join(self.involved_algorithms)
+		event_str     = "\n\t\t".join([f"{c} -> {e}" for c, e in self.involved_events])
+		string = f"{self.nome}(\n\tqN={self.qualifiedName},\n\talias={self.alias}," + \
+			     f"\n\tiValue={self.init},\n\tid={self.id},\n\tMPGOSname={self.createMPGOSname()}," + \
+				 "\n\tinvolvedEquations:(\n\t\t" + equations_str + "\n\t),\n\tinvolvedAlgorithms:(\n\t\t" + \
+				 algorithm_str + "\n\t),\n\tinvolvedEvents:(\n\t\t" + event_str + "\n\t)\n" + ")\n"
 		return string
 
 	@staticmethod
@@ -170,6 +181,12 @@ class Var:
 	def setid(self, id:int): self.id = id
 
 	def setivalue(self, new_ivalue): self.init = new_ivalue
+
+	def addequation(self, new_equation): self.involved_equations = new_equation
+
+	def addevent(self, new_event): self.involved_events = new_event
+
+	def addalgo(self, new_algo): self.involved_algorithms = new_algo
 
 
 class ACC(Var):

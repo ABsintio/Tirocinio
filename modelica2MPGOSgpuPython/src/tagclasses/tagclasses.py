@@ -11,7 +11,7 @@ FUNCTIONS_NS  = "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}"    # Na
 OPTIMIZ_NS    = "{https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd}" # Namespace per il tag di ottimizzazione
 LITERALS = [
     f"{EXPRESSION_NS}RealLiteral",
-    f"{EXPRESSION_NS}IntegerLiteral",
+    f"{EXPRESSION_NS}IntegerLiteral", 
     f"{EXPRESSION_NS}BooleanLiteral",
     f"{EXPRESSION_NS}StringLiteral"
 ]

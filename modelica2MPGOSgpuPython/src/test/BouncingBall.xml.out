@@ -1,14 +1,174 @@
 VARIABLE
-$whenCondition1(qN=$whenCondition1, alias=noAlias, iValue=None, id=0, MPGOSname=ACCi[0])
-$whenCondition2(qN=$whenCondition2, alias=noAlias, iValue=None, id=1, MPGOSname=ACCi[1])
-done(qN=done, alias=noAlias, iValue=None, id=2, MPGOSname=ACCi[2])
-e(qN=e, alias=noAlias, iValue=0.8, id=0, MPGOSname=sPAR[0])
-h0(qN=h0, alias=noAlias, iValue=1.0, id=1, MPGOSname=sPAR[1])
-eps(qN=eps, alias=noAlias, iValue=None, id=2, MPGOSname=sPAR[2])
-h(qN=h, alias=noAlias, iValue=None, id=0, MPGOSname=X[0])
-v(qN=v, alias=noAlias, iValue=0.0, id=1, MPGOSname=X[1])
-der(h)(qN=h, alias=noAlias, iValue=None, id=0, MPGOSname=F[0])
-der(v)(qN=v, alias=noAlias, iValue=None, id=1, MPGOSname=F[1])
+$whenCondition1(
+	qN=$whenCondition1,
+	alias=noAlias,
+	iValue=None,
+	id=0,
+	MPGOSname=ACCi[0],
+	involvedEquations:(
+		X[0] < 0.0
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		
+	)
+)
+
+$whenCondition2(
+	qN=$whenCondition2,
+	alias=noAlias,
+	iValue=None,
+	id=1,
+	MPGOSname=ACCi[1],
+	involvedEquations:(
+		X[0] < -0.001
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		
+	)
+)
+
+done(
+	qN=done,
+	alias=noAlias,
+	iValue=0,
+	id=2,
+	MPGOSname=ACCi[2],
+	involvedEquations:(
+		
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		ACCi[1] || ACCi[0] -> X[0] < -0.001
+	)
+)
+
+e(
+	qN=e,
+	alias=noAlias,
+	iValue=0.8,
+	id=0,
+	MPGOSname=sPAR[0],
+	involvedEquations:(
+		
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		
+	)
+)
+
+h0(
+	qN=h0,
+	alias=noAlias,
+	iValue=1.0,
+	id=1,
+	MPGOSname=sPAR[1],
+	involvedEquations:(
+		
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		
+	)
+)
+
+eps(
+	qN=eps,
+	alias=noAlias,
+	iValue=None,
+	id=2,
+	MPGOSname=sPAR[2],
+	involvedEquations:(
+		
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		
+	)
+)
+
+h(
+	qN=h,
+	alias=noAlias,
+	iValue=sPAR[1],
+	id=0,
+	MPGOSname=X[0],
+	involvedEquations:(
+		
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		
+	)
+)
+
+v(
+	qN=v,
+	alias=noAlias,
+	iValue=0.0,
+	id=1,
+	MPGOSname=X[1],
+	involvedEquations:(
+		
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		ACCi[1] || ACCi[0] -> ((-(sPAR[0])) * (X[0] < -0.001 ? 0.0 : pre(X[1])))
+	)
+)
+
+der(h)(
+	qN=h,
+	alias=noAlias,
+	iValue=None,
+	id=0,
+	MPGOSname=F[0],
+	involvedEquations:(
+		X[1]
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		
+	)
+)
+
+der(v)(
+	qN=v,
+	alias=noAlias,
+	iValue=None,
+	id=1,
+	MPGOSname=F[1],
+	involvedEquations:(
+		(ACCi[2] ? 0.0 : -9.81)
+	),
+	involvedAlgorithms:(
+		
+	),
+	involvedEvents:(
+		
+	)
+)
+
 
 INITIAL EQUATIONS
 X[1]=0.0
