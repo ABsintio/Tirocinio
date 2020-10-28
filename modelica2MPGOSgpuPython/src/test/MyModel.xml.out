@@ -1,175 +1,14 @@
 VARIABLE
-$cse1(
-	qN=$cse1,
-	alias=noAlias,
-	iValue=None,
-	id=0,
-	MPGOSname=ACC[0],
-	involvedEquations:(
-		pow(2.68,X[2])
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
-myclass.z(
-	qN=myclass.z,
-	alias=noAlias,
-	iValue=None,
-	id=1,
-	MPGOSname=ACC[1],
-	involvedEquations:(
-		
-	),
-	involvedAlgorithms:(
-		$START.myclass.z
-		(X[2] / X[3])
-	),
-	involvedEvents:(
-		
-	)
-)
-
-Params.a(
-	qN=Params.a,
-	alias=noAlias,
-	iValue=0.0246,
-	id=0,
-	MPGOSname=X[0],
-	involvedEquations:(
-		
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
-Params.b(
-	qN=Params.b,
-	alias=noAlias,
-	iValue=0.785,
-	id=1,
-	MPGOSname=X[1],
-	involvedEquations:(
-		
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
-myclass.x(
-	qN=myclass.x,
-	alias=noAlias,
-	iValue=1.0,
-	id=2,
-	MPGOSname=X[2],
-	involvedEquations:(
-		
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
-myclass.y(
-	qN=myclass.y,
-	alias=noAlias,
-	iValue=2.0,
-	id=3,
-	MPGOSname=X[3],
-	involvedEquations:(
-		
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
-der(Params.a)(
-	qN=Params.a,
-	alias=noAlias,
-	iValue=None,
-	id=0,
-	MPGOSname=F[0],
-	involvedEquations:(
-		0.0
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
-der(Params.b)(
-	qN=Params.b,
-	alias=noAlias,
-	iValue=None,
-	id=1,
-	MPGOSname=F[1],
-	involvedEquations:(
-		0.0
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
-der(myclass.x)(
-	qN=myclass.x,
-	alias=noAlias,
-	iValue=(pow(2.68,X[2]) * (X[0] * X[3])),
-	id=2,
-	MPGOSname=F[2],
-	involvedEquations:(
-		(ACC[0] * (X[0] * X[3]))
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
-der(myclass.y)(
-	qN=myclass.y,
-	alias=noAlias,
-	iValue=None,
-	id=3,
-	MPGOSname=F[3],
-	involvedEquations:(
-		(X[1] * X[2])
-	),
-	involvedAlgorithms:(
-		
-	),
-	involvedEvents:(
-		
-	)
-)
-
+$cse1(qN=$cse1, alias=noAlias, category=algebraic, iValue=None, id=0, MPGOSname=ACC[0])
+myclass.z(qN=myclass.z, alias=noAlias, category=algebraic, iValue=None, id=1, MPGOSname=ACC[1])
+Params.a(qN=Params.a, alias=noAlias, category=state, iValue=0.0246, id=0, MPGOSname=X[0])
+Params.b(qN=Params.b, alias=noAlias, category=state, iValue=0.785, id=1, MPGOSname=X[1])
+myclass.x(qN=myclass.x, alias=noAlias, category=state, iValue=1.0, id=2, MPGOSname=X[2])
+myclass.y(qN=myclass.y, alias=noAlias, category=state, iValue=2.0, id=3, MPGOSname=X[3])
+der(Params.a)(qN=Params.a, alias=noAlias, category=derivative, iValue=None, id=0, MPGOSname=F[0])
+der(Params.b)(qN=Params.b, alias=noAlias, category=derivative, iValue=None, id=1, MPGOSname=F[1])
+der(myclass.x)(qN=myclass.x, alias=noAlias, category=derivative, iValue=(pow(2.68,X[2]) * (X[0] * X[3])), id=2, MPGOSname=F[2])
+der(myclass.y)(qN=myclass.y, alias=noAlias, category=derivative, iValue=None, id=3, MPGOSname=F[3])
 
 INITIAL EQUATIONS
 X[3]=2.0
@@ -196,3 +35,10 @@ EVENTS
 ALGORITHMS
 ACC[1]:=$START.myclass.z
 ACC[1]:=(X[2] / X[3])
+
+ODE SYSTEM
+
+F[0]=0.0
+F[1]=0.0
+F[2]=(ACC[0] * (X[0] * X[3]))
+F[3]=(X[1] * X[2])
