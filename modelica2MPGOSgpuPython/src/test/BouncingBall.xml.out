@@ -1,4 +1,6 @@
-VARIABLE
+MODEL
+
+VARIABLES
 $whenCondition1(qN=$whenCondition1, alias=noAlias, category=algebraic, iValue=None, id=0, MPGOSname=ACCi[0])
 $whenCondition2(qN=$whenCondition2, alias=noAlias, category=algebraic, iValue=None, id=1, MPGOSname=ACCi[1])
 done(qN=done, alias=noAlias, category=algebraic, iValue=0, id=2, MPGOSname=ACCi[2])
@@ -10,18 +12,16 @@ v(qN=v, alias=noAlias, category=state, iValue=0.0, id=1, MPGOSname=X[1])
 der(h)(qN=h, alias=noAlias, category=derivative, iValue=None, id=0, MPGOSname=F[0])
 der(v)(qN=v, alias=noAlias, category=derivative, iValue=None, id=1, MPGOSname=F[1])
 
-INITIAL EQUATIONS
-ACCi[2]=0
-X[0]=sPAR[1]
-
-FUNCTIONS
-
-
-EQUATIONS
-ACCi[1]=X[0] < -0.001
-ACCi[0]=X[0] < 0.0
+ODE SYSTEM
 F[1]=(ACCi[2] ? 0.0 : -9.81)
 F[0]=X[1]
+
+INITIAL EQUATIONS
+(initial, done = 0)
+(initial, e = 0.8)
+(initial, h0 = 1.0)
+(initial, v = 0.0)
+(initialization, X[0] = sPAR[1])
 
 EVENTS
 if (ACCi[1] || ACCi[0]){
@@ -31,10 +31,6 @@ if (ACCi[1] || ACCi[0]){
 	X[1]=((-(sPAR[0])) * (X[0] < -0.001 ? 0.0 : X[1]))
 }
 
-ALGORITHMS
-
-
-ODE SYSTEM
-
-F[1]=(ACCi[2] ? 0.0 : -9.81)
-F[0]=X[1]
+OTHER EQUATIONS
+(trigger, ACCi[1]=X[0] < -0.001)
+(trigger, ACCi[0]=X[0] < 0.0)

@@ -359,7 +359,7 @@ class Time(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
     
-    def __str__(self): return self.value.__str__()
+    def __str__(self): return "T"
 
 
 class IfThenElse:
@@ -600,7 +600,7 @@ class Assign(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left.__str__() + ":=" + self.right.__str__()
+    def __str__(self): return self.left.__str__() + "=" + self.right.__str__()
 
 
 # Faccio l'update dell'insieme delle classi per gli operatori

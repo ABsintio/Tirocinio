@@ -1,4 +1,6 @@
-VARIABLE
+MODEL
+
+VARIABLES
 $cse1(qN=$cse1, alias=noAlias, category=algebraic, iValue=None, id=0, MPGOSname=ACC[0])
 myclass.z(qN=myclass.z, alias=noAlias, category=algebraic, iValue=None, id=1, MPGOSname=ACC[1])
 Params.a(qN=Params.a, alias=noAlias, category=state, iValue=0.0246, id=0, MPGOSname=X[0])
@@ -10,35 +12,23 @@ der(Params.b)(qN=Params.b, alias=noAlias, category=derivative, iValue=None, id=1
 der(myclass.x)(qN=myclass.x, alias=noAlias, category=derivative, iValue=(pow(2.68,X[2]) * (X[0] * X[3])), id=2, MPGOSname=F[2])
 der(myclass.y)(qN=myclass.y, alias=noAlias, category=derivative, iValue=None, id=3, MPGOSname=F[3])
 
-INITIAL EQUATIONS
-X[3]=2.0
-X[2]=1.0
-X[1]=0.785
-X[0]=0.0246
-F[2]=(pow(2.68,X[2]) * (X[0] * X[3]))
-
-FUNCTIONS
-Functions.pow(output=('y', 'Real'), inputs=[('x', 'Real'), ('power', 'Real')]) do
-	y:=pow(x,power)
-done
-
-EQUATIONS
-ACC[0]=pow(2.68,X[2])
+ODE SYSTEM
 F[0]=0.0
 F[1]=0.0
 F[2]=(ACC[0] * (X[0] * X[3]))
 F[3]=(X[1] * X[2])
+
+INITIAL EQUATIONS
+(initial, Params_a = 0.0246)
+(initial, Params_b = 0.785)
+(initial, myclass_x = 1.0)
+(initial, myclass_y = 2.0)
+(initialization, ACC[1]=(X[2] / X[3]))
+(initialization, ACC[0]=pow(2.68,X[2]))
 
 EVENTS
 
 
-ALGORITHMS
-ACC[1]:=$START.myclass.z
-ACC[1]:=(X[2] / X[3])
-
-ODE SYSTEM
-
-F[0]=0.0
-F[1]=0.0
-F[2]=(ACC[0] * (X[0] * X[3]))
-F[3]=(X[1] * X[2])
+OTHER EQUATIONS
+(normal, ACC[1]=(X[2] / X[3]))
+(normal, ACC[0]=pow(2.68,X[2]))

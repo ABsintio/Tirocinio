@@ -1,4 +1,6 @@
-VARIABLE
+MODEL
+
+VARIABLES
 $cse1(qN=$cse1, alias=noAlias, category=algebraic, iValue=None, id=0, MPGOSname=ACC[0])
 $cse2(qN=$cse2, alias=noAlias, category=algebraic, iValue=None, id=1, MPGOSname=ACC[1])
 elmt_CYTOPLASM.elmt_M_conc(qN=elmt_CYTOPLASM.elmt_M_conc, alias=noAlias, category=algebraic, iValue=0.1, id=2, MPGOSname=ACC[2])
@@ -96,45 +98,7 @@ der(elmt_compartment_0000004.elmt_compartment_0000004)(qN=elmt_compartment_00000
 der(elmt_default.elmt_EmptySet_amount)(qN=elmt_default.elmt_EmptySet_amount, alias=noAlias, category=derivative, iValue=None, id=27, MPGOSname=F[27])
 der(elmt_default.elmt_default)(qN=elmt_default.elmt_default, alias=noAlias, category=derivative, iValue=None, id=28, MPGOSname=F[28])
 
-INITIAL EQUATIONS
-ACC[3]=0.25
-ACC[5]=0.25
-ACC[4]=0.25
-ACC[2]=0.1
-X[20]=1e-15
-ACC[19]=0.0
-X[28]=1e-15
-ACC[16]=0.25
-ACC[8]=(X[28] * (sPAR[1] * (pow(sPAR[0],sPAR[2]) / (pow(sPAR[0],sPAR[2]) + pow(ACC[16],sPAR[2])))))
-ACC[6]=((ACC[3] + (ACC[4] + (ACC[5] + ACC[16]))) * X[20])
-X[26]=1e-15
-X[2]=1.0
-X[3]=1.0
-X[15]=1.0
-X[6]=1.0
-X[12]=1.0
-X[11]=1.0
-X[7]=1.0
-X[14]=1.0
-X[0]=1.0
-X[13]=1.0
-X[19]=1.0
-X[1]=1.0
-X[18]=1.0
-X[8]=1.0
-X[17]=1.0
-X[9]=1.0
-X[4]=1.0
-X[5]=1.0
-X[10]=1.0
-X[16]=1.0
-
-FUNCTIONS
-Functions.pow(output=('y', 'Real'), inputs=[('x', 'Real'), ('power', 'Real')]) do
-	y:=pow(x,power)
-done
-
-EQUATIONS
+ODE SYSTEM
 F[9]=0.0
 F[17]=0.0
 F[8]=0.0
@@ -152,68 +116,95 @@ F[15]=0.0
 F[3]=0.0
 F[2]=0.0
 F[26]=0.0
-ACC[18]=(sPAR[12] * (ACC[16] * X[26]))
-ACC[1]=pow(ACC[16],sPAR[2])
-ACC[8]=(X[28] * (sPAR[1] * (ACC[0] / (ACC[0] + ACC[1]))))
 F[28]=0.0
 F[27]=0.0
 F[20]=0.0
-ACC[6]=((ACC[3] + (ACC[4] + (ACC[5] + ACC[16]))) * X[20])
-ACC[10]=(X[20] * (sPAR[6] * (ACC[4] / (sPAR[5] + ACC[4]))))
-ACC[11]=(X[20] * (sPAR[8] * (ACC[4] / (sPAR[7] + ACC[4]))))
-ACC[13]=(sPAR[13] * (ACC[2] * X[28]))
-ACC[15]=(sPAR[17] * (ACC[2] * (X[20] / (sPAR[16] + ACC[2]))))
 F[21]=((ACC[8] * X[0]) - (ACC[15] * X[14]))
-ACC[17]=(sPAR[11] * (ACC[5] * X[20]))
 F[25]=((ACC[17] * X[2]) - (ACC[18] * X[13]))
-ACC[12]=(X[20] * (sPAR[10] * (ACC[5] / (sPAR[9] + ACC[5]))))
-ACC[14]=(X[20] * (sPAR[15] * (ACC[5] / (sPAR[14] + ACC[5]))))
 F[24]=((ACC[18] * X[3]) + ((ACC[11] * X[9]) + ((((-(ACC[12])) * X[11]) - (ACC[17] * X[12])) - (ACC[14] * X[15]))))
-ACC[9]=(X[20] * (sPAR[4] * (ACC[3] / (sPAR[3] + ACC[3]))))
 F[22]=((ACC[10] * X[8]) + ((ACC[13] * X[6]) - (ACC[9] * X[17])))
 F[23]=((ACC[9] * X[7]) + ((ACC[12] * X[1]) + (((-(ACC[10])) * X[18]) - (ACC[11] * X[19]))))
 F[4]=0.0
 F[5]=0.0
 F[10]=0.0
 F[16]=0.0
+
+INITIAL EQUATIONS
+(initial, elmt_CYTOPLASM_elmt_M_conc = 0.1)
+(initial, elmt_CYTOPLASM_elmt_P0_conc = 0.25)
+(initial, elmt_CYTOPLASM_elmt_P1_conc = 0.25)
+(initial, elmt_CYTOPLASM_elmt_P2_conc = 0.25)
+(initial, elmt_compartment_0000004_elmt_Pn_conc = 0.25)
+(initial, elmt_default_elmt_EmptySet_conc = 0.0)
+(initial, Reacs_elmt_rM_elmt_KI = 1.0)
+(initial, Reacs_elmt_rM_elmt_Vs = 0.76)
+(initial, Reacs_elmt_rM_elmt_n = 4.0)
+(initial, Reacs_elmt_rP01_elmt_K1 = 2.0)
+(initial, Reacs_elmt_rP01_elmt_V1 = 3.2)
+(initial, Reacs_elmt_rP10_elmt_K2 = 2.0)
+(initial, Reacs_elmt_rP10_elmt_V2 = 1.58)
+(initial, Reacs_elmt_rP12_elmt_K3 = 2.0)
+(initial, Reacs_elmt_rP12_elmt_V3 = 5.0)
+(initial, Reacs_elmt_rP21_elmt_K4 = 2.0)
+(initial, Reacs_elmt_rP21_elmt_V4 = 2.5)
+(initial, Reacs_elmt_rP2n_elmt_k1 = 1.9)
+(initial, Reacs_elmt_rPn2_elmt_k2 = 1.3)
+(initial, Reacs_elmt_rTL_elmt_ks = 0.38)
+(initial, Reacs_elmt_rVd_elmt_Kd = 0.2)
+(initial, Reacs_elmt_rVd_elmt_Vd = 0.95)
+(initial, Reacs_elmt_rmRNAd_elmt_Km = 0.5)
+(initial, Reacs_elmt_rmRNAd_elmt_Vm = 0.65)
+(initial, Reacs_elmt_product1 = 1.0)
+(initial, Reacs_elmt_product11 = 1.0)
+(initial, Reacs_elmt_product13 = 1.0)
+(initial, Reacs_elmt_product15 = 1.0)
+(initial, Reacs_elmt_product17 = 1.0)
+(initial, Reacs_elmt_product19 = 1.0)
+(initial, Reacs_elmt_product3 = 1.0)
+(initial, Reacs_elmt_product5 = 1.0)
+(initial, Reacs_elmt_product7 = 1.0)
+(initial, Reacs_elmt_product9 = 1.0)
+(initial, Reacs_elmt_reactant0 = 1.0)
+(initial, Reacs_elmt_reactant10 = 1.0)
+(initial, Reacs_elmt_reactant12 = 1.0)
+(initial, Reacs_elmt_reactant14 = 1.0)
+(initial, Reacs_elmt_reactant16 = 1.0)
+(initial, Reacs_elmt_reactant18 = 1.0)
+(initial, Reacs_elmt_reactant2 = 1.0)
+(initial, Reacs_elmt_reactant4 = 1.0)
+(initial, Reacs_elmt_reactant6 = 1.0)
+(initial, Reacs_elmt_reactant8 = 1.0)
+(initial, elmt_CYTOPLASM_elmt_CYTOPLASM = 1e-15)
+(initial, elmt_compartment_0000004_elmt_compartment_0000004 = 1e-15)
+(initial, elmt_default_elmt_default = 1e-15)
+(initialization, ACC[6] = ((ACC[3] + (ACC[4] + (ACC[5] + ACC[16]))) * X[20]))
+(initialization, ACC[8] = (X[28] * (sPAR[1] * (pow(sPAR[0],sPAR[2]) / (pow(sPAR[0],sPAR[2]) + pow(ACC[16],sPAR[2]))))))
+(initialization, ACC[18]=(sPAR[12] * (ACC[16] * X[26])))
+(initialization, ACC[1]=pow(ACC[16],sPAR[2]))
+(initialization, ACC[10]=(X[20] * (sPAR[6] * (ACC[4] / (sPAR[5] + ACC[4])))))
+(initialization, ACC[11]=(X[20] * (sPAR[8] * (ACC[4] / (sPAR[7] + ACC[4])))))
+(initialization, ACC[13]=(sPAR[13] * (ACC[2] * X[28])))
+(initialization, ACC[15]=(sPAR[17] * (ACC[2] * (X[20] / (sPAR[16] + ACC[2])))))
+(initialization, ACC[17]=(sPAR[11] * (ACC[5] * X[20])))
+(initialization, ACC[12]=(X[20] * (sPAR[10] * (ACC[5] / (sPAR[9] + ACC[5])))))
+(initialization, ACC[14]=(X[20] * (sPAR[15] * (ACC[5] / (sPAR[14] + ACC[5])))))
+(initialization, ACC[9]=(X[20] * (sPAR[4] * (ACC[3] / (sPAR[3] + ACC[3])))))
 
 EVENTS
 
 
-ALGORITHMS
-ACC[16]:=$START.elmt_compartment_0000004.elmt_Pn_conc
-ACC[16]:=(X[25] / X[26])
-ACC[19]:=$START.elmt_default.elmt_EmptySet_conc
-ACC[19]:=(X[27] / X[28])
-
-ODE SYSTEM
-
-F[9]=0.0
-F[17]=0.0
-F[8]=0.0
-F[18]=0.0
-F[1]=0.0
-F[19]=0.0
-F[13]=0.0
-F[0]=0.0
-F[14]=0.0
-F[7]=0.0
-F[11]=0.0
-F[12]=0.0
-F[6]=0.0
-F[15]=0.0
-F[3]=0.0
-F[2]=0.0
-F[26]=0.0
-F[28]=0.0
-F[27]=0.0
-F[20]=0.0
-F[21]=((ACC[8] * X[0]) - (ACC[15] * X[14]))
-F[25]=((ACC[17] * X[2]) - (ACC[18] * X[13]))
-F[24]=((ACC[18] * X[3]) + ((ACC[11] * X[9]) + ((((-(ACC[12])) * X[11]) - (ACC[17] * X[12])) - (ACC[14] * X[15]))))
-F[22]=((ACC[10] * X[8]) + ((ACC[13] * X[6]) - (ACC[9] * X[17])))
-F[23]=((ACC[9] * X[7]) + ((ACC[12] * X[1]) + (((-(ACC[10])) * X[18]) - (ACC[11] * X[19]))))
-F[4]=0.0
-F[5]=0.0
-F[10]=0.0
-F[16]=0.0
+OTHER EQUATIONS
+(normal, ACC[16]=(X[25] / X[26]))
+(normal, ACC[19]=(X[27] / X[28]))
+(normal, ACC[18]=(sPAR[12] * (ACC[16] * X[26])))
+(normal, ACC[1]=pow(ACC[16],sPAR[2]))
+(normal, ACC[8]=(X[28] * (sPAR[1] * (ACC[0] / (ACC[0] + ACC[1])))))
+(normal, ACC[6]=((ACC[3] + (ACC[4] + (ACC[5] + ACC[16]))) * X[20]))
+(normal, ACC[10]=(X[20] * (sPAR[6] * (ACC[4] / (sPAR[5] + ACC[4])))))
+(normal, ACC[11]=(X[20] * (sPAR[8] * (ACC[4] / (sPAR[7] + ACC[4])))))
+(normal, ACC[13]=(sPAR[13] * (ACC[2] * X[28])))
+(normal, ACC[15]=(sPAR[17] * (ACC[2] * (X[20] / (sPAR[16] + ACC[2])))))
+(normal, ACC[17]=(sPAR[11] * (ACC[5] * X[20])))
+(normal, ACC[12]=(X[20] * (sPAR[10] * (ACC[5] / (sPAR[9] + ACC[5])))))
+(normal, ACC[14]=(X[20] * (sPAR[15] * (ACC[5] / (sPAR[14] + ACC[5])))))
+(normal, ACC[9]=(X[20] * (sPAR[4] * (ACC[3] / (sPAR[3] + ACC[3])))))

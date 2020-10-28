@@ -230,10 +230,5 @@ if __name__ == "__main__":
     # temporaneamente prendiamo in input da riga di comando il nome dell'xml
     p = Parser(sys.argv[1])
     p.parseXML()
-    print(p)
-    print("\nMODEL\n")
     m = model.Model(p.dynamic_equations['equations'], p.dynamic_equations['events'], p.algorithms, p.unique_dict)
-    print("\nODE SYSTEM\n")
-    variables.Var.forEach(m.odes, print)
-    print("\nINITIAL EQUATIONS\n")
-    variables.Var.forEach(m.init, print)
+    print(m)
