@@ -1,5 +1,6 @@
 from tagclasses.variables import *
 import re
+from utils.graph import *
 
 
 class Model:
@@ -11,6 +12,8 @@ class Model:
         # Prendo le altre equazioni rimanenti
         self.othereq    = Model.getOtherEq(algorithms + equations, self.init, variables_dict)
         self.variables  = list(variables_dict.values())                                       # Prendo la lista delle variabili
+        # Ordino le equazioni initiali per initialization
+        self.init['initialization'] = self.init_equations_sort(variables_dict)
 
 
     @staticmethod
@@ -61,6 +64,18 @@ class Model:
                 othereq_dict[typeeq].append(equ)
             
         return othereq_dict
+
+
+    def init_equations_sort(self, MPGOSparams_dict):
+        """ Sorta le equazioni initiali con tag "initialization" """
+        equ_dipendency_dag = DAG(self.init['initialization'], MPGOSparams_dict) # Crea un DAG
+        top_sort = equ_dipendency_dag.topological_sort()                        # Esegue l'algoritmo di ordinamento topologico
+        new_init_eq = []
+        init_eq_dict = {x.split("=")[0].strip(): x.split("=")[1].strip() for x in self.init['initialization']}
+        for lhs in top_sort:
+            # Devo prendere l'equazione iniziale associata
+            new_init_eq.append(f"{lhs} = {init_eq_dict[lhs]}")
+        return new_init_eq if new_init_eq != [] else self.init['initialization']
 
 
     def __str__(self):

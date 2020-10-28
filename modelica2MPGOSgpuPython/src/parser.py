@@ -3,6 +3,7 @@ from tagclasses import tagclasses, variables
 import exceptions.builtExceptions
 import sys # temporane per eseguire i test
 from model import model
+from utils.graph import *
 
 
 # ----------------------------------------------------- # CLASSI PER IL PARSING # ------------------------------------------------------ #
