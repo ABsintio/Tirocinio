@@ -287,7 +287,7 @@ class Equation(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left.__str__() + "=" + self.right.__str__()
+    def __str__(self): return self.left.__str__() + "=" + self.right.__str__() + ";"
 
 
 class QualifiedName:
@@ -455,7 +455,7 @@ class When:
         equation = _parsetag_eq(self.when_tag[1], self.variables_dict)
         return condition, equation
     
-    def __str__(self): return f"if ({self.condition})" + "{\n" + f"\t{self.equation}\n" + "}"
+    def __str__(self): return f"if ({self.condition})" + "{\n" + f"\t    {self.equation}\n" + "    }"
 
     def setcondition(self, new_condition): self.condition = new_condition
 
@@ -600,7 +600,7 @@ class Assign(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left.__str__() + "=" + self.right.__str__()
+    def __str__(self): return self.left.__str__() + "=" + self.right.__str__() + ";"
 
 
 # Faccio l'update dell'insieme delle classi per gli operatori

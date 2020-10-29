@@ -5,7 +5,8 @@ from utils.graph import *
 
 class Model:
     """ Rappresenta in modo schematico e astratto il modello in studio """
-    def __init__(self, equations, events, algorithms, variables_dict):
+    def __init__(self, name, equations, events, algorithms, variables_dict):
+        self.model_name = name
         self.odes       = Model.getODE(equations, variables_dict)                             # Crea il sistema di ODE
         self.init       = Model.getinit(variables_dict)                                       # Prendo le equazioni iniziali
         self.events     = events                                                              # Prendo gli eventi

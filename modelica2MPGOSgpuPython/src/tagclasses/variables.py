@@ -172,6 +172,11 @@ class Var:
 
 	def setivalue(self, new_ivalue): self.init = new_ivalue
 
+	@staticmethod
+	def createMPGOScodeline(params_list):
+		""" Crea un blocco di codice C++ """
+		return "    " + "    ".join([x.__str__() + "\n" for x in params_list])
+
 
 class ACC(Var):
 	"""

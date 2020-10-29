@@ -1,6 +1,6 @@
 
-#ifndef XMLs_MyModel_PERTHREAD_SYSTEMDEFINITION_H
-#define XMLs_MyModel_PERTHREAD_SYSTEMDEFINITION_H
+#ifndef BouncingBall_PERTHREAD_SYSTEMDEFINITION_H
+#define BouncingBall_PERTHREAD_SYSTEMDEFINITION_H
 
 #include <fstream>
 #include <iostream>
@@ -12,10 +12,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 	Precision*    F, Precision*    X, Precision     T, \
 	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
 ) {
-    F[0]=0.0;
-    F[1]=0.0;
-    F[2]=(ACC[0] * (X[0] * X[3]));
-    F[3]=(X[1] * X[2]);
+    F[1]=(ACCi[2] ? 0.0 : -9.81);
+    F[0]=X[1];
 
 }
 
@@ -24,7 +22,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_EventFunctio
 	Precision     T, Precision    dT, Precision    TD, Precision*	X, \
 	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
 ) {
-    
+    ACCi[1]=X[0] < -0.001;
+    ACCi[0]=X[0] < 0.0;
+
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterEventDetection(
@@ -32,7 +32,13 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
     Precision    &T, Precision   &dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    
+    if (ACCi[1] || ACCi[0]){
+	    ACCi[2]=X[0] < -0.001;
+    }
+    if (ACCi[1] || ACCi[0]){
+	    X[1]=((-(sPAR[0])) * (X[0] < -0.001 ? 0.0 : X[1]));
+    }
+
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterSuccessfulTimeStep(
@@ -40,9 +46,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterS
     Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    ACC[1]=(X[2] / X[3]);
-    ACC[0]=pow(2.68,X[2]);
-
+    
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
@@ -52,8 +56,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
 ) {
     T     = TD[0];
     DOIDX = 0;
-    ACC[1] = (X[2] / X[3]);
-    ACC[0] = pow(2.68,X[2]);
+    X[0] = sPAR[1];
 
 }
 
@@ -67,4 +70,3 @@ template <class Precision> __forceinline__ __device__ void PerThread_Finalizatio
 
 
 #endif
-

@@ -4,7 +4,7 @@ import logging.config
 import time
 import os
 import sys
-import notifier
+from utils import notifier
 from functools import wraps
 
 

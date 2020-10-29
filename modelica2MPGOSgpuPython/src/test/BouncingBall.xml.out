@@ -1,36 +1,73 @@
-MODEL
 
-VARIABLES
-$whenCondition1(qN=$whenCondition1, alias=noAlias, category=algebraic, iValue=None, id=0, MPGOSname=ACCi[0])
-$whenCondition2(qN=$whenCondition2, alias=noAlias, category=algebraic, iValue=None, id=1, MPGOSname=ACCi[1])
-done(qN=done, alias=noAlias, category=algebraic, iValue=0, id=2, MPGOSname=ACCi[2])
-e(qN=e, alias=noAlias, category=independentParameter, iValue=0.8, id=0, MPGOSname=sPAR[0])
-h0(qN=h0, alias=noAlias, category=independentParameter, iValue=1.0, id=1, MPGOSname=sPAR[1])
-eps(qN=eps, alias=noAlias, category=independentConstant, iValue=None, id=2, MPGOSname=sPAR[2])
-h(qN=h, alias=noAlias, category=state, iValue=sPAR[1], id=0, MPGOSname=X[0])
-v(qN=v, alias=noAlias, category=state, iValue=0.0, id=1, MPGOSname=X[1])
-der(h)(qN=h, alias=noAlias, category=derivative, iValue=None, id=0, MPGOSname=F[0])
-der(v)(qN=v, alias=noAlias, category=derivative, iValue=None, id=1, MPGOSname=F[1])
+#ifndef XMLs_BouncingBall_PERTHREAD_SYSTEMDEFINITION_H
+#define XMLs_BouncingBall_PERTHREAD_SYSTEMDEFINITION_H
 
-ODE SYSTEM
-F[1]=(ACCi[2] ? 0.0 : -9.81)
-F[0]=X[1]
+#include <fstream>
+#include <iostream>
+#include <string>
 
-INITIAL EQUATIONS
-(initial, done = 0)
-(initial, e = 0.8)
-(initial, h0 = 1.0)
-(initial, v = 0.0)
-(initialization, X[0] = sPAR[1])
 
-EVENTS
-if (ACCi[1] || ACCi[0]){
-	ACCi[2]=X[0] < -0.001
-}
-if (ACCi[1] || ACCi[0]){
-	X[1]=((-(sPAR[0])) * (X[0] < -0.001 ? 0.0 : X[1]))
+template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
+	int tid, int NT, \
+	Precision*    F, Precision*    X, Precision     T, \
+	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
+) {
+    F[1]=(ACCi[2] ? 0.0 : -9.81);
+    F[0]=X[1];
+
 }
 
-OTHER EQUATIONS
-(trigger, ACCi[1]=X[0] < -0.001)
-(trigger, ACCi[0]=X[0] < 0.0)
+template<class Precision> __forceinline__ __device__ void PerThread_EventFunction(
+	int tid, int NT, Precision*	  EF, \
+	Precision     T, Precision    dT, Precision    TD, Precision*	X, \
+	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
+) {
+    ACCi[1]=X[0] < -0.001;
+    ACCi[0]=X[0] < 0.0;
+
+}
+
+template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterEventDetection(
+    int tid, int NT, int IDX, int& UDT, \
+    Precision    &T, Precision   &dT, Precision*    TD, Precision*   X, \
+    Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
+) {
+    if (ACCi[1] || ACCi[0]){
+	ACCi[2]=X[0] < -0.001;
+    }
+    if (ACCi[1] || ACCi[0]){
+	X[1]=((-(sPAR[0])) * (X[0] < -0.001 ? 0.0 : X[1]));
+    }
+
+}
+
+template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterSuccessfulTimeStep(
+    int tid, int NT, int& UDT, \
+    Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
+    Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
+) {
+    
+}
+
+template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
+    int tid, int NT, int& DOIDX, \
+    Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
+    Precision* cPAR, Precision* sPAR,       int* sPARi, Precision* ACC, int* ACCi
+) {
+    T     = TD[0];
+    DOIDX = 0;
+    X[0] = sPAR[1];
+
+}
+
+template <class Precision> __forceinline__ __device__ void PerThread_Finalization(
+    int tid, int NT, int& DOIDX, \
+    Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
+    Precision* cPAR, Precision* sPAR,       int* sPARi, Precision* ACC, int* ACCi
+) {
+	
+}
+
+
+#endif
+

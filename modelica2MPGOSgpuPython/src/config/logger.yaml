@@ -2,6 +2,11 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s - %(levelname)s : %(message)s'
 handlers:
+  BouncingBall_handler:
+    class: logging.FileHandler
+    filename: ./log/BouncingBall.log
+    formatter: simple
+    level: DEBUG
   Zeilinger2006_PRR7_PRR9_Y_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/S2MResult/S2MBIOMDx8095/log/Zeilinger2006_PRR7_PRR9_Y.log
@@ -13,6 +18,11 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  BouncingBall:
+    handlers:
+    - BouncingBall_handler
+    level: DEBUG
+    propagate: 'no'
   Zeilinger2006_PRR7_PRR9_Y:
     handlers:
     - Zeilinger2006_PRR7_PRR9_Y_handler

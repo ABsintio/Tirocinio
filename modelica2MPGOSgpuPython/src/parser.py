@@ -3,7 +3,8 @@ from tagclasses import tagclasses, variables
 import exceptions.builtExceptions
 import sys # temporane per eseguire i test
 from model import model
-from utils.graph import *
+from build import builder
+from utils.logger import *
 
 
 # ----------------------------------------------------- # CLASSI PER IL PARSING # ------------------------------------------------------ #
@@ -11,7 +12,8 @@ from utils.graph import *
 
 class Parser:
     """ Classe che esegue il parser dell'XML """
-    def __init__(self, filename):
+    def __init__(self, filename, logger):
+        self.logger = logger
         self.root = ET.parse(filename).getroot()
         self.dynamic_equations = {"equations": [], "events": []}
         self.binding_equations = []
@@ -20,6 +22,10 @@ class Parser:
         self.userdefined_func  = dict()
         self.algorithms        = []
         self.unique_dict       = dict()
+        # START LOG
+        msg = "Chiamata alla classe Parser"
+        self.logger.info(msg, msg)
+        # END LOG
     
     @staticmethod
     def getTagElementByName(tag_name, tag_root):
@@ -33,6 +39,10 @@ class Parser:
     
     def createACC(self):
         """ Associa a tutte le variabili algebraic un'istanza ACC """
+        # START LOG
+        msg = "Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real"
+        self.logger.debug(msg, msg)
+        # END LOG
         acc_id, accs, acc_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                              x.categoryType == variables.VariableCategory.ALGEBRAIC and \
@@ -48,6 +58,10 @@ class Parser:
     
     def createACCi(self):
         """ Associa a tutte le variabili algebraic con tipo no Real un'istanza ACCi """
+        # START LOG
+        msg = "Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer"
+        self.logger.debug(msg, msg)
+        # END LOG
         acci_id, accis, acci_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                              x.categoryType == variables.VariableCategory.ALGEBRAIC and \
@@ -63,6 +77,10 @@ class Parser:
 
     def create_sPAR(self):
         """ Associa a tutte le variabili independentParameter/Constant un'istanza sPAR """
+        # START LOG
+        msg = "Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real"
+        self.logger.debug(msg, msg)
+        # END LOG
         spar_id, spars, spar_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                             (x.categoryType == variables.VariableCategory.INDEPENDENT_CONSTANT or \
@@ -80,6 +98,10 @@ class Parser:
 
     def create_sPARi(self):
         """ Associa a tutte le variabili independentParameter/Constant di tipo no Real un'istanza sPARi """
+        # START LOG
+        msg = "Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer"
+        self.logger.debug(msg, msg)
+        # END LOG
         spari_id, sparis, spari_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                             (x.categoryType == variables.VariableCategory.INDEPENDENT_CONSTANT or \
@@ -97,6 +119,10 @@ class Parser:
 
     def createX_and_F(self):
         """ Associa a tutte le variabili derivate un'istanza di tipo F, mentre per quelle di tipo state ->  X"""
+        # START LOG
+        msg = "Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata"
+        self.logger.debug(msg, msg)
+        # END LOG
         x_id, xs, x_dict = 0, [], dict()
         f_id, fs, f_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias"]
@@ -132,12 +158,15 @@ class Parser:
         state -> X, derivative -> F, independentParameter -> sPAR/i, independentConstant -> sPAR/i,
         algebraic -> ACC/i.
         """
-        
         return *self.createACC(), *self.createACCi(), *self.create_sPAR(), *self.create_sPARi(), *self.createX_and_F()
 
     
     def parse_scalar_variables(self):
         """ Esegue il parsing di tutti i tag interi a <ModelVariables> """
+        # START LOG
+        msg = "Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>"
+        self.logger.debug(msg, msg)
+        # END LOG
         scalar_valriable_roottag = Parser.getTagElementByName("ModelVariables", self.root)
         for x in scalar_valriable_roottag:
             self.scalar_variables.append(variables._parsetag_var(x))
@@ -145,6 +174,10 @@ class Parser:
     
     def parse_dynamic_equations(self, variables_dict):
         """ Esegue il parsing di tutti i tag <equ:DynamicEquations> """
+        # START LOG
+        msg = "Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>"
+        self.logger.debug(msg, msg)
+        # END LOG
         dynamic_equations_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}DynamicEquations", self.root)
         for x in dynamic_equations_roottag:
             # Parsing delle equazioni
@@ -160,6 +193,10 @@ class Parser:
         Esegue il parsing di tutti i tag interni a <equ:InitialEquations> ed associati i valori
         estrapolati dalle equazioni iniziali alle variabili che non hanno l'attributo start diverso da None.
         """
+        # START LOG
+        msg = "Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali"
+        self.logger.debug(msg, msg)
+        # END LOG
         initial_equantions_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}InitialEquations", self.root)
         for x in initial_equantions_roottag:
             # Controlliamo che non siano tag vuoti, ossia <equ:Equation><exp:Sub></exp:Sub></equ:Equation>
@@ -169,7 +206,7 @@ class Parser:
                     var = MPGOSparameter_dict[ieqs.left.__str__()]
                     if var.init is None:
                         self.initial_equations.append(ieqs)
-                        var.setivalue(ieqs.right.__str__())
+                        var.setivalue(ieqs.right.__str__() + ";")
                 except KeyError:
                     pass
         return MPGOSparameter_dict
@@ -177,6 +214,10 @@ class Parser:
     
     def parse_userdefined_function(self, variables_dict):
         """ Esegue il parsing delle funzioni definite dall'utente trattate con il tag <fun:FunctionCall> """
+        # START LOG
+        msg = "Parsing delle funzioni definite dall'utente"
+        self.logger.debug(msg, msg)
+        # END LOG
         functionlist_rottag = Parser.getTagElementByName(f"{tagclasses.FUNCTIONS_NS}FunctionsList", self.root)
         for x in functionlist_rottag:
             fun = tagclasses._parsetag_fun(x, variables_dict)
@@ -185,6 +226,10 @@ class Parser:
 
     def parse_algorithm(self, variables_dict):
         """ Esegue il parsing di tutti gli algoritmi. Questi sono interni al tag <fun:Algorithm> """
+        # START LOG
+        msg = "Parsing degli algoritmi sotto il tag <fun:Algorithm>"
+        self.logger.debug(msg, msg)
+        # END LOG
         algorithm_roottag = Parser.getTagElementByName(f"{tagclasses.FUNCTIONS_NS}Algorithm", self.root)
         for x in algorithm_roottag:
             if x.tag != f"{tagclasses.FUNCTIONS_NS}Assertion":
@@ -193,6 +238,10 @@ class Parser:
 
     def parseXML(self):
         """ Chiama i diversi metodi di parsing dell'XML """
+        # START LOG
+        msg = "Parsing totale dell'XML"
+        self.logger.debug(msg, msg)
+        # END LOG
         self.parse_scalar_variables()
         # Prendo i parametri
         MPGOSparameters    = self.associate_var2MPGOSparameter()
@@ -214,6 +263,10 @@ class Parser:
         self.parse_algorithm(unique_dict)
         # Ritorno un dizionario di variabili 
         self.unique_dict = MPGOSparams_dict
+        # START LOG
+        msg = "Terminato parsing totale"
+        self.logger.debug(msg, msg)
+        # END LOG
 
 
     def __str__(self):
@@ -229,7 +282,13 @@ class Parser:
 
 if __name__ == "__main__":
     # temporaneamente prendiamo in input da riga di comando il nome dell'xml
-    p = Parser(sys.argv[1])
+    model_name = sys.argv[1].split(".")[-2].split("/")[-1]
+    logger = Logger(model_name, ".")
+    p = Parser(sys.argv[1], logger)
     p.parseXML()
-    m = model.Model(p.dynamic_equations['equations'], p.dynamic_equations['events'], p.algorithms, p.unique_dict)
-    print(m)
+    m = model.Model(
+        model_name, p.dynamic_equations['equations'], 
+        p.dynamic_equations['events'], p.algorithms, p.unique_dict
+    )
+    b = builder.Builder(m, ".", logger)
+    b.builfiles()
