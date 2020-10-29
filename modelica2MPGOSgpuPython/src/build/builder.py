@@ -1,4 +1,3 @@
-from parser import Parser
 from tagclasses.variables import *
 from utils.notifier import *
 import os
