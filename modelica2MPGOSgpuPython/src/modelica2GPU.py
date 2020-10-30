@@ -17,10 +17,9 @@ except ImportError:
     sys.exit(1)
 
 import yaml
-from parser.parser import *
-from build.builder import *
 from utils import logger, notifier
 import xml.etree.ElementTree as ET
+import os
 
 
 logger = logger.Logger(None, ".", False)
@@ -178,7 +177,7 @@ def conf_dict2str(conf_dict, gpu_attrs):
         if k == "GPU information":
             string += getGPUattr2str(gpu_attrs, v)
         elif isinstance(v, list):
-            string += f"{k}:\n" + "    ".join([f"{k}Value{count + 1}: {v[count]}\n" for count in range(len(v))])
+            string += f"{k}:\n    " + "    ".join([f"{k}Value{count + 1}: {v[count]}\n" for count in range(len(v))])
         else: 
             string += f"{k}: {v}\n"
     return string
@@ -271,11 +270,51 @@ def get_modelica2GPU_configuration(config_file):
             "tolerance"                 : builder_options[16] 
         }
         
-        print(conf_dict2str(config_dict, device.get_attributes()))
+        conf_str = conf_dict2str(config_dict, device.get_attributes())
+        print(conf_str)
+
+        print()
+        check = False
+        while not check:
+            ans = input("Vuoi continuare con le seguenti configurazioni: [Y/N] ")
+            if ans.upper() == "Y":
+                check = True
+            elif ans.upper() == "N":
+                # START LOG
+                msg = "Uscita dal programma in quanto conferma per continuare negativa" 
+                logger.info(msg, msg)
+                # END LOG
+                sys.exit(0)
         
+        # START LOG
+        # Creazione del logger su file
+        if config_dict['filelogger']:
+            m2g_logger = Logger(model_name, config_dict['workingdir'])
+            msg = "Informazioni dal file di configurazione estrapolate. Riassunto della configurazione \n" + conf_str
+            m2g_logger.info("Informazioni dal file di configurazione estrapolate", msg)
+        # END LOG
+
+        # Se il campo notifier è True allora imposto un argomento di sistema a 1, altrimenti 0
+        # Questo viene fatto in quanto l'attivazione o la disattivazione del notifier
+        # in ogni file dipende da una MACRO che si basa sull'ultimo elemento dato in input (come 
+        # se fosse da riga di comando).
+        if config_dict['notifier']:
+            sys.argv.append(1)
+        else:
+            sys.argv.append(0)
+
+        return config_dict, m2g_logger
+
     except AssertionError as ae:
         msg = f"modelica2GPU ha riscontrato il seguente errore. {ae.args[0]}"
         logger.error(msg, msg)
 
 
+# Questo va chiamato prima invece
 get_modelica2GPU_configuration("config/modelica2gpu.yaml")
+
+
+# Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro
+# per il notifier
+from parser.parser import *
+from build.builder import *

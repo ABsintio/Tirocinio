@@ -8,7 +8,7 @@ import sys
 #--------------------------# DEFINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
 
 
-#NOTIFICATION = True if int(sys.argv[1]) == 1 else False
+NOTIFICATION = True if int(sys.argv[-1]) == 1 else False
 
 
 #--------------------------# DEFINIZIONE DEL PATTERN DELLE FUNZIONI DA UTILIZZARE IN MPGOS    # --------------------------#	           
@@ -190,14 +190,13 @@ class SystemDefinitionBuilder:
         MPGOS_PerThread_Finalization = MPGOS_PerThread_Finalization % ("")
         return MPGOS_PerThread_Finalization
 
-    """
     @notifier(
         NOTIFICATION, 
         "Build SistemDefinition File",
         "Creazione del file di definizione del sistema con tutte le relative funzioni",
         "Build SystemDefinition File",
         "Terminata creazione del file di definizione del sistema"
-    )"""
+    )
     def createSystemDefinitionFile(self):
         """ Crea il file <Model>_SystemDefinition.cuh nel quale è presente il sistema di ODE """
         # START LOG
