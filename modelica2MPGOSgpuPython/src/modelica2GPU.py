@@ -20,14 +20,38 @@ import yaml
 from utils import logger, notifier
 import xml.etree.ElementTree as ET
 import os
+import subprocess
+import re
 
 
 tmp_logger = logger.Logger(None, ".", False)
 
 
-def createXML(workingdir, modelfilename):
+def createXML(workingdir, modelfilename, omlibrary):
     """ Crea l'XML tramite il comando del compilatore openmodelica e ritorna il nome del file """
-    pass
+    try:
+        cwd = os.getcwd()
+        # Entro nella directory desiderata nella quale salvare l'XML
+        os.chdir(workingdir)
+        # Prendo tutte le versioni di modelica installate
+        modelica_versions = list(filter(lambda x: re.match(r"Modelica \d\.\d\.\d", x) is not None, os.listdir("/usr/lib/omlibrary/")))
+        # Se la lista non è vuota allora prendo la prima versione disponibile
+        modelica_versions = modelica_versions[0] if modelica_versions else None
+        # Altrimenti lancio una eccezione
+        assert modelica_versions is not None, "Non esistono versioni di modelica installate nel sistema"
+        # Creo la stringa per la compilazione
+        compile_string = "omc +s --simCodeTarget=XML {model} {others} {modelicalib} > /dev/null".format(
+            model=modelfilename,
+            others=" ".join([x for x in os.listdir(".") if x.endswith(".mo") and x != modelfilename]),
+            modelicalib=omlibrary.replace(" ", "\ ") + "package.mo"
+        )
+        result = subprocess.run(compile_string, check=True, shell=True)
+        os.chdir(cwd)
+        return os.path.join(workingdir, modelfilename.replace("mo", "xml"))
+    except subprocess.CalledProcessError:
+        tmp_logger.error("Non è stato possibile creare l'XML", "Non è stato possibile creare l'XML")
+    except Exception as e:
+        assert True == False, e.args[0]
 
 
 def get_tolerance_fromXML(xmlfile):
@@ -90,6 +114,7 @@ def checkconfig(config_dict):
     # Controllo che il model filename sia un file presente nella cartella wd
     if m2g_conf['generateXML']:
         msg = f"il modello {m2g_conf['modelfilename']} non è nella workingdir dichiarata"
+        assert os.path.isdir(m2g_conf['omlibrary']), "La directory per la libreria Modelica non esiste"
         assert os.path.isfile(os.path.join(m2g_conf['workingdir'], m2g_conf['modelfilename'])), msg
     # Controllo che notifier e logger siano campi booleani
     n, l = m2g_conf['notifier'], m2g_conf['filelogger']
@@ -207,7 +232,7 @@ def get_modelica2GPU_configuration(config_file):
         # Una volta fatto il check della struttura del configuratore estraggo le informazioni necessarie
         m2g_conf, builder_config = config_dict['modelica2gpu'], config_dict['builder']
         genXML = m2g_conf['generateXML']
-        xmlfile = createXML(m2g_conf['workingdir'], m2g_conf['modelfilename']) if genXML else m2g_conf['xml']
+        xmlfile = createXML(m2g_conf['workingdir'], m2g_conf['modelfilename'], m2g_conf['omlibrary']) if genXML else m2g_conf['xml']
         notifier, filelogger = m2g_conf['notifier'], m2g_conf['filelogger']
         modelname = xmlfile.split(".")[0].split("/")[-1]
         event_num, state_num = getnumevents(xmlfile), getnumstate(xmlfile)
@@ -316,6 +341,7 @@ def get_modelica2GPU_configuration(config_file):
         msg = f"modelica2GPU ha riscontrato il seguente errore. {ae.args[0]}"
         tmp_logger.error(msg, msg)
         sys.exit(1)
+
 
 
 # Questo va chiamato prima invece
