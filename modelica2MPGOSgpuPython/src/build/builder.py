@@ -94,7 +94,181 @@ MPGOS_Model_SystemDefinition = """
 #--------------------------# DEFINIZIONE DEI PATTERN PER IL FILE CHE DESCRIVE IL MODELLO    # --------------------------#	 
 
 
+MPGOS_Model_Macro = """
+#include <iostream>
+#include <vector>
+#include <iomanip>
+#include <string>
+#include <fstream>
 
+#define PI 3.14159265358979323846
+
+#include "{model_sysdef_file}"
+#include "SingleSystem_PerThread_Interface.cuh"
+
+using namespace std;
+
+#define SOLVER RKCK45
+#define PRECISION double
+const int NT   = {numberOfThreads};
+const int SD   = {systemDimension};
+const int NCP  = 0;
+const int NSP  = {numberOfSharedParameter};
+const int NISP = {numberOfIntegerSharedParameter};
+const int NE   = {numberOfEvents};
+const int NA   = {numberOfAccessories};
+const int NIA  = {numberOfIntegerAccessories};
+const int NDO  = {numberOfDenseOutput};
+"""
+
+
+MPGOS_FillFunction_Prototype = """
+void FillSolverObject(
+    ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>&, 
+    vector<PRECISION>&, vector<PRECISION>&, int, int
+);
+"""
+
+MPGOS_SaveDataFunction = """
+void SaveData(
+    ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
+    ofstream& DataFile, int NumberOfThreads
+) {
+	int Width = 18;
+	DataFile.precision(10);
+	DataFile.flags(ios::scientific);
+	
+	for (int tid=0; tid<NumberOfThreads; tid++)
+	{
+        {actualStateString}
+        {sharedParameterString}
+        {sharedIntegerParameterString}
+        {accessorieParameterString}
+        {accessorieIntegerParameterString}
+        {actualStateGetHost}
+        {sharedParameterGetHost}
+        {sharedIntegerParameterGetHost}
+        {accessorieParameterGetHost}
+        {accessorieIntegerParameterGetHost}
+		DataFile << '\n';
+	}
+}
+"""
+
+
+MPGOS_MainFunction = """
+int main() {
+    int numberOfProblems = {numberOfProblems}; // Numero di problemi da risolvere, uno per thread
+    int blockSize        = {blockSize};        // Numero di Thread per blocchi
+    
+    // Listing dei Device CUDA
+    ListCUDADevices();
+
+    int MajorVersion = {GPUMajor};             // Major version della CUDA compute capability
+    int MinorVersion = {GPUMinor};             // Minor version della CUDA compute capability
+
+    // Seleziona il Device da utilizzare dando in input la CUDA compute capability e ne stampa le caratteristiche
+    int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);
+    PrintPropertiesOfSpecificDevice(SelectedDevice);
+
+    {initialEquationVectorParameterString}
+
+    ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION> Solver(SelectedDevice);
+    Solver.SolverOption(ThreadsPerBlock, BlockSize);
+    Solver.SolverOption(PreferSharedMemory, {preferSharedMemory});
+    Solver.SolverOption(InitialTimeStep, {initialTimeStep});
+    Solver.SolverOption(ActiveNumberOfThreads, NT);
+    Solver.SolverOption(MaximumTimeStep, {maximumTimeStep});
+    Solver.SolverOption(MinimumTimeStep, {minimumTimeStep});
+    Solver.SolverOption(TimeStepGrowLimit, {timeStepGrowLimit});
+    Solver.SolverOption(TimeStepShrinkLimit, {timeStepShrinkLimit});
+    {eventDirectionsString}
+    Solver.SolverOption(DenseOutputMinimumTimeStep, {denseOutputMinimumTimeStep});
+    Solver.SolverOption(DenseOutputSaveFrequency, {denseOutputSaveFrequency});
+    {tolerancesString}
+
+    int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
+    ofstream DataFile;
+    DataFile.open ( "{modelname}.csv" );
+    clock_t SimulationStart = clock();
+	clock_t TransientStart;
+    clock_t TransientEnd;
+
+    for (int i=0; i < NumberOfSimulationLaunches; i++) {
+        {fillSolverObjectCall};
+        Solver.SynchroniseFromHostToDevice(All);
+        Solver.InsertSynchronisationPoint();
+        Solver.SynchroniseSolver();
+
+        TransientStart = clock();
+        for (int j=0; j < 1; j++) {
+            Solver.Solve();
+            Solver.InsertSynchronisationPoint();
+            Solver.SynchroniseSolver();
+        }
+        TransientEnd = clock();
+        cout << "Launches: " << i << "  Simulation time: ";
+        cout << 1000.0*(TransientEnd-TransientStart) / CLOCKS_PER_SEC << "ms" << endl << endl;
+        for (int j=0; j<1; j++)
+        {
+            Solver.Solve();
+            Solver.SynchroniseFromDeviceToHost(All);
+            Solver.InsertSynchronisationPoint();
+            Solver.SynchroniseSolver();
+            SaveData(Solver, DataFile, NT);
+        }
+    }
+
+    clock_t SimulationEnd = clock();
+    cout << "Total simulation time: " << 1000.0*(SimulationEnd-SimulationStart) / CLOCKS_PER_SEC << "ms";
+    cout << endl;
+	
+    DataFile.close();
+    
+    Solver.Print(DenseOutput, 0);
+    Solver.Print(ActualState);
+    Solver.Print(ActualTime);
+	
+	cout << "Test finished!" << endl;
+
+    return 0;
+}
+"""
+
+MPGOS_FillFunction_Defionition = """
+void FillSolverObject(
+    ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
+    {sharedParametersList}, {sharedIntegerParameterList}, vector<PRECISION>& Variable_X, 
+    {accessorieParameterList}, {accessorieIntegerParameterList}, int FirstProblemNumber, int NumberOfThreads
+) {
+    int k_begin = FirstProblemNumber;
+	int k_end   = FirstProblemNumber + NumberOfThreads;
+	
+    int ProblemNumber = 0;
+    while (k_begin < k_end) {
+        Solver.SetHost(ProblemNumber, TimeDomain, 0, {timeDomainStart});
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, {timeDomainEnd});  
+
+        int i = 0;
+        for (PRECISION x : Variable_X) {
+            Solver.SetHost(ProblemNumber, ActualState, i++, x);
+        }
+
+        Solver.SetHost(ProblemNumber, ActualTime, 0.0);
+        Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
+        Solver.SetHost(ProblemNumber, DenseIndex, 0 );
+
+        {accessoriesAddLoop}
+        {accessoriesIntegerAddLoop}
+		
+		ProblemNumber++;
+        k_begin++;
+    }
+
+    {sharedAddLoop}
+    {sharedIntegerAddLoop}
+}
+"""
 
 
 #--------------------------# DEFINIZIONE DELLE CLASSI PER LA CREAZIONE DEI DUE FILE NECESSARI # --------------------------#
@@ -102,7 +276,46 @@ MPGOS_Model_SystemDefinition = """
 
 class ModelBuilder:
     """ Classe per la costruzione del file cpp Model.cu """
-    pass
+    def __init__(self, sysdef_filename,   # Nome del file di definizione del sistema
+                       config_dict,       # Dizionario con tutti i parametri di configurazione
+                       initial_equations, # Lista con tutte le equazioni iniziali di tipo "initial"
+                       model_name,        # Nome del modello
+                       logger,            # oggetto di tipo utils.logger.Logger
+                       odes,              # Lista di tutte le ODE del sistema
+                       variables          # Lista di tutte le variabili del sistema
+                ):
+        self.sysdef_filename   = sysdef_filename
+        self.config_dict       = config_dict
+        self.initial_equations = initial_equations
+        self.model_name        = model_name
+        self.odes              = odes
+        self.logger            = logger
+        self.variables         = variables
+        # START LOG
+        msg = "Chiamata alla classe ModelBuilder"
+        self.logger.info(msg, msg)
+        # END LOG
+    
+
+    def buildMacroPattern(self):
+        """ Formatta la stringa della defizione delle MACRO e delle costanti """
+        global MPGOS_Model_Macro
+        # START LOG
+        msg = "Formattazione della stringa per la definizione delle MACRO"
+        self.logger.info(msg, msg)
+        # END LOG
+        MPGOS_Model_Macro = MPGOS_Model_Macro.format(
+            model_sysdef_file=self.sysdef_filename.split("/")[-1],
+            numberOfThreads=self.config_dict['numberOfThreads'],
+            systemDimension=len(self.odes), 
+            numberOfSharedParameter=len(list(filter(lambda x: isinstance(x, sPAR), self.variables))),
+            numberOfIntegerSharedParameter=len(list(filter(lambda x: isinstance(x, sPARi), self.variables))),
+            numberOfEvents=len(self.config_dict['eventDirection']) if self.config_dict['eventDirection'] is not None else 0,
+            numberOfAccessories=len(list(filter(lambda x: isinstance(x, ACC), self.variables))),
+            numberOfIntegerAccessories=len(list(filter(lambda x: isinstance(x, ACCi), self.variables))),
+            numberOfDenseOutput=self.config_dict['numberOfDenseOutput']
+        )
+        return MPGOS_Model_Macro
 
 
 class SystemDefinitionBuilder:
@@ -190,6 +403,7 @@ class SystemDefinitionBuilder:
         MPGOS_PerThread_Finalization = MPGOS_PerThread_Finalization % ("")
         return MPGOS_PerThread_Finalization
 
+
     @notifier(
         NOTIFICATION, 
         "Build SistemDefinition File",
@@ -224,19 +438,29 @@ class SystemDefinitionBuilder:
         return MPGOS_Model_SystemDefinition
 
 
-
 class Builder:
     """ Classe principale che richiama le due classi SystemDefinitionBuilder e ModelBuilder """
-    def __init__(self, abstract_model, workindir, logger):
+    def __init__(self, model_file_paramsdict, abstract_model, workindir, logger):
         self.abstract_model    = abstract_model
         self.workingdir        = workindir
         self.logger            = logger
+        self.modelparams_dict  = model_file_paramsdict
         # START LOG
         msg = "Chiamata alla classe Builder"
         self.logger.info(msg, msg)
         # END LOG
         self.newdir = self.createnewdir() # Crea la nuova directory nella quale salvare i file
+        self.sysdeffile = self.newdir + f"/{self.abstract_model.model_name}_SystemDefinition.cuh"
+        
+        # Creo il builder per il file di definizione del sistema
         self.systemdef_builder = SystemDefinitionBuilder(self.abstract_model, self.logger)
+
+        # Creo il builder per il file di definizione del modello e di settaggio delle opzioni MPGOS
+        self.model_builder = ModelBuilder(
+            self.sysdeffile, self.modelparams_dict, self.abstract_model.init['initial'],
+            self.abstract_model.model_name, self.logger, self.abstract_model.odes, self.abstract_model.variables
+        )
+
 
     def createnewdir(self):
         """ Ritorna il path della nuova directory dove salvare i file """
@@ -255,6 +479,7 @@ class Builder:
         finally:
             return newdir
 
+
     def save_sysdef(self):
         """ Crea il contenuto e lo salva nel file di definizione del sistema """
         file_content = self.systemdef_builder.createSystemDefinitionFile()
@@ -270,6 +495,7 @@ class Builder:
         self.logger.debug(msg, msg)
         # END LOG
 
+
     def builfiles(self):
         """ Costruisce entrambi i file """
-        self.save_sysdef()
+        #self.save_sysdef()

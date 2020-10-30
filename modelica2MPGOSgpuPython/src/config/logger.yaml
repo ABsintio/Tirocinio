@@ -2,14 +2,24 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s - %(levelname)s : %(message)s'
 handlers:
+  BIOMD0000000005_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/log/BIOMD0000000005.log
+    formatter: simple
+    level: DEBUG
   BouncingBall_handler:
     class: logging.FileHandler
-    filename: ./log/BouncingBall.log
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/log/BouncingBall.log
+    formatter: simple
+    level: DEBUG
+  Goldbeter1995_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/log/Goldbeter1995.log
     formatter: simple
     level: DEBUG
   Zeilinger2006_PRR7_PRR9_Y_handler:
     class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/S2MResult/S2MBIOMDx8095/log/Zeilinger2006_PRR7_PRR9_Y.log
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/log/Zeilinger2006_PRR7_PRR9_Y.log
     formatter: simple
     level: DEBUG
   console:
@@ -18,9 +28,19 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  BIOMD0000000005:
+    handlers:
+    - BIOMD0000000005_handler
+    level: DEBUG
+    propagate: 'no'
   BouncingBall:
     handlers:
     - BouncingBall_handler
+    level: DEBUG
+    propagate: 'no'
+  Goldbeter1995:
+    handlers:
+    - Goldbeter1995_handler
     level: DEBUG
     propagate: 'no'
   Zeilinger2006_PRR7_PRR9_Y:

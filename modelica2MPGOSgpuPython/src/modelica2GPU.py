@@ -22,7 +22,7 @@ import xml.etree.ElementTree as ET
 import os
 
 
-logger = logger.Logger(None, ".", False)
+tmp_logger = logger.Logger(None, ".", False)
 
 
 def createXML(workingdir, modelfilename):
@@ -56,13 +56,15 @@ def getdefaultoptions(nevents, nstates, xmlfile):
     denseOutputMinumumTimeStep = 0.0
     denseOutputSaveFrequency   = 1
     tolerance                  = [get_tolerance_fromXML(xmlfile) for _ in range(nstates)]
+    timeDomainStart            = 0.0
+    timeDomainEnd              = 10.0
     return [
         major, minor,
         numberOfThreads,          numberOfProblems,  numberOfDenseOutput,
         threadsPerBlock,          initialTimeStep,   preferSharedMemory,
         maximumTimeStep,          minimumTimeStep,   timeStepGrowLimit,
         timeStepShrinkLimit,      events_directions, denseOutputMinumumTimeStep,
-        denseOutputSaveFrequency, tolerance
+        denseOutputSaveFrequency, tolerance,         timeDomainStart, timeDomainEnd
     ], device
 
 
@@ -113,7 +115,9 @@ def checkconfig(config_dict):
                isinstance(builder_config['modeldefinition']['timeStepGrowLimit'], float) and \
                isinstance(builder_config['modeldefinition']['timeStepShrinkLimit'], float) and \
                isinstance(builder_config['modeldefinition']['denseOutputMinimumTimeStep'], float) and \
-               isinstance(builder_config['modeldefinition']['denseOutputSaveFrequency'], int), \
+               isinstance(builder_config['modeldefinition']['denseOutputSaveFrequency'], int) and \
+               isinstance(builder_config['modeldefinition']['timeDomainStart'], float) and \
+               isinstance(builder_config['modeldefinition']['timeDomainEnd'], float), \
                "Se il campo userdefaultoptions è False allora tutti i restanti devono essere settati e interi"
         # Controlla che la GPU settata esista
         checkGPUexists((builder_config['gpu']['major'], builder_config['gpu']['minor']))
@@ -176,7 +180,7 @@ def conf_dict2str(conf_dict, gpu_attrs):
     for k, v in conf_dict.items():
         if k == "GPU information":
             string += getGPUattr2str(gpu_attrs, v)
-        elif isinstance(v, list):
+        elif isinstance(v, list) and len(v) > 0:
             string += f"{k}:\n    " + "    ".join([f"{k}Value{count + 1}: {v[count]}\n" for count in range(len(v))])
         else: 
             string += f"{k}: {v}\n"
@@ -186,19 +190,19 @@ def conf_dict2str(conf_dict, gpu_attrs):
 def get_modelica2GPU_configuration(config_file):
     """ Estrapola le informazioni dal file di configurazione """
     try:
-        config_dict = yaml.load(open(config_file), Loader=yaml.FullLoader)
+        config_dict = yaml.load(open(config_file))
         # START LOG
         msg = f"Controllo della struttura del configuratore {config_file}"
-        logger.debug(msg, msg)
+        tmp_logger.debug(msg, msg)
         # END LOG
         checkconfig(config_dict)    
         # START LOG
         msg = f"Controllo andato a buon fine"
-        logger.debug(msg, msg)
+        tmp_logger.debug(msg, msg)
         # END LOG
         # START LOG
         msg = f"Ottenimento delle informazioni necessarie da {config_file}"
-        logger.debug(msg, msg)
+        tmp_logger.debug(msg, msg)
         # END LOG
         # Una volta fatto il check della struttura del configuratore estraggo le informazioni necessarie
         m2g_conf, builder_config = config_dict['modelica2gpu'], config_dict['builder']
@@ -214,7 +218,7 @@ def get_modelica2GPU_configuration(config_file):
         if not builder_config['usedefaultoptions']:
             # Check del parametro eventDirection
             check_multiple_config(
-                "Il parametro eventDirection è None nonostante ci sono eventi, oppure viceversa"
+                "Il parametro eventDirection è None nonostante ci sono eventi, oppure viceversa",
                 "Il numero di parametri eventDirection non matcha con il numero di eventi rilevati",
                 "Tutti i parametri devono essere di tipo int",
                 builder_config, 'eventDirection', event_num, int
@@ -222,7 +226,7 @@ def get_modelica2GPU_configuration(config_file):
 
             # Check del parametro tolerance
             check_multiple_config(
-                "Il parametro tolerance è None nonostante ci sono stati, oppure viceversa"
+                "Il parametro tolerance è None nonostante ci sono stati, oppure viceversa",
                 "Il numero di parametri tolerance non matcha con il numero di stati rilevati",
                 "Tutti i parametri devono essere di tipo float",
                 builder_config, 'tolerance', state_num, float
@@ -238,7 +242,8 @@ def get_modelica2GPU_configuration(config_file):
                 list(builder_config['modeldefinition']['eventDirection'].values()), 
                 builder_config['modeldefinition']['denseOutputMinimumTimeStep'], 
                 builder_config['modeldefinition']['denseOutputSaveFrequency'], 
-                list(builder_config['modeldefinition']['tolerance'].values())
+                list(builder_config['modeldefinition']['tolerance'].values()),
+
             ]
             device = gpu_from_capability((builder_options[1], builder_options[2]))
         else:
@@ -267,7 +272,9 @@ def get_modelica2GPU_configuration(config_file):
             "eventDirection"            : builder_options[13],
             "denseOutputMinimumTimeStep": builder_options[14],
             "denseOutputSaveFrequency"  : builder_options[15],
-            "tolerance"                 : builder_options[16] 
+            "tolerance"                 : builder_options[16],
+            "timeDomainStart"           : builder_options[17],
+            "timeDomainEnd"             : builder_options[18]
         }
         
         conf_str = conf_dict2str(config_dict, device.get_attributes())
@@ -282,16 +289,16 @@ def get_modelica2GPU_configuration(config_file):
             elif ans.upper() == "N":
                 # START LOG
                 msg = "Uscita dal programma in quanto conferma per continuare negativa" 
-                logger.info(msg, msg)
+                tmp_logger.info(msg, msg)
                 # END LOG
                 sys.exit(0)
         
         # START LOG
         # Creazione del logger su file
         if config_dict['filelogger']:
-            m2g_logger = Logger(model_name, config_dict['workingdir'])
+            m2g_logger = logger.Logger(modelname, config_dict['workingdir'])
             msg = "Informazioni dal file di configurazione estrapolate. Riassunto della configurazione \n" + conf_str
-            m2g_logger.info("Informazioni dal file di configurazione estrapolate", msg)
+            m2g_logger.info(msg, "Informazioni dal file di configurazione estrapolate")
         # END LOG
 
         # Se il campo notifier è True allora imposto un argomento di sistema a 1, altrimenti 0
@@ -307,14 +314,28 @@ def get_modelica2GPU_configuration(config_file):
 
     except AssertionError as ae:
         msg = f"modelica2GPU ha riscontrato il seguente errore. {ae.args[0]}"
-        logger.error(msg, msg)
+        tmp_logger.error(msg, msg)
+        sys.exit(1)
 
 
 # Questo va chiamato prima invece
-get_modelica2GPU_configuration("config/modelica2gpu.yaml")
+config_dict, m2g_logger = get_modelica2GPU_configuration("config/modelica2gpu.yaml")
+del tmp_logger
 
 
-# Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro
-# per il notifier
+# Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro per il notifier
 from parser.parser import *
 from build.builder import *
+from model.model import *
+
+
+xml_parser = Parser(config_dict['xmlfile'], m2g_logger) # Creo un oggetto Parser
+xml_parser.parseXML() # Eseguo il parsing
+abstract_model = Model(
+    config_dict['modelname'], 
+    xml_parser.dynamic_equations['equations'],
+    xml_parser.dynamic_equations['events'],
+    xml_parser.algorithms, xml_parser.unique_dict, m2g_logger
+) # Creo una versione astratta del modello
+cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger) # Creo il builder
+print(cpp_builder.model_builder.buildMacroPattern())

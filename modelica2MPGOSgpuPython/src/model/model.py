@@ -5,21 +5,30 @@ from utils.graph import *
 
 class Model:
     """ Rappresenta in modo schematico e astratto il modello in studio """
-    def __init__(self, name, equations, events, algorithms, variables_dict):
+    def __init__(self, name, equations, events, algorithms, variables_dict, logger):
+        self.logger = logger
+        # START LOG
+        msg = "Chiamata alla classe Model e costruzione del modello astratto"
+        self.logger.info(msg, msg)
+        # END LOG
         self.model_name = name
-        self.odes       = Model.getODE(equations, variables_dict)                             # Crea il sistema di ODE
-        self.init       = Model.getinit(variables_dict)                                       # Prendo le equazioni iniziali
-        self.events     = events                                                              # Prendo gli eventi
+        self.odes       = Model.getODE(equations, variables_dict, logger)                             # Crea il sistema di ODE
+        self.init       = Model.getinit(variables_dict, logger)                                       # Prendo le equazioni iniziali
+        self.events     = events                                                                      # Prendo gli eventi
         # Prendo le altre equazioni rimanenti
-        self.othereq    = Model.getOtherEq(algorithms + equations, self.init, variables_dict)
-        self.variables  = list(variables_dict.values())                                       # Prendo la lista delle variabili
+        self.othereq    = Model.getOtherEq(algorithms + equations, self.init, variables_dict, logger)
+        self.variables  = list(variables_dict.values())                                               # Prendo la lista delle variabili
         # Ordino le equazioni initiali per initialization
         self.init['initialization'] = self.init_equations_sort(variables_dict)
 
 
     @staticmethod
-    def getODE(equations_list, variables_dict):
+    def getODE(equations_list, variables_dict, logger):
         """ Prende da tutta la lista di equazioni, soltanto quelle che sono della forma F[i] = <expr> """
+        # START LOG
+        msg = "Ottengo le ODE per il modello"
+        logger.debug(msg, msg)
+        # END LOG
         odes = []
         for eq in equations_list:
             lhs = eq.left.__str__()
@@ -32,8 +41,12 @@ class Model:
 
 
     @staticmethod
-    def getinit(variables_dict):
+    def getinit(variables_dict, logger):
         """ Dato il dizionario con tutte le variabili crea un lista di equazioni iniziali """
+        # START LOG
+        msg = "Ottengo le equazioni iniziali per il modello"
+        logger.debug(msg, msg)
+        # END LOG
         init_eqs = {"initial": [], "initialization": []}
         for k, value in variables_dict.items():
             varname, ivalue = value.nome, value.init
@@ -50,8 +63,12 @@ class Model:
 
 
     @staticmethod
-    def getOtherEq(equations, init_equations, variables_dict):
+    def getOtherEq(equations, init_equations, variables_dict, logger):
         """ Prende le equazioni restanti e le divide tra quelle che scatenano eventi e quelle normali """
+        # START LOG
+        msg = "Ottengo le equazioni restanti e gli algoritmi per il modello"
+        logger.debug(msg, msg)
+        # END LOG
         othereq_dict = {"trigger": [], "normal": []}
         for equ in equations:
             lhs = variables_dict[equ.left.__str__()].nome

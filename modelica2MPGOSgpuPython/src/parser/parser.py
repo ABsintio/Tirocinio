@@ -158,7 +158,7 @@ class Parser:
         state -> X, derivative -> F, independentParameter -> sPAR/i, independentConstant -> sPAR/i,
         algebraic -> ACC/i.
         """
-        return *self.createACC(), *self.createACCi(), *self.create_sPAR(), *self.create_sPARi(), *self.createX_and_F()
+        return self.createACC() + self.createACCi() + self.create_sPAR() + self.create_sPARi() + self.createX_and_F()
 
     
     def parse_scalar_variables(self):
@@ -278,17 +278,3 @@ class Parser:
             "\n\nEVENTS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["events"]]) + \
             "\n\nALGORITHMS\n" + "\n".join([x.__str__() for x in self.algorithms])
         return string
-
-
-if __name__ == "__main__":
-    # temporaneamente prendiamo in input da riga di comando il nome dell'xml
-    model_name = sys.argv[1].split(".")[-2].split("/")[-1]
-    logger = Logger(model_name, ".")
-    p = Parser(sys.argv[1], logger)
-    p.parseXML()
-    m = model.Model(
-        model_name, p.dynamic_equations['equations'], 
-        p.dynamic_equations['events'], p.algorithms, p.unique_dict
-    )
-    b = builder.Builder(m, ".", logger)
-    b.builfiles()

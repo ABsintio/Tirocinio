@@ -23,7 +23,7 @@ class Logger:
         self.modelname = modelname
         self.wdir = workingdir
         # Prendo un logger da console (ossia il root)
-        logging.config.dictConfig(yaml.load(open(CONFIG_FILE, mode="r"), Loader=yaml.FullLoader))
+        logging.config.dictConfig(yaml.load(open(CONFIG_FILE, mode="r")))
         self.clogger = logging.getLogger("root")
         self.logger = None
         self.testlog = log
@@ -51,7 +51,7 @@ class Logger:
         logger.info("Iniziazione della procedura di aggiornamento")
         try:
             # Apro in lettura il file yaml e carico il dizionario
-            yaml_dict = yaml.load(open(CONFIG_FILE, mode="r", encoding="utf-8"), Loader=yaml.FullLoader)
+            yaml_dict = yaml.load(open(CONFIG_FILE, mode="r", encoding="utf-8"))
             logger.debug("Estratto il dizionario dal file %s" % (CONFIG_FILE))
             # Per ogni elemento nel dizionario, prendo la rispettiva
             # sezione del file yaml e aggiungo il contenuto presente
@@ -89,7 +89,7 @@ class Logger:
         """
         # Configuriamo il logger
         with open(CONFIG_FILE, mode="r", encoding="utf-8") as stream:
-            logging.config.dictConfig(yaml.load(stream, Loader=yaml.FullLoader))
+            logging.config.dictConfig(yaml.load(stream))
 
         # Creiamo il dizionario con il quale aggiornare il file di configurazione
         update = {
@@ -132,7 +132,7 @@ class Logger:
                          "Logger aggiornato e configurato correttamente")
         n.show()
         # Creo il nuovo logger
-        logging.config.dictConfig(yaml.load(open(CONFIG_FILE, mode="r"), Loader=yaml.FullLoader))
+        logging.config.dictConfig(yaml.load(open(CONFIG_FILE, mode="r")))
         self.logger = logging.getLogger(self.modelname)
         if self.logger:
             self.logger.info("Logger %s creato con successo" % (self.logger.__str__()))
