@@ -204,7 +204,7 @@ def conf_dict2str(conf_dict, gpu_attrs):
     string = "CONFIGURAZIONE ESTRAPOLATA\n"
     for k, v in conf_dict.items():
         if k == "GPU information":
-            string += getGPUattr2str(gpu_attrs, v)
+            string += getGPUattr2str(gpu_attrs, v.name())
         elif isinstance(v, list) and len(v) > 0:
             string += f"{k}:\n    " + "    ".join([f"{k}Value{count + 1}: {v[count]}\n" for count in range(len(v))])
         else: 
@@ -283,7 +283,7 @@ def get_modelica2GPU_configuration(config_file):
             "notifier"                  : notifier,
             "filelogger"                : filelogger,
             "MPGOSsourcedir"            : builder_options[0],
-            "GPU information"           : device.name(),
+            "GPU information"           : device,
             "numberOfThreads"           : builder_options[3],
             "numberOfProblems"          : builder_options[4],
             "numberOfDenseOutput"       : builder_options[5],
@@ -365,5 +365,7 @@ abstract_model = Model(
 ) # Creo una versione astratta del modello
 
 cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger) # Creo il builder
-print(cpp_builder.model_builder.buildMPGOS_MacroPattern())
-print(cpp_builder.model_builder.buildMPGOS_SaveDataFunction())
+cpp_builder.builfiles()
+# print(cpp_builder.model_builder.buildMPGOS_MacroPattern())
+# print(cpp_builder.model_builder.buildMPGOS_SaveDataFunction())
+print(cpp_builder.model_builder.buildMPGOS_MainFunction())

@@ -3,6 +3,7 @@ from utils.notifier import *
 import os
 from os import path
 import sys
+from model import model
 
 
 #--------------------------# DEFINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
@@ -135,64 +136,60 @@ void SaveData(
     ofstream& DataFile, int NumberOfThreads
 ) {
     int Width = 18;
-	DataFile.precision(10);
-	DataFile.flags(ios::scientific);
+    DataFile.precision(10);
+    DataFile.flags(ios::scientific);
 	
-	for (int tid=0; tid<NumberOfThreads; tid++)
-	{
-        %s
+    for (int tid=0; tid<NumberOfThreads; tid++)
+    {
+%s
         DataFile.width(Width); DataFile << endl;
-        %s
-        %s
-        %s
-        %s
-        %s
-		DataFile << '\n';
-	}
+%s
+        DataFile << '\\n';
+    }
 }
 """
 
 
 MPGOS_MainFunction = """
 int main() {
-    int numberOfProblems = {numberOfProblems}; // Numero di problemi da risolvere, uno per thread
-    int blockSize        = {blockSize};        // Numero di Thread per blocchi
+    int numberOfProblems = %d; // Numero di problemi da risolvere, uno per thread
+    int blockSize        = %d;        // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
     ListCUDADevices();
 
-    int MajorVersion = {GPUMajor};             // Major version della CUDA compute capability
-    int MinorVersion = {GPUMinor};             // Minor version della CUDA compute capability
+    int MajorVersion = %d;             // Major version della CUDA compute capability
+    int MinorVersion = %d;             // Minor version della CUDA compute capability
 
     // Seleziona il Device da utilizzare dando in input la CUDA compute capability e ne stampa le caratteristiche
     int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);
     PrintPropertiesOfSpecificDevice(SelectedDevice);
 
-    {initialEquationVectorParameterString}
+%s
 
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION> Solver(SelectedDevice);
     Solver.SolverOption(ThreadsPerBlock, BlockSize);
-    Solver.SolverOption(PreferSharedMemory, {preferSharedMemory});
-    Solver.SolverOption(InitialTimeStep, {initialTimeStep});
+    Solver.SolverOption(PreferSharedMemory, %d);
+    Solver.SolverOption(InitialTimeStep, %f);
     Solver.SolverOption(ActiveNumberOfThreads, NT);
-    Solver.SolverOption(MaximumTimeStep, {maximumTimeStep});
-    Solver.SolverOption(MinimumTimeStep, {minimumTimeStep});
-    Solver.SolverOption(TimeStepGrowLimit, {timeStepGrowLimit});
-    Solver.SolverOption(TimeStepShrinkLimit, {timeStepShrinkLimit});
-    {eventDirectionsString}
-    Solver.SolverOption(DenseOutputMinimumTimeStep, {denseOutputMinimumTimeStep});
-    Solver.SolverOption(DenseOutputSaveFrequency, {denseOutputSaveFrequency});
-    {tolerancesString}
+    Solver.SolverOption(MaximumTimeStep, %f);
+    Solver.SolverOption(MinimumTimeStep, %f);
+    Solver.SolverOption(TimeStepGrowLimit, %f);
+    Solver.SolverOption(TimeStepShrinkLimit, %f);
+%s
+    Solver.SolverOption(DenseOutputMinimumTimeStep, %f);
+    Solver.SolverOption(DenseOutputSaveFrequency, %f);
+%s
 
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "{modelname}.csv" );
+    DataFile.open ( "%s.csv" );
     clock_t SimulationStart = clock();
 	clock_t TransientStart;
     clock_t TransientEnd;
 
     for (int i=0; i < NumberOfSimulationLaunches; i++) {
-        {fillSolverObjectCall};
+        %s;
         Solver.SynchroniseFromHostToDevice(All);
         Solver.InsertSynchronisationPoint();
         Solver.SynchroniseSolver();
@@ -236,7 +233,7 @@ MPGOS_FillFunction_Defionition = """
 void FillSolverObject(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
     {sharedParametersList}, {sharedIntegerParameterList}, vector<PRECISION>& Variable_X, 
-    {accessorieParameterList}, {accessorieIntegerParameterList}, int FirstProblemNumber, int NumberOfThreads
+    int FirstProblemNumber, int NumberOfThreads
 ) {
     int k_begin = FirstProblemNumber;
 	int k_end   = FirstProblemNumber + NumberOfThreads;
@@ -288,6 +285,7 @@ class ModelBuilder:
         self.odes              = odes
         self.logger            = logger
         self.variables         = variables
+        self.variables_dict    = {x.nome: x for x in self.variables}
         # START LOG
         msg = "Chiamata alla classe ModelBuilder"
         self.logger.info(msg, msg)
@@ -318,32 +316,48 @@ class ModelBuilder:
     def buildMPGOS_SaveDataFunction(self):
         """ Formatta la stringa per la funzione di salvataggio dell'output su file """
         global MPGOS_SaveDataFunction
-        str2format_title  = " "*12 + "DataFile.width(Width); DataFile << \"{name}\" << ',';"
+        str2format_title  = " "*8 + "DataFile.width(Width); DataFile << \"{name}\" << ',';"
         params_list = [[x for x in self.variables if isinstance(x, X)],
                        [x for x in self.variables if isinstance(x, sPAR)],
                        [x for x in self.variables if isinstance(x, sPARi)],
                        [x for x in self.variables if isinstance(x, ACC)],
                        [x for x in self.variables if isinstance(x, ACCi)]]
         title_field = "\n".join([str2format_title.format(name=f"{x.__class__.__name__}_{x.nome}") for y in params_list for x in y])
-        actualstategh_str = " "*12 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, {id}) << ',';"
+        actualstategh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, {id}) << ',';"
         actual_state      = "\n".join([actualstategh_str.format(id=i) for i, _ in enumerate(params_list[0])])
-        spargh_str = " "*12 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, {id}) << ',';"
+        spargh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, {id}) << ',';"
         spar       = "\n".join([spargh_str.format(id=i) for i, _ in enumerate(params_list[1])])
-        sparigh_str = "        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(IntegerSharedParameters, {id}) << ',';"
+        sparigh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(IntegerSharedParameters, {id}) << ',';"
         spari       = "\n".join([sparigh_str.format(id=i) for i, _ in enumerate(params_list[2])])
-        accgh_str = "        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, {id}) << ',';"
+        accgh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, {id}) << ',';"
         acc       = "\n".join([accgh_str.format(id=i) for i, _ in enumerate(params_list[3])])
-        accigh_str = "        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, {id}) << ',';"
+        accigh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, {id}) << ',';"
         acci       = "\n".join([accigh_str.format(id=i) for i, _ in enumerate(params_list[4])])
+        total_str = ""
+        for param in [actual_state, spar, spari, acc, acci]:
+            if param != "": total_str += param + "\n"
         MPGOS_SaveDataFunction = MPGOS_SaveDataFunction % (
             title_field,
-            actual_state + "\n",
-            spar + "\n",
-            spari + "\n",
-            acc + "\n",
-            acci
+            total_str
         )
         return MPGOS_SaveDataFunction
+
+
+    def buildMPGOS_MainFunction(self):
+        """ Formatta la stringa per la il main """
+        global MPGOS_MainFunction
+        nop = self.config_dict['numberOfProblems']
+        block_size = self.config_dict['threadsPerBlock']
+        GPUMajor = self.config_dict['GPU information'].compute_capability()[0]
+        GPUMinor = self.config_dict['GPU information'].compute_capability()[1]
+        str2format = " "*4 + "PRECISION InitialCondtition_%s\n"
+        initial_eq = [
+            [str2format % (str(eq)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], X)],
+            [str2format % (str(eq)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], sPAR)],
+            [str2format % (str(eq)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], sPARi)],
+        ]
+        vector_str = "vector<PRECISION> Parameter_%s = {%s}"
+        vector_list = [vector_str % ("X")]
 
 
 class SystemDefinitionBuilder:
@@ -417,7 +431,7 @@ class SystemDefinitionBuilder:
         # END LOG
         global MPGOS_PerThread_Initialization
         MPGOS_PerThread_Initialization = MPGOS_PerThread_Initialization % (
-            Var.createMPGOScodeline(self.abstract_model.init['initialization']))
+            Var.createMPGOScodeline([x.__str__() for x in self.abstract_model.init['initialization']]))
         return MPGOS_PerThread_Initialization
 
 
@@ -527,4 +541,3 @@ class Builder:
     def builfiles(self):
         """ Costruisce entrambi i file """
         #self.save_sysdef()
-        pass

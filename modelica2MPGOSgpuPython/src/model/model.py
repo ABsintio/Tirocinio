@@ -1,7 +1,7 @@
 from tagclasses.variables import *
 import re
 from utils.graph import *
-
+from tagclasses.tagclasses import *
 
 class Model:
     """ Rappresenta in modo schematico e astratto il modello in studio """
@@ -56,8 +56,8 @@ class Model:
                 # Se l'equazione iniziale è del tipo x = <numero> allora la inseriamo nel
                 # file con tutte le equazioni iniziali, ossia il Model.cu, altrimenti la 
                 # inseriamo nella funzione PerThread_Initialization del Model_SystemDefinition.cuh
-                element = ("initial", f"{varname} = {ivalue}") if re.match(r"\d+\.*\d*", ivalue) \
-                          else ("initialization", f"{k} = {ivalue}")
+                element = ("initial", Equation(varname.strip(), ivalue.strip())) if re.match(r"\d+\.*\d*", ivalue) \
+                          else ("initialization", Equation(k.strip(), ivalue.strip()))
                 init_eqs[element[0]].append(element[1])
         return init_eqs
 
@@ -77,7 +77,7 @@ class Model:
                 # Se la variabile parte sinistra dell'equazione non ha un valore iniziale allora inseriamo
                 # tale equazione come valore iniziale nella funzione PerThread_Initialization
                 if typeeq != 'trigger' and variables_dict[str(equ.left)].init is None:
-                    init_equations['initialization'].append(str(equ))
+                    init_equations['initialization'].append(equ)
                 # Se la parte sinistra dell'equazione matcha $whenCondition<numero> allora è un trigger
                 othereq_dict[typeeq].append(equ)
             
@@ -86,19 +86,12 @@ class Model:
 
     def init_equations_sort(self, MPGOSparams_dict):
         """ Sorta le equazioni initiali con tag "initialization" """
-        equ_dipendency_dag = DAG(self.init['initialization'], MPGOSparams_dict) # Crea un DAG
+        init_str = [str(x) for x in self.init['initialization']]
+        equ_dipendency_dag = DAG(init_str, MPGOSparams_dict) # Crea un DAG
         top_sort = equ_dipendency_dag.topological_sort()                        # Esegue l'algoritmo di ordinamento topologico
         new_init_eq = []
-        init_eq_dict = {x.split("=")[0].strip(): x.split("=")[1].strip() for x in self.init['initialization']}
+        init_eq_dict = {x.left.__str__(): x.right.__str__() for x in self.init['initialization']}
         for lhs in top_sort:
             # Devo prendere l'equazione iniziale associata
-            new_init_eq.append(f"{lhs} = {init_eq_dict[lhs]}")
+            new_init_eq.append(Equation(lhs, init_eq_dict[lhs]))
         return new_init_eq if new_init_eq != [] else self.init['initialization']
-
-
-    def __str__(self):
-        return "MODEL\n\nVARIABLES\n"  + "\n".join([x.__str__() for x in self.variables]) + \
-               "\n\nODE SYSTEM\n"      + "\n".join([x.__str__() for x in self.odes])      + \
-               "\n\nINITIAL EQUATIONS\n" + "\n".join([f"({x}, {y.__str__()})" for x in self.init for y in self.init[x]]) + \
-               "\n\nEVENTS\n"          + "\n".join([x.__str__() for x in self.events])    + \
-               "\n\nOTHER EQUATIONS\n"   + "\n".join([f"({x}, {y.__str__()})" for x in self.othereq for y in self.othereq[x]])

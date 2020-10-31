@@ -1,6 +1,6 @@
 
-#ifndef BouncingBall_PERTHREAD_SYSTEMDEFINITION_H
-#define BouncingBall_PERTHREAD_SYSTEMDEFINITION_H
+#ifndef _PERTHREAD_SYSTEMDEFINITION_H
+#define _PERTHREAD_SYSTEMDEFINITION_H
 
 #include <fstream>
 #include <iostream>
