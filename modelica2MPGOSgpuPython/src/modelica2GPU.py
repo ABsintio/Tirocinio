@@ -363,5 +363,7 @@ abstract_model = Model(
     xml_parser.dynamic_equations['events'],
     xml_parser.algorithms, xml_parser.unique_dict, m2g_logger
 ) # Creo una versione astratta del modello
+
 cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger) # Creo il builder
-print(cpp_builder.model_builder.buildMacroPattern())
+print(cpp_builder.model_builder.buildMPGOS_MacroPattern())
+print(cpp_builder.model_builder.buildMPGOS_SaveDataFunction())

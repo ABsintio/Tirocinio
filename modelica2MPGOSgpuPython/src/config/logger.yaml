@@ -22,12 +22,22 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/log/Zeilinger2006_PRR7_PRR9_Y.log
     formatter: simple
     level: DEBUG
+  _handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     formatter: simple
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  ? ''
+  : handlers:
+    - _handler
+    level: DEBUG
+    propagate: 'no'
   BIOMD0000000005:
     handlers:
     - BIOMD0000000005_handler

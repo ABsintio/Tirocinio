@@ -134,22 +134,19 @@ void SaveData(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
     ofstream& DataFile, int NumberOfThreads
 ) {
-	int Width = 18;
+    int Width = 18;
 	DataFile.precision(10);
 	DataFile.flags(ios::scientific);
 	
 	for (int tid=0; tid<NumberOfThreads; tid++)
 	{
-        {actualStateString}
-        {sharedParameterString}
-        {sharedIntegerParameterString}
-        {accessorieParameterString}
-        {accessorieIntegerParameterString}
-        {actualStateGetHost}
-        {sharedParameterGetHost}
-        {sharedIntegerParameterGetHost}
-        {accessorieParameterGetHost}
-        {accessorieIntegerParameterGetHost}
+        %s
+        DataFile.width(Width); DataFile << endl;
+        %s
+        %s
+        %s
+        %s
+        %s
 		DataFile << '\n';
 	}
 }
@@ -297,7 +294,7 @@ class ModelBuilder:
         # END LOG
     
 
-    def buildMacroPattern(self):
+    def buildMPGOS_MacroPattern(self):
         """ Formatta la stringa della defizione delle MACRO e delle costanti """
         global MPGOS_Model_Macro
         # START LOG
@@ -316,6 +313,37 @@ class ModelBuilder:
             numberOfDenseOutput=self.config_dict['numberOfDenseOutput']
         )
         return MPGOS_Model_Macro
+
+    
+    def buildMPGOS_SaveDataFunction(self):
+        """ Formatta la stringa per la funzione di salvataggio dell'output su file """
+        global MPGOS_SaveDataFunction
+        str2format_title  = " "*12 + "DataFile.width(Width); DataFile << \"{name}\" << ',';"
+        params_list = [[x for x in self.variables if isinstance(x, X)],
+                       [x for x in self.variables if isinstance(x, sPAR)],
+                       [x for x in self.variables if isinstance(x, sPARi)],
+                       [x for x in self.variables if isinstance(x, ACC)],
+                       [x for x in self.variables if isinstance(x, ACCi)]]
+        title_field = "\n".join([str2format_title.format(name=f"{x.__class__.__name__}_{x.nome}") for y in params_list for x in y])
+        actualstategh_str = " "*12 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, {id}) << ',';"
+        actual_state      = "\n".join([actualstategh_str.format(id=i) for i, _ in enumerate(params_list[0])])
+        spargh_str = " "*12 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, {id}) << ',';"
+        spar       = "\n".join([spargh_str.format(id=i) for i, _ in enumerate(params_list[1])])
+        sparigh_str = "        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(IntegerSharedParameters, {id}) << ',';"
+        spari       = "\n".join([sparigh_str.format(id=i) for i, _ in enumerate(params_list[2])])
+        accgh_str = "        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, {id}) << ',';"
+        acc       = "\n".join([accgh_str.format(id=i) for i, _ in enumerate(params_list[3])])
+        accigh_str = "        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, {id}) << ',';"
+        acci       = "\n".join([accigh_str.format(id=i) for i, _ in enumerate(params_list[4])])
+        MPGOS_SaveDataFunction = MPGOS_SaveDataFunction % (
+            title_field,
+            actual_state + "\n",
+            spar + "\n",
+            spari + "\n",
+            acc + "\n",
+            acci
+        )
+        return MPGOS_SaveDataFunction
 
 
 class SystemDefinitionBuilder:
@@ -499,3 +527,4 @@ class Builder:
     def builfiles(self):
         """ Costruisce entrambi i file """
         #self.save_sysdef()
+        pass
