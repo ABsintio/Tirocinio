@@ -29,13 +29,14 @@ import xml.etree.ElementTree as ET
 import os
 import subprocess
 import re
+import time
 import warnings
 warnings.filterwarnings("ignore") # Sopprimo tutti gli warning inutili
 
 
 tmp_logger = logger.Logger(None, ".", False)
 coloredlogs.install(level="DEBUG", logger=tmp_logger.clogger)
-
+start = time.time()
 
 def createXML(workingdir, modelfilename, omlibrary):
     """ Crea l'XML tramite il comando del compilatore openmodelica e ritorna il nome del file """
@@ -382,7 +383,8 @@ try:
     cpp_builder.builfiles()
 
     # START LOG
-    msg = "Operazione di traduzione terminata con successo. "
+    end = time.time()
+    msg = f"Operazione di traduzione terminata con successo in {end - start}ms."
     m2g_logger.debug(msg, msg)
     # END LOG
 except Exception as e:

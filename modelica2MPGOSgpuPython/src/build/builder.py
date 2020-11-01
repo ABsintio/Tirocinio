@@ -28,8 +28,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 MPGOS_PerThread_EventFunction = """
 template<class Precision> __forceinline__ __device__ void PerThread_EventFunction(
 	int tid, int NT, Precision*	  EF, \\
-	Precision     T, Precision    dT, Precision    TD, Precision*	X, \\
-	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
+	Precision     T, Precision    dT, Precision*    TD, Precision*	X, \\
+	Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi  		
 ) {
 %s
 }
@@ -113,7 +113,7 @@ using namespace std;
 #define PRECISION double
 const int NT   = {numberOfThreads};
 const int SD   = {systemDimension};
-const int NCP  = 0;
+const int NCP  = 1;
 const int NSP  = {numberOfSharedParameter};
 const int NISP = {numberOfIntegerSharedParameter};
 const int NE   = {numberOfEvents};
@@ -270,7 +270,7 @@ MPGOS_ModelFileDefinition = """
 
 MPGOS_MakeFile = """
 INCL_DIR = -I$(HOME){MPGOSsourcedir}
-CMPL_OPT = -03 --std=c++11 --ptxas-options=v --gpu-architecture=sm_{GPU} -lineinfo -w -maxrregcount=80
+CMPL_OPT = -O3 --std=c++11 --ptxas-options=-v --gpu-architecture=sm_{GPU} -lineinfo -w -maxrregcount=80
 
 all: {modelname}.exe
 
