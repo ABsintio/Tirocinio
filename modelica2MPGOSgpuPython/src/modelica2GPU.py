@@ -16,15 +16,25 @@ except ImportError:
     print("pip install notify2 oppure pip3 install notify2")
     sys.exit(1)
 
+try:
+    import coloredlogs
+except ImportError:
+    print("Errore: il modulo coloredlogs non è stato installato. Si prega di installarlo con")
+    print("pip install coloredlogs oppure pip3 install coloredlogs")
+    sys.exit(1)
+
 import yaml
 from utils import logger, notifier
 import xml.etree.ElementTree as ET
 import os
 import subprocess
 import re
+import warnings
+warnings.filterwarnings("ignore") # Sopprimo tutti gli warning inutili
 
 
 tmp_logger = logger.Logger(None, ".", False)
+coloredlogs.install(level="DEBUG", logger=tmp_logger.clogger)
 
 
 def createXML(workingdir, modelfilename, omlibrary):
@@ -323,6 +333,7 @@ def get_modelica2GPU_configuration(config_file):
         if config_dict['filelogger']:
             m2g_logger = logger.Logger(modelname, config_dict['workingdir'])
             msg = "Informazioni dal file di configurazione estrapolate. Riassunto della configurazione \n" + conf_str
+            coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
             m2g_logger.info(msg, "Informazioni dal file di configurazione estrapolate")
         # END LOG
 
@@ -338,7 +349,7 @@ def get_modelica2GPU_configuration(config_file):
         return config_dict, m2g_logger
 
     except AssertionError as ae:
-        msg = f"modelica2GPU ha riscontrato il seguente errore. {ae.args[0]}"
+        msg = f"\031[1;32;40modelica2GPU ha riscontrato il seguente errore. {ae.args[0]}"
         tmp_logger.error(msg, msg)
         sys.exit(1)
 
@@ -348,24 +359,42 @@ def get_modelica2GPU_configuration(config_file):
 config_dict, m2g_logger = get_modelica2GPU_configuration("config/modelica2gpu.yaml")
 del tmp_logger
 
+coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
 
-# Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro per il notifier
-from parser.parser import *
-from build.builder import *
-from model.model import *
+try:
+    # Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro per il notifier
+    from parser.parser import *
+    from build.builder import *
+    from model.model import *
 
 
-xml_parser = Parser(config_dict['xmlfile'], m2g_logger) # Creo un oggetto Parser
-xml_parser.parseXML() # Eseguo il parsing
-abstract_model = Model(
-    config_dict['modelname'], 
-    xml_parser.dynamic_equations['equations'],
-    xml_parser.dynamic_equations['events'],
-    xml_parser.algorithms, xml_parser.unique_dict, m2g_logger
-) # Creo una versione astratta del modello
+    xml_parser = Parser(config_dict['xmlfile'], m2g_logger) # Creo un oggetto Parser
+    xml_parser.parseXML() # Eseguo il parsing
+    abstract_model = Model(
+        config_dict['modelname'], 
+        xml_parser.dynamic_equations['equations'],
+        xml_parser.dynamic_equations['events'],
+        xml_parser.algorithms, xml_parser.unique_dict, m2g_logger
+    ) # Creo una versione astratta del modello
 
-cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger) # Creo il builder
-cpp_builder.builfiles()
-# print(cpp_builder.model_builder.buildMPGOS_MacroPattern())
-# print(cpp_builder.model_builder.buildMPGOS_SaveDataFunction())
-print(cpp_builder.model_builder.buildMPGOS_MainFunction())
+    # Creo il builder ed infine costruisco i tre file: Model.cu, Model_SystemDefinition.cuh, makefile
+    cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger)
+    cpp_builder.builfiles()
+
+    # START LOG
+    msg = "Operazione di traduzione terminata con successo. "
+    m2g_logger.debug(msg, msg)
+    # END LOG
+except Exception as e:
+    msg = f"\031[1;32;40mmodelica2GPU ha riscontrato il seguente errore. {e.args[0]}"
+    m2g_logger.error(msg, msg)
+    sys.exit(1)
+
+print("\n\n\033[1;32;40mMESSAGGIO DA MODELICA2GPU")
+print("\033[1;32;40mDurante l'operazione modelica2GPU non riscontrato alcun errore rilevante.")
+print("\033[1;32;40mTutti i file sono stati salvati nella directory indicata nel file di configurazione: \n")
+print(f"    \033[1;32;40m{config_dict['workingdir']}{config_dict['modelname']}_MPGOS\n")
+print("\033[1;32;40mIl file di log è presente nella working directory sotto la voce 'log'")
+print("\033[1;32;40mAdesso è possibile compilare i file Cpp, con il comando 'make all' e simulare il modello\n")
+print("\033[1;32;40mSi ringrazia l'utente per aver provato modelica2GPU\n")
+print("\033[1;32;40mCordiali saluti, X\n\n")

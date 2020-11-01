@@ -86,20 +86,20 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
 ) {
     T     = TD[0];
     DOIDX = 0;
-    ACC[2] = (0.75 / X[26]);
-    ACC[19] = (0.25 / X[26]);
-    ACC[3] = ((ACC[1] + (ACC[2] + (ACC[5] + ACC[19]))) * X[26]);
-    ACC[14] = (X[26] * (ACC[19] * (sPAR[9] + (sPAR[8] * pow((ACC[5] / ACC[3]),2.0)))));
-    ACC[16] = ((ACC[18] + (ACC[15] + (ACC[5] + ACC[19]))) * X[26]);
-    ACC[11] = (X[26] * sPAR[5]);
-    ACC[12] = (X[26] * (sPAR[6] * ACC[18]));
-    ACC[6] = (X[26] * (sPAR[0] * ACC[5]));
-    ACC[10] = (X[26] * (sPAR[4] * ACC[5]));
-    ACC[0] = pow((ACC[5] / ACC[3]),2.0);
-    ACC[13] = (X[26] * (sPAR[7] * ACC[15]));
-    ACC[8] = (X[26] * (ACC[2] * sPAR[2]));
-    ACC[9] = (X[26] * (ACC[2] * (sPAR[3] * ACC[18])));
-    ACC[7] = (X[26] * (ACC[1] * sPAR[1]));
+    ACC[2]=(0.75 / X[26]);
+    ACC[19]=(0.25 / X[26]);
+    ACC[3]=((ACC[1] + (ACC[2] + (ACC[5] + ACC[19]))) * X[26]);
+    ACC[14]=(X[26] * (ACC[19] * (sPAR[9] + (sPAR[8] * pow((ACC[5] / ACC[3]),2.0)))));
+    ACC[16]=((ACC[18] + (ACC[15] + (ACC[5] + ACC[19]))) * X[26]);
+    ACC[11]=(X[26] * sPAR[5]);
+    ACC[12]=(X[26] * (sPAR[6] * ACC[18]));
+    ACC[6]=(X[26] * (sPAR[0] * ACC[5]));
+    ACC[10]=(X[26] * (sPAR[4] * ACC[5]));
+    ACC[0]=pow((ACC[5] / ACC[3]),2.0);
+    ACC[13]=(X[26] * (sPAR[7] * ACC[15]));
+    ACC[8]=(X[26] * (ACC[2] * sPAR[2]));
+    ACC[9]=(X[26] * (ACC[2] * (sPAR[3] * ACC[18])));
+    ACC[7]=(X[26] * (ACC[1] * sPAR[1]));
 
 }
 

@@ -6,6 +6,7 @@ import os
 import sys
 from utils import notifier
 from functools import wraps
+import coloredlogs
 
 
 #--------------------------# DEFINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
@@ -25,6 +26,7 @@ class Logger:
         # Prendo un logger da console (ossia il root)
         logging.config.dictConfig(yaml.load(open(CONFIG_FILE, mode="r")))
         self.clogger = logging.getLogger("root")
+        coloredlogs.install(level="DEBUG", logger=self.clogger)
         self.logger = None
         self.testlog = log
 
@@ -48,6 +50,7 @@ class Logger:
         """ Scrive nel file dato in input l'aggiornamento di configurazione """
         success = True
         start = time.time()
+        coloredlogs.install(level="DEBUG", logger=logger)
         logger.info("Iniziazione della procedura di aggiornamento")
         try:
             # Apro in lettura il file yaml e carico il dizionario
@@ -97,7 +100,7 @@ class Logger:
                 self.modelname + "_handler" : {
                     "class" : "logging.FileHandler", # Ossia salva il contenuto su file
                     "level" : "DEBUG",               # Utilizzato per DEBUG, WARNING e ERROR
-                    "formatter" : "simple",
+                    "formatter": "simple",
                     "filename" : self.wdir + "/log/%s.log" % (self.modelname)
                 }
             },

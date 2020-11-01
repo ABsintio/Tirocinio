@@ -206,7 +206,7 @@ class Parser:
                     var = MPGOSparameter_dict[ieqs.left.__str__()]
                     if var.init is None:
                         self.initial_equations.append(ieqs)
-                        var.setivalue(ieqs.right.__str__() + ";")
+                        var.setivalue(ieqs.right.__str__())
                 except KeyError:
                     pass
         return MPGOSparameter_dict

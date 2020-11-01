@@ -92,7 +92,7 @@ MPGOS_Model_SystemDefinition = """
 """
 
 
-#--------------------------# DEFINIZIONE DEI PATTERN PER IL FILE CHE DESCRIVE IL MODELLO    # --------------------------#	 
+#--------------------------# DEFINIZIONE DEI PATTERN PER IL FILE CHE DESCRIVE IL MODELLO # --------------------------#	 
 
 
 MPGOS_Model_Macro = """
@@ -122,13 +122,6 @@ const int NIA  = {numberOfIntegerAccessories};
 const int NDO  = {numberOfDenseOutput};
 """
 
-
-MPGOS_FillFunction_Prototype = """
-void FillSolverObject(
-    ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>&, 
-    vector<PRECISION>&, vector<PRECISION>&, int, int
-);
-"""
 
 MPGOS_SaveDataFunction = """
 void SaveData(
@@ -170,18 +163,19 @@ int main() {
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION> Solver(SelectedDevice);
     Solver.SolverOption(ThreadsPerBlock, blockSize);
     Solver.SolverOption(PreferSharedMemory, %d);
-    Solver.SolverOption(InitialTimeStep, %f);
+    Solver.SolverOption(InitialTimeStep, %s);
     Solver.SolverOption(ActiveNumberOfThreads, NT);
-    Solver.SolverOption(MaximumTimeStep, %f);
-    Solver.SolverOption(MinimumTimeStep, %f);
-    Solver.SolverOption(TimeStepGrowLimit, %f);
-    Solver.SolverOption(TimeStepShrinkLimit, %f);
+    Solver.SolverOption(MaximumTimeStep, %s);
+    Solver.SolverOption(MinimumTimeStep, %s);
+    Solver.SolverOption(TimeStepGrowLimit, %s);
+    Solver.SolverOption(TimeStepShrinkLimit, %s);
 %s
-    Solver.SolverOption(DenseOutputMinimumTimeStep, %f);
-    Solver.SolverOption(DenseOutputSaveFrequency, %f);
+    Solver.SolverOption(DenseOutputMinimumTimeStep, %s);
+    Solver.SolverOption(DenseOutputSaveFrequency, %s);
 %s
 %s   
-
+    
+    int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems %s == 0 ? 0:1);
     ofstream DataFile;
     DataFile.open ( "%s.csv" );
     clock_t SimulationStart = clock();
@@ -228,19 +222,19 @@ int main() {
 }
 """
 
-MPGOS_FillFunction_Defionition = """
+MPGOS_FillFunction_Definition = """
 void FillSolverObject(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
-    {sharedParametersList}{sharedIntegerParameterList}, vector<PRECISION>& Variable_X, 
+    %s vector<PRECISION>& Variable_X, 
     int FirstProblemNumber, int NumberOfThreads
 ) {
     int k_begin = FirstProblemNumber;
-	int k_end   = FirstProblemNumber + NumberOfThreads;
+    int k_end   = FirstProblemNumber + NumberOfThreads;
 	
     int ProblemNumber = 0;
     while (k_begin < k_end) {
-        Solver.SetHost(ProblemNumber, TimeDomain, 0, {timeDomainStart});
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, {timeDomainEnd});  
+        Solver.SetHost(ProblemNumber, TimeDomain, 0, %s);
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, %s);  
 
         int i = 0;
         for (PRECISION x : Variable_X) {
@@ -251,16 +245,41 @@ void FillSolverObject(
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
         Solver.SetHost(ProblemNumber, DenseIndex, 0 );
 
-        {accessoriesAddLoop}
-        {accessoriesIntegerAddLoop}
+%s
+%s
 		
 		ProblemNumber++;
         k_begin++;
     }
 
-    {sharedAddLoop}
-    {sharedIntegerAddLoop}
+%s
+%s
 }
+"""
+
+MPGOS_ModelFileDefinition = """
+{MPGOS_ModelMacro}
+{MPGOS_FillFunctionDefinition}
+{MPGOS_SaveDataFunction}
+{MPGOS_MainFunction}
+"""
+
+
+#--------------------------# DEFINIZIONE DEI PATTERN PER IL FILE CHE DESCRIVE IL MODELLO    # --------------------------#
+
+
+MPGOS_MakeFile = """
+INCL_DIR = -I$(HOME){MPGOSsourcedir}
+CMPL_OPT = -03 --std=c++11 --ptxas-options=v --gpu-architecture=sm_{GPU} -lineinfo -w -maxrregcount=80
+
+all: {modelname}.exe
+
+{modelname}.exe: {modelname}.cu
+    nvcc -o {modelname}.exe {modelname}.cu $(INCL_DIR) $(CMPL_OPT)
+
+clean:
+    rm -f {modelname}.exe
+    rm -f *.txt
 """
 
 
@@ -284,7 +303,7 @@ class ModelBuilder:
         self.odes              = odes
         self.logger            = logger
         self.variables         = variables
-        self.variables_dict    = {x.nome: x for x in self.variables}
+        self.variables_dict    = {x.nome.replace(".", "_"): x for x in self.variables}
         # START LOG
         msg = "Chiamata alla classe ModelBuilder"
         self.logger.info(msg, msg)
@@ -315,6 +334,10 @@ class ModelBuilder:
     def buildMPGOS_SaveDataFunction(self):
         """ Formatta la stringa per la funzione di salvataggio dell'output su file """
         global MPGOS_SaveDataFunction
+        # START LOG
+        msg = "Formattazione della stringa per la funzione di salvataggio dell'output su file"
+        self.logger.info(msg, msg)
+        # END LOG
         str2format_title  = " "*8 + "DataFile.width(Width); DataFile << \"{name}\" << ',';"
         params_list = [[x for x in self.variables if isinstance(x, X)],
                        [x for x in self.variables if isinstance(x, sPAR)],
@@ -345,6 +368,10 @@ class ModelBuilder:
     def buildMPGOS_MainFunction(self):
         """ Formatta la stringa per la il main """
         global MPGOS_MainFunction
+        # START LOG
+        msg = "Formattazione della stringa per la funzione di main"
+        self.logger.info(msg, msg)
+        # END LOG
         nop = self.config_dict['numberOfProblems']
         block_size = self.config_dict['threadsPerBlock']
         GPUMajor = self.config_dict['GPU information'].compute_capability()[0]
@@ -368,7 +395,7 @@ class ModelBuilder:
             vector_sPAR % (",".join(spars)) if len(spars) > 0 else "",
             vector_sPARi % (",".join(sparis)) if len(sparis) > 0 else ""
         ]
-        initialEquation = "".join(["%s%s" % ("".join(x[0][0]), y) for x, y in zip(initial_eq, vectors) if x and y])
+        initialEquation = "".join(["%s%s" % ("".join([y[0] for y in x]), y) for x, y in zip(initial_eq, vectors) if x and y])
         # Formatta i parametri per la funzione SolverOption
         preferSharedMemory = self.config_dict['preferSharedMemory']
         initialTimeStep = self.config_dict['initialTimeStep']
@@ -380,8 +407,8 @@ class ModelBuilder:
         eventDirections = "".join([event_str % (x, y) for x, y in enumerate(self.config_dict['eventDirection'])])
         denseOutputMiniumumTimeStep = self.config_dict['denseOutputMinimumTimeStep']
         denseOutputSaveFrequency = self.config_dict['denseOutputSaveFrequency']
-        abs_tolerance = " "*4 + "Solver.SolverOption(AbsoluteTolerance, %d, %f);\n"
-        relative_tolerance = " "*4 + "Solver.SolverOption(RelativeTolerance, %d, %f);\n"
+        abs_tolerance = " "*4 + "Solver.SolverOption(AbsoluteTolerance, %d, %s);\n"
+        relative_tolerance = " "*4 + "Solver.SolverOption(RelativeTolerance, %d, %s);\n"
         absoluteTolerances = "".join([abs_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
         relativeTolerances = "".join([relative_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
         # Formattazione della stringa di chiamata alla funzione fillSolverObject
@@ -395,9 +422,77 @@ class ModelBuilder:
             timeStepGrowLimit, timeStepShrinkLimit,
             eventDirections, denseOutputMiniumumTimeStep, 
             denseOutputSaveFrequency, absoluteTolerances,
-            relativeTolerances, self.model_name, fillSolverObjectFunctionCall
+            relativeTolerances, "% NT", self.model_name,fillSolverObjectFunctionCall
         )
         return MPGOS_MainFunction
+    
+
+    def buildMPGOS_FillFunction_Definition(self):
+        """ Formatta la stringa per la definizione della funzione fillSolverObject """
+        global MPGOS_FillFunction_Definition
+        # START LOG
+        msg = "Formattazione della stringa per la funzione fillSolverObject"
+        self.logger.info(msg, msg)
+        # END LOG
+        # Controllo l'esistenza di almeno una equazione iniziale di tipo sPAR
+        spars = [isinstance(self.variables_dict[eq.left], sPAR) for eq in self.initial_equations]
+        sharedPar_vect = "vector<PRECISION>& Parameter_sPAR, " if any(spars) else ""
+        # Controllo l'esistenza di almeno una equazione iniziale di tipo sPARi
+        sparis = [isinstance(self.variables_dict[eq.left], sPARi) for eq in self.initial_equations]
+        sharedParI_vect = "vector<PRECISION>& Parameter_sPARi, " if any(sparis) else ""
+        vector_in_fundef = f"{sharedPar_vect}{sharedParI_vect}"
+        # Prendo i valori per i time domain
+        timeDomainStart = self.config_dict['timeDomainStart']
+        timeDomainEnd   = self.config_dict['timeDomainEnd']
+        # Creo le inizializzazioni per gli accessories ACC
+        accs = [x for x in self.initial_equations if isinstance(self.variables_dict[x.left], ACC)]
+        accs_tuple = [(i, x.right.__str__()) for i, x in enumerate(accs)]
+        acc_str2format = " "*8 + "Solver.SetHost(ProblemNumber, Accessories, %d, %s);"
+        acc_init_str = "\n".join([acc_str2format % (x[0], x[1]) for x in accs_tuple]) if accs else ""
+        # Creo le inizializzazioni per gli accessories ACCi
+        accis = [x for x in self.initial_equations if isinstance(self.variables_dict[x.left], ACCi)]
+        accis_tuple = [(i, x.right.__str__()) for i, x in enumerate(accis)]
+        acci_str2format = " "*8 + "Solver.SetHost(ProblemNumber, IntegerAccessories, %d, %s);"
+        acci_init_str = "\n".join([acci_str2format % (x[0], x[1]) for x in accis_tuple]) if accis else ""
+        # Creo le inizializzazioni per i parametri sPAR
+        spar_init_str = ""
+        if any(spars): # Se ci sono effettivamente parameteri sPAR allora aggiorno
+            spar_init_str += " "*4 + "int spar_i{0};\n" + \
+                             " "*4 + "for (PRECISION spar: Parameter_sPAR){\n" + \
+                             " "*8 + "Solver.SetHost(SharedParameters, spar_i++, spar);\n" + \
+                             " "*4 + "}\n"
+        # Creo le inizializzazioni per i parametri sPARi
+        spari_init_str = ""
+        if any(sparis): # Se ci sono effettivamente parametri sPARi allora aggiorno
+            spari_init_str += " "*4 + "int spari_i{0};\n" + \
+                              " "*4 + "for (PRECISION spari: Parameter_sPARi){\n" + \
+                              " "*8 + "Solver.SetHost(IntegerSharedParameters, spari_i++, spari);\n" + \
+                              " "*4 + "}\n"
+        MPGOS_FillFunction_Definition = MPGOS_FillFunction_Definition % (
+            vector_in_fundef, timeDomainStart, timeDomainEnd,
+            acc_init_str, acci_init_str, spar_init_str, spari_init_str
+        )
+        return MPGOS_FillFunction_Definition
+    
+
+    def createModelDefinitionFile(self):
+        """ Richiama tutte le funzioni di formattazione e crea la stringa per il file del modello """
+        global MPGOS_ModelFileDefinition
+        # START LOG
+        msg = f"Formattazione della stringa per il file {self.model_name}.cu"
+        self.logger.debug(msg, msg)
+        # END LOG
+        MPGOS_ModelFileDefinition = MPGOS_ModelFileDefinition.format(
+            MPGOS_ModelMacro=self.buildMPGOS_MacroPattern(),
+            MPGOS_FillFunctionDefinition=self.buildMPGOS_FillFunction_Definition(),
+            MPGOS_SaveDataFunction=self.buildMPGOS_SaveDataFunction(),
+            MPGOS_MainFunction=self.buildMPGOS_MainFunction(),
+        )
+        # START LOG
+        msg = "Terminata formattazione"
+        self.logger.debug(msg, msg)
+        # END LOG
+        return MPGOS_ModelFileDefinition
 
 
 
@@ -534,7 +629,8 @@ class Builder:
         # END LOG
         self.newdir = self.createnewdir() # Crea la nuova directory nella quale salvare i file
         self.sysdeffile = self.newdir + f"/{self.abstract_model.model_name}_SystemDefinition.cuh"
-        
+        self.modeldeffile = self.newdir + f"/{self.abstract_model.model_name}.cu"
+        self.makefile = self.newdir + "/makefile"
         # Creo il builder per il file di definizione del sistema
         self.systemdef_builder = SystemDefinitionBuilder(self.abstract_model, self.logger)
 
@@ -566,19 +662,70 @@ class Builder:
     def save_sysdef(self):
         """ Crea il contenuto e lo salva nel file di definizione del sistema """
         file_content = self.systemdef_builder.createSystemDefinitionFile()
-        sysdeffile = self.newdir + f"/{self.abstract_model.model_name}_SystemDefinition.cuh"
         # START LOG
-        msg = f"Salvataggio del contenuto del file di definizione del sistema in {sysdeffile}"
+        msg = f"Salvataggio del contenuto del file di definizione del sistema in {self.sysdeffile}"
         self.logger.debug(msg, msg)
         # END LOG
-        with open(sysdeffile, mode="w") as f:
+        with open(self.sysdeffile, mode="w") as f:
             f.write(file_content)
         # START LOG
         msg = f"Contenuto salvato correttamente"
         self.logger.debug(msg, msg)
         # END LOG
 
+    
+    def save_modeldef(self):
+        """ Crea il contenuto e lo salva nel file di definizione del modello e delle configurazioni """
+        file_content = self.model_builder.createModelDefinitionFile()
+        # START LOG
+        msg = f"Salvataggio del contenuto del file di definizione del modello in {self.modeldeffile}"
+        self.logger.debug(msg, msg)
+        # END LOG
+        with open(self.modeldeffile, mode="w") as f:
+            f.write(file_content)
+        # START LOG
+        msg = f"Contenuto salvato correttamente"
+        self.logger.debug(msg, msg)
+        # END LOG
+
+    
+    def createMPGOS_MakeFile(self):
+        """ Crea il file per la compilazione del codice C++ e la generazione dell'eseguibile """
+        # START LOG
+        msg = f"Creazione del file MakeFile"
+        self.logger.debug(msg, msg)
+        # END LOG
+        global MPGOS_MakeFile
+        CUDA_capability = self.modelparams_dict['GPU information'].compute_capability()
+        MPGOS_MakeFile = MPGOS_MakeFile.format(
+            MPGOSsourcedir=self.modelparams_dict['MPGOSsourcedir'],
+            GPU=f"{CUDA_capability[0]}{CUDA_capability[1]}",
+            modelname=self.abstract_model.model_name
+        )
+        # START LOG
+        msg = f"Terminata formattazione del file MakeFile"
+        self.logger.debug(msg, msg)
+        # END LOG
+        return MPGOS_MakeFile
+
+    
+    def save_makefile(self):
+        """ Crea il contenuto e lo salva nel MakeFile """
+        # START LOG
+        msg = "Salvataggio del MakeFile"
+        self.logger.debug(msg, msg)
+        # END LOG
+        file_content = self.createMPGOS_MakeFile()
+        with open(self.makefile, mode="w") as stream:
+            stream.write(file_content)
+        # START LOG
+        msg = "Termianto salvataggio el file MakeFile"
+        self.logger.debug(msg, msg)
+        # END LOG
+
 
     def builfiles(self):
         """ Costruisce entrambi i file """
-        #self.save_sysdef()
+        self.save_sysdef()
+        self.save_modeldef()
+        self.save_makefile()
