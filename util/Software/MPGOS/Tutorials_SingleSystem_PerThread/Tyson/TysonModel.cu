@@ -162,7 +162,7 @@ int main() {
 
 void FillSolverObject(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
-    vector<PRECISION>& Parameters_Shared, vector<PRECISION>& Variable_X, 
+    vector<PRECISION>& Parameters_Shared, vector<PRECISION>& Variable_X,
     int FirstProblemNumber, int NumberOfThreads
 ) {
     int k_begin = FirstProblemNumber;

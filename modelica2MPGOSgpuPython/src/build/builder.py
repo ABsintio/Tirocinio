@@ -153,13 +153,13 @@ void SaveData(
 MPGOS_MainFunction = """
 int main() {
     int numberOfProblems = %d; // Numero di problemi da risolvere, uno per thread
-    int blockSize        = %d;        // Numero di Thread per blocchi
+    int blockSize        = %d; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
     ListCUDADevices();
 
-    int MajorVersion = %d;             // Major version della CUDA compute capability
-    int MinorVersion = %d;             // Minor version della CUDA compute capability
+    int MajorVersion = %d; // Major version della CUDA compute capability
+    int MinorVersion = %d; // Minor version della CUDA compute capability
 
     // Seleziona il Device da utilizzare dando in input la CUDA compute capability e ne stampa le caratteristiche
     int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);
@@ -168,7 +168,7 @@ int main() {
 %s
 
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION> Solver(SelectedDevice);
-    Solver.SolverOption(ThreadsPerBlock, BlockSize);
+    Solver.SolverOption(ThreadsPerBlock, blockSize);
     Solver.SolverOption(PreferSharedMemory, %d);
     Solver.SolverOption(InitialTimeStep, %f);
     Solver.SolverOption(ActiveNumberOfThreads, NT);
@@ -180,16 +180,15 @@ int main() {
     Solver.SolverOption(DenseOutputMinimumTimeStep, %f);
     Solver.SolverOption(DenseOutputSaveFrequency, %f);
 %s
+%s   
 
-    int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
     DataFile.open ( "%s.csv" );
     clock_t SimulationStart = clock();
-	clock_t TransientStart;
-    clock_t TransientEnd;
-
+    clock_t TransientStart;
+    clock_t TransientEnd;    
     for (int i=0; i < NumberOfSimulationLaunches; i++) {
-        %s;
+    %s;
         Solver.SynchroniseFromHostToDevice(All);
         Solver.InsertSynchronisationPoint();
         Solver.SynchroniseSolver();
@@ -223,7 +222,7 @@ int main() {
     Solver.Print(ActualState);
     Solver.Print(ActualTime);
 	
-	cout << "Test finished!" << endl;
+    cout << "Test finished!" << endl;
 
     return 0;
 }
@@ -232,7 +231,7 @@ int main() {
 MPGOS_FillFunction_Defionition = """
 void FillSolverObject(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
-    {sharedParametersList}, {sharedIntegerParameterList}, vector<PRECISION>& Variable_X, 
+    {sharedParametersList}{sharedIntegerParameterList}, vector<PRECISION>& Variable_X, 
     int FirstProblemNumber, int NumberOfThreads
 ) {
     int k_begin = FirstProblemNumber;
@@ -369,12 +368,36 @@ class ModelBuilder:
             vector_sPAR % (",".join(spars)) if len(spars) > 0 else "",
             vector_sPARi % (",".join(sparis)) if len(sparis) > 0 else ""
         ]
-        initialEquation = "".join(["%s%s" % ("".join(x[0][0]), y) for x, y in zip(initial_eq, vectors) if x or y])
-        print("\n\n" +initialEquation)
+        initialEquation = "".join(["%s%s" % ("".join(x[0][0]), y) for x, y in zip(initial_eq, vectors) if x and y])
+        # Formatta i parametri per la funzione SolverOption
         preferSharedMemory = self.config_dict['preferSharedMemory']
         initialTimeStep = self.config_dict['initialTimeStep']
         maxTimeStep = self.config_dict['maximumTimeStep']
         minTimeStep = self.config_dict['minimumTimeStep']
+        timeStepGrowLimit = self.config_dict['timeStepGrowLimit']
+        timeStepShrinkLimit = self.config_dict['timeStepShrinkLimit']
+        event_str = " "*4 + "Solver.SolverOption(EventDirection, %d, %d);\n"
+        eventDirections = "".join([event_str % (x, y) for x, y in enumerate(self.config_dict['eventDirection'])])
+        denseOutputMiniumumTimeStep = self.config_dict['denseOutputMinimumTimeStep']
+        denseOutputSaveFrequency = self.config_dict['denseOutputSaveFrequency']
+        abs_tolerance = " "*4 + "Solver.SolverOption(AbsoluteTolerance, %d, %f);\n"
+        relative_tolerance = " "*4 + "Solver.SolverOption(RelativeTolerance, %d, %f);\n"
+        absoluteTolerances = "".join([abs_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
+        relativeTolerances = "".join([relative_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
+        # Formattazione della stringa di chiamata alla funzione fillSolverObject
+        fillSolverObjectFunctionCall = " "*4 + "fillSolverObject(Solver, %sParameter_X, i*NT, NT)" % (
+            ("Parameter_sPAR, " if spars else "") + ("Parameter_sPARi, " if sparis else "")
+        )
+        MPGOS_MainFunction = MPGOS_MainFunction % (
+            nop, block_size, GPUMajor, GPUMinor, 
+            initialEquation, preferSharedMemory, 
+            initialTimeStep, maxTimeStep, minTimeStep,
+            timeStepGrowLimit, timeStepShrinkLimit,
+            eventDirections, denseOutputMiniumumTimeStep, 
+            denseOutputSaveFrequency, absoluteTolerances,
+            relativeTolerances, self.model_name, fillSolverObjectFunctionCall
+        )
+        return MPGOS_MainFunction
 
 
 
