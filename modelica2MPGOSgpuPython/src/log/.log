@@ -7290,3 +7290,1699 @@ timeDomainEnd: 10.0
 2020-10-31 17:45:16,103 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
 2020-10-31 17:45:16,103 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
 2020-10-31 17:45:16,103 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 14:40:17,481 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 14:40:17,481 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 14:40:17,481 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 14:40:18,798 - root - INFO : Creating new logger
+2020-11-01 14:40:18,808 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 14:40:18,814 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 14:40:18,814 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 14:40:18,814 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 14:40:18,818 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 14:40:18,818 - root - INFO : Attività di aggiornamento terminata con Successo in 0.010800600051879883 ms
+2020-11-01 14:40:18,927 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 14:40:18,928 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 14:40:18,928 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 14:40:18,938 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 14:40:18,938 - root - INFO : Chiamata alla classe Parser
+2020-11-01 14:40:18,939 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 14:40:18,939 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 14:40:18,939 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 14:40:18,939 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 14:40:18,939 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 14:40:18,939 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 14:40:18,939 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 14:40:18,939 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 14:40:18,939 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 14:40:18,939 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 14:40:18,939 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 14:40:18,939 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 14:40:18,939 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 14:40:18,939 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 14:40:18,939 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 14:40:18,939 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 14:40:18,940 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 14:40:18,940 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 14:40:18,940 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 14:40:18,940 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 14:40:18,940 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 14:40:18,940 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 14:40:18,940 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 14:40:18,940 - root - DEBUG : Terminato parsing totale
+2020-11-01 14:40:18,940 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 14:40:18,940 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 14:40:18,940 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 14:40:18,940 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 14:40:18,940 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 14:40:18,940 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 14:40:18,941 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 14:40:18,941 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 14:40:18,941 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 14:40:18,941 - root - INFO : Chiamata alla classe Builder
+2020-11-01 14:40:18,941 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 14:40:18,941 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 14:40:18,941 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 14:40:18,941 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 14:40:18,941 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 14:40:18,941 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 14:40:18,942 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 14:40:18,942 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:16:59,902 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:16:59,902 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:16:59,903 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:17:01,386 - root - INFO : Creating new logger
+2020-11-01 15:17:01,400 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:17:01,409 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:17:01,409 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:17:01,409 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:17:01,413 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:17:01,413 - root - INFO : Attività di aggiornamento terminata con Successo in 0.013355493545532227 ms
+2020-11-01 15:17:01,445 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:17:01,446 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:17:01,446 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:17:01,454 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 15:17:01,454 - root - INFO : Chiamata alla classe Parser
+2020-11-01 15:17:01,454 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 15:17:01,454 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 15:17:01,454 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:17:01,454 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:17:01,454 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:17:01,454 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:17:01,455 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:17:01,455 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:17:01,455 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:17:01,455 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:17:01,455 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:17:01,455 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:17:01,455 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:17:01,455 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:17:01,455 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:17:01,455 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:17:01,456 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:17:01,456 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:17:01,456 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:17:01,456 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:17:01,456 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:17:01,456 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:17:01,456 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 15:17:01,456 - root - DEBUG : Terminato parsing totale
+2020-11-01 15:17:01,456 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:17:01,457 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:17:01,457 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:17:01,457 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:17:01,457 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:17:01,457 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:17:01,457 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:17:01,457 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:17:01,458 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 15:17:01,458 - root - INFO : Chiamata alla classe Builder
+2020-11-01 15:17:01,458 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:17:01,458 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:17:01,458 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:17:01,458 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:17:01,459 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:17:01,459 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:17:01,459 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:17:01,459 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:17:33,353 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:17:33,354 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:17:33,354 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:17:33,877 - root - INFO : Creating new logger
+2020-11-01 15:17:33,885 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:17:33,892 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:17:33,892 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:17:33,892 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:17:33,896 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:17:33,896 - root - INFO : Attività di aggiornamento terminata con Successo in 0.010933399200439453 ms
+2020-11-01 15:17:33,931 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:17:33,931 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:17:33,931 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:17:33,939 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 15:17:33,939 - root - INFO : Chiamata alla classe Parser
+2020-11-01 15:17:33,939 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 15:17:33,939 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 15:17:33,939 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:17:33,939 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:17:33,939 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:17:33,939 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:17:33,939 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:17:33,939 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:17:33,939 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:17:33,939 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:17:33,939 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:17:33,939 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:17:33,940 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:17:33,940 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:17:33,940 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:17:33,940 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:17:33,940 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:17:33,940 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:17:33,940 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:17:33,940 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:17:33,940 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:17:33,940 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:17:33,940 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 15:17:33,940 - root - DEBUG : Terminato parsing totale
+2020-11-01 15:17:33,940 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:17:33,940 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:17:33,940 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:17:33,940 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:17:33,940 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:17:33,941 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:17:33,941 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:17:33,941 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:17:33,941 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 15:17:33,941 - root - INFO : Chiamata alla classe Builder
+2020-11-01 15:17:33,941 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:17:33,941 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:17:33,941 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:17:33,941 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:17:33,942 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:17:33,942 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:17:33,942 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:17:33,942 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:18:39,236 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:18:39,237 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:18:39,237 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:18:39,876 - root - INFO : Creating new logger
+2020-11-01 15:18:39,884 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:18:39,891 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:18:39,891 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:18:39,891 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:18:39,895 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:18:39,895 - root - INFO : Attività di aggiornamento terminata con Successo in 0.011197328567504883 ms
+2020-11-01 15:18:39,929 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:18:39,929 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:18:39,929 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:18:59,103 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:18:59,103 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:18:59,103 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:18:59,711 - root - INFO : Creating new logger
+2020-11-01 15:18:59,719 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:18:59,726 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:18:59,726 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:18:59,726 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:18:59,730 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:18:59,730 - root - INFO : Attività di aggiornamento terminata con Successo in 0.010881662368774414 ms
+2020-11-01 15:18:59,764 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:18:59,764 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:18:59,765 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:18:59,772 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 15:18:59,772 - root - INFO : Chiamata alla classe Parser
+2020-11-01 15:18:59,772 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 15:18:59,772 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 15:18:59,772 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:18:59,772 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:18:59,772 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:18:59,772 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:18:59,772 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:18:59,772 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:18:59,772 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:18:59,772 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:18:59,772 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:18:59,772 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:18:59,773 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:18:59,773 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:18:59,773 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:18:59,773 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:18:59,773 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:18:59,773 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:18:59,773 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:18:59,773 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:18:59,773 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:18:59,773 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:18:59,773 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 15:18:59,773 - root - DEBUG : Terminato parsing totale
+2020-11-01 15:18:59,773 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:18:59,773 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:18:59,774 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:18:59,774 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:18:59,774 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:18:59,774 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:18:59,774 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:18:59,774 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:18:59,774 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 15:18:59,774 - root - INFO : Chiamata alla classe Builder
+2020-11-01 15:18:59,775 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:18:59,775 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:18:59,775 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:18:59,775 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:18:59,775 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:18:59,775 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:18:59,775 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:18:59,775 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:20:01,244 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:20:01,244 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:20:01,244 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:20:01,676 - root - INFO : Creating new logger
+2020-11-01 15:20:01,684 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:20:01,690 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:20:01,690 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:20:01,690 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:20:01,694 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:20:01,694 - root - INFO : Attività di aggiornamento terminata con Successo in 0.010712623596191406 ms
+2020-11-01 15:20:01,728 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:20:01,728 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:20:01,728 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:20:01,736 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 15:20:01,737 - root - INFO : Chiamata alla classe Parser
+2020-11-01 15:20:01,737 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 15:20:01,737 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 15:20:01,737 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:20:01,737 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:20:01,737 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:20:01,737 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:20:01,737 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:20:01,737 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:20:01,737 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:20:01,737 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:20:01,737 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:20:01,737 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:20:01,737 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:20:01,737 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:20:01,737 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:20:01,738 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:20:01,738 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:20:01,738 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:20:01,738 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:20:01,738 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:20:01,738 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:20:01,738 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:20:01,738 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 15:20:01,738 - root - DEBUG : Terminato parsing totale
+2020-11-01 15:20:01,738 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:20:01,738 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:20:01,738 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:20:01,738 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:20:01,738 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:20:01,738 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:20:01,739 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:20:01,739 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:20:01,739 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 15:20:01,739 - root - INFO : Chiamata alla classe Builder
+2020-11-01 15:20:01,739 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:20:01,739 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:20:01,739 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:20:01,739 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:20:01,739 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:20:01,739 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:20:01,739 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:20:01,740 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:20:31,218 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:20:31,219 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:20:31,219 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:20:31,664 - root - INFO : Creating new logger
+2020-11-01 15:20:31,672 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:20:31,678 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:20:31,678 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:20:31,679 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:20:31,683 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:20:31,683 - root - INFO : Attività di aggiornamento terminata con Successo in 0.011159181594848633 ms
+2020-11-01 15:20:31,717 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:20:31,717 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:20:31,717 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:20:31,724 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 15:20:31,724 - root - INFO : Chiamata alla classe Parser
+2020-11-01 15:20:31,724 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 15:20:31,724 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 15:20:31,724 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:20:31,724 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:20:31,725 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:20:31,725 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:20:31,725 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:20:31,725 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:20:31,725 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:20:31,725 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:20:31,725 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:20:31,725 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:20:31,725 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:20:31,725 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:20:31,725 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:20:31,725 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:20:31,725 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:20:31,725 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:20:31,725 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:20:31,725 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:20:31,726 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:20:31,726 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:20:31,726 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 15:20:31,726 - root - DEBUG : Terminato parsing totale
+2020-11-01 15:20:31,726 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:20:31,726 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:20:31,726 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:20:31,726 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:20:31,726 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:20:31,726 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:20:31,726 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:20:31,726 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:20:31,727 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 15:20:31,727 - root - INFO : Chiamata alla classe Builder
+2020-11-01 15:20:31,727 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:20:31,727 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:20:31,727 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:20:31,727 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:20:31,727 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:20:31,727 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:20:31,727 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:20:31,727 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:21:47,462 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:21:47,462 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:21:47,462 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:21:48,522 - root - INFO : Creating new logger
+2020-11-01 15:21:48,530 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:21:48,537 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:21:48,537 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:21:48,537 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:21:48,541 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:21:48,541 - root - INFO : Attività di aggiornamento terminata con Successo in 0.010835886001586914 ms
+2020-11-01 15:21:48,575 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:21:48,576 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:21:48,576 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:21:48,583 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 15:21:48,583 - root - INFO : Chiamata alla classe Parser
+2020-11-01 15:21:48,583 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 15:21:48,583 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 15:21:48,583 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:21:48,583 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:21:48,583 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:21:48,583 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:21:48,583 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:21:48,583 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:21:48,583 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:21:48,583 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:21:48,583 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:21:48,583 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:21:48,583 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:21:48,583 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:21:48,584 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:21:48,584 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:21:48,584 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:21:48,584 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:21:48,584 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:21:48,584 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:21:48,584 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:21:48,584 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:21:48,584 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 15:21:48,584 - root - DEBUG : Terminato parsing totale
+2020-11-01 15:21:48,584 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:21:48,584 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:21:48,584 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:21:48,584 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:21:48,584 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:21:48,584 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:21:48,585 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:21:48,585 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:21:48,585 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 15:21:48,585 - root - INFO : Chiamata alla classe Builder
+2020-11-01 15:21:48,585 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:21:48,585 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:21:48,586 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:21:48,586 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:21:48,586 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:21:48,586 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:21:48,586 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:21:48,586 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:22:31,574 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:22:31,574 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:22:31,575 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:22:32,003 - root - INFO : Creating new logger
+2020-11-01 15:22:32,022 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:22:32,030 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:22:32,030 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:22:32,031 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:22:32,035 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:22:32,035 - root - INFO : Attività di aggiornamento terminata con Successo in 0.013196468353271484 ms
+2020-11-01 15:22:32,068 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:22:32,068 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:22:32,069 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:22:32,076 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 15:22:32,076 - root - INFO : Chiamata alla classe Parser
+2020-11-01 15:22:32,076 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 15:22:32,076 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 15:22:32,076 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:22:32,076 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:22:32,076 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:22:32,076 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:22:32,077 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:22:32,077 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:22:32,077 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:22:32,077 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:22:32,077 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:22:32,077 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:22:32,077 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:22:32,077 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:22:32,077 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 15:22:32,078 - root - DEBUG : Terminato parsing totale
+2020-11-01 15:22:32,078 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:22:32,078 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:22:32,078 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:22:32,078 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:22:32,078 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:22:32,078 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:22:32,078 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:22:32,078 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:22:32,078 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 15:22:32,079 - root - INFO : Chiamata alla classe Builder
+2020-11-01 15:22:32,079 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:22:32,079 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:22:32,079 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:22:32,079 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:22:32,079 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:22:32,079 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:22:32,079 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:22:32,079 - root - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:23:52,875 - root - DEBUG : Controllo della struttura del configuratore config/modelica2gpu.yaml
+2020-11-01 15:23:52,875 - root - DEBUG : Controllo andato a buon fine
+2020-11-01 15:23:52,875 - root - DEBUG : Ottenimento delle informazioni necessarie da config/modelica2gpu.yaml
+2020-11-01 15:23:53,410 - root - INFO : Creating new logger
+2020-11-01 15:23:53,418 - root - INFO : Iniziazione della procedura di aggiornamento
+2020-11-01 15:23:53,424 - root - DEBUG : Estratto il dizionario dal file /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml
+2020-11-01 15:23:53,424 - root - DEBUG : Aggiornando nodo handlers con: (BouncingBall_handler, {'class': 'logging.FileHandler', 'level': 'DEBUG', 'formatter': 'simple', 'filename': '/home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src//log/BouncingBall.log'})
+2020-11-01 15:23:53,424 - root - DEBUG : Aggiornando nodo loggers con: (BouncingBall, {'level': 'DEBUG', 'handlers': ['BouncingBall_handler'], 'propagate': 'no'})
+2020-11-01 15:23:53,428 - root - DEBUG : Scrittura in /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/config/logger.yaml avvenuta con successo
+2020-11-01 15:23:53,428 - root - INFO : Attività di aggiornamento terminata con Successo in 0.010842323303222656 ms
+2020-11-01 15:23:53,463 - BouncingBall - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-01 15:23:53,464 - BouncingBall - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 1024
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 10.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-01 15:23:53,464 - root - INFO : Informazioni dal file di configurazione estrapolate
+2020-11-01 15:23:53,471 - BouncingBall - INFO : Chiamata alla classe Parser
+2020-11-01 15:23:53,471 - root - INFO : Chiamata alla classe Parser
+2020-11-01 15:23:53,471 - BouncingBall - DEBUG : Parsing totale dell'XML
+2020-11-01 15:23:53,472 - root - DEBUG : Parsing totale dell'XML
+2020-11-01 15:23:53,472 - BouncingBall - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:23:53,472 - root - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interi a <ModelVariables>
+2020-11-01 15:23:53,472 - BouncingBall - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:23:53,472 - root - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-01 15:23:53,472 - BouncingBall - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:23:53,472 - root - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-01 15:23:53,472 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:23:53,472 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-01 15:23:53,472 - BouncingBall - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:23:53,472 - root - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-01 15:23:53,472 - BouncingBall - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:23:53,472 - root - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-01 15:23:53,472 - BouncingBall - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:23:53,473 - root - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-01 15:23:53,473 - BouncingBall - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:23:53,473 - root - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-01 15:23:53,473 - BouncingBall - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:23:53,473 - root - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-01 15:23:53,473 - BouncingBall - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:23:53,473 - root - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-01 15:23:53,473 - BouncingBall - DEBUG : Terminato parsing totale
+2020-11-01 15:23:53,473 - root - DEBUG : Terminato parsing totale
+2020-11-01 15:23:53,473 - BouncingBall - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:23:53,473 - root - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-01 15:23:53,473 - BouncingBall - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:23:53,473 - root - DEBUG : Ottengo le ODE per il modello
+2020-11-01 15:23:53,474 - BouncingBall - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:23:53,474 - root - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-01 15:23:53,474 - BouncingBall - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:23:53,474 - root - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-01 15:23:53,474 - BouncingBall - INFO : Chiamata alla classe Builder
+2020-11-01 15:23:53,474 - root - INFO : Chiamata alla classe Builder
+2020-11-01 15:23:53,474 - BouncingBall - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:23:53,474 - root - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-01 15:23:53,475 - BouncingBall - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:23:53,475 - root - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2MPGOSgpuPython/src/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-01 15:23:53,475 - BouncingBall - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:23:53,475 - root - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-01 15:23:53,475 - BouncingBall - INFO : Chiamata alla classe ModelBuilder
+2020-11-01 15:23:53,475 - root - INFO : Chiamata alla classe ModelBuilder

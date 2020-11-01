@@ -303,7 +303,7 @@ def get_modelica2GPU_configuration(config_file):
         }
         
         conf_str = conf_dict2str(config_dict, device.get_attributes())
-        print(conf_str)
+        #print(conf_str)
 
         print()
         check = False

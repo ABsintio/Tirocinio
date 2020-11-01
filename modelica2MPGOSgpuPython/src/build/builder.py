@@ -350,14 +350,32 @@ class ModelBuilder:
         block_size = self.config_dict['threadsPerBlock']
         GPUMajor = self.config_dict['GPU information'].compute_capability()[0]
         GPUMinor = self.config_dict['GPU information'].compute_capability()[1]
+        # Formatto la stringa delle equazioni iniziali con implementazione del vettore delle equazioni
         str2format = " "*4 + "PRECISION InitialCondtition_%s\n"
         initial_eq = [
-            [str2format % (str(eq)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], X)],
-            [str2format % (str(eq)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], sPAR)],
-            [str2format % (str(eq)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], sPARi)],
+            [(str2format % (str(eq)), str(eq.left)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], X)],
+            [(str2format % (str(eq)), str(eq.left)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], sPAR)],
+            [(str2format % (str(eq)), str(eq.left)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], sPARi)],
         ]
-        vector_str = "vector<PRECISION> Parameter_%s = {%s}"
-        vector_list = [vector_str % ("X")]
+        vector_X     = " "*4 + "vector<PRECISION> Parameter_X = {%s};\n"
+        vector_sPAR  = " "*4 + "vector<PRECISION> Parameter_sPAR = {%s};\n"
+        vector_sPARi = " "*4 + "vector<PRECISION> Parameter_sPARi = {%s};\n"
+        stringa = ""
+        xs = [f"InitialCondition_{x[1]}" for x in initial_eq[0]]
+        spars = [f"InitialCondition_{x[1]}" for x in initial_eq[1]]
+        sparis = [f"InitialCondition_{x[1]}" for x in initial_eq[2]]
+        vectors = [
+            vector_X % (",".join(xs)) if len(xs) > 0 else "",
+            vector_sPAR % (",".join(spars)) if len(spars) > 0 else "",
+            vector_sPARi % (",".join(sparis)) if len(sparis) > 0 else ""
+        ]
+        initialEquation = "".join(["%s%s" % ("".join(x[0][0]), y) for x, y in zip(initial_eq, vectors) if x or y])
+        print("\n\n" +initialEquation)
+        preferSharedMemory = self.config_dict['preferSharedMemory']
+        initialTimeStep = self.config_dict['initialTimeStep']
+        maxTimeStep = self.config_dict['maximumTimeStep']
+        minTimeStep = self.config_dict['minimumTimeStep']
+
 
 
 class SystemDefinitionBuilder:
