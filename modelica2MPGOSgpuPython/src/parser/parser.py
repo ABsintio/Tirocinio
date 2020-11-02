@@ -2,9 +2,11 @@ import xml.etree.ElementTree as ET
 from tagclasses import tagclasses, variables
 import exceptions.builtExceptions
 import sys # temporane per eseguire i test
-from model import model
-from build import builder
 from utils.logger import *
+from utils.notifier import *
+
+
+NOTIFICATION = int(sys.argv[-1]) == 1
 
 
 # ----------------------------------------------------- # CLASSI PER IL PARSING # ------------------------------------------------------ #
@@ -26,6 +28,7 @@ class Parser:
         msg = "Chiamata alla classe Parser"
         self.logger.info(msg, msg)
         # END LOG
+    
     
     @staticmethod
     def getTagElementByName(tag_name, tag_root):
@@ -150,6 +153,13 @@ class Parser:
         return xs, x_dict, fs, f_dict
 
 
+    @notifier(
+        NOTIFICATION,
+        "Creazione parametri MPGOS",
+        "Associazione delle variabili parsate dal modello XML ai parametri (X, ACC, ACCi, sPAR, sPARi) MPGOS",
+        "Creazione parametri MPGOS",
+        "Terminazione dell'associazione variabile-parametro"
+    )
     def associate_var2MPGOSparameter(self):
         """
         Tale funzione parsa le variabili presenti nel modello e le associa a parametri MPGOS, 
@@ -236,6 +246,13 @@ class Parser:
                 self.algorithms.append(tagclasses._parsetag_eq(x, variables_dict, self.userdefined_func))
 
 
+    @notifier(
+        NOTIFICATION,
+        "Parsing dell'XML che descrive il modello",
+        "Estrapolazione dall'XML delle variabili, equazioni dinamiche ed iniziali, funzioni e algoritmi",
+        "Parsing dell'XML che descrive il modello",
+        "Terminazione estrapolazione delle informazioni necessarie"
+    )
     def parseXML(self):
         """ Chiama i diversi metodi di parsing dell'XML """
         # START LOG

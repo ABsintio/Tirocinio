@@ -9,22 +9,17 @@ from functools import wraps
 import coloredlogs
 
 
-#--------------------------# DEFINIZIONE DELLE MACRO DA UTILIZZARE ALL'INTERNO DEL PROGRAMMA # --------------------------#
-
-  
-CONFIG_FILE  = os.getcwd() + "/config/logger.yaml"
-
-
 #-------------------------# DEFINIZIONE DELLA CLASSE LOGGER CON LA QUALE SALVIAMO DELLE INDFO # -------------------------#
 
 
 class Logger:
     """ Classe per il logging """
-    def __init__(self, modelname, workingdir, log=True):
+    def __init__(self, modelname, workingdir, config_file, log=True):
         self.modelname = modelname
         self.wdir = workingdir
+        self.config_file = config_file
         # Prendo un logger da console (ossia il root)
-        logging.config.dictConfig(yaml.load(open(CONFIG_FILE, mode="r")))
+        logging.config.dictConfig(yaml.load(open(config_file, mode="r")))
         self.clogger = logging.getLogger("root")
         coloredlogs.install(level="DEBUG", logger=self.clogger)
         self.logger = None
@@ -46,7 +41,7 @@ class Logger:
         return debug_str
 
     @staticmethod
-    def update_config(update, logger):
+    def update_config(update, logger, config_file):
         """ Scrive nel file dato in input l'aggiornamento di configurazione """
         success = True
         start = time.time()
@@ -54,8 +49,8 @@ class Logger:
         logger.info("Iniziazione della procedura di aggiornamento")
         try:
             # Apro in lettura il file yaml e carico il dizionario
-            yaml_dict = yaml.load(open(CONFIG_FILE, mode="r", encoding="utf-8"))
-            logger.debug("Estratto il dizionario dal file %s" % (CONFIG_FILE))
+            yaml_dict = yaml.load(open(config_file, mode="r", encoding="utf-8"))
+            logger.debug("Estratto il dizionario dal file %s" % (config_file))
             # Per ogni elemento nel dizionario, prendo la rispettiva
             # sezione del file yaml e aggiungo il contenuto presente
             # nel dizionario dato in input
@@ -63,9 +58,9 @@ class Logger:
                 yaml_dict[k].update(v)
                 logger.debug(Logger.createString(k, v))
             # Completa l'aggiornamento della configurazione con un nuovo logger e handler
-            with open(CONFIG_FILE, mode="w") as stream:
+            with open(config_file, mode="w") as stream:
                 yaml.dump(yaml_dict, stream, default_flow_style=False)
-                logger.debug("Scrittura in %s avvenuta con successo" % (CONFIG_FILE))
+                logger.debug("Scrittura in %s avvenuta con successo" % (config_file))
         except Exception as e:
             success = False
             logger.error("Si è verificato il seguente errore -> " + e)
@@ -91,7 +86,7 @@ class Logger:
         logger da utilizzare per la run corrente.
         """
         # Configuriamo il logger
-        with open(CONFIG_FILE, mode="r", encoding="utf-8") as stream:
+        with open(self.config_file, mode="r", encoding="utf-8") as stream:
             logging.config.dictConfig(yaml.load(stream))
 
         # Creiamo il dizionario con il quale aggiornare il file di configurazione
@@ -123,7 +118,7 @@ class Logger:
             document = open(newfile, mode="x")
             document.close()
         # Richiamo la funzione di aggiornamento del file di configurazione.
-        success = Logger.update_config(update, self.clogger)
+        success = Logger.update_config(update, self.clogger, self.config_file)
         n = notifier.Notifier("modelica2GPU")
         if not success:
             n.setupforerror("Error: Logger config update error", 
@@ -135,7 +130,7 @@ class Logger:
                          "Logger aggiornato e configurato correttamente")
         n.show()
         # Creo il nuovo logger
-        logging.config.dictConfig(yaml.load(open(CONFIG_FILE, mode="r")))
+        logging.config.dictConfig(yaml.load(open(self.config_file, mode="r")))
         self.logger = logging.getLogger(self.modelname)
         if self.logger:
             self.logger.info("Logger %s creato con successo" % (self.logger.__str__()))

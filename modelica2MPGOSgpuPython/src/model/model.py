@@ -2,9 +2,22 @@ from tagclasses.variables import *
 import re
 from utils.graph import *
 from tagclasses.tagclasses import *
+from utils.notifier import notifier
+import sys
+
+
+NOTIFICATION = True if int(sys.argv[-1]) == 1 else False
+
 
 class Model:
     """ Rappresenta in modo schematico e astratto il modello in studio """
+    @notifier(
+        NOTIFICATION,
+        "Creazione dell'astrazione del modello in studio",
+        "Estrapolazione delle ODE, equazioni iniziali, eventi e altre equazioni di appoggio",
+        "Creazione dell'astrazione del modello in studio",
+        "Terminata estrapolazione delle informazioni necessarie."
+    )
     def __init__(self, name, equations, events, algorithms, variables_dict, logger):
         self.logger = logger
         # START LOG

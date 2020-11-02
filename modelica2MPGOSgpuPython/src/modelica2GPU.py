@@ -29,13 +29,23 @@ import xml.etree.ElementTree as ET
 import os
 import subprocess
 import re
+import time
+import argparse
 import warnings
 warnings.filterwarnings("ignore") # Sopprimo tutti gli warning inutili
 
+# Parso gli argomenti da CMDLine
+argument_parser = argparse.ArgumentParser()
+argument_parser.add_argument("-l", "--logger", help="Path del file di configurazione del logger", type=str, required=True)
+argument_parser.add_argument("-c", "--config", help="Path del file di configurazione di modelica2GPU", type=str, required=True)
+args = argument_parser.parse_args()
+config_log = args.logger
+config_m2g = args.config
 
-tmp_logger = logger.Logger(None, ".", False)
+
+tmp_logger = logger.Logger(None, ".", config_log, False)
 coloredlogs.install(level="DEBUG", logger=tmp_logger.clogger)
-
+start = time.time()
 
 def createXML(workingdir, modelfilename, omlibrary):
     """ Crea l'XML tramite il comando del compilatore openmodelica e ritorna il nome del file """
@@ -43,12 +53,8 @@ def createXML(workingdir, modelfilename, omlibrary):
         cwd = os.getcwd()
         # Entro nella directory desiderata nella quale salvare l'XML
         os.chdir(workingdir)
-        # Prendo tutte le versioni di modelica installate
-        modelica_versions = list(filter(lambda x: re.match(r"Modelica \d\.\d\.\d", x) is not None, os.listdir("/usr/lib/omlibrary/")))
-        # Se la lista non è vuota allora prendo la prima versione disponibile
-        modelica_versions = modelica_versions[0] if modelica_versions else None
-        # Altrimenti lancio una eccezione
-        assert modelica_versions is not None, "Non esistono versioni di modelica installate nel sistema"
+        # Controllo che la directory per la libreria di modelica installata sia vera
+        assert os.path.isdir(omlibrary) is not None, "Non esistono versioni di modelica installate nel sistema"
         # Creo la stringa per la compilazione
         compile_string = "omc +s --simCodeTarget=XML {model} {others} {modelicalib} > /dev/null".format(
             model=modelfilename,
@@ -331,7 +337,7 @@ def get_modelica2GPU_configuration(config_file):
         # START LOG
         # Creazione del logger su file
         if config_dict['filelogger']:
-            m2g_logger = logger.Logger(modelname, config_dict['workingdir'])
+            m2g_logger = logger.Logger(modelname, config_dict['workingdir'], config_log)
             msg = "Informazioni dal file di configurazione estrapolate. Riassunto della configurazione \n" + conf_str
             coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
             m2g_logger.info(msg, "Informazioni dal file di configurazione estrapolate")
@@ -356,7 +362,7 @@ def get_modelica2GPU_configuration(config_file):
 
 
 # Questo va chiamato prima invece
-config_dict, m2g_logger = get_modelica2GPU_configuration("config/modelica2gpu.yaml")
+config_dict, m2g_logger = get_modelica2GPU_configuration(config_m2g)
 del tmp_logger
 
 coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
@@ -364,7 +370,7 @@ coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
 try:
     # Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro per il notifier
     from parser.parser import *
-    from build.builder import *
+    from builder.builder import *
     from model.model import *
 
 
@@ -382,7 +388,8 @@ try:
     cpp_builder.builfiles()
 
     # START LOG
-    msg = "Operazione di traduzione terminata con successo. "
+    end = time.time()
+    msg = f"Operazione di traduzione terminata con successo in {end - start}ms."
     m2g_logger.debug(msg, msg)
     # END LOG
 except Exception as e:

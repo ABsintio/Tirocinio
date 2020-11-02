@@ -28,8 +28,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 MPGOS_PerThread_EventFunction = """
 template<class Precision> __forceinline__ __device__ void PerThread_EventFunction(
 	int tid, int NT, Precision*	  EF, \\
-	Precision     T, Precision    dT, Precision    TD, Precision*	X, \\
-	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
+	Precision     T, Precision    dT, Precision*    TD, Precision*	X, \\
+	Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi  		
 ) {
 %s
 }
@@ -113,7 +113,7 @@ using namespace std;
 #define PRECISION double
 const int NT   = {numberOfThreads};
 const int SD   = {systemDimension};
-const int NCP  = 0;
+const int NCP  = 1;
 const int NSP  = {numberOfSharedParameter};
 const int NISP = {numberOfIntegerSharedParameter};
 const int NE   = {numberOfEvents};
@@ -270,7 +270,7 @@ MPGOS_ModelFileDefinition = """
 
 MPGOS_MakeFile = """
 INCL_DIR = -I$(HOME){MPGOSsourcedir}
-CMPL_OPT = -03 --std=c++11 --ptxas-options=v --gpu-architecture=sm_{GPU} -lineinfo -w -maxrregcount=80
+CMPL_OPT = -O3 --std=c++11 --ptxas-options=-v --gpu-architecture=sm_{GPU} -lineinfo -w -maxrregcount=80
 
 all: {modelname}.exe
 
@@ -475,6 +475,13 @@ class ModelBuilder:
         return MPGOS_FillFunction_Definition
     
 
+    @notifier(
+        NOTIFICATION,
+        "Creazione del file Model.cu",
+        "Formattazione di tutte le parti che compongono il file (main, fillSolverObject ...)",
+        "Creazione del file Model.cu",
+        "Terminata formattazione del contenuto del file"
+    )
     def createModelDefinitionFile(self):
         """ Richiama tutte le funzioni di formattazione e crea la stringa per il file del modello """
         global MPGOS_ModelFileDefinition
@@ -689,6 +696,13 @@ class Builder:
         # END LOG
 
     
+    @notifier(
+        NOTIFICATION,
+        "Creazione del file Makefile.",
+        "Formattazione del contenuto del file makefile",
+        "Creazione del file Makefile",
+        "Terminata formattazione del contenuto del file"
+    )
     def createMPGOS_MakeFile(self):
         """ Crea il file per la compilazione del codice C++ e la generazione dell'eseguibile """
         # START LOG
@@ -724,6 +738,13 @@ class Builder:
         # END LOG
 
 
+    @notifier(
+        NOTIFICATION,
+        "Creazione dei file",
+        "Creazione dei tre file: Model.cu, Model_SystemDefintion.cuh e makefile",
+        "Creazione dei file",
+        "Terminata creazione dei file"
+    )
     def builfiles(self):
         """ Costruisce entrambi i file """
         self.save_sysdef()
