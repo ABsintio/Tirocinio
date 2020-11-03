@@ -82,7 +82,7 @@ def getdefaultoptions(nevents, nstates, xmlfile):
     device = cuda.Device(0) # Prendo il primo device disponibile
     major, minor = device.compute_capability()
     # Infine settiamo gli attributi rimanenti
-    numberOfThreads            = 1000
+    numberOfThreads            = 10000
     numberOfProblems           = 2 * numberOfThreads
     numberOfDenseOutput        = numberOfThreads
     threadsPerBlock            = device.get_attributes()[cuda.device_attribute.MAX_THREADS_PER_BLOCK]
@@ -90,7 +90,7 @@ def getdefaultoptions(nevents, nstates, xmlfile):
     preferSharedMemory         = 1
     maximumTimeStep            = 1.0e+6
     minimumTimeStep            = 1.0e-14
-    timeStepGrowLimit          = 10.0
+    timeStepGrowLimit          = 5.0
     timeStepShrinkLimit        = 0.2
     events_directions          = [0 for _ in range(nevents)]
     denseOutputMinumumTimeStep = 0.0
