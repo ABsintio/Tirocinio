@@ -1,0 +1,24 @@
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
+handlers:
+  BouncingBall_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v1/log/BouncingBall.log
+    formatter: simple
+    level: DEBUG
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    stream: ext://sys.stdout
+loggers:
+  BouncingBall:
+    handlers:
+    - BouncingBall_handler
+    level: DEBUG
+    propagate: 'no'
+  root:
+    handlers:
+    - console
+    level: DEBUG
+version: 1
