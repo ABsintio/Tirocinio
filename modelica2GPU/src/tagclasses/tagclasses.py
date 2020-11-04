@@ -429,9 +429,10 @@ class FunctionCall:
 
 class When:
     """ Classe che rappresenta un tag <equ:When> ... </equ:When> """
-    def __init__(self, when_tag, variables_dict):
+    def __init__(self, when_tag, variables_dict, event_conditions):
         self.when_tag = when_tag
         self.variables_dict = variables_dict
+        self.event_conditions = [x[1] for x in event_conditions]
         self.condition, self.equation = self._parsewhen_tag()
 
     @staticmethod
@@ -459,11 +460,20 @@ class When:
         identifier_list = self.when_tag[0].findall("{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Identifier")
         condition = Identifier(identifier_list[0], self.variables_dict) if len(identifier_list) == 1 \
                     else When.parsecondition(identifier_list, self.variables_dict)
+        # Prende l'indice di un elemento dell'array se la condizione è già esistente, altrimenti len 
+        identifier = -1
+        for i in range(len(self.event_conditions)):
+            string = " "*4 + f"EF[{i}] = (! ({condition.__str__()}))"
+            if string in self.event_conditions:
+                identifier = i
+                break
+        identifier = identifier if identifier != -1 else len(self.event_conditions)
+        condition = (identifier, str(condition))
         # Una volta parsate le condizioni posso parsare l'equazione interna.
         equation = _parsetag_eq(self.when_tag[1], self.variables_dict)
         return condition, equation
     
-    def __str__(self): return f"if ({self.condition})" + "{\n" + f"\t    {self.equation}\n" + "    }"
+    def __str__(self): return f"if (IDX == {self.condition[0]})" + "{\n" + f"\t    {self.equation}\n" + "    }"
 
     def setcondition(self, new_condition): self.condition = new_condition
 

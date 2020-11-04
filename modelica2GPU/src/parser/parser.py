@@ -24,6 +24,7 @@ class Parser:
         self.userdefined_func  = dict()
         self.algorithms        = []
         self.unique_dict       = dict()
+        self.event_conditions  = []
         # START LOG
         msg = "Chiamata alla classe Parser"
         self.logger.info(msg, msg)
@@ -195,7 +196,17 @@ class Parser:
                 self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x, variables_dict))
             elif x.tag == f"{tagclasses.EQUATION_NS}When":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
-                self.dynamic_equations["events"].append(tagclasses.When(x, variables_dict))
+                when_eq = tagclasses.When(x, variables_dict, self.event_conditions)
+                when_eq.setcondition((when_eq.condition[0], " "*4 + "EF[{id}] = (! ({cond}))".format(
+                    id=when_eq.condition[0], cond=when_eq.condition[1]
+                )))
+                # Mano a mano che trovo nuove condizioni per gli eventi le appendo
+                # questo servirà nel momento in cui si dovranno ancdare a formattare
+                # le funzioni C++ per gli eventi in quanto si dovrà utilizzare il 
+                # vettore EF (event function) e quindi devo tenere il conto di quanti eventi trovo
+                if when_eq.condition[1] not in self.event_conditions:
+                    self.event_conditions.append(when_eq.condition)
+                self.dynamic_equations["events"].append(when_eq)
                 
 
     def parse_initial_equations(self, variables_dict, MPGOSparameter_dict):

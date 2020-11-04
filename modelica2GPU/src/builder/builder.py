@@ -499,8 +499,14 @@ class SystemDefinitionBuilder:
         self.logger.debug(msg, msg)
         # END LOG
         global MPGOS_PerThread_EventFunction
+        triggers = self.abstract_model.othereq['trigger']
+        # Prendo prima tutte le equazioni che definiscono i trigger per gli eventi
+        trigger_str = Var.createMPGOScodeline(triggers)
+        # Poi devo formattare le stringhe che riempiono il vettore EF nel quale 
+        # saranno valutate le condizioni degli eventi, le quali devono essere pari a 0
+        EF_str = "\n".join(list(set([x.condition[1] for x in self.abstract_model.events]))) 
         MPGOS_PerThread_EventFunction = MPGOS_PerThread_EventFunction % (
-            Var.createMPGOScodeline(self.abstract_model.othereq['trigger']))
+            f"{trigger_str}\n{EF_str}")
         return MPGOS_PerThread_EventFunction
 
 

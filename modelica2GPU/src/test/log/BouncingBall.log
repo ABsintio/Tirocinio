@@ -1,0 +1,2571 @@
+2020-11-04 16:35:06,299 - BouncingBall[16423] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 16:35:06,299 - BouncingBall[16423] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 16:35:06,302 - BouncingBall[16423] - INFO : Chiamata alla classe Parser
+2020-11-04 16:35:06,302 - BouncingBall[16423] - DEBUG : Parsing totale dell'XML
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 16:35:06,303 - BouncingBall[16423] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 16:35:06,304 - BouncingBall[16423] - DEBUG : Terminato parsing totale
+2020-11-04 16:35:06,304 - BouncingBall[16423] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 16:35:06,304 - BouncingBall[16423] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 16:35:06,304 - BouncingBall[16423] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 16:35:06,304 - BouncingBall[16423] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 16:35:06,304 - BouncingBall[16423] - INFO : Chiamata alla classe Builder
+2020-11-04 16:35:06,304 - BouncingBall[16423] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 16:35:06,304 - BouncingBall[16423] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 16:35:06,304 - BouncingBall[16423] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 16:35:06,305 - BouncingBall[16423] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 16:35:06,305 - BouncingBall[16423] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 16:35:06,305 - BouncingBall[16423] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 16:35:06,305 - BouncingBall[16423] - ERROR : modelica2GPU ha riscontrato il seguente errore. 'Equation' object has no attribute 'lhs'
+2020-11-04 16:35:23,940 - BouncingBall[16517] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 16:35:23,941 - BouncingBall[16517] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 16:35:23,947 - BouncingBall[16517] - INFO : Chiamata alla classe Parser
+2020-11-04 16:35:23,947 - BouncingBall[16517] - DEBUG : Parsing totale dell'XML
+2020-11-04 16:35:23,948 - BouncingBall[16517] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 16:35:23,948 - BouncingBall[16517] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 16:35:23,948 - BouncingBall[16517] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 16:35:23,948 - BouncingBall[16517] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 16:35:23,948 - BouncingBall[16517] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 16:35:23,948 - BouncingBall[16517] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 16:35:23,948 - BouncingBall[16517] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 16:35:23,948 - BouncingBall[16517] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 16:35:23,949 - BouncingBall[16517] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 16:35:23,949 - BouncingBall[16517] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 16:35:23,949 - BouncingBall[16517] - DEBUG : Terminato parsing totale
+2020-11-04 16:35:23,949 - BouncingBall[16517] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 16:35:23,949 - BouncingBall[16517] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 16:35:23,949 - BouncingBall[16517] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 16:35:23,949 - BouncingBall[16517] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 16:35:23,949 - BouncingBall[16517] - INFO : Chiamata alla classe Builder
+2020-11-04 16:35:23,949 - BouncingBall[16517] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 16:35:23,950 - BouncingBall[16517] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 16:35:23,950 - BouncingBall[16517] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Terminata formattazione
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:35:23,950 - BouncingBall[16517] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 16:35:23,950 - BouncingBall[16517] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 16:35:23,951 - BouncingBall[16517] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 16:35:23,951 - BouncingBall[16517] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 16:35:23,951 - BouncingBall[16517] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 16:35:23,951 - BouncingBall[16517] - DEBUG : Terminata formattazione
+2020-11-04 16:35:23,951 - BouncingBall[16517] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 16:35:23,951 - BouncingBall[16517] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:35:23,951 - BouncingBall[16517] - DEBUG : Salvataggio del MakeFile
+2020-11-04 16:35:23,951 - BouncingBall[16517] - DEBUG : Creazione del file MakeFile
+2020-11-04 16:35:23,951 - BouncingBall[16517] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 16:35:23,951 - BouncingBall[16517] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 16:35:23,951 - BouncingBall[16517] - DEBUG : Operazione di traduzione terminata con successo in 0.6242098808288574ms.
+2020-11-04 16:36:29,358 - BouncingBall[16654] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 16:36:29,359 - BouncingBall[16654] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 16:36:29,365 - BouncingBall[16654] - INFO : Chiamata alla classe Parser
+2020-11-04 16:36:29,365 - BouncingBall[16654] - DEBUG : Parsing totale dell'XML
+2020-11-04 16:36:29,365 - BouncingBall[16654] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 16:36:29,366 - BouncingBall[16654] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 16:36:29,367 - BouncingBall[16654] - DEBUG : Terminato parsing totale
+2020-11-04 16:36:29,367 - BouncingBall[16654] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 16:36:29,367 - BouncingBall[16654] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 16:36:29,367 - BouncingBall[16654] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 16:36:29,367 - BouncingBall[16654] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 16:36:29,367 - BouncingBall[16654] - INFO : Chiamata alla classe Builder
+2020-11-04 16:36:29,367 - BouncingBall[16654] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 16:36:29,367 - BouncingBall[16654] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 16:36:29,368 - BouncingBall[16654] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 16:36:29,368 - BouncingBall[16654] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Terminata formattazione
+2020-11-04 16:36:29,368 - BouncingBall[16654] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 16:36:29,369 - BouncingBall[16654] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:36:29,369 - BouncingBall[16654] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 16:36:29,369 - BouncingBall[16654] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 16:36:29,369 - BouncingBall[16654] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 16:36:29,369 - BouncingBall[16654] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 16:36:29,369 - BouncingBall[16654] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 16:36:29,369 - BouncingBall[16654] - DEBUG : Terminata formattazione
+2020-11-04 16:36:29,369 - BouncingBall[16654] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 16:36:29,369 - BouncingBall[16654] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:36:29,369 - BouncingBall[16654] - DEBUG : Salvataggio del MakeFile
+2020-11-04 16:36:29,369 - BouncingBall[16654] - DEBUG : Creazione del file MakeFile
+2020-11-04 16:36:29,369 - BouncingBall[16654] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 16:36:29,370 - BouncingBall[16654] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 16:36:29,370 - BouncingBall[16654] - DEBUG : Operazione di traduzione terminata con successo in 0.902747392654419ms.
+2020-11-04 16:56:34,165 - BouncingBall[18635] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 16:56:34,165 - BouncingBall[18635] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 16:56:34,178 - BouncingBall[18635] - INFO : Chiamata alla classe Parser
+2020-11-04 16:56:34,179 - BouncingBall[18635] - DEBUG : Parsing totale dell'XML
+2020-11-04 16:56:34,179 - BouncingBall[18635] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 16:56:34,179 - BouncingBall[18635] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 16:56:34,179 - BouncingBall[18635] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 16:56:34,179 - BouncingBall[18635] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 16:56:34,179 - BouncingBall[18635] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 16:56:34,179 - BouncingBall[18635] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 16:56:34,180 - BouncingBall[18635] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 16:56:34,180 - BouncingBall[18635] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 16:56:34,180 - BouncingBall[18635] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 16:56:34,180 - BouncingBall[18635] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 16:56:34,180 - BouncingBall[18635] - DEBUG : Terminato parsing totale
+2020-11-04 16:56:34,180 - BouncingBall[18635] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 16:56:34,181 - BouncingBall[18635] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 16:56:34,181 - BouncingBall[18635] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 16:56:34,181 - BouncingBall[18635] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 16:56:34,181 - BouncingBall[18635] - INFO : Chiamata alla classe Builder
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 16:56:34,182 - BouncingBall[18635] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 16:56:34,182 - BouncingBall[18635] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 16:56:34,182 - BouncingBall[18635] - DEBUG : Terminata formattazione
+2020-11-04 16:56:34,183 - BouncingBall[18635] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 16:56:34,183 - BouncingBall[18635] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:56:34,183 - BouncingBall[18635] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 16:56:34,183 - BouncingBall[18635] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 16:56:34,183 - BouncingBall[18635] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 16:56:34,183 - BouncingBall[18635] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 16:56:34,183 - BouncingBall[18635] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 16:56:34,183 - BouncingBall[18635] - DEBUG : Terminata formattazione
+2020-11-04 16:56:34,183 - BouncingBall[18635] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 16:56:34,184 - BouncingBall[18635] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:56:34,184 - BouncingBall[18635] - DEBUG : Salvataggio del MakeFile
+2020-11-04 16:56:34,184 - BouncingBall[18635] - DEBUG : Creazione del file MakeFile
+2020-11-04 16:56:34,184 - BouncingBall[18635] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 16:56:34,184 - BouncingBall[18635] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 16:56:34,184 - BouncingBall[18635] - DEBUG : Operazione di traduzione terminata con successo in 1.0842068195343018ms.
+2020-11-04 16:58:09,519 - BouncingBall[18856] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 16:58:09,519 - BouncingBall[18856] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 16:58:09,529 - BouncingBall[18856] - INFO : Chiamata alla classe Parser
+2020-11-04 16:58:09,529 - BouncingBall[18856] - DEBUG : Parsing totale dell'XML
+2020-11-04 16:58:09,529 - BouncingBall[18856] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 16:58:09,529 - BouncingBall[18856] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 16:58:09,530 - BouncingBall[18856] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 16:58:09,530 - BouncingBall[18856] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 16:58:09,530 - BouncingBall[18856] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 16:58:09,530 - BouncingBall[18856] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 16:58:09,530 - BouncingBall[18856] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 16:58:09,530 - BouncingBall[18856] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 16:58:09,530 - BouncingBall[18856] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 16:58:09,530 - BouncingBall[18856] - ERROR : modelica2GPU ha riscontrato il seguente errore. setcondition() takes 2 positional arguments but 3 were given
+2020-11-04 16:58:44,096 - BouncingBall[18965] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 16:58:44,096 - BouncingBall[18965] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 16:58:44,101 - BouncingBall[18965] - INFO : Chiamata alla classe Parser
+2020-11-04 16:58:44,101 - BouncingBall[18965] - DEBUG : Parsing totale dell'XML
+2020-11-04 16:58:44,101 - BouncingBall[18965] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 16:58:44,101 - BouncingBall[18965] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 16:58:44,101 - BouncingBall[18965] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 16:58:44,101 - BouncingBall[18965] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 16:58:44,101 - BouncingBall[18965] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 16:58:44,102 - BouncingBall[18965] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 16:58:44,102 - BouncingBall[18965] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 16:58:44,102 - BouncingBall[18965] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 16:58:44,102 - BouncingBall[18965] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 16:58:44,102 - BouncingBall[18965] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 16:58:44,102 - BouncingBall[18965] - DEBUG : Terminato parsing totale
+2020-11-04 16:58:44,102 - BouncingBall[18965] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 16:58:44,102 - BouncingBall[18965] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 16:58:44,102 - BouncingBall[18965] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 16:58:44,103 - BouncingBall[18965] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 16:58:44,103 - BouncingBall[18965] - INFO : Chiamata alla classe Builder
+2020-11-04 16:58:44,103 - BouncingBall[18965] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 16:58:44,103 - BouncingBall[18965] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 16:58:44,103 - BouncingBall[18965] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 16:58:44,103 - BouncingBall[18965] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 16:58:44,103 - BouncingBall[18965] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 16:58:44,103 - BouncingBall[18965] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 16:58:44,104 - BouncingBall[18965] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 16:58:44,104 - BouncingBall[18965] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 16:58:44,104 - BouncingBall[18965] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 16:58:44,104 - BouncingBall[18965] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 16:58:44,104 - BouncingBall[18965] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 16:58:44,104 - BouncingBall[18965] - DEBUG : Terminata formattazione
+2020-11-04 16:58:44,104 - BouncingBall[18965] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 16:58:44,104 - BouncingBall[18965] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:58:44,105 - BouncingBall[18965] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 16:58:44,105 - BouncingBall[18965] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 16:58:44,105 - BouncingBall[18965] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 16:58:44,105 - BouncingBall[18965] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 16:58:44,105 - BouncingBall[18965] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 16:58:44,105 - BouncingBall[18965] - DEBUG : Terminata formattazione
+2020-11-04 16:58:44,105 - BouncingBall[18965] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 16:58:44,105 - BouncingBall[18965] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:58:44,105 - BouncingBall[18965] - DEBUG : Salvataggio del MakeFile
+2020-11-04 16:58:44,105 - BouncingBall[18965] - DEBUG : Creazione del file MakeFile
+2020-11-04 16:58:44,106 - BouncingBall[18965] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 16:58:44,106 - BouncingBall[18965] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 16:58:44,106 - BouncingBall[18965] - DEBUG : Operazione di traduzione terminata con successo in 0.5415525436401367ms.
+2020-11-04 16:59:19,894 - BouncingBall[19125] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 16:59:19,894 - BouncingBall[19125] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 16:59:19,899 - BouncingBall[19125] - INFO : Chiamata alla classe Parser
+2020-11-04 16:59:19,899 - BouncingBall[19125] - DEBUG : Parsing totale dell'XML
+2020-11-04 16:59:19,899 - BouncingBall[19125] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 16:59:19,899 - BouncingBall[19125] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 16:59:19,899 - BouncingBall[19125] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 16:59:19,900 - BouncingBall[19125] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 16:59:19,900 - BouncingBall[19125] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 16:59:19,900 - BouncingBall[19125] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 16:59:19,900 - BouncingBall[19125] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 16:59:19,900 - BouncingBall[19125] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 16:59:19,900 - BouncingBall[19125] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 16:59:19,900 - BouncingBall[19125] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 16:59:19,901 - BouncingBall[19125] - DEBUG : Terminato parsing totale
+2020-11-04 16:59:19,901 - BouncingBall[19125] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 16:59:19,901 - BouncingBall[19125] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 16:59:19,901 - BouncingBall[19125] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 16:59:19,901 - BouncingBall[19125] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 16:59:19,901 - BouncingBall[19125] - INFO : Chiamata alla classe Builder
+2020-11-04 16:59:19,901 - BouncingBall[19125] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 16:59:19,901 - BouncingBall[19125] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 16:59:19,901 - BouncingBall[19125] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 16:59:19,902 - BouncingBall[19125] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Terminata formattazione
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 16:59:19,902 - BouncingBall[19125] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 16:59:19,903 - BouncingBall[19125] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 16:59:19,903 - BouncingBall[19125] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 16:59:19,903 - BouncingBall[19125] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 16:59:19,903 - BouncingBall[19125] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Terminata formattazione
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Salvataggio del MakeFile
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Creazione del file MakeFile
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 16:59:19,903 - BouncingBall[19125] - DEBUG : Operazione di traduzione terminata con successo in 1.7042195796966553ms.
+2020-11-04 16:59:49,905 - BouncingBall[19272] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 16:59:49,905 - BouncingBall[19272] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 16:59:49,914 - BouncingBall[19272] - INFO : Chiamata alla classe Parser
+2020-11-04 16:59:49,914 - BouncingBall[19272] - DEBUG : Parsing totale dell'XML
+2020-11-04 16:59:49,914 - BouncingBall[19272] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 16:59:49,914 - BouncingBall[19272] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 16:59:49,914 - BouncingBall[19272] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 16:59:49,915 - BouncingBall[19272] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 16:59:49,915 - BouncingBall[19272] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 16:59:49,915 - BouncingBall[19272] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 16:59:49,915 - BouncingBall[19272] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 16:59:49,915 - BouncingBall[19272] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 16:59:49,915 - BouncingBall[19272] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 16:59:49,916 - BouncingBall[19272] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 16:59:49,916 - BouncingBall[19272] - DEBUG : Terminato parsing totale
+2020-11-04 16:59:49,916 - BouncingBall[19272] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 16:59:49,916 - BouncingBall[19272] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 16:59:49,916 - BouncingBall[19272] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 16:59:49,917 - BouncingBall[19272] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 16:59:49,917 - BouncingBall[19272] - INFO : Chiamata alla classe Builder
+2020-11-04 16:59:49,917 - BouncingBall[19272] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 16:59:49,917 - BouncingBall[19272] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 16:59:49,918 - BouncingBall[19272] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 16:59:49,918 - BouncingBall[19272] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 16:59:49,918 - BouncingBall[19272] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 16:59:49,918 - BouncingBall[19272] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 16:59:49,918 - BouncingBall[19272] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 16:59:49,918 - BouncingBall[19272] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 16:59:49,918 - BouncingBall[19272] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 16:59:49,918 - BouncingBall[19272] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 16:59:49,919 - BouncingBall[19272] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 16:59:49,919 - BouncingBall[19272] - DEBUG : Terminata formattazione
+2020-11-04 16:59:49,919 - BouncingBall[19272] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 16:59:49,919 - BouncingBall[19272] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:59:49,919 - BouncingBall[19272] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 16:59:49,919 - BouncingBall[19272] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 16:59:49,919 - BouncingBall[19272] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 16:59:49,920 - BouncingBall[19272] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 16:59:49,920 - BouncingBall[19272] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 16:59:49,920 - BouncingBall[19272] - DEBUG : Terminata formattazione
+2020-11-04 16:59:49,920 - BouncingBall[19272] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 16:59:49,920 - BouncingBall[19272] - DEBUG : Contenuto salvato correttamente
+2020-11-04 16:59:49,920 - BouncingBall[19272] - DEBUG : Salvataggio del MakeFile
+2020-11-04 16:59:49,920 - BouncingBall[19272] - DEBUG : Creazione del file MakeFile
+2020-11-04 16:59:49,920 - BouncingBall[19272] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 16:59:49,921 - BouncingBall[19272] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 16:59:49,921 - BouncingBall[19272] - DEBUG : Operazione di traduzione terminata con successo in 0.9389364719390869ms.
+2020-11-04 17:06:29,340 - BouncingBall[20081] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:06:29,340 - BouncingBall[20081] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 17:06:29,348 - BouncingBall[20081] - INFO : Chiamata alla classe Parser
+2020-11-04 17:06:29,348 - BouncingBall[20081] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:06:29,348 - BouncingBall[20081] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:06:29,348 - BouncingBall[20081] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:06:29,348 - BouncingBall[20081] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:06:29,349 - BouncingBall[20081] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:06:29,349 - BouncingBall[20081] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:06:29,349 - BouncingBall[20081] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:06:29,349 - BouncingBall[20081] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:06:29,349 - BouncingBall[20081] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:06:29,349 - BouncingBall[20081] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:06:29,349 - BouncingBall[20081] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:06:29,349 - BouncingBall[20081] - DEBUG : Terminato parsing totale
+2020-11-04 17:06:29,349 - BouncingBall[20081] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:06:29,350 - BouncingBall[20081] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:06:29,350 - BouncingBall[20081] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:06:29,350 - BouncingBall[20081] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:06:29,350 - BouncingBall[20081] - INFO : Chiamata alla classe Builder
+2020-11-04 17:06:29,350 - BouncingBall[20081] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:06:29,350 - BouncingBall[20081] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 17:06:29,350 - BouncingBall[20081] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:06:29,350 - BouncingBall[20081] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:06:29,350 - BouncingBall[20081] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Terminata formattazione
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:06:29,351 - BouncingBall[20081] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:06:29,351 - BouncingBall[20081] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:06:29,351 - BouncingBall[20081] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:06:29,352 - BouncingBall[20081] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:06:29,352 - BouncingBall[20081] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:06:29,352 - BouncingBall[20081] - DEBUG : Terminata formattazione
+2020-11-04 17:06:29,352 - BouncingBall[20081] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:06:29,352 - BouncingBall[20081] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:06:29,352 - BouncingBall[20081] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:06:29,352 - BouncingBall[20081] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:06:29,352 - BouncingBall[20081] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:06:29,352 - BouncingBall[20081] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:06:29,352 - BouncingBall[20081] - DEBUG : Operazione di traduzione terminata con successo in 1.0527358055114746ms.
+2020-11-04 17:07:10,970 - BouncingBall[20295] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:07:10,970 - BouncingBall[20295] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 17:07:10,977 - BouncingBall[20295] - INFO : Chiamata alla classe Parser
+2020-11-04 17:07:10,977 - BouncingBall[20295] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:07:10,977 - BouncingBall[20295] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:07:10,977 - BouncingBall[20295] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Terminato parsing totale
+2020-11-04 17:07:10,978 - BouncingBall[20295] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:07:10,978 - BouncingBall[20295] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:07:10,979 - BouncingBall[20295] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:07:10,979 - BouncingBall[20295] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:07:10,979 - BouncingBall[20295] - INFO : Chiamata alla classe Builder
+2020-11-04 17:07:10,979 - BouncingBall[20295] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:07:10,979 - BouncingBall[20295] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 17:07:10,979 - BouncingBall[20295] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:07:10,979 - BouncingBall[20295] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:07:10,979 - BouncingBall[20295] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:07:10,979 - BouncingBall[20295] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:07:10,979 - BouncingBall[20295] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Terminata formattazione
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:07:10,980 - BouncingBall[20295] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:07:10,980 - BouncingBall[20295] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:07:10,980 - BouncingBall[20295] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:07:10,980 - BouncingBall[20295] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Terminata formattazione
+2020-11-04 17:07:10,980 - BouncingBall[20295] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:07:10,981 - BouncingBall[20295] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:07:10,981 - BouncingBall[20295] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:07:10,981 - BouncingBall[20295] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:07:10,981 - BouncingBall[20295] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:07:10,981 - BouncingBall[20295] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:07:10,981 - BouncingBall[20295] - DEBUG : Operazione di traduzione terminata con successo in 0.5018987655639648ms.
+2020-11-04 17:08:15,979 - BouncingBall[20501] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:08:15,979 - BouncingBall[20501] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 17:08:15,985 - BouncingBall[20501] - INFO : Chiamata alla classe Parser
+2020-11-04 17:08:15,985 - BouncingBall[20501] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:08:15,986 - BouncingBall[20501] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:08:15,986 - BouncingBall[20501] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:08:15,986 - BouncingBall[20501] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:08:15,986 - BouncingBall[20501] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:08:15,986 - BouncingBall[20501] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:08:15,986 - BouncingBall[20501] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:08:15,986 - BouncingBall[20501] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:08:15,987 - BouncingBall[20501] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:08:15,987 - BouncingBall[20501] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:08:15,987 - BouncingBall[20501] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:08:15,987 - BouncingBall[20501] - DEBUG : Terminato parsing totale
+2020-11-04 17:08:15,987 - BouncingBall[20501] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:08:15,987 - BouncingBall[20501] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:08:15,987 - BouncingBall[20501] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:08:15,987 - BouncingBall[20501] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:08:15,988 - BouncingBall[20501] - INFO : Chiamata alla classe Builder
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 17:08:15,988 - BouncingBall[20501] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:08:15,988 - BouncingBall[20501] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:08:15,988 - BouncingBall[20501] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:08:15,989 - BouncingBall[20501] - DEBUG : Terminata formattazione
+2020-11-04 17:08:15,989 - BouncingBall[20501] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:08:15,989 - BouncingBall[20501] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:08:15,989 - BouncingBall[20501] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:08:15,989 - BouncingBall[20501] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:08:15,989 - BouncingBall[20501] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:08:15,989 - BouncingBall[20501] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:08:15,989 - BouncingBall[20501] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:08:15,989 - BouncingBall[20501] - DEBUG : Terminata formattazione
+2020-11-04 17:08:15,989 - BouncingBall[20501] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:08:15,990 - BouncingBall[20501] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:08:15,990 - BouncingBall[20501] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:08:15,990 - BouncingBall[20501] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:08:15,990 - BouncingBall[20501] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:08:15,990 - BouncingBall[20501] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:08:15,990 - BouncingBall[20501] - DEBUG : Operazione di traduzione terminata con successo in 0.7701301574707031ms.
+2020-11-04 17:11:14,154 - BouncingBall[20874] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:11:14,154 - BouncingBall[20874] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 17:11:14,163 - BouncingBall[20874] - INFO : Chiamata alla classe Parser
+2020-11-04 17:11:14,163 - BouncingBall[20874] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:11:14,164 - BouncingBall[20874] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:11:14,165 - BouncingBall[20874] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:11:14,165 - BouncingBall[20874] - DEBUG : Terminato parsing totale
+2020-11-04 17:11:14,165 - BouncingBall[20874] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:11:14,165 - BouncingBall[20874] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:11:14,165 - BouncingBall[20874] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:11:14,165 - BouncingBall[20874] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:11:14,166 - BouncingBall[20874] - INFO : Chiamata alla classe Builder
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 17:11:14,166 - BouncingBall[20874] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:11:14,166 - BouncingBall[20874] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Terminata formattazione
+2020-11-04 17:11:14,166 - BouncingBall[20874] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:11:14,167 - BouncingBall[20874] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:11:14,167 - BouncingBall[20874] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:11:14,167 - BouncingBall[20874] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:11:14,167 - BouncingBall[20874] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:11:14,167 - BouncingBall[20874] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:11:14,167 - BouncingBall[20874] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:11:14,167 - BouncingBall[20874] - DEBUG : Terminata formattazione
+2020-11-04 17:11:14,167 - BouncingBall[20874] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:11:14,167 - BouncingBall[20874] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:11:14,167 - BouncingBall[20874] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:11:14,167 - BouncingBall[20874] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:11:14,167 - BouncingBall[20874] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:11:14,168 - BouncingBall[20874] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:11:14,168 - BouncingBall[20874] - DEBUG : Operazione di traduzione terminata con successo in 0.8289363384246826ms.
+2020-11-04 17:11:58,125 - BouncingBall[21086] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:11:58,125 - BouncingBall[21086] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 17:11:58,134 - BouncingBall[21086] - INFO : Chiamata alla classe Parser
+2020-11-04 17:11:58,134 - BouncingBall[21086] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:11:58,135 - BouncingBall[21086] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:11:58,135 - BouncingBall[21086] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:11:58,135 - BouncingBall[21086] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:11:58,135 - BouncingBall[21086] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:11:58,135 - BouncingBall[21086] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:11:58,135 - BouncingBall[21086] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:11:58,135 - BouncingBall[21086] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:11:58,136 - BouncingBall[21086] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:11:58,136 - BouncingBall[21086] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:11:58,136 - BouncingBall[21086] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:11:58,136 - BouncingBall[21086] - DEBUG : Terminato parsing totale
+2020-11-04 17:11:58,136 - BouncingBall[21086] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:11:58,136 - BouncingBall[21086] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:11:58,137 - BouncingBall[21086] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:11:58,137 - BouncingBall[21086] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:11:58,137 - BouncingBall[21086] - INFO : Chiamata alla classe Builder
+2020-11-04 17:11:58,137 - BouncingBall[21086] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:11:58,138 - BouncingBall[21086] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 17:11:58,138 - BouncingBall[21086] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:11:58,138 - BouncingBall[21086] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:11:58,138 - BouncingBall[21086] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:11:58,138 - BouncingBall[21086] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:11:58,138 - BouncingBall[21086] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:11:58,138 - BouncingBall[21086] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:11:58,138 - BouncingBall[21086] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:11:58,139 - BouncingBall[21086] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:11:58,139 - BouncingBall[21086] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:11:58,139 - BouncingBall[21086] - DEBUG : Terminata formattazione
+2020-11-04 17:11:58,139 - BouncingBall[21086] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:11:58,139 - BouncingBall[21086] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:11:58,139 - BouncingBall[21086] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:11:58,139 - BouncingBall[21086] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:11:58,139 - BouncingBall[21086] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:11:58,140 - BouncingBall[21086] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:11:58,140 - BouncingBall[21086] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:11:58,140 - BouncingBall[21086] - DEBUG : Terminata formattazione
+2020-11-04 17:11:58,140 - BouncingBall[21086] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:11:58,140 - BouncingBall[21086] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:11:58,140 - BouncingBall[21086] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:11:58,140 - BouncingBall[21086] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:11:58,141 - BouncingBall[21086] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:11:58,141 - BouncingBall[21086] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:11:58,141 - BouncingBall[21086] - DEBUG : Operazione di traduzione terminata con successo in 0.9987301826477051ms.
+2020-11-04 17:12:29,794 - BouncingBall[21234] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:12:29,794 - BouncingBall[21234] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 17:12:29,800 - BouncingBall[21234] - INFO : Chiamata alla classe Parser
+2020-11-04 17:12:29,800 - BouncingBall[21234] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:12:29,800 - BouncingBall[21234] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:12:29,801 - BouncingBall[21234] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:12:29,801 - BouncingBall[21234] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:12:29,801 - BouncingBall[21234] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:12:29,801 - BouncingBall[21234] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:12:29,801 - BouncingBall[21234] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:12:29,801 - BouncingBall[21234] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:12:29,801 - BouncingBall[21234] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:12:29,802 - BouncingBall[21234] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:12:29,802 - BouncingBall[21234] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:12:29,802 - BouncingBall[21234] - DEBUG : Terminato parsing totale
+2020-11-04 17:12:29,802 - BouncingBall[21234] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:12:29,802 - BouncingBall[21234] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:12:29,802 - BouncingBall[21234] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:12:29,803 - BouncingBall[21234] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:12:29,803 - BouncingBall[21234] - INFO : Chiamata alla classe Builder
+2020-11-04 17:12:29,803 - BouncingBall[21234] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:12:29,803 - BouncingBall[21234] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 17:12:29,803 - BouncingBall[21234] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:12:29,804 - BouncingBall[21234] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:12:29,804 - BouncingBall[21234] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:12:29,804 - BouncingBall[21234] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:12:29,804 - BouncingBall[21234] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:12:29,804 - BouncingBall[21234] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:12:29,804 - BouncingBall[21234] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:12:29,804 - BouncingBall[21234] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:12:29,804 - BouncingBall[21234] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:12:29,804 - BouncingBall[21234] - DEBUG : Terminata formattazione
+2020-11-04 17:12:29,805 - BouncingBall[21234] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:12:29,805 - BouncingBall[21234] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:12:29,805 - BouncingBall[21234] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:12:29,805 - BouncingBall[21234] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:12:29,805 - BouncingBall[21234] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:12:29,805 - BouncingBall[21234] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:12:29,805 - BouncingBall[21234] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:12:29,806 - BouncingBall[21234] - DEBUG : Terminata formattazione
+2020-11-04 17:12:29,806 - BouncingBall[21234] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:12:29,806 - BouncingBall[21234] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:12:29,806 - BouncingBall[21234] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:12:29,806 - BouncingBall[21234] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:12:29,806 - BouncingBall[21234] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:12:29,806 - BouncingBall[21234] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:12:29,807 - BouncingBall[21234] - DEBUG : Operazione di traduzione terminata con successo in 0.5918736457824707ms.
+2020-11-04 17:12:51,164 - BouncingBall[21351] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:12:51,164 - BouncingBall[21351] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 17:12:51,173 - BouncingBall[21351] - INFO : Chiamata alla classe Parser
+2020-11-04 17:12:51,173 - BouncingBall[21351] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:12:51,174 - BouncingBall[21351] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:12:51,174 - BouncingBall[21351] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:12:51,174 - BouncingBall[21351] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:12:51,174 - BouncingBall[21351] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:12:51,174 - BouncingBall[21351] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:12:51,174 - BouncingBall[21351] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:12:51,175 - BouncingBall[21351] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:12:51,175 - BouncingBall[21351] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:12:51,175 - BouncingBall[21351] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:12:51,175 - BouncingBall[21351] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:12:51,175 - BouncingBall[21351] - DEBUG : Terminato parsing totale
+2020-11-04 17:12:51,175 - BouncingBall[21351] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:12:51,175 - BouncingBall[21351] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:12:51,176 - BouncingBall[21351] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:12:51,176 - BouncingBall[21351] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:12:51,176 - BouncingBall[21351] - INFO : Chiamata alla classe Builder
+2020-11-04 17:12:51,177 - BouncingBall[21351] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:12:51,177 - BouncingBall[21351] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 17:12:51,177 - BouncingBall[21351] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:12:51,177 - BouncingBall[21351] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:12:51,177 - BouncingBall[21351] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:12:51,177 - BouncingBall[21351] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:12:51,177 - BouncingBall[21351] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:12:51,177 - BouncingBall[21351] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:12:51,178 - BouncingBall[21351] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:12:51,178 - BouncingBall[21351] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:12:51,178 - BouncingBall[21351] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:12:51,178 - BouncingBall[21351] - DEBUG : Terminata formattazione
+2020-11-04 17:12:51,178 - BouncingBall[21351] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:12:51,178 - BouncingBall[21351] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:12:51,178 - BouncingBall[21351] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:12:51,178 - BouncingBall[21351] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:12:51,179 - BouncingBall[21351] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:12:51,179 - BouncingBall[21351] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:12:51,179 - BouncingBall[21351] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:12:51,179 - BouncingBall[21351] - DEBUG : Terminata formattazione
+2020-11-04 17:12:51,179 - BouncingBall[21351] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:12:51,179 - BouncingBall[21351] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:12:51,179 - BouncingBall[21351] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:12:51,180 - BouncingBall[21351] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:12:51,180 - BouncingBall[21351] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:12:51,180 - BouncingBall[21351] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:12:51,180 - BouncingBall[21351] - DEBUG : Operazione di traduzione terminata con successo in 1.0092673301696777ms.
+2020-11-04 17:13:18,994 - BouncingBall[21499] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:13:18,994 - BouncingBall[21499] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/XMLs/BouncingBall.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/
+modelname: BouncingBall
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+timeStepGrowLimit: 1.0
+timeStepShrinkLimit: 0.2
+eventDirection:
+    eventDirectionValue1: 0
+    eventDirectionValue2: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 100.0
+
+2020-11-04 17:13:19,002 - BouncingBall[21499] - INFO : Chiamata alla classe Parser
+2020-11-04 17:13:19,003 - BouncingBall[21499] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:13:19,003 - BouncingBall[21499] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:13:19,003 - BouncingBall[21499] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:13:19,003 - BouncingBall[21499] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:13:19,003 - BouncingBall[21499] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:13:19,003 - BouncingBall[21499] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:13:19,004 - BouncingBall[21499] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:13:19,004 - BouncingBall[21499] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:13:19,004 - BouncingBall[21499] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:13:19,004 - BouncingBall[21499] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:13:19,004 - BouncingBall[21499] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:13:19,005 - BouncingBall[21499] - DEBUG : Terminato parsing totale
+2020-11-04 17:13:19,005 - BouncingBall[21499] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:13:19,005 - BouncingBall[21499] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:13:19,005 - BouncingBall[21499] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:13:19,005 - BouncingBall[21499] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:13:19,006 - BouncingBall[21499] - INFO : Chiamata alla classe Builder
+2020-11-04 17:13:19,006 - BouncingBall[21499] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:13:19,006 - BouncingBall[21499] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-04 17:13:19,006 - BouncingBall[21499] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:13:19,006 - BouncingBall[21499] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:13:19,006 - BouncingBall[21499] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:13:19,006 - BouncingBall[21499] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:13:19,007 - BouncingBall[21499] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:13:19,007 - BouncingBall[21499] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:13:19,007 - BouncingBall[21499] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:13:19,007 - BouncingBall[21499] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:13:19,007 - BouncingBall[21499] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:13:19,007 - BouncingBall[21499] - DEBUG : Terminata formattazione
+2020-11-04 17:13:19,007 - BouncingBall[21499] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:13:19,008 - BouncingBall[21499] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:13:19,008 - BouncingBall[21499] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:13:19,008 - BouncingBall[21499] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:13:19,008 - BouncingBall[21499] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:13:19,008 - BouncingBall[21499] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:13:19,008 - BouncingBall[21499] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:13:19,008 - BouncingBall[21499] - DEBUG : Terminata formattazione
+2020-11-04 17:13:19,008 - BouncingBall[21499] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/src/test/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:13:19,009 - BouncingBall[21499] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:13:19,009 - BouncingBall[21499] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:13:19,009 - BouncingBall[21499] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:13:19,009 - BouncingBall[21499] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:13:19,009 - BouncingBall[21499] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:13:19,009 - BouncingBall[21499] - DEBUG : Operazione di traduzione terminata con successo in 0.9691452980041504ms.
