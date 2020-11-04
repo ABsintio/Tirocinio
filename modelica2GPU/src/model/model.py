@@ -108,3 +108,12 @@ class Model:
             # Devo prendere l'equazione iniziale associata
             new_init_eq.append(Equation(lhs, init_eq_dict[lhs]))
         return new_init_eq if new_init_eq != [] else self.init['initialization']
+
+    
+    @staticmethod
+    def get_var_by_lhsinit(initial_equation, variables_dict, tipo):
+        """ 
+        Estrapola da tutte le equazioni iniziali di tipo 'initial' una lista
+        di variabili che sono istanze del tipo dato in input
+        """
+        return [variables_dict[str(x.left)] for x in initial_equation if isinstance(variables_dict[str(x.left)], tipo)]

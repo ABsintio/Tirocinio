@@ -158,8 +158,6 @@ int main() {
     int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);
     PrintPropertiesOfSpecificDevice(SelectedDevice);
 
-%s
-
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION> Solver(SelectedDevice);
     Solver.SolverOption(ThreadsPerBlock, blockSize);
     Solver.SolverOption(PreferSharedMemory, %d);
@@ -182,7 +180,7 @@ int main() {
     clock_t TransientStart;
     clock_t TransientEnd;    
     for (int i=0; i < NumberOfSimulationLaunches; i++) {
-    %s;
+        FillSolverObject(Solver, i*NT, NT);
         Solver.SynchroniseFromHostToDevice(All);
         Solver.InsertSynchronisationPoint();
         Solver.SynchroniseSolver();
@@ -225,7 +223,6 @@ int main() {
 MPGOS_FillFunction_Definition = """
 void FillSolverObject(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
-    %s vector<PRECISION>& Variable_X, 
     int FirstProblemNumber, int NumberOfThreads
 ) {
     int k_begin = FirstProblemNumber;
@@ -236,23 +233,27 @@ void FillSolverObject(
         Solver.SetHost(ProblemNumber, TimeDomain, 0, %s);
         Solver.SetHost(ProblemNumber, TimeDomain, 1, %s);  
 
-        int i = 0;
-        for (PRECISION x : Variable_X) {
-            Solver.SetHost(ProblemNumber, ActualState, i++, x);
-        }
+        // Settaggio dei valori iniziali degli ActualState
+%s 
 
         Solver.SetHost(ProblemNumber, ActualTime, 0.0);
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
         Solver.SetHost(ProblemNumber, DenseIndex, 0 );
 
+        // Settaggio dei valori iniziali per ACC (se presenti)
 %s
+
+        // Settaggio dei valori iniziali per ACCi (se presenti)
 %s
 		
-		ProblemNumber++;
+        ProblemNumber++;
         k_begin++;
     }
 
+    // Settaggio dei valori iniziali per sPAR (se presenti)
 %s
+
+    // Settaggio dei valori iniziali per sPARi (se presenti)
 %s
 }
 """
@@ -376,26 +377,6 @@ class ModelBuilder:
         block_size = self.config_dict['threadsPerBlock']
         GPUMajor = self.config_dict['GPU information'].compute_capability()[0]
         GPUMinor = self.config_dict['GPU information'].compute_capability()[1]
-        # Formatto la stringa delle equazioni iniziali con implementazione del vettore delle equazioni
-        str2format = " "*4 + "PRECISION InitialCondition_%s\n"
-        initial_eq = [
-            [(str2format % (str(eq)), str(eq.left)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], X)],
-            [(str2format % (str(eq)), str(eq.left)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], sPAR)],
-            [(str2format % (str(eq)), str(eq.left)) for eq in self.initial_equations if isinstance(self.variables_dict[eq.left], sPARi)],
-        ]
-        vector_X     = " "*4 + "vector<PRECISION> Parameter_X = {%s};\n"
-        vector_sPAR  = " "*4 + "vector<PRECISION> Parameter_sPAR = {%s};\n"
-        vector_sPARi = " "*4 + "vector<PRECISION> Parameter_sPARi = {%s};\n"
-        stringa = ""
-        xs = [f"InitialCondition_{x[1]}" for x in initial_eq[0]]
-        spars = [f"InitialCondition_{x[1]}" for x in initial_eq[1]]
-        sparis = [f"InitialCondition_{x[1]}" for x in initial_eq[2]]
-        vectors = [
-            vector_X % (",".join(xs)) if len(xs) > 0 else "",
-            vector_sPAR % (",".join(spars)) if len(spars) > 0 else "",
-            vector_sPARi % (",".join(sparis)) if len(sparis) > 0 else ""
-        ]
-        initialEquation = "".join(["%s%s" % ("".join([y[0] for y in x]), y) for x, y in zip(initial_eq, vectors) if x and y])
         # Formatta i parametri per la funzione SolverOption
         preferSharedMemory = self.config_dict['preferSharedMemory']
         initialTimeStep = self.config_dict['initialTimeStep']
@@ -411,21 +392,23 @@ class ModelBuilder:
         relative_tolerance = " "*4 + "Solver.SolverOption(RelativeTolerance, %d, %s);\n"
         absoluteTolerances = "".join([abs_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
         relativeTolerances = "".join([relative_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
-        # Formattazione della stringa di chiamata alla funzione fillSolverObject
-        fillSolverObjectFunctionCall = " "*4 + "FillSolverObject(Solver, %sParameter_X, i*NT, NT)" % (
-            ("Parameter_sPAR, " if spars else "") + ("Parameter_sPARi, " if sparis else "")
-        )
         MPGOS_MainFunction = MPGOS_MainFunction % (
-            nop, block_size, GPUMajor, GPUMinor, 
-            initialEquation, preferSharedMemory, 
+            nop, block_size, GPUMajor, GPUMinor, preferSharedMemory, 
             initialTimeStep, maxTimeStep, minTimeStep,
             timeStepGrowLimit, timeStepShrinkLimit,
             eventDirections, denseOutputMiniumumTimeStep, 
             denseOutputSaveFrequency, absoluteTolerances,
-            relativeTolerances, "% NT", self.model_name,fillSolverObjectFunctionCall
+            relativeTolerances, "% NT", self.model_name
         )
         return MPGOS_MainFunction
-    
+
+
+    def build_FSOstr(self, str2format, tipo):
+        """ Costruisce le stringhe per ACC, ACCi, X, sPAR e sPARi per la funzione FillSolverObject """
+        init = model.Model.get_var_by_lhsinit(self.initial_equations, self.variables_dict, tipo)
+        string = "\n".join([str2format % (x.id, x.init) for x in init])
+        return string
+
 
     def buildMPGOS_FillFunction_Definition(self):
         """ Formatta la stringa per la definizione della funzione fillSolverObject """
@@ -434,43 +417,22 @@ class ModelBuilder:
         msg = "Formattazione della stringa per la funzione fillSolverObject"
         self.logger.info(msg, msg)
         # END LOG
-        # Controllo l'esistenza di almeno una equazione iniziale di tipo sPAR
-        spars = [isinstance(self.variables_dict[eq.left], sPAR) for eq in self.initial_equations]
-        sharedPar_vect = "vector<PRECISION>& Parameter_sPAR, " if any(spars) else ""
-        # Controllo l'esistenza di almeno una equazione iniziale di tipo sPARi
-        sparis = [isinstance(self.variables_dict[eq.left], sPARi) for eq in self.initial_equations]
-        sharedParI_vect = "vector<PRECISION>& Parameter_sPARi, " if any(sparis) else ""
-        vector_in_fundef = f"{sharedPar_vect}{sharedParI_vect}"
         # Prendo i valori per i time domain
         timeDomainStart = self.config_dict['timeDomainStart']
         timeDomainEnd   = self.config_dict['timeDomainEnd']
+        # Creo le inizializzazioni per gli ActualState
+        state_str = self.build_FSOstr(" "*8 + "Solver.SetHost(ProblemNumber, ActualState, %d, %s);", X)
         # Creo le inizializzazioni per gli accessories ACC
-        accs = [x for x in self.initial_equations if isinstance(self.variables_dict[x.left], ACC)]
-        accs_tuple = [(i, x.right.__str__()) for i, x in enumerate(accs)]
-        acc_str2format = " "*8 + "Solver.SetHost(ProblemNumber, Accessories, %d, %s);"
-        acc_init_str = "\n".join([acc_str2format % (x[0], x[1]) for x in accs_tuple]) if accs else ""
+        acc_str = self.build_FSOstr(" "*8 + "Solver.SetHost(ProblemNumber, Accessories, %d, %s);", ACC)
         # Creo le inizializzazioni per gli accessories ACCi
-        accis = [x for x in self.initial_equations if isinstance(self.variables_dict[x.left], ACCi)]
-        accis_tuple = [(i, x.right.__str__()) for i, x in enumerate(accis)]
-        acci_str2format = " "*8 + "Solver.SetHost(ProblemNumber, IntegerAccessories, %d, %s);"
-        acci_init_str = "\n".join([acci_str2format % (x[0], x[1]) for x in accis_tuple]) if accis else ""
+        acci_str = self.build_FSOstr(" "*8 + "Solver.SetHost(ProblemNumber, IntegerAccessories, %d, %s);", ACCi)
         # Creo le inizializzazioni per i parametri sPAR
-        spar_init_str = ""
-        if any(spars): # Se ci sono effettivamente parameteri sPAR allora aggiorno
-            spar_init_str += " "*4 + "int spar_i{0};\n" + \
-                             " "*4 + "for (PRECISION spar: Parameter_sPAR){\n" + \
-                             " "*8 + "Solver.SetHost(SharedParameters, spar_i++, spar);\n" + \
-                             " "*4 + "}\n"
+        spar_str = self.build_FSOstr(" "*4 + "Solver.SetHost(SharedParameters, %d, %s);", sPAR)
         # Creo le inizializzazioni per i parametri sPARi
-        spari_init_str = ""
-        if any(sparis): # Se ci sono effettivamente parametri sPARi allora aggiorno
-            spari_init_str += " "*4 + "int spari_i{0};\n" + \
-                              " "*4 + "for (PRECISION spari: Parameter_sPARi){\n" + \
-                              " "*8 + "Solver.SetHost(IntegerSharedParameters, spari_i++, spari);\n" + \
-                              " "*4 + "}\n"
+        spari_str = self.build_FSOstr(" "*4 + "Solver.SetHost(IntegerSharedParameters, %d, %s);", sPARi)
+
         MPGOS_FillFunction_Definition = MPGOS_FillFunction_Definition % (
-            vector_in_fundef, timeDomainStart, timeDomainEnd,
-            acc_init_str, acci_init_str, spar_init_str, spari_init_str
+            timeDomainStart, timeDomainEnd, state_str, acc_str, acci_str, spar_str, spari_str
         )
         return MPGOS_FillFunction_Definition
     
