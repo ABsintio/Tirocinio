@@ -1,10 +1,10 @@
-2020-11-03 16:43:10,327 - BouncingBall[18981] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
-2020-11-03 16:43:10,328 - BouncingBall[18981] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+2020-11-04 17:45:48,435 - BouncingBall[26795] - INFO : Logger <Logger BouncingBall (DEBUG)> creato con successo
+2020-11-04 17:45:48,435 - BouncingBall[26795] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
 CONFIGURAZIONE ESTRAPOLATA
 xmlfile: /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2/BouncingBall.xml
-workingdir: /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2/
 modelname: BouncingBall
-notifier: True
+notifier: False
 filelogger: True
 MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
 DEVICE: GeForce GTX 1660 SUPER
@@ -96,15 +96,15 @@ DEVICE: GeForce GTX 1660 SUPER
     | WARP_SIZE:                                 32 |
     |                                               |
     -------------------------------------------------
-numberOfThreads: 10000
-numberOfProblems: 20000
-numberOfDenseOutput: 10000
-threadsPerBlock: 1024
+numberOfThreads: 1000
+numberOfProblems: 2000
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
 initialTimeStep: 0.01
 preferSharedMemory: 1
 maximumTimeStep: 1000000.0
 minimumTimeStep: 1e-14
-timeStepGrowLimit: 5.0
+timeStepGrowLimit: 1.0
 timeStepShrinkLimit: 0.2
 eventDirection:
     eventDirectionValue1: 0
@@ -115,49 +115,49 @@ tolerance:
     toleranceValue1: 1e-06
     toleranceValue2: 1e-06
 timeDomainStart: 0.0
-timeDomainEnd: 10.0
+timeDomainEnd: 100.0
 
-2020-11-03 16:43:10,331 - BouncingBall[18981] - INFO : Chiamata alla classe Parser
-2020-11-03 16:43:12,533 - BouncingBall[18981] - DEBUG : Parsing totale dell'XML
-2020-11-03 16:43:12,534 - BouncingBall[18981] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
-2020-11-03 16:43:14,614 - BouncingBall[18981] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
-2020-11-03 16:43:14,615 - BouncingBall[18981] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
-2020-11-03 16:43:14,616 - BouncingBall[18981] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
-2020-11-03 16:43:14,616 - BouncingBall[18981] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
-2020-11-03 16:43:14,617 - BouncingBall[18981] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
-2020-11-03 16:43:16,690 - BouncingBall[18981] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
-2020-11-03 16:43:16,691 - BouncingBall[18981] - DEBUG : Parsing delle funzioni definite dall'utente
-2020-11-03 16:43:16,692 - BouncingBall[18981] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
-2020-11-03 16:43:16,693 - BouncingBall[18981] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
-2020-11-03 16:43:16,693 - BouncingBall[18981] - DEBUG : Terminato parsing totale
-2020-11-03 16:43:20,830 - BouncingBall[18981] - INFO : Chiamata alla classe Model e costruzione del modello astratto
-2020-11-03 16:43:20,830 - BouncingBall[18981] - DEBUG : Ottengo le ODE per il modello
-2020-11-03 16:43:20,831 - BouncingBall[18981] - DEBUG : Ottengo le equazioni iniziali per il modello
-2020-11-03 16:43:20,832 - BouncingBall[18981] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
-2020-11-03 16:43:22,869 - BouncingBall[18981] - INFO : Chiamata alla classe Builder
-2020-11-03 16:43:22,869 - BouncingBall[18981] - DEBUG : Creazione delle directory nella quale salvare i file
-2020-11-03 16:43:22,870 - BouncingBall[18981] - INFO : Chiamata alla classe SystemDefinitionBuilder
-2020-11-03 16:43:22,870 - BouncingBall[18981] - INFO : Chiamata alla classe ModelBuilder
-2020-11-03 16:43:26,986 - BouncingBall[18981] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
-2020-11-03 16:43:26,987 - BouncingBall[18981] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
-2020-11-03 16:43:26,987 - BouncingBall[18981] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
-2020-11-03 16:43:26,988 - BouncingBall[18981] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
-2020-11-03 16:43:26,988 - BouncingBall[18981] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
-2020-11-03 16:43:26,989 - BouncingBall[18981] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
-2020-11-03 16:43:26,989 - BouncingBall[18981] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
-2020-11-03 16:43:26,989 - BouncingBall[18981] - DEBUG : Terminata formattazione
-2020-11-03 16:43:29,053 - BouncingBall[18981] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
-2020-11-03 16:43:29,053 - BouncingBall[18981] - DEBUG : Contenuto salvato correttamente
-2020-11-03 16:43:31,112 - BouncingBall[18981] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
-2020-11-03 16:43:31,113 - BouncingBall[18981] - INFO : Formattazione della stringa per la definizione delle MACRO
-2020-11-03 16:43:31,113 - BouncingBall[18981] - INFO : Formattazione della stringa per la funzione fillSolverObject
-2020-11-03 16:43:31,114 - BouncingBall[18981] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
-2020-11-03 16:43:31,114 - BouncingBall[18981] - INFO : Formattazione della stringa per la funzione di main
-2020-11-03 16:43:31,115 - BouncingBall[18981] - DEBUG : Terminata formattazione
-2020-11-03 16:43:33,192 - BouncingBall[18981] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2/BouncingBall_MPGOS/BouncingBall.cu
-2020-11-03 16:43:33,193 - BouncingBall[18981] - DEBUG : Contenuto salvato correttamente
-2020-11-03 16:43:33,193 - BouncingBall[18981] - DEBUG : Salvataggio del MakeFile
-2020-11-03 16:43:35,250 - BouncingBall[18981] - DEBUG : Creazione del file MakeFile
-2020-11-03 16:43:35,251 - BouncingBall[18981] - DEBUG : Terminata formattazione del file MakeFile
-2020-11-03 16:43:37,327 - BouncingBall[18981] - DEBUG : Termianto salvataggio el file MakeFile
-2020-11-03 16:43:39,394 - BouncingBall[18981] - DEBUG : Operazione di traduzione terminata con successo in 30.639378786087036ms.
+2020-11-04 17:45:48,440 - BouncingBall[26795] - INFO : Chiamata alla classe Parser
+2020-11-04 17:45:48,440 - BouncingBall[26795] - DEBUG : Parsing totale dell'XML
+2020-11-04 17:45:48,440 - BouncingBall[26795] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-04 17:45:48,440 - BouncingBall[26795] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-04 17:45:48,440 - BouncingBall[26795] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-04 17:45:48,440 - BouncingBall[26795] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-04 17:45:48,441 - BouncingBall[26795] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-04 17:45:48,441 - BouncingBall[26795] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-04 17:45:48,441 - BouncingBall[26795] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-04 17:45:48,441 - BouncingBall[26795] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-04 17:45:48,441 - BouncingBall[26795] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-04 17:45:48,441 - BouncingBall[26795] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-04 17:45:48,441 - BouncingBall[26795] - DEBUG : Terminato parsing totale
+2020-11-04 17:45:48,442 - BouncingBall[26795] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-04 17:45:48,442 - BouncingBall[26795] - DEBUG : Ottengo le ODE per il modello
+2020-11-04 17:45:48,442 - BouncingBall[26795] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-04 17:45:48,442 - BouncingBall[26795] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-04 17:45:48,442 - BouncingBall[26795] - INFO : Chiamata alla classe Builder
+2020-11-04 17:45:48,442 - BouncingBall[26795] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-04 17:45:48,443 - BouncingBall[26795] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-04 17:45:48,443 - BouncingBall[26795] - INFO : Chiamata alla classe ModelBuilder
+2020-11-04 17:45:48,443 - BouncingBall[26795] - DEBUG : Formattazione della stringa per il file BouncingBall_SystemDefinition.cuh
+2020-11-04 17:45:48,443 - BouncingBall[26795] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-04 17:45:48,443 - BouncingBall[26795] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-04 17:45:48,443 - BouncingBall[26795] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-04 17:45:48,443 - BouncingBall[26795] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-04 17:45:48,443 - BouncingBall[26795] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-04 17:45:48,443 - BouncingBall[26795] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-04 17:45:48,444 - BouncingBall[26795] - DEBUG : Terminata formattazione
+2020-11-04 17:45:48,444 - BouncingBall[26795] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2/BouncingBall_MPGOS/BouncingBall_SystemDefinition.cuh
+2020-11-04 17:45:48,444 - BouncingBall[26795] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:45:48,444 - BouncingBall[26795] - DEBUG : Formattazione della stringa per il file BouncingBall.cu
+2020-11-04 17:45:48,444 - BouncingBall[26795] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-04 17:45:48,444 - BouncingBall[26795] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-04 17:45:48,444 - BouncingBall[26795] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-04 17:45:48,444 - BouncingBall[26795] - INFO : Formattazione della stringa per la funzione di main
+2020-11-04 17:45:48,444 - BouncingBall[26795] - DEBUG : Terminata formattazione
+2020-11-04 17:45:48,444 - BouncingBall[26795] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2/BouncingBall_MPGOS/BouncingBall.cu
+2020-11-04 17:45:48,445 - BouncingBall[26795] - DEBUG : Contenuto salvato correttamente
+2020-11-04 17:45:48,445 - BouncingBall[26795] - DEBUG : Salvataggio del MakeFile
+2020-11-04 17:45:48,445 - BouncingBall[26795] - DEBUG : Creazione del file MakeFile
+2020-11-04 17:45:48,445 - BouncingBall[26795] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-04 17:45:48,445 - BouncingBall[26795] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-04 17:45:48,445 - BouncingBall[26795] - DEBUG : Operazione di traduzione terminata con successo in 2.2221996784210205ms.

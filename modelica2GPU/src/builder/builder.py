@@ -580,8 +580,8 @@ class SystemDefinitionBuilder:
             self.buildMPGOS_PerThread_Finalization()
         ]
         MPGOS_Model_SystemDefinition = MPGOS_Model_SystemDefinition % (
-            self.abstract_model.model_name, 
-            self.abstract_model.model_name,
+            self.abstract_model.model_name.upper(), 
+            self.abstract_model.model_name.upper(),
             "".join(MPGOSfunction_list)
         )
         # START LOG

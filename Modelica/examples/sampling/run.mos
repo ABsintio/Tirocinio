@@ -1,0 +1,10 @@
+loadModel(Modelica);
+
+loadFile("package.mo");
+loadFile("Sampling.mo");
+
+simulate(sampling.Sampling, stopTime=10);
+getErrorString();
+
+plot({i}, externalWindow=true);
+getErrorString();

@@ -14,6 +14,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 ) {
     F[1]=-9.81;
     F[0]=X[1];
+
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_EventFunction(
@@ -21,8 +22,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_EventFunctio
 	Precision     T, Precision    dT, Precision*    TD, Precision*	X, \
 	Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi  		
 ) {
-    ACCi[0] = X[0] < 0.0;
-    EF[0]=(! ACCi[0]);
+    ACCi[0]=X[0] < 0.0;
+    EF[0] = (! (ACCi[0]));
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterEventDetection(
@@ -30,17 +31,18 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
     Precision    &T, Precision   &dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    if (IDX == 0) {
-        X[1] = -sPAR[0] * X[1];
+    if (IDX == 0){
+	    X[1]=((-(sPAR[0])) * X[1]);
     }
-}   
+
+}
 
 template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterSuccessfulTimeStep(
     int tid, int NT, int& UDT, \
     Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-   
+    
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
@@ -51,6 +53,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     T     = TD[0];
     DOIDX = 0;
     X[0]=sPAR[1];
+
 }
 
 template <class Precision> __forceinline__ __device__ void PerThread_Finalization(

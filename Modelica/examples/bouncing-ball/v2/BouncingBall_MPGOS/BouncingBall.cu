@@ -22,13 +22,12 @@ const int NSP  = 3;
 const int NISP = 0;
 const int NE   = 2;
 const int NA   = 0;
-const int NIA  = 4;
-const int NDO  = 100;
+const int NIA  = 3;
+const int NDO  = 1000;
 
 
 void FillSolverObject(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
-    vector<PRECISION>& Parameter_sPAR,  vector<PRECISION>& Variable_X, 
     int FirstProblemNumber, int NumberOfThreads
 ) {
     int k_begin = FirstProblemNumber;
@@ -37,27 +36,30 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 1000.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 3.0);  
 
-        Solver.SetHost(ProblemNumber, ActualState, 0, 0.0);
-        Solver.SetHost(ProblemNumber, ActualState, 1, 0.0);
+        // Settaggio dei valori iniziali degli ActualState
+        Solver.SetHost(ProblemNumber, ActualState, 1, 0.0); 
 
         Solver.SetHost(ProblemNumber, ActualTime, 0.0);
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
         Solver.SetHost(ProblemNumber, DenseIndex, 0 );
 
+        // Settaggio dei valori iniziali per ACC (se presenti)
 
-        Solver.SetHost(ProblemNumber, IntegerAccessories, 0, 0);
+
+        // Settaggio dei valori iniziali per ACCi (se presenti)
+        Solver.SetHost(ProblemNumber, IntegerAccessories, 2, 1);
 		
-		ProblemNumber++;
+        ProblemNumber++;
         k_begin++;
     }
 
-    int spar_i{0};
-    for (PRECISION spar: Parameter_sPAR){
-        Solver.SetHost(SharedParameters, spar_i++, spar);
-    }
+    // Settaggio dei valori iniziali per sPAR (se presenti)
+    Solver.SetHost(SharedParameters, 0, 0.8);
+    Solver.SetHost(SharedParameters, 1, 1.0);
 
+    // Settaggio dei valori iniziali per sPARi (se presenti)
 
 }
 
@@ -80,7 +82,6 @@ void SaveData(
         DataFile.width(Width); DataFile << "ACCi_$whenCondition1" << ',';
         DataFile.width(Width); DataFile << "ACCi_$whenCondition2" << ',';
         DataFile.width(Width); DataFile << "ACCi_done" << ',';
-        DataFile.width(Width); DataFile << "ACCi_timestep" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
@@ -90,7 +91,6 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 2) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 3) << ',';
 
         DataFile << '\n';
     }
@@ -98,8 +98,8 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
-    int blockSize        = 64; // Numero di Thread per blocchi
+    int NumberOfProblems = 2 * NT; // Numero di problemi da risolvere, uno per thread
+    int blockSize        = 32; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
     ListCUDADevices();
@@ -110,13 +110,6 @@ int main() {
     // Seleziona il Device da utilizzare dando in input la CUDA compute capability e ne stampa le caratteristiche
     int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);
     PrintPropertiesOfSpecificDevice(SelectedDevice);
-
-    PRECISION InitialCondition_v=0.0;
-    vector<PRECISION> Parameter_X = {InitialCondition_v};
-    PRECISION InitialCondition_e=0.8;
-    PRECISION InitialCondition_h0=1.0;
-    vector<PRECISION> Parameter_sPAR = {InitialCondition_e,InitialCondition_h0};
-
 
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION> Solver(SelectedDevice);
     Solver.SolverOption(ThreadsPerBlock, blockSize);
@@ -146,7 +139,7 @@ int main() {
     clock_t TransientStart;
     clock_t TransientEnd;    
     for (int i=0; i < NumberOfSimulationLaunches; i++) {
-        FillSolverObject(Solver, Parameter_sPAR, Parameter_X, i*NT, NT);
+        FillSolverObject(Solver, i*NT, NT);
         Solver.SynchroniseFromHostToDevice(All);
         Solver.InsertSynchronisationPoint();
         Solver.SynchroniseSolver();
