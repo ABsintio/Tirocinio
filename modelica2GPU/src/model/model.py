@@ -25,14 +25,15 @@ class Model:
         self.logger.info(msg, msg)
         # END LOG
         self.model_name = name
-        self.odes       = Model.getODE(equations, variables_dict, logger)                             # Crea il sistema di ODE
-        self.init       = Model.getinit(variables_dict, logger)                                       # Prendo le equazioni iniziali
-        self.events     = events                                                                      # Prendo gli eventi
+        self.odes       = Model.getODE(equations, variables_dict, logger)  # Crea il sistema di ODE
+        self.init       = Model.getinit(variables_dict, logger)            # Prendo le equazioni iniziali
+        self.events     = events                                           # Prendo gli eventi
         # Prendo le altre equazioni rimanenti
         self.othereq    = Model.getOtherEq(algorithms + equations, self.init, variables_dict, logger)
-        self.variables  = list(variables_dict.values())                                               # Prendo la lista delle variabili
-        # Ordino le equazioni initiali per initialization
-        self.init['initialization'] = self.init_equations_sort(variables_dict)
+        self.variables  = list(variables_dict.values())                    # Prendo la lista delle variabili
+        if self.init['initialization']:
+            # Ordino le equazioni initiali per initialization
+            self.init['initialization'] = self.init_equations_sort(variables_dict)
 
 
     @staticmethod
@@ -93,7 +94,6 @@ class Model:
                     init_equations['initialization'].append(equ)
                 # Se la parte sinistra dell'equazione matcha $whenCondition<numero> allora è un trigger
                 othereq_dict[typeeq].append(equ)
-            
         return othereq_dict
 
 

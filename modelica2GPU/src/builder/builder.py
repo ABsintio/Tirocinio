@@ -504,7 +504,7 @@ class SystemDefinitionBuilder:
         trigger_str = Var.createMPGOScodeline(triggers)
         # Poi devo formattare le stringhe che riempiono il vettore EF nel quale 
         # saranno valutate le condizioni degli eventi, le quali devono essere pari a 0
-        EF_str = "\n".join(list(set([x.condition[1] for x in self.abstract_model.events]))) 
+        EF_str = "\n".join(list(set([x.condition[1] + ";" for x in self.abstract_model.events]))) 
         MPGOS_PerThread_EventFunction = MPGOS_PerThread_EventFunction % (
             f"{trigger_str}\n{EF_str}")
         return MPGOS_PerThread_EventFunction

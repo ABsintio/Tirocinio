@@ -148,7 +148,7 @@ def _parsetag_var(scalar_variable_tag):
 
 class Var:
 	""" Classe che descrive una variabile qualsiasi, con nome, valore e valoreiniziale se esiste """
-	def __init__(self, nome, id, qualifiedName, alias, category, initvalue=None):
+	def __init__(self, nome, id, qualifiedName, alias, category, initvalue=None, value=None):
 		self.nome          = nome
 		self.init          = initvalue
 		self.category      = category
@@ -156,10 +156,11 @@ class Var:
 		self.alias         = alias
 		self.MPGOSname     = "Var"
 		self.id            = id
+		self.value 		   = value
 
 	def __str__(self):
 		return f"{self.nome}(qN={self.qualifiedName}, alias={self.alias}, category={self.category}, " + \
-			   f"iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()})"
+			   f"iValue={self.init}, id={self.id}, MPGOSname={self.createMPGOSname()}, Value={self.value})"
 
 	@staticmethod
 	def forEach(l, func):
@@ -176,6 +177,8 @@ class Var:
 	def createMPGOScodeline(params_list):
 		""" Crea un blocco di codice C++ """
 		return "    " + "    ".join([x.__str__() + "\n" for x in params_list])
+
+	def setvalue(self, new_value): self.value = new_value
 
 
 class ACC(Var):

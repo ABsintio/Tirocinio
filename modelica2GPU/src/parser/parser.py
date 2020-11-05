@@ -183,7 +183,7 @@ class Parser:
             self.scalar_variables.append(variables._parsetag_var(x))
 
     
-    def parse_dynamic_equations(self, variables_dict):
+    def parse_dynamic_equations(self, variables_dict, MPGOSparams_dict):
         """ Esegue il parsing di tutti i tag <equ:DynamicEquations> """
         # START LOG
         msg = "Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>"
@@ -193,7 +193,15 @@ class Parser:
         for x in dynamic_equations_roottag:
             # Parsing delle equazioni
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
-                self.dynamic_equations["equations"].append(tagclasses._parsetag_eq(x, variables_dict))
+                eq = tagclasses._parsetag_eq(x, variables_dict)
+                self.dynamic_equations["equations"].append(eq)
+                # Se la parte destra dell'equazione è di tipo Sample
+                # allora controllo se l'attributo new_var della parte destra
+                # sia pari a None oppure no. Questo perché se non è pari a 
+                # None allora devo aggiungere una nuova equazione.
+                if isinstance(eq.right, tagclasses.Sample) and eq.right.new_var is not None:
+                    self.dynamic_equations["equations"].append(eq.right.new_var.value)
+                    MPGOSparams_dict[eq.right.new_var.createMPGOSname()] = eq.right.new_var
             elif x.tag == f"{tagclasses.EQUATION_NS}When":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
                 when_eq = tagclasses.When(x, variables_dict, self.event_conditions)
@@ -207,6 +215,8 @@ class Parser:
                 if when_eq.condition[1] not in self.event_conditions:
                     self.event_conditions.append(when_eq.condition)
                 self.dynamic_equations["events"].append(when_eq)
+
+        return MPGOSparams_dict
                 
 
     def parse_initial_equations(self, variables_dict, MPGOSparameter_dict):
@@ -287,7 +297,7 @@ class Parser:
         # Parso tutte le altre cose ed intanto formatto le variabili
         MPGOSparams_dict = self.parse_initial_equations(unique_dict, MPGOSparams_dict)
         self.parse_userdefined_function(unique_dict)
-        self.parse_dynamic_equations(unique_dict)
+        MPGOSparams_dict = self.parse_dynamic_equations(unique_dict, MPGOSparams_dict)
         self.parse_algorithm(unique_dict)
         # Ritorno un dizionario di variabili 
         self.unique_dict = MPGOSparams_dict

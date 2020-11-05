@@ -1,5 +1,6 @@
 import math
 import exceptions.builtExceptions
+from tagclasses.variables import *
 
 
 # ----------------------------------------------------- # XML NAMESPACES # ------------------------------------------------------------- #
@@ -354,12 +355,49 @@ class Reinit(BinaryOperator):
     def __str__(self): return Equation(self.left, self.right).__str__()
 
 
-class Sample(BinaryOperator):
+class Sample:
     """ Rappresenta l'operatore sample(start, interval) di Modelica """
-    def __init__(self, l, r):
-        super().__init__(l, r)
+    def __init__(self, function_dict, tag_id_element, variables_dict):
+        self.tag_element = tag_id_element
+        self.variables   = variables_dict
+        self.value, self.new_var = self.createsample_str()
     
-    def __str__(self): pass
+    def parse_interval(self):
+        """ L'operatore sample(x, y) ha due elementi Real che devono essere presi """
+        # E' bene immaginare, anche se non sia possibile, che uno (o entrambi)
+        # dei due valori possa essere una equazione è quindi va parsata con 
+        # la funzione apposita, ossia _parsetag_eq.
+        start = _parsetag_eq(self.tag_element[1], self.variables)
+        interval = _parsetag_eq(self.tag_element[2], self.variables)
+        return (start, interval)
+
+    def createsample_str(self): 
+        values = self.parse_interval()
+        # Dal momento che sample(1, n) vuol dire che un evento viene triggerato
+        # ogni 1 + i * n, ho bisogno in qualche modo di tenermi in memoria quel 
+        # contatore "i". Questo lo posso fare aggiungendo una variabile ACCi 
+        # che ad ogni timeStep viene incrementata di 1. Quindi per aggiungere un 
+        # sample devo creare il sample stesso, una nuova variabile e una nuova equazione.
+        sample_acc_index = -1
+        ACCi_vars = [v for k, v in self.variables.items() if isinstance(v, ACCi)]
+        i = 0
+        for v in ACCi_vars:
+            if v.qualifiedName == "sample_ACCi":
+                sample_acc_index = i
+                break
+            i += 1
+        sample_acc_index = sample_acc_index if sample_acc_index != -1 else len(ACCi_vars)
+        sample_str = f"(T == {values[0]} + ACCi[{sample_acc_index}] * {values[1]})" # Stringa
+        # Se l'indice del nuovo ACCi non è un nuovo indice allora la variabile che dovrei
+        # creare già esiste e di conseguenza non la devo riandare ad inserire.
+        if sample_acc_index == len(ACCi_vars): 
+            sample_var = ACCi("sample_ACCi", sample_acc_index, "sample_ACCi", None, VariableCategory.ALGEBRAIC, "0") # Variabile
+            sample_eqs = Equation(sample_var.createMPGOSname(), Add(sample_var.createMPGOSname(), 1)) # Equazione
+            sample_var.setvalue(sample_eqs) # Inserisco la sua equazione come valore, così la posso trattare più facilmente
+            return sample_str, sample_var
+        return sample_str, None
+    
+    def __str__(self): return self.value
 
 
 class Time(UnaryOperator):
@@ -548,6 +586,7 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,  4),
     "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Expression"       : (Expression,    1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,           2),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sample"         : (Sample,        5)
 }
 
 
@@ -586,7 +625,11 @@ def _parsetag_eq(tag, variables_dict, function_dict=dict()):
     else:
         class_op, arity = getoperatorclass(tag.tag)
         if arity == 2: return class_op(tag, variables_dict)
-        if arity == 4 or arity == 3: return class_op(function_dict, tag, variables_dict)
+        if arity == 4 or arity == 3 or arity == 5: 
+            x = class_op(function_dict, tag, variables_dict)
+            if arity == 5: # Allora è stato chiamato il sample
+                variables_dict[x.new_var.qualifiedName] = x.new_var
+            return x
         if arity == 1: return class_op(_parsetag_eq(tag[0], variables_dict, function_dict))
         sub_element = list(tag)
         return class_op(

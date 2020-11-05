@@ -7,6 +7,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/bouncing-ball/v2//log/BouncingBall.log
     formatter: simple
     level: DEBUG
+  Sampling_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/Modelica/examples/sampling//log/Sampling.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -15,6 +20,11 @@ loggers:
   BouncingBall:
     handlers:
     - BouncingBall_handler
+    level: DEBUG
+    propagate: 'no'
+  Sampling:
+    handlers:
+    - Sampling_handler
     level: DEBUG
     propagate: 'no'
   root:
