@@ -13,15 +13,15 @@
 
 using namespace std;
 
-#define SOLVER RKCK45
+#define SOLVER RK4
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 1;
+const int SD   = 2;
 const int NCP  = 1;
 const int NSP  = 0;
 const int NISP = 0;
-const int NE   = 0;
-const int NA   = 1;
+const int NE   = 1;
+const int NA   = 2;
 const int NIA  = 3;
 const int NDO  = 1000;
 
@@ -69,9 +69,9 @@ void SaveData(
     ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>& Solver, 
     ofstream& DataFile, int NumberOfThreads
 ) {
-    int Width = 18;
-    DataFile.precision(10);
+    int Width = 10;
     DataFile.flags(ios::scientific);
+    DataFile.precision(10);
 	
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
@@ -113,14 +113,12 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
-    Solver.SolverOption(TimeStepGrowLimit, 1.0);
-    Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
     Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
-
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
+    Solver.SolverOption(EventDirection, 0, 1);
    
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
@@ -152,6 +150,7 @@ int main() {
             Solver.SynchroniseSolver();
             SaveData(Solver, DataFile, NT);
         }
+          
     }
 
     clock_t SimulationEnd = clock();
