@@ -82,29 +82,27 @@ def getdefaultoptions(nevents, nstates, xmlfile):
     device = cuda.Device(0) # Prendo il primo device disponibile
     major, minor = device.compute_capability()
     # Infine settiamo gli attributi rimanenti
-    numberOfThreads            = 1000
-    numberOfProblems           = 2 * numberOfThreads
-    numberOfDenseOutput        = numberOfThreads
+    numberOfThreads            = 1
+    numberOfProblems           = numberOfThreads
+    numberOfDenseOutput        = 1000
     threadsPerBlock            = 64
     initialTimeStep            = 1.0e-2
     preferSharedMemory         = 1
     maximumTimeStep            = 1.0e+6
     minimumTimeStep            = 1.0e-14
-    timeStepGrowLimit          = 1.0
-    timeStepShrinkLimit        = 0.2
     events_directions          = [0 for _ in range(nevents)]
     denseOutputMinumumTimeStep = 0.0
     denseOutputSaveFrequency   = 1
     tolerance                  = [get_tolerance_fromXML(xmlfile) for _ in range(nstates)]
     timeDomainStart            = 0.0
-    timeDomainEnd              = 100.0
+    timeDomainEnd              = 10.0
     return [
         major, minor,
-        numberOfThreads,          numberOfProblems,  numberOfDenseOutput,
-        threadsPerBlock,          initialTimeStep,   preferSharedMemory,
-        maximumTimeStep,          minimumTimeStep,   timeStepGrowLimit,
-        timeStepShrinkLimit,      events_directions, denseOutputMinumumTimeStep,
-        denseOutputSaveFrequency, tolerance,         timeDomainStart, timeDomainEnd
+        numberOfThreads,            numberOfProblems,  numberOfDenseOutput,
+        threadsPerBlock,            initialTimeStep,   preferSharedMemory,
+        maximumTimeStep,            minimumTimeStep,   events_directions, 
+        denseOutputMinumumTimeStep, denseOutputSaveFrequency, tolerance,         
+        timeDomainStart, timeDomainEnd
     ], device
 
 
@@ -153,8 +151,6 @@ def checkconfig(config_dict):
                isinstance(builder_config['modeldefinition']['preferSharedMemory'], int) and \
                isinstance(builder_config['modeldefinition']['maximumTimeStep'], float) and \
                isinstance(builder_config['modeldefinition']['minimumTimeStep'], float) and \
-               isinstance(builder_config['modeldefinition']['timeStepGrowLimit'], float) and \
-               isinstance(builder_config['modeldefinition']['timeStepShrinkLimit'], float) and \
                isinstance(builder_config['modeldefinition']['denseOutputMinimumTimeStep'], float) and \
                isinstance(builder_config['modeldefinition']['denseOutputSaveFrequency'], int) and \
                isinstance(builder_config['modeldefinition']['timeDomainStart'], float) and \
@@ -279,7 +275,6 @@ def get_modelica2GPU_configuration(config_file):
                 builder_config['modeldefinition']['numberOfDenseOutput'], builder_config['modeldefinition']['threadsPerBlock'],
                 builder_config['modeldefinition']['initialTimeStep'], builder_config['modeldefinition']['preferSharedMemory'],
                 builder_config['modeldefinition']['maximumTimeStep'], builder_config['modeldefinition']['minimumTimeStep'],
-                builder_config['modeldefinition']['timeStepGrowLimit'], builder_config['modeldefinition']['timeStepShrinkLimit'],
                 list(builder_config['modeldefinition']['eventDirection'].values()), 
                 builder_config['modeldefinition']['denseOutputMinimumTimeStep'], 
                 builder_config['modeldefinition']['denseOutputSaveFrequency'], 
@@ -308,14 +303,12 @@ def get_modelica2GPU_configuration(config_file):
             "preferSharedMemory"        : builder_options[8],
             "maximumTimeStep"           : builder_options[9],
             "minimumTimeStep"           : builder_options[10],
-            "timeStepGrowLimit"         : builder_options[11],
-            "timeStepShrinkLimit"       : builder_options[12],
-            "eventDirection"            : builder_options[13],
-            "denseOutputMinimumTimeStep": builder_options[14],
-            "denseOutputSaveFrequency"  : builder_options[15],
-            "tolerance"                 : builder_options[16],
-            "timeDomainStart"           : builder_options[17],
-            "timeDomainEnd"             : builder_options[18]
+            "eventDirection"            : builder_options[11],
+            "denseOutputMinimumTimeStep": builder_options[12],
+            "denseOutputSaveFrequency"  : builder_options[13],
+            "tolerance"                 : builder_options[14],
+            "timeDomainStart"           : builder_options[15],
+            "timeDomainEnd"             : builder_options[16]
         }
         
         conf_str = conf_dict2str(config_dict, device.get_attributes())

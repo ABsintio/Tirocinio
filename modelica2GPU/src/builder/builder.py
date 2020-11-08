@@ -109,7 +109,7 @@ MPGOS_Model_Macro = """
 
 using namespace std;
 
-#define SOLVER RKCK45
+#define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = {numberOfThreads};
 const int SD   = {systemDimension};
@@ -165,8 +165,7 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, %s);
     Solver.SolverOption(MinimumTimeStep, %s);
-    Solver.SolverOption(TimeStepGrowLimit, %s);
-    Solver.SolverOption(TimeStepShrinkLimit, %s);
+
 %s
     Solver.SolverOption(DenseOutputMinimumTimeStep, %s);
     Solver.SolverOption(DenseOutputSaveFrequency, %s);
@@ -382,8 +381,6 @@ class ModelBuilder:
         initialTimeStep = self.config_dict['initialTimeStep']
         maxTimeStep = self.config_dict['maximumTimeStep']
         minTimeStep = self.config_dict['minimumTimeStep']
-        timeStepGrowLimit = self.config_dict['timeStepGrowLimit']
-        timeStepShrinkLimit = self.config_dict['timeStepShrinkLimit']
         event_str = " "*4 + "Solver.SolverOption(EventDirection, %d, %d);\n"
         eventDirections = "".join([event_str % (x, y) for x, y in enumerate(self.config_dict['eventDirection'])])
         denseOutputMiniumumTimeStep = self.config_dict['denseOutputMinimumTimeStep']
@@ -395,7 +392,6 @@ class ModelBuilder:
         MPGOS_MainFunction = MPGOS_MainFunction % (
             nop, block_size, GPUMajor, GPUMinor, preferSharedMemory, 
             initialTimeStep, maxTimeStep, minTimeStep,
-            timeStepGrowLimit, timeStepShrinkLimit,
             eventDirections, denseOutputMiniumumTimeStep, 
             denseOutputSaveFrequency, absoluteTolerances,
             relativeTolerances, "% NT", self.model_name

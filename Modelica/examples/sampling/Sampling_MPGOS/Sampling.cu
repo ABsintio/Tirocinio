@@ -13,7 +13,7 @@
 
 using namespace std;
 
-#define SOLVER RK4
+#define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = 1;
 const int SD   = 1;
@@ -91,7 +91,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = 10000 * NT; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 64; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
@@ -111,6 +111,7 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
+
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
