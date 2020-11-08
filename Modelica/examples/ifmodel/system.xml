@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="system"
+  modelIdentifier="system"
+  guid="{fdddaac3-0dcb-4682-885d-ef628c10ca3c}"
+  generationDateAndTime="2020-11-08T13:14:28"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="2"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.0"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="x"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="x"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="y"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="y"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(x)"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="x"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(y)"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="y"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="i"  valueReference="4" variability="discrete" causality="internal" alias="noAlias">
+      <Integer   />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="i"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="$whenCondition1" description="sample(1, 1.0, 0.1)" valueReference="5" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$whenCondition1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:Sample>
+          <exp:IntegerLiteral>1</exp:IntegerLiteral>
+          <exp:RealLiteral>1.0</exp:RealLiteral>
+          <exp:RealLiteral>0.1</exp:RealLiteral>
+        </exp:Sample>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="x"/>
+          </exp:Identifier>
+        </exp:Der>
+        <fun:If>
+          <fun:Condition>
+            <exp:LogGt>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="i"/>
+              </exp:Identifier>
+              <exp:IntegerLiteral>10</exp:IntegerLiteral>
+            </exp:LogGt>
+          </fun:Condition>
+          <fun:Statements>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="i"/>
+              </exp:Identifier>
+              <exp:Sin>
+                <exp:Time>time</exp:Time>
+              </exp:Sin>
+            </exp:Mul>
+          </fun:Statements>
+          <fun:Else>
+            <fun:If>
+              <fun:Condition>
+                <exp:And>
+                  <exp:LogGt>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="i"/>
+                    </exp:Identifier>
+                    <exp:IntegerLiteral>3</exp:IntegerLiteral>
+                  </exp:LogGt>
+                  <exp:LogGt>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="i"/>
+                    </exp:Identifier>
+                    <exp:IntegerLiteral>3</exp:IntegerLiteral>
+                  </exp:LogGt>
+                  <exp:LogLeq>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="i"/>
+                    </exp:Identifier>
+                    <exp:IntegerLiteral>10</exp:IntegerLiteral>
+                  </exp:LogLeq> 
+                </exp:And>
+              </fun:Condition>
+              <fun:Statements>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="i"/>
+                  </exp:Identifier>
+                  <exp:Cos>
+                    <exp:Time>time</exp:Time>
+                  </exp:Cos>
+                </exp:Mul>
+              </fun:Statements>
+              <fun:Else>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="i"/>
+                  </exp:Identifier>
+                  <exp:Time>time</exp:Time>
+                </exp:Mul>
+              </fun:Else>
+            </fun:If>
+          </fun:Else>
+        </fun:If>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+        </exp:Der>
+        <fun:If>
+          <fun:Condition>
+            <exp:LogGt>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="i"/>
+              </exp:Identifier>
+              <exp:IntegerLiteral>10</exp:IntegerLiteral>
+            </exp:LogGt>
+          </fun:Condition>
+          <fun:Statements>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="i"/>
+              </exp:Identifier>
+              <exp:Cos>
+                <exp:Time>time</exp:Time>
+              </exp:Cos>
+            </exp:Mul>
+          </fun:Statements>
+          <fun:Else>
+            <fun:If>
+              <fun:Condition>
+                <exp:And>
+                  <exp:LogGt>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="i"/>
+                    </exp:Identifier>
+                    <exp:IntegerLiteral>3</exp:IntegerLiteral>
+                  </exp:LogGt>
+                  <exp:LogGt>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="i"/>
+                    </exp:Identifier>
+                    <exp:IntegerLiteral>3</exp:IntegerLiteral>
+                  </exp:LogGt>
+                  <exp:LogLeq>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="i"/>
+                    </exp:Identifier>
+                    <exp:IntegerLiteral>10</exp:IntegerLiteral>
+                  </exp:LogLeq> 
+                </exp:And>
+              </fun:Condition>
+              <fun:Statements>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="i"/>
+                  </exp:Identifier>
+                  <exp:Sin>
+                    <exp:Time>time</exp:Time>
+                  </exp:Sin>
+                </exp:Mul>
+              </fun:Statements>
+              <fun:Else>
+                <exp:Mul>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="i"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Time>time</exp:Time>
+                </exp:Mul>
+              </fun:Else>
+            </fun:If>
+          </fun:Else>
+        </fun:If>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:When>
+      <equ:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+      </equ:Condition>
+      <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="i"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              <exp:Pre>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="i"/>
+                </exp:Identifier>
+              </exp:Pre>
+            </exp:Add>
+          </exp:Sub>
+      </equ:Equation>
+    </equ:When>
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="x"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="x"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$START"/>
+          <exp:QualifiedNamePart name="x"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="i"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:BooleanLiteral>0</exp:BooleanLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="y"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>

@@ -25,6 +25,7 @@ class Parser:
         self.algorithms        = []
         self.unique_dict       = dict()
         self.event_conditions  = []
+        self.sampler           = []
         # START LOG
         msg = "Chiamata alla classe Parser"
         self.logger.info(msg, msg)
@@ -199,23 +200,51 @@ class Parser:
                 # allora controllo se l'attributo new_var della parte destra
                 # sia pari a None oppure no. Questo perché se non è pari a 
                 # None allora devo aggiungere una nuova equazione.
-                if isinstance(eq.right, tagclasses.Sample) and eq.right.new_var is not None:
-                    self.dynamic_equations["equations"].append(eq.right.new_var.value)
+                if isinstance(eq.right, tagclasses.Sample):
+                    # Nel momento in cui l'equazione considera la variabile whenCondition
+                    # come una condizione su un evento che neanche viene considerato dal
+                    # compilatore gli andiamo a cambiare nome in sampleCondition
+                    old_name = MPGOSparams_dict[str(eq.left)].nome
+                    MPGOSparams_dict[str(eq.left)].setname(old_name.replace("when", "sample"))
                     MPGOSparams_dict[eq.right.new_var.createMPGOSname()] = eq.right.new_var
+                    # Inserisco l'equazione per l'aggiornamento del contatore del sampler
+                    self.dynamic_equations['equations'].append(tagclasses.Equation(
+                        eq.right.new_var.createMPGOSname(),
+                        "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(eq.left),lhs=eq.right.new_var.createMPGOSname())
+                    ))
             elif x.tag == f"{tagclasses.EQUATION_NS}When":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
                 when_eq = tagclasses.When(x, variables_dict, self.event_conditions)
-                when_eq.setcondition((when_eq.condition[0], " "*4 + "EF[{id}] = (! ({cond}))".format(
-                    id=when_eq.condition[0], cond=when_eq.condition[1]
-                )))
-                # Mano a mano che trovo nuove condizioni per gli eventi le appendo
-                # questo servirà nel momento in cui si dovranno ancdare a formattare
-                # le funzioni C++ per gli eventi in quanto si dovrà utilizzare il 
-                # vettore EF (event function) e quindi devo tenere il conto di quanti eventi trovo
-                if when_eq.condition[1] not in self.event_conditions:
-                    self.event_conditions.append(when_eq.condition)
-                self.dynamic_equations["events"].append(when_eq)
-
+                # In via puramente eccezionale, se la condizione è di tipo Sample allora
+                # non lo inserisco come evento in quanto il compilatore non lo riconosce come tale.
+                # Prima però devo prendere l'equazione corrispondente della condizione
+                eq_cond = None
+                for eq in self.dynamic_equations['equations']:
+                    if str(eq.left) == when_eq.condition[1]:
+                        eq_cond = eq.right
+                        break
+                if not isinstance(eq_cond, tagclasses.Sample):
+                    when_eq.setcondition((when_eq.condition[0]," "*4 + "EF[{id}] = (! ({cond}))".format(
+                        id=when_eq.condition[0], cond=when_eq.condition[1]
+                    )))
+                    # Mano a mano che trovo nuove condizioni per gli eventi le appendo
+                    # questo servirà nel momento in cui si dovranno ancdare a formattare
+                    # le funzioni C++ per gli eventi in quanto si dovrà utilizzare il 
+                    # vettore EF (event function) e quindi devo tenere il conto di quanti eventi trovo
+                    if when_eq.condition[1] not in self.event_conditions:
+                        self.event_conditions.append(when_eq.condition)
+                    self.dynamic_equations["events"].append(when_eq)
+                else:
+                    # Se invece la parte destra della condizione è di tipo sample allora
+                    # devo prendere l'equazione che sarebbe dovuto essere dell'evento e
+                    # Inserirla all'interno di un blocco ifThen, con la parte sinistra 
+                    # della condizione come condizione del blocco If.
+                    new_eq = "({cond} ? {rhs} : {lhs})".format(
+                        lhs=when_eq.equation.left.__str__(),
+                        cond=when_eq.condition[1],
+                        rhs=when_eq.equation.right.__str__()
+                    )
+                    self.dynamic_equations['equations'].append(tagclasses.Equation(when_eq.equation.left, new_eq))
         return MPGOSparams_dict
                 
 

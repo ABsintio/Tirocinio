@@ -16,13 +16,10 @@ with open(filename, mode="r", encoding="utf-8") as f:
 
 npvalues = np.array(values)
 times = npvalues[:, 0]
-sin_x = npvalues[:, 1]
-clock = npvalues[:, 2]
-        
-plt.plot(times, clock, marker="_", label="Clock", linewidth=1.0)
-plt.plot(times, sin_x, marker="_", label="Sin_X", linewidth=1.0)
-plt.ylabel("Clock, Sin_x")
+x0    = npvalues[:, 1]
+
+plt.plot(times, x0, marker="_", label="X0")
+plt.ylabel("X0")
 plt.xlabel("Time [s]")
 plt.legend(loc="upper left")
-plt.grid(True)
 plt.show()

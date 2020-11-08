@@ -180,6 +180,8 @@ class Var:
 
 	def setvalue(self, new_value): self.value = new_value
 
+	def setname(self, new_name): self.nome = new_name
+
 
 class ACC(Var):
 	"""

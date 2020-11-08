@@ -61,18 +61,17 @@ class Model:
         msg = "Ottengo le equazioni iniziali per il modello"
         logger.debug(msg, msg)
         # END LOG
-        init_eqs = {"initial": [], "initialization": []}
+        init_eqs = {'initial':[], "initialization": []}
         for k, value in variables_dict.items():
             varname, ivalue = value.nome, value.init
             # In caso troviamo dei "." facciamo il replace con "_"
             if value.category != VariableCategory.DERIVATIVE and ivalue is not None:
-                varname = varname.replace(".", "_")
-                # Se l'equazione iniziale è del tipo x = <numero> allora la inseriamo nel
-                # file con tutte le equazioni iniziali, ossia il Model.cu, altrimenti la 
-                # inseriamo nella funzione PerThread_Initialization del Model_SystemDefinition.cuh
-                element = ("initial", Equation(varname.strip(), ivalue.strip())) if re.match(r"\d+\.*\d*", ivalue) \
-                          else ("initialization", Equation(k.strip(), ivalue.strip()))
-                init_eqs[element[0]].append(element[1])
+                # Inseriamo tutte le equazioni iniziali nel file SystemDefinition in 
+                # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
+                # Altrimenti facendo diverse simulazioni seriali i valore della
+                # simulazione successiva partirà con quelli della simulazione precedente.
+                element = Equation(k.strip(), ivalue.strip())
+                init_eqs["initialization"].append(element)
         return init_eqs
 
 

@@ -103,7 +103,7 @@ class And(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left.__str__() + " && " + self.right.__str__()
+    def __str__(self): return "(" + self.left.__str__() + " && " + self.right.__str__() + ")"
 
 
 class Or(BinaryOperator):
@@ -111,7 +111,7 @@ class Or(BinaryOperator):
     def __init__(self, l, r):
         super().__init__(l, r)
     
-    def __str__(self): return self.left.__str__() + " || " + self.right.__str__()
+    def __str__(self): return "(" + self.left.__str__() + " || " + self.right.__str__() + ")"
 
 
 class Not(UnaryOperator):
@@ -119,7 +119,7 @@ class Not(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
 
-    def __str__(self): return "!" + self.value.__str__()
+    def __str__(self): return "(" + "!" + self.value.__str__() + ")"
 
 
 # ----------------------------------------- # DEFINIZIONE OPERATORI DI RELAZIONE # ----------------------------------------- #
@@ -378,24 +378,14 @@ class Sample:
         # contatore "i". Questo lo posso fare aggiungendo una variabile ACCi 
         # che ad ogni timeStep viene incrementata di 1. Quindi per aggiungere un 
         # sample devo creare il sample stesso, una nuova variabile e una nuova equazione.
-        sample_acc_index = -1
         ACCi_vars = [v for k, v in self.variables.items() if isinstance(v, ACCi)]
-        i = 0
-        for v in ACCi_vars:
-            if v.qualifiedName == "sample_ACCi":
-                sample_acc_index = i
-                break
-            i += 1
-        sample_acc_index = sample_acc_index if sample_acc_index != -1 else len(ACCi_vars)
-        sample_str = f"(T == {values[0]} + ACCi[{sample_acc_index}] * {values[1]})" # Stringa
+        sample_acc_index = len(ACCi_vars)
+        sample_str = f"(abs(T - ({values[0]} + ACCi[{sample_acc_index}] * {values[1]})) < 9.0e-10 ? 1.0 : 0.0)" # Stringa
         # Se l'indice del nuovo ACCi non è un nuovo indice allora la variabile che dovrei
         # creare già esiste e di conseguenza non la devo riandare ad inserire.
-        if sample_acc_index == len(ACCi_vars): 
-            sample_var = ACCi("sample_ACCi", sample_acc_index, "sample_ACCi", None, VariableCategory.ALGEBRAIC, "0") # Variabile
-            sample_eqs = Equation(sample_var.createMPGOSname(), Add(sample_var.createMPGOSname(), 1)) # Equazione
-            sample_var.setvalue(sample_eqs) # Inserisco la sua equazione come valore, così la posso trattare più facilmente
-            return sample_str, sample_var
-        return sample_str, None
+        nome = f"sample_ACCi_{sample_acc_index}"
+        sample_var = ACCi(nome, sample_acc_index, "sample_ACCi", None, VariableCategory.ALGEBRAIC, "0") # Variabile
+        return sample_str, sample_var
     
     def __str__(self): return self.value
 
@@ -408,7 +398,7 @@ class Time(UnaryOperator):
     def __str__(self): return "T"
 
 
-class IfThenElse:
+class IfThenElseInLine:
     """ Rappresenta il blocco di tag <fun:If>...</fun:If>"""
     def __init__(self, function_dict, if_tag_element, variables_dict):
         self.if_tag_element = if_tag_element
@@ -542,51 +532,51 @@ Documentazione: {http://www.diva-portal.org/smash/get/diva2:557431/FULLTEXT01}
 """
 OPERATOR_CLASSES = {
     # UnaryOperator
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sin"            : (Sin,           1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sinh"           : (Sinh,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Asin"           : (Asin,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Cos"            : (Cos,           1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Cosh"           : (Cosh,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Acos"           : (Acos,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Tan"            : (Tan,           1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Tanh"           : (Tanh,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Atan"           : (Atan,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Not"            : (Not,           1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Neg"            : (Neg,           1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sqrt"           : (Sqrt,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Exp"            : (Exp,           1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Log"            : (Log,           1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Log10"          : (Log10,         1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sin"            : (Sin,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sinh"           : (Sinh,             1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Asin"           : (Asin,             1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Cos"            : (Cos,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Cosh"           : (Cosh,             1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Acos"           : (Acos,             1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Tan"            : (Tan,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Tanh"           : (Tanh,             1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Atan"           : (Atan,             1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Not"            : (Not,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Neg"            : (Neg,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sqrt"           : (Sqrt,             1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Exp"            : (Exp,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Log"            : (Log,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Log10"          : (Log10,            1),
     # BinaryOperator
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Add"            : (Add,           0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sub"            : (Sub,           0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Mul"            : (Mul,           0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Div"            : (Div,           0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}And"            : (And,           0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Or"             : (Or,            0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pow"            : (Pow,           0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogLt"          : (LogLt,         0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogLeq"         : (LogLeq,        0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogGt"          : (LogGt,         0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogGeq"         : (LogGeq,        0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogEq"          : (LogEq,         0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogNeq"         : (LogNeq,        0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Add"            : (Add,              0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sub"            : (Sub,              0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Mul"            : (Mul,              0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Div"            : (Div,              0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}And"            : (And,              0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Or"             : (Or,               0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pow"            : (Pow,              0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogLt"          : (LogLt,            0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogLeq"         : (LogLeq,           0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogGt"          : (LogGt,            0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogGeq"         : (LogGeq,           0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogEq"          : (LogEq,            0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}LogNeq"         : (LogNeq,           0),
     # Other generic tag classes
-    "{https://svn.jmodelica.org/trunk/XML/daeEquations.xsd}Equation"         : (Equation,      0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Identifier"     : (Identifier,    2),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}RealLiteral"    : (Literal,       1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}IntegerLiteral" : (Literal,       1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}StringLiteral"  : (Literal,       1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}BooleanLiteral" : (Literal,       1),
-    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}If"               : (IfThenElse,    3),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pre"            : (Pre,           1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Reinit"         : (Reinit,        0),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Time"           : (Time,          1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}QualifiedName"  : (QualifiedName, 2),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,  4),
-    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Expression"       : (Expression,    1),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,           2),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sample"         : (Sample,        5)
+    "{https://svn.jmodelica.org/trunk/XML/daeEquations.xsd}Equation"         : (Equation,         0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Identifier"     : (Identifier,       2),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}RealLiteral"    : (Literal,          1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}IntegerLiteral" : (Literal,          1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}StringLiteral"  : (Literal,          1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}BooleanLiteral" : (Literal,          1),
+    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}If"               : (IfThenElseInLine, 3),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pre"            : (Pre,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Reinit"         : (Reinit,           0),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Time"           : (Time,             1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}QualifiedName"  : (QualifiedName,    2),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,     4),
+    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Expression"       : (Expression,       1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,              2),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sample"         : (Sample,           5)
 }
 
 

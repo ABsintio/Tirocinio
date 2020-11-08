@@ -8,20 +8,20 @@
 
 #define PI 3.14159265358979323846
 
-#include "Sampling_SystemDefinition.cuh"
+#include "system_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
-#define SOLVER RK4
+#define SOLVER RKCK45
 #define PRECISION double
-const int NT   = 1;
-const int SD   = 1;
+const int NT   = 1000;
+const int SD   = 2;
 const int NCP  = 1;
 const int NSP  = 0;
 const int NISP = 0;
 const int NE   = 0;
-const int NA   = 1;
+const int NA   = 0;
 const int NIA  = 3;
 const int NDO  = 1000;
 
@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 100.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
@@ -74,13 +74,13 @@ void SaveData(
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
         DataFile.width(Width); DataFile << "X_x" << ',';
-        DataFile.width(Width); DataFile << "ACC_$cse1" << ',';
+        DataFile.width(Width); DataFile << "X_y" << ',';
         DataFile.width(Width); DataFile << "ACCi_i" << ',';
         DataFile.width(Width); DataFile << "ACCi_$sampleCondition1" << ',';
         DataFile.width(Width); DataFile << "ACCi_sample_ACCi_2" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 2) << ',';
@@ -91,7 +91,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = 2000; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 64; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
@@ -111,17 +111,21 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
+    Solver.SolverOption(TimeStepGrowLimit, 1.0);
+    Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
     Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 1, 1e-06);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 1, 1e-06);
    
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "Sampling.csv" );
+    DataFile.open ( "system.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
