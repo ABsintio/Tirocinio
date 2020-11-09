@@ -1,0 +1,10 @@
+rm *.o
+rm *.c
+rm *.mat
+rm *.h
+rm *.json
+rm ifmodel.system
+rm *.makefile
+rm *.log
+rm *.libs
+rm ifmodel.system_init.xml

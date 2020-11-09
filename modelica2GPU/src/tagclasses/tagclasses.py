@@ -303,8 +303,12 @@ class QualifiedName:
         for qnp in list(self.id_tag_element):
             name = qnp.attrib['name']
             if list(qnp):
+                indexes = []
+                roottag_indexes = qnp[0]
+                for x in list(roottag_indexes):
+                    indexes.append(_parsetag_eq(x[0], self.variables_dict).__str__())
                 # In caso parsiamo solo array semplici del tipo x[<index>]
-                name += f"[{_parsetag_eq(qnp[0][0][0], self.variables_dict).__str__()}]"
+                name += "[" + ",".join(indexes) + "]"
             qualified_name_parts.append(name)
         return qualified_name_parts
     

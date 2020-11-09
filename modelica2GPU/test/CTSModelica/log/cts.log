@@ -1,0 +1,2826 @@
+2020-11-09 18:55:46,017 - cts[788014] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 18:55:46,018 - cts[788014] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 18:55:46,021 - cts[788014] - INFO : Chiamata alla classe Parser
+2020-11-09 18:55:46,021 - cts[788014] - DEBUG : Parsing totale dell'XML
+2020-11-09 18:55:46,021 - cts[788014] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 18:55:46,021 - cts[788014] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 18:55:46,021 - cts[788014] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 18:55:46,021 - cts[788014] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 18:55:46,021 - cts[788014] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 18:55:46,021 - cts[788014] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 18:55:46,021 - cts[788014] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 18:55:46,022 - cts[788014] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 18:55:46,022 - cts[788014] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 18:55:46,022 - cts[788014] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 18:55:46,022 - cts[788014] - DEBUG : Terminato parsing totale
+2020-11-09 18:55:46,022 - cts[788014] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 18:55:46,022 - cts[788014] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 18:55:46,022 - cts[788014] - ERROR : modelica2GPU ha riscontrato il seguente errore. y[1]
+2020-11-09 18:57:14,566 - cts[788234] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 18:57:14,566 - cts[788234] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 18:57:14,571 - cts[788234] - INFO : Chiamata alla classe Parser
+2020-11-09 18:57:14,571 - cts[788234] - DEBUG : Parsing totale dell'XML
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 18:57:14,572 - cts[788234] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 18:57:14,573 - cts[788234] - DEBUG : Terminato parsing totale
+2020-11-09 18:57:14,573 - cts[788234] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 18:57:14,573 - cts[788234] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 18:57:14,573 - cts[788234] - ERROR : modelica2GPU ha riscontrato il seguente errore. y[1]
+2020-11-09 18:58:05,978 - cts[788279] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 18:58:05,978 - cts[788279] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 18:58:05,982 - cts[788279] - INFO : Chiamata alla classe Parser
+2020-11-09 18:58:05,982 - cts[788279] - DEBUG : Parsing totale dell'XML
+2020-11-09 18:58:05,982 - cts[788279] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 18:58:05,982 - cts[788279] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 18:58:05,983 - cts[788279] - DEBUG : Terminato parsing totale
+2020-11-09 18:58:05,984 - cts[788279] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 18:58:05,984 - cts[788279] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 18:58:05,984 - cts[788279] - ERROR : modelica2GPU ha riscontrato il seguente errore. y[1]
+2020-11-09 18:59:08,711 - cts[788329] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 18:59:08,711 - cts[788329] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 18:59:08,715 - cts[788329] - INFO : Chiamata alla classe Parser
+2020-11-09 18:59:08,715 - cts[788329] - DEBUG : Parsing totale dell'XML
+2020-11-09 18:59:08,715 - cts[788329] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 18:59:08,716 - cts[788329] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 18:59:08,716 - cts[788329] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 18:59:08,716 - cts[788329] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 18:59:08,716 - cts[788329] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 18:59:08,716 - cts[788329] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 18:59:08,716 - cts[788329] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 18:59:08,716 - cts[788329] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 18:59:08,716 - cts[788329] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 18:59:08,717 - cts[788329] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 18:59:08,717 - cts[788329] - DEBUG : Terminato parsing totale
+2020-11-09 18:59:08,717 - cts[788329] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 18:59:08,717 - cts[788329] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 18:59:08,717 - cts[788329] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:01:19,695 - cts[788409] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:01:19,695 - cts[788409] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:01:19,699 - cts[788409] - INFO : Chiamata alla classe Parser
+2020-11-09 19:01:19,699 - cts[788409] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:01:19,699 - cts[788409] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:01:19,699 - cts[788409] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:01:19,699 - cts[788409] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:01:19,699 - cts[788409] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:01:19,699 - cts[788409] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:01:19,700 - cts[788409] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:01:19,700 - cts[788409] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:01:19,700 - cts[788409] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:01:19,700 - cts[788409] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:01:19,700 - cts[788409] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:01:19,700 - cts[788409] - DEBUG : Terminato parsing totale
+2020-11-09 19:01:19,700 - cts[788409] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:02:29,106 - cts[788530] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:02:29,107 - cts[788530] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:02:29,112 - cts[788530] - INFO : Chiamata alla classe Parser
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:02:29,112 - cts[788530] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:02:29,113 - cts[788530] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:02:29,113 - cts[788530] - DEBUG : Terminato parsing totale
+2020-11-09 19:02:29,113 - cts[788530] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:03:25,795 - cts[788580] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:03:25,795 - cts[788580] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:03:25,801 - cts[788580] - INFO : Chiamata alla classe Parser
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:03:25,801 - cts[788580] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:03:25,802 - cts[788580] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:03:25,802 - cts[788580] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:03:52,534 - cts[788632] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:03:52,535 - cts[788632] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:03:52,541 - cts[788632] - INFO : Chiamata alla classe Parser
+2020-11-09 19:03:52,541 - cts[788632] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:03:52,542 - cts[788632] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:03:52,543 - cts[788632] - DEBUG : Terminato parsing totale
+2020-11-09 19:03:52,543 - cts[788632] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:03:52,543 - cts[788632] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:03:52,543 - cts[788632] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:04:35,334 - cts[788669] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:04:35,334 - cts[788669] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:04:35,339 - cts[788669] - INFO : Chiamata alla classe Parser
+2020-11-09 19:04:35,339 - cts[788669] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:04:35,339 - cts[788669] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:04:35,340 - cts[788669] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:04:35,340 - cts[788669] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:04:35,340 - cts[788669] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:04:35,340 - cts[788669] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:04:35,340 - cts[788669] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:04:35,340 - cts[788669] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:04:35,340 - cts[788669] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:04:35,340 - cts[788669] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:04:35,340 - cts[788669] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:04:55,687 - cts[788706] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:04:55,687 - cts[788706] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:04:55,694 - cts[788706] - INFO : Chiamata alla classe Parser
+2020-11-09 19:04:55,694 - cts[788706] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:04:55,694 - cts[788706] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:04:55,695 - cts[788706] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:04:55,695 - cts[788706] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:04:55,695 - cts[788706] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:04:55,695 - cts[788706] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:04:55,695 - cts[788706] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:04:55,695 - cts[788706] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:04:55,695 - cts[788706] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:04:55,696 - cts[788706] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:04:55,696 - cts[788706] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:06:02,361 - cts[788824] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:06:02,361 - cts[788824] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:06:02,366 - cts[788824] - INFO : Chiamata alla classe Parser
+2020-11-09 19:06:02,366 - cts[788824] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:06:02,366 - cts[788824] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:06:02,367 - cts[788824] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:06:02,367 - cts[788824] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:06:02,367 - cts[788824] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:06:02,367 - cts[788824] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:06:02,367 - cts[788824] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:06:02,367 - cts[788824] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:06:02,367 - cts[788824] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:06:02,368 - cts[788824] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:06:02,368 - cts[788824] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:06:02,368 - cts[788824] - DEBUG : Terminato parsing totale
+2020-11-09 19:06:02,368 - cts[788824] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:06:02,368 - cts[788824] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:06:02,368 - cts[788824] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:12:44,991 - cts[789050] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:12:44,991 - cts[789050] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:12:44,999 - cts[789050] - INFO : Chiamata alla classe Parser
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:12:45,000 - cts[789050] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:12:45,001 - cts[789050] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:12:45,001 - cts[789050] - DEBUG : Terminato parsing totale
+2020-11-09 19:12:45,001 - cts[789050] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:12:45,001 - cts[789050] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:12:45,001 - cts[789050] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:12:56,616 - cts[789083] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:12:56,616 - cts[789083] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:12:56,622 - cts[789083] - INFO : Chiamata alla classe Parser
+2020-11-09 19:12:56,622 - cts[789083] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:12:56,623 - cts[789083] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:12:56,624 - cts[789083] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:12:56,624 - cts[789083] - DEBUG : Terminato parsing totale
+2020-11-09 19:12:56,624 - cts[789083] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:12:56,624 - cts[789083] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:12:56,624 - cts[789083] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:14:08,763 - cts[789168] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:14:08,764 - cts[789168] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:14:08,771 - cts[789168] - INFO : Chiamata alla classe Parser
+2020-11-09 19:14:08,771 - cts[789168] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:14:08,771 - cts[789168] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:14:08,771 - cts[789168] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:14:08,772 - cts[789168] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:14:08,772 - cts[789168] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:14:08,772 - cts[789168] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:14:08,772 - cts[789168] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:14:08,772 - cts[789168] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:14:08,772 - cts[789168] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:14:08,772 - cts[789168] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:14:08,773 - cts[789168] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:14:08,773 - cts[789168] - DEBUG : Terminato parsing totale
+2020-11-09 19:14:08,773 - cts[789168] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:14:08,773 - cts[789168] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:14:08,773 - cts[789168] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:14:19,155 - cts[789199] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:14:19,155 - cts[789199] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:14:19,161 - cts[789199] - INFO : Chiamata alla classe Parser
+2020-11-09 19:14:19,162 - cts[789199] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:14:19,162 - cts[789199] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:14:19,162 - cts[789199] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:14:19,162 - cts[789199] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:14:19,162 - cts[789199] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:14:19,163 - cts[789199] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:14:19,163 - cts[789199] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:14:19,163 - cts[789199] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:14:19,163 - cts[789199] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:14:19,163 - cts[789199] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:14:19,164 - cts[789199] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:14:19,164 - cts[789199] - DEBUG : Terminato parsing totale
+2020-11-09 19:14:19,164 - cts[789199] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:14:19,164 - cts[789199] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:14:19,164 - cts[789199] - ERROR : modelica2GPU ha riscontrato il seguente errore. der(x[2])
+2020-11-09 19:15:15,121 - cts[789249] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:15:15,122 - cts[789249] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:15:15,128 - cts[789249] - INFO : Chiamata alla classe Parser
+2020-11-09 19:15:15,128 - cts[789249] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:15:15,128 - cts[789249] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:15:15,128 - cts[789249] - ERROR : modelica2GPU ha riscontrato il seguente errore. name 'index' is not defined
+2020-11-09 19:15:31,180 - cts[789284] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:15:31,180 - cts[789284] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:15:31,187 - cts[789284] - INFO : Chiamata alla classe Parser
+2020-11-09 19:15:31,187 - cts[789284] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:15:31,187 - cts[789284] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:15:31,187 - cts[789284] - ERROR : modelica2GPU ha riscontrato il seguente errore. name 'indexs' is not defined
+2020-11-09 19:15:42,490 - cts[789312] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:15:42,491 - cts[789312] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:15:42,497 - cts[789312] - INFO : Chiamata alla classe Parser
+2020-11-09 19:15:42,497 - cts[789312] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:15:42,497 - cts[789312] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:15:42,497 - cts[789312] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:15:42,497 - cts[789312] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:15:42,497 - cts[789312] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:15:42,497 - cts[789312] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Terminato parsing totale
+2020-11-09 19:15:42,498 - cts[789312] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-09 19:15:42,498 - cts[789312] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-09 19:15:42,499 - cts[789312] - INFO : Chiamata alla classe Builder
+2020-11-09 19:15:42,499 - cts[789312] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-09 19:15:42,499 - cts[789312] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-09 19:15:42,499 - cts[789312] - INFO : Chiamata alla classe ModelBuilder
+2020-11-09 19:15:42,499 - cts[789312] - DEBUG : Formattazione della stringa per il file cts_SystemDefinition.cuh
+2020-11-09 19:15:42,499 - cts[789312] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Terminata formattazione
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS/cts_SystemDefinition.cuh
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Contenuto salvato correttamente
+2020-11-09 19:15:42,500 - cts[789312] - DEBUG : Formattazione della stringa per il file cts.cu
+2020-11-09 19:15:42,500 - cts[789312] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-09 19:15:42,500 - cts[789312] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-09 19:15:42,500 - cts[789312] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-09 19:15:42,500 - cts[789312] - INFO : Formattazione della stringa per la funzione di main
+2020-11-09 19:15:42,501 - cts[789312] - DEBUG : Terminata formattazione
+2020-11-09 19:15:42,501 - cts[789312] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS/cts.cu
+2020-11-09 19:15:42,501 - cts[789312] - DEBUG : Contenuto salvato correttamente
+2020-11-09 19:15:42,501 - cts[789312] - DEBUG : Salvataggio del MakeFile
+2020-11-09 19:15:42,501 - cts[789312] - DEBUG : Creazione del file MakeFile
+2020-11-09 19:15:42,501 - cts[789312] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-09 19:15:42,501 - cts[789312] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-09 19:15:42,501 - cts[789312] - DEBUG : Operazione di traduzione terminata con successo in 0.6173803806304932ms.
+2020-11-09 19:15:53,796 - cts[789342] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:15:53,796 - cts[789342] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:15:53,802 - cts[789342] - INFO : Chiamata alla classe Parser
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:15:53,803 - cts[789342] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:15:53,804 - cts[789342] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:15:53,804 - cts[789342] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:15:53,804 - cts[789342] - DEBUG : Terminato parsing totale
+2020-11-09 19:15:53,804 - cts[789342] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:15:53,804 - cts[789342] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:15:53,804 - cts[789342] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-09 19:15:53,804 - cts[789342] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-09 19:15:53,805 - cts[789342] - INFO : Chiamata alla classe Builder
+2020-11-09 19:15:53,805 - cts[789342] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-09 19:15:53,805 - cts[789342] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-09 19:15:53,805 - cts[789342] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-09 19:15:53,805 - cts[789342] - INFO : Chiamata alla classe ModelBuilder
+2020-11-09 19:15:53,805 - cts[789342] - DEBUG : Formattazione della stringa per il file cts_SystemDefinition.cuh
+2020-11-09 19:15:53,805 - cts[789342] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-09 19:15:53,805 - cts[789342] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-09 19:15:53,805 - cts[789342] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-09 19:15:53,805 - cts[789342] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-09 19:15:53,805 - cts[789342] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-09 19:15:53,806 - cts[789342] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-09 19:15:53,806 - cts[789342] - DEBUG : Terminata formattazione
+2020-11-09 19:15:53,806 - cts[789342] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS/cts_SystemDefinition.cuh
+2020-11-09 19:15:53,806 - cts[789342] - DEBUG : Contenuto salvato correttamente
+2020-11-09 19:15:53,806 - cts[789342] - DEBUG : Formattazione della stringa per il file cts.cu
+2020-11-09 19:15:53,806 - cts[789342] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-09 19:15:53,806 - cts[789342] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-09 19:15:53,806 - cts[789342] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-09 19:15:53,806 - cts[789342] - INFO : Formattazione della stringa per la funzione di main
+2020-11-09 19:15:53,806 - cts[789342] - DEBUG : Terminata formattazione
+2020-11-09 19:15:53,806 - cts[789342] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS/cts.cu
+2020-11-09 19:15:53,807 - cts[789342] - DEBUG : Contenuto salvato correttamente
+2020-11-09 19:15:53,807 - cts[789342] - DEBUG : Salvataggio del MakeFile
+2020-11-09 19:15:53,807 - cts[789342] - DEBUG : Creazione del file MakeFile
+2020-11-09 19:15:53,807 - cts[789342] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-09 19:15:53,807 - cts[789342] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-09 19:15:53,807 - cts[789342] - DEBUG : Operazione di traduzione terminata con successo in 0.5644869804382324ms.
+2020-11-09 19:16:14,714 - cts[789376] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:16:14,714 - cts[789376] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:16:14,721 - cts[789376] - INFO : Chiamata alla classe Parser
+2020-11-09 19:16:14,721 - cts[789376] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:16:14,721 - cts[789376] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:16:14,722 - cts[789376] - DEBUG : Terminato parsing totale
+2020-11-09 19:16:14,723 - cts[789376] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:16:14,723 - cts[789376] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:16:14,723 - cts[789376] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-09 19:16:14,723 - cts[789376] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-09 19:16:14,723 - cts[789376] - INFO : Chiamata alla classe Builder
+2020-11-09 19:16:14,723 - cts[789376] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-09 19:16:14,723 - cts[789376] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-09 19:16:14,724 - cts[789376] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-09 19:16:14,724 - cts[789376] - INFO : Chiamata alla classe ModelBuilder
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Formattazione della stringa per il file cts_SystemDefinition.cuh
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Terminata formattazione
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS/cts_SystemDefinition.cuh
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Contenuto salvato correttamente
+2020-11-09 19:16:14,724 - cts[789376] - DEBUG : Formattazione della stringa per il file cts.cu
+2020-11-09 19:16:14,725 - cts[789376] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-09 19:16:14,725 - cts[789376] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-09 19:16:14,725 - cts[789376] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-09 19:16:14,725 - cts[789376] - INFO : Formattazione della stringa per la funzione di main
+2020-11-09 19:16:14,725 - cts[789376] - DEBUG : Terminata formattazione
+2020-11-09 19:16:14,725 - cts[789376] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS/cts.cu
+2020-11-09 19:16:14,725 - cts[789376] - DEBUG : Contenuto salvato correttamente
+2020-11-09 19:16:14,725 - cts[789376] - DEBUG : Salvataggio del MakeFile
+2020-11-09 19:16:14,725 - cts[789376] - DEBUG : Creazione del file MakeFile
+2020-11-09 19:16:14,725 - cts[789376] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-09 19:16:14,725 - cts[789376] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-09 19:16:14,725 - cts[789376] - DEBUG : Operazione di traduzione terminata con successo in 0.674034595489502ms.
+2020-11-09 19:17:39,181 - cts[789574] - INFO : Logger <Logger cts (DEBUG)> creato con successo
+2020-11-09 19:17:39,182 - cts[789574] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/
+modelname: cts
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce GTX 1660 SUPER
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         3 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1815000 |
+    | COMPUTE_CAPABILITY_MAJOR:                   7 |
+    | COMPUTE_CAPABILITY_MINOR:                   5 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                  192 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                        1572864 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   65536 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          1024 |
+    | MEMORY_CLOCK_RATE:                    7001000 |
+    | MULTIPROCESSOR_COUNT:                      22 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection: []
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+    toleranceValue2: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+
+2020-11-09 19:17:39,187 - cts[789574] - INFO : Chiamata alla classe Parser
+2020-11-09 19:17:39,187 - cts[789574] - DEBUG : Parsing totale dell'XML
+2020-11-09 19:17:39,187 - cts[789574] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-09 19:17:39,187 - cts[789574] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-09 19:17:39,187 - cts[789574] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Terminato parsing totale
+2020-11-09 19:17:39,188 - cts[789574] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-09 19:17:39,188 - cts[789574] - DEBUG : Ottengo le ODE per il modello
+2020-11-09 19:17:39,189 - cts[789574] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-09 19:17:39,189 - cts[789574] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-09 19:17:39,189 - cts[789574] - INFO : Chiamata alla classe Builder
+2020-11-09 19:17:39,189 - cts[789574] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-09 19:17:39,189 - cts[789574] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-09 19:17:39,189 - cts[789574] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-09 19:17:39,190 - cts[789574] - INFO : Chiamata alla classe ModelBuilder
+2020-11-09 19:17:39,190 - cts[789574] - DEBUG : Formattazione della stringa per il file cts_SystemDefinition.cuh
+2020-11-09 19:17:39,190 - cts[789574] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-09 19:17:39,190 - cts[789574] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-09 19:17:39,190 - cts[789574] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-09 19:17:39,190 - cts[789574] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-09 19:17:39,190 - cts[789574] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-09 19:17:39,190 - cts[789574] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-09 19:17:39,190 - cts[789574] - DEBUG : Terminata formattazione
+2020-11-09 19:17:39,191 - cts[789574] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS/cts_SystemDefinition.cuh
+2020-11-09 19:17:39,191 - cts[789574] - DEBUG : Contenuto salvato correttamente
+2020-11-09 19:17:39,191 - cts[789574] - DEBUG : Formattazione della stringa per il file cts.cu
+2020-11-09 19:17:39,191 - cts[789574] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-09 19:17:39,191 - cts[789574] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-09 19:17:39,191 - cts[789574] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-09 19:17:39,191 - cts[789574] - INFO : Formattazione della stringa per la funzione di main
+2020-11-09 19:17:39,191 - cts[789574] - DEBUG : Terminata formattazione
+2020-11-09 19:17:39,191 - cts[789574] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/cts_MPGOS/cts.cu
+2020-11-09 19:17:39,192 - cts[789574] - DEBUG : Contenuto salvato correttamente
+2020-11-09 19:17:39,192 - cts[789574] - DEBUG : Salvataggio del MakeFile
+2020-11-09 19:17:39,192 - cts[789574] - DEBUG : Creazione del file MakeFile
+2020-11-09 19:17:39,192 - cts[789574] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-09 19:17:39,192 - cts[789574] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-09 19:17:39,192 - cts[789574] - DEBUG : Operazione di traduzione terminata con successo in 0.6231915950775146ms.

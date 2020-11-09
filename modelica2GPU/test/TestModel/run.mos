@@ -1,0 +1,15 @@
+loadModel(Modelica);
+
+loadFile("package.mo"); 
+loadFile("MyModel.mo"); 
+
+loadFile("MyClass.mo");
+loadFile("Constants.mo"); 
+loadFile("Functions.mo"); 
+loadFile("Parameters.mo"); 
+
+simulate(TestModel.MyModel, stopTime=10);
+getErrorString();
+
+plot({TestModel.MyModel.myclass.x, TestModel.MyModel.myclass.y}, externalWindow=true);
+getErrorString();

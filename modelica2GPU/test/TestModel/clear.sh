@@ -1,0 +1,10 @@
+rm *.o
+rm *.c
+rm *.mat
+rm *.h
+rm *.json
+rm TestModel.MyModel
+rm *.makefile
+rm *.log
+rm *.libs
+rm TestModel.MyModel_init.xml

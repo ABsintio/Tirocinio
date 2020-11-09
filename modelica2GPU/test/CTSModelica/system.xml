@@ -1,0 +1,1669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="system"
+  modelIdentifier="system"
+  guid="{9c56d92d-bece-46ef-9bd3-f1857242d117}"
+  generationDateAndTime="2020-11-09T19:25:28"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="2"
+  numberOfEventIndicators="1"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.0"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="CTS.x[1,1]"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="x">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.x[2,1]"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="x">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(CTS.x[1,1])"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="x">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(CTS.x[2,1])"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="x">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="CTS.y[1,1]"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="y">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.Delta"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="Delta"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.HiVal"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="HiVal"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.LoVal"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="LoVal"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="monitor.j"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="monitor"/>
+        <exp:QualifiedNamePart name="j"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="ctr.n"  valueReference="9" variability="discrete" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.u[1,1]"  valueReference="10" variability="discrete" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="u">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="$whenCondition1" description="sample(1, 0.0, ctr.T)" valueReference="11" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean start="1" fixed="true"/>
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$whenCondition1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$whenCondition2" description="sample(2, 1.0, ctr.N)" valueReference="12" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$whenCondition2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="monitor.y"  valueReference="13" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="monitor"/>
+        <exp:QualifiedNamePart name="y"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="monitor.z"  valueReference="14" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="monitor"/>
+        <exp:QualifiedNamePart name="z"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="CTS.u[1,1]"  valueReference="15" variability="continuous" causality="internal" alias="ctr.u[1,1]">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="u">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.x[1,1]"  valueReference="16" variability="continuous" causality="internal" alias="CTS.x[1,1]">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="x">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.x[2,1]"  valueReference="17" variability="continuous" causality="internal" alias="CTS.x[2,1]">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="x">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="monitor.n"  valueReference="18" variability="continuous" causality="internal" alias="ctr.n">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="monitor"/>
+        <exp:QualifiedNamePart name="n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="monitor.x[1,1]"  valueReference="19" variability="continuous" causality="internal" alias="CTS.x[1,1]">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="monitor"/>
+        <exp:QualifiedNamePart name="x">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="monitor.x[2,1]"  valueReference="20" variability="continuous" causality="internal" alias="CTS.x[2,1]">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="monitor"/>
+        <exp:QualifiedNamePart name="x">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="CTS.A[1,1]"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="4.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="A">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.A[1,2]"  valueReference="22" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="A">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.A[2,1]"  valueReference="23" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="A">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.A[2,2]"  valueReference="24" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="A">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.B[1,1]"  valueReference="25" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="B">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.B[2,1]"  valueReference="26" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="B">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.C[1,1]"  valueReference="27" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="C">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.C[1,2]"  valueReference="28" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="C">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.x0[1,1]"  valueReference="29" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.1" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="x0">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CTS.x0[2,1]"  valueReference="30" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.2" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="x0">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.K[1,1]"  valueReference="31" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="K">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.K[1,2]"  valueReference="32" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="K">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.N"  valueReference="33" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="N"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ctr.T"  valueReference="34" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="T"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="A">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>4.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="A">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="A">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="A">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="B">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="B">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="C">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="C">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="x0">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="CTS"/>
+        <exp:QualifiedNamePart name="x0">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.2</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="K">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="K">
+          <exp:ArraySubscripts>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>1</exp:IntegerLiteral>
+            </exp:IndexExpression>
+            <exp:IndexExpression>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:IndexExpression>
+          </exp:ArraySubscripts>
+        </exp:QualifiedNamePart>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="N"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ctr"/>
+        <exp:QualifiedNamePart name="T"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+        <exp:Sample>
+          <exp:IntegerLiteral>2</exp:IntegerLiteral>
+          <exp:RealLiteral>1.0</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="ctr"/>
+            <exp:QualifiedNamePart name="N"/>
+          </exp:Identifier>
+        </exp:Sample>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:Sample>
+          <exp:IntegerLiteral>1</exp:IntegerLiteral>
+          <exp:RealLiteral>0.0</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="ctr"/>
+            <exp:QualifiedNamePart name="T"/>
+          </exp:Identifier>
+        </exp:Sample>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CTS"/>
+          <exp:QualifiedNamePart name="y">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CTS"/>
+              <exp:QualifiedNamePart name="C">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CTS"/>
+              <exp:QualifiedNamePart name="x">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CTS"/>
+              <exp:QualifiedNamePart name="C">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CTS"/>
+              <exp:QualifiedNamePart name="x">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="monitor"/>
+          <exp:QualifiedNamePart name="j"/>
+        </exp:Identifier>
+        <exp:Sqrt>
+          <exp:Add>
+            <exp:Pow>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CTS"/>
+                <exp:QualifiedNamePart name="x">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:Pow>
+            <exp:Pow>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CTS"/>
+                <exp:QualifiedNamePart name="x">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+              <exp:IntegerLiteral>2</exp:IntegerLiteral>
+            </exp:Pow>
+          </exp:Add>
+        </exp:Sqrt>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="monitor"/>
+          <exp:QualifiedNamePart name="z"/>
+        </exp:Identifier>
+        <exp:Or>
+          <exp:And>
+            <exp:LogLeq>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="monitor"/>
+                <exp:QualifiedNamePart name="j"/>
+              </exp:Identifier>
+              <exp:RealLiteral>0.2</exp:RealLiteral>
+            </exp:LogLeq>
+            <exp:LogGeq>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ctr"/>
+                <exp:QualifiedNamePart name="n"/>
+              </exp:Identifier>
+              <exp:RealLiteral>10.0</exp:RealLiteral>
+            </exp:LogGeq>
+          </exp:And>
+          <exp:LogLt>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="ctr"/>
+              <exp:QualifiedNamePart name="n"/>
+            </exp:Identifier>
+            <exp:RealLiteral>10.0</exp:RealLiteral>
+          </exp:LogLt>
+        </exp:Or>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CTS"/>
+            <exp:QualifiedNamePart name="x">
+              <exp:ArraySubscripts>
+                <exp:IndexExpression>
+                  <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                </exp:IndexExpression>
+                <exp:IndexExpression>
+                  <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                </exp:IndexExpression>
+              </exp:ArraySubscripts>
+            </exp:QualifiedNamePart>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CTS"/>
+              <exp:QualifiedNamePart name="A">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CTS"/>
+              <exp:QualifiedNamePart name="x">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CTS"/>
+                <exp:QualifiedNamePart name="A">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CTS"/>
+                <exp:QualifiedNamePart name="x">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CTS"/>
+                <exp:QualifiedNamePart name="B">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ctr"/>
+                <exp:QualifiedNamePart name="u">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CTS"/>
+            <exp:QualifiedNamePart name="x">
+              <exp:ArraySubscripts>
+                <exp:IndexExpression>
+                  <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                </exp:IndexExpression>
+                <exp:IndexExpression>
+                  <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                </exp:IndexExpression>
+              </exp:ArraySubscripts>
+            </exp:QualifiedNamePart>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CTS"/>
+              <exp:QualifiedNamePart name="A">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CTS"/>
+              <exp:QualifiedNamePart name="x">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CTS"/>
+                <exp:QualifiedNamePart name="A">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CTS"/>
+                <exp:QualifiedNamePart name="x">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CTS"/>
+                <exp:QualifiedNamePart name="B">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ctr"/>
+                <exp:QualifiedNamePart name="u">
+                  <exp:ArraySubscripts>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                    <exp:IndexExpression>
+                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                    </exp:IndexExpression>
+                  </exp:ArraySubscripts>
+                </exp:QualifiedNamePart>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:When>
+      <equ:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+      </equ:Condition>
+      <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="ctr"/>
+              <exp:QualifiedNamePart name="n"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:RealLiteral>1.0</exp:RealLiteral>
+              <exp:Pre>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ctr"/>
+                  <exp:QualifiedNamePart name="n"/>
+                </exp:Identifier>
+              </exp:Pre>
+            </exp:Add>
+          </exp:Sub>
+      </equ:Equation>
+    </equ:When>
+     
+    <equ:When>
+      <equ:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+      </equ:Condition>
+      <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="ctr"/>
+              <exp:QualifiedNamePart name="u">
+                <exp:ArraySubscripts>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                  <exp:IndexExpression>
+                    <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                  </exp:IndexExpression>
+                </exp:ArraySubscripts>
+              </exp:QualifiedNamePart>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ctr"/>
+                  <exp:QualifiedNamePart name="K">
+                    <exp:ArraySubscripts>
+                      <exp:IndexExpression>
+                        <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                      </exp:IndexExpression>
+                      <exp:IndexExpression>
+                        <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                      </exp:IndexExpression>
+                    </exp:ArraySubscripts>
+                  </exp:QualifiedNamePart>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CTS"/>
+                  <exp:QualifiedNamePart name="x">
+                    <exp:ArraySubscripts>
+                      <exp:IndexExpression>
+                        <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                      </exp:IndexExpression>
+                      <exp:IndexExpression>
+                        <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                      </exp:IndexExpression>
+                    </exp:ArraySubscripts>
+                  </exp:QualifiedNamePart>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ctr"/>
+                  <exp:QualifiedNamePart name="K">
+                    <exp:ArraySubscripts>
+                      <exp:IndexExpression>
+                        <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                      </exp:IndexExpression>
+                      <exp:IndexExpression>
+                        <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                      </exp:IndexExpression>
+                    </exp:ArraySubscripts>
+                  </exp:QualifiedNamePart>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CTS"/>
+                  <exp:QualifiedNamePart name="x">
+                    <exp:ArraySubscripts>
+                      <exp:IndexExpression>
+                        <exp:IntegerLiteral>2</exp:IntegerLiteral>
+                      </exp:IndexExpression>
+                      <exp:IndexExpression>
+                        <exp:IntegerLiteral>1</exp:IntegerLiteral>
+                      </exp:IndexExpression>
+                    </exp:ArraySubscripts>
+                  </exp:QualifiedNamePart>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Sub>
+      </equ:Equation>
+    </equ:When>
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:BooleanLiteral>1</exp:BooleanLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="Delta"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="LoVal"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="HiVal"/>
+        </exp:Identifier>
+        <exp:RealLiteral>6.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="n"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$START"/>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="n"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="u">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$START"/>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="u">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="u">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="u">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="n"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="ctr"/>
+          <exp:QualifiedNamePart name="n"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CTS"/>
+          <exp:QualifiedNamePart name="x">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>2</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CTS"/>
+          <exp:QualifiedNamePart name="x0">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>2</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CTS"/>
+          <exp:QualifiedNamePart name="x">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CTS"/>
+          <exp:QualifiedNamePart name="x0">
+            <exp:ArraySubscripts>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+              <exp:IndexExpression>
+                <exp:IntegerLiteral>1</exp:IntegerLiteral>
+              </exp:IndexExpression>
+            </exp:ArraySubscripts>
+          </exp:QualifiedNamePart>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:BooleanLiteral>0</exp:BooleanLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+        <exp:BooleanLiteral>0</exp:BooleanLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+     
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+    <fun:Assign>
+      <exp:Identifier>
+        <exp:QualifiedNamePart name="monitor"/>
+        <exp:QualifiedNamePart name="y"/>
+      </exp:Identifier>
+      <fun:Expression>
+        <exp:Pre>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="monitor"/>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+        </exp:Pre>
+      </fun:Expression>
+    </fun:Assign>
+    <fun:Assign>
+      <exp:Identifier>
+        <exp:QualifiedNamePart name="monitor"/>
+        <exp:QualifiedNamePart name="y"/>
+      </exp:Identifier>
+      <fun:Expression>
+        <exp:Not>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="monitor"/>
+            <exp:QualifiedNamePart name="z"/>
+          </exp:Identifier>
+        </exp:Not>
+      </fun:Expression>
+    </fun:Assign>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>

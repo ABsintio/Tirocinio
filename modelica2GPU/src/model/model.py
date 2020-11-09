@@ -33,7 +33,9 @@ class Model:
         self.variables  = list(variables_dict.values())                    # Prendo la lista delle variabili
         if self.init['initialization']:
             # Ordino le equazioni initiali per initialization
-            self.init['initialization'] = self.init_equations_sort(variables_dict)
+            result = self.init_equations_sort(variables_dict)
+            if result is not None:
+                self.init['initialization'] = result
 
 
     @staticmethod
@@ -65,7 +67,8 @@ class Model:
         for k, value in variables_dict.items():
             varname, ivalue = value.nome, value.init
             # In caso troviamo dei "." facciamo il replace con "_"
-            if value.category != VariableCategory.DERIVATIVE and ivalue is not None:
+            if value.category != VariableCategory.DERIVATIVE and ivalue is not None and \
+               (not ivalue.strip().startswith("$PRE") and not ivalue.strip().startswith("$START")):
                 # Inseriamo tutte le equazioni iniziali nel file SystemDefinition in 
                 # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
                 # Altrimenti facendo diverse simulazioni seriali i valore della
@@ -100,13 +103,15 @@ class Model:
         """ Sorta le equazioni initiali con tag "initialization" """
         init_str = [str(x) for x in self.init['initialization']]
         equ_dipendency_dag = DAG(init_str, MPGOSparams_dict) # Crea un DAG
-        top_sort = equ_dipendency_dag.topological_sort()                        # Esegue l'algoritmo di ordinamento topologico
-        new_init_eq = []
-        init_eq_dict = {x.left.__str__(): x.right.__str__() for x in self.init['initialization']}
-        for lhs in top_sort:
-            # Devo prendere l'equazione iniziale associata
-            new_init_eq.append(Equation(lhs, init_eq_dict[lhs]))
-        return new_init_eq if new_init_eq != [] else self.init['initialization']
+        if equ_dipendency_dag.dipendence_dag is not None:
+            top_sort = equ_dipendency_dag.topological_sort() # Esegue l'algoritmo di ordinamento topologico
+            new_init_eq = []
+            init_eq_dict = {x.left.__str__(): x.right.__str__() for x in self.init['initialization']}
+            for lhs in top_sort:
+                # Devo prendere l'equazione iniziale associata
+                new_init_eq.append(Equation(lhs, init_eq_dict[lhs]))
+            return new_init_eq if new_init_eq != [] else self.init['initialization']
+        return None
 
     
     @staticmethod

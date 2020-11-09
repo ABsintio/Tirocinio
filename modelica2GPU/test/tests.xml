@@ -1,0 +1,89 @@
+<tests>
+    <test id="01">
+        <modelname value="Sampling.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampling/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.004ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation number="01">(9.728ms, 2.067ms)</simulation>
+            <simulation number="10">(94.201ms, 20.27ms)</simulation>
+            <simulation number="100">(922.515ms, 214.908ms)</simulation>
+            <simulation number="1000">(9765.544.53ms, 1732.58ms)</simulation>
+            <simulation number="1000">(97391.974ms, 17016ms)</simulation>
+        </simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="02">
+        <modelname value="system.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/ifmodel/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.130ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation number="01">(10.334ms, 10.044ms)</simulation>
+            <simulation number="10">(119.970ms, 108.968ms)</simulation>
+            <simulation number="100">(1031.628ms, 884.689ms)</simulation>
+            <simulation number="1000">(10569.290ms, 8405.59ms)</simulation>
+            <simulation number="1000">(106463.571ms, 83925.4ms)</simulation>
+        </simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="03">
+        <modelname value="MyModel.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/TestModel/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="2.510ms" />
+        <MPGOScompilation value="true" />
+        <simulations>All failed both in MGPOS and Modelica at time=3.89e00</simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="04">
+        <modelname value="DTS.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/dts/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.320ms" />
+        <MPGOScompilation value="true" />
+        <simulations>MPGOS simulation failed because DTS is a discrete time system</simulations>
+        <simulationResult value="Failed" />
+    </test>
+    <test id="05">
+        <modelname value="system.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/" />
+        <successfulTranslation value="true" description="L'XML creato non veniva parsato bene da Python, modif. a mano"/>
+        <spentTraslationTime value="0.963ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation number="01">(11.084ms, 12.545ms)</simulation>
+            <simulation number="10">(117.561ms, 129.604ms)</simulation>
+            <simulation number="100">(1090.718, 1087.87ms)</simulation>
+            <simulation number="1000">(10525.479ms, 10078.07ms)</simulation>
+            <simulation number="1000">(107968.644ms, 100433.4ms)</simulation>
+        </simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="06">
+        <modelname value="BouncingBall.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Bouncingball/v1/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="1.546ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation number="01">(12.884ms, 1.842ms)</simulation>
+            <simulation number="10">(107.997ms, 18.469ms)</simulation>
+            <simulation number="100">(1087.260, 206.817ms)</simulation>
+            <simulation number="1000">(10266.113ms, 1587.5ms)</simulation>
+            <simulation number="1000">(102694.772ms, 15252.4ms)</simulation>
+        </simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="07">
+        <modelname value="BouncingBall.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Bouncingball/v2/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="1.260ms" />
+        <MPGOScompilation value="true" />
+        <simulations>Error on simulation: MPGOS model doesn't equal to Modelica model</simulations>
+        <simulationResult value="Failed" />
+    </test>
+</tests>
