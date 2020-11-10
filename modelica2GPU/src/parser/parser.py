@@ -17,7 +17,7 @@ class Parser:
     def __init__(self, filename, logger):
         self.logger = logger
         self.root = ET.parse(filename).getroot()
-        self.dynamic_equations = {"equations": [], "events": []}
+        self.dynamic_equations = {"equations": [], "events": {"when": [], "other": []}}
         self.binding_equations = []
         self.initial_equations = []
         self.scalar_variables  = []
@@ -184,18 +184,12 @@ class Parser:
             self.scalar_variables.append(variables._parsetag_var(x))
 
     
-    def parse_dynamic_equations(self, variables_dict, MPGOSparams_dict):
-        """ Esegue il parsing di tutti i tag <equ:DynamicEquations> """
-        # START LOG
-        msg = "Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>"
-        self.logger.debug(msg, msg)
-        # END LOG
-        dynamic_equations_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}DynamicEquations", self.root)
-        for x in dynamic_equations_roottag:
-            # Parsing delle equazioni
+    def parse_equation(self, root, variables_dict, MPGOSparams_dict):
+        """ Parsa le equazioni """
+        for x in root:
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
                 eq = tagclasses._parsetag_eq(x, variables_dict)
-                self.dynamic_equations["equations"].append(eq)
+                self.dynamic_equations['equations'].append(eq)
                 # Se la parte destra dell'equazione è di tipo Sample
                 # allora controllo se l'attributo new_var della parte destra
                 # sia pari a None oppure no. Questo perché se non è pari a 
@@ -207,12 +201,17 @@ class Parser:
                     old_name = MPGOSparams_dict[str(eq.left)].nome
                     MPGOSparams_dict[str(eq.left)].setname(old_name.replace("when", "sample"))
                     MPGOSparams_dict[eq.right.new_var.createMPGOSname()] = eq.right.new_var
-                    # Inserisco l'equazione per l'aggiornamento del contatore del sampler
-                    self.dynamic_equations['equations'].append(tagclasses.Equation(
+                    # Inserisco l'equazione per l'aggiornamento del contatore del sampler negli eventi other
+                    self.dynamic_equations['events']['other'].append(tagclasses.Equation(
                         eq.right.new_var.createMPGOSname(),
                         "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(eq.left),lhs=eq.right.new_var.createMPGOSname())
                     ))
-            elif x.tag == f"{tagclasses.EQUATION_NS}When":
+
+
+    def parse_when(self, root, variables_dict, MPGOSparams_dict):
+        """ Parsa le when equations"""
+        for x in root:
+            if x.tag == f"{tagclasses.EQUATION_NS}When":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
                 when_eq = tagclasses.When(x, variables_dict, self.event_conditions)
                 # In via puramente eccezionale, se la condizione è di tipo Sample allora
@@ -233,7 +232,7 @@ class Parser:
                     # vettore EF (event function) e quindi devo tenere il conto di quanti eventi trovo
                     if when_eq.condition[1] not in self.event_conditions:
                         self.event_conditions.append(when_eq.condition)
-                    self.dynamic_equations["events"].append(when_eq)
+                    self.dynamic_equations["events"]['when'].append(when_eq)
                 else:
                     # Se invece la parte destra della condizione è di tipo sample allora
                     # devo prendere l'equazione che sarebbe dovuto essere dell'evento e
@@ -244,7 +243,20 @@ class Parser:
                         cond=when_eq.condition[1],
                         rhs=when_eq.equation.right.__str__()
                     )
-                    self.dynamic_equations['equations'].append(tagclasses.Equation(when_eq.equation.left, new_eq))
+                    self.dynamic_equations['events']['other'].append(tagclasses.Equation(when_eq.equation.left, new_eq))
+
+    
+    def parse_dynamic_equations(self, variables_dict, MPGOSparams_dict):
+        """ Esegue il parsing di tutti i tag <equ:DynamicEquations> """
+        # START LOG
+        msg = "Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>"
+        self.logger.debug(msg, msg)
+        # END LOG
+        dynamic_equations_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}DynamicEquations", self.root)
+        # Parso le equazioni
+        self.parse_equation(dynamic_equations_roottag, variables_dict, MPGOSparams_dict)
+        # Parso gli eventi
+        self.parse_when(dynamic_equations_roottag, variables_dict, MPGOSparams_dict)
         return MPGOSparams_dict
                 
 

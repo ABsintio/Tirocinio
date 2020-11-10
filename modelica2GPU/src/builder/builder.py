@@ -320,7 +320,7 @@ class ModelBuilder:
         MPGOS_Model_Macro = MPGOS_Model_Macro.format(
             model_sysdef_file=self.sysdef_filename.split("/")[-1],
             numberOfThreads=self.config_dict['numberOfThreads'],
-            systemDimension=len(self.odes), 
+            systemDimension=int(self.config_dict['numberOfContinuousState']), 
             numberOfSharedParameter=len(list(filter(lambda x: isinstance(x, sPAR), self.variables))),
             numberOfIntegerSharedParameter=len(list(filter(lambda x: isinstance(x, sPARi), self.variables))),
             numberOfEvents=len(self.config_dict['eventDirection']) if self.config_dict['eventDirection'] is not None else 0,

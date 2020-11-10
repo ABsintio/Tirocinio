@@ -2,9 +2,9 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
-  BouncingBall_handler:
+  Sampling_handler:
     class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Bouncingball/v2//log/BouncingBall.log
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampling//log/Sampling.log
     formatter: simple
     level: DEBUG
   console:
@@ -12,9 +12,9 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
-  BouncingBall:
+  Sampling:
     handlers:
-    - BouncingBall_handler
+    - Sampling_handler
     level: DEBUG
     propagate: 'no'
   root:

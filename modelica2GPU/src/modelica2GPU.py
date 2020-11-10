@@ -308,7 +308,8 @@ def get_modelica2GPU_configuration(config_file):
             "denseOutputSaveFrequency"  : builder_options[13],
             "tolerance"                 : builder_options[14],
             "timeDomainStart"           : builder_options[15],
-            "timeDomainEnd"             : builder_options[16]
+            "timeDomainEnd"             : builder_options[16],
+            "numberOfContinuousState"   : getnumstate(xmlfile)
         }
         
         conf_str = conf_dict2str(config_dict, device.get_attributes())
@@ -360,7 +361,7 @@ del tmp_logger
 
 coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
 
-"""try:
+try:
     # Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro per il notifier
     from parser.parser import *
     from builder.builder import *
@@ -388,7 +389,7 @@ coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
 except Exception as e:
     msg = f"modelica2GPU ha riscontrato il seguente errore. {e.args[0]}"
     m2g_logger.error(msg, msg)
-    sys.exit(1)"""
+    sys.exit(1)
 
 print("\n\n\033[1;32;40mMESSAGGIO DA MODELICA2GPU")
 print("\033[1;32;40mDurante l'operazione modelica2GPU non riscontrato alcun errore rilevante.")

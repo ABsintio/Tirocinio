@@ -3,6 +3,9 @@ loadModel(Modelica);
 loadFile("package.mo");
 loadFile("Sampling.mo");
 
-buildModel(sampling.Sampling, stopTime=10);
+simulate(sampling.Sampling, stopTime=10);
+getErrorString();
+
+plot({x}, externalWindow=true);
 getErrorString();
 

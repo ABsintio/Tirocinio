@@ -25,11 +25,11 @@ class Model:
         self.logger.info(msg, msg)
         # END LOG
         self.model_name = name
-        self.odes       = Model.getODE(equations, variables_dict, logger)  # Crea il sistema di ODE
         self.init       = Model.getinit(variables_dict, logger)            # Prendo le equazioni iniziali
-        self.events     = events                                           # Prendo gli eventi
+        self.odes       = Model.getODE(equations, self.init, variables_dict, logger)  # Crea il sistema di ODE
+        self.events     = events['when']                                     # Prendo gli eventi
         # Prendo le altre equazioni rimanenti
-        self.othereq    = Model.getOtherEq(algorithms + equations, self.init, variables_dict, logger)
+        self.othereq    = Model.getOtherEq(algorithms + equations + events['other'], self.init, variables_dict, logger)
         self.variables  = list(variables_dict.values())                    # Prendo la lista delle variabili
         if self.init['initialization']:
             # Ordino le equazioni initiali per initialization
@@ -39,7 +39,7 @@ class Model:
 
 
     @staticmethod
-    def getODE(equations_list, variables_dict, logger):
+    def getODE(equations_list, init_equations, variables_dict, logger):
         """ Prende da tutta la lista di equazioni, soltanto quelle che sono della forma F[i] = <expr> """
         # START LOG
         msg = "Ottengo le ODE per il modello"
@@ -47,10 +47,13 @@ class Model:
         # END LOG
         odes = []
         for eq in equations_list:
-            lhs = eq.left.__str__()
-            var = variables_dict[lhs]
-            if var.category == VariableCategory.DERIVATIVE:
+            var = variables_dict[eq.left.__str__()]
+            if not re.match(r"\$whenCondition\d+", var.nome):
                 odes.append(eq)
+            # Se la variabile parte sinistra dell'equazione non ha un valore iniziale allora inseriamo
+            # tale equazione come valore iniziale nella funzione PerThread_Initialization
+            if var.init is None and var.category != VariableCategory.DERIVATIVE:
+                init_equations['initialization'].append(eq)
         # Elimino le ODE dalle equazioni normali
         for ode in odes: equations_list.remove(ode)
         return odes
@@ -73,8 +76,9 @@ class Model:
                 # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
                 # Altrimenti facendo diverse simulazioni seriali i valore della
                 # simulazione successiva partirà con quelli della simulazione precedente.
-                element = Equation(k.strip(), ivalue.strip())
-                init_eqs["initialization"].append(element)
+                # Okay quello scritto sopra, ma gli shareParameter non vengono mai cambiati
+                # e quindi li possiamo inserire tranquillamente nel .cu file.
+                init_eqs["initialization"].append(Equation(k.strip(), ivalue.strip()))
         return init_eqs
 
 
