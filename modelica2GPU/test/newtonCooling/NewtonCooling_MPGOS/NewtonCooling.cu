@@ -8,7 +8,7 @@
 
 #define PI 3.14159265358979323846
 
-#include "system_SystemDefinition.cuh"
+#include "NewtonCooling_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
@@ -16,12 +16,12 @@ using namespace std;
 #define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 2;
+const int SD   = 1;
 const int NCP  = 1;
-const int NSP  = 4;
+const int NSP  = 6;
 const int NISP = 0;
 const int NE   = 0;
-const int NA   = 2;
+const int NA   = 0;
 const int NIA  = 0;
 const int NDO  = 1000;
 
@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 1.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
@@ -73,23 +73,21 @@ void SaveData(
 	
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
-        DataFile.width(Width); DataFile << "X_V" << ',';
-        DataFile.width(Width); DataFile << "X_i_L" << ',';
-        DataFile.width(Width); DataFile << "sPAR_C" << ',';
-        DataFile.width(Width); DataFile << "sPAR_L" << ',';
-        DataFile.width(Width); DataFile << "sPAR_R" << ',';
-        DataFile.width(Width); DataFile << "sPAR_Vb" << ',';
-        DataFile.width(Width); DataFile << "ACC_i_C" << ',';
-        DataFile.width(Width); DataFile << "ACC_i_R" << ',';
+        DataFile.width(Width); DataFile << "X_T" << ',';
+        DataFile.width(Width); DataFile << "sPAR_A" << ',';
+        DataFile.width(Width); DataFile << "sPAR_T0" << ',';
+        DataFile.width(Width); DataFile << "sPAR_T_inf" << ',';
+        DataFile.width(Width); DataFile << "sPAR_c_p" << ',';
+        DataFile.width(Width); DataFile << "sPAR_h" << ',';
+        DataFile.width(Width); DataFile << "sPAR_m" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 2) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 3) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 4) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 5) << ',';
 
         DataFile << '\n';
     }
@@ -122,15 +120,13 @@ int main() {
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
     Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 1, 1e-06);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
-    Solver.SolverOption(RelativeTolerance, 1, 1e-06);
    
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "system.csv" );
+    DataFile.open ( "NewtonCooling.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    

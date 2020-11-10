@@ -2,11 +2,21 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
+  NewtonCooling_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/newtonCooling//log/NewtonCooling.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  NewtonCooling:
+    handlers:
+    - NewtonCooling_handler
+    level: DEBUG
+    propagate: 'no'
   root:
     handlers:
     - console
