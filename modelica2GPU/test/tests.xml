@@ -7,11 +7,11 @@
         <spentTraslationTime value="1.004ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation number="01">(9.728ms, 2.067ms)</simulation>
-            <simulation number="10">(94.201ms, 20.27ms)</simulation>
-            <simulation number="100">(922.515ms, 214.908ms)</simulation>
-            <simulation number="1000">(9765.544.53ms, 1732.58ms)</simulation>
-            <simulation number="1000">(97391.974ms, 17016ms)</simulation>
+            <simulation number="01" cpu="9.728ms" gpu="2.067ms" />
+            <simulation number="10" cpu="94.201ms" gpu="20.27ms" />
+            <simulation number="100" cpu="922.515ms" gpu="214.908ms" />
+            <simulation number="1000" cpu="9765.544ms" gpu="1732.58ms" />
+            <simulation number="1000" cpu="97391.974ms" gpu="17016ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
@@ -22,11 +22,11 @@
         <spentTraslationTime value="1.130ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation number="01">(10.334ms, 10.044ms)</simulation>
-            <simulation number="10">(119.970ms, 108.968ms)</simulation>
-            <simulation number="100">(1031.628ms, 884.689ms)</simulation>
-            <simulation number="1000">(10569.290ms, 8405.59ms)</simulation>
-            <simulation number="1000">(106463.571ms, 83925.4ms)</simulation>
+            <simulation number="01" cpu="10.334ms" gpu="10.044ms" />
+            <simulation number="10" cpu="119.970ms" gpu="108.968ms" />
+            <simulation number="100" cpu="1031.628ms" gpu="884.689ms" />
+            <simulation number="1000" cpu="10569.290ms" gpu="8405.59ms" />
+            <simulation number="10000" cpu="106463.571ms" gpu="83925.4ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
@@ -55,11 +55,11 @@
         <spentTraslationTime value="0.963ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation number="01">(11.084ms, 12.545ms)</simulation>
-            <simulation number="10">(117.561ms, 129.604ms)</simulation>
-            <simulation number="100">(1090.718, 1087.87ms)</simulation>
-            <simulation number="1000">(10525.479ms, 10078.07ms)</simulation>
-            <simulation number="1000">(107968.644ms, 100433.4ms)</simulation>
+            <simulation number="01" cpu="11.084ms" gpu="12.545ms" />
+            <simulation number="10" cpu="117.561ms" gpu="129.604ms" />
+            <simulation number="100" cpu="1090.718" gpu="1087.87ms" />
+            <simulation number="1000" cpu="10525.479ms" gpu="10078.07ms" />
+            <simulation number="10000" cpu="107968.644ms" gpu="100433.4ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
@@ -70,11 +70,11 @@
         <spentTraslationTime value="1.546ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation number="01">(12.884ms, 1.842ms)</simulation>
-            <simulation number="10">(107.997ms, 18.469ms)</simulation>
-            <simulation number="100">(1087.260, 206.817ms)</simulation>
-            <simulation number="1000">(10266.113ms, 1587.5ms)</simulation>
-            <simulation number="1000">(102694.772ms, 15252.4ms)</simulation>
+            <simulation number="01" cpu="12.884ms" gpu="1.842ms" />
+            <simulation number="10" cpu="107.997ms" gpu="18.469ms" />
+            <simulation number="100" cpu="1087.260ms" gpu="206.817ms" />
+            <simulation number="1000" cpu="10266.113ms" gpu="1587.5ms" />
+            <simulation number="1000" cpu="102694.772ms" gpu="15252.4ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
@@ -86,5 +86,20 @@
         <MPGOScompilation value="true" />
         <simulations>Error on simulation: MPGOS model doesn't equal to Modelica model</simulations>
         <simulationResult value="Failed" />
+    </test>
+    <test id="08">
+        <modelname value="SecondOrderSystemInitParams.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/secondOrderSystem/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="0.701ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation value="01" cpu="9.417ms" gpu="3.073ms" />
+            <simulation value="10" cpu="107.861ms" gpu="30.327ms" />
+            <simulation value="100" cpu="985.065ms" gpu="280.236ms" />
+            <simulation value="1000" cpu="9657.008ms" gpu="2618.26ms" />
+            <simulation value="10000" cpu="97075.364ms" gpu="25677.8ms" />
+        </simulations>
+        <simulationResult value="Success" />
     </test>
 </tests>
