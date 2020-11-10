@@ -70,15 +70,26 @@ class Model:
         for k, value in variables_dict.items():
             varname, ivalue = value.nome, value.init
             # In caso troviamo dei "." facciamo il replace con "_"
-            if value.category != VariableCategory.DERIVATIVE and ivalue is not None and \
-               (not ivalue.strip().startswith("$PRE") and not ivalue.strip().startswith("$START")):
-                # Inseriamo tutte le equazioni iniziali nel file SystemDefinition in 
-                # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
-                # Altrimenti facendo diverse simulazioni seriali i valore della
-                # simulazione successiva partirà con quelli della simulazione precedente.
-                # Okay quello scritto sopra, ma gli shareParameter non vengono mai cambiati
-                # e quindi li possiamo inserire tranquillamente nel .cu file.
-                init_eqs["initialization"].append(Equation(k.strip(), ivalue.strip()))
+            if value.category != VariableCategory.DERIVATIVE:
+                if ivalue is None or ivalue.strip().startswith("$PRE") or ivalue.strip().startswith("$START"):
+                    # Controllo che non ci siano variabili con valori iniziali None
+                    # Se queste variabili sono presenti, il valore sarà impostato a 0
+                    # START LOG
+                    msg = "La variabile " + varname + " non ha alcun valore iniziale. Verrà impostata a 0"
+                    logger.warning(msg, msg)
+                    # END LOG
+                    init_value = "0"
+                    if value.__class__ in [X, ACC, sPAR]: init_value += ".0"
+                    value.setivalue(init_value)
+                ivalue = value.init
+                if not ivalue.strip().startswith("$PRE") and not ivalue.strip().startswith("$START"):
+                    # Inseriamo tutte le equazioni iniziali nel file SystemDefinition in 
+                    # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
+                    # Altrimenti facendo diverse simulazioni seriali i valore della
+                    # simulazione successiva partirà con quelli della simulazione precedente.
+                    # Okay quello scritto sopra, ma gli shareParameter non vengono mai cambiati
+                    # e quindi li possiamo inserire tranquillamente nel .cu file.
+                    init_eqs["initialization"].append(Equation(k.strip(), ivalue.strip()))
         return init_eqs
 
 

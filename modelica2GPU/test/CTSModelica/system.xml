@@ -8,8 +8,8 @@
   fmiVersion="1.0"
   modelName="system"
   modelIdentifier="system"
-  guid="{9c56d92d-bece-46ef-9bd3-f1857242d117}"
-  generationDateAndTime="2020-11-09T19:25:28"
+  guid="{333bc971-3945-4bdc-8008-6ab9543fe73c}"
+  generationDateAndTime="2020-11-10T17:04:59"
   variableNamingConvention="structured"
   numberOfContinuousStates="2"
   numberOfEventIndicators="1"
@@ -997,82 +997,50 @@
           </exp:Mul>
         </exp:Add>
       </exp:Sub>
-    </equ:Equation>
+    </equ:Equation>  
     <equ:Equation>
       <exp:Sub>
         <exp:Identifier>
           <exp:QualifiedNamePart name="monitor"/>
           <exp:QualifiedNamePart name="j"/>
         </exp:Identifier>
-        <exp:Sqrt>
-          <exp:Add>
-            <exp:Pow>
-              <exp:Identifier>
-                <exp:QualifiedNamePart name="CTS"/>
-                <exp:QualifiedNamePart name="x">
-                  <exp:ArraySubscripts>
-                    <exp:IndexExpression>
-                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
-                    </exp:IndexExpression>
-                    <exp:IndexExpression>
-                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
-                    </exp:IndexExpression>
-                  </exp:ArraySubscripts>
-                </exp:QualifiedNamePart>
-              </exp:Identifier>
-              <exp:IntegerLiteral>2</exp:IntegerLiteral>
-            </exp:Pow>
-            <exp:Pow>
-              <exp:Identifier>
-                <exp:QualifiedNamePart name="CTS"/>
-                <exp:QualifiedNamePart name="x">
-                  <exp:ArraySubscripts>
-                    <exp:IndexExpression>
-                      <exp:IntegerLiteral>2</exp:IntegerLiteral>
-                    </exp:IndexExpression>
-                    <exp:IndexExpression>
-                      <exp:IntegerLiteral>1</exp:IntegerLiteral>
-                    </exp:IndexExpression>
-                  </exp:ArraySubscripts>
-                </exp:QualifiedNamePart>
-              </exp:Identifier>
-              <exp:IntegerLiteral>2</exp:IntegerLiteral>
-            </exp:Pow>
-          </exp:Add>
-        </exp:Sqrt>
+        <fun:Assertion>
+          <fun:Condition>
+            <exp:BooleanLiteral>1</exp:BooleanLiteral>
+          </fun:Condition>
+          <fun:Message>
+            <exp:StringLiteral>"Model error: Argument of sqrt should be &gt;= 0"</exp:StringLiteral>
+          </fun:Message>
+        </fun:Assertion>
       </exp:Sub>
-    </equ:Equation>
+    </equ:Equation>  
     <equ:Equation>
       <exp:Sub>
         <exp:Identifier>
           <exp:QualifiedNamePart name="monitor"/>
           <exp:QualifiedNamePart name="z"/>
         </exp:Identifier>
-        <exp:Or>
-          <exp:And>
-            <exp:LogLeq>
-              <exp:Identifier>
-                <exp:QualifiedNamePart name="monitor"/>
-                <exp:QualifiedNamePart name="j"/>
-              </exp:Identifier>
-              <exp:RealLiteral>0.2</exp:RealLiteral>
-            </exp:LogLeq>
-            <exp:LogGeq>
-              <exp:Identifier>
-                <exp:QualifiedNamePart name="ctr"/>
-                <exp:QualifiedNamePart name="n"/>
-              </exp:Identifier>
-              <exp:RealLiteral>10.0</exp:RealLiteral>
-            </exp:LogGeq>
-          </exp:And>
-          <exp:LogLt>
-            <exp:Identifier>
-              <exp:QualifiedNamePart name="ctr"/>
-              <exp:QualifiedNamePart name="n"/>
-            </exp:Identifier>
-            <exp:RealLiteral>10.0</exp:RealLiteral>
-          </exp:LogLt>
-        </exp:Or>
+        <exp:LogLeq>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="monitor"/>
+            <exp:QualifiedNamePart name="j"/>
+          </exp:Identifier>
+          <exp:RealLiteral>0.2</exp:RealLiteral>
+        </exp:LogLeq> 
+        <exp:LogGeq>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="ctr"/>
+            <exp:QualifiedNamePart name="n"/>
+          </exp:Identifier>
+          <exp:RealLiteral>10.0</exp:RealLiteral>
+        </exp:LogGeq>
+        <exp:LogLt>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="ctr"/>
+            <exp:QualifiedNamePart name="n"/>
+          </exp:Identifier>
+          <exp:RealLiteral>10.0</exp:RealLiteral>
+        </exp:LogLt>
       </exp:Sub>
     </equ:Equation>  
     <equ:Equation>

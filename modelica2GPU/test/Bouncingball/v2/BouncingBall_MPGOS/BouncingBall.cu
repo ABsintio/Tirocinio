@@ -56,8 +56,7 @@ void FillSolverObject(
     }
 
     // Settaggio dei valori iniziali per sPAR (se presenti)
-    Solver.SetHost(SharedParameters, 0, 0.8);
-    Solver.SetHost(SharedParameters, 1, 1.0);
+
 
     // Settaggio dei valori iniziali per sPARi (se presenti)
 

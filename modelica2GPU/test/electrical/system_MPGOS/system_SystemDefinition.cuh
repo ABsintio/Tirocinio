@@ -51,12 +51,12 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
 ) {
     T     = TD[0];
     DOIDX = 0;
+    ACC[0]=0.0;
+    ACC[1]=0.0;
     sPAR[0]=0.001;
     sPAR[1]=1.0;
     sPAR[2]=100.0;
     sPAR[3]=24.0;
-    ACC[1]=(X[0] / sPAR[2]);
-    ACC[0]=(X[1] - ACC[1]);
     X[0]=0.0;
     X[1]=0.0;
 

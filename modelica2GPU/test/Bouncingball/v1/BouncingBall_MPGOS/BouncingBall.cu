@@ -15,7 +15,7 @@ using namespace std;
 
 #define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 2;
 const int NCP  = 1;
 const int NSP  = 2;
@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 6.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
@@ -56,8 +56,7 @@ void FillSolverObject(
     }
 
     // Settaggio dei valori iniziali per sPAR (se presenti)
-    Solver.SetHost(SharedParameters, 0, 0.8);
-    Solver.SetHost(SharedParameters, 1, 1.0);
+
 
     // Settaggio dei valori iniziali per sPARi (se presenti)
 
@@ -92,7 +91,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = 1; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 64; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA

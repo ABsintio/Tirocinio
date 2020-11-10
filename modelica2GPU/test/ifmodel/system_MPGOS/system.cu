@@ -15,7 +15,7 @@ using namespace std;
 
 #define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 23040;
+const int NT   = 1;
 const int SD   = 2;
 const int NCP  = 1;
 const int NSP  = 0;
@@ -35,7 +35,6 @@ void FillSolverObject(
 	
     int ProblemNumber = 0;
     while (k_begin < k_end) {
-        cout << ProblemNumber << endl;
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
         Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
 
@@ -92,7 +91,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = 1; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 64; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA

@@ -47,12 +47,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterS
     Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    ACCi[1]=X[0] < -0.001;
-    ACCi[0]=X[0] < 0.0;
-    if (ACCi[1] || ACCi[0]) {
-        ACCi[2]=X[0] < -0.001;
-        X[1]=((-(sPAR[0])) * (X[0] < -0.001 ? 0.0 : X[1]));
-    }
+    
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
@@ -67,6 +62,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     sPAR[1]=1.0;
     X[0]=sPAR[1];
     X[1]=0.0;
+    ACCi[1]=X[0] < -0.001;
+    ACCi[0]=X[0] < 0.0;
 
 }
 
