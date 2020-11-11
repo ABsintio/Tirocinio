@@ -2,6 +2,11 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
+  IntervalMeasurement_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/intervalMeasurement//log/IntervalMeasurement.log
+    formatter: simple
+    level: DEBUG
   LoktaVolterra_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/loktaVolterra//log/LoktaVolterra.log
@@ -32,6 +37,11 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  IntervalMeasurement:
+    handlers:
+    - IntervalMeasurement_handler
+    level: DEBUG
+    propagate: 'no'
   LoktaVolterra:
     handlers:
     - LoktaVolterra_handler

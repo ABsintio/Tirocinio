@@ -69,7 +69,7 @@ class Model:
         init_eqs = {'initial':[], "initialization": []}
         name_var_dict = {x.qualifiedName : x for _, x in variables_dict.items()}
         for k, value in variables_dict.items():
-            varname, ivalue = value.nome, value.init
+            varname, ivalue = value.nome, str(value.init)
             # In caso troviamo dei "." facciamo il replace con "_"
             if value.category != VariableCategory.DERIVATIVE:
                 if ivalue is None or ivalue.strip().startswith("$PRE") or ivalue.strip().startswith("$START"):
@@ -82,7 +82,7 @@ class Model:
                     init_value = "0"
                     if value.__class__ in [X, ACC, sPAR]: init_value += ".0"
                     value.setivalue(init_value)
-                ivalue = value.init
+                ivalue = value.init.__str__()
                 if not ivalue.strip().startswith("$PRE") and not ivalue.strip().startswith("$START"):
                     # Potrebbe accadere che durante il parsing delle variabili, sotto il tag ScalarVariable, 
                     # a queste venga dato un valore iniziale letterale (es. x0, x1, ...), il quale non verrà
@@ -90,11 +90,12 @@ class Model:
                     # che tale inizializzazione sta anche in initial equation? nessuno). Per questo motivo, 
                     # una volta ottenute tutte le variabili e creati i corrispettivi MPGOSname, possiamo 
                     # settare il nuovo valore iniziale in linea con la politica di valutazione delle variabili di MPGOs.
-                    if not re.match(r"\d+\.*\d*", ivalue.strip()) and ivalue.strip() not in variables_dict.keys():
+                    if not re.match(r"\d+\.*\d*", ivalue.strip()) and ivalue.strip() not in variables_dict.keys() and \
+                       ivalue.strip() != "T" and not isinstance(value.init, UnaryOperator) and not isinstance(value.init, BinaryOperator):
                         # Trovare la variabile referenziata
                         ref = name_var_dict[ivalue.strip()]
                         value.setivalue(ref.createMPGOSname())
-                    ivalue = value.init
+                    ivalue = value.init.__str__()
                     # Inseriamo tutte le equazioni iniziali nel file SystemDefinition in 
                     # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
                     # Altrimenti facendo diverse simulazioni seriali i valore della

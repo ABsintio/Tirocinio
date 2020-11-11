@@ -314,6 +314,8 @@ class QualifiedName:
     
     def __str__(self): 
         string = ".".join(self._parse_qnp())
+        if string.startswith("$PRE"):
+            string = Pre(string[5:]).__str__()
         return self.variables_dict[string].createMPGOSname() if self.variables_dict is not None and string in self.variables_dict \
                else string
 

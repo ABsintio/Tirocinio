@@ -6,13 +6,13 @@
   xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   fmiVersion="1.0"
-  modelName="SecondOrderSystemInitParams"
-  modelIdentifier="SecondOrderSystemInitParams"
-  guid="{359e98b9-62bb-41a6-9217-742f703a9bdf}"
-  generationDateAndTime="2020-11-11T21:29:45"
+  modelName="IntervalMeasurement"
+  modelIdentifier="IntervalMeasurement"
+  guid="{32e9583f-c087-49cb-b28d-4fe513067a50}"
+  generationDateAndTime="2020-11-11T21:30:46"
   variableNamingConvention="structured"
   numberOfContinuousStates="4"
-  numberOfEventIndicators="0"
+  numberOfEventIndicators="2"
   >
   
   <VendorAnnotations>
@@ -108,7 +108,71 @@
     </isLinearTimedVariables>
       <VariableCategory>derivative</VariableCategory>
     </ScalarVariable> 
-    <ScalarVariable name="J1" description="Moment of inertia for inertia 1" valueReference="8" variability="parameter" causality="parameter" alias="noAlias">
+    <ScalarVariable name="last_time"  valueReference="8" variability="discrete" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="last_time"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="next_phi"  valueReference="9" variability="discrete" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="next_phi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="omega1_measured"  valueReference="10" variability="discrete" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="omega1_measured"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="prev_phi"  valueReference="11" variability="discrete" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="prev_phi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="$whenCondition1" description="phi1 &gt;= pre(next_phi)" valueReference="12" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$whenCondition1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$whenCondition2" description="phi1 &lt;= pre(prev_phi)" valueReference="13" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$whenCondition2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="J1" description="Moment of inertia for inertia 1" valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
       <Real start="0.4" fixed="true"   unit="kg.m2" />
       <QualifiedName>
         <exp:QualifiedNamePart name="J1"/>
@@ -119,7 +183,7 @@
       <VariableCategory>independentParameter</VariableCategory>
     </ScalarVariable> 
 
-    <ScalarVariable name="J2" description="Moment of inertia for inertia 2" valueReference="9" variability="parameter" causality="parameter" alias="noAlias">
+    <ScalarVariable name="J2" description="Moment of inertia for inertia 2" valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
       <Real start="1.0" fixed="true"   unit="kg.m2" />
       <QualifiedName>
         <exp:QualifiedNamePart name="J2"/>
@@ -130,7 +194,7 @@
       <VariableCategory>independentParameter</VariableCategory>
     </ScalarVariable> 
 
-    <ScalarVariable name="c1" description="Spring constant for spring 1" valueReference="10" variability="parameter" causality="parameter" alias="noAlias">
+    <ScalarVariable name="c1" description="Spring constant for spring 1" valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
       <Real start="11.0" fixed="true"   unit="N.m/rad" />
       <QualifiedName>
         <exp:QualifiedNamePart name="c1"/>
@@ -141,7 +205,7 @@
       <VariableCategory>independentParameter</VariableCategory>
     </ScalarVariable> 
 
-    <ScalarVariable name="c2" description="Spring constant for spring 2" valueReference="11" variability="parameter" causality="parameter" alias="noAlias">
+    <ScalarVariable name="c2" description="Spring constant for spring 2" valueReference="17" variability="parameter" causality="parameter" alias="noAlias">
       <Real start="5.0" fixed="true"   unit="N.m/rad" />
       <QualifiedName>
         <exp:QualifiedNamePart name="c2"/>
@@ -152,7 +216,7 @@
       <VariableCategory>independentParameter</VariableCategory>
     </ScalarVariable> 
 
-    <ScalarVariable name="d1" description="Damping for damper 1" valueReference="12" variability="parameter" causality="parameter" alias="noAlias">
+    <ScalarVariable name="d1" description="Damping for damper 1" valueReference="18" variability="parameter" causality="parameter" alias="noAlias">
       <Real start="0.2" fixed="true"   unit="N.m.s/rad" />
       <QualifiedName>
         <exp:QualifiedNamePart name="d1"/>
@@ -163,7 +227,7 @@
       <VariableCategory>independentParameter</VariableCategory>
     </ScalarVariable> 
 
-    <ScalarVariable name="d2" description="Damping for damper 2" valueReference="13" variability="parameter" causality="parameter" alias="noAlias">
+    <ScalarVariable name="d2" description="Damping for damper 2" valueReference="19" variability="parameter" causality="parameter" alias="noAlias">
       <Real start="1.0" fixed="true"   unit="N.m.s/rad" />
       <QualifiedName>
         <exp:QualifiedNamePart name="d2"/>
@@ -174,43 +238,20 @@
       <VariableCategory>independentParameter</VariableCategory>
     </ScalarVariable> 
 
-    <ScalarVariable name="omega1_init"  valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
-      <Real start="0.0" fixed="true"   unit="rad/s" />
+    <ScalarVariable name="tooth_angle"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0314159" fixed="true"   unit="rad" />
       <QualifiedName>
-        <exp:QualifiedNamePart name="omega1_init"/>
+        <exp:QualifiedNamePart name="tooth_angle"/>
       </QualifiedName>
     <isLinearTimedVariables>
       <TimePoint index="0" isLinear="true"/>
     </isLinearTimedVariables>
       <VariableCategory>independentParameter</VariableCategory>
     </ScalarVariable> 
-
-    <ScalarVariable name="omega2_init"  valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
-      <Real start="0.0" fixed="true"   unit="rad/s" />
+    <ScalarVariable name="teeth"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Integer start="200" fixed="true"  />
       <QualifiedName>
-        <exp:QualifiedNamePart name="omega2_init"/>
-      </QualifiedName>
-    <isLinearTimedVariables>
-      <TimePoint index="0" isLinear="true"/>
-    </isLinearTimedVariables>
-      <VariableCategory>independentParameter</VariableCategory>
-    </ScalarVariable> 
-
-    <ScalarVariable name="phi1_init"  valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
-      <Real start="0.0" fixed="true"   unit="rad" />
-      <QualifiedName>
-        <exp:QualifiedNamePart name="phi1_init"/>
-      </QualifiedName>
-    <isLinearTimedVariables>
-      <TimePoint index="0" isLinear="true"/>
-    </isLinearTimedVariables>
-      <VariableCategory>independentParameter</VariableCategory>
-    </ScalarVariable> 
-
-    <ScalarVariable name="phi2_init"  valueReference="17" variability="parameter" causality="parameter" alias="noAlias">
-      <Real start="1.0" fixed="true"   unit="rad" />
-      <QualifiedName>
-        <exp:QualifiedNamePart name="phi2_init"/>
+        <exp:QualifiedNamePart name="teeth"/>
       </QualifiedName>
     <isLinearTimedVariables>
       <TimePoint index="0" isLinear="true"/>
@@ -276,42 +317,57 @@
 
     <equ:BindingEquation>
       <equ:Parameter>
-        <exp:QualifiedNamePart name="omega1_init"/>
+        <exp:QualifiedNamePart name="tooth_angle"/>
       </equ:Parameter>
       <equ:BindingExp>
-        <exp:RealLiteral>0.0</exp:RealLiteral>
+        <exp:RealLiteral>0.0314159</exp:RealLiteral>
       </equ:BindingExp>
     </equ:BindingEquation>
-
     <equ:BindingEquation>
       <equ:Parameter>
-        <exp:QualifiedNamePart name="omega2_init"/>
+        <exp:QualifiedNamePart name="teeth"/>
       </equ:Parameter>
       <equ:BindingExp>
-        <exp:RealLiteral>0.0</exp:RealLiteral>
-      </equ:BindingExp>
-    </equ:BindingEquation>
-
-    <equ:BindingEquation>
-      <equ:Parameter>
-        <exp:QualifiedNamePart name="phi1_init"/>
-      </equ:Parameter>
-      <equ:BindingExp>
-        <exp:RealLiteral>0.0</exp:RealLiteral>
-      </equ:BindingExp>
-    </equ:BindingEquation>
-
-    <equ:BindingEquation>
-      <equ:Parameter>
-        <exp:QualifiedNamePart name="phi2_init"/>
-      </equ:Parameter>
-      <equ:BindingExp>
-        <exp:RealLiteral>1.0</exp:RealLiteral>
+        <exp:IntegerLiteral>200</exp:IntegerLiteral>
       </equ:BindingExp>
     </equ:BindingEquation>
   </equ:BindingEquations>
 
   <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+        <exp:LogLeq>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="phi1"/>
+          </exp:Identifier>
+          <exp:Pre>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="prev_phi"/>
+            </exp:Identifier>
+          </exp:Pre>
+        </exp:LogLeq> 
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:LogGeq>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="phi1"/>
+          </exp:Identifier>
+          <exp:Pre>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="next_phi"/>
+            </exp:Identifier>
+          </exp:Pre>
+        </exp:LogGeq>
+      </exp:Sub>
+    </equ:Equation>  
     <equ:Equation>
       <exp:Sub>
         <exp:Der>
@@ -380,6 +436,18 @@
       <exp:Sub>
         <exp:Der>
           <exp:Identifier>
+            <exp:QualifiedNamePart name="phi2"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="omega2"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
             <exp:QualifiedNamePart name="omega1"/>
           </exp:Identifier>
         </exp:Der>
@@ -422,18 +490,6 @@
       <exp:Sub>
         <exp:Der>
           <exp:Identifier>
-            <exp:QualifiedNamePart name="phi2"/>
-          </exp:Identifier>
-        </exp:Der>
-        <exp:Identifier>
-          <exp:QualifiedNamePart name="omega2"/>
-        </exp:Identifier>
-      </exp:Sub>
-    </equ:Equation>  
-    <equ:Equation>
-      <exp:Sub>
-        <exp:Der>
-          <exp:Identifier>
             <exp:QualifiedNamePart name="phi1"/>
           </exp:Identifier>
         </exp:Der>
@@ -442,6 +498,104 @@
         </exp:Identifier>
       </exp:Sub>
     </equ:Equation>  
+    <equ:When>
+      <equ:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+      </equ:Condition>
+      <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="last_time"/>
+            </exp:Identifier>
+            <exp:Time>time</exp:Time>
+          </exp:Sub>
+      </equ:Equation>
+    </equ:When>
+    <equ:When>
+      <equ:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+      </equ:Condition>
+      <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="prev_phi"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="phi1"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tooth_angle"/>
+              </exp:Identifier>
+            </exp:Sub>
+          </exp:Sub>
+      </equ:Equation>
+    </equ:When>
+    <equ:When>
+      <equ:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+      </equ:Condition>
+      <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="next_phi"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="phi1"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tooth_angle"/>
+              </exp:Identifier>
+            </exp:Add>
+          </exp:Sub>
+      </equ:Equation>
+    </equ:When>
+    <equ:When>
+      <equ:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+      </equ:Condition>
+      <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="omega1_measured"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tooth_angle"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Time>time</exp:Time>
+                <exp:Pre>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="last_time"/>
+                  </exp:Identifier>
+                </exp:Pre>
+              </exp:Sub>
+            </exp:Div>
+          </exp:Sub>
+      </equ:Equation>
+    </equ:When>
   </equ:DynamicEquations>
 
   <equ:InitialEquations>
@@ -450,9 +604,7 @@
         <exp:Identifier>
           <exp:QualifiedNamePart name="omega2"/>
         </exp:Identifier>
-        <exp:Identifier>
-          <exp:QualifiedNamePart name="omega2_init"/>
-        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
       </exp:Sub>
     </equ:Equation>  
     <equ:Equation>
@@ -465,9 +617,7 @@
         <exp:Identifier>
           <exp:QualifiedNamePart name="omega1"/>
         </exp:Identifier>
-        <exp:Identifier>
-          <exp:QualifiedNamePart name="omega1_init"/>
-        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
       </exp:Sub>
     </equ:Equation>  
     <equ:Equation>
@@ -480,9 +630,7 @@
         <exp:Identifier>
           <exp:QualifiedNamePart name="phi2"/>
         </exp:Identifier>
-        <exp:Identifier>
-          <exp:QualifiedNamePart name="phi2_init"/>
-        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
       </exp:Sub>
     </equ:Equation>  
     <equ:Equation>
@@ -490,19 +638,143 @@
         <exp:Identifier>
           <exp:QualifiedNamePart name="phi1"/>
         </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
         <exp:Identifier>
-          <exp:QualifiedNamePart name="phi1_init"/>
+          <exp:QualifiedNamePart name="prev_phi"/>
+        </exp:Identifier>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="phi1"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="tooth_angle"/>
+          </exp:Identifier>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="prev_phi"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="prev_phi"/>
         </exp:Identifier>
       </exp:Sub>
     </equ:Equation>  
     <equ:Equation>
       <exp:Sub>
-         
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+        <exp:LogLeq>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="phi1"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="$PRE"/>
+            <exp:QualifiedNamePart name="prev_phi"/>
+          </exp:Identifier>
+        </exp:LogLeq> 
       </exp:Sub>
     </equ:Equation>  
     <equ:Equation>
       <exp:Sub>
-         
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="next_phi"/>
+        </exp:Identifier>
+        <exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="phi1"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="tooth_angle"/>
+          </exp:Identifier>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="next_phi"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="next_phi"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:LogGeq>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="phi1"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="$PRE"/>
+            <exp:QualifiedNamePart name="next_phi"/>
+          </exp:Identifier>
+        </exp:LogGeq>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="omega1_measured"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$START"/>
+          <exp:QualifiedNamePart name="omega1_measured"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="omega1_measured"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="omega1_measured"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="last_time"/>
+        </exp:Identifier>
+        <exp:Time>time</exp:Time>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="last_time"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="last_time"/>
+        </exp:Identifier>
       </exp:Sub>
     </equ:Equation>  
   </equ:InitialEquations>

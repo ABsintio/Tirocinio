@@ -11,17 +11,16 @@ class DAG:
     def getgraph(init_equations, MPGOSparams_dict):
         """ Crea un DAG che rappresenta un grafo delle dipendenze tra le diverse equazioni iniziali. """
         graph = {x.split("=")[0].strip(): [] for x in init_equations}
-        # Controllo che esista almeno una dipendenza
-        check = any(list(filter(lambda x: x != [], graph.values())))
-        if not check: return None
         for initeq in init_equations:
-            lhs, rhs = initeq.split("=")
+            lhs, rhs = initeq.split("=")[0], "".join(initeq.split("=")[1:])
             involved_vars = re.finditer(r"(ACC|sPAR|X)\[[0-9]+\]", rhs.strip())
             for var in involved_vars:
                 MPGOSname = var.group()
-                ivalue_param = MPGOSparams_dict[MPGOSname].init
-                if ivalue_param is None or not re.match(r"\d+\.*\d*", ivalue_param):
-                    graph[lhs.strip()].append(MPGOSname)
+                ivalue_param = str(MPGOSparams_dict[MPGOSname].init)
+                graph[lhs.strip()].append(MPGOSname)
+        # Controllo che esista almeno una dipendenza
+        check = all(list(filter(lambda x: x != [], graph.values())))
+        if not check: return None
         return graph
 
 

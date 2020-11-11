@@ -1,0 +1,10 @@
+loadModel(Modelica);
+getErrorString();
+loadFile("SecondOrderSystem.mo");
+getErrorString();
+loadFile("IntervalMeasurement.mo");
+getErrorString();
+simulate(IntervalMeasurement, stopTime=5);
+getErrorString();
+plot({omega1, omega1_measured}, externalWindow=true);
+getErrorString();
