@@ -21,7 +21,7 @@ class SimulationTrhead(Thread):
         super().__init__()
     
     def run(self):
-        os.system("./SampleAndHold > /dev/null")
+        os.system("./IntervalMeasurement > /dev/null")
 
 
 class Simulation:
@@ -43,4 +43,4 @@ for n in ks:
     sim.run_simulation()
     
 os.system("rm out")
-os.system("rm *.o *.c *.mat *.h *.json SampleAndHold *.makefile *.log *.libs *_init.xml")
+os.system("rm *.o *.c *.mat *.h *.json IntervalMeasurement *.makefile *.log *.libs *_init.xml")

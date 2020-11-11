@@ -16,6 +16,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
     F[3]=X[1];
     F[0]=(((sPAR[2] * (X[3] - X[2])) + (sPAR[4] * (X[1] - X[0]))) / sPAR[0]);
     F[2]=X[0];
+    F[4]=0.0;
+    F[5]=0.0;
+    F[6]=0.0;
 
 }
 
@@ -36,9 +39,6 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
     if (IDX == 0){
-	    ACC[0]=T;
-    }
-    if (IDX == 0){
 	    ACC[3]=(X[2] - sPAR[6]);
     }
     if (IDX == 0){
@@ -46,6 +46,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
     }
     if (IDX == 0){
 	    ACC[2]=(sPAR[6] / (T - ACC[0]));
+    }
+    if (IDX == 0){
+	    ACC[0]=T;
     }
 
 }
@@ -55,7 +58,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterS
     Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    
+    X[6] = ACC[3];
+    X[5] = ACC[1];
+    X[4] = ACC[2];
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
@@ -68,6 +73,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     ACC[0]=T;
     X[2]=0.0;
     sPAR[6]=0.0314159;
+    // sPAR[6]=0.3141589;
     ACC[1]=(X[2] + sPAR[6]);
     ACC[2]=0.0;
     ACC[3]=(X[2] - sPAR[6]);
@@ -83,6 +89,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     X[0]=0.0;
     X[1]=0.0;
     X[3]=1.0;
+    X[4]=0.0;
+    X[5]=0.0;
+    X[6]=0.0;
 
 }
 
