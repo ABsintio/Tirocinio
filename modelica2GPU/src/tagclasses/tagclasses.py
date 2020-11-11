@@ -375,6 +375,7 @@ class Sample:
         interval = _parsetag_eq(self.tag_element[2], self.variables)
         return (start, interval)
 
+
     def createsample_str(self): 
         values = self.parse_interval()
         # Dal momento che sample(1, n) vuol dire che un evento viene triggerato
@@ -384,11 +385,19 @@ class Sample:
         # sample devo creare il sample stesso, una nuova variabile e una nuova equazione.
         ACCi_vars = [v for k, v in self.variables.items() if isinstance(v, ACCi)]
         sample_acc_index = len(ACCi_vars)
-        sample_str = f"(abs(T - ({values[0]} + ACCi[{sample_acc_index}] * {values[1]})) < 9.0e-10 ? 1.0 : 0.0)" # Stringa
+        # Prima dobbiamo 'normalizzare' (ridurre a sole 2 cifre dopo la virgola) il valore di start 
+        # e quello dell'intervallo. Il motivo principale della normalizzazione è che il solver utilizzato, 
+        # ossia RK4 Runge-Kutta 4, presenta fixed time-step di 0.01 ottenendo istanti di tempo del tipo
+        # k * 0.01 (k = 1, 2, 3, 4, ...). Di conseguenza avere siano uno start che un interval che superano
+        # le due cifre dopo la virgola non avrebbe senso in quanto gli istanti di tempo memorizzati non
+        # andranno mai a matchare il sample voluto.
+        normalize_start = f"(round({values[0]} * 100) / 100)"
+        normalize_interval = f"(round({values[1]} * 100) / 100)"
+        sample_str = f"(abs(T - ({normalize_start} + ACCi[{sample_acc_index}] * {normalize_interval})) < 9.0e-10 ? 1.0 : 0.0)" # Stringa
         # Se l'indice del nuovo ACCi non è un nuovo indice allora la variabile che dovrei
         # creare già esiste e di conseguenza non la devo riandare ad inserire.
         nome = f"sample_ACCi_{sample_acc_index}"
-        sample_var = ACCi(nome, sample_acc_index, "sample_ACCi", None, VariableCategory.ALGEBRAIC, "0") # Variabile
+        sample_var = ACCi(nome, sample_acc_index, "sample_ACCi", None, VariableCategory.ALGEBRAIC, "1") # Variabile
         return sample_str, sample_var
     
     def __str__(self): return self.value

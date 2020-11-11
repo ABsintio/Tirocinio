@@ -12,6 +12,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/newtonCooling//log/NewtonCooling.log
     formatter: simple
     level: DEBUG
+  SampleAndHold_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/sampleHold//log/SampleAndHold.log
+    formatter: simple
+    level: DEBUG
   SecondOrderSystemInitParams_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/secondOrderSystem//log/SecondOrderSystemInitParams.log
@@ -35,6 +40,11 @@ loggers:
   NewtonCooling:
     handlers:
     - NewtonCooling_handler
+    level: DEBUG
+    propagate: 'no'
+  SampleAndHold:
+    handlers:
+    - SampleAndHold_handler
     level: DEBUG
     propagate: 'no'
   SecondOrderSystemInitParams:

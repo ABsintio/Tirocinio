@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="SampleAndHold"
+  modelIdentifier="SampleAndHold"
+  guid="{214e7bad-02bc-45a2-91df-650db06e4f47}"
+  generationDateAndTime="2020-11-11T18:35:05"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="4"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.0"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="omega1" description="Velocity of inertia 1" valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="rad/s" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="omega1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="omega2" description="Velocity of inertia 2" valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="rad/s" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="omega2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi1" description="Angle for inertia 1" valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="rad" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi2" description="Angle for inertia 2" valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="rad" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(omega1)" description="der(Velocity of inertia 1)" valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="s-2" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="omega1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(omega2)" description="der(Velocity of inertia 2)" valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="s-2" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="omega2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(phi1)" description="der(Angle for inertia 1)" valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="Hz" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(phi2)" description="der(Angle for inertia 2)" valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="Hz" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="omega1_measured"  valueReference="8" variability="discrete" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="omega1_measured"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="$whenCondition1" description="sample(1, 0.0, sample_time)" valueReference="9" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean start="1" fixed="true"/>
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$whenCondition1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="J1" description="Moment of inertia for inertia 1" valueReference="10" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.4" fixed="true"   unit="kg.m2" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J2" description="Moment of inertia for inertia 2" valueReference="11" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"   unit="kg.m2" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="c1" description="Spring constant for spring 1" valueReference="12" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="11.0" fixed="true"   unit="N.m/rad" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="c1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="c2" description="Spring constant for spring 2" valueReference="13" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.0" fixed="true"   unit="N.m/rad" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="c2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d1" description="Damping for damper 1" valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.2" fixed="true"   unit="N.m.s/rad" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d2" description="Damping for damper 2" valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"   unit="N.m.s/rad" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="sample_time"  valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.1251231" fixed="true"   unit="s" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="sample_time"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.4</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="c1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>11.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="c2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.2</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="sample_time"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.1251231</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:Sample>
+          <exp:IntegerLiteral>1</exp:IntegerLiteral>
+          <exp:RealLiteral>0.0</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="sample_time"/>
+          </exp:Identifier>
+        </exp:Sample>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="omega2"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Div>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="c1"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi1"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi2"/>
+                </exp:Identifier>
+              </exp:Sub>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="d1"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="omega1"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="omega2"/>
+                  </exp:Identifier>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Sub>
+                <exp:Mul>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="c2"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="phi2"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d2"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="omega2"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Add>
+          </exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="J2"/>
+          </exp:Identifier>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="phi2"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="omega2"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="omega1"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Div>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="c1"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi2"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi1"/>
+                </exp:Identifier>
+              </exp:Sub>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="d1"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="omega2"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="omega1"/>
+                </exp:Identifier>
+              </exp:Sub>
+            </exp:Mul>
+          </exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="J1"/>
+          </exp:Identifier>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="phi1"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="omega1"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:When>
+      <equ:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+      </equ:Condition>
+      <equ:Equation>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="omega1_measured"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="omega1"/>
+            </exp:Identifier>
+          </exp:Sub>
+      </equ:Equation>
+    </equ:When>
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:BooleanLiteral>1</exp:BooleanLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="omega2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="omega1"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="phi2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="phi1"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+        <exp:BooleanLiteral>0</exp:BooleanLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="omega1_measured"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$START"/>
+          <exp:QualifiedNamePart name="omega1_measured"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="omega1_measured"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="omega1_measured"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
