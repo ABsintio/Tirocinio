@@ -2,9 +2,24 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
+  LoktaVolterra_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/loktaVolterra//log/LoktaVolterra.log
+    formatter: simple
+    level: DEBUG
   NewtonCooling_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/newtonCooling//log/NewtonCooling.log
+    formatter: simple
+    level: DEBUG
+  SecondOrderSystemInitParams_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/secondOrderSystem//log/SecondOrderSystemInitParams.log
+    formatter: simple
+    level: DEBUG
+  SwitchedRLC_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/switchedRLC//log/SwitchedRLC.log
     formatter: simple
     level: DEBUG
   console:
@@ -12,9 +27,24 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  LoktaVolterra:
+    handlers:
+    - LoktaVolterra_handler
+    level: DEBUG
+    propagate: 'no'
   NewtonCooling:
     handlers:
     - NewtonCooling_handler
+    level: DEBUG
+    propagate: 'no'
+  SecondOrderSystemInitParams:
+    handlers:
+    - SecondOrderSystemInitParams_handler
+    level: DEBUG
+    propagate: 'no'
+  SwitchedRLC:
+    handlers:
+    - SwitchedRLC_handler
     level: DEBUG
     propagate: 'no'
   root:

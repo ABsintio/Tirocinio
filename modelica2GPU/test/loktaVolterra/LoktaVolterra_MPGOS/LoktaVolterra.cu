@@ -8,7 +8,7 @@
 
 #define PI 3.14159265358979323846
 
-#include "SecondOrderSystemInitParams_SystemDefinition.cuh"
+#include "LoktaVolterra_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
@@ -16,14 +16,14 @@ using namespace std;
 #define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 4;
+const int SD   = 2;
 const int NCP  = 1;
-const int NSP  = 10;
+const int NSP  = 6;
 const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 1000;
+const int NDO  = 10000;
 
 
 void FillSolverObject(
@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 50.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
@@ -73,35 +73,23 @@ void SaveData(
 	
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
-        DataFile.width(Width); DataFile << "X_omega1" << ',';
-        DataFile.width(Width); DataFile << "X_omega2" << ',';
-        DataFile.width(Width); DataFile << "X_phi1" << ',';
-        DataFile.width(Width); DataFile << "X_phi2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_J1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_J2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_c1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_c2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_d1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_d2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_omega1_init" << ',';
-        DataFile.width(Width); DataFile << "sPAR_omega2_init" << ',';
-        DataFile.width(Width); DataFile << "sPAR_phi1_init" << ',';
-        DataFile.width(Width); DataFile << "sPAR_phi2_init" << ',';
+        DataFile.width(Width); DataFile << "X_x" << ',';
+        DataFile.width(Width); DataFile << "X_y" << ',';
+        DataFile.width(Width); DataFile << "sPAR_alpha" << ',';
+        DataFile.width(Width); DataFile << "sPAR_beta" << ',';
+        DataFile.width(Width); DataFile << "sPAR_delta" << ',';
+        DataFile.width(Width); DataFile << "sPAR_gamma" << ',';
+        DataFile.width(Width); DataFile << "sPAR_x0" << ',';
+        DataFile.width(Width); DataFile << "sPAR_y0" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 2) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 3) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 2) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 3) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 4) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 5) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 6) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 7) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 8) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 9) << ',';
 
         DataFile << '\n';
     }
@@ -109,7 +97,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = 1; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = 1000; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 64; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
@@ -135,18 +123,14 @@ int main() {
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
     Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 1, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 2, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 3, 1e-06);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
     Solver.SolverOption(RelativeTolerance, 1, 1e-06);
-    Solver.SolverOption(RelativeTolerance, 2, 1e-06);
-    Solver.SolverOption(RelativeTolerance, 3, 1e-06);
    
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "SecondOrderSystemInitParams.csv" );
+    DataFile.open ( "LoktaVolterra.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    

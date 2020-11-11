@@ -67,6 +67,7 @@ class Model:
         logger.debug(msg, msg)
         # END LOG
         init_eqs = {'initial':[], "initialization": []}
+        name_var_dict = {x.qualifiedName : x for _, x in variables_dict.items()}
         for k, value in variables_dict.items():
             varname, ivalue = value.nome, value.init
             # In caso troviamo dei "." facciamo il replace con "_"
@@ -83,12 +84,21 @@ class Model:
                     value.setivalue(init_value)
                 ivalue = value.init
                 if not ivalue.strip().startswith("$PRE") and not ivalue.strip().startswith("$START"):
+                    # Potrebbe accadere che durante il parsing delle variabili, sotto il tag ScalarVariable, 
+                    # a queste venga dato un valore iniziale letterale (es. x0, x1, ...), il quale non verrà
+                    # cambiato nel momento in cui si andranno a parsare le equazioni iniziali (chi te lo dice 
+                    # che tale inizializzazione sta anche in initial equation? nessuno). Per questo motivo, 
+                    # una volta ottenute tutte le variabili e creati i corrispettivi MPGOSname, possiamo 
+                    # settare il nuovo valore iniziale in linea con la politica di valutazione delle variabili di MPGOs.
+                    if not re.match(r"\d+\.*\d*", ivalue.strip()) and ivalue.strip() not in variables_dict.keys():
+                        # Trovare la variabile referenziata
+                        ref = name_var_dict[ivalue.strip()]
+                        value.setivalue(ref.createMPGOSname())
+                    ivalue = value.init
                     # Inseriamo tutte le equazioni iniziali nel file SystemDefinition in 
                     # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
                     # Altrimenti facendo diverse simulazioni seriali i valore della
                     # simulazione successiva partirà con quelli della simulazione precedente.
-                    # Okay quello scritto sopra, ma gli shareParameter non vengono mai cambiati
-                    # e quindi li possiamo inserire tranquillamente nel .cu file.
                     init_eqs["initialization"].append(Equation(k.strip(), ivalue.strip()))
         return init_eqs
 

@@ -4,6 +4,7 @@ import exceptions.builtExceptions
 import sys # temporane per eseguire i test
 from utils.logger import *
 from utils.notifier import *
+import re
 
 
 NOTIFICATION = int(sys.argv[-1]) == 1
@@ -335,6 +336,7 @@ class Parser:
         unique_dict = {y: x[y] for x in params_dict for y in x}
         self.unique_dict = unique_dict
         MPGOSparams_dict = {unique_dict[x].createMPGOSname(): unique_dict[x] for x in unique_dict}
+                
         # Parso tutte le altre cose ed intanto formatto le variabili
         MPGOSparams_dict = self.parse_initial_equations(unique_dict, MPGOSparams_dict)
         self.parse_userdefined_function(unique_dict)
