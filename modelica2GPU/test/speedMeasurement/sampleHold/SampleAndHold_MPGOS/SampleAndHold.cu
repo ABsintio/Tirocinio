@@ -16,7 +16,7 @@ using namespace std;
 #define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 5;
+const int SD   = 4;
 const int NCP  = 1;
 const int NSP  = 7;
 const int NISP = 0;
@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 5.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
