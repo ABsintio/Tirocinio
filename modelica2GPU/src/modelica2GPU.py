@@ -361,6 +361,7 @@ del tmp_logger
 
 coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
 
+
 try:
     # Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro per il notifier
     from parser.parser import *

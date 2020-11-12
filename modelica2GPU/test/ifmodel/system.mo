@@ -1,4 +1,4 @@
-within ifmodel;
+
 model system
 	Real x;
 	Real y;

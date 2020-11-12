@@ -1,4 +1,3 @@
-within sampling;
 model Sampling
   Integer i(start=0);
   Real x;
