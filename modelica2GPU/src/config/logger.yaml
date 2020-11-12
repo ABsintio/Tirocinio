@@ -7,6 +7,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl//log/ChatteringControl.log
     formatter: simple
     level: DEBUG
+  HysteresisControl_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/hysteresisControl//log/HysteresisControl.log
+    formatter: simple
+    level: DEBUG
   IntervalMeasurement_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/intervalMeasurement//log/IntervalMeasurement.log
@@ -45,6 +50,11 @@ loggers:
   ChatteringControl:
     handlers:
     - ChatteringControl_handler
+    level: DEBUG
+    propagate: 'no'
+  HysteresisControl:
+    handlers:
+    - HysteresisControl_handler
     level: DEBUG
     propagate: 'no'
   IntervalMeasurement:
