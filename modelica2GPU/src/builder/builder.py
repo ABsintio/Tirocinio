@@ -390,7 +390,7 @@ class ModelBuilder:
         absoluteTolerances = "".join([abs_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
         relativeTolerances = "".join([relative_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
         MPGOS_MainFunction = MPGOS_MainFunction % (
-            nop, block_size, GPUMajor, GPUMinor, preferSharedMemory, 
+            block_size, GPUMajor, GPUMinor, preferSharedMemory, 
             initialTimeStep, maxTimeStep, minTimeStep,
             eventDirections, denseOutputMiniumumTimeStep, 
             denseOutputSaveFrequency, absoluteTolerances,

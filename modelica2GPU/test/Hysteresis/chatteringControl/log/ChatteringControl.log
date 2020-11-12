@@ -1,0 +1,1928 @@
+2020-11-12 17:27:25,151 - ChatteringControl[4374] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:27:25,151 - ChatteringControl[4374] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:27:25,171 - ChatteringControl[4374] - INFO : Chiamata alla classe Parser
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:27:25,172 - ChatteringControl[4374] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:27:25,173 - ChatteringControl[4374] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:27:25,173 - ChatteringControl[4374] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:27:25,173 - ChatteringControl[4374] - DEBUG : Terminato parsing totale
+2020-11-12 17:27:25,173 - ChatteringControl[4374] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:27:25,173 - ChatteringControl[4374] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:27:25,173 - ChatteringControl[4374] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:30:58,905 - ChatteringControl[4847] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:30:58,905 - ChatteringControl[4847] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:30:58,911 - ChatteringControl[4847] - INFO : Chiamata alla classe Parser
+2020-11-12 17:30:58,911 - ChatteringControl[4847] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:30:58,911 - ChatteringControl[4847] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:30:58,911 - ChatteringControl[4847] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:30:58,911 - ChatteringControl[4847] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:30:58,911 - ChatteringControl[4847] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:30:58,911 - ChatteringControl[4847] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:30:58,912 - ChatteringControl[4847] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:30:58,912 - ChatteringControl[4847] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:30:58,912 - ChatteringControl[4847] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:30:58,912 - ChatteringControl[4847] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:30:58,912 - ChatteringControl[4847] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:30:58,912 - ChatteringControl[4847] - DEBUG : Terminato parsing totale
+2020-11-12 17:30:58,912 - ChatteringControl[4847] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:30:58,913 - ChatteringControl[4847] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:30:58,913 - ChatteringControl[4847] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:32:34,220 - ChatteringControl[5173] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:32:34,221 - ChatteringControl[5173] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:32:34,227 - ChatteringControl[5173] - INFO : Chiamata alla classe Parser
+2020-11-12 17:32:34,227 - ChatteringControl[5173] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:32:34,227 - ChatteringControl[5173] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:32:34,228 - ChatteringControl[5173] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:32:34,228 - ChatteringControl[5173] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:32:34,228 - ChatteringControl[5173] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:32:34,228 - ChatteringControl[5173] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:32:34,228 - ChatteringControl[5173] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:32:34,229 - ChatteringControl[5173] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:32:34,229 - ChatteringControl[5173] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:32:34,229 - ChatteringControl[5173] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:32:34,229 - ChatteringControl[5173] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:32:34,229 - ChatteringControl[5173] - DEBUG : Terminato parsing totale
+2020-11-12 17:32:34,229 - ChatteringControl[5173] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:32:34,230 - ChatteringControl[5173] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:32:34,230 - ChatteringControl[5173] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:32:53,432 - ChatteringControl[5264] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:32:53,432 - ChatteringControl[5264] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:32:53,439 - ChatteringControl[5264] - INFO : Chiamata alla classe Parser
+2020-11-12 17:32:53,439 - ChatteringControl[5264] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:32:53,439 - ChatteringControl[5264] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:32:53,439 - ChatteringControl[5264] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:32:53,439 - ChatteringControl[5264] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:32:53,439 - ChatteringControl[5264] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:32:53,440 - ChatteringControl[5264] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:32:53,440 - ChatteringControl[5264] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:32:53,440 - ChatteringControl[5264] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:32:53,440 - ChatteringControl[5264] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:32:53,440 - ChatteringControl[5264] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:32:53,440 - ChatteringControl[5264] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:32:53,440 - ChatteringControl[5264] - DEBUG : Terminato parsing totale
+2020-11-12 17:32:53,441 - ChatteringControl[5264] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:32:53,441 - ChatteringControl[5264] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:32:53,441 - ChatteringControl[5264] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:33:05,247 - ChatteringControl[5365] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:33:05,248 - ChatteringControl[5365] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:33:05,255 - ChatteringControl[5365] - INFO : Chiamata alla classe Parser
+2020-11-12 17:33:05,255 - ChatteringControl[5365] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:33:05,255 - ChatteringControl[5365] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:33:05,256 - ChatteringControl[5365] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:33:05,256 - ChatteringControl[5365] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:33:05,256 - ChatteringControl[5365] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:33:05,256 - ChatteringControl[5365] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:33:05,256 - ChatteringControl[5365] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:33:05,256 - ChatteringControl[5365] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:33:05,257 - ChatteringControl[5365] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:33:05,257 - ChatteringControl[5365] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:33:05,257 - ChatteringControl[5365] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:33:05,257 - ChatteringControl[5365] - DEBUG : Terminato parsing totale
+2020-11-12 17:33:05,257 - ChatteringControl[5365] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:33:05,257 - ChatteringControl[5365] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:33:05,257 - ChatteringControl[5365] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:33:21,755 - ChatteringControl[5471] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:33:21,755 - ChatteringControl[5471] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:33:21,761 - ChatteringControl[5471] - INFO : Chiamata alla classe Parser
+2020-11-12 17:33:21,761 - ChatteringControl[5471] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:33:21,761 - ChatteringControl[5471] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:33:21,761 - ChatteringControl[5471] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:33:21,761 - ChatteringControl[5471] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - DEBUG : Terminato parsing totale
+2020-11-12 17:33:21,762 - ChatteringControl[5471] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:33:21,763 - ChatteringControl[5471] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:33:21,763 - ChatteringControl[5471] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:33:43,497 - ChatteringControl[5536] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:33:43,498 - ChatteringControl[5536] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:33:43,503 - ChatteringControl[5536] - INFO : Chiamata alla classe Parser
+2020-11-12 17:33:43,503 - ChatteringControl[5536] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:33:43,503 - ChatteringControl[5536] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:33:43,504 - ChatteringControl[5536] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:33:43,504 - ChatteringControl[5536] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:33:43,504 - ChatteringControl[5536] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:33:43,504 - ChatteringControl[5536] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:33:43,504 - ChatteringControl[5536] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:33:43,504 - ChatteringControl[5536] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:33:43,505 - ChatteringControl[5536] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:33:43,505 - ChatteringControl[5536] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:33:43,505 - ChatteringControl[5536] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:33:43,505 - ChatteringControl[5536] - DEBUG : Terminato parsing totale
+2020-11-12 17:33:43,505 - ChatteringControl[5536] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:33:43,505 - ChatteringControl[5536] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:33:43,506 - ChatteringControl[5536] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:34:36,733 - ChatteringControl[5671] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:34:36,734 - ChatteringControl[5671] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:34:36,741 - ChatteringControl[5671] - INFO : Chiamata alla classe Parser
+2020-11-12 17:34:36,741 - ChatteringControl[5671] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:34:36,741 - ChatteringControl[5671] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:34:36,741 - ChatteringControl[5671] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:34:36,741 - ChatteringControl[5671] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:34:36,741 - ChatteringControl[5671] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:34:36,742 - ChatteringControl[5671] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:34:36,742 - ChatteringControl[5671] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:34:36,742 - ChatteringControl[5671] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:34:36,742 - ChatteringControl[5671] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:34:36,742 - ChatteringControl[5671] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:34:36,742 - ChatteringControl[5671] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:34:36,742 - ChatteringControl[5671] - DEBUG : Terminato parsing totale
+2020-11-12 17:34:36,743 - ChatteringControl[5671] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:34:36,743 - ChatteringControl[5671] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:34:36,743 - ChatteringControl[5671] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:34:59,158 - ChatteringControl[5764] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:34:59,158 - ChatteringControl[5764] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:34:59,164 - ChatteringControl[5764] - INFO : Chiamata alla classe Parser
+2020-11-12 17:34:59,164 - ChatteringControl[5764] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:34:59,164 - ChatteringControl[5764] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:34:59,164 - ChatteringControl[5764] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:34:59,165 - ChatteringControl[5764] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:34:59,165 - ChatteringControl[5764] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:34:59,165 - ChatteringControl[5764] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:34:59,165 - ChatteringControl[5764] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:34:59,165 - ChatteringControl[5764] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:34:59,165 - ChatteringControl[5764] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:34:59,165 - ChatteringControl[5764] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:34:59,166 - ChatteringControl[5764] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:34:59,166 - ChatteringControl[5764] - DEBUG : Terminato parsing totale
+2020-11-12 17:34:59,166 - ChatteringControl[5764] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:34:59,166 - ChatteringControl[5764] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:34:59,166 - ChatteringControl[5764] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:35:27,998 - ChatteringControl[5860] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:35:27,998 - ChatteringControl[5860] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:35:28,003 - ChatteringControl[5860] - INFO : Chiamata alla classe Parser
+2020-11-12 17:35:28,003 - ChatteringControl[5860] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:35:28,004 - ChatteringControl[5860] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:35:28,004 - ChatteringControl[5860] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:35:28,004 - ChatteringControl[5860] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:35:28,004 - ChatteringControl[5860] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:35:28,004 - ChatteringControl[5860] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:35:28,004 - ChatteringControl[5860] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:35:28,004 - ChatteringControl[5860] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:35:28,005 - ChatteringControl[5860] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:35:28,005 - ChatteringControl[5860] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:35:28,005 - ChatteringControl[5860] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:35:28,005 - ChatteringControl[5860] - DEBUG : Terminato parsing totale
+2020-11-12 17:35:28,005 - ChatteringControl[5860] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:35:28,005 - ChatteringControl[5860] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:35:28,006 - ChatteringControl[5860] - ERROR : modelica2GPU ha riscontrato il seguente errore. None
+2020-11-12 17:35:54,400 - ChatteringControl[5992] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:35:54,400 - ChatteringControl[5992] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:35:54,406 - ChatteringControl[5992] - INFO : Chiamata alla classe Parser
+2020-11-12 17:35:54,406 - ChatteringControl[5992] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:35:54,406 - ChatteringControl[5992] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:35:54,406 - ChatteringControl[5992] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:35:54,406 - ChatteringControl[5992] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:35:54,407 - ChatteringControl[5992] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:35:54,407 - ChatteringControl[5992] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:35:54,407 - ChatteringControl[5992] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:35:54,407 - ChatteringControl[5992] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:35:54,408 - ChatteringControl[5992] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:35:54,408 - ChatteringControl[5992] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:35:54,408 - ChatteringControl[5992] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:35:54,408 - ChatteringControl[5992] - DEBUG : Terminato parsing totale
+2020-11-12 17:35:54,408 - ChatteringControl[5992] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:35:54,408 - ChatteringControl[5992] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:35:54,409 - ChatteringControl[5992] - WARNING : La variabile Q non ha alcun valore iniziale. Verrà impostata a 0
+2020-11-12 17:35:54,409 - ChatteringControl[5992] - WARNING : La variabile heat non ha alcun valore iniziale. Verrà impostata a 0
+2020-11-12 17:35:54,409 - ChatteringControl[5992] - ERROR : modelica2GPU ha riscontrato il seguente errore. 'Add' object has no attribute 'strip'
+2020-11-12 17:36:19,137 - ChatteringControl[6108] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:36:19,138 - ChatteringControl[6108] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:36:19,144 - ChatteringControl[6108] - INFO : Chiamata alla classe Parser
+2020-11-12 17:36:19,144 - ChatteringControl[6108] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:36:19,144 - ChatteringControl[6108] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:36:19,144 - ChatteringControl[6108] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:36:19,144 - ChatteringControl[6108] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:36:19,145 - ChatteringControl[6108] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:36:19,145 - ChatteringControl[6108] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:36:19,145 - ChatteringControl[6108] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:36:19,145 - ChatteringControl[6108] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:36:19,145 - ChatteringControl[6108] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:36:19,145 - ChatteringControl[6108] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:36:19,146 - ChatteringControl[6108] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:36:19,146 - ChatteringControl[6108] - DEBUG : Terminato parsing totale
+2020-11-12 17:36:19,146 - ChatteringControl[6108] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:36:19,146 - ChatteringControl[6108] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:36:19,146 - ChatteringControl[6108] - WARNING : La variabile Q non ha alcun valore iniziale. Verrà impostata a 0
+2020-11-12 17:36:19,146 - ChatteringControl[6108] - WARNING : La variabile heat non ha alcun valore iniziale. Verrà impostata a 0
+2020-11-12 17:36:19,146 - ChatteringControl[6108] - DEBUG : Ottengo le ODE per il modello
+2020-11-12 17:36:19,147 - ChatteringControl[6108] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-12 17:36:19,147 - ChatteringControl[6108] - INFO : Chiamata alla classe Builder
+2020-11-12 17:36:19,147 - ChatteringControl[6108] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-12 17:36:19,147 - ChatteringControl[6108] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-12 17:36:19,147 - ChatteringControl[6108] - INFO : Chiamata alla classe ModelBuilder
+2020-11-12 17:36:19,147 - ChatteringControl[6108] - DEBUG : Formattazione della stringa per il file ChatteringControl_SystemDefinition.cuh
+2020-11-12 17:36:19,148 - ChatteringControl[6108] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-12 17:36:19,148 - ChatteringControl[6108] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-12 17:36:19,148 - ChatteringControl[6108] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-12 17:36:19,148 - ChatteringControl[6108] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-12 17:36:19,148 - ChatteringControl[6108] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-12 17:36:19,148 - ChatteringControl[6108] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-12 17:36:19,148 - ChatteringControl[6108] - DEBUG : Terminata formattazione
+2020-11-12 17:36:19,148 - ChatteringControl[6108] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl_MPGOS/ChatteringControl_SystemDefinition.cuh
+2020-11-12 17:36:19,149 - ChatteringControl[6108] - DEBUG : Contenuto salvato correttamente
+2020-11-12 17:36:19,149 - ChatteringControl[6108] - DEBUG : Formattazione della stringa per il file ChatteringControl.cu
+2020-11-12 17:36:19,149 - ChatteringControl[6108] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-12 17:36:19,149 - ChatteringControl[6108] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-12 17:36:19,149 - ChatteringControl[6108] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-12 17:36:19,149 - ChatteringControl[6108] - INFO : Formattazione della stringa per la funzione di main
+2020-11-12 17:36:19,149 - ChatteringControl[6108] - ERROR : modelica2GPU ha riscontrato il seguente errore. not all arguments converted during string formatting
+2020-11-12 17:37:13,706 - ChatteringControl[6254] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:37:13,706 - ChatteringControl[6254] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:37:13,712 - ChatteringControl[6254] - INFO : Chiamata alla classe Parser
+2020-11-12 17:37:13,713 - ChatteringControl[6254] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:37:13,713 - ChatteringControl[6254] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:37:13,713 - ChatteringControl[6254] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:37:13,713 - ChatteringControl[6254] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:37:13,713 - ChatteringControl[6254] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:37:13,713 - ChatteringControl[6254] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:37:13,713 - ChatteringControl[6254] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:37:13,714 - ChatteringControl[6254] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:37:13,714 - ChatteringControl[6254] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:37:13,714 - ChatteringControl[6254] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:37:13,714 - ChatteringControl[6254] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:37:13,714 - ChatteringControl[6254] - DEBUG : Terminato parsing totale
+2020-11-12 17:37:13,714 - ChatteringControl[6254] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:37:13,714 - ChatteringControl[6254] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:37:13,714 - ChatteringControl[6254] - WARNING : La variabile Q non ha alcun valore iniziale. Verrà impostata a 0
+2020-11-12 17:37:13,715 - ChatteringControl[6254] - WARNING : La variabile heat non ha alcun valore iniziale. Verrà impostata a 0
+2020-11-12 17:37:13,715 - ChatteringControl[6254] - DEBUG : Ottengo le ODE per il modello
+2020-11-12 17:37:13,715 - ChatteringControl[6254] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - INFO : Chiamata alla classe Builder
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - INFO : Chiamata alla classe ModelBuilder
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - DEBUG : Formattazione della stringa per il file ChatteringControl_SystemDefinition.cuh
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-12 17:37:13,716 - ChatteringControl[6254] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - DEBUG : Terminata formattazione
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl_MPGOS/ChatteringControl_SystemDefinition.cuh
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - DEBUG : Contenuto salvato correttamente
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - DEBUG : Formattazione della stringa per il file ChatteringControl.cu
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-12 17:37:13,717 - ChatteringControl[6254] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-12 17:37:13,718 - ChatteringControl[6254] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-12 17:37:13,718 - ChatteringControl[6254] - INFO : Formattazione della stringa per la funzione di main
+2020-11-12 17:37:13,718 - ChatteringControl[6254] - ERROR : modelica2GPU ha riscontrato il seguente errore. not all arguments converted during string formatting
+2020-11-12 17:38:14,212 - ChatteringControl[6375] - INFO : Logger <Logger ChatteringControl (DEBUG)> creato con successo
+2020-11-12 17:38:14,213 - ChatteringControl[6375] - INFO : Informazioni dal file di configurazione estrapolate. Riassunto della configurazione 
+CONFIGURAZIONE ESTRAPOLATA
+xmlfile: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl.xml
+workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/
+modelname: ChatteringControl
+notifier: False
+filelogger: True
+MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
+DEVICE: GeForce MX150
+    -------------------------------------------------
+    |                                               |
+    | ASYNC_ENGINE_COUNT:                         2 |
+    | CAN_MAP_HOST_MEMORY:                        1 |
+    | CLOCK_RATE:                           1037500 |
+    | COMPUTE_CAPABILITY_MAJOR:                   6 |
+    | COMPUTE_CAPABILITY_MINOR:                   1 |
+    | COMPUTE_MODE:                         DEFAULT |
+    | CONCURRENT_KERNELS:                         1 |
+    | ECC_ENABLED:                                0 |
+    | GLOBAL_L1_CACHE_SUPPORTED:                  1 |
+    | GLOBAL_MEMORY_BUS_WIDTH:                   64 |
+    | GPU_OVERLAP:                                1 |
+    | INTEGRATED:                                 0 |
+    | KERNEL_EXEC_TIMEOUT:                        1 |
+    | L2_CACHE_SIZE:                         524288 |
+    | LOCAL_L1_CACHE_SUPPORTED:                   1 |
+    | MANAGED_MEMORY:                             1 |
+    | MAXIMUM_SURFACE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE1D_WIDTH:                32768 |
+    | MAXIMUM_SURFACE2D_HEIGHT:               65536 |
+    | MAXIMUM_SURFACE2D_LAYERED_HEIGHT:       32768 |
+    | MAXIMUM_SURFACE2D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_SURFACE2D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_SURFACE2D_WIDTH:               131072 |
+    | MAXIMUM_SURFACE3D_DEPTH:                16384 |
+    | MAXIMUM_SURFACE3D_HEIGHT:               16384 |
+    | MAXIMUM_SURFACE3D_WIDTH:                16384 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_SURFACECUBEMAP_WIDTH:           32768 |
+    | MAXIMUM_TEXTURE1D_LAYERED_LAYERS:        2048 |
+    | MAXIMUM_TEXTURE1D_LAYERED_WIDTH:        32768 |
+    | MAXIMUM_TEXTURE1D_LINEAR_WIDTH:     268435456 |
+    | MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH:      16384 |
+    | MAXIMUM_TEXTURE1D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE2D_ARRAY_HEIGHT:         32768 |
+    | MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES:       2048 |
+    | MAXIMUM_TEXTURE2D_ARRAY_WIDTH:          32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_HEIGHT:        32768 |
+    | MAXIMUM_TEXTURE2D_GATHER_WIDTH:         32768 |
+    | MAXIMUM_TEXTURE2D_HEIGHT:               65536 |
+    | MAXIMUM_TEXTURE2D_LINEAR_HEIGHT:        65000 |
+    | MAXIMUM_TEXTURE2D_LINEAR_PITCH:       2097120 |
+    | MAXIMUM_TEXTURE2D_LINEAR_WIDTH:        131072 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT:     32768 |
+    | MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH:      32768 |
+    | MAXIMUM_TEXTURE2D_WIDTH:               131072 |
+    | MAXIMUM_TEXTURE3D_DEPTH:                16384 |
+    | MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE:      32768 |
+    | MAXIMUM_TEXTURE3D_HEIGHT:               16384 |
+    | MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE:      8192 |
+    | MAXIMUM_TEXTURE3D_WIDTH:                16384 |
+    | MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE:       8192 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS:   2046 |
+    | MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH:   32768 |
+    | MAXIMUM_TEXTURECUBEMAP_WIDTH:           32768 |
+    | MAX_BLOCK_DIM_X:                         1024 |
+    | MAX_BLOCK_DIM_Y:                         1024 |
+    | MAX_BLOCK_DIM_Z:                           64 |
+    | MAX_GRID_DIM_X:                    2147483647 |
+    | MAX_GRID_DIM_Y:                         65535 |
+    | MAX_GRID_DIM_Z:                         65535 |
+    | MAX_PITCH:                         2147483647 |
+    | MAX_REGISTERS_PER_BLOCK:                65536 |
+    | MAX_REGISTERS_PER_MULTIPROCESSOR:       65536 |
+    | MAX_SHARED_MEMORY_PER_BLOCK:            49152 |
+    | MAX_SHARED_MEMORY_PER_MULTIPROCESSOR:   98304 |
+    | MAX_THREADS_PER_BLOCK:                   1024 |
+    | MAX_THREADS_PER_MULTIPROCESSOR:          2048 |
+    | MEMORY_CLOCK_RATE:                    2505000 |
+    | MULTIPROCESSOR_COUNT:                       3 |
+    | MULTI_GPU_BOARD:                            0 |
+    | MULTI_GPU_BOARD_GROUP_ID:                   0 |
+    | PCI_BUS_ID:                                 1 |
+    | PCI_DEVICE_ID:                              0 |
+    | PCI_DOMAIN_ID:                              0 |
+    | STREAM_PRIORITIES_SUPPORTED:                1 |
+    | SURFACE_ALIGNMENT:                        512 |
+    | TCC_DRIVER:                                 0 |
+    | TEXTURE_ALIGNMENT:                        512 |
+    | TEXTURE_PITCH_ALIGNMENT:                   32 |
+    | TOTAL_CONSTANT_MEMORY:                  65536 |
+    | UNIFIED_ADDRESSING:                         1 |
+    | WARP_SIZE:                                 32 |
+    |                                               |
+    -------------------------------------------------
+numberOfThreads: 1
+numberOfProblems: 1
+numberOfDenseOutput: 1000
+threadsPerBlock: 64
+initialTimeStep: 0.01
+preferSharedMemory: 1
+maximumTimeStep: 1000000.0
+minimumTimeStep: 1e-14
+eventDirection:
+    eventDirectionValue1: 0
+denseOutputMinimumTimeStep: 0.0
+denseOutputSaveFrequency: 1
+tolerance:
+    toleranceValue1: 1e-06
+timeDomainStart: 0.0
+timeDomainEnd: 10.0
+numberOfContinuousState: 1
+
+2020-11-12 17:38:14,222 - ChatteringControl[6375] - INFO : Chiamata alla classe Parser
+2020-11-12 17:38:14,222 - ChatteringControl[6375] - DEBUG : Parsing totale dell'XML
+2020-11-12 17:38:14,223 - ChatteringControl[6375] - DEBUG : Ottenimento delle variabili dai tag <ScalarVariable> interni a <ModelVariables>
+2020-11-12 17:38:14,223 - ChatteringControl[6375] - DEBUG : Creazione dei parametri ACC dalle variabili di categoria algebraic di tipo Real
+2020-11-12 17:38:14,223 - ChatteringControl[6375] - DEBUG : Creazione dei parametri ACCi dalle variabili di categoria algebraic di tipo Integer
+2020-11-12 17:38:14,223 - ChatteringControl[6375] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Real
+2020-11-12 17:38:14,223 - ChatteringControl[6375] - DEBUG : Creazione dei parametri sPAR dalle variabili di categoria independent di tipo Integer
+2020-11-12 17:38:14,224 - ChatteringControl[6375] - DEBUG : Creazione dei parametri X ed F, rispettivamente variabile di stato e la sua derivata
+2020-11-12 17:38:14,224 - ChatteringControl[6375] - DEBUG : Ottenimento delle equazioni iniziali del sistema e aggiornamento delle variabili con i valori iniziali
+2020-11-12 17:38:14,224 - ChatteringControl[6375] - DEBUG : Parsing delle funzioni definite dall'utente
+2020-11-12 17:38:14,224 - ChatteringControl[6375] - DEBUG : Ottenimento delle equazioni e degli eventi, rispettivamente sotto i tag <equ:Equation> e <equ:When>
+2020-11-12 17:38:14,224 - ChatteringControl[6375] - DEBUG : Parsing degli algoritmi sotto il tag <fun:Algorithm>
+2020-11-12 17:38:14,225 - ChatteringControl[6375] - DEBUG : Terminato parsing totale
+2020-11-12 17:38:14,225 - ChatteringControl[6375] - INFO : Chiamata alla classe Model e costruzione del modello astratto
+2020-11-12 17:38:14,225 - ChatteringControl[6375] - DEBUG : Ottengo le equazioni iniziali per il modello
+2020-11-12 17:38:14,225 - ChatteringControl[6375] - WARNING : La variabile Q non ha alcun valore iniziale. Verrà impostata a 0
+2020-11-12 17:38:14,225 - ChatteringControl[6375] - WARNING : La variabile heat non ha alcun valore iniziale. Verrà impostata a 0
+2020-11-12 17:38:14,226 - ChatteringControl[6375] - DEBUG : Ottengo le ODE per il modello
+2020-11-12 17:38:14,226 - ChatteringControl[6375] - DEBUG : Ottengo le equazioni restanti e gli algoritmi per il modello
+2020-11-12 17:38:14,226 - ChatteringControl[6375] - INFO : Chiamata alla classe Builder
+2020-11-12 17:38:14,226 - ChatteringControl[6375] - DEBUG : Creazione delle directory nella quale salvare i file
+2020-11-12 17:38:14,227 - ChatteringControl[6375] - DEBUG : La directory /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl_MPGOS è già stata creata in precedenza, e quindi non sarà ricreata
+2020-11-12 17:38:14,227 - ChatteringControl[6375] - INFO : Chiamata alla classe SystemDefinitionBuilder
+2020-11-12 17:38:14,227 - ChatteringControl[6375] - INFO : Chiamata alla classe ModelBuilder
+2020-11-12 17:38:14,227 - ChatteringControl[6375] - DEBUG : Formattazione della stringa per il file ChatteringControl_SystemDefinition.cuh
+2020-11-12 17:38:14,227 - ChatteringControl[6375] - DEBUG : Formattazione della stringa per la funzione PerThread_OdeFunction
+2020-11-12 17:38:14,227 - ChatteringControl[6375] - DEBUG : Formattazione della stringa per la funzione PerThread_EventFunction
+2020-11-12 17:38:14,227 - ChatteringControl[6375] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterEventDetection
+2020-11-12 17:38:14,228 - ChatteringControl[6375] - DEBUG : Formattazione della stringa per la funzione PerThread_ActionAfterSuccessfulTimeStep
+2020-11-12 17:38:14,228 - ChatteringControl[6375] - DEBUG : Formattazione della stringa per la funzione PerThread_Initialization
+2020-11-12 17:38:14,228 - ChatteringControl[6375] - DEBUG : Formattazione della stringa per la funzione PerThread_Finalization
+2020-11-12 17:38:14,228 - ChatteringControl[6375] - DEBUG : Terminata formattazione
+2020-11-12 17:38:14,228 - ChatteringControl[6375] - DEBUG : Salvataggio del contenuto del file di definizione del sistema in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl_MPGOS/ChatteringControl_SystemDefinition.cuh
+2020-11-12 17:38:14,228 - ChatteringControl[6375] - DEBUG : Contenuto salvato correttamente
+2020-11-12 17:38:14,229 - ChatteringControl[6375] - DEBUG : Formattazione della stringa per il file ChatteringControl.cu
+2020-11-12 17:38:14,229 - ChatteringControl[6375] - INFO : Formattazione della stringa per la definizione delle MACRO
+2020-11-12 17:38:14,229 - ChatteringControl[6375] - INFO : Formattazione della stringa per la funzione fillSolverObject
+2020-11-12 17:38:14,229 - ChatteringControl[6375] - INFO : Formattazione della stringa per la funzione di salvataggio dell'output su file
+2020-11-12 17:38:14,229 - ChatteringControl[6375] - INFO : Formattazione della stringa per la funzione di main
+2020-11-12 17:38:14,230 - ChatteringControl[6375] - DEBUG : Terminata formattazione
+2020-11-12 17:38:14,230 - ChatteringControl[6375] - DEBUG : Salvataggio del contenuto del file di definizione del modello in /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/ChatteringControl_MPGOS/ChatteringControl.cu
+2020-11-12 17:38:14,230 - ChatteringControl[6375] - DEBUG : Contenuto salvato correttamente
+2020-11-12 17:38:14,230 - ChatteringControl[6375] - DEBUG : Salvataggio del MakeFile
+2020-11-12 17:38:14,230 - ChatteringControl[6375] - DEBUG : Creazione del file MakeFile
+2020-11-12 17:38:14,231 - ChatteringControl[6375] - DEBUG : Terminata formattazione del file MakeFile
+2020-11-12 17:38:14,231 - ChatteringControl[6375] - DEBUG : Termianto salvataggio el file MakeFile
+2020-11-12 17:38:14,231 - ChatteringControl[6375] - DEBUG : Operazione di traduzione terminata con successo in 0.5912885665893555ms.

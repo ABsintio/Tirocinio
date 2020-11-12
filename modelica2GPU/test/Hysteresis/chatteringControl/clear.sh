@@ -1,0 +1,1 @@
+rm *.o *.c *.mat *.h *.json ChatteringControl *.makefile *.log *.libs *_init.xml

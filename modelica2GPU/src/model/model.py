@@ -72,7 +72,7 @@ class Model:
             varname, ivalue = value.nome, str(value.init)
             # In caso troviamo dei "." facciamo il replace con "_"
             if value.category != VariableCategory.DERIVATIVE:
-                if ivalue is None or ivalue.strip().startswith("$PRE") or ivalue.strip().startswith("$START"):
+                if ivalue == "None" or ivalue.strip().startswith("$PRE") or ivalue.strip().startswith("$START"):
                     # Controllo che non ci siano variabili con valori iniziali None
                     # Se queste variabili sono presenti, il valore sarà impostato a 0
                     # START LOG

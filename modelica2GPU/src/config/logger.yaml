@@ -2,6 +2,11 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
+  ChatteringControl_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl//log/ChatteringControl.log
+    formatter: simple
+    level: DEBUG
   IntervalMeasurement_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/intervalMeasurement//log/IntervalMeasurement.log
@@ -37,6 +42,11 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  ChatteringControl:
+    handlers:
+    - ChatteringControl_handler
+    level: DEBUG
+    propagate: 'no'
   IntervalMeasurement:
     handlers:
     - IntervalMeasurement_handler
