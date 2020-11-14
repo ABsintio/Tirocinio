@@ -16,12 +16,12 @@ using namespace std;
 #define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 7;
+const int SD   = 4;
 const int NCP  = 1;
 const int NSP  = 7;
 const int NISP = 1;
 const int NE   = 2;
-const int NA   = 4;
+const int NA   = 8;
 const int NIA  = 2;
 const int NDO  = 1000;
 
@@ -89,6 +89,10 @@ void SaveData(
         DataFile.width(Width); DataFile << "ACC_next_phi" << ',';
         DataFile.width(Width); DataFile << "ACC_omega1_measured" << ',';
         DataFile.width(Width); DataFile << "ACC_prev_phi" << ',';
+        DataFile.width(Width); DataFile << "ACC_$PRE.prev_phi" << ',';
+        DataFile.width(Width); DataFile << "ACC_$PRE.next_phi" << ',';
+        DataFile.width(Width); DataFile << "ACC_$PRE.omega1_measured" << ',';
+        DataFile.width(Width); DataFile << "ACC_$PRE.last_time" << ',';
         DataFile.width(Width); DataFile << "ACCi_$whenCondition1" << ',';
         DataFile.width(Width); DataFile << "ACCi_$whenCondition2" << ',';
         DataFile.width(Width); DataFile << endl;
@@ -108,6 +112,10 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 2) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 3) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 4) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 5) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 6) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 7) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 1) << ',';
 
@@ -117,7 +125,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = 1; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 64; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA

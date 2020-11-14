@@ -16,9 +16,6 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
     F[3]=X[1];
     F[0]=(((sPAR[2] * (X[3] - X[2])) + (sPAR[4] * (X[1] - X[0]))) / sPAR[0]);
     F[2]=X[0];
-    F[4]=0.0;
-    F[5]=0.0;
-    F[6]=0.0;
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_EventFunction(
@@ -26,8 +23,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_EventFunctio
 	Precision     T, Precision    dT, Precision*    TD, Precision*	X, \
 	Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi  		
 ) {
-    ACCi[1]=X[2] <= ACC[3];
-    ACCi[0]=X[2] >= ACC[1];
+    ACCi[1]=X[2] <= ACC[4];
+    ACCi[0]=X[2] >= ACC[5];
 
     EF[0] = (! ((ACCi[1] || ACCi[0])));
 }
@@ -47,7 +44,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
 	    ACC[1]=(X[2] + sPAR[6]);
     }
     if (IDX == 0){
-	    ACC[2]=(sPAR[6] / (T - ACC[0]));
+        ACC[2]=(sPAR[6] / (T - ACC[7]));
     }
 
 }
@@ -57,9 +54,11 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterS
     Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    X[6] = ACC[3];
-    X[5] = ACC[1];
-    X[4] = ACC[2];
+    ACC[7]=ACC[0];
+    ACC[4]=ACC[3];
+    ACC[5]=ACC[1];
+    ACC[6]=ACC[2];
+
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
@@ -73,10 +72,13 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     X[2]=0.0;
     sPAR[6]=0.0314159;
     ACC[1]=(X[2] + sPAR[6]);
-    ACC[2]=0.0;
+    ACC[6]=0.0;
+    ACC[2]=ACC[6];
     ACC[3]=(X[2] - sPAR[6]);
-    ACCi[0]=X[2] >= ACC[1];
-    ACCi[1]=X[2] <= ACC[3];
+    ACC[5]=(X[2] + sPAR[6]);
+    ACCi[0]=X[2] >= ACC[5];
+    ACC[4]=(X[2] - sPAR[6]);
+    ACCi[1]=X[2] <= ACC[4];
     sPAR[0]=0.4;
     sPAR[1]=1.0;
     sPAR[2]=11.0;
@@ -87,9 +89,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     X[0]=0.0;
     X[1]=0.0;
     X[3]=1.0;
-    X[4]=0.0;
-    X[5]=0.0;
-    X[6]=0.0;
+    ACC[7]=T;
 
 }
 
