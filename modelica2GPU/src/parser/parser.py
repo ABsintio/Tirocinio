@@ -191,6 +191,17 @@ class Parser:
             if x.tag == f"{tagclasses.EQUATION_NS}Equation":
                 eq = tagclasses._parsetag_eq(x, variables_dict)
                 self.dynamic_equations['equations'].append(eq)
+                # Se la parte sinistra dell'equazione ha associata una variable $PRE
+                # allora devo creare una seconda equazione, nella quale alla variabile
+                # $PRE viene associato il valore corrente della variabile lhs
+                pre = None
+                # Controllo l'esistenze della variabile $PRE associata
+                var = MPGOSparams_dict[eq.left.__str__()]
+                for k, v in MPGOSparams_dict.items():
+                    if "$PRE." + var.qualifiedName == v.qualifiedName:
+                        pre = k
+                if pre is not None:
+                    self.dynamic_equations['equations'].append(tagclasses.Equation(pre, eq.left))
                 # Se la parte destra dell'equazione è di tipo Sample
                 # allora controllo se l'attributo new_var della parte destra
                 # sia pari a None oppure no. Questo perché se non è pari a 
@@ -215,6 +226,17 @@ class Parser:
             if x.tag == f"{tagclasses.EQUATION_NS}When":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
                 when_eq = tagclasses.When(x, variables_dict, self.event_conditions)
+                # Se la parte sinistra dell'equazione ha associata una variable $PRE
+                # allora devo creare una seconda equazione, nella quale alla variabile
+                # $PRE viene associato il valore corrente della variabile lhs
+                pre = None
+                # Controllo l'esistenze della variabile $PRE associata
+                var = MPGOSparams_dict[when_eq.equation.left.__str__()]
+                for k, v in MPGOSparams_dict.items():
+                    if "$PRE." + var.qualifiedName == v.qualifiedName:
+                        pre = k
+                if pre is not None:
+                    self.dynamic_equations['events']['other'].append(tagclasses.Equation(pre, when_eq.equation.left))
                 # In via puramente eccezionale, se la condizione è di tipo Sample allora
                 # non lo inserisco come evento in quanto il compilatore non lo riconosce come tale.
                 # Prima però devo prendere l'equazione corrispondente della condizione

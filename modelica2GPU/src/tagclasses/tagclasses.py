@@ -297,8 +297,7 @@ class QualifiedName:
     def __init__(self, id_tag_element, variables_dict=None):
         self.id_tag_element = id_tag_element
         self.variables_dict = variables_dict
-        # Prendo l'ultimo indice dell'ultima variabile inserita nel caso dovessi inserirne delle nuove
-        self.indexs = [x.id for x in self.variables_dict.values()][-1] if self.variables_dict is not None else None
+        self.indexs = None
     
     def _parse_qnp(self):
         """ Parsa i tag <exp:QualifiedNamePart> sia auto-chiusi che con <exp:ArraySubscripts> """
@@ -324,9 +323,9 @@ class QualifiedName:
         # Importante fare attenzione al fatto che qui stiamo inserendo specificatamente
         # solo variabili di tipo $PRE. Questo perchè si presuppone che tutte le variabili
         # del modello siano state parsate durante la prima fase di parsing del tag <ModelVariable>
-        if string.startswith("$PRE") and string not in self.variables_dict and self.indexs is not None:
+        if string.startswith("$PRE") and string not in self.variables_dict:
             var = self.variables_dict[string[5:]]
-            self.indexs += 1
+            self.indexs = [x.id for x in self.variables_dict.values() if isinstance(x, var.__class__)][-1] + 1
             pre_var = var.__class__(string, self.indexs, string, None, var.category, var.init)
             self.variables_dict[string] = pre_var
         return self.variables_dict[string].createMPGOSname() if self.variables_dict is not None and string in self.variables_dict \
@@ -362,7 +361,7 @@ class Pre:
     """ Rappresenta l'operatore pre, che serve ad ottenere il valore precedente di una variabile """
     def __init__(self, function_dict, tag_id_element, variables_dict):
         self.tag_element = tag_id_element[0]
-        self.tag_element.append(ET.SubElement(self.tag_element, f"{EXPRESSION_NS}QualifiedNamePart", {"name": "$PRE"}))
+        self.tag_element.insert(0, ET.Element(f"{EXPRESSION_NS}QualifiedNamePart", {"name": "$PRE"}))
         self.variables   = variables_dict
     
     def __str__(self): return Identifier(self.tag_element, self.variables).__str__()

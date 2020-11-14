@@ -15,14 +15,14 @@ using namespace std;
 
 #define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 1;
 const int NCP  = 1;
 const int NSP  = 0;
 const int NISP = 0;
 const int NE   = 0;
 const int NA   = 1;
-const int NIA  = 3;
+const int NIA  = 4;
 const int NDO  = 1000;
 
 
@@ -77,13 +77,15 @@ void SaveData(
         DataFile.width(Width); DataFile << "ACC_$cse1" << ',';
         DataFile.width(Width); DataFile << "ACCi_i" << ',';
         DataFile.width(Width); DataFile << "ACCi_$sampleCondition1" << ',';
-        DataFile.width(Width); DataFile << "ACCi_sample_ACCi_2" << ',';
+        DataFile.width(Width); DataFile << "ACCi_$PRE.i" << ',';
+        DataFile.width(Width); DataFile << "ACCi_sample_ACCi_3" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 2) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 3) << ',';
 
         DataFile << '\n';
     }

@@ -13,7 +13,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
 ) {
     ACC[0]=sin(T);
-    ACCi[1]=(abs(T - (2.0 + ACCi[2] * 0.5)) < 9.0e-10 ? 1.0 : 0.0);
+    ACCi[1]=(abs(T - ((round(2.0 * 100) / 100) + ACCi[3] * (round(0.5 * 100) / 100))) < 9.0e-10 ? 1.0 : 0.0);
     F[0]=((5.0 + ACCi[0]) * ACC[0]);
 
 }
@@ -40,8 +40,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterS
     Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    ACCi[2]=ACCi[1] ? 1 + ACCi[2] : ACCi[2];
-    ACCi[0]=(ACCi[1] ? (1 + ACCi[0]) : ACCi[0]);
+    ACCi[3]=ACCi[1] ? 1 + ACCi[3] : ACCi[3];
+    ACCi[2]=ACCi[0];
+    ACCi[0]=(ACCi[1] ? (1 + ACCi[2]) : ACCi[0]);
     X[0]=(ACCi[1] ? 1.0 : X[0]);
 
 }
@@ -58,6 +59,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     ACCi[1]=0;
     X[0]=1.0;
     ACCi[2]=0;
+    ACCi[3]=1;
 
 }
 
