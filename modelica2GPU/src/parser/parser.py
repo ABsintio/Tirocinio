@@ -273,15 +273,22 @@ class Parser:
         initial_equantions_roottag = Parser.getTagElementByName(f"{tagclasses.EQUATION_NS}InitialEquations", self.root)
         for x in initial_equantions_roottag:
             # Controlliamo che non siano tag vuoti, ossia <equ:Equation><exp:Sub></exp:Sub></equ:Equation>
-            if list(x[0]): 
+            if list(x[0]):
                 ieqs = tagclasses._parsetag_eq(x, variables_dict)
-                try:
-                    var = MPGOSparameter_dict[ieqs.left.__str__()]
-                    if var.init is None:
-                        self.initial_equations.append(ieqs)
-                        var.setivalue(ieqs.right)
-                except KeyError:
-                    pass
+                # Se la variabile non esiste nel dizionario di tutte le
+                # variabili (solitamente le variabili non esistenti sono i $PRE)
+                # la aggiungi con valore iniziale pari a None ed in caso cambi il right di ieqs.
+                if str(ieqs.left) not in MPGOSparameter_dict:
+                    associated_var = [x for x in variables_dict.values() if x.id == ieqs.left.indexs]
+                    MPGOSparameter_dict[str(ieqs.left)] = associated_var[-1]
+                var = MPGOSparameter_dict[ieqs.left.__str__()]
+                # Se il valore iniziale di una variabile è $START allora vuol dire che 
+                # nel modello Modelica non ha alcun valore iniziale. Di conseguenza lo
+                # lasciamo None di modo che il valore iniziale pari a 0 venga
+                # impostato durante la creazione del modello.
+                if var.init is None and not str(ieqs.right).startswith("$START"):
+                    self.initial_equations.append(ieqs)
+                    var.setivalue(ieqs.right)
         return MPGOSparameter_dict
 
     

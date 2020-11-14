@@ -1,6 +1,7 @@
 import math
 import exceptions.builtExceptions
 from tagclasses.variables import *
+import xml.etree.ElementTree as ET
 
 
 # ----------------------------------------------------- # XML NAMESPACES # ------------------------------------------------------------- #
@@ -296,6 +297,8 @@ class QualifiedName:
     def __init__(self, id_tag_element, variables_dict=None):
         self.id_tag_element = id_tag_element
         self.variables_dict = variables_dict
+        # Prendo l'ultimo indice dell'ultima variabile inserita nel caso dovessi inserirne delle nuove
+        self.indexs = [x.id for x in self.variables_dict.values()][-1] if self.variables_dict is not None else None
     
     def _parse_qnp(self):
         """ Parsa i tag <exp:QualifiedNamePart> sia auto-chiusi che con <exp:ArraySubscripts> """
@@ -314,8 +317,18 @@ class QualifiedName:
     
     def __str__(self): 
         string = ".".join(self._parse_qnp())
-        if string.startswith("$PRE"):
-            string = Pre(string[5:]).__str__()
+        # Se trovo una variabile di tipo PRE, allora devo considerare 
+        # il fatto di caricarla tra tutte le altre variabili
+        # Ovviamente nel momento della creazione, la variabile pre deve avere
+        # tutte le caratteristiche della variabile alla quale fa riferimento
+        # Importante fare attenzione al fatto che qui stiamo inserendo specificatamente
+        # solo variabili di tipo $PRE. Questo perchè si presuppone che tutte le variabili
+        # del modello siano state parsate durante la prima fase di parsing del tag <ModelVariable>
+        if string.startswith("$PRE") and string not in self.variables_dict and self.indexs is not None:
+            var = self.variables_dict[string[5:]]
+            self.indexs += 1
+            pre_var = var.__class__(string, self.indexs, string, None, var.category, var.init)
+            self.variables_dict[string] = pre_var
         return self.variables_dict[string].createMPGOSname() if self.variables_dict is not None and string in self.variables_dict \
                else string
 
@@ -345,12 +358,14 @@ class Literal(UnaryOperator):
     def __str__(self): return self.value.__str__()
 
 
-class Pre(UnaryOperator):
+class Pre:
     """ Rappresenta l'operatore pre, che serve ad ottenere il valore precedente di una variabile """
-    def __init__(self, value):
-        super().__init__(value)
+    def __init__(self, function_dict, tag_id_element, variables_dict):
+        self.tag_element = tag_id_element[0]
+        self.tag_element.append(ET.SubElement(self.tag_element, f"{EXPRESSION_NS}QualifiedNamePart", {"name": "$PRE"}))
+        self.variables   = variables_dict
     
-    def __str__(self): return f"{self.value.__str__()}"
+    def __str__(self): return Identifier(self.tag_element, self.variables).__str__()
 
 
 class Reinit(BinaryOperator):
@@ -584,7 +599,7 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}StringLiteral"  : (Literal,          1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}BooleanLiteral" : (Literal,          1),
     "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}If"               : (IfThenElseInLine, 3),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pre"            : (Pre,              1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Pre"            : (Pre,              6),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Reinit"         : (Reinit,           0),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Time"           : (Time,             1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}QualifiedName"  : (QualifiedName,    2),
@@ -630,7 +645,7 @@ def _parsetag_eq(tag, variables_dict, function_dict=dict()):
     else:
         class_op, arity = getoperatorclass(tag.tag)
         if arity == 2: return class_op(tag, variables_dict)
-        if arity == 4 or arity == 3 or arity == 5: 
+        if arity in [3, 4, 5, 6]: 
             x = class_op(function_dict, tag, variables_dict)
             if arity == 5: # Allora è stato chiamato il sample
                 variables_dict[x.new_var.qualifiedName] = x.new_var
