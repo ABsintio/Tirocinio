@@ -83,24 +83,23 @@ class Model:
                     if value.__class__ in [X, ACC, sPAR]: init_value += ".0"
                     value.setivalue(init_value)
                 ivalue = value.init.__str__()
-                if not ivalue.strip().startswith("$PRE") and not ivalue.strip().startswith("$START"):
-                    # Potrebbe accadere che durante il parsing delle variabili, sotto il tag ScalarVariable, 
-                    # a queste venga dato un valore iniziale letterale (es. x0, x1, ...), il quale non verrà
-                    # cambiato nel momento in cui si andranno a parsare le equazioni iniziali (chi te lo dice 
-                    # che tale inizializzazione sta anche in initial equation? nessuno). Per questo motivo, 
-                    # una volta ottenute tutte le variabili e creati i corrispettivi MPGOSname, possiamo 
-                    # settare il nuovo valore iniziale in linea con la politica di valutazione delle variabili di MPGOs.
-                    if not re.match(r"\d+\.*\d*", ivalue.strip()) and ivalue.strip() not in variables_dict.keys() and \
-                       ivalue.strip() != "T" and not isinstance(value.init, UnaryOperator) and not isinstance(value.init, BinaryOperator):
-                        # Trovare la variabile referenziata
-                        ref = name_var_dict[ivalue.strip()]
-                        value.setivalue(ref.createMPGOSname())
-                    ivalue = value.init.__str__()
-                    # Inseriamo tutte le equazioni iniziali nel file SystemDefinition in 
-                    # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
-                    # Altrimenti facendo diverse simulazioni seriali i valore della
-                    # simulazione successiva partirà con quelli della simulazione precedente.
-                    init_eqs["initialization"].append(Equation(k.strip(), ivalue.strip()))
+                # Potrebbe accadere che durante il parsing delle variabili, sotto il tag ScalarVariable, 
+                # a queste venga dato un valore iniziale letterale (es. x0, x1, ...), il quale non verrà
+                # cambiato nel momento in cui si andranno a parsare le equazioni iniziali (chi te lo dice 
+                # che tale inizializzazione sta anche in initial equation? nessuno). Per questo motivo, 
+                # una volta ottenute tutte le variabili e creati i corrispettivi MPGOSname, possiamo 
+                # settare il nuovo valore iniziale in linea con la politica di valutazione delle variabili di MPGOs.
+                if not re.match(r"\d+\.*\d*", ivalue.strip()) and ivalue.strip() not in variables_dict.keys() and \
+                    ivalue.strip() != "T" and not isinstance(value.init, UnaryOperator) and not isinstance(value.init, BinaryOperator):
+                    # Trovare la variabile referenziata
+                    ref = name_var_dict[ivalue.strip()]
+                    value.setivalue(ref.createMPGOSname())
+                ivalue = value.init.__str__()
+                # Inseriamo tutte le equazioni iniziali nel file SystemDefinition in 
+                # quanto, in diverse simulazioni verranno reinizializzate ogni volta.
+                # Altrimenti facendo diverse simulazioni seriali i valore della
+                # simulazione successiva partirà con quelli della simulazione precedente.
+                init_eqs["initialization"].append(Equation(k.strip(), ivalue.strip()))
         return init_eqs
 
 
@@ -115,13 +114,12 @@ class Model:
         for equ in equations:
             lhs = variables_dict[equ.left.__str__()].nome
             typeeq = 'trigger' if re.match(r"\$whenCondition\d+", lhs) else 'normal'
-            if not equ.right.__str__().startswith("$START") and not equ.right.__str__().startswith("$PRE"):
-                # Se la variabile parte sinistra dell'equazione non ha un valore iniziale allora inseriamo
-                # tale equazione come valore iniziale nella funzione PerThread_Initialization
-                if typeeq != 'trigger' and variables_dict[str(equ.left)].init is None:
-                    init_equations['initialization'].append(equ)
-                # Se la parte sinistra dell'equazione matcha $whenCondition<numero> allora è un trigger
-                othereq_dict[typeeq].append(equ)
+            # Se la variabile parte sinistra dell'equazione non ha un valore iniziale allora inseriamo
+            # tale equazione come valore iniziale nella funzione PerThread_Initialization
+            if typeeq != 'trigger' and variables_dict[str(equ.left)].init is None:
+                init_equations['initialization'].append(equ)
+            # Se la parte sinistra dell'equazione matcha $whenCondition<numero> allora è un trigger
+            othereq_dict[typeeq].append(equ)
         return othereq_dict
 
 
