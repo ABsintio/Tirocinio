@@ -28,10 +28,10 @@ class Assign:
         identifier_str = Identifier(indentifier_tag, self.variables_dict)
         # L'Expression lo prendiamo dalla funzione _parsealgorithm_tag
         exp_str = _parsealgorithm_tag(exp_tag, self.variables_dict, self.function_dict)
-        return identifier_str.__str__(), exp_str.__str__()
+        return identifier_str, exp_str
 
     
-    def __str__(self): return f"{self.left}:={self.right}"
+    def __str__(self): return f"{self.left.__str__()}={self.right.__str__()};"
 
 
 class Expression(UnaryOperator):
@@ -44,10 +44,9 @@ class Expression(UnaryOperator):
 
 class WhenAlgorithm:
     """ classe che rappresenta il tag <fun:When>"""
-    def __init__(self, when_tag, variables_dict, event_conditions):
+    def __init__(self, when_tag, variables_dict):
         self.when_tag = when_tag
         self.variables_dict = variables_dict
-        self.event_conditions = [x[1] for x in event_conditions]
         self.condition, self.assignements = self._parsewhen_tag()
     
 
@@ -57,28 +56,31 @@ class WhenAlgorithm:
         identifier_list = self.when_tag[0].findall("{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Identifier")
         condition = Identifier(identifier_list[0], self.variables_dict) if len(identifier_list) == 1 \
                     else When.parsecondition(identifier_list, self.variables_dict)
-        # Prende l'indice di un elemento dell'array se la condizione è già esistente, altrimenti len 
-        identifier = -1
-        for i in range(len(self.event_conditions)):
-            string = " "*4 + f"EF[{i}] = (! ({condition.__str__()}))"
-            if string in self.event_conditions:
-                identifier = i
-                break
-        identifier = identifier if identifier != -1 else len(self.event_conditions)
-        condition = (identifier, str(condition))
         # A differenza del When nelle equazioni il quale contiene un tag differente
         # per ogni equazione all'interno dell'evento, nell'algorithm tutti gli 
         # assegnamenti che ci sono al suo interno vengono inseriti tutti insieme.
         statements = []
-        # TODO: Completare con la chiamata alla funzione _parsealgorithm_tag
         for assign_tag in self.when_tag[1]:
-            statements.append(_parsealgorithm_tag(assign_tag, self.variables_dict))
+            assign = _parsealgorithm_tag(assign_tag, self.variables_dict)
+            # Se esiste il $PRE della variabile corrente alla sinistra dell'assegnamento 
+            # allora devo aggiornarlo con il valore corrente.
+            try:
+                qualifiedname = None
+                for k, v in self.variables_dict.items():
+                    if v.createMPGOSname() == assign.left.__str__():
+                        qualifiedname = v.qualifiedName
+                pre = self.variables_dict["$PRE." + qualifiedname].createMPGOSname()
+                statements.append(Equation(pre, assign.left))
+            except KeyError:
+                pass
+            statements.append(assign)
         return condition, statements
     
+
     def __str__(self):
-        return "if (IDX == %d){\n%s\n}" % (
-            self.condition[0],
-            "\n".join([" "*4 + str(x) for x in self.assignements])
+        return "if (%s){\n%s\n}" % (
+            self.condition,
+            "\n".join([" "*8 + str(x) for x in self.assignements])
         )
 
 

@@ -96,7 +96,7 @@ class Logger:
                     "class" : "logging.FileHandler", # Ossia salva il contenuto su file
                     "level" : "DEBUG",               # Utilizzato per DEBUG, WARNING e ERROR
                     "formatter": "simple",
-                    "filename" : self.wdir + "/log/%s.log" % (self.modelname)
+                    "filename" : self.wdir + "/log%s.log" % (self.modelname)
                 }
             },
             "loggers" : {

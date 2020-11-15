@@ -375,7 +375,7 @@ try:
         config_dict['modelname'], 
         xml_parser.dynamic_equations['equations'],
         xml_parser.dynamic_equations['events'],
-        xml_parser.algorithms, xml_parser.unique_dict, m2g_logger
+        xml_parser.algorithms_dict, xml_parser.unique_dict, m2g_logger
     ) # Creo una versione astratta del modello
 
     # Creo il builder ed infine costruisco i tre file: Model.cu, Model_SystemDefinition.cuh, makefile

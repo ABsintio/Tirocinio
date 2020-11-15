@@ -29,7 +29,11 @@ class Model:
         self.odes       = Model.getODE(equations, self.init, variables_dict, logger)  # Crea il sistema di ODE
         self.events     = events['when']                                     # Prendo gli eventi
         # Prendo le altre equazioni rimanenti
-        self.othereq    = Model.getOtherEq(algorithms + equations + events['other'], self.init, variables_dict, logger)
+        self.othereq    = Model.getOtherEq(
+            algorithms["assign"] + equations + events['other'], 
+            algorithms["when"],
+            self.init, variables_dict, logger
+            )
         self.variables  = list(variables_dict.values())                    # Prendo la lista delle variabili
         if self.init['initialization']:
             # Ordino le equazioni initiali per initialization
@@ -72,7 +76,7 @@ class Model:
             varname, ivalue = value.nome, str(value.init)
             # In caso troviamo dei "." facciamo il replace con "_"
             if value.category != VariableCategory.DERIVATIVE:
-                if ivalue == "None" or ivalue.strip().startswith("$PRE") or ivalue.strip().startswith("$START"):
+                if ivalue == "None":
                     # Controllo che non ci siano variabili con valori iniziali None
                     # Se queste variabili sono presenti, il valore sarà impostato a 0
                     # START LOG
@@ -104,7 +108,7 @@ class Model:
 
 
     @staticmethod
-    def getOtherEq(equations, init_equations, variables_dict, logger):
+    def getOtherEq(equations, when_assign, init_equations, variables_dict, logger):
         """ Prende le equazioni restanti e le divide tra quelle che scatenano eventi e quelle normali """
         # START LOG
         msg = "Ottengo le equazioni restanti e gli algoritmi per il modello"
@@ -120,6 +124,8 @@ class Model:
                 init_equations['initialization'].append(equ)
             # Se la parte sinistra dell'equazione matcha $whenCondition<numero> allora è un trigger
             othereq_dict[typeeq].append(equ)
+        for when_ass in when_assign:
+            othereq_dict["normal"].append(when_ass.__str__())
         return othereq_dict
 
 

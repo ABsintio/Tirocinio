@@ -23,7 +23,7 @@ class Parser:
         self.initial_equations = []
         self.scalar_variables  = []
         self.userdefined_func  = dict()
-        self.algorithms        = []
+        self.algorithms_dict   = {"assign": [], "when": []}
         self.unique_dict       = dict()
         self.event_conditions  = []
         self.sampler           = []
@@ -326,15 +326,42 @@ class Parser:
             self.userdefined_func[fun.name] = fun
 
 
-    def parse_assign(self, assign_tag, variables_dict, MPGOSparameter_dict):
+    def parse_assign(self, assign_tag, variables_dict, MPGOSparams_dict):
         """ Parsa tutti gli altri tag a parte quello dell'When degli algoritmi """
-        # TODO: Finire
-
+        for x in assign_tag:
+            if x.tag == f"{algorithms.FUNCTIONS_NS}Assign":
+                algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func)
+                self.algorithms_dict["assign"].append(algo)
+                # Controllo l'esistenze della variabile $PRE associata
+                pre = None
+                var = MPGOSparams_dict[algo.left.__str__()]
+                for k, v in MPGOSparams_dict.items():
+                    if "$PRE." + var.qualifiedName == v.qualifiedName:
+                        pre = k
+                if pre is not None:
+                    self.algorithms_dict["assign"].append(dynequations.Equation(pre, algo.left))
+                if isinstance(algo.right, dynequations.Sample):
+                    old_name = MPGOSparams_dict[str(algo.left)].nome
+                    if old_name.replace("when", "sample") != old_name:
+                        # Allora la variabile già esiste e non faccio niente
+                        MPGOSparams_dict[str(algo.left)].setname(old_name.replace("when", "sample"))
+                        MPGOSparams_dict[algo.right.new_var.createMPGOSname()] = algo.right.new_var
+                        # Inserisco l'equazione per l'aggiornamento del contatore del sampler negli eventi other
+                        self.algorithms_dict['assign'].append(dynequations.Equation(
+                            algo.right.new_var.createMPGOSname(),
+                            "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(algo.left),lhs=algo.right.new_var.createMPGOSname())
+                        ))
+        return MPGOSparams_dict
+                
     
     def parse_when(self, when_tag, variables_dict, MPGOSparameter_dict):
         """ Parsa il tag <fun:When> """
         # TODO: Finire
-    
+        for x in when_tag:
+            if x.tag == f"{algorithms.FUNCTIONS_NS}When":
+                algo = algorithms.WhenAlgorithm(x, variables_dict)
+                self.algorithms_dict["when"].append(algo)
+
 
     def parse_algorithm(self, variables_dict, MPGOSparameter_dict):
         """ Esegue il parsing di tutti gli algoritmi. Questi sono interni al tag <fun:Algorithm> """
@@ -343,16 +370,9 @@ class Parser:
         self.logger.debug(msg, msg)
         # END LOG
         algorithm_roottag = Parser.getTagElementByName(f"{algorithms.FUNCTIONS_NS}Algorithm", self.root)
-        for x in algorithm_roottag:
-            if x.tag == f"{algorithms.FUNCTIONS_NS}Assign":
-                algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func)
-                print(algo)
-                self.algorithms.append(algo)
-            """
-            elif x.tag == f"{algorithms.FUNCTIONS_NS}When":
-                algo = algorithms.WhenAlgorithm(x, variables_dict, self.event_conditions)
-                #print(algo)
-                #self.algorithms.append(algo)"""
+        self.parse_assign(algorithm_roottag, variables_dict, MPGOSparameter_dict)
+        self.parse_when(algorithm_roottag, variables_dict, MPGOSparameter_dict)
+        return MPGOSparameter_dict
 
 
     @notifier(
@@ -387,7 +407,7 @@ class Parser:
         MPGOSparams_dict = self.parse_initial_equations(unique_dict, MPGOSparams_dict)
         self.parse_userdefined_function(unique_dict)
         MPGOSparams_dict = self.parse_dynamic_equations(unique_dict, MPGOSparams_dict)
-        self.parse_algorithm(unique_dict, MPGOSparams_dict)
+        MPGOSparams_dict = self.parse_algorithm(unique_dict, MPGOSparams_dict)
         # Ritorno un dizionario di variabili 
         self.unique_dict = MPGOSparams_dict
         # START LOG
@@ -403,5 +423,5 @@ class Parser:
             "\n\nFUNCTIONS\n" + "\n".join([self.userdefined_func[x]._forcpp() for x in self.userdefined_func]) + \
             "\n\nEQUATIONS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["equations"]]) + \
             "\n\nEVENTS\n" + "\n".join([x.__str__() for x in self.dynamic_equations["events"]]) + \
-            "\n\nALGORITHMS\n" + "\n".join([x.__str__() for x in self.algorithms])
+            "\n\nALGORITHMS\n" + "\n".join([x.__str__() for x in self.algorithms_dict["assign"]])
         return string
