@@ -122,7 +122,6 @@ class Model:
             # tale equazione come valore iniziale nella funzione PerThread_Initialization
             if typeeq != 'trigger' and variables_dict[str(equ.left)].init is None:
                 init_equations['initialization'].append(equ)
-            # Se la parte sinistra dell'equazione matcha $whenCondition<numero> allora è un trigger
             othereq_dict[typeeq].append(equ)
         for when_ass in when_assign:
             othereq_dict["normal"].append(when_ass.__str__())

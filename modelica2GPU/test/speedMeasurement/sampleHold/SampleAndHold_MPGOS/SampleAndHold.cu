@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 5.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
@@ -117,8 +117,8 @@ int main() {
     // Listing dei Device CUDA
     ListCUDADevices();
 
-    int MajorVersion = 7; // Major version della CUDA compute capability
-    int MinorVersion = 5; // Minor version della CUDA compute capability
+    int MajorVersion = 6; // Major version della CUDA compute capability
+    int MinorVersion = 1; // Minor version della CUDA compute capability
 
     // Seleziona il Device da utilizzare dando in input la CUDA compute capability e ne stampa le caratteristiche
     int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);

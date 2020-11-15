@@ -190,7 +190,6 @@ class Parser:
         for x in root:
             if x.tag == f"{dynequations.EQUATION_NS}Equation":
                 eq = dynequations._parsetag_eq(x, variables_dict)
-                self.dynamic_equations['equations'].append(eq)
                 # Se la parte sinistra dell'equazione ha associata una variable $PRE
                 # allora devo creare una seconda equazione, nella quale alla variabile
                 # $PRE viene associato il valore corrente della variabile lhs
@@ -202,6 +201,7 @@ class Parser:
                         pre = k
                 if pre is not None:
                     self.dynamic_equations['equations'].append(dynequations.Equation(pre, eq.left))
+                self.dynamic_equations['equations'].append(eq)
                 # Se la parte destra dell'equazione è di tipo Sample
                 # allora controllo se l'attributo new_var della parte destra
                 # sia pari a None oppure no. Questo perché se non è pari a 
@@ -266,7 +266,8 @@ class Parser:
                         cond=when_eq.condition[1],
                         rhs=when_eq.equation.right.__str__()
                     )
-                    self.dynamic_equations['events']['other'].append(dynequations.Equation(when_eq.equation.left, new_eq))
+                    eq = dynequations.Equation(when_eq.equation.left, new_eq)
+                    self.dynamic_equations['events']['other'].append(eq)
 
     
     def parse_dynamic_equations(self, variables_dict, MPGOSparams_dict):
@@ -331,7 +332,6 @@ class Parser:
         for x in assign_tag:
             if x.tag == f"{algorithms.FUNCTIONS_NS}Assign":
                 algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func)
-                self.algorithms_dict["assign"].append(algo)
                 # Controllo l'esistenze della variabile $PRE associata
                 pre = None
                 var = MPGOSparams_dict[algo.left.__str__()]
@@ -340,6 +340,7 @@ class Parser:
                         pre = k
                 if pre is not None:
                     self.algorithms_dict["assign"].append(dynequations.Equation(pre, algo.left))
+                self.algorithms_dict["assign"].append(algo)
                 if isinstance(algo.right, dynequations.Sample):
                     old_name = MPGOSparams_dict[str(algo.left)].nome
                     if old_name.replace("when", "sample") != old_name:
@@ -354,7 +355,7 @@ class Parser:
         return MPGOSparams_dict
                 
     
-    def parse_when(self, when_tag, variables_dict, MPGOSparameter_dict):
+    def parse_when_alg(self, when_tag, variables_dict, MPGOSparameter_dict):
         """ Parsa il tag <fun:When> """
         # TODO: Finire
         for x in when_tag:
@@ -371,7 +372,7 @@ class Parser:
         # END LOG
         algorithm_roottag = Parser.getTagElementByName(f"{algorithms.FUNCTIONS_NS}Algorithm", self.root)
         self.parse_assign(algorithm_roottag, variables_dict, MPGOSparameter_dict)
-        self.parse_when(algorithm_roottag, variables_dict, MPGOSparameter_dict)
+        self.parse_when_alg(algorithm_roottag, variables_dict, MPGOSparameter_dict)
         return MPGOSparameter_dict
 
 

@@ -47,8 +47,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterS
     ACC[1]=ACC[0];
     ACC[0]=(ACCi[0] ? X[0] : ACC[0]);
     X[4]=ACC[0];
-
-}
+}   
 
 template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
     int tid, int NT, int& DOIDX, \
@@ -71,8 +70,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     X[1]=0.0;
     X[2]=0.0;
     X[3]=1.0;
-    ACCi[1]=1;
     X[4]=0.0;
+    ACCi[1]=1;
 
 }
 
