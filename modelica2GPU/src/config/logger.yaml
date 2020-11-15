@@ -2,113 +2,13 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
-  ChatteringControl_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl//log/ChatteringControl.log
-    formatter: simple
-    level: DEBUG
-  HysteresisControl_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/hysteresisControl//log/HysteresisControl.log
-    formatter: simple
-    level: DEBUG
-  IntervalMeasurement_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/intervalMeasurement/log/IntervalMeasurement.log
-    formatter: simple
-    level: DEBUG
-  LoktaVolterra_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/loktaVolterra//log/LoktaVolterra.log
-    formatter: simple
-    level: DEBUG
-  NewtonCooling_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/newtonCooling//log/NewtonCooling.log
-    formatter: simple
-    level: DEBUG
-  SampleAndHold_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/sampleHold/log/SampleAndHold.log
-    formatter: simple
-    level: DEBUG
-  Sampling_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampling//log/Sampling.log
-    formatter: simple
-    level: DEBUG
-  SecondOrderSystemInitParams_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/secondOrderSystem//log/SecondOrderSystemInitParams.log
-    formatter: simple
-    level: DEBUG
-  SwitchedRLC_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/switchedRLC//log/SwitchedRLC.log
-    formatter: simple
-    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
     stream: ext://sys.stdout
-  system_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/prova/log/system.log
-    formatter: simple
-    level: DEBUG
 loggers:
-  ChatteringControl:
-    handlers:
-    - ChatteringControl_handler
-    level: DEBUG
-    propagate: 'no'
-  HysteresisControl:
-    handlers:
-    - HysteresisControl_handler
-    level: DEBUG
-    propagate: 'no'
-  IntervalMeasurement:
-    handlers:
-    - IntervalMeasurement_handler
-    level: DEBUG
-    propagate: 'no'
-  LoktaVolterra:
-    handlers:
-    - LoktaVolterra_handler
-    level: DEBUG
-    propagate: 'no'
-  NewtonCooling:
-    handlers:
-    - NewtonCooling_handler
-    level: DEBUG
-    propagate: 'no'
-  SampleAndHold:
-    handlers:
-    - SampleAndHold_handler
-    level: DEBUG
-    propagate: 'no'
-  Sampling:
-    handlers:
-    - Sampling_handler
-    level: DEBUG
-    propagate: 'no'
-  SecondOrderSystemInitParams:
-    handlers:
-    - SecondOrderSystemInitParams_handler
-    level: DEBUG
-    propagate: 'no'
-  SwitchedRLC:
-    handlers:
-    - SwitchedRLC_handler
-    level: DEBUG
-    propagate: 'no'
   root:
     handlers:
     - console
     level: DEBUG
-  system:
-    handlers:
-    - system_handler
-    level: DEBUG
-    propagate: 'no'
 version: 1

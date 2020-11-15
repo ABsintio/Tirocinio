@@ -79,12 +79,12 @@ class Model:
                 if ivalue == "None":
                     # Controllo che non ci siano variabili con valori iniziali None
                     # Se queste variabili sono presenti, il valore sarà impostato a 0
+                    init_value = "0" if not "sample" in varname else "1"
+                    if value.__class__ in [X, ACC, sPAR]: init_value += ".0"
                     # START LOG
-                    msg = "La variabile " + varname + " non ha alcun valore iniziale. Verrà impostata a 0"
+                    msg = "La variabile " + varname + f" non ha alcun valore iniziale. Verrà impostata a {init_value}"
                     logger.warning(msg, msg)
                     # END LOG
-                    init_value = "0"
-                    if value.__class__ in [X, ACC, sPAR]: init_value += ".0"
                     value.setivalue(init_value)
                 ivalue = value.init.__str__()
                 # Potrebbe accadere che durante il parsing delle variabili, sotto il tag ScalarVariable, 

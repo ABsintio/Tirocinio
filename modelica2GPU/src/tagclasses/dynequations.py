@@ -384,11 +384,11 @@ class Sample:
         # andranno mai a matchare il sample voluto.
         normalize_start = f"(round({values[0]} * 100) / 100)"
         normalize_interval = f"(round({values[1]} * 100) / 100)"
-        sample_str = f"(abs(T - ({normalize_start} + ACCi[{sample_acc_index}] * {normalize_interval})) < 9.0e-10 ? 1.0 : 0.0)" # Stringa
+        sample_str = f"abs(T - ({normalize_start} + ACCi[{sample_acc_index}] * {normalize_interval})) < 9.0e-10" # Stringa
         # Se l'indice del nuovo ACCi non è un nuovo indice allora la variabile che dovrei
         # creare già esiste e di conseguenza non la devo riandare ad inserire.
         nome = f"sample_ACCi_{sample_acc_index}"
-        sample_var = ACCi(nome, sample_acc_index, "sample_ACCi", None, VariableCategory.ALGEBRAIC, "1") # Variabile
+        sample_var = ACCi(nome, sample_acc_index, "sample_ACCi", None, VariableCategory.ALGEBRAIC, "0") # Variabile
         return sample_str, sample_var
     
     def __str__(self): return self.value

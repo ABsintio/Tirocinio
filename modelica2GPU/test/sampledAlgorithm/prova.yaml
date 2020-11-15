@@ -1,0 +1,29 @@
+modelica2gpu:
+  generateXML: False # True se serve generare l'XML, oppure False per utilizzare uno già generato
+  omlibrary: /usr/lib/omlibrary/Modelica 3.2.3/ # Path assoluto alla libreria modelica
+  xml: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampledAlgorithm/system.xml # null se vogliamo far generare l'XML, altrimenti il path assoluto al file
+  workingdir: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampledAlgorithm/ # il path assoluto alla directory che presenta i file modelica
+  modelfilename: system.mo # Il nome del modello (serve in quanto dovrà andare come primo file al compilatore)
+  notifier: False # True se si vogliono attivare le notifiche, False altrimenti
+  filelogger: True # True se si vuole attivare il logger su file (oltre che console per default)
+builder:
+  MPGOSsourcedir: /home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/ # path assoluto alla cartella SourceCode di MPGOS
+  usedefaultoptions: True # True se si vogliono utilizzare le impostazioni di default per gpu, NT, NP, NDO, False altrimenti
+  gpu:
+    major: null # il numero major di versione della CUDA capability (null per default)
+    minor: null # il numero minor di versione della CUDA capability (null per default)
+  modeldefinition:
+    numberOfThreads: null # Numero di Thred da utilizzare (null per default)
+    numberOfProblems: null # Numero di problemi da risolvere (null per deafault)
+    numberOfDenseOutput: null # Numero di Denseoutput da salvare (null per default)
+    threadsPerBlock: null
+    initialTimeStep: null
+    preferSharedMemory: null
+    maximumTimeStep: null
+    minimumTimeStep: null
+    eventDirection: null # Nel numero degli eventi
+    denseOutputMinimumTimeStep: null
+    denseOutputSaveFrequency: null
+    tolerance: null # Nel numero degli stati
+    timeDomainInit: null
+    timeDomainEnd: null

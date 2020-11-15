@@ -78,7 +78,7 @@ class WhenAlgorithm:
     
 
     def __str__(self):
-        return "if (%s){\n%s\n}" % (
+        return "if (%s){\n%s\n    }" % (
             self.condition,
             "\n".join([" "*8 + str(x) for x in self.assignements])
         )

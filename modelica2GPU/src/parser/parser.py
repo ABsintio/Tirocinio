@@ -201,12 +201,12 @@ class Parser:
                         pre = k
                 if pre is not None:
                     self.dynamic_equations['equations'].append(dynequations.Equation(pre, eq.left))
-                self.dynamic_equations['equations'].append(eq)
                 # Se la parte destra dell'equazione è di tipo Sample
                 # allora controllo se l'attributo new_var della parte destra
                 # sia pari a None oppure no. Questo perché se non è pari a 
                 # None allora devo aggiungere una nuova equazione.
                 if isinstance(eq.right, dynequations.Sample):
+                    self.dynamic_equations['events']['other'].append(eq)
                     # Nel momento in cui l'equazione considera la variabile whenCondition
                     # come una condizione su un evento che neanche viene considerato dal
                     # compilatore gli andiamo a cambiare nome in sampleCondition
@@ -218,6 +218,8 @@ class Parser:
                         eq.right.new_var.createMPGOSname(),
                         "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(eq.left),lhs=eq.right.new_var.createMPGOSname())
                     ))
+                else:
+                    self.dynamic_equations['equations'].append(eq)
 
 
     def parse_when(self, root, variables_dict, MPGOSparams_dict):
@@ -241,7 +243,7 @@ class Parser:
                 # non lo inserisco come evento in quanto il compilatore non lo riconosce come tale.
                 # Prima però devo prendere l'equazione corrispondente della condizione
                 eq_cond = None
-                for eq in self.dynamic_equations['equations']:
+                for eq in self.dynamic_equations['events']['other']:
                     if str(eq.left) == when_eq.condition[1]:
                         eq_cond = eq.right
                         break
@@ -332,36 +334,57 @@ class Parser:
         for x in assign_tag:
             if x.tag == f"{algorithms.FUNCTIONS_NS}Assign":
                 algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func)
-                # Controllo l'esistenze della variabile $PRE associata
-                pre = None
-                var = MPGOSparams_dict[algo.left.__str__()]
-                for k, v in MPGOSparams_dict.items():
-                    if "$PRE." + var.qualifiedName == v.qualifiedName:
-                        pre = k
-                if pre is not None:
-                    self.algorithms_dict["assign"].append(dynequations.Equation(pre, algo.left))
-                self.algorithms_dict["assign"].append(algo)
-                if isinstance(algo.right, dynequations.Sample):
-                    old_name = MPGOSparams_dict[str(algo.left)].nome
-                    if old_name.replace("when", "sample") != old_name:
-                        # Allora la variabile già esiste e non faccio niente
-                        MPGOSparams_dict[str(algo.left)].setname(old_name.replace("when", "sample"))
-                        MPGOSparams_dict[algo.right.new_var.createMPGOSname()] = algo.right.new_var
-                        # Inserisco l'equazione per l'aggiornamento del contatore del sampler negli eventi other
-                        self.algorithms_dict['assign'].append(dynequations.Equation(
-                            algo.right.new_var.createMPGOSname(),
-                            "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(algo.left),lhs=algo.right.new_var.createMPGOSname())
-                        ))
+                # Controllo, perchè per qualche assurdo motivo succede, che se l'assegnamento è
+                # del tipo x = pre(x) allora la variabile pre(x) esista, se non esiste allora
+                # l'assegnamento non è valido.
+                if isinstance(algo.right, dynequations.Pre) and not algo.right.__str__() in MPGOSparams_dict:
+                    # Se è un PRE che non è presente in MPGOSparams_dict allora lo aggiungo
+                    # tanto la variabile è stat aggiunta da QualifiedNamePart in variables_dict
+                    MPGOSparams_dict[algo.right.__str__()] = variables_dict[list(variables_dict.keys())[-1]]
+                else:
+                    # Controllo l'esistenze della variabile $PRE associata
+                    pre = None
+                    var = MPGOSparams_dict[algo.left.__str__()]
+                    for k, v in MPGOSparams_dict.items():
+                        if "$PRE." + var.qualifiedName == v.qualifiedName:
+                            pre = k
+                    if pre is not None:
+                        self.algorithms_dict["assign"].append(dynequations.Equation(pre, algo.left))
+                    self.algorithms_dict["assign"].append(algo)
+                    if isinstance(algo.right, dynequations.Sample):
+                        old_name = MPGOSparams_dict[str(algo.left)].nome
+                        if old_name.replace("when", "sample") != old_name:
+                            # Allora la variabile già esiste e non faccio niente
+                            MPGOSparams_dict[str(algo.left)].setname(old_name.replace("when", "sample"))
+                            MPGOSparams_dict[algo.right.new_var.createMPGOSname()] = algo.right.new_var
+                            # Inserisco l'equazione per l'aggiornamento del contatore del sampler negli eventi other
+                            self.algorithms_dict['assign'].append(dynequations.Equation(
+                                algo.right.new_var.createMPGOSname(),
+                                "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(algo.left),lhs=algo.right.new_var.createMPGOSname())
+                            ))
         return MPGOSparams_dict
                 
     
     def parse_when_alg(self, when_tag, variables_dict, MPGOSparameter_dict):
         """ Parsa il tag <fun:When> """
-        # TODO: Finire
         for x in when_tag:
             if x.tag == f"{algorithms.FUNCTIONS_NS}When":
                 algo = algorithms.WhenAlgorithm(x, variables_dict)
                 self.algorithms_dict["when"].append(algo)
+                condition = algo.condition
+                conditions = []
+                if isinstance(condition, dynequations.Identifier):
+                    conditions = [condition.__str__()]
+                elif isinstance(condition, dynequations.Or):
+                    conditions = [x.strip() for x in str(condition).split("||")]
+                for cond in conditions:
+                    # Cerco l'espressione con la parte sinistra associata alla condizione
+                    alg = [x for x in self.algorithms_dict['assign'] if str(x.left) == cond][-1]
+                    # Se la parte destra è di tipo Sample allora la appendo all'evento appena inserito
+                    # altrimenti non faccio niente. Ovviamente la rimuovo dagli assegnamenti normali
+                    if isinstance(alg.right, dynequations.Sample):
+                        self.algorithms_dict['assign'].remove(alg)
+                        self.algorithms_dict["when"].append(alg)
 
 
     def parse_algorithm(self, variables_dict, MPGOSparameter_dict):
@@ -408,7 +431,21 @@ class Parser:
         MPGOSparams_dict = self.parse_initial_equations(unique_dict, MPGOSparams_dict)
         self.parse_userdefined_function(unique_dict)
         MPGOSparams_dict = self.parse_dynamic_equations(unique_dict, MPGOSparams_dict)
-        MPGOSparams_dict = self.parse_algorithm(unique_dict, MPGOSparams_dict)
+        MPGOSparams_dict = self.parse_algorithm(unique_dict, MPGOSparams_dict) 
+        # Devo prendere le sampleCondition e le devo inserire come ultime equazioni
+        sample_conditions = []
+        for eq in self.dynamic_equations['events']['other']:
+            if isinstance(eq.right, dynequations.Sample):
+                self.dynamic_equations['events']['other'].remove(eq)
+                sample_conditions.append(eq)
+        self.dynamic_equations['events']['other'].extend(sample_conditions)
+        # Devo fare la stessa cosa per quanto riguarda gli algoritmi
+        sample_conditions = []
+        for algo in self.algorithms_dict['assign']:
+            if isinstance(algo.right, dynequations.Sample):
+                self.algorithms_dict['assign'].remove(algo)
+                sample_conditions.append(algo)
+        self.algorithms_dict['assign'].extend(sample_conditions)
         # Ritorno un dizionario di variabili 
         self.unique_dict = MPGOSparams_dict
         # START LOG

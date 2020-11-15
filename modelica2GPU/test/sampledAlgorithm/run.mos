@@ -1,0 +1,6 @@
+loadModel(Modelica);
+loadFile("system.mo");
+getErrorString();
+simulate(system, stopTime=2);
+getErrorString();
+plot({x, x_sampled, i}, externalWindow=true);
