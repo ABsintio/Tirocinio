@@ -19,7 +19,6 @@ LITERALS = [
     f"{EXPRESSION_NS}StringLiteral"
 ]
 
-
 # ----------------------------------------- # DEFINIZIONE OPERATORI MATEMATICI SEMPLICI  # ----------------------------------------- #
 
 
@@ -300,8 +299,10 @@ class QualifiedName:
         # del modello siano state parsate durante la prima fase di parsing del tag <ModelVariable>
         if string.startswith("$PRE") and string not in self.variables_dict:
             var = self.variables_dict[string[5:]]
-            self.indexs = [x.id for x in self.variables_dict.values() if isinstance(x, var.__class__)][-1] + 1
-            pre_var = var.__class__(string, self.indexs, string, None, var.category, var.init)
+            obj = var.__class__ if not isinstance(var, X) else ACC
+            obj_list = [x.id for x in self.variables_dict.values() if isinstance(x, obj)]
+            self.indexs = obj_list[-1] + 1 if obj_list else 0
+            pre_var = obj(string, self.indexs, string, None, var.category, var.init)
             self.variables_dict[string] = pre_var
         return self.variables_dict[string].createMPGOSname() if self.variables_dict is not None and string in self.variables_dict \
                else string

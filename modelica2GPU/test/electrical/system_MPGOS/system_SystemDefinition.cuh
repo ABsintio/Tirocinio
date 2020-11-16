@@ -12,9 +12,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
 	Precision*    F, Precision*    X, Precision     T, \
 	Precision* cPAR, Precision* sPAR, int*      sPARi, Precision* ACC, int* ACCi  		
 ) {
-    F[1]=((sPAR[3] - X[0]) / sPAR[1]);
     ACC[1]=(X[0] / sPAR[2]);
     ACC[0]=(X[1] - ACC[1]);
+    F[1]=((sPAR[3] - X[0]) / sPAR[1]);
     F[0]=(ACC[0] / sPAR[0]);
 
 }

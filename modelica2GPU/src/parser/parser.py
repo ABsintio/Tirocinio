@@ -197,7 +197,7 @@ class Parser:
                 # Controllo l'esistenze della variabile $PRE associata
                 var = MPGOSparams_dict[eq.left.__str__()]
                 for k, v in MPGOSparams_dict.items():
-                    if "$PRE." + var.qualifiedName == v.qualifiedName:
+                    if "$PRE." + var.nome == v.nome:
                         pre = k
                 if pre is not None:
                     self.dynamic_equations['equations'].append(dynequations.Equation(pre, eq.left))
@@ -206,7 +206,7 @@ class Parser:
                 # sia pari a None oppure no. Questo perché se non è pari a 
                 # None allora devo aggiungere una nuova equazione.
                 if isinstance(eq.right, dynequations.Sample):
-                    self.dynamic_equations['events']['other'].append(eq)
+                    self.dynamic_equations['equations'].append(eq)
                     # Nel momento in cui l'equazione considera la variabile whenCondition
                     # come una condizione su un evento che neanche viene considerato dal
                     # compilatore gli andiamo a cambiare nome in sampleCondition
@@ -214,7 +214,7 @@ class Parser:
                     MPGOSparams_dict[str(eq.left)].setname(old_name.replace("when", "sample"))
                     MPGOSparams_dict[eq.right.new_var.createMPGOSname()] = eq.right.new_var
                     # Inserisco l'equazione per l'aggiornamento del contatore del sampler negli eventi other
-                    self.dynamic_equations['events']['other'].append(dynequations.Equation(
+                    self.dynamic_equations['equations'].append(dynequations.Equation(
                         eq.right.new_var.createMPGOSname(),
                         "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(eq.left),lhs=eq.right.new_var.createMPGOSname())
                     ))
@@ -243,7 +243,7 @@ class Parser:
                 # non lo inserisco come evento in quanto il compilatore non lo riconosce come tale.
                 # Prima però devo prendere l'equazione corrispondente della condizione
                 eq_cond = None
-                for eq in self.dynamic_equations['events']['other']:
+                for eq in self.dynamic_equations['equations']:
                     if str(eq.left) == when_eq.condition[1]:
                         eq_cond = eq.right
                         break
@@ -269,7 +269,7 @@ class Parser:
                         rhs=when_eq.equation.right.__str__()
                     )
                     eq = dynequations.Equation(when_eq.equation.left, new_eq)
-                    self.dynamic_equations['events']['other'].append(eq)
+                    self.dynamic_equations['equations'].append(eq)
 
     
     def parse_dynamic_equations(self, variables_dict, MPGOSparams_dict):
@@ -341,7 +341,7 @@ class Parser:
                     # Se è un PRE che non è presente in MPGOSparams_dict allora lo aggiungo
                     # tanto la variabile è stat aggiunta da QualifiedNamePart in variables_dict
                     MPGOSparams_dict[algo.right.__str__()] = variables_dict[list(variables_dict.keys())[-1]]
-                else:
+                elif not "$START" in str(algo.right): # $START non deve essere inserito (non vuol dire niente)
                     # Controllo l'esistenze della variabile $PRE associata
                     pre = None
                     var = MPGOSparams_dict[algo.left.__str__()]
@@ -372,12 +372,9 @@ class Parser:
                 algo = algorithms.WhenAlgorithm(x, variables_dict)
                 self.algorithms_dict["when"].append(algo)
                 condition = algo.condition
-                conditions = []
-                if isinstance(condition, dynequations.Identifier):
-                    conditions = [condition.__str__()]
-                elif isinstance(condition, dynequations.Or):
-                    conditions = [x.strip() for x in str(condition).split("||")]
+                conditions = re.finditer(r"(ACC|sPAR|X|ACCi)\[[0-9]+\]", condition.__str__())
                 for cond in conditions:
+                    cond = cond.group()
                     # Cerco l'espressione con la parte sinistra associata alla condizione
                     alg = [x for x in self.algorithms_dict['assign'] if str(x.left) == cond][-1]
                     # Se la parte destra è di tipo Sample allora la appendo all'evento appena inserito
@@ -432,19 +429,38 @@ class Parser:
         self.parse_userdefined_function(unique_dict)
         MPGOSparams_dict = self.parse_dynamic_equations(unique_dict, MPGOSparams_dict)
         MPGOSparams_dict = self.parse_algorithm(unique_dict, MPGOSparams_dict) 
+        # Ordino anche le equazioni when che vanno in equations
+        der_eq = []
+        index = 0
+        while index < len(self.dynamic_equations['equations']):
+            if isinstance(self.dynamic_equations['equations'][index].left, dynequations.Der):
+                element = self.dynamic_equations['equations'][index]
+                self.dynamic_equations['equations'].remove(element)
+                der_eq.append(element)
+            else:
+                index += 1
+        self.dynamic_equations['equations'].extend(der_eq)
         # Devo prendere le sampleCondition e le devo inserire come ultime equazioni
         sample_conditions = []
-        for eq in self.dynamic_equations['events']['other']:
-            if isinstance(eq.right, dynequations.Sample):
-                self.dynamic_equations['events']['other'].remove(eq)
-                sample_conditions.append(eq)
-        self.dynamic_equations['events']['other'].extend(sample_conditions)
+        index = 0
+        while index < len(self.dynamic_equations['equations']):
+            element = self.dynamic_equations['equations'][index]
+            if isinstance(element.right, dynequations.Sample):
+                self.dynamic_equations['equations'].remove(element)
+                sample_conditions.append(element)
+            else:
+                index += 1
+        self.dynamic_equations['equations'].extend(sample_conditions)
         # Devo fare la stessa cosa per quanto riguarda gli algoritmi
         sample_conditions = []
-        for algo in self.algorithms_dict['assign']:
+        index = 0
+        while index < len(self.algorithms_dict['assign']):
+            algo = self.algorithms_dict['assign'][index]
             if isinstance(algo.right, dynequations.Sample):
                 self.algorithms_dict['assign'].remove(algo)
                 sample_conditions.append(algo)
+            else:
+                index += 1
         self.algorithms_dict['assign'].extend(sample_conditions)
         # Ritorno un dizionario di variabili 
         self.unique_dict = MPGOSparams_dict

@@ -33,7 +33,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
     if (IDX == 0){
-	    X[1]=((-(sPAR[0])) * X[1]);
+	    X[1]=((-(sPAR[0])) * ACC[0]);
     }
 
 }
@@ -43,7 +43,8 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterS
     Precision&    T, Precision&   dT, Precision*    TD, Precision*   X, \
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
-    
+    ACC[0]=X[1];
+
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_Initialization(
@@ -58,6 +59,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     sPAR[1]=1.0;
     X[0]=sPAR[1];
     X[1]=0.0;
+    ACC[0]=0.0;
 
 }
 

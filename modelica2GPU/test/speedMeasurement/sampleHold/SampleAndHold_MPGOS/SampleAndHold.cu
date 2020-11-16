@@ -117,8 +117,8 @@ int main() {
     // Listing dei Device CUDA
     ListCUDADevices();
 
-    int MajorVersion = 6; // Major version della CUDA compute capability
-    int MinorVersion = 1; // Minor version della CUDA compute capability
+    int MajorVersion = 7; // Major version della CUDA compute capability
+    int MinorVersion = 5; // Minor version della CUDA compute capability
 
     // Seleziona il Device da utilizzare dando in input la CUDA compute capability e ne stampa le caratteristiche
     int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);

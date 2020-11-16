@@ -15,13 +15,13 @@ using namespace std;
 
 #define SOLVER RK4 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 2;
 const int NCP  = 1;
 const int NSP  = 2;
 const int NISP = 0;
 const int NE   = 1;
-const int NA   = 0;
+const int NA   = 1;
 const int NIA  = 1;
 const int NDO  = 1000;
 
@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 6.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 3.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
@@ -77,12 +77,14 @@ void SaveData(
         DataFile.width(Width); DataFile << "X_v" << ',';
         DataFile.width(Width); DataFile << "sPAR_e" << ',';
         DataFile.width(Width); DataFile << "sPAR_h0" << ',';
+        DataFile.width(Width); DataFile << "ACC_$PRE.v" << ',';
         DataFile.width(Width); DataFile << "ACCi_$whenCondition1" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 1) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 0) << ',';
 
         DataFile << '\n';

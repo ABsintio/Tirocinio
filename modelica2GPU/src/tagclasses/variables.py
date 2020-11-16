@@ -1,5 +1,5 @@
 from exceptions import builtExceptions
-from tagclasses import tagclasses
+from tagclasses import dynequations
 
 
 #--------------------------# DEFINIZIONE DELLE CLASSI CHE RAPRESENTANO TAG ALL'INTERNO DELL'XML   # --------------------------#		
@@ -135,7 +135,7 @@ def _parsetag_var(scalar_variable_tag):
 		scalar_variable_tag.attrib['variability'],									   # variability
 		scalar_variable_tag.attrib['alias'],										   # alias
 		VariableCategory.getcategory(scalar_variable_tag[3].text),					   # variableCategory
-		tagclasses.QualifiedName(scalar_variable_tag[1]).__str__()			           # qualifiedName
+		dynequations.QualifiedName(scalar_variable_tag[1]).__str__()			           # qualifiedName
 	]
 	# Dopodiché riconosciamo il tipo della variabile (Real, Boolean, Integer) e costruiamo l'istanza associata
 	fixed = scalar_variable_tag[0].attrib.get('fixed')

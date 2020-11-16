@@ -93,7 +93,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = 1; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 64; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA

@@ -16,6 +16,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
     F[3]=X[1];
     F[0]=(((sPAR[2] * (X[3] - X[2])) + (sPAR[4] * (X[1] - X[0]))) / sPAR[0]);
     F[2]=X[0];
+
 }
 
 template<class Precision> __forceinline__ __device__ void PerThread_EventFunction(
@@ -23,7 +24,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_EventFunctio
 	Precision     T, Precision    dT, Precision*    TD, Precision*	X, \
 	Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi  		
 ) {
+    ACC[4]=ACC[3];
     ACCi[1]=X[2] <= ACC[4];
+    ACC[5]=ACC[1];
     ACCi[0]=X[2] >= ACC[5];
 
     EF[0] = (! ((ACCi[1] || ACCi[0])));
@@ -44,7 +47,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
 	    ACC[1]=(X[2] + sPAR[6]);
     }
     if (IDX == 0){
-        ACC[2]=(sPAR[6] / (T - ACC[7]));
+	    ACC[2]=(sPAR[6] / (T - ACC[7]));
     }
 
 }

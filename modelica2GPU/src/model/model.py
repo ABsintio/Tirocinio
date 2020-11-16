@@ -1,7 +1,8 @@
 from tagclasses.variables import *
 import re
 from utils.graph import *
-from tagclasses.tagclasses import *
+from tagclasses import dynequations
+from tagclasses.dynequations import *
 from utils.notifier import notifier
 import sys
 
@@ -30,7 +31,7 @@ class Model:
         self.events     = events['when']                                     # Prendo gli eventi
         # Prendo le altre equazioni rimanenti
         self.othereq    = Model.getOtherEq(
-            algorithms["assign"] + equations + events['other'], 
+            algorithms["assign"], equations + events['other'], 
             algorithms["when"],
             self.init, variables_dict, logger
             )
@@ -108,13 +109,14 @@ class Model:
 
 
     @staticmethod
-    def getOtherEq(equations, when_assign, init_equations, variables_dict, logger):
+    def getOtherEq(assign, equations, when_assign, init_equations, variables_dict, logger):
         """ Prende le equazioni restanti e le divide tra quelle che scatenano eventi e quelle normali """
         # START LOG
         msg = "Ottengo le equazioni restanti e gli algoritmi per il modello"
         logger.debug(msg, msg)
         # END LOG
         othereq_dict = {"trigger": [], "normal": []}
+        # Classifichiamo le equazioni
         for equ in equations:
             lhs = variables_dict[equ.left.__str__()].nome
             typeeq = 'trigger' if re.match(r"\$whenCondition\d+", lhs) else 'normal'
@@ -122,7 +124,25 @@ class Model:
             # tale equazione come valore iniziale nella funzione PerThread_Initialization
             if typeeq != 'trigger' and variables_dict[str(equ.left)].init is None:
                 init_equations['initialization'].append(equ)
+            # E' possibile che la condizione sia su variabili $PRE, di conseguenza
+            # queste variabili devono essere inserite prima della condizione stessa
+            # e quindi se questa condizione è una when allora vuol dire che viene
+            # inserito in EventFunction, di conseguenza anche il PRE deve essere inserito 
+            # nello stessa posizione in quanto il valore dello stato che si vuole mantenere
+            # non è quello aggiornato al termine del time step corrente.
+            if typeeq == "trigger":
+                involved_vars = re.finditer(r"(ACC|sPAR|X|ACCi)\[[0-9]+\]", equ.right.__str__().strip())
+                for var in involved_vars:
+                    pre = variables_dict[var.group()]
+                    if "$PRE" in pre.nome:
+                        nonpre = variables_dict[var.group()].nome[5:]
+                        nonpre_mpgos = [x.createMPGOSname() for x in variables_dict.values() if x.nome == nonpre][-1]
+                        othereq_dict[typeeq].append(Equation(pre.createMPGOSname(), nonpre_mpgos))
             othereq_dict[typeeq].append(equ)
+        # Inseriamo le espressioni di assegnamento
+        for ass in assign:
+            othereq_dict["normal"].append(ass.__str__())
+        # Inseriamo gli eventi
         for when_ass in when_assign:
             othereq_dict["normal"].append(when_ass.__str__())
         return othereq_dict
