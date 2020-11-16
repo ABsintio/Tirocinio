@@ -13,9 +13,9 @@
 
 using namespace std;
 
-#define SOLVER RK4 // Runge-Kutta Order 4th
+#define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 1;
+const int NT   = 10000;
 const int SD   = 2;
 const int NCP  = 1;
 const int NSP  = 4;
@@ -117,6 +117,8 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
+    Solver.SolverOption(TimeStepGrowLimit, 1.0);
+    Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);

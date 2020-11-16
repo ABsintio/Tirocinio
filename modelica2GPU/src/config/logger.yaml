@@ -7,6 +7,21 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Bouncingball/v1/log/BouncingBall.log
     formatter: simple
     level: DEBUG
+  ChatteringControl_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/chatteringControl/log/ChatteringControl.log
+    formatter: simple
+    level: DEBUG
+  HysteresisControlWithAlgorithms_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/hysteresisAlgorithm/log/HysteresisControlWithAlgorithms.log
+    formatter: simple
+    level: DEBUG
+  HysteresisControl_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/hysteresisControl/log/HysteresisControl.log
+    formatter: simple
+    level: DEBUG
   IntervalMeasurement_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/intervalMeasurement/log/IntervalMeasurement.log
@@ -65,6 +80,21 @@ loggers:
   BouncingBall:
     handlers:
     - BouncingBall_handler
+    level: DEBUG
+    propagate: 'no'
+  ChatteringControl:
+    handlers:
+    - ChatteringControl_handler
+    level: DEBUG
+    propagate: 'no'
+  HysteresisControl:
+    handlers:
+    - HysteresisControl_handler
+    level: DEBUG
+    propagate: 'no'
+  HysteresisControlWithAlgorithms:
+    handlers:
+    - HysteresisControlWithAlgorithms_handler
     level: DEBUG
     propagate: 'no'
   IntervalMeasurement:

@@ -13,16 +13,16 @@
 
 using namespace std;
 
-#define SOLVER RK4 // Runge-Kutta Order 4th
+#define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 1;
+const int NT   = 10000;
 const int SD   = 2;
 const int NCP  = 1;
 const int NSP  = 5;
 const int NISP = 0;
 const int NE   = 2;
 const int NA   = 1;
-const int NIA  = 3;
+const int NIA  = 4;
 const int NDO  = 1000;
 
 
@@ -83,6 +83,7 @@ void SaveData(
         DataFile.width(Width); DataFile << "ACCi_$whenCondition1" << ',';
         DataFile.width(Width); DataFile << "ACCi_$whenCondition2" << ',';
         DataFile.width(Width); DataFile << "ACCi_heat" << ',';
+        DataFile.width(Width); DataFile << "ACCi_$PRE.heat" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 0) << ',';
@@ -94,6 +95,7 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 2) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 3) << ',';
 
         DataFile << '\n';
     }
@@ -107,8 +109,8 @@ int main() {
     // Listing dei Device CUDA
     ListCUDADevices();
 
-    int MajorVersion = 6; // Major version della CUDA compute capability
-    int MinorVersion = 1; // Minor version della CUDA compute capability
+    int MajorVersion = 7; // Major version della CUDA compute capability
+    int MinorVersion = 5; // Minor version della CUDA compute capability
 
     // Seleziona il Device da utilizzare dando in input la CUDA compute capability e ne stampa le caratteristiche
     int SelectedDevice = SelectDeviceByClosestRevision(MajorVersion, MinorVersion);
@@ -121,6 +123,8 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
+    Solver.SolverOption(TimeStepGrowLimit, 1.0);
+    Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
     Solver.SolverOption(EventDirection, 0, 0);
     Solver.SolverOption(EventDirection, 1, 0);

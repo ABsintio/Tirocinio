@@ -15,7 +15,7 @@ def wrapTime(f):
         print(f"simulationTime: {(end - start)*1000}ms")
     return wrapper
 
-os.system("omc run.mos > out")
+os.system("omc build.mos > out")
 
 
 def simulate(i):
@@ -31,9 +31,12 @@ def simulate(i):
 @wrapTime
 def runTest(i):
     num_process = i if i < 1000 else 100
-    with multiprocessing.Pool(processes=num_process) as pool:
-        results = pool.map_async(simulate, list(range(i)))
-        results.wait()
+    if i == 1:
+        simulate(i)
+    else:
+        with multiprocessing.Pool(processes=num_process) as pool:
+            results = pool.map_async(simulate, list(range(i)))
+            results.wait()
 
 k = 1
 while k <= 10000:

@@ -1,69 +1,6 @@
 <?xml version="1.0"?>
 <tests>
     <test id="01">
-        <modelname value="Sampling.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampling/" />
-        <successfulTranslation value="true" />
-        <spentTraslationTime value="1.004ms" />
-        <MPGOScompilation value="true" />
-        <simulations>
-            <simulation number="01" cpu="22.405ms" gpu="2.067ms" />
-            <simulation number="10" cpu="37.575ms" gpu="4.383ms" />
-            <simulation number="100" cpu="351.100ms" gpu="5.962ms" />
-            <simulation number="1000" cpu="2870.899ms" gpu="11.729ms" />
-            <simulation number="10000" cpu="27629.130ms" gpu="102.053ms" />
-        </simulations>
-        <simulationResult value="Success" />
-    </test>
-    <test id="02">
-        <modelname value="system.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/ifmodel/" />
-        <successfulTranslation value="true" />
-        <spentTraslationTime value="1.130ms" />
-        <MPGOScompilation value="true" />
-        <simulations>
-            <simulation number="01" cpu="23.587ms" gpu="10.135ms" />
-            <simulation number="10" cpu="39.668ms" gpu="10.215ms" />
-            <simulation number="100" cpu="379.836ms" gpu="12.076ms" />
-            <simulation number="1000" cpu="3089.197ms" gpu="19.266ms" />
-            <simulation number="10000" cpu="29685.506ms" gpu="145.436ms" />
-        </simulations>
-        <simulationResult value="Success" />
-    </test>
-    <test id="03">
-        <modelname value="MyModel.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/TestModel/" />
-        <successfulTranslation value="true" />
-        <spentTraslationTime value="2.510ms" />
-        <MPGOScompilation value="true" />
-        <simulations>All failed both in MGPOS and Modelica at time=3.89e00</simulations>
-        <simulationResult value="Success" />
-    </test>
-    <test id="04">
-        <modelname value="DTS.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/dts/" />
-        <successfulTranslation value="true" />
-        <spentTraslationTime value="1.320ms" />
-        <MPGOScompilation value="true" />
-        <simulations>MPGOS simulation failed because DTS is a discrete time system</simulations>
-        <simulationResult value="Failed" />
-    </test>
-    <test id="05">
-        <modelname value="system.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/" />
-        <successfulTranslation value="true" description="L'XML creato non veniva parsato bene da Python, modif. a mano"/>
-        <spentTraslationTime value="0.963ms" />
-        <MPGOScompilation value="true" />
-        <simulations>
-            <simulation number="01" cpu="24.722ms" gpu="11.573ms" />
-            <simulation number="10" cpu="41.400ms" gpu="11.758ms" />
-            <simulation number="100" cpu="378.756" gpu="15.707ms" />
-            <simulation number="1000" cpu="2987.803ms" gpu="32.611ms" />
-            <simulation number="10000" cpu="28983.087ms" gpu="370.343ms" />
-        </simulations>
-        <simulationResult value="Success" />
-    </test>
-    <test id="06">
         <modelname value="BouncingBall.mo" />
         <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Bouncingball/v1/" />
         <successfulTranslation value="true"/>
@@ -78,27 +15,102 @@
         </simulations>
         <simulationResult value="Success" />
     </test>
-    <test id="07">
-        <modelname value="BouncingBall.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Bouncingball/v2/" />
-        <successfulTranslation value="true"/>
-        <spentTraslationTime value="1.260ms" />
-        <MPGOScompilation value="true" />
-        <simulations>Error on simulation: MPGOS model doesn't equal to Modelica model</simulations>
-        <simulationResult value="Failed" />
-    </test>
-    <test id="08">
-        <modelname value="SecondOrderSystemInitParams.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/secondOrderSystem/" />
-        <successfulTranslation value="true"/>
-        <spentTraslationTime value="0.701ms" />
+    <test id="02">
+        <modelname value="system.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/CTSModelica/" />
+        <successfulTranslation value="true" description="L'XML creato non veniva parsato bene da Python, modif. a mano"/>
+        <spentTraslationTime value="0.963ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation value="01" cpu="9.417ms" gpu="3.073ms" />
-            <simulation value="10" cpu="107.861ms" gpu="30.327ms" />
-            <simulation value="100" cpu="985.065ms" gpu="280.236ms" />
-            <simulation value="1000" cpu="9657.008ms" gpu="2618.26ms" />
-            <simulation value="10000" cpu="97075.364ms" gpu="25677.8ms" />
+            <simulation number="01" cpu="24.722ms" gpu="11.573ms" />
+            <simulation number="10" cpu="41.400ms" gpu="11.758ms" />
+            <simulation number="100" cpu="378.756" gpu="15.707ms" />
+            <simulation number="1000" cpu="2987.803ms" gpu="32.611ms" />
+            <simulation number="10000" cpu="28983.087ms" gpu="370.343ms" />
+        </simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="03">
+        <modelname value="DTS.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/dts/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.320ms" />
+        <MPGOScompilation value="true" />
+        <simulations>MPGOS simulation failed because DTS is a discrete time system</simulations>
+        <simulationResult value="Failed" />
+    </test>
+    <test id="04">
+        <modelname value="system.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/electrical/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="0.930ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation value="01" cpu="9.488ms" gpu="33.955ms" />
+            <simulation value="10" cpu="46.966ms" gpu="34.008ms" />
+            <simulation value="100" cpu="369.791ms" gpu="71.134ms" />
+            <simulation value="1000" cpu="2920.997ms" gpu="112.066ms" />
+            <simulation value="10000" cpu="29601.363ms" gpu="441.445ms" />
+        </simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="05">
+        <modelname value="HysteresisControl.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/hysteresisControl/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="1.028ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation value="01" cpu="13.848ms" gpu="2.3ms" />
+            <simulation value="10" cpu="47.314ms" gpu="2.486ms" />
+            <simulation value="100" cpu="366.986ms" gpu="3.583ms" />
+            <simulation value="1000" cpu="3000.684ms" gpu="14.632ms" />
+            <simulation value="10000" cpu="30478.822ms" gpu="164.826ms" />
+        </simulations>
+        <simulationResult value="Success"/>
+    </test>
+    <test id="06">
+        <modelname value="HysteresisControlWithAlgorithms.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Hysteresis/hysteresisAlgorithm/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="0.961ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation value="01" cpu="18.333ms" gpu="1.775ms" />
+            <simulation value="10" cpu="55.585ms" gpu="1.897ms" />
+            <simulation value="100" cpu="455.482ms" gpu="3.157ms" />
+            <simulation value="1000" cpu="2978.77ms" gpu="15.052ms" />
+            <simulation value="10000" cpu="30743.188ms" gpu="139.788ms" />
+        </simulations>
+        <simulationResult value="Success"/>
+    </test>
+    <test id="07">
+        <modelname value="system.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/ifmodel/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.130ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation number="01" cpu="23.587ms" gpu="10.135ms" />
+            <simulation number="10" cpu="39.668ms" gpu="10.215ms" />
+            <simulation number="100" cpu="379.836ms" gpu="12.076ms" />
+            <simulation number="1000" cpu="3089.197ms" gpu="19.266ms" />
+            <simulation number="10000" cpu="29685.506ms" gpu="145.436ms" />
+        </simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="08">
+        <modelname value="LoktaVolterra.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/loktaVolterra/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="1.220ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation value="01" cpu="9.353ms" gpu="8.057ms" />
+            <simulation value="10" cpu="48.169ms" gpu="14.998ms" />
+            <simulation value="100" cpu="354.883ms" gpu="53.737ms" />
+            <simulation value="1000" cpu="2969.461ms" gpu="393.709ms" />
+            <simulation value="10000" cpu="29906.086ms" gpu="518.924ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
@@ -110,59 +122,74 @@
         <MPGOScompilation value="true" />
         <simulations>
             <simulation value="01" cpu="9.242ms" gpu="0.431ms" />
-            <simulation value="10" cpu="98.114ms" gpu="4.029ms" />
-            <simulation value="100" cpu="936.490ms" gpu="38.716ms" />
-            <simulation value="1000" cpu="9358.126ms" gpu="386.681ms" />
-            <simulation value="10000" cpu="93324.726ms" gpu="3501.66ms" />
+            <simulation value="10" cpu="46.563ms" gpu="0.509ms" />
+            <simulation value="100" cpu="359.254ms" gpu="4.299ms" />
+            <simulation value="1000" cpu="2939.875ms" gpu="9.608ms" />
+            <simulation value="10000" cpu="29010.306ms" gpu="89.649ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
     <test id="10">
         <modelname value="system.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/electrical/" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampledAlgorithm/" />
         <successfulTranslation value="true"/>
-        <spentTraslationTime value="0.930ms" />
+        <spentTraslationTime value="0.952ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation value="01" cpu="9.488ms" gpu="8.164ms" />
-            <simulation value="10" cpu="92.051ms" gpu="84.727ms" />
-            <simulation value="100" cpu="1021.536ms" gpu="742.292ms" />
-            <simulation value="1000" cpu="10505.986ms" gpu="6901.44ms" />
-            <simulation value="10000" cpu="104421.978ms" gpu="68670.8ms" />
+            <simulation value="01" cpu="13.551ms" gpu="2.376ms" />
+            <simulation value="10" cpu="43.012ms" gpu="2.466ms" />
+            <simulation value="100" cpu="360.752ms" gpu="4.614ms" />
+            <simulation value="1000" cpu="2938.125ms" gpu="15.847ms" />
+            <simulation value="10000" cpu="28707.366ms" gpu="177.643ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
     <test id="11">
-        <modelname value="LoktaVolterra.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/loktaVolterra/" />
-        <successfulTranslation value="true"/>
-        <spentTraslationTime value="1.220ms" />
+        <modelname value="Sampling.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampling/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.004ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation value="01" cpu="9.353ms" gpu="8.057ms" />
-            <simulation value="10" cpu="90.476ms" gpu="83.478ms" />
-            <simulation value="100" cpu="1417.036ms" gpu="723.239ms" />
-            <simulation value="1000" cpu="12889.128ms" gpu="6828.64ms" />
-            <simulation value="10000" cpu="125540.920ms" gpu="68132.4ms" />
+            <simulation number="01" cpu="22.405ms" gpu="2.067ms" />
+            <simulation number="10" cpu="37.575ms" gpu="4.383ms" />
+            <simulation number="100" cpu="351.100ms" gpu="5.962ms" />
+            <simulation number="1000" cpu="2870.899ms" gpu="11.729ms" />
+            <simulation number="10000" cpu="27629.130ms" gpu="102.053ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
     <test id="12">
-        <modelname value="SwitchedRLC.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/switchedRLC/" />
+        <modelname value="SecondOrderSystemInitParams.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/secondOrderSystem/" />
         <successfulTranslation value="true"/>
-        <spentTraslationTime value="1.519ms" />
+        <spentTraslationTime value="0.701ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation value="01" cpu="9.860ms" gpu="2.094ms" />
-            <simulation value="10" cpu="103.656ms" gpu="20.591ms" />
-            <simulation value="100" cpu="966.878ms" gpu="224.657ms" />
-            <simulation value="1000" cpu="9628.375ms" gpu="1790.22ms" />
-            <simulation value="10000" cpu="96195.345ms" gpu="17526.1ms" />
+            <simulation value="01" cpu="9.417ms" gpu="3.073ms" />
+            <simulation value="10" cpu="46.187ms" gpu="6.14ms" />
+            <simulation value="100" cpu="385.541ms" gpu="8.595ms" />
+            <simulation value="1000" cpu="3094.782ms" gpu="27.235ms" />
+            <simulation value="10000" cpu="30358.542ms" gpu="195.313ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
     <test id="13">
+        <modelname value="IntervalMeasurement.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/intervalMeasurement/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="0.731ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation value="01" cpu="14.975ms" gpu="4.164ms" />
+            <simulation value="10" cpu="57.365ms" gpu="8.071ms" />
+            <simulation value="100" cpu="487.894ms" gpu="74.48ms" />
+            <simulation value="1000" cpu="4072.347ms" gpu="141.015ms" />
+            <simulation value="10000" cpu="45909.795ms" gpu="610.376ms" />
+        </simulations>
+        <simulationResult value="Success"/>
+    </test>
+    <test id="15">
         <modelname value="SampleAndHold.mo" />
         <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/sampleHold/" />
         <successfulTranslation value="true"/>
@@ -177,19 +204,37 @@
         </simulations>
         <simulationResult value="Success" />
     </test>
-    <test id="14">
-        <modelname value="IntervalMeasurement.mo" />
-        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/intervalMeasurement/" />
+    <test id="16">
+        <modelname value="SwitchedRLC.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/switchedRLC/" />
         <successfulTranslation value="true"/>
-        <spentTraslationTime value="0.731ms" />
+        <spentTraslationTime value="1.519ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation value="01" cpu="14.975ms" gpu="4.164ms" />
-            <simulation value="10" cpu="139.528ms" gpu="41.493ms" />
-            <simulation value="100" cpu="2124.708ms" gpu="377.694ms" />
-            <simulation value="1000" cpu="19804.071ms" gpu="3481.19ms" />
-            <simulation value="10000" cpu="164103.455ms" gpu="34513.5ms" />
+            <simulation value="01" cpu="9.860ms" gpu="2.094ms" />
+            <simulation value="10" cpu="103.656ms" gpu="20.591ms" />
+            <simulation value="100" cpu="966.878ms" gpu="224.657ms" />
+            <simulation value="1000" cpu="9628.375ms" gpu="1790.22ms" />
+            <simulation value="10000" cpu="96195.345ms" gpu="17526.1ms" />
         </simulations>
-        <simulationResult value="Success" description="Il valore di ACC[2] è inf, se l'eq viene messa dopo di ACC[0]=T. Colpa dell'XML"/>
+        <simulationResult value="Success" />
+    </test>
+    <test id="17">
+        <modelname value="MyModel.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/TestModel/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="2.510ms" />
+        <MPGOScompilation value="true" />
+        <simulations>All failed both in MGPOS and Modelica at time=3.89e00</simulations>
+        <simulationResult value="Success" />
+    </test>
+    <test id="18">
+        <modelname value="BouncingBall.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/Bouncingball/v2/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="1.260ms" />
+        <MPGOScompilation value="true" />
+        <simulations>Error on simulation: MPGOS model doesn't equal to Modelica model</simulations>
+        <simulationResult value="Failed" />
     </test>
 </tests>

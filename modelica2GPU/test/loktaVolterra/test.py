@@ -1,7 +1,10 @@
 import time
 from functools import wraps
 import os
-from threading import Thread
+import multiprocessing
+import sys
+
+model_name = sys.argv[-1]
 
 def wrapTime(f):
     @wraps(f)
@@ -12,35 +15,35 @@ def wrapTime(f):
         print(f"simulationTime: {(end - start)*1000}ms")
     return wrapper
 
+os.system("omc build.mos > out")
 
-os.system("omc build.mos > out") # Runno per creare i file e l'eseguibile
+
+def simulate(i):
+    os.system("mkdir thread_{i} 2> /dev/null".format(i=i))
+    os.system(f"cp {model_name} thread_{i}")
+    os.system(f"cp {model_name}_init.xml thread_{i}")
+    os.chdir(f"thread_{i}")
+    os.system(f'./{model_name} 1> /dev/null')
+    os.chdir("..")
+    os.system(f"rm -rf thread_{i}")
 
 
-class SimulationTrhead(Thread):
-    def __init__(self):
-        super().__init__()
+@wrapTime
+def runTest(i):
+    num_process = i if i < 1000 else 100
+    if i == 1:
+        simulate(i)
+    else:
+        with multiprocessing.Pool(processes=num_process) as pool:
+            results = pool.map_async(simulate, list(range(i)))
+            results.wait()
+
+k = 1
+while k <= 10000:
+    print(k)
+    runTest(k)
+    k *= 10
     
-    def run(self):
-        os.system("./LoktaVolterra > /dev/null")
-
-
-class Simulation:
-    def __init__(self, num_sim):
-        self.num_sim = num_sim
-    
-    @wrapTime
-    def run_simulation(self):
-        print(self.num_sim)
-        for i in range(self.num_sim):
-            st = SimulationTrhead()
-            st.start()
-            st.join()
-    
-
-ks = [1, 10, 100, 1000, 10000]
-for n in ks:
-    sim = Simulation(n)
-    sim.run_simulation()
     
 os.system("rm out")
-os.system("rm *.o *.c *.mat *.h *.json LoktaVolterra *.makefile *.log *.libs *_init.xml")
+os.system(f"rm *.o *.c *.h *.json {model_name} *.makefile *.log *.libs *_init.xml")

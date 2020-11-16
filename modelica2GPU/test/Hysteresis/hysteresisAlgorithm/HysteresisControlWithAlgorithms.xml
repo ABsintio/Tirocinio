@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="HysteresisControlWithAlgorithms"
+  modelIdentifier="HysteresisControlWithAlgorithms"
+  guid="{0b0feecd-2328-460b-86db-006c21c7983e}"
+  generationDateAndTime="2020-11-16T20:12:21"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="1"
+  numberOfEventIndicators="2"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.0"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="T"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="T"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(T)"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="s-1.K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="T"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Q"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real    unit="W" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Q"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="$whenCondition1" description="T &lt; -1.0 + Tbar" valueReference="3" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$whenCondition1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$whenCondition2" description="T &gt; 1.0 + Tbar" valueReference="4" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$whenCondition2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="heat" description="Indicates whether heater is on" valueReference="5" variability="discrete" causality="internal" alias="noAlias">
+      <Boolean />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="heat"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="C"  valueReference="6" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"   unit="J/K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="C"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Qcapacity"  valueReference="7" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="25.0" fixed="true"   unit="W" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Qcapacity"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Tamb"  valueReference="8" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="285.0" fixed="true"   unit="K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Tamb"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Tbar"  valueReference="9" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="295.0" fixed="true"   unit="K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Tbar"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="h"  valueReference="10" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.0" fixed="true"   unit="W/K" />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="h"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="C"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Qcapacity"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>25.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Tamb"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>285.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Tbar"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>295.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="h"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Q"/>
+        </exp:Identifier>
+        <fun:If>
+          <fun:Condition>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="heat"/>
+            </exp:Identifier>
+          </fun:Condition>
+          <fun:Statements>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Qcapacity"/>
+            </exp:Identifier>
+          </fun:Statements>
+          <fun:Else>
+            <exp:RealLiteral>0.0</exp:RealLiteral>
+          </fun:Else>
+        </fun:If>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="T"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Div>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Q"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="h"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Tamb"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="T"/>
+                </exp:Identifier>
+              </exp:Sub>
+            </exp:Mul>
+          </exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="C"/>
+          </exp:Identifier>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+     
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="heat"/>
+        </exp:Identifier>
+        <exp:BooleanLiteral>0</exp:BooleanLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$PRE"/>
+          <exp:QualifiedNamePart name="heat"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="heat"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="T"/>
+        </exp:Identifier>
+        <exp:Add>
+          <exp:RealLiteral>5.0</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Tbar"/>
+          </exp:Identifier>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+     
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+    <fun:Assign>
+      <exp:Identifier>
+        <exp:QualifiedNamePart name="$whenCondition2"/>
+      </exp:Identifier>
+      <fun:Expression>
+        <exp:Pre>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="$whenCondition2"/>
+          </exp:Identifier>
+        </exp:Pre>
+      </fun:Expression>
+    </fun:Assign>
+    <fun:Assign>
+      <exp:Identifier>
+        <exp:QualifiedNamePart name="heat"/>
+      </exp:Identifier>
+      <fun:Expression>
+        <exp:Pre>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="heat"/>
+          </exp:Identifier>
+        </exp:Pre>
+      </fun:Expression>
+    </fun:Assign>
+    <fun:Assign>
+      <exp:Identifier>
+        <exp:QualifiedNamePart name="$whenCondition1"/>
+      </exp:Identifier>
+      <fun:Expression>
+        <exp:Pre>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="$whenCondition1"/>
+          </exp:Identifier>
+        </exp:Pre>
+      </fun:Expression>
+    </fun:Assign>
+    <fun:Assign>
+      <exp:Identifier>
+        <exp:QualifiedNamePart name="$whenCondition1"/>
+      </exp:Identifier>
+      <fun:Expression>
+        <exp:LogLt>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="T"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:RealLiteral>-1.0</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Tbar"/>
+            </exp:Identifier>
+          </exp:Add>
+        </exp:LogLt>
+      </fun:Expression>
+    </fun:Assign>
+    <fun:When>
+      <fun:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition1"/>
+        </exp:Identifier>
+      </fun:Condition>
+      <fun:Statements>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="heat"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:BooleanLiteral>1</exp:BooleanLiteral>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Statements>
+      </fun:When>
+    <fun:Assign>
+      <exp:Identifier>
+        <exp:QualifiedNamePart name="$whenCondition2"/>
+      </exp:Identifier>
+      <fun:Expression>
+        <exp:LogGt>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="T"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:RealLiteral>1.0</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Tbar"/>
+            </exp:Identifier>
+          </exp:Add>
+        </exp:LogGt>
+      </fun:Expression>
+    </fun:Assign>
+    <fun:When>
+      <fun:Condition>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$whenCondition2"/>
+        </exp:Identifier>
+      </fun:Condition>
+      <fun:Statements>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="heat"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:BooleanLiteral>0</exp:BooleanLiteral>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Statements>
+      </fun:When>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
