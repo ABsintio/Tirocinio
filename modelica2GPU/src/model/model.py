@@ -94,7 +94,7 @@ class Model:
                 # che tale inizializzazione sta anche in initial equation? nessuno). Per questo motivo, 
                 # una volta ottenute tutte le variabili e creati i corrispettivi MPGOSname, possiamo 
                 # settare il nuovo valore iniziale in linea con la politica di valutazione delle variabili di MPGOs.
-                if not re.match(r"\d+\.*\d*", ivalue.strip()) and ivalue.strip() not in variables_dict.keys() and \
+                if not re.match(r"[-]?\d+\.*\d*", ivalue.strip()) and ivalue.strip() not in variables_dict.keys() and \
                     ivalue.strip() != "T" and not isinstance(value.init, UnaryOperator) and not isinstance(value.init, BinaryOperator):
                     # Trovare la variabile referenziata
                     ref = name_var_dict[ivalue.strip()]
