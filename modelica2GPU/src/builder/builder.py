@@ -109,7 +109,7 @@ MPGOS_Model_Macro = """
 
 using namespace std;
 
-#define SOLVER RK4 // Runge-Kutta Order 4th
+#define SOLVER {solver} // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = {numberOfThreads};
 const int SD   = {systemDimension};
@@ -165,6 +165,8 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, %s);
     Solver.SolverOption(MinimumTimeStep, %s);
+%s
+%s
 
 %s
     Solver.SolverOption(DenseOutputMinimumTimeStep, %s);
@@ -304,6 +306,7 @@ class ModelBuilder:
         self.logger            = logger
         self.variables         = variables
         self.variables_dict    = {x.nome.replace(".", "_"): x for x in self.variables}
+        self.samples           =  any(filter(lambda x: "sample" in x.nome, self.variables_dict.values()))
         # START LOG
         msg = "Chiamata alla classe ModelBuilder"
         self.logger.info(msg, msg)
@@ -319,6 +322,7 @@ class ModelBuilder:
         # END LOG
         MPGOS_Model_Macro = MPGOS_Model_Macro.format(
             model_sysdef_file=self.sysdef_filename.split("/")[-1],
+            solver="RKCK45" if not self.samples else "RK4",
             numberOfThreads=self.config_dict['numberOfThreads'],
             systemDimension=int(self.config_dict['numberOfContinuousState']), 
             numberOfSharedParameter=len(list(filter(lambda x: isinstance(x, sPAR), self.variables))),
@@ -389,9 +393,12 @@ class ModelBuilder:
         relative_tolerance = " "*4 + "Solver.SolverOption(RelativeTolerance, %d, %s);\n"
         absoluteTolerances = "".join([abs_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
         relativeTolerances = "".join([relative_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
+        timeStepGrowLimit = " "*4 + "Solver.SolverOption(TimeStepGrowLimit, 1.0);\n" if not self.samples else ""
+        timeStepShrinkLimit = " "*4 + "Solver.SolverOption(TimeStepShrinkLimit, 0.2);\n" if not self.samples else ""
         MPGOS_MainFunction = MPGOS_MainFunction % (
             block_size, GPUMajor, GPUMinor, preferSharedMemory, 
             initialTimeStep, maxTimeStep, minTimeStep,
+            timeStepGrowLimit, timeStepShrinkLimit,
             eventDirections, denseOutputMiniumumTimeStep, 
             denseOutputSaveFrequency, absoluteTolerances,
             relativeTolerances, "% NT", self.model_name
@@ -470,6 +477,7 @@ class SystemDefinitionBuilder:
     def __init__(self, abstract_model, logger):
         self.abstract_model = abstract_model
         self.logger = logger
+        self.variables_dict = {x.createMPGOSname(): x for x in self.abstract_model.variables}
         # START LOG
         msg = "Chiamata alla classe SystemDefinitionBuilder"
         self.logger.info(msg, msg)
@@ -538,7 +546,7 @@ class SystemDefinitionBuilder:
         # END LOG
         global MPGOS_PerThread_Initialization
         MPGOS_PerThread_Initialization = MPGOS_PerThread_Initialization % (
-            Var.createMPGOScodeline([x.__str__() for x in self.abstract_model.init['initialization']]))
+            Var.createMPGOScodeline([x.__str__() + f" //{self.variables_dict[x.left.__str__()].nome}" for x in self.abstract_model.init['initialization']]))
         return MPGOS_PerThread_Initialization
 
 
