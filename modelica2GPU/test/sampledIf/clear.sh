@@ -1,0 +1,11 @@
+rm *.o
+rm *.c
+rm *.mat
+rm *.h
+rm *.json
+rm system
+rm *init.xml
+rm *.csv
+rm *.makefile
+rm *.log
+rm *.libs

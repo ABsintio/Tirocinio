@@ -132,7 +132,7 @@
     <test id="10">
         <modelname value="system.mo" />
         <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampledAlgorithm/" />
-        <successfulTranslation value="true"/>
+        <successfulTranslation value="true" description="L'XML creato non veniva parsato bene da Python, modif. a mano"/>
         <spentTraslationTime value="0.952ms" />
         <MPGOScompilation value="true" />
         <simulations>
@@ -189,6 +189,21 @@
         </simulations>
         <simulationResult value="Success"/>
     </test>
+    <test id="14">
+        <modelname value="PulseCounting.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/pulseCounting/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="1.346ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation value="01" cpu="18.973ms" gpu="8.742ms" />
+            <simulation value="10" cpu="60.018ms" gpu="9.892ms" />
+            <simulation value="100" cpu="515.718ms" gpu="13.326ms" />
+            <simulation value="1000" cpu="4244.702ms" gpu="39.736ms" />
+            <simulation value="10000" cpu="42797.706ms" gpu="1016.65ms" />
+        </simulations>
+        <simulationResult value="Success"/>
+    </test>
     <test id="15">
         <modelname value="SampleAndHold.mo" />
         <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/speedMeasurement/sampleHold/" />
@@ -196,11 +211,11 @@
         <spentTraslationTime value="2.175ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation value="01" cpu="10.844ms" gpu="3.818ms" />
-            <simulation value="10" cpu="106.369ms" gpu="37.778ms" />
-            <simulation value="100" cpu="1090.298ms" gpu="342.624ms" />
-            <simulation value="1000" cpu="10775.448ms" gpu="3195.11ms" />
-            <simulation value="10000" cpu="107188.202ms" gpu="31573.8ms" />
+            <simulation value="01" cpu="10.844ms" gpu="9.903ms" />
+            <simulation value="10" cpu="48.863ms" gpu="10.689ms" />
+            <simulation value="100" cpu="382.481ms" gpu="13.556ms" />
+            <simulation value="1000" cpu="3157.913ms" gpu="304.128ms" />
+            <simulation value="10000" cpu="32576.514ms" gpu="730.086ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
@@ -211,11 +226,11 @@
         <spentTraslationTime value="1.519ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            <simulation value="01" cpu="9.860ms" gpu="2.094ms" />
-            <simulation value="10" cpu="103.656ms" gpu="20.591ms" />
-            <simulation value="100" cpu="966.878ms" gpu="224.657ms" />
-            <simulation value="1000" cpu="9628.375ms" gpu="1790.22ms" />
-            <simulation value="10000" cpu="96195.345ms" gpu="17526.1ms" />
+            <simulation value="01" cpu="9.860ms" gpu="3.283ms" />
+            <simulation value="10" cpu="47.521ms" gpu="3.515ms" />
+            <simulation value="100" cpu="365.778ms" gpu="7.786ms" />
+            <simulation value="1000" cpu="2895.108ms" gpu="47.953ms" />
+            <simulation value="10000" cpu="30238.312ms" gpu="453.602ms" />
         </simulations>
         <simulationResult value="Success" />
     </test>
@@ -236,5 +251,20 @@
         <MPGOScompilation value="true" />
         <simulations>Error on simulation: MPGOS model doesn't equal to Modelica model</simulations>
         <simulationResult value="Failed" />
+    </test>
+    <test id="19">
+        <modelname value="system.mo" />
+        <workingdir value="/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/sampledIf/" />
+        <successfulTranslation value="true"/>
+        <spentTraslationTime value="0.545ms" />
+        <MPGOScompilation value="true" />
+        <simulations>
+            <simulation value="01" cpu="13.403ms" gpu="3.414ms" />
+            <simulation value="10" cpu="45.383ms" gpu="3.499mms" />
+            <simulation value="100" cpu="361.074ms" gpu="4.888ms" />
+            <simulation value="1000" cpu="2935.487ms" gpu="16.588ms" />
+            <simulation value="10000" cpu="30333.012ms" gpu="110.414ms" />
+        </simulations>
+        <simulationResult value="Success" />
     </test>
 </tests>
