@@ -2,6 +2,21 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
+  BIOMD0000000001_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/BIOMD001/log/BIOMD0000000001.log
+    formatter: simple
+    level: DEBUG
+  BIOMD0000000002_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/BIOMD002/log/BIOMD0000000002.log
+    formatter: simple
+    level: DEBUG
+  BIOMD0000000005_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/BIOMD005/log/BIOMD0000000005.log
+    formatter: simple
+    level: DEBUG
   ChemicalSystem_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/chemicalSystem/log/ChemicalSystem.log
@@ -12,6 +27,21 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  BIOMD0000000001:
+    handlers:
+    - BIOMD0000000001_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD0000000002:
+    handlers:
+    - BIOMD0000000002_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD0000000005:
+    handlers:
+    - BIOMD0000000005_handler
+    level: DEBUG
+    propagate: 'no'
   ChemicalSystem:
     handlers:
     - ChemicalSystem_handler

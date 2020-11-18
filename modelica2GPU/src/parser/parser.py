@@ -298,7 +298,7 @@ class Parser:
         initial_equantions_roottag = Parser.getTagElementByName(f"{dynequations.EQUATION_NS}InitialEquations", self.root)
         for x in initial_equantions_roottag:
             # Controlliamo che non siano tag vuoti, ossia <equ:Equation><exp:Sub></exp:Sub></equ:Equation>
-            if list(x[0]):
+            if list(x[0]) and x[0][0].tag != f"{dynequations.EQUATION_NS}Equation":
                 ieqs = dynequations._parsetag_eq(x, variables_dict)
                 # Se la variabile non esiste nel dizionario di tutte le
                 # variabili (solitamente le variabili non esistenti sono i $PRE)
