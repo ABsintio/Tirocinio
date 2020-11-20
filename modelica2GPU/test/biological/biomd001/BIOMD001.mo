@@ -37,18 +37,18 @@ model BIOMD001 "Edelstein1996 - EPSP ACh event"
     Real kf_12(start=3000.000);
     Real kf_13(start=1500.000);
 
-    Real BLL; "BasalACh2"
-    Real BL; "BasalACh"
-    Real B; "Basal"
-    Real ILL; "IntermediateACh2"
-    Real IL; "IntermediateACh"
-    Real I; "Intermediate"
-    Real ALL; "ActieACh2"
-    Real AL; "ActiveACh"
-    Real A; "Active"
-    Real DLL; "DensitisedACh2"
-    Real DL; "DensitisedACh"
-    Real D; "Densitised"
+    Real BLL "BasalACh2";
+    Real BL "BasalACh";
+    Real B "Basal";
+    Real ILL "IntermediateACh2";
+    Real IL "IntermediateACh";
+    Real I "Intermediate";
+    Real ALL "ActieACh2";
+    Real AL "ActiveACh";
+    Real A "Active";
+    Real DLL "DensitisedACh2";
+    Real DL "DensitisedACh";
+    Real D "Densitised";
 
 initial equation
     BLL = 0.0;
@@ -75,7 +75,15 @@ equation
         reinit(kf_8, 0.000);
         reinit(kf_13, 0.000);
     end when;
-
+    
+    der(kf_0) = 0.0;
+    der(kf_3) = 0.0;
+    der(kf_7) = 0.0;
+    der(kf_12) = 0.0;
+    der(kf_1) = 0.0;
+    der(kf_4) = 0.0;
+    der(kf_8) = 0.0;
+    der(kf_13) = 0.0;
     der(BLL) = (kf_1*BL - kr_1*BLL) - (kf_2*BLL - kr_2*ALL); // R1 - R2
     der(BL) = (kf_0*B - kr_0*BL) - (kf_1*BL - kr_1*BLL) - (kf_6*BL - kr_6*AL); // R0 - R1 - R6 
     der(B) =  (-(kf_0*B - kr_0*BL)) - (kf_5*B - kr_5*A); // -R0 - R5
