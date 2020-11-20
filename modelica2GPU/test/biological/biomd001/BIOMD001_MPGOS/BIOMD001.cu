@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 1;
 const int NA   = 0;
 const int NIA  = 1;
-const int NDO  = 100000;
+const int NDO  = 1000;
 
 
 void FillSolverObject(
@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 0.06);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
@@ -178,7 +178,7 @@ void SaveData(
 
 int main() {
     int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
-    int blockSize        = 128; // Numero di Thread per blocchi
+    int blockSize        = 64; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
     ListCUDADevices();

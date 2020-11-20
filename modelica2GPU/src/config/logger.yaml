@@ -7,6 +7,16 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/biomd001/log/BIOMD001.log
     formatter: simple
     level: DEBUG
+  BIOMD005_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/biomd005/log/BIOMD005.log
+    formatter: simple
+    level: DEBUG
+  BIOMD006_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/biomd006/log/BIOMD006.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -15,6 +25,16 @@ loggers:
   BIOMD001:
     handlers:
     - BIOMD001_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD005:
+    handlers:
+    - BIOMD005_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD006:
+    handlers:
+    - BIOMD006_handler
     level: DEBUG
     propagate: 'no'
   root:

@@ -24,8 +24,8 @@ model BIOMD005 "Tyson Cell Cycle Model"
 	Real pM_conc;
 	Real Y_conc;
 	Real YP_conc;
-	Real CT_amount(start=1.0, fixed=true);
-	Real YT_amount(start=0.25, fixed=true);
+	Real CT_amount(start=1.0);
+	Real YT_amount(start=0.25);
 
 initial equation
 	C2_conc = initial_C2;
@@ -37,12 +37,12 @@ initial equation
 
 equation
 	YT_amount = Y_conc + YP_conc + M_conc + pM_conc;
-	CT_amount = C2_conc + CP_conc + M_conc + pM_conc
+	CT_amount = C2_conc + CP_conc + M_conc + pM_conc;
 	der(C2_conc) = k6*M_conc - k8tildeP*C2_conc + k9*CP_conc;
-	der(CP_conc) = (-(k3))*CP_conc*Y_conc + k8tildeP*C2_conc - k9*CP_conc;
-	der(pM_conc) = k3*CP_conc*Y_conc - pM*(k4prime + k4*Function.pow((M_conc / CT_conc), 2.0) + k5tildeP*M_conc;
-	der(M_conc) = pM*(k4prime + k4*Function.pow((M_conc / CT_conc), 2.0) - k5tildeP*M_conc - k6*M_conc;
-	der(Y_conc) = k1aaCT - k2*Y_conc - k3*CP_conc*Y_conc;
+	der(CP_conc) = (-(k3CT))*CP_conc*Y_conc + k8tildeP*C2_conc - k9*CP_conc;
+	der(pM_conc) = k3CT*CP_conc*Y_conc - pM_conc*(k4prime + k4*Function.pow((M_conc / CT_amount), 2.0)) + k5tildeP*M_conc;
+	der(M_conc) = pM_conc*(k4prime + k4*Function.pow((M_conc / CT_amount), 2.0)) - k5tildeP*M_conc - k6*M_conc;
+	der(Y_conc) = k1aaCT - k2*Y_conc - k3CT*CP_conc*Y_conc;
 	der(YP_conc) = (-(k7))*YP_conc + k6*M_conc;
 
 end BIOMD005;

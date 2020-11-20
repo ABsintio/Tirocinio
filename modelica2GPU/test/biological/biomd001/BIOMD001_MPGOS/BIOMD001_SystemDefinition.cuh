@@ -20,7 +20,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
     F[2]=((sPAR[5] * X[5]) + ((sPAR[6] * X[3]) + ((sPAR[12] * X[11]) + ((((-(sPAR[21])) * X[0]) - (sPAR[1] * X[2])) - (sPAR[18] * X[2])))));
     F[9]=((sPAR[8] * X[0]) + ((sPAR[23] * X[10]) + ((sPAR[15] * X[6]) + ((((-(X[18])) - sPAR[2]) - sPAR[25]) * X[9]))));
     F[10]=((X[18] * X[9]) + ((sPAR[0] * X[1]) + ((sPAR[24] * X[11]) + ((sPAR[16] * X[7]) + (((((-(sPAR[11])) - sPAR[3]) - X[19]) - sPAR[23]) * X[10])))));
-    F[11]=(X[19] * X[10] + sPAR[1] * X[2]) + (sPAR[17] * X[8]) + ((-(sPAR[12]) - sPAR[4] - sPAR[24]) * X[11]);
+    F[11]=((X[19] * X[10]) + ((sPAR[1] * X[2]) + ((sPAR[17] * X[8]) + ((((-(sPAR[12])) - sPAR[4]) - sPAR[24]) * X[11]))));
     F[3]=((sPAR[9] * X[4]) + ((sPAR[21] * X[0]) + (((-(sPAR[6])) - X[12]) * X[3])));
     F[4]=((X[12] * X[3]) + ((sPAR[10] * X[5]) + ((sPAR[22] * X[1]) + ((((-(X[13])) - sPAR[7]) - sPAR[9]) * X[4]))));
     F[5]=((X[13] * X[4]) + ((sPAR[18] * X[2]) + (((-(sPAR[5])) - sPAR[10]) * X[5])));
