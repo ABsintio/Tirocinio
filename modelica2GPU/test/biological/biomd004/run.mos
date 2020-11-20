@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD004.mo");
+getErrorString();
+loadFile("Function.mo");
+getErrorString();
+simulate(BIOMD004, stopTime=10.0);
+getErrorString();
+plot({C, M, X, MI, XI}, externalWindow=true);
+getErrorString();
