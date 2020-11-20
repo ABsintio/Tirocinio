@@ -5,7 +5,7 @@
 ## Index
 + [Qualche nozione iniziale](#qualche-nozione-iniziale)
 + [Finalmente arriviamo a noi](#finalmente-arriviamo-a-noi)
-    + [modelica2GPU Workflows](#modelica2gpu-workflows)
++ [modelica2GPU Workflows](#modelica2gpu-workflows)
 + [Installazione e dipendeze](#installazione-e-dipendenze)
 + [File di configurazione](#file-di-configurazione)
 + [Runnare il tool](#runnare-il-tool)

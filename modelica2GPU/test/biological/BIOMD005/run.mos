@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD005.mo");
+getErrorString();
+loadFile("Function.mo");
+getErrorString();
+simulate(BIOMD005, stopTime=10.0);
+getErrorString();
+plot({C2_conc, CP_conc, M_conc, pM_conc, Y_conc, YP_conc, YT_conc, CT_conc}, externalWindow=true);
+getErrorString();
