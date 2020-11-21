@@ -79,14 +79,17 @@ def parseXML():
         succ_trans = test[2].attrib['value']
         trans_time = test[3].attrib['value']
         mgps_comil = test[4].attrib['value']
+        plot_value = test[7].attrib['value']
         
-        cpus_time, gpus_time = [], []
-        for sim in test[5]:
-            cpus_time.append(float(sim.attrib['cpu'][:-2])/1000)
-            gpus_time.append(float(sim.attrib['gpu'][:-2])/1000)
-        
-        sim_result = test[6].attrib['value']
-        tests.append(Test(test_id, model_name, workdir, succ_trans, trans_time, mgps_comil, cpus_time, gpus_time, sim_result))
+        if plot_value != "true":
+            cpus_time, gpus_time = [], []
+            test[7].set('value', 'true')
+            for sim in test[5]:
+                cpus_time.append(float(sim.attrib['cpu'][:-2])/1000)
+                gpus_time.append(float(sim.attrib['gpu'][:-2])/1000)
+            
+            sim_result = test[6].attrib['value']
+            tests.append(Test(test_id, model_name, workdir, succ_trans, trans_time, mgps_comil, cpus_time, gpus_time, sim_result))
     
     return tests
     
