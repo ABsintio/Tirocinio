@@ -1,0 +1,15 @@
+loadModel(Modelica);
+loadFile("package.mo");
+loadFile("BIOMD0000000007.mo");
+loadFile("Reactions.mo");
+loadFile("Functions.mo");
+loadFile("Constants.mo");
+loadFile("Class_elmt_Division.mo");
+loadFile("Class_elmt_Start.mo");
+loadFile("Class_elmt_cell.mo");
+loadFile("Parameters.mo");
+getErrorString();
+simulate(BIOMD007.BIOMD0000000007, stopTime=10.0);
+getErrorString();
+plot({elmt_Cell.elmt_Rum1Total_amount, elmt_Cell.elmt_Cig2Total_amount}, externalWindow=true);
+getErrorString();

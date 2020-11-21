@@ -2,24 +2,9 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
-  BIOMD001_handler:
+  BIOMD008_handler:
     class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/biomd001/log/BIOMD001.log
-    formatter: simple
-    level: DEBUG
-  BIOMD004_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/biomd004/log/BIOMD004.log
-    formatter: simple
-    level: DEBUG
-  BIOMD005_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/biomd005/log/BIOMD005.log
-    formatter: simple
-    level: DEBUG
-  BIOMD006_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/biomd006/log/BIOMD006.log
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/gardner1998_CellCycleGoldbeter/log/BIOMD008.log
     formatter: simple
     level: DEBUG
   console:
@@ -27,24 +12,9 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
-  BIOMD001:
+  BIOMD008:
     handlers:
-    - BIOMD001_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD004:
-    handlers:
-    - BIOMD004_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD005:
-    handlers:
-    - BIOMD005_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD006:
-    handlers:
-    - BIOMD006_handler
+    - BIOMD008_handler
     level: DEBUG
     propagate: 'no'
   root:
