@@ -5,7 +5,8 @@ import os
 import math
 
 file = "tests.xml"
-root = ET.parse(file).getroot()
+tree = ET.parse(file)
+root = tree.getroot()
 TEST_STR = """
 Test{id}(
     modelName             : {model_name}
@@ -66,6 +67,7 @@ class Test:
             plt.plot(xs, gpus, marker="_", label="GPU time")
             plt.xlabel("Number Of Simulations Launches")
             plt.ylabel("log10(Time [s])")
+            plt.legend(loc="upper left")
             plt.savefig(os.path.join(self.workdir, plot_name), bbox_inches='tight')
 
 
@@ -101,3 +103,4 @@ for test in ts:
     out.close()
     test.plotCPUvsGPU()
             
+tree.write(file)
