@@ -17,26 +17,20 @@ model BIOMD004 "A minimal cascade model for the mitotic oscillator involving cyc
     Real V1(start=0.0);
     Real V3(start=0.0);
 
-    Real C; "Cyclin"
-    Real M; "Active CDC-2 Kinase"
-    Real X; "Active Cyclin Protease"
-    Real MI; "Inactive CDC-2 Kinase"
-    Real XI; "Inactive Cyclin Protease"
+    Real C "Cyclin";
+    Real M "Active CDC-2 Kinase";
+    Real X "Active Cyclin Protease";
 
 initial equation
     C = 0.01;
     M = 0.01;
     X = 0.01;
-    MI = 0.99;
-    XI = 0.99;
 
 equation
-    V1 = C * VM1 * Funciton.pow((C + Kc), -1.0);
+    V1 = (C * VM1) / (C + Kc);
     V3 = M * VM3;
-    der(C) = vi  - (C * kd) - (C * vd * X * Function.pow((C + Kd), -1.0)); // R1 - R2 - R3
-    der(M) = (MI * V1 * Function.pow((K1 + MI), -1.0)) - (M * V2 * Function.pow((K2 + M), -1.0)); // R4 - R5
-    der(X) = (V3 * XI * Function.pow((K3 + XI), -1.0)) - (V4 * X * Function.pow((K4 + X), -1.0)); // R6 - R7
-    der(MI) = (M * V2 * Function.pow((K2 + M), -1.0)) - (MI * V1 * Function.pow((K1 + MI), -1.0)); // R5 - R4
-    der(XI) = (V4 * X * Function.pow((K4 + X), -1.0)) - (V3 * XI * Function.pow((K3 + XI), -1.0)); // R7 - R6
+    der(C) = vi  - (C * kd) - (C * vd * X / (C + Kd)); // R1 - R2 - R3
+    der(M) = ((1 - M) * V1 / (K1 + (1 - M))) - (M * V2 / (K2 + M)); // R4 - R5
+    der(X) = (V3 * (1 - X) / (K3 + (1 - X))) - (V4 * X / (K4 + X)); // R6 - R7
 
 end BIOMD004;
