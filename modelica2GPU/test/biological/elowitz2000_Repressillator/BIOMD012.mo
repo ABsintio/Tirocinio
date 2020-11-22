@@ -6,14 +6,14 @@ model BIOMD012 "Synthetic oscillatory network of transcriptional regulators"
     parameter Real tau_mRNA = 2.000;
     parameter Real tau_prot = 10.000;
     parameter Real ps_a = 0.500;
-    parameter Real ps_0 = 5.000e-4
+    parameter Real ps_0 = 5.000e-4;
 
     Real beta(start=0.200);
     Real alpha0(start=0.216);
     Real alpha(start=216.404);
     Real t_ave(start=0.000);
     Real kd_mRNA(start=0.000);
-    Real kd_prot(star=0.000);
+    Real kd_prot(start=0.000);
     Real k_tl(start=0.000);
     Real a_tr(start=0.000);
     Real a0_tr(start=0.000);
