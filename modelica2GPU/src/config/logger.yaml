@@ -7,6 +7,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/gardner1998_CellCycleGoldbeter/log/BIOMD008.log
     formatter: simple
     level: DEBUG
+  BIOMD009_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/huang1996_UltrasensitivityMAPKcascade/log/BIOMD009.log
+    formatter: simple
+    level: DEBUG
   BIOMD010_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/kholodenko2000_UltrasensAndNegFeedbkMAPKcascade/log/BIOMD010.log
@@ -25,6 +30,11 @@ loggers:
   BIOMD008:
     handlers:
     - BIOMD008_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD009:
+    handlers:
+    - BIOMD009_handler
     level: DEBUG
     propagate: 'no'
   BIOMD010:

@@ -1,6 +1,6 @@
 model BIOMD009 "Modeling temporal sequence of kinase activation, from MAPKKK to the final MAPK"
     
-    parameter Real comp_size = 4.00e-12;
+    parameter Real comp_size = 1.000;
     parameter Real K_PP_norm_max = 0.900;
     parameter Real a1 = 1000.00;
     parameter Real d1 = 150.00;
@@ -39,14 +39,17 @@ model BIOMD009 "Modeling temporal sequence of kinase activation, from MAPKKK to 
     Real KK "Mek1";
     Real P_KK "Mek1-P";
     Real PP_KK "Mek1-PP";
+    Real K "Erk2";
+    Real P_K "Erk2-P";
+    Real PP_K "Erk2-PP";
     Real KPase "MAPK-Pase";
     Real KKPase "MAPKK-Pase";
     Real E1_KKK "E1_Mos";
     Real E2_P_KKK "E2_Mos-P";
     Real P_KKK_KK "P-Mos_Mek1";
     Real P_KKK_P_KK "P-Mos_P-Mek1";
-    Real P_KK_K "PP-Mek1_Erk2";
-    Real P_KK_P_K "PP-Mek1_P_Erk2";
+    Real PP_KK_K "PP-Mek1_Erk2";
+    Real PP_KK_P_K "PP-Mek1_P_Erk2";
     Real KKPase_PP_KK "MAPKK-Pase_PP-Mek1";
     Real KKPase_P_KK "MAPKK-Pase_P-Mek1";
     Real KPase_PP_K "MAPK-Pase_PP-Erk2";
@@ -103,6 +106,7 @@ equation
     der(P_KKK_KK) = comp_size * ((a3 * KK * P_KKK - d3 * P_KKK_KK) - k3 * P_KKK_KK);
     der(P_KKK_P_KK) = comp_size * ((a5 * P_KK * P_KKK - d5 * P_KKK_P_KK) - k5 * P_KKK_P_KK);
     der(PP_KK_K) = comp_size * ((a7 * K * PP_KK - d7 * PP_KK_K) - k7 * PP_KK_K);
+    der(PP_KK_P_K) = comp_size * ((a9 * P_K * PP_KK - d9 * PP_KK_P_K) - k9 * PP_KK_P_K);
     der(KKPase_PP_KK) = comp_size * ((a6 * PP_KK * KKPase - d6 * KKPase_PP_KK) - k6 * KKPase_PP_KK);
     der(KKPase_P_KK) = comp_size * ((a4 * P_KK * KKPase - d4 * KKPase_P_KK) - k4 * KKPase_P_KK);
     der(KPase_PP_K) = comp_size * ((a10 * PP_K * KPase - d10 * KPase_PP_K) - d10 * KPase_PP_K);
