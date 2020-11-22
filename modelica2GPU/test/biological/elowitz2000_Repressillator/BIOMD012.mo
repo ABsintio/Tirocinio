@@ -44,4 +44,11 @@ equation
     alpha = (a_tr * eff * tau_prot) / (log(2) * KM);
     alpha0 = (a0_tr * eff * tau_prot) / (log(2) * KM);
 
+    der(PX) = k_tl * X - kd_prot * PX;
+    der(PY) = k_tl * Y - kd_prot * PY;
+    der(PZ) = k_tl * Z - kd_prot * PZ;
+    der(X) = (a0_tr  + (a_tr * KM^n / (KM^n + PZ^n))) - kd_mRNA * X;
+    der(Y) = (a0_tr  + (a_tr * KM^n / (KM^n + PX^n))) - kd_mRNA * Y;
+    der(Z) = (a0_tr  + (a_tr * KM^n / (KM^n + PY^n))) - kd_mRNA * Z;
+
 end BIOMD012;
