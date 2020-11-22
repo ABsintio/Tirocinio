@@ -24,9 +24,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
     F[2]=((ACC[5] * X[5]) - (ACC[7] * X[2]));
     F[1]=((ACC[5] * X[4]) - (ACC[7] * X[1]));
     F[0]=((ACC[5] * X[3]) - (ACC[7] * X[0]));
-    F[3]=(ACC[0] + ((ACC[1] * (pow(sPAR[0],sPAR[2]) / (pow(sPAR[0],sPAR[2]) + pow(X[2],sPAR[2])))) - (ACC[6] * X[3])));
-    F[4]=(ACC[0] + ((ACC[1] * (pow(sPAR[0],sPAR[2]) / (pow(sPAR[0],sPAR[2]) + pow(X[0],sPAR[2])))) - (ACC[6] * X[4])));
-    F[5]=(ACC[0] + ((ACC[1] * (pow(sPAR[0],sPAR[2]) / (pow(sPAR[0],sPAR[2]) + pow(X[1],sPAR[2])))) - (ACC[6] * X[5])));
+    F[3]=(ACC[0] + (ACC[1] * (sPAR[0] * sPAR[0]) / ((sPAR[0] * sPAR[0]) + (X[2] * X[2])))) - (ACC[6] * X[3]);
+    F[4]=(ACC[0] + (ACC[1] * (sPAR[0] * sPAR[0]) / ((sPAR[0] * sPAR[0]) + (X[0] * X[0])))) - (ACC[6] * X[4]);
+    F[5]=(ACC[0] + (ACC[1] * (sPAR[0] * sPAR[0]) / ((sPAR[0] * sPAR[0]) + (X[1] * X[1])))) - (ACC[6] * X[5]);
 
 }
 

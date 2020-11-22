@@ -4,7 +4,7 @@ model BIOMD010 "The combination of ultrasensitivity and negative feedback bring 
     parameter Real Ki = 9.000;
     parameter Real n = 1.000;
     parameter Real k1 = 10.000;
-    parameter Real k2 = 0.250;
+    parameter Real V2 = 0.250;
     parameter Real KK2 = 8.000;
     parameter Real k3 = 0.025;
     parameter Real KK3 = 15.000;
