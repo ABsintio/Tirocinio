@@ -1,0 +1,7 @@
+loadModel(Modelica);
+loadFile("BIOMD009.mo");
+getErrorString();
+simulate(BIOMD004, stopTime=100.0);
+getErrorString();
+plot({K_PP_norm, KK_PP_norm, KKK_P_norm, rel_K_PP_norm}, externalWindow=true);
+getErrorString();
