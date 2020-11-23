@@ -50,13 +50,13 @@ def notifier(necessary, titolo1, testo1, titolo2, testo2):
                 n1 = Notifier("modelica2GPU")
                 n1.setupforsimple(titolo1, testo1)
                 n1.show()
-                time.sleep(2)
+                time.sleep(1)
             a = f(*args, **kargs)
             if necessary:
                 n2 = Notifier("modelica2GPU")
                 n2.setupforsimple(titolo2, testo2)
                 n2.show()
-                time.sleep(2)
+                time.sleep(1)
             return a
         return wrapper
     return decorator_notifier
