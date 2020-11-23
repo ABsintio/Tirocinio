@@ -1,11 +1,15 @@
 loadModel(Modelica);
 loadFile("BIOMD015.mo");
 getErrorString();
-simulate(BIOMD015, stopTime=100.0);
+simulate(BIOMD015, stopTime=20.0);
 getErrorString();
-plot({PRPP, IMP, SAMP, ATP, SAM, Ade}, externalWindow=true);
+plot({PRPP, Gua}, externalWindow=true);
 getErrorString();
-plot({XMP, GTP, dATP, dGTP, RNA, DNA}, externalWindow=true);
+plot({IMP}, externalWindow=true);
 getErrorString();
-plot({HX, Xa, Gua, UA, R5P, Pi}, externalWindow=true);
-getErrorString();
+plot({dATP, dGTP}, externalWindow=true);
+getErrorString()
+//plot({HX, Xa, Gua, UA, R5P, Pi}, externalWindow=true);
+//getErrorString();
+//, RNA, DNAGTP, 
+//, IMP, SAMP, ATP, SAM, Ade

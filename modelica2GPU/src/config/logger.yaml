@@ -22,6 +22,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/elowitz2000_Repressillator/log/BIOMD012.log
     formatter: simple
     level: DEBUG
+  BIOMD015_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/curto1998_purineMetabolism/log/BIOMD015.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -45,6 +50,11 @@ loggers:
   BIOMD012:
     handlers:
     - BIOMD012_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD015:
+    handlers:
+    - BIOMD015_handler
     level: DEBUG
     propagate: 'no'
   root:
