@@ -2,7 +2,7 @@ import sys
 
 # Controllo preliminare dei moduli richiesti
 try:
-    import pycuda.driver as cuda 
+    import pycuda.driver as cuda
     import pycuda.autoinit
 except ImportError:
     print("Errore: il modulo pycuda non è stato installato. Si prega di installarlo con")
@@ -100,8 +100,8 @@ def getdefaultoptions(nevents, nstates, xmlfile):
         major, minor,
         numberOfThreads,            numberOfProblems,  numberOfDenseOutput,
         threadsPerBlock,            initialTimeStep,   preferSharedMemory,
-        maximumTimeStep,            minimumTimeStep,   events_directions, 
-        denseOutputMinumumTimeStep, denseOutputSaveFrequency, tolerance,         
+        maximumTimeStep,            minimumTimeStep,   events_directions,
+        denseOutputMinumumTimeStep, denseOutputSaveFrequency, tolerance,
         timeDomainStart, timeDomainEnd
     ], device
 
@@ -132,7 +132,7 @@ def checkconfig(config_dict):
         assert os.path.isfile(os.path.join(m2g_conf['workingdir'], m2g_conf['modelfilename'])), msg
     # Controllo che notifier e logger siano campi booleani
     n, l = m2g_conf['notifier'], m2g_conf['filelogger']
-    assert isinstance(n, bool) and isinstance(l, bool), "I campi notifier e logger devono essere booleani" 
+    assert isinstance(n, bool) and isinstance(l, bool), "I campi notifier e logger devono essere booleani"
 
     builder_config = config_dict['builder']
     # La source dir per MPGOS deve esistere
@@ -167,7 +167,7 @@ def getnumevents(xmlfile):
 
 
 def getnumstate(xmlfile):
-    """ Dall'XML prende il numero di stati del sistema """ 
+    """ Dall'XML prende il numero di stati del sistema """
     root = ET.parse(xmlfile).getroot()
     return int(root.attrib['numberOfContinuousStates'])
 
@@ -194,7 +194,7 @@ def check_multiple_config(msg1, msg2, msg3, builder_config, keystring, dimension
                 assert isinstance(v, tipo), msg3
         else:
             assert isinstance(all_param, tipo), msg3
-
+            
 
 def getGPUattr2str(attrs, gpu_name):
     """ Ritorna una stringa riguardo la GPU selezionata """
@@ -219,7 +219,7 @@ def conf_dict2str(conf_dict, gpu_attrs):
             string += getGPUattr2str(gpu_attrs, v.name())
         elif isinstance(v, list) and len(v) > 0:
             string += f"{k}:\n    " + "    ".join([f"{k}Value{count + 1}: {v[count]}\n" for count in range(len(v))])
-        else: 
+        else:
             string += f"{k}: {v}\n"
     return string
 
@@ -232,7 +232,7 @@ def get_modelica2GPU_configuration(config_file):
         msg = f"Controllo della struttura del configuratore {config_file}"
         tmp_logger.debug(msg, msg)
         # END LOG
-        checkconfig(config_dict)    
+        checkconfig(config_dict)
         # START LOG
         msg = f"Controllo andato a buon fine"
         tmp_logger.debug(msg, msg)
@@ -250,7 +250,7 @@ def get_modelica2GPU_configuration(config_file):
         event_num, state_num = getnumevents(xmlfile), getnumstate(xmlfile)
         builder_options = [builder_config['MPGOSsourcedir']]
         device = None
-        
+
         # Prima però dobbiamo controllare i parametri eventDirection e tolerance
         if not builder_config['usedefaultoptions']:
             # Check del parametro eventDirection
@@ -275,9 +275,9 @@ def get_modelica2GPU_configuration(config_file):
                 builder_config['modeldefinition']['numberOfDenseOutput'], builder_config['modeldefinition']['threadsPerBlock'],
                 builder_config['modeldefinition']['initialTimeStep'], builder_config['modeldefinition']['preferSharedMemory'],
                 builder_config['modeldefinition']['maximumTimeStep'], builder_config['modeldefinition']['minimumTimeStep'],
-                list(builder_config['modeldefinition']['eventDirection'].values()), 
-                builder_config['modeldefinition']['denseOutputMinimumTimeStep'], 
-                builder_config['modeldefinition']['denseOutputSaveFrequency'], 
+                list(builder_config['modeldefinition']['eventDirection'].values()),
+                builder_config['modeldefinition']['denseOutputMinimumTimeStep'],
+                builder_config['modeldefinition']['denseOutputSaveFrequency'],
                 list(builder_config['modeldefinition']['tolerance'].values()),
 
             ]
@@ -311,7 +311,7 @@ def get_modelica2GPU_configuration(config_file):
             "timeDomainEnd"             : builder_options[16],
             "numberOfContinuousState"   : getnumstate(xmlfile)
         }
-        
+
         conf_str = conf_dict2str(config_dict, device.get_attributes())
         print(conf_str)
 
@@ -323,11 +323,11 @@ def get_modelica2GPU_configuration(config_file):
                 check = True
             elif ans.upper() == "N":
                 # START LOG
-                msg = "Uscita dal programma in quanto conferma per continuare negativa" 
+                msg = "Uscita dal programma in quanto conferma per continuare negativa"
                 tmp_logger.info(msg, msg)
                 # END LOG
                 sys.exit(0)
-        
+
         # START LOG
         # Creazione del logger su file
         if config_dict['filelogger']:
@@ -339,7 +339,7 @@ def get_modelica2GPU_configuration(config_file):
 
         # Se il campo notifier è True allora imposto un argomento di sistema a 1, altrimenti 0
         # Questo viene fatto in quanto l'attivazione o la disattivazione del notifier
-        # in ogni file dipende da una MACRO che si basa sull'ultimo elemento dato in input (come 
+        # in ogni file dipende da una MACRO che si basa sull'ultimo elemento dato in input (come
         # se fosse da riga di comando).
         if config_dict['notifier']:
             sys.argv.append(1)
@@ -372,7 +372,7 @@ try:
     xml_parser = Parser(config_dict['xmlfile'], m2g_logger) # Creo un oggetto Parser
     xml_parser.parseXML() # Eseguo il parsing
     abstract_model = Model(
-        config_dict['modelname'], 
+        config_dict['modelname'],
         xml_parser.dynamic_equations['equations'],
         xml_parser.dynamic_equations['events'],
         xml_parser.algorithms_dict, xml_parser.unique_dict, m2g_logger
