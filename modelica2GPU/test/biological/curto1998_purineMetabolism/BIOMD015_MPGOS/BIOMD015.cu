@@ -36,7 +36,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 20.0);  
 
         // Settaggio dei valori iniziali degli ActualState
  
