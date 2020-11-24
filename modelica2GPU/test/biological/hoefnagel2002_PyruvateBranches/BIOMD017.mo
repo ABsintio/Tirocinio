@@ -5,6 +5,8 @@ model BIOMD017 "Metabolic engineering of lactic acid bacteria"
   parameter Real Knad_1 = 0.141;
   parameter Real Kadp_1 = 0.047;
   parameter Real Kpyr_1 = 2.500;
+  parameter Real Knadh_1 = 0.090;
+  parameter Real Katp_1 = 0.019;
   parameter Real V_2 = 5118.00;
   parameter Real Keq_2 = 21120.69;
   parameter Real Kpyr_2 = 1.50;
@@ -112,7 +114,7 @@ initial equation
   PO4 = 10.0;
 
 equation
-  der(ADP) = (V_12*(ATP/(ADP*Katp_12))^n_12)/(1+(ATP/(ADP*Katp_12))^n_12) - (2*V_1*halfglucose/(2*Kglc_1)*NAD/Knad_1*ADP/Kadp_1)/((1+halfglucose/(2*Kglc_1)+pyruvate/Kpyr_1)*(1+NAD/Knad_1+NADH/Knadh_1)*(1+ADP/Kadp_1+ATP/Katp_1)) - (V_5*(AcP*ADP-Ac*ATP/Keq_5)/(Kadp_5*Kacp_5))/((1+AcP/Kacp_5+Ac/Kac_5)*(1+ADP/Kadp_5+ATP/Katp_5))
+  der(ADP) = (V_12*(ATP/(ADP*Katp_12))^n_12)/(1+(ATP/(ADP*Katp_12))^n_12) - (2*V_1*halfglucose/(2*Kglc_1)*NAD/Knad_1*ADP/Kadp_1)/((1+halfglucose/(2*Kglc_1)+pyruvate/Kpyr_1)*(1+NAD/Knad_1+NADH/Knadh_1)*(1+ADP/Kadp_1+ATP/Katp_1)) - (V_5*(AcP*ADP-Ac*ATP/Keq_5)/(Kadp_5*Kacp_5))/((1+AcP/Kacp_5+Ac/Kac_5)*(1+ADP/Kadp_5+ATP/Katp_5));
   der(NAD) = (V_2*((pyruvate*NADH-lactate*NAD/Keq_2)/(Kpyr_2*Knadh_2)))/((1+pyruvate/Kpyr_2+lactate/Klac_2)*(1+NADH/Knadh_2+NAD/Knad_2)) + (V_6*(AcCoA*NADH-CoA*NAD*AcO/Keq_6)/(Kaccoa_6*Knadh_6))/((1+NAD/Knad_6+NADH/Knadh_6)*(1+AcCoA/Kaccoa_6+CoA/Kcoa_6)*(1+AcO/Kaco_6)) + (V_7*(AcO*NADH-EtOH*NAD/Keq_7)/(Kaco_7*Knadh_7))/((1+NAD/Knad_7+NADH/Knadh_7)*(1+AcO/Kaco_7+EtOH/Ketoh_7)) + (V_11*(AcetoinIn*NADH-Butanediol*NAD/Keq_11)/(Kacet_11*Knadh_11))/((1+AcetoinIn/Kacet_11+Butanediol/Kbut_11)*(1+NADH/Knadh_11+NAD/Knad_11)) + (V_13*(NADH*O2/(Knadh_13*Ko_13)))/((1+NADH/Knadh_13+NAD/Knad_13)*(1+O2/Ko_13)) - (2*V_1*halfglucose/(2*Kglc_1)*NAD/Knad_1*ADP/Kadp_1)/((1+halfglucose/(2*Kglc_1)+pyruvate/Kpyr_1)*(1+NAD/Knad_1+NADH/Knadh_1)*(1+ADP/Kadp_1+ATP/Katp_1)) - (V_3*pyruvate/Kpyr_3*NAD/Knad_3*CoA/Kcoa_3*(NAD/(NAD+Ki_3*NADH)))/((1+pyruvate/Kpyr_3)*(1+NAD/Knad_3+NADH/Knadh_3)*(1+CoA/Kcoa_3+AcCoA/Kaccoa_3));
   der(ATP) = (-((V_12*(ATP/(ADP*Katp_12))^n_12)/(1+(ATP/(ADP*Katp_12))^n_12) - (2*V_1*halfglucose/(2*Kglc_1)*NAD/Knad_1*ADP/Kadp_1)/((1+halfglucose/(2*Kglc_1)+pyruvate/Kpyr_1)*(1+NAD/Knad_1+NADH/Knadh_1)*(1+ADP/Kadp_1+ATP/Katp_1)) - (V_5*(AcP*ADP-Ac*ATP/Keq_5)/(Kadp_5*Kacp_5))/((1+AcP/Kacp_5+Ac/Kac_5)*(1+ADP/Kadp_5+ATP/Katp_5))));
   der(NADH) = (-((V_2*((pyruvate*NADH-lactate*NAD/Keq_2)/(Kpyr_2*Knadh_2)))/((1+pyruvate/Kpyr_2+lactate/Klac_2)*(1+NADH/Knadh_2+NAD/Knad_2)) + (V_6*(AcCoA*NADH-CoA*NAD*AcO/Keq_6)/(Kaccoa_6*Knadh_6))/((1+NAD/Knad_6+NADH/Knadh_6)*(1+AcCoA/Kaccoa_6+CoA/Kcoa_6)*(1+AcO/Kaco_6)) + (V_7*(AcO*NADH-EtOH*NAD/Keq_7)/(Kaco_7*Knadh_7))/((1+NAD/Knad_7+NADH/Knadh_7)*(1+AcO/Kaco_7+EtOH/Ketoh_7)) + (V_11*(AcetoinIn*NADH-Butanediol*NAD/Keq_11)/(Kacet_11*Knadh_11))/((1+AcetoinIn/Kacet_11+Butanediol/Kbut_11)*(1+NADH/Knadh_11+NAD/Knad_11)) + (V_13*(NADH*O2/(Knadh_13*Ko_13)))/((1+NADH/Knadh_13+NAD/Knad_13)*(1+O2/Ko_13)) - (2*V_1*halfglucose/(2*Kglc_1)*NAD/Knad_1*ADP/Kadp_1)/((1+halfglucose/(2*Kglc_1)+pyruvate/Kpyr_1)*(1+NAD/Knad_1+NADH/Knadh_1)*(1+ADP/Kadp_1+ATP/Katp_1)) - (V_3*pyruvate/Kpyr_3*NAD/Knad_3*CoA/Kcoa_3*(NAD/(NAD+Ki_3*NADH)))/((1+pyruvate/Kpyr_3)*(1+NAD/Knad_3+NADH/Knadh_3)*(1+CoA/Kcoa_3+AcCoA/Kaccoa_3))));
