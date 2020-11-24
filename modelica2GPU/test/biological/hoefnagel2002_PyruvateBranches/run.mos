@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD017.mo");
+getErrorString();
+simulate(BIOMD017, stopTime=10.0);
+getErrorString();
+plot({ADP, NAD, ATP, NADH, pyruvate, CoA}, externalWindow=true);
+getErrorString();
+plot({AcCoA, AcP, AcO, AcLac, AcetoinIn}, externalWindow=true);
+getErrorString();
