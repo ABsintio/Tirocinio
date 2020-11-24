@@ -3,7 +3,7 @@ model BIOMD016 "A model for circadian oscillations in the Drosophila period prot
 	parameter Real Vs = 0.76;
 	parameter Real KI = 1.00;
 	parameter Real n = 4.00;
-	parameter Real ks = 0.38;
+	parameter Real Ks = 0.38;
 	parameter Real V1 = 3.20;
 	parameter Real K1 = 2.00;
 	parameter Real V2 = 1.58;
@@ -12,7 +12,7 @@ model BIOMD016 "A model for circadian oscillations in the Drosophila period prot
 	parameter Real K3 = 2.00;
 	parameter Real V4 = 2.50;
 	parameter Real K4 = 2.00;
-	parameter Real K1 = 1.90;
+	parameter Real k1 = 1.90;
 	parameter Real k2 = 1.30;
 	parameter Real Vm = 0.65;
 	parameter Real Km = 0.50;
