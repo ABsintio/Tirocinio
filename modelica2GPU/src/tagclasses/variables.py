@@ -85,7 +85,6 @@ class BooleanScalarVariable(ScalarVariable):
 	@staticmethod
 	def bool2str(bool_value): return "1" if bool_value else "0"
 
-
 	def setstart(self, value):
 		self.start = value
 		self.fixed = True

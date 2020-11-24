@@ -388,7 +388,7 @@ try:
     m2g_logger.debug(msg, msg)
     # END LOG
 except Exception as e:
-    msg = f"modelica2GPU ha riscontrato il seguente errore. {e.args[0]}"
+    msg = f"modelica2GPU ha riscontrato il seguente errore. {e.args[0]}. Per favore controlla che l'XML sia ben formattato!"
     m2g_logger.error(msg, msg)
     sys.exit(1)
 

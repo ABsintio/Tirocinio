@@ -21,8 +21,8 @@ const int NCP  = 1;
 const int NSP  = 2;
 const int NISP = 0;
 const int NE   = 1;
-const int NA   = 1;
-const int NIA  = 1;
+const int NA   = 2;
+const int NIA  = 0;
 const int NDO  = 1000;
 
 
@@ -77,15 +77,15 @@ void SaveData(
         DataFile.width(Width); DataFile << "X_v" << ',';
         DataFile.width(Width); DataFile << "sPAR_e" << ',';
         DataFile.width(Width); DataFile << "sPAR_h0" << ',';
+        DataFile.width(Width); DataFile << "ACC_$whenCondition1" << ',';
         DataFile.width(Width); DataFile << "ACC_$PRE.v" << ',';
-        DataFile.width(Width); DataFile << "ACCi_$whenCondition1" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 0) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
 
         DataFile << '\n';
     }
@@ -114,7 +114,9 @@ int main() {
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
     Solver.SolverOption(TimeStepGrowLimit, 1.0);
-    Solver.SolverOption(TimeStepShrinkLimit, 0.1);
+
+    Solver.SolverOption(TimeStepShrinkLimit, 0.2);
+
 
     Solver.SolverOption(EventDirection, 0, 0);
 

@@ -52,7 +52,7 @@ class Parser:
         acc_id, accs, acc_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                              x.categoryType == variables.VariableCategory.ALGEBRAIC and \
-                                                             isinstance(x, variables.RealScalarVariable)]
+                                                             (isinstance(x, variables.RealScalarVariable) or isinstance(x, variables.BooleanScalarVariable))]
         for variable in variable_list:
             acc = variables.ACC(variable.name, acc_id, variable.qualifiedName, variable.alias, variable.categoryType, variable.start)
             accs.append(acc)
@@ -71,7 +71,7 @@ class Parser:
         acci_id, accis, acci_dict = 0, [], dict()
         variable_list = [x for x in self.scalar_variables if x.alias == "noAlias" and \
                                                              x.categoryType == variables.VariableCategory.ALGEBRAIC and \
-                                                             not isinstance(x, variables.RealScalarVariable)]
+                                                             isinstance(x, variables.IntegerScalarVariable)]
         for variable in variable_list:
             acci = variables.ACCi(variable.name, acci_id, variable.qualifiedName, variable.alias, variable.categoryType, variable.start)
             accis.append(acci)
@@ -225,7 +225,7 @@ class Parser:
     def parse_when(self, root, variables_dict, MPGOSparams_dict):
         """ Parsa le when equations"""
         for x in root:
-            if x.tag == f"{dynequations.EQUATION_NS}When":
+            if x.tag == f"{dynequations.EQUATION_NS}When" or x.tag == f"{dynequations.EQUATION_NS}ElseWhen":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
                 when_eq = dynequations.When(x, variables_dict, self.event_conditions)
                 # Se la parte sinistra dell'equazione ha associata una variable $PRE
