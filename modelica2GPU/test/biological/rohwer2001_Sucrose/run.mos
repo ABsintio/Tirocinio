@@ -1,0 +1,7 @@
+loadModel(Modelica);
+loadFile("BIOMD023.mo");
+getErrorString();
+simulate(BIOMD023, stopTime=100.0);
+getErrorString();
+plot({Fru, Glc, HexP, Suc6P, Suc}, externalWindow=true);
+getErrorString();
