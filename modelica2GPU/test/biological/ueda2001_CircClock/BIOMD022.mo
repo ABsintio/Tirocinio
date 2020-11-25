@@ -1,0 +1,102 @@
+model BIOMD022 "Robust oscillations within the interlocked feedback model of Drosophila circadian rhythm"
+
+  parameter Real Drosophila = 1.0;
+  parameter Real compartment_0000003 = 1.0;
+  parameter Real compartment_0000002 = 1.0;
+
+  parameter Real a = 1.00;
+  parameter Real A1 = 0.45;
+  parameter Real B1 = 0.00;
+  parameter Real c1 = 0.00;
+  parameter Real r1 = 1.02;
+  parameter Real s1 = 1.45;
+  parameter Real r = 4.00;
+  parameter Real D0 = 0.012;
+  parameter Real A2 = 0.45;
+  parameter Real B2 = 0.00;
+  parameter Real c2 = 0.00;
+  parameter Real r2 = 1.02;
+  parameter Real s3 = 1.45;
+  parameter Real A3 = 0.80;
+  parameter Real B3 = 0.60;
+  parameter Real c3 = 0.00;
+  parameter Real r3 = 1.89;
+  parameter Real s5 = 1.63;
+  parameter Real k3 = 2.00;
+  parameter Real T3 = 1.63;
+  parameter Real k4 = 2.00;
+  parameter Real T4 = 0.52;
+  parameter Real k2 = 2.00;
+  parameter Real T2 = 0.72;
+  parameter Real k1 = 2.00;
+  parameter Real T1 = 1.73;
+  parameter Real v3 = 1.63;
+  parameter Real parameter_0000073 = 1.63;
+  parameter Real v1 = 1.45;
+  parameter Real parameter_0000072 = 1.45;
+  parameter Real s4 = 0.48;
+  parameter Real s6 = 0.47;
+  parameter Real s2 = 0.48;
+  parameter Real D1 = 0.94;
+  parameter Real L1 = 0.30;
+  parameter Real D2 = 0.44;
+  parameter Real L2 = 0.20;
+  parameter Real L3 = 0.30;
+  parameter Real D3 = 0.94;
+  parameter Real D4 = 0.44;
+  parameter Real L4 = 0.20;
+  parameter Real D5 = 0.44;
+  parameter Real L5 = 0.20;
+  parameter Real D6 = 0.29;
+  parameter Real L6 = 0.20;
+  parameter Real D7 = 0.54;
+  parameter Real L7 = 0.13;
+  parameter Real D8 = 0.6;
+  parameter Real L8 = 0.2;
+  parameter Real D9 = 0.6;
+  parameter Real L9 = 0.2;
+  parameter Real D10 = 0.3;
+  parameter Real L10 = 0.2;
+
+  Real CCc "Clk-Cyc_cyt";
+  Real CCn "Clk-Cyc_nuc";
+  Real Clkc "Clk_cyt";
+  Real Clkm "Clk_mRNA";
+  Real Perc "Per_cyt";
+  Real Perm "Per_mRNA";
+  Real PTc "Per-Tim_cyt";
+  Real PTn "Per-Tim_nuc";
+  Real Timc "Tim_cyt";
+  Real Timm "Tim_mRNA";
+  Real species_0000012 "Cyc_cyt";
+  Real species_0000013 "Dbt_cyt";
+
+initial equation
+  species_0000012 = 1.0;
+  species_0000013 = 1.0;
+  CCc = 0.3;
+  CCn = 0.4;
+  Clkc = 0.2;
+  Clkm = 0.1;
+  Perc = 0.6;
+  Perm = 0.5;
+  PTc = 0.9;
+  PTn = 1.0;
+  Timc = 0.8;
+  Timm = 0.7;
+
+equation
+  der(species_0000012) = 0.0;
+  der(species_0000013) = 0.0;
+  der(CCc) = CCc*T4/(k4+CCc) + (Clkc*v3*species_0000012-parameter_0000073*CCc) - CCc*T3/(k3+CCc) - CCc*D0 - CCc*D9/(CCc+L9);
+  der(CCn) = CCc*T3/(k3+CCc) - CCc*T4/(k4+CCc) - CCn*D0 - CCn*D10/(CCn+L10);
+  der(Clkc) = Clkm*s6 - (Clkc*v3*species_0000012-parameter_0000073*CCc) - Clkc*D0 - CCc*D9/(CCc+L9);
+  der(Clkm) = (c3+(B3+(CCn/A3)^a)*s5/(1 + B3 + (CCn/A3)^a + (PTn/r3)^r)) - Clkm*D0 - Clkm*D7/(Clkm+L7);
+  der(Perc) = s2*Perm - (Perc*Timc*v1-parameter_0000072*PTc) - D0*Perc - D2*species_0000013*Perc/(L2+Perc);
+  der(Perm) = (c1+(B1+(CCn/A1)^a)*s1/(1 + B1 + (CCn/A1)^a + (PTn/r1)^r)) - D0*Perm - D1*Perm/(L1+Perm);
+  der(PTc) = PTn*T2/(k2+PTn) + (Perc*Timc*v1-parameter_0000072*PTc) - PTc*T1/(k1+PTc) - D0*PTc - D5*PTc/(L5+PTc);
+  der(PTn) = PTc*T1/(k1+PTc) - PTn*T2/(k2+PTn) - D0*PTn - D6*PTn/(L6+PTn);
+  der(Timc) = s4*Timm - (Perc*Timc*v1-parameter_0000072*PTc) - D0*Timc - Timc/(L4+Timc);
+  der(Timm) = (c2+(B2+(CCn/A2)^a)*s3/(1 + B2 + (CCn/A2)^a + (PTn/r2)^r)) - D0*Timm - D3*Timm/(L3+Timm);
+
+end BIOMD022;
