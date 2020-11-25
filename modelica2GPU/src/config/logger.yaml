@@ -12,6 +12,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/leloup1999_CircClock/log/BIOMD021.log
     formatter: simple
     level: DEBUG
+  BIOMD022_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/ueda2001_CircClock/log/BIOMD022.log
+    formatter: simple
+    level: DEBUG
   BouncingBall_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/cyber-physical/Bouncingball/v1/log/BouncingBall.log
@@ -30,6 +35,11 @@ loggers:
   BIOMD021:
     handlers:
     - BIOMD021_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD022:
+    handlers:
+    - BIOMD022_handler
     level: DEBUG
     propagate: 'no'
   BouncingBall:
