@@ -2,7 +2,7 @@ model BIOMD023 "Analysis of sucrose accumulation in the sugar cane culm on the b
 
   parameter Real Vmax1 = 0.286;
   parameter Real Km1Fruex = 0.200;
-  parameter Real Mi1Fru = 1.000;
+  parameter Real Ki1Fru = 1.000;
   parameter Real Vmax2 = 1.000;
   parameter Real Km2Glcex = 0.200;
   parameter Real Ki2Glc = 1.000;
@@ -68,7 +68,7 @@ model BIOMD023 "Analysis of sucrose accumulation in the sugar cane culm on the b
 initial equation
   Fru = 1.0;
   Glc = 1.0;
-  HexP = 1.0,
+  HexP = 1.0;
   Suc6P = 1.0;
   Suc = 1.0;
   Sucvac = 0.0;
@@ -92,7 +92,7 @@ equation
   der(Fru) = Vmax1*Fruex/(Km1Fruex*(1+Fru/Ki1Fru) + Fruex) + Vmax9/(1+Glc/Ki9Glc)*Suc/(Km9Suc*(1+Fru/Ki9Fru)+Suc) - Vmax4*Fru/Km4Fru*ATP/Km4ATP/((1+ATP/Km4ATP)*(1+Glc/Km3Glc+Fru/Km4Fru+0.113*HexP/Ki3G6P+0.0575*HexP/Ki4F6P)) - Vmax5/(1+Fru/Ki5Fru)*Fru/Km5Fru*ATP/Km5ATP/(1+Fru/Km5Fru+ATP/Km5ATP+Fru*ATP/(Km5Fru*Km5ATP)+ADP/Ki5ADP) - (-Vmax8f)*(Suc*UDP-Fru*0.8231*HexP/Keq8)/(Suc*UDP*(1+Fru/Ki8Fru)+Km8Suc*(UDP+Ki8UDP)+Km8UDP*Suc+Vmax8f/(Vmax8r*Keq8)*(Km8UDPGlc*Fru*(1+UDP/Ki8UDP)+0.8231*HexP*(Km8Fru*(1+Km8UDP*Suc/(Ki8UDP*Km8Suc))+Fru*(1+Suc/Ki8Suc))));
   der(Glc) = Vmax2*Glcex/(Km2Glcex*(1+Glc/Ki2Glc)+Glcex) + Vmax9/(1+Glc/Ki9Glc)*Suc/(Km9Suc*(1+Fru/Ki9Fru)+Suc) - Vmax3*Glc/Km3Glc*ATP/Km3ATP/((1+ATP/Km3ATP)*(1+Glc/Km3Glc+Fru/Km4Fru+0.113*HexP/Ki3G6P+0.0575*HexP/Ki4F6P));
   der(HexP) = Vmax3*Glc/Km3Glc*ATP/Km3ATP/((1+ATP/Km3ATP)*(1+Glc/Km3Glc+Fru/Km4Fru+0.113*HexP/Ki3G6P+0.0575*HexP/Ki4F6P)) + Vmax4*Fru/Km4Fru*ATP/Km4ATP/((1+ATP/Km4ATP)*(1+Glc/Km3Glc+Fru/Km4Fru+0.113*HexP/Ki3G6P+0.0575*HexP/Ki4F6P)) + Vmax5/(1+Fru/Ki5Fru)*Fru/Km5Fru*ATP/Km5ATP/(1+Fru/Km5Fru+ATP/Km5ATP+Fru*ATP/(Km5Fru*Km5ATP)+ADP/Ki5ADP) - 2 * (((Vmax6f*((0.0575*HexP*0.8231*HexP)-((Suc6P*UDP)/Keq6)))/((0.0575*HexP*0.8231*HexP*(1.0+(Suc6P/Ki6Suc6P)))+(Km6F6P*(1.0+(phos/Ki6Pi))*((0.8231*HexP)+Ki6UDPGlc))+(Km6UDPGlc*0.0575*HexP)+((Vmax6f/(Vmax6r*Keq6))*((Km6UDP*Suc6P*(1.0+((0.8231*HexP)/Ki6UDPGlc)))+(UDP*((Km6Suc6P*(1.0+((Km6UDPGlc*0.0575*HexP)/(Ki6UDPGlc*Km6F6P*(1.0+(phos/Ki6Pi))))))+(Suc6P*(1.0+((0.0575*HexP)/Ki6F6P)))))))))) - (-Vmax8f)*(Suc*UDP-Fru*0.8231*HexP/Keq8)/(Suc*UDP*(1+Fru/Ki8Fru)+Km8Suc*(UDP+Ki8UDP)+Km8UDP*Suc+Vmax8f/(Vmax8r*Keq8)*(Km8UDPGlc*Fru*(1+UDP/Ki8UDP)+0.8231*HexP*(Km8Fru*(1+Km8UDP*Suc/(Ki8UDP*Km8Suc))+Fru*(1+Suc/Ki8Suc)))) - Vmax10*0.0575*HexP/(Km10F6P+0.0575*HexP);
-  der(Suc6) = ((Vmax6f*((0.0575*HexP*0.8231*HexP)-((Suc6P*UDP)/Keq6)))/((0.0575*HexP*0.8231*HexP*(1.0+(Suc6P/Ki6Suc6P)))+(Km6F6P*(1.0+(phos/Ki6Pi))*((0.8231*HexP)+Ki6UDPGlc))+(Km6UDPGlc*0.0575*HexP)+((Vmax6f/(Vmax6r*Keq6))*((Km6UDP*Suc6P*(1.0+((0.8231*HexP)/Ki6UDPGlc)))+(UDP*((Km6Suc6P*(1.0+((Km6UDPGlc*0.0575*HexP)/(Ki6UDPGlc*Km6F6P*(1.0+(phos/Ki6Pi))))))+(Suc6P*(1.0+((0.0575*HexP)/Ki6F6P))))))))) - Vmax7*Suc6P/(Km7Suc6P+Suc6P);
+  der(Suc6P) = ((Vmax6f*((0.0575*HexP*0.8231*HexP)-((Suc6P*UDP)/Keq6)))/((0.0575*HexP*0.8231*HexP*(1.0+(Suc6P/Ki6Suc6P)))+(Km6F6P*(1.0+(phos/Ki6Pi))*((0.8231*HexP)+Ki6UDPGlc))+(Km6UDPGlc*0.0575*HexP)+((Vmax6f/(Vmax6r*Keq6))*((Km6UDP*Suc6P*(1.0+((0.8231*HexP)/Ki6UDPGlc)))+(UDP*((Km6Suc6P*(1.0+((Km6UDPGlc*0.0575*HexP)/(Ki6UDPGlc*Km6F6P*(1.0+(phos/Ki6Pi))))))+(Suc6P*(1.0+((0.0575*HexP)/Ki6F6P))))))))) - Vmax7*Suc6P/(Km7Suc6P+Suc6P);
   der(Suc) = Vmax7*Suc6P/(Km7Suc6P+Suc6P) + (-Vmax8f)*(Suc*UDP-Fru*0.8231*HexP/Keq8)/(Suc*UDP*(1+Fru/Ki8Fru)+Km8Suc*(UDP+Ki8UDP)+Km8UDP*Suc+Vmax8f/(Vmax8r*Keq8)*(Km8UDPGlc*Fru*(1+UDP/Ki8UDP)+0.8231*HexP*(Km8Fru*(1+Km8UDP*Suc/(Ki8UDP*Km8Suc))+Fru*(1+Suc/Ki8Suc)))) - Vmax9/(1+Glc/Ki9Glc)*Suc/(Km9Suc*(1+Fru/Ki9Fru)+Suc) - Vmax11*Suc/(Km11Suc+Suc);
 
 end BIOMD023;
