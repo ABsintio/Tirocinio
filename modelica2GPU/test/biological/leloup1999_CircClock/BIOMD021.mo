@@ -1,7 +1,7 @@
 model BIOMD021 "Chaos and birhythmicity in a model for circadian oscillations of the PER and TIM proteins in drosophila"
 
-  constant Real Cell = 1.0;
-  constant Real compartment_0000002 = 1.0;
+  parameter Real Cell = 1.0;
+  parameter Real compartment_0000002 = 1.0;
 
   parameter Real V_mT = 0.7;
   parameter Real V_dT = 2.0;
