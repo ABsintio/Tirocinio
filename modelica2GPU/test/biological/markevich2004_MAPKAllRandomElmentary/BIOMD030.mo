@@ -9,7 +9,8 @@ model BIOMD030 "Signaling switches and bistability arising from multisite phosph
   parameter Real k5 = 0.020;
   parameter Real k_5 = 1.000;
   parameter Real k6 = 0.010;
-  parameter Real k7 = 1.000;
+  parameter Real k7 = 0.032;
+  parameter Real k_7 = 1.000;
   parameter Real k8 = 15.000;
   parameter Real h1 = 0.045;
   parameter Real h_1 = 1.000;
@@ -25,6 +26,7 @@ model BIOMD030 "Signaling switches and bistability arising from multisite phosph
   parameter Real h_7 = 1.000;
   parameter Real h8 = 0.470;
   parameter Real h9 = 0.140;
+  parameter Real h_9 = 0.002;
   parameter Real h10 = 0.045;
   parameter Real h_10 = 1.000;
   parameter Real h11 = 0.092;
