@@ -27,6 +27,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/rohwer2001_Sucrose/log/BIOMD023.log
     formatter: simple
     level: DEBUG
+  BIOMD026_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/markevich2004_MAPKOrderedElementary/log/BIOMD026.log
+    formatter: simple
+    level: DEBUG
   BIOMD030_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/markevich2004_MAPKAllRandomElmentary/log/BIOMD030.log
@@ -75,6 +80,11 @@ loggers:
   BIOMD023:
     handlers:
     - BIOMD023_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD026:
+    handlers:
+    - BIOMD026_handler
     level: DEBUG
     propagate: 'no'
   BIOMD030:

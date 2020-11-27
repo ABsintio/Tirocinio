@@ -5,7 +5,7 @@ model BIOMD026 "Signaling switches and bistability arising from multisite phosph
   parameter Real k2 = 0.010;
   parameter Real k3 = 0.032;
   parameter Real k_3 = 1.000;
-  parameter Real k4 = 15.000:
+  parameter Real k4 = 15.000;
   parameter Real h1 = 0.045;
   parameter Real h_1 = 1.000;
   parameter Real h2 = 0.092;
@@ -53,5 +53,6 @@ equation
   der(Mpp_MKP3) = (h1*Mpp*MKP3-h_1*Mpp_MKP3) - h2*Mpp_MKP3;
   der(Mp_MKP3_dep) = h2*Mpp_MKP3 - (h3*Mp_MKP3_dep-h_3*Mp*MKP3);
   der(Mp_MKP3) = (h4*Mp*MKP3-h_4*Mp_MKP3) - h5*Mp_MKP3;
+  der(M_MKP3) = h5*Mp_MKP3 - (h6*M_MKP3-h_6*M*MKP3);
 
 end BIOMD026;
