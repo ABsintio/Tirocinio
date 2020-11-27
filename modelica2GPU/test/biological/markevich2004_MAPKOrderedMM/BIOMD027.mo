@@ -3,6 +3,7 @@ model BIOMD027 "MAPK double phosphorylation,  ordered Michaelis-Menton"
   parameter Real Km1 = 50.0;
   parameter Real Km2 = 500.0;
   parameter Real Km3 = 22.00;
+  parameter Real Km4 = 18.00;
   parameter Real Km5 = 78.0;
   parameter Real k4cat = 0.06;
   parameter Real k3cat = 0.084;
