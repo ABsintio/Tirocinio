@@ -1,0 +1,93 @@
+model BIOMD030 "Signaling switches and bistability arising from multisite phosphorylation in protein kinase cascades"
+
+  parameter Real k1 = 0.020;
+  parameter Real k_1 = 1.000;
+  parameter Real k2 = 0.010;
+  parameter Real k3 = 0.032;
+  parameter Real k_3 = 1.000;
+  parameter Real k4 = 15.000;
+  parameter Real k5 = 0.020;
+  parameter Real k_5 = 1.000;
+  parameter Real k6 = 0.010;
+  parameter Real k7 = 1.000;
+  parameter Real k8 = 15.000;
+  parameter Real h1 = 0.045;
+  parameter Real h_1 = 1.000;
+  parameter Real h2 = 0.092;
+  parameter Real h3 = 1.000;
+  parameter Real h_3 = 0.010;
+  parameter Real h4 = 0.010;
+  parameter Real h_4 = 1.000;
+  parameter Real h5 = 0.500;
+  parameter Real h6 = 0.086;
+  parameter Real h_6 = 0.001;
+  parameter Real h7 = 0.010;
+  parameter Real h_7 = 1.000;
+  parameter Real h8 = 0.470;
+  parameter Real h9 = 0.140;
+  parameter Real h10 = 0.045;
+  parameter Real h_10 = 1.000;
+  parameter Real h11 = 0.092;
+  parameter Real h12 = 1.000;
+  parameter Real h_12 = 0.010;
+
+  Real M;
+  Real MpY;
+  Real MpT;
+  Real Mpp;
+  Real MAPKK;
+  Real MKP;
+  Real MpY_MAPKK;
+  Real MpT_MAPKK;
+  Real M_MAPKK_Y;
+  Real M_MAPKK_T;
+  Real Mpp_MKP_Y;
+  Real Mpp_MKP_T;
+  Real MpY_MKP_Y;
+  Real MpY_MKP_T;
+  Real MpT_MKP_Y;
+  Real MpT_MKP_T;
+  Real M_MKP_T;
+  Real M_MKP_Y;
+
+initial equation
+  M = 800.000;
+  MpY = 0.000;
+  MpT = 0.000;
+  Mpp = 0.000;
+  MAPKK = 180.000;
+  MKP = 100.000;
+  MpY_MAPKK = 0.000;
+  MpT_MAPKK = 0.000;
+  M_MAPKK_Y = 0.000;
+  M_MAPKK_T = 0.000;
+  Mpp_MKP_Y = 0.000;
+  Mpp_MKP_T = 0.000;
+  MpY_MKP_Y = 0.000;
+  MpY_MKP_T = 0.000;
+  MpT_MKP_Y = 0.000;
+  MpT_MKP_T = 0.000;
+  M_MKP_T = 0.000;
+  M_MKP_Y = 0.000;
+
+equation
+  der(M) = (h6*M_MKP_T-h_6*M*MKP) + (h9*M_MKP_Y-h_9*M*MKP) - (k1*M*MAPKK-k_1*M_MAPKK_Y) - (k5*M*MAPKK-k_5*M_MAPKK_T);
+  der(MpY) = k2*M_MAPKK_Y + (h12*MpY_MKP_T-h_12*MpY*MKP) - (k3*MpY*MAPKK-k_3*MpY_MAPKK) - (h7*MpY*MKP-h_7*MpY_MKP_Y);
+  der(MpT) = k6*M_MAPKK_T + (h3*MpT_MKP_Y-h_3*MpT*MKP) - (k7*MpT*MAPKK-k_7*MpT_MAPKK) - (h4*MpT*MKP-h_4*MpT_MKP_T);
+  der(Mpp) = k4*MpY_MAPKK + k8*MpT_MAPKK - (h1*Mpp*MKP-h_1*Mpp_MKP_Y) - (h10*Mpp*MKP-h_10*Mpp_MKP_T);
+  der(MAPKK) = k2*M_MAPKK_Y + k4*MpY_MAPKK + k6*M_MAPKK_T + k8*MpT_MAPKK - (k1*M*MAPKK-k_1*M_MAPKK_Y) - (k3*MpY*MAPKK-k_3*MpY_MAPKK) - (k5*M*MAPKK-k_5*M_MAPKK_T) - (k7*MpT*MAPKK-k_7*MpT_MAPKK);
+  der(MKP) = (h3*MpT_MKP_Y-h_3*MpT*MKP) + (h6*M_MKP_T-h_6*M*MKP) + (h9*M_MKP_Y-h_9*M*MKP) + (h12*MpY_MKP_T-h_12*MpY*MKP) - (h1*Mpp*MKP-h_1*Mpp_MKP_Y) - (h4*MpT*MKP-h_4*MpT_MKP_T) - (h7*MpY*MKP-h_7*MpY_MKP_Y) - (h10*Mpp*MKP-h_10*Mpp_MKP_T);
+  der(MpY_MAPKK) = (k3*MpY*MAPKK-k_3*MpY_MAPKK) - k4*MpY_MAPKK;
+  der(MpT_MAPKK) = (k7*MpT*MAPKK-k_7*MpT_MAPKK) - k8*MpT_MAPKK;
+  der(M_MAPKK_Y) = (k1*M*MAPKK-k_1*M_MAPKK_Y) - k2*M_MAPKK_Y;
+  der(M_MAPKK_T) = (k5*M*MAPKK-k_5*M_MAPKK_T) - k6*M_MAPKK_T;
+  der(Mpp_MKP_Y) = (h1*Mpp*MKP-h_1*Mpp_MKP_Y) - h2*Mpp_MKP_Y;
+  der(Mpp_MKP_T) = (h10*Mpp*MKP-h_10*Mpp_MKP_T) - h11*Mpp_MKP_T;
+  der(MpY_MKP_Y) = (h7*MpY*MKP-h_7*MpY_MKP_Y) - h8*MpY_MKP_Y;
+  der(MpY_MKP_T) = h11*Mpp_MKP_T - (h12*MpY_MKP_T-h_12*MpY*MKP);
+  der(MpT_MKP_Y) = h2*Mpp_MKP_Y - (h3*MpT_MKP_Y-h_3*MpT*MKP);
+  der(MpT_MKP_T) = (h4*MpT*MKP-h_4*MpT_MKP_T) - h5*MpT_MKP_T;
+  der(M_MKP_T) = h5*MpT_MKP_T - (h6*M_MKP_T-h_6*M*MKP);
+  der(M_MKP_Y) = h8*MpY_MKP_Y - (h9*M_MKP_Y-h_9*M*MKP);
+
+end BIOMD030;

@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD030.mo");
+getErrorString();
+simulate(BIOMD030, stopTime=100.0);
+getErrorString();
+plot({M, MpY, MpT, Mpp, MAPKK, MKP, MpY_MAPKK, MpT_MAPKK}, externalWindow=true);
+getErrorString();
+plot({M_MAPKK_Y, M_MAPKK_T, Mpp_MKP_Y, Mpp_MKP_T, MpY_MKP_Y, MpY_MKP_T}, externalWindow=true);
+getErrorString();
