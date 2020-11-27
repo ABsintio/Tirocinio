@@ -1,0 +1,1501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD029"
+  modelIdentifier="BIOMD029"
+  guid="{c418c565-47f5-49cc-8393-b537ba9bb643}"
+  generationDateAndTime="2020-11-27T19:28:03"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="6"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="M"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="M"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MEK"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MEK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MKP3"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MKP3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MpT"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MpT"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MpY"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MpY"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Mpp"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Mpp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(M)"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="M"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MEK)"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MEK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MKP3)"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MKP3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MpT)"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MpT"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MpY)"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MpY"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Mpp)"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Mpp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Km1"  valueReference="12" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="410.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km2"  valueReference="13" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="40.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km3"  valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="20.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km4"  valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="300.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km5"  valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="22.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km6"  valueReference="17" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="18.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km7"  valueReference="18" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="34.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km7"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km8"  valueReference="19" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="40.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kcat1"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.08" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kcat1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kcat2"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.007" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kcat2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kcat3"  valueReference="22" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.008" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kcat3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kcat4"  valueReference="23" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.45" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kcat4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kcat5"  valueReference="24" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.08400000000000001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kcat5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kcat6"  valueReference="25" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.06" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kcat6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kcat7"  valueReference="26" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.108" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kcat7"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>410.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>40.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>20.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km4"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>300.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km5"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>22.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km6"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>18.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km7"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>34.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km8"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>40.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kcat1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.08</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kcat2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.007</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kcat3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.008</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kcat4"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.45</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kcat5"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.08400000000000001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kcat6"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.06</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kcat7"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.108</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MKP3"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MEK"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Mpp"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MEK"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="kcat2"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MpY"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="M"/>
+                          </exp:Identifier>
+                          <exp:Div>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                          </exp:Div>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpY"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km2"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km4"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km2"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="kcat4"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MpT"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="M"/>
+                          </exp:Identifier>
+                          <exp:Div>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                          </exp:Div>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpY"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km2"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km4"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km4"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="kcat5"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MKP3"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Mpp"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Km5"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                    <exp:Add>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Mpp"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Km5"/>
+                        </exp:Identifier>
+                      </exp:Div>
+                      <exp:Add>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MpT"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km6"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpY"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km7"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="M"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km8"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MpT"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="kcat3"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MEK"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="M"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Km3"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="M"/>
+                        </exp:Identifier>
+                        <exp:Div>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km1"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km3"/>
+                            </exp:Identifier>
+                          </exp:Add>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km3"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km1"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                        </exp:Div>
+                      </exp:Mul>
+                      <exp:Add>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MpY"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km2"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MpT"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km4"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="kcat5"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MKP3"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Mpp"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km5"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Mpp"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km5"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km6"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Add>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MpY"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km7"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="M"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km8"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                  <exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="kcat4"/>
+                    </exp:Identifier>
+                  </exp:Neg>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MEK"/>
+                  </exp:Identifier>
+                  <exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MpT"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Add>
+                        <exp:RealLiteral>1.0</exp:RealLiteral>
+                        <exp:Add>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="M"/>
+                            </exp:Identifier>
+                            <exp:Div>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Km1"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Km3"/>
+                                </exp:Identifier>
+                              </exp:Add>
+                              <exp:Mul>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Km1"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Km3"/>
+                                </exp:Identifier>
+                              </exp:Mul>
+                            </exp:Div>
+                          </exp:Mul>
+                          <exp:Add>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MpY"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km2"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MpT"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km4"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Km4"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Div>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="kcat6"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MKP3"/>
+                  </exp:Identifier>
+                  <exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MpT"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Km6"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:RealLiteral>1.0</exp:RealLiteral>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Mpp"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km5"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Add>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MpT"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km6"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                            <exp:Add>
+                              <exp:Div>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MpY"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Km7"/>
+                                </exp:Identifier>
+                              </exp:Div>
+                              <exp:Div>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="M"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Km8"/>
+                                </exp:Identifier>
+                              </exp:Div>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Mul>
+                  </exp:Div>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MpY"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MEK"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="kcat1"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="M"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="M"/>
+                          </exp:Identifier>
+                          <exp:Div>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                          </exp:Div>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpY"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km2"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km4"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km1"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="kcat2"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MpY"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="M"/>
+                          </exp:Identifier>
+                          <exp:Div>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                          </exp:Div>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpY"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km2"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km4"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km2"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="kcat7"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MKP3"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MpY"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Km7"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                    <exp:Add>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Mpp"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Km5"/>
+                        </exp:Identifier>
+                      </exp:Div>
+                      <exp:Add>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MpT"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km6"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpY"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km7"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="M"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km8"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="M"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MKP3"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="kcat6"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MpT"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km6"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Mpp"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km5"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km6"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Add>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MpY"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km7"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="M"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km8"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="kcat7"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MpY"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km7"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Mpp"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km5"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km6"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Add>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MpY"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km7"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="M"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km8"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MEK"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="M"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Div>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="kcat1"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Mul>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="M"/>
+                          </exp:Identifier>
+                          <exp:Div>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                          </exp:Div>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpY"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km2"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km4"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km1"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Div>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="kcat3"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km3"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="M"/>
+                          </exp:Identifier>
+                          <exp:Div>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km3"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km1"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                          </exp:Div>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpY"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km2"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MpT"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Km4"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Sub>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MKP3"/>
+        </exp:Identifier>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MEK"/>
+        </exp:Identifier>
+        <exp:RealLiteral>180.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Mpp"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MpT"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MpY"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="M"/>
+        </exp:Identifier>
+        <exp:RealLiteral>800.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
