@@ -51,7 +51,7 @@ initial equation
   MpT = 0.0;
   Mpp = 0.0;
   MEK = 180;
-  MPK3 = 100.0;
+  MKP3 = 100.0;
   MpY_MEK = 0.0;
   MpT_MEK = 0.0;
   M_MEK_Y = 0.0;
