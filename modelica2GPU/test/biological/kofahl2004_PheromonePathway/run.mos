@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD032.mo");
+getErrorString();
+simulate(BIOMD032, stopTime=30.0);
+getErrorString();
+plot({GaGDP, Gbc}, externalWindow=true);
+getErrorString();
+plot({Ste12a, Bar1a, complexM, complexN}, externalWindow=true);
+getErrorString();
