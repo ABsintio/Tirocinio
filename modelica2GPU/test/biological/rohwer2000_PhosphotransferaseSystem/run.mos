@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD03.mo");
+getErrorString();
+simulate(BIOMD038, stopTime=100.0);
+getErrorString();
+plot({EI, PyrPI, EIP, HPr, HPrP, EIIA}, externalWindow=true);
+getErrorString();
+plot({HPrPIIA, EIIAP, EIICB, EIIAPIICB, EIICBP, EIICBPGlc}, externalWindow=true);
+getErrorString();
