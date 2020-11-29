@@ -1,4 +1,4 @@
-model BIOM035 "Mechanisms of noise-resistance in genetic oscillators"
+model BIOMD035 "Mechanisms of noise-resistance in genetic oscillators"
 
   parameter Real gammaC = 2.0;
   parameter Real deltaA = 1.0;
@@ -48,4 +48,4 @@ equation
   der(MR) = DR*alphaR + DRp*alphaRp + MR*betaR - MR*deltaMR - MR*betaR;
   der(R) = C*deltaA + MR*betaR - A*R*gammaC - R*deltaR;
 
-end BIOM035;
+end BIOMD035;

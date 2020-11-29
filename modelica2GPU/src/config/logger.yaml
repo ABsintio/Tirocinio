@@ -2,24 +2,9 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
-  BIOMD031_handler:
+  BIOMD035_handler:
     class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/markevich2004_MAPKOrderedMM2Kinase/log/BIOMD031.log
-    formatter: simple
-    level: DEBUG
-  BIOMD032_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/kofahl2004_PheromonePathway/log/BIOMD032.log
-    formatter: simple
-    level: DEBUG
-  BIOMD033_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/brown2004_NGFandEGFSignaling/log/BIOMD033.log
-    formatter: simple
-    level: DEBUG
-  Brown2004_NGF_EGF_signaling_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/util/Software/sbml2Modelica/test/biomodels/modelica/BIOMD033/log/Brown2004_NGF_EGF_signaling.log
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/vilar2002_Oscillator/log/BIOMD035.log
     formatter: simple
     level: DEBUG
   console:
@@ -27,24 +12,9 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
-  BIOMD031:
+  BIOMD035:
     handlers:
-    - BIOMD031_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD032:
-    handlers:
-    - BIOMD032_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD033:
-    handlers:
-    - BIOMD033_handler
-    level: DEBUG
-    propagate: 'no'
-  Brown2004_NGF_EGF_signaling:
-    handlers:
-    - Brown2004_NGF_EGF_signaling_handler
+    - BIOMD035_handler
     level: DEBUG
     propagate: 'no'
   root:
