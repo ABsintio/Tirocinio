@@ -18,6 +18,12 @@ model BIOMD031 "Signaling switches and bistability arising from multisite phosph
   Real MKP3;
 
 initial equation
+  M = 500.00;
+  Mp = 0.0;
+  Mpp = 0.0;
+  MAPKK1 = 100.0;
+  MAPKK2 = 1.0;
+  MKP3 = 100.00;
 
 equation
   der(MAPKK1) = 0.0;

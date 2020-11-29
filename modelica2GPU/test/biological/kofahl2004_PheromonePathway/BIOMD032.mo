@@ -104,7 +104,7 @@ initial equation
   complexL = 0.0;
   complexK = 0.0;
   complexN = 0.0;
-  Ste12_conc = 200.0;
+  Ste12 = 200.0;
   complexM = 0.0;
   Ste11 = 158.33176608789;
   complexH = 0.0;
@@ -126,7 +126,7 @@ initial equation
   Bar1aex = 0.0;
 
 equation
-  der(alpha) = -(alpa*Bar1aex*k1);
+  der(alpha) = -(alpha*Bar1aex*k1);
   der(Ste2) = Ste2a*k3 - Ste2*alpha*k2 - Ste2*k5;
   der(Ste2a) = Ste2*alpha*k2 - Ste2a*k3 - Ste2a*k4;
   der(Gabc) = GaGDP*Gbc*k9 - Ste2a*Gabc*k6;
