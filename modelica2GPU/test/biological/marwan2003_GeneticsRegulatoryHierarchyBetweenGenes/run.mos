@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD037.mo");
+getErrorString();
+simulate(BIOMD037, stopTime=50.0);
+getErrorString();
+plot({Pfr, Pr, Xi, Xa, V}, externalWindow=true);
+getErrorString();
+plot({prepreS, preS, S}, externalWindow=true);
+getErrorString();
