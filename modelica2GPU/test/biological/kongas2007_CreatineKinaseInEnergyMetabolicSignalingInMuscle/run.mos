@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD041.mo");
+getErrorString();
+simulate(BIOMD041, stopTime=100.0);
+getErrorString();
+plot({ADPi, ATPi, Cri, PCri, PCr}, externalWindow=true);
+getErrorString();
+plot({ADP, ATP, Cr, Pi, P}, externalWindow=true);
+getErrorString();
