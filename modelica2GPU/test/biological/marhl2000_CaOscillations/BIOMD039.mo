@@ -19,6 +19,13 @@ model BIOMD039 "Complex calcium oscillations and the role of mitochondria and cy
   Real Pr;
 
 initial equation
+  Ca_cyt = 0.35;
+  CaER = 0.76;
+  CaM = 0.29;
+  CaPr = 85.45;
+  Pr = 34.55;
+
+equation
   der(Ca_cyt) = Kch*Ca_cyt^2*(CaER-Ca_cyt)/(K1^2+Ca_cyt^2) + Kleak*(CaER-Ca_cyt) + CaM*(Kout*Ca_cyt^2/(K3^2+Ca_cyt^2)+Km) + Kminus*CaPr - Kpump*Ca_cyt - Kin*Ca_cyt^8/(K2^8+Ca_cyt^8) - Kplus*Ca_cyt*Pr;
   der(CaER) = 0.25*(Kpump*Ca_cyt - Kch*Ca_cyt^2*(CaER-Ca_cyt)/(K1^2+Ca_cyt^2) - Kleak*(CaER-Ca_cyt));
   der(CaM) = 0.25*(Kin*Ca_cyt^8/(K2^8+Ca_cyt^8) - CaM*(Kout*Ca_cyt^2/(K3^2+Ca_cyt^2)+Km));

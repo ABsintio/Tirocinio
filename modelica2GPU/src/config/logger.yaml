@@ -7,6 +7,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/rohwer2000_PhosphotransferaseSystem/log/BIOMD038.log
     formatter: simple
     level: DEBUG
+  BIOMD039_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/marhl2000_CaOscillations/log/BIOMD039.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -15,6 +20,11 @@ loggers:
   BIOMD038:
     handlers:
     - BIOMD038_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD039:
+    handlers:
+    - BIOMD039_handler
     level: DEBUG
     propagate: 'no'
   root:
