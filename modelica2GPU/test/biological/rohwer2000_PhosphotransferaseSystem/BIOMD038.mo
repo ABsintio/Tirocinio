@@ -64,7 +64,7 @@ equation
   der(GlcP) = 0.0;
   der(Glc) = 0.0;
   der(EI) = k4f*EIPHPr-k4r*EI*HPrP - (k1f*PEP*EI-k1r*PyrPI);
-  der(PyrP) = k1f*PEP*EI-k1r*PyrPI - (k2f*PyrPI-k2r*Pyr*EIP);
+  der(PyrPI) = k1f*PEP*EI-k1r*PyrPI - (k2f*PyrPI-k2r*Pyr*EIP);
   der(EIP) = k2f*PyrPI-k2r*Pyr*EIP - (k3f*EIP*HPr-k3r*EIPHPr);
   der(HPr) = k6f*HPrPIIA-k6r*HPr*EIIA - (k3f*EIP*HPr-k3r*EIPHPr);
   der(EIPHPr) = k3f*EIP*HPr-k3r*EIPHPr - (k4f*EIPHPr-k4r*EI*HPrP);
