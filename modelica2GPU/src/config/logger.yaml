@@ -7,6 +7,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/vilar2002_Oscillator/log/BIOMD035.log
     formatter: simple
     level: DEBUG
+  BIOMD036_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tyson1999_CircClock/log/BIOMD036.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -15,6 +20,11 @@ loggers:
   BIOMD035:
     handlers:
     - BIOMD035_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD036:
+    handlers:
+    - BIOMD036_handler
     level: DEBUG
     propagate: 'no'
   root:
