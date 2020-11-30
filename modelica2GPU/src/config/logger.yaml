@@ -12,6 +12,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tyson1999_CircClock/log/BIOMD036.log
     formatter: simple
     level: DEBUG
+  BIOMD037_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/marwan2003_GeneticsRegulatoryHierarchyBetweenGenes/log/BIOMD037.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -25,6 +30,11 @@ loggers:
   BIOMD036:
     handlers:
     - BIOMD036_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD037:
+    handlers:
+    - BIOMD037_handler
     level: DEBUG
     propagate: 'no'
   root:

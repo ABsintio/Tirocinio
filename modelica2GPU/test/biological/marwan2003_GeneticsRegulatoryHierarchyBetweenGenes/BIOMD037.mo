@@ -1,4 +1,4 @@
-model BIOMD038 "Theory of time-resolved somatic complementation and its use to explore the sporulation control network in Physarum polycephalum"
+model BIOMD037 "Theory of time-resolved somatic complementation and its use to explore the sporulation control network in Physarum polycephalum"
 
   parameter Real IfrSfrPfr = 0.1;
   parameter Real IrSrPr = 0.0;
@@ -54,4 +54,4 @@ equation
   der(V) = alpha2/(1+S^3) - V*kd_v;
   der(Pi) = kd*Pr;
 
-end BIOMD038;
+end BIOMD037;
