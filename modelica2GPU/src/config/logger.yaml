@@ -2,6 +2,11 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
+  BIOMD036_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tyson1999_CircClock/log/BIOMD036.log
+    formatter: simple
+    level: DEBUG
   BIOMD038_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/rohwer2000_PhosphotransferaseSystem/log/BIOMD038.log
@@ -12,11 +17,21 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/marhl2000_CaOscillations/log/BIOMD039.log
     formatter: simple
     level: DEBUG
+  BIOMD040_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/field1974_Oregonator/log/BIOMD040.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  BIOMD036:
+    handlers:
+    - BIOMD036_handler
+    level: DEBUG
+    propagate: 'no'
   BIOMD038:
     handlers:
     - BIOMD038_handler
@@ -25,6 +40,11 @@ loggers:
   BIOMD039:
     handlers:
     - BIOMD039_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD040:
+    handlers:
+    - BIOMD040_handler
     level: DEBUG
     propagate: 'no'
   root:

@@ -17,6 +17,8 @@ initial equation
     Br = 1.0e-7;
     BrO3 = 0.06;
     Ce = 0.05;
+    HBrO2 = 5.0e-11;
+    HOBr = 0.0;
 
 equation
     der(BrO3) = 0.0;
