@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD042.mo");
+getErrorString();
+simulate(BIOMD042, stopTime=100.0);
+getErrorString();
+plot({ATP, ADP, AMP, GLC, F6P, FBP, GAP, NAD}, externalWindow=true);
+getErrorString();
+plot({NADH, DPG, PEP, PYR, ACA, EtOH, P}, externalWindow=true);
+getErrorString();
