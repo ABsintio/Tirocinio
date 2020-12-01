@@ -50,14 +50,14 @@ initial equation
     P = 0.0;
 
 equation
-    der(ADPi) = (Vf_2*ATPi*Cri/(Kia_2*Kb_2)-Vb_2*ADPi*PCri/(Kic_2*Kd_2))/(1+Cri/Kib_2+PCri/Kid_2+ATPi*(1/Kia_2+Cri/(Kia_2*Kb_2))+ADPi*(1/Kic_2+Cri/(Kic_2*Kib_2)+PCri/(Kid_2*Kic_2*Kd_2/Kid_2))) - V_1*ADPi*Pi/(Ka_1*Kb_1*(1+ADPi/Ka_1+Pi/Kb_1+ADPi*Pi/(Ka_1*Kb_1))) - (k1_7*ADPi-CYT*k1_7*ADP);
-    der(ATPi) = -((Vf_2*ATPi*Cri/(Kia_2*Kb_2)-Vb_2*ADPi*PCri/(Kic_2*Kd_2))/(1+Cri/Kib_2+PCri/Kid_2+ATPi*(1/Kia_2+Cri/(Kia_2*Kb_2))+ADPi*(1/Kic_2+Cri/(Kic_2*Kib_2)+PCri/(Kid_2*Kic_2*Kd_2/Kid_2))) - V_1*ADPi*Pi/(Ka_1*Kb_1*(1+ADPi/Ka_1+Pi/Kb_1+ADPi*Pi/(Ka_1*Kb_1)))) - (k1_9*ATPi-CYT*k1_9*ATP);
-    der(Cri) = -((Vf_2*ATPi*Cri/(Kia_2*Kb_2)-Vb_2*ADPi*PCri/(Kic_2*Kd_2))/(1+Cri/Kib_2+PCri/Kid_2+ATPi*(1/Kia_2+Cri/(Kia_2*Kb_2))+ADPi*(1/Kic_2+Cri/(Kic_2*Kib_2)+PCri/(Kid_2*Kic_2*Kd_2/Kid_2)))) - (k1_6*Cri-CYT*k1_6*Cr);
-    der(PCri) = (Vf_2*ATPi*Cri/(Kia_2*Kb_2)-Vb_2*ADPi*PCri/(Kic_2*Kd_2))/(1+Cri/Kib_2+PCri/Kid_2+ATPi*(1/Kia_2+Cri/(Kia_2*Kb_2))+ADPi*(1/Kic_2+Cri/(Kic_2*Kib_2)+PCri/(Kid_2*Kic_2*Kd_2/Kid_2))) - (k1_8*PCri-CYT*k1_8*PCr);
-    der(PCr) = (Vf_3*ATP*Cr/(Kia_3*Kb_3)-Vb_3*ADP*PCr/(Kic_3*Kd_3))/(1+Cr/Kib_3+PCr/Kid_3+ATP*(1/Kia_3+Cr/(Kia_3*Kb_3))+ADP*(1/Kic_3+Cr/(Kic_3*Kib_3)+PCr/(Kid_3*Kic_3*Kd_3/Kid_3))) + (k1_8*PCri-CYT*k1_8*PCr);
-    der(ADP) = (Vf_3*ATP*Cr/(Kia_3*Kb_3)-Vb_3*ADP*PCr/(Kic_3*Kd_3))/(1+Cr/Kib_3+PCr/Kid_3+ATP*(1/Kia_3+Cr/(Kia_3*Kb_3))+ADP*(1/Kic_3+Cr/(Kic_3*Kib_3)+PCr/(Kid_3*Kic_3*Kd_3/Kid_3))) + v_4*ATP + (k1_7*ADPi-CYT*k1_7*ADP);
-    der(ATP) = k1_9*ATPi-CYT*k1_9*ATP - (Vf_3*ATP*Cr/(Kia_3*Kb_3)-Vb_3*ADP*PCr/(Kic_3*Kd_3))/(1+Cr/Kib_3+PCr/Kid_3+ATP*(1/Kia_3+Cr/(Kia_3*Kb_3))+ADP*(1/Kic_3+Cr/(Kic_3*Kib_3)+PCr/(Kid_3*Kic_3*Kd_3/Kid_3))) - v_4*ATP;
-    der(Cr) = k1_6*Cri-CYT*k1_6*Cr - (Vf_3*ATP*Cr/(Kia_3*Kb_3)-Vb_3*ADP*PCr/(Kic_3*Kd_3))/(1+Cr/Kib_3+PCr/Kid_3+ATP*(1/Kia_3+Cr/(Kia_3*Kb_3))+ADP*(1/Kic_3+Cr/(Kic_3*Kib_3)+PCr/(Kid_3*Kic_3*Kd_3/Kid_3)));
+    der(ADPi) = (Vf_2*ATPi*Cri/(Kia_2*Kb_2)-Vb_2*ADPi*PCri/(Kic_2*Kd_2))/(1+Cri/Kib_2+PCri/Kid_2+ATPi*(1/Kia_2+Cri/(Kia_2*Kb_2))+ADPi*(1/Kic_2+Cri/(Kic_2*Kib_2)+PCri/(Kid_2*Kic_2*Kd_2/Kid_2))) - V_1*ADPi*Pi/(Ka_1*Kb_1*(1+ADPi/Ka_1+Pi/Kb_1+ADPi*Pi/(Ka_1*Kb_1))) - (k1_7*ADPi-k1_7*ADP);
+    der(ATPi) = -((Vf_2*ATPi*Cri/(Kia_2*Kb_2)-Vb_2*ADPi*PCri/(Kic_2*Kd_2))/(1+Cri/Kib_2+PCri/Kid_2+ATPi*(1/Kia_2+Cri/(Kia_2*Kb_2))+ADPi*(1/Kic_2+Cri/(Kic_2*Kib_2)+PCri/(Kid_2*Kic_2*Kd_2/Kid_2))) - V_1*ADPi*Pi/(Ka_1*Kb_1*(1+ADPi/Ka_1+Pi/Kb_1+ADPi*Pi/(Ka_1*Kb_1)))) - (k1_9*ATPi-k1_9*ATP);
+    der(Cri) = -((Vf_2*ATPi*Cri/(Kia_2*Kb_2)-Vb_2*ADPi*PCri/(Kic_2*Kd_2))/(1+Cri/Kib_2+PCri/Kid_2+ATPi*(1/Kia_2+Cri/(Kia_2*Kb_2))+ADPi*(1/Kic_2+Cri/(Kic_2*Kib_2)+PCri/(Kid_2*Kic_2*Kd_2/Kid_2)))) - (k1_6*Cri-k1_6*Cr);
+    der(PCri) = (Vf_2*ATPi*Cri/(Kia_2*Kb_2)-Vb_2*ADPi*PCri/(Kic_2*Kd_2))/(1+Cri/Kib_2+PCri/Kid_2+ATPi*(1/Kia_2+Cri/(Kia_2*Kb_2))+ADPi*(1/Kic_2+Cri/(Kic_2*Kib_2)+PCri/(Kid_2*Kic_2*Kd_2/Kid_2))) - (k1_8*PCri-k1_8*PCr);
+    der(PCr) = (Vf_3*ATP*Cr/(Kia_3*Kb_3)-Vb_3*ADP*PCr/(Kic_3*Kd_3))/(1+Cr/Kib_3+PCr/Kid_3+ATP*(1/Kia_3+Cr/(Kia_3*Kb_3))+ADP*(1/Kic_3+Cr/(Kic_3*Kib_3)+PCr/(Kid_3*Kic_3*Kd_3/Kid_3))) + (k1_8*PCri-k1_8*PCr);
+    der(ADP) = (Vf_3*ATP*Cr/(Kia_3*Kb_3)-Vb_3*ADP*PCr/(Kic_3*Kd_3))/(1+Cr/Kib_3+PCr/Kid_3+ATP*(1/Kia_3+Cr/(Kia_3*Kb_3))+ADP*(1/Kic_3+Cr/(Kic_3*Kib_3)+PCr/(Kid_3*Kic_3*Kd_3/Kid_3))) + v_4*ATP + (k1_7*ADPi-k1_7*ADP);
+    der(ATP) = k1_9*ATPi-k1_9*ATP - (Vf_3*ATP*Cr/(Kia_3*Kb_3)-Vb_3*ADP*PCr/(Kic_3*Kd_3))/(1+Cr/Kib_3+PCr/Kid_3+ATP*(1/Kia_3+Cr/(Kia_3*Kb_3))+ADP*(1/Kic_3+Cr/(Kic_3*Kib_3)+PCr/(Kid_3*Kic_3*Kd_3/Kid_3))) - v_4*ATP;
+    der(Cr) = k1_6*Cri-k1_6*Cr - (Vf_3*ATP*Cr/(Kia_3*Kb_3)-Vb_3*ADP*PCr/(Kic_3*Kd_3))/(1+Cr/Kib_3+PCr/Kid_3+ATP*(1/Kia_3+Cr/(Kia_3*Kb_3))+ADP*(1/Kic_3+Cr/(Kic_3*Kib_3)+PCr/(Kid_3*Kic_3*Kd_3/Kid_3)));
     der(Pi) = -(V_1*ADPi*Pi/(Ka_1*Kb_1*(1+ADPi/Ka_1+Pi/Kb_1+ADPi*Pi/(Ka_1*Kb_1)))) - (k2_5*Pi-k2_5*P);
     der(P) = v_4*ATP + (k2_5*Pi-k2_5*P);
     
