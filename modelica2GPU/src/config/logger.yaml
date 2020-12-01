@@ -37,6 +37,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/borghans1997_CaOscillationsModel1/log/BIOMD043.log
     formatter: simple
     level: DEBUG
+  BIOMD044_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/borghans1997_CaOscillationsModel2/log/BIOMD044.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -75,6 +80,11 @@ loggers:
   BIOMD043:
     handlers:
     - BIOMD043_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD044:
+    handlers:
+    - BIOMD044_handler
     level: DEBUG
     propagate: 'no'
   root:
