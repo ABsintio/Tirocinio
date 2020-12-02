@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD046.mo");
+getErrorString();
+simulate(BIOMD046, stopTime=300.0);
+getErrorString();
+plot({NADH, O2, H2O2, per3, coI, ArH}, externalWindow=true);
+getErrorString();
+plot({coII, Ar, NADrad, super, coIII, per2}, externalWindow=true);
+getErrorString();
