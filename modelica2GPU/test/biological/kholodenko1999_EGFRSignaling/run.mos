@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD048.mo");
+getErrorString();
+simulate(BIOMD048, stopTime=100.0);
+getErrorString();
+plot({EGF, R, Ra, R2, RP, PLCg, RPLCg, RPLCgP, PLCgP, Grb, RG, SOS}, externalWindow=true);
+getErrorString();
+plot({RGS, GS, Shc, RSh, RShP, ShP, RShG, ShG, RShGS, ShGS}, externalWindow=true);
+getErrorString();
