@@ -1,0 +1,15 @@
+loadModel(Modelica);
+loadFile("BIOMD050.mo");
+getErrorString();
+simulate(BIOMD050, stopTime=200.0);
+getErrorString();
+plot({DFG, Gly, MG}, externalWindow=true);
+getErrorString();
+plot({AA, FA}, externalWindow=true);
+getErrorString();
+plot({Glu, Man, Fru}, externalWindow=true);
+getErrorString();
+plot({_3DG, _1DG}, externalWindow=true);
+getErrorString();
+plot({Mel}, externalWindow=true);
+getErrorString();
