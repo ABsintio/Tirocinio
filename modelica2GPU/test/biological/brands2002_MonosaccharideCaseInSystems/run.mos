@@ -1,0 +1,11 @@
+loadModel(Modelica);
+loadFile("BIOMD052.mo");
+getErrorString();
+simulate(BIOMD052, stopTime=40.0);
+getErrorString();
+plot({Glu, Fru}, externalWindow=true);
+getErrorString();
+plot({Formic_acid, Acetic_acid, Melanoidin}, externalWindow=true);
+getErrorString();
+plot({lys_R, Amadori, Cn, C5, AMP, Triose}, externalWindow=true);
+getErrorString();
