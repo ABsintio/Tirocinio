@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD053.mo");
+getErrorString();
+simulate(BIOMD053, stopTime=50.0);
+getErrorString();
+plot({Glucose, Lysine, Schiff}, externalWindow=true);
+getErrorString();
+plot({Amadori, Gloyxal, CML}, externalWindow=true);
+getErrorString();
