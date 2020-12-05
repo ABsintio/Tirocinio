@@ -62,6 +62,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/kholodenko1999_EGFRSignaling/log/BIOMD048.log
     formatter: simple
     level: DEBUG
+  BIOMD050_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/martins2003_AmadoriDegradation/log/BIOMD050.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -125,6 +130,11 @@ loggers:
   BIOMD048:
     handlers:
     - BIOMD048_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD050:
+    handlers:
+    - BIOMD050_handler
     level: DEBUG
     propagate: 'no'
   root:
