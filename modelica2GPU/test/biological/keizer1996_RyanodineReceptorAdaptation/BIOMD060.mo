@@ -5,7 +5,6 @@ model BIOMD060 "Ryanodine receptor adaptation and Ca2+(-)induced Ca2+ release-de
     parameter Real Ca = 0.9;
     parameter Real n = 4.0;
     parameter Real kb_plus = 1500.0;
-    parameter Real Ca = 0.9;
     parameter Real m = 3.0;
     parameter Real kb_minus = 385.9;
     parameter Real kc_plus = 1.75;

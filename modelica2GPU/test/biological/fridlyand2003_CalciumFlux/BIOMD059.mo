@@ -75,6 +75,7 @@ model BIOMD059 "Modeling of Ca2+ flux in pancreatic beta-cells: role of the plas
     Real b_5(start=0.000);
     Real F1(start=0.000);
     Real F4(start=0.000);
+    Real F5(start=0.000);
     Real B2(start=0.000);
     Real B3(start=0.000);
     Real B4(start=0.000);
@@ -149,6 +150,7 @@ equation
     Jerp = Pcaer*Ca_cyt^2/(Ca_cyt^2+Kcarp^2);
     O_infinity = Ca_cyt*IP3_cyt^3/((Ca_cyt+Krca)*(IP3_cyt^3+Kip3^3));
     Jout = (Pleak+Pip3*O_infinity)*(Ca_er-Ca_cyt);
+    der(Pcaer) = 0.0;
     der(n) = (n_infinity - n)/tau_n;
     der(V) = -(I_Vca+I_CaPump+I_NaCa+I_CRAN+I_Na+I_NaK+I_KDr+I_KCa+I_KATP)/Cm;
     der(Ca_cyt) = fi*(-I_Vca)/(2*F) + fi*2*I_NaCa/(2*F) + 0.01*Jout - fi*2*I_CaPump/(2*F) - 0.01*Jerp - ksg*Ca_cyt;

@@ -27,6 +27,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/bindschadler2001_CoupledCaOscillators/log/BIOMD058.log
     formatter: simple
     level: DEBUG
+  BIOMD060_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/keizer1996_RyanodineReceptorAdaptation/log/BIOMD060.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -55,6 +60,11 @@ loggers:
   BIOMD058:
     handlers:
     - BIOMD058_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD060:
+    handlers:
+    - BIOMD060_handler
     level: DEBUG
     propagate: 'no'
   root:
