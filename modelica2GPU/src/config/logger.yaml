@@ -12,6 +12,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/ferreira2003_CMLGeneration2/log/BIOMD053.log
     formatter: simple
     level: DEBUG
+  BIOMD054_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/ataullahkhanov1996_Adenylate/log/BIOMD054.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -25,6 +30,11 @@ loggers:
   BIOMD053:
     handlers:
     - BIOMD053_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD054:
+    handlers:
+    - BIOMD054_handler
     level: DEBUG
     propagate: 'no'
   root:
