@@ -17,7 +17,7 @@ model BIOMD058 "A bifurcation analysis of two coupled calcium oscillatorstion"
 
     Real Phi1_c1(start=0.0);
     Real Phi_minus1_c1(start=0.0);
-    Real Phi2_c2(start=0.0);
+    Real Phi2_c1(start=0.0);
     Real Phi3_c1(start=0.0);
     Real Phi1_c2(start=0.0);
     Real Phi_minus1_c2(start=0.0);
@@ -45,8 +45,8 @@ equation
     Phi2_c2 = (k2+r4*c2)/(R3+c2);
     Phi3_c2 = k3/(R5+c2);
     der(c1) = kf*(p*h1*Phi1_c1/(Phi1_c1*p+Phi_minus1_c1))^4 + Jleak + D*(c2-c1) - Vp*c1^2/(Kp^2+c1^2);
-    der(h1) = Phi3_c1*(1-h1) - Phi1_c1*Phi2_c2*h1*p/(Phi1_c1*p-Phi_minus1_c1);
+    der(h1) = Phi3_c1*(1-h1) - Phi1_c1*Phi2_c1*h1*p/(Phi1_c1*p+Phi_minus1_c1);
     der(c2) = kf*(p*h2*Phi1_c2/(Phi1_c2*p+Phi_minus1_c2))^4 + Jleak - Vp*c2^2/(Kp^2+c2^2) - D*(c2-c1);
-    der(h2) = Phi3_c2*(1-h2) - Phi1_c1*Phi2_c2*h2*p/(Phi1_c1*p-Phi_minus1_c1);
+    der(h2) = Phi3_c2*(1-h2) - Phi1_c2*Phi2_c2*h2*p/(Phi1_c2*p+Phi_minus1_c2);
     
 end BIOMD058;

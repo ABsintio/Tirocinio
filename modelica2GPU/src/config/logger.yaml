@@ -22,6 +22,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/sneyd2002_IP3Receptor/log/BIOMD057.log
     formatter: simple
     level: DEBUG
+  BIOMD058_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/bindschadler2001_CoupledCaOscillators/log/BIOMD058.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -45,6 +50,11 @@ loggers:
   BIOMD057:
     handlers:
     - BIOMD057_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD058:
+    handlers:
+    - BIOMD058_handler
     level: DEBUG
     propagate: 'no'
   root:
