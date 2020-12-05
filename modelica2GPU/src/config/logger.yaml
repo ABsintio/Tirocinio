@@ -52,6 +52,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/olsen2003_Peroxidase/log/BIOMD046.log
     formatter: simple
     level: DEBUG
+  BIOMD047_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/oxhamre2005_CaOscillation/log/BIOMD047.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -105,6 +110,11 @@ loggers:
   BIOMD046:
     handlers:
     - BIOMD046_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD047:
+    handlers:
+    - BIOMD047_handler
     level: DEBUG
     propagate: 'no'
   root:

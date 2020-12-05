@@ -27,10 +27,10 @@ initial equation
     Ca_Cyt = 0.0;
 
 equation
-    n = n0*(exp(kbN*time)+kappa*(1-exp(kbN*time)));
+    n = n0*(exp((-kbN)*time)+kappa*(1-exp((-kbN)*time)));
     p1 = p11+p12*n/(K1+n);
     p2 = Ca_Cyt/(K2+Ca_Cyt);
-    der(p3) = (k31*Ca_Cyt*p3) + k31*K3*(1-p3);
+    der(p3) = (-(k31*Ca_Cyt*p3)) + k31*K3*(1-p3);
     der(CaER) = Fpump_0*Ca_Cyt/(Kpump+Ca_Cyt) - Fch_0*p1*p2*p3 - Fleak;
     der(Ca_Cyt) = -(Fpump_0*Ca_Cyt/(Kpump+Ca_Cyt) - Fch_0*p1*p2*p3 - Fleak);
     
