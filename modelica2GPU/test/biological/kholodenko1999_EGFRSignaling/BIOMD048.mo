@@ -25,7 +25,7 @@ model BIOMD048 "Quantification of short term signaling by the epidermal growth f
     parameter Real k12f = 0.002;
     parameter Real k12b = 1.0e-4;
     parameter Real k13f = 0.09;
-    parameter Real k13p = 0.60;
+    parameter Real k13b = 0.60;
     parameter Real k14f = 6.00;
     parameter Real k14b = 0.06;
     parameter Real k15f = 0.300;
@@ -76,7 +76,7 @@ model BIOMD048 "Quantification of short term signaling by the epidermal growth f
     Real PLCgl "PLCgP-I";
 
 initial equation
-    PLCgl = 0.0
+    PLCgl = 0.0;
     ShGS = 0.0;
     RShGS = 0.0;
     ShG = 0.0;
@@ -105,18 +105,18 @@ equation
     der(R) = -(k1f*R*EGF-k1b*Ra);
     der(Ra) = k1f*R*EGF-k1b*Ra - 2*(k2f*Ra*Ra-k2b*R2);
     der(R2) = k2f*Ra*Ra-k2b*R2 + V4*RP/(K4+RP) - k3f*R2-k3b*RP;
-    der(RP) = k3f*R2-k3b*RP + (k7f*RPLCgP-k7b*RP*PLCgP) + (k11f*RGS-k11b*RP*GS) + (k15f*RShP-k15b*ShP*RP) + (k18f*RShG-k18b*RP*ShG) + (k20f*RShGS-k20b*ShGS*RP) - V4*RP/(K4+RP) - (k5f*RP*PLCg-k5b*RPLCg) - (k9*RP*Grb-k9b*RG) - (k13*RP*Shc-k13b*RSh);
+    der(RP) = k3f*R2-k3b*RP + (k7f*RPLCgP-k7b*RP*PLCgP) + (k11f*RGS-k11b*RP*GS) + (k15f*RShP-k15b*ShP*RP) + (k18f*RShG-k18b*RP*ShG) + (k20f*RShGS-k20b*ShGS*RP) - V4*RP/(K4+RP) - (k5f*RP*PLCg-k5b*RPLCg) - (k9f*RP*Grb-k9b*RG) - (k13f*RP*Shc-k13b*RSh);
     der(PLCg) = V8*PLCgP/(K8+PLCgP) - (k5f*RP*PLCg-k5b*RPLCg);
     der(RPLCg) = k5f*RP*PLCg-k5b*RPLCg - (k6f*RPLCg-k6b*RPLCgP);
     der(RPLCgP) = k6f*RPLCg-k6b*RPLCgP - (k7f*RPLCgP-k7b*RP*PLCgP);
     der(PLCgP) = k7f*RPLCgP-k7b*RP*PLCgP - V8*PLCgP/(K8+PLCgP) - (k25f*PLCgP-k25b*PLCgl);
-    der(Grb) = k12f*GS-k12b*Grb*SOS - (k9*RP*Grb-k9b*RG) - (k17f*RShP*Grb-k17b*RShG) - (k21f*ShP*Grb-k21b*ShG);
-    der(RG) = k9*RP*Grb-k9b*RG - (k10*RG*SOS-k10b*RGS);
-    der(SOS) = k12f*GS-k12b*Grb*SOS - (k10*RG*SOS-k10b*RGS) - (k19f*RShG*SOS-k19b*RShGS) - (k22f*ShG*SOS-k22b*ShGS);
-    der(RGS) = k10*RG*SOS-k10b*RGS - (k11f*RGS-k11b*RP*GS);
+    der(Grb) = k12f*GS-k12b*Grb*SOS - (k9f*RP*Grb-k9b*RG) - (k17f*RShP*Grb-k17b*RShG) - (k21f*ShP*Grb-k21b*ShG);
+    der(RG) = k9f*RP*Grb-k9b*RG - (k10f*RG*SOS-k10b*RGS);
+    der(SOS) = k12f*GS-k12b*Grb*SOS - (k10f*RG*SOS-k10b*RGS) - (k19f*RShG*SOS-k19b*RShGS) - (k22f*ShG*SOS-k22b*ShGS);
+    der(RGS) = k10f*RG*SOS-k10b*RGS - (k11f*RGS-k11b*RP*GS);
     der(GS) = k11f*RGS-k11b*RP*GS + (k23f*ShGS-k23b*ShP*GS) - (k12f*GS-k12b*Grb*SOS) - (k24f*RShP*GS-k24b*RShGS);
-    der(Shc) = V16*ShP/(K16+ShP) - (k13*RP*Shc-k13b*RSh);
-    der(RSh) = k13*RP*Shc-k13b*RSh - (k14f*RSh-k14b*RShP);
+    der(Shc) = V16*ShP/(K16+ShP) - (k13f*RP*Shc-k13b*RSh);
+    der(RSh) = k13f*RP*Shc-k13b*RSh - (k14f*RSh-k14b*RShP);
     der(RShP) = k14f*RSh-k14b*RShP - (k15f*RShP-k15b*ShP*RP) - (k17f*RShP*Grb-k17b*RShG) - (k24f*RShP*GS-k24b*RShGS);
     der(ShP) = k15f*RShP-k15b*ShP*RP + (k23f*ShGS-k23b*ShP*GS) - V16*ShP/(K16+ShP) - (k21f*ShP*Grb-k21b*ShG);
     der(RShG) = k17f*RShP*Grb-k17b*RShG - (k18f*RShG-k18b*RP*ShG) - (k19f*RShG*SOS-k19b*RShGS);

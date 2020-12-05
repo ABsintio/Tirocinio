@@ -15,7 +15,7 @@ using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 1;
+const int NT   = 10000;
 const int SD   = 3;
 const int NCP  = 1;
 const int NSP  = 13;
@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 4;
 const int NIA  = 0;
-const int NDO  = 10000;
+const int NDO  = 1000;
 
 
 void FillSolverObject(
@@ -122,7 +122,7 @@ void SaveData(
 
 int main() {
     int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
-    int blockSize        = 64; // Numero di Thread per blocchi
+    int blockSize        = 512; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
     ListCUDADevices();
