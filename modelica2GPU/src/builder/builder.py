@@ -393,7 +393,7 @@ class ModelBuilder:
         relative_tolerance = " "*4 + "Solver.SolverOption(RelativeTolerance, %d, %s);\n"
         absoluteTolerances = "".join([abs_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
         relativeTolerances = "".join([relative_tolerance % (x, y) for x, y in enumerate(self.config_dict['tolerance'])])
-        timeStepGrowLimit = " "*4 + "Solver.SolverOption(TimeStepGrowLimit, 1.0);\n" if not self.samples else ""
+        timeStepGrowLimit = " "*4 + "Solver.SolverOption(TimeStepGrowLimit, 5.0);\n" if not self.samples else ""
         timeStepShrinkLimit = " "*4 + "Solver.SolverOption(TimeStepShrinkLimit, 0.2);\n" if not self.samples else ""
         MPGOS_MainFunction = MPGOS_MainFunction % (
             block_size, GPUMajor, GPUMinor, preferSharedMemory, 

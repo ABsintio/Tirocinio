@@ -85,7 +85,7 @@ def getdefaultoptions(nevents, nstates, xmlfile):
     numberOfThreads            = 1
     numberOfProblems           = numberOfThreads
     numberOfDenseOutput        = 1000
-    threadsPerBlock            = 64
+    threadsPerBlock            = 512
     initialTimeStep            = 1.0e-2
     preferSharedMemory         = 1
     maximumTimeStep            = 1.0e+6
