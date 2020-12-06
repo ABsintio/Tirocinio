@@ -1,0 +1,9 @@
+loadModel(Modelica);
+loadFile("BIOMD063.mo");
+getErrorString();
+simulate(BIOMD063, stopTime=50.0);
+getErrorString();
+plot({Glci, ATP, G6P, FDP, PEP}, externalWindow=true);
+getErrorString();
+plot({Gly, EtOH, Carbo, Glco}, externalWindow=true);
+getErrorString();
