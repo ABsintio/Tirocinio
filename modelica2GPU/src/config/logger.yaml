@@ -67,6 +67,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/fuss2006_MitoticActivation/log/BIOMD069.log
     formatter: simple
     level: DEBUG
+  BIOMD072_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/yi2003_GproteinCycle/log/BIOMD072.log
+    formatter: simple
+    level: DEBUG
   BIOMD076_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/cronwright2002_GlycerolSynthesis/log/BIOMD076.log
@@ -145,6 +150,11 @@ loggers:
   BIOMD069:
     handlers:
     - BIOMD069_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD072:
+    handlers:
+    - BIOMD072_handler
     level: DEBUG
     propagate: 'no'
   BIOMD076:
