@@ -32,6 +32,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/keizer1996_RyanodineReceptorAdaptation/log/BIOMD060.log
     formatter: simple
     level: DEBUG
+  BIOMD062_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/bhartiya2003_TryptophanOperon/log/BIOMD062.log
+    formatter: simple
+    level: DEBUG
   BIOMD160_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/xie2007_CircClock/log/BIOMD160.log
@@ -70,6 +75,11 @@ loggers:
   BIOMD060:
     handlers:
     - BIOMD060_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD062:
+    handlers:
+    - BIOMD062_handler
     level: DEBUG
     propagate: 'no'
   BIOMD160:
