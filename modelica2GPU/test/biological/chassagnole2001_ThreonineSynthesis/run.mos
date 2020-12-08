@@ -1,7 +1,7 @@
 loadModel(Modelica);
 loadFile("BIOMD066.mo");
 getErrorString();
-simulate(BIOMD066, stopTime=120.0);
+simulate(BIOMD066, stopTime=120.0, simflags="-s=rungekuttaSsc");
 getErrorString();
 plot({asp, asa, hs, thr, nadph}, externalWindow=true);
 getErrorString();
