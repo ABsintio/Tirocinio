@@ -11,7 +11,7 @@ model BIOMD067 "A synthetic gene-metabolic oscillator"
     parameter Real C = 100.000;
     parameter Real H = 1.0e-7;
     parameter Real Keq = 5.0e-4;
-    parameter Real K3 = 0.010;
+    parameter Real k3 = 0.010;
     parameter Real alpha0 = 0.000;
     parameter Real alpha1 = 0.100;
     parameter Real alpha2 = 2.000;
@@ -43,10 +43,10 @@ initial equation
 
 equation
     der(AcCoA) = S0 + k2*Acs*OAc/(KM2+OAc) - kTCA*AcCoA - k1*Pta*AcCoA/(KM1+AcCoA);
-    der(AcP) = k1*Pta*AcCoA/(KM1+AcCoA) - (KAck_f*AcP-KAck_r*OAc);
-    der(OAc) = (KAck_f*AcP-KAck_r*OAc) - k2*Acs*OAc/(KM2+OAc) - C*(OAc*H-Keq*HOAc);
+    der(AcP) = k1*Pta*AcCoA/(KM1+AcCoA) - (kAck_f*AcP-kAck_r*OAc);
+    der(OAc) = (kAck_f*AcP-kAck_r*OAc) - k2*Acs*OAc/(KM2+OAc) - C*(OAc*H-Keq*HOAc);
     der(HOAc) = C*(OAc*H-Keq*HOAc) - k3*(HOAc-HOAc_E);
-    der(LacI) = (alpha1*(AcP/Kg1)^n/(1+(AcP/Kg1)^n)+alpha0) - (alpha3/(1+(LacI/Kg3)^n)+alpha0);
+    der(LacI) = (alpha1*(AcP/Kg1)^n/(1+(AcP/Kg1)^n)+alpha0) - kd*LacI;
     der(Acs) = (alpha2*(AcP/Kg2)^n/(1+(AcP/Kg2)^n)+alpha0) - kd*Acs;
     der(Pta) = (alpha3/(1+(LacI/Kg3)^n)+alpha0) - kd*Pta;
     der(HOAc_E) = 0.0;
