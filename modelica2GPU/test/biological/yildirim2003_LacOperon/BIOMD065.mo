@@ -51,9 +51,9 @@ equation
     der(A) = alpha_A*B*L/(K_L+L) - A*(gamma_A+mu) - beta_A*B*A/(K_A+A);
     der(L) = alpha_L*P*L_e/(K_Le+L_e) - alpha_A*B*L/(K_L+L) - L*(gamma_L+mu) - beta_L1*P*L/(K_L1+L);
     der(P) = I3/(tau_B+tau_P) - P*(gamma_P+mu);
-    der(I1) = alpha_M*(K_1*exp(mu*tau_M*(-(2)))*A^2+1)/(K+K_1*exp((-(2))*mu*tau_M)*A^2) - I1*tau_M;
-    der(I2) = alpha_B*M*exp(mu*tau_B) - I2/tau_B;
-    der(I3) = alpha_P*M*exp((-(1))*mu*(tau_B+tau_P)) - I3/(tau_B+tau_P);
+    der(I1) = alpha_M*(K_1*3.141592653589793^(mu*tau_M*(-(2)))*A^2+1)/(K+K_1*3.141592653589793^((-(2))*mu*tau_M)*A^2) - I1*tau_M;
+    der(I2) = alpha_B*M*3.141592653589793^(mu*tau_B) - I2/tau_B;
+    der(I3) = alpha_P*M*3.141592653589793^((-(1))*mu*(tau_B+tau_P)) - I3/(tau_B+tau_P);
     der(L_e) = 0.0;
 
 end BIOMD065;

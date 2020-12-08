@@ -42,6 +42,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/galazzo1990_FermentationPathwayKinetics/log/BIOMD063.log
     formatter: simple
     level: DEBUG
+  BIOMD065_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/yildirim2003_LacOperon/log/BIOMD065.log
+    formatter: simple
+    level: DEBUG
   BIOMD066_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/chassagnole2001_ThreonineSynthesis/log/BIOMD066.log
@@ -115,6 +120,11 @@ loggers:
   BIOMD063:
     handlers:
     - BIOMD063_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD065:
+    handlers:
+    - BIOMD065_handler
     level: DEBUG
     propagate: 'no'
   BIOMD066:
