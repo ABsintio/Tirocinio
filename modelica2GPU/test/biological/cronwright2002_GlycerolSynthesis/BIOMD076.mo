@@ -11,7 +11,7 @@ model BIOMD076 "Metabolic control analysis of glycerol synthesis in Saccharomyce
     parameter Real ATP = 2.370;
     parameter Real K1atp = 0.730;
     parameter Real ADP = 2.170;
-    parameter Real k1adp = 2.000;
+    parameter Real K1adp = 2.000;
     parameter Real K1nad = 0.930;
     parameter Real K1g3p = 1.200;
     parameter Real V2 = 53.0;
