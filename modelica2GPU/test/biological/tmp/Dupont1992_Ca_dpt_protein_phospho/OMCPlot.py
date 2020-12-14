@@ -26,7 +26,7 @@ time = data_numpy[:, 0]
 plot_number = 1
 for i in range(0, len(species_tuple), 4):
     current_vars = species_tuple[i:i+4]
-    plt.figure()
+    plt.figure(figsize=[15.0, 8.0])
     for j, var in current_vars:
         plt.plot(time, data_numpy[:, j], marker="_", label=var)
     plt.xlabel("Time")
