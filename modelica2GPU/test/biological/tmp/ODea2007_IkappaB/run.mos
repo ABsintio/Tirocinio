@@ -1,0 +1,18 @@
+
+loadModel(Modelica);
+loadFile("BIOMD147.mo");
+getErrorString();
+simulate(BIOMD147, stopTime=100.0);
+getErrorString();
+plot({IkBa_mRNA,IkBa_cytoplasm,IkBa_nucleus,IkBaIKK}, externalWindow=true);
+getErrorString();
+plot({IkBaNFkB_cytoplasm,IkBaNFkB_nucleus,IkBaIKKNFkB,NFkB_cytoplasm}, externalWindow=true);
+getErrorString();
+plot({IKK,NFkB_nucleus,IkBbIKK,IkBbIKKNFkB}, externalWindow=true);
+getErrorString();
+plot({IkBbNFkB_nucleus,IkBbNFkB_cytoplasm,IkBb_nucleus,IkBb_cytoplasm}, externalWindow=true);
+getErrorString();
+plot({IkBb_mRNA,IkBe_mRNA,IkBe_cytoplasm,IkBe_nucleus}, externalWindow=true);
+getErrorString();
+plot({IkBeNFkB_cytoplasm,IkBeNFkB_nucleus,IkBeIKKNFkB,IkBeIKK}, externalWindow=true);
+getErrorString();

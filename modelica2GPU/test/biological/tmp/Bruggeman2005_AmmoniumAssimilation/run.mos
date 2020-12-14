@@ -1,0 +1,12 @@
+
+loadModel(Modelica);
+loadFile("BIOMD217.mo");
+getErrorString();
+simulate(BIOMD217, stopTime=100.0);
+getErrorString();
+plot({PII,PIIUMP,GLN,PIIUMP2}, externalWindow=true);
+getErrorString();
+plot({PIIUMP3,GS,AMP,GLU}, externalWindow=true);
+getErrorString();
+plot({AZGLU,ATP,ADP,AZGLN}, externalWindow=true);
+getErrorString();

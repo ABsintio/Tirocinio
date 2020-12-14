@@ -1,0 +1,12 @@
+
+loadModel(Modelica);
+loadFile("BIOMD228.mo");
+getErrorString();
+simulate(BIOMD228, stopTime=100.0);
+getErrorString();
+plot({pRB,pRBp,E2F1,CycDi}, externalWindow=true);
+getErrorString();
+plot({CycDa,AP1,pRBpp,CycEi}, externalWindow=true);
+getErrorString();
+plot({CycEa}, externalWindow=true);
+getErrorString();

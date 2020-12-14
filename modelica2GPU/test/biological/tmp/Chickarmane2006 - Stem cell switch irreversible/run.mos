@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD204.mo");
+getErrorString();
+simulate(BIOMD204, stopTime=100.0);
+getErrorString();
+plot({OCT4,SOX2,NANOG,OCT4_SOX2}, externalWindow=true);
+getErrorString();
+plot({Protein}, externalWindow=true);
+getErrorString();

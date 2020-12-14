@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD202.mo");
+getErrorString();
+simulate(BIOMD202, stopTime=100.0);
+getErrorString();
+plot({h,Ca_Cyt,IP3_Cyt,Ca_ER}, externalWindow=true);
+getErrorString();
+plot({S2a,S4,Oc,O_o}, externalWindow=true);
+getErrorString();

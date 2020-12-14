@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD213.mo");
+getErrorString();
+simulate(BIOMD213, stopTime=100.0);
+getErrorString();
+plot({_5mTHF,THF,DHF,_5_10_CH2THF}, externalWindow=true);
+getErrorString();
+plot({_5_10_CHTHF,_10fTHF}, externalWindow=true);
+getErrorString();

@@ -1,0 +1,14 @@
+
+loadModel(Modelica);
+loadFile("BIOMD123.mo");
+getErrorString();
+simulate(BIOMD123, stopTime=100.0);
+getErrorString();
+plot({Ca_Nuc,Ca_Cyt,NFAT_Nuc,Act_C_Nuc}, externalWindow=true);
+getErrorString();
+plot({NFAT_Pi_Nuc,NFAT_Act_C_Nuc,NFAT_Pi_Act_C_Nuc,Inact_C_Nuc}, externalWindow=true);
+getErrorString();
+plot({NFAT_Cyt,Act_C_Cyt,NFAT_Pi_Cyt,NFAT_Act_C_Cyt}, externalWindow=true);
+getErrorString();
+plot({NFAT_Pi_Act_C_Cyt,Inact_C_Cyt}, externalWindow=true);
+getErrorString();

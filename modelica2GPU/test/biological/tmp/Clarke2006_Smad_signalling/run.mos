@@ -1,0 +1,12 @@
+
+loadModel(Modelica);
+loadFile("BIOMD112.mo");
+getErrorString();
+simulate(BIOMD112, stopTime=100.0);
+getErrorString();
+plot({receptor,R_smad_cyt,R_smad_P_cyt,smad4_cyt}, externalWindow=true);
+getErrorString();
+plot({R_smad_P_smad4_cyt,R_smad_P_smad4_nuc,R_smad_nuc,R_smad_P_nuc}, externalWindow=true);
+getErrorString();
+plot({smad4_nuc,Pi}, externalWindow=true);
+getErrorString();

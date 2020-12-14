@@ -1,0 +1,8 @@
+
+loadModel(Modelica);
+loadFile("BIOMD150.mo");
+getErrorString();
+simulate(BIOMD150, stopTime=100.0);
+getErrorString();
+plot({CDK2cycA,CyclinA,Cdk2,CDK2cycA_star_}, externalWindow=true);
+getErrorString();

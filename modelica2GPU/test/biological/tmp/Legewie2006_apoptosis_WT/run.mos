@@ -1,0 +1,14 @@
+
+loadModel(Modelica);
+loadFile("BIOMD102.mo");
+getErrorString();
+simulate(BIOMD102, stopTime=100.0);
+getErrorString();
+plot({A,C9,C9X,X}, externalWindow=true);
+getErrorString();
+plot({AC9X,AC9,C3,C3_star}, externalWindow=true);
+getErrorString();
+plot({C3_starX,C9_starX,C9_star,AC9_star}, externalWindow=true);
+getErrorString();
+plot({AC9_starX}, externalWindow=true);
+getErrorString();

@@ -1,0 +1,12 @@
+
+loadModel(Modelica);
+loadFile("BIOMD214.mo");
+getErrorString();
+simulate(BIOMD214, stopTime=100.0);
+getErrorString();
+plot({E1F,E1Fp,E1W,E2F}, externalWindow=true);
+getErrorString();
+plot({E2Fp,E2W,MF,MW}, externalWindow=true);
+getErrorString();
+plot({PF,PFp,PW,PWL}, externalWindow=true);
+getErrorString();

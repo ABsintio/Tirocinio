@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD124.mo");
+getErrorString();
+simulate(BIOMD124, stopTime=100.0);
+getErrorString();
+plot({nIR,rIR,n,a}, externalWindow=true);
+getErrorString();
+plot({V,c,cer}, externalWindow=true);
+getErrorString();

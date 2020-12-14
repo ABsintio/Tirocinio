@@ -1,0 +1,14 @@
+
+loadModel(Modelica);
+loadFile("BIOMD091.mo");
+getErrorString();
+simulate(BIOMD091, stopTime=100.0);
+getErrorString();
+plot({Hsp90,HCom,HSF1,MisP}, externalWindow=true);
+getErrorString();
+plot({MCom,TriH,DiH,NatP}, externalWindow=true);
+getErrorString();
+plot({AggP,HSE,HSETriH,X}, externalWindow=true);
+getErrorString();
+plot({ROS,ATP,ADP}, externalWindow=true);
+getErrorString();

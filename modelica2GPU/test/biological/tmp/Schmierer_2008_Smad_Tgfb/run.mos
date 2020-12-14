@@ -1,0 +1,18 @@
+
+loadModel(Modelica);
+loadFile("BIOMD173.mo");
+getErrorString();
+simulate(BIOMD173, stopTime=100.0);
+getErrorString();
+plot({S2_n,pS2_n,G_n,pG_n}, externalWindow=true);
+getErrorString();
+plot({S22_n,S24_n,S4_n,G2_n}, externalWindow=true);
+getErrorString();
+plot({G4_n,GG_n,S22_c,S24_c}, externalWindow=true);
+getErrorString();
+plot({S4_c,S2_c,pS2_c,G_c}, externalWindow=true);
+getErrorString();
+plot({pG_c,G2_c,G4_c,GG_c}, externalWindow=true);
+getErrorString();
+plot({R_act,R,R_inact}, externalWindow=true);
+getErrorString();

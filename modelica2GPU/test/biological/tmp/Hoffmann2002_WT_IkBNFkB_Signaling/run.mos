@@ -1,0 +1,20 @@
+
+loadModel(Modelica);
+loadFile("BIOMD140.mo");
+getErrorString();
+simulate(BIOMD140, stopTime=100.0);
+getErrorString();
+plot({fr_after_trigger,IkBalpha,NFkB,IkBalpha_NFkB}, externalWindow=true);
+getErrorString();
+plot({IkBbeta,IkBbeta_NFkB,IkBeps,IkBeps_NFkB}, externalWindow=true);
+getErrorString();
+plot({IKK_IkBalpha,IKK_IkBalpha_NFkB,IKK,IKK_IkBbeta}, externalWindow=true);
+getErrorString();
+plot({IKK_IkBbeta_NFkB,IKK_IkBeps,IKK_IkBeps_NFkB,NFkB_nuc}, externalWindow=true);
+getErrorString();
+plot({IkBalpha_nuc,IkBalpha_nuc_NFkB_nuc,IkBbeta_nuc,IkBbeta_nuc_NFkB_nuc}, externalWindow=true);
+getErrorString();
+plot({IkBeps_nuc,IkBalpha_transcript,IkBbeta_transcript,IkBeps_transcript}, externalWindow=true);
+getErrorString();
+plot({IkBeps_nuc_NFkB_nuc}, externalWindow=true);
+getErrorString();

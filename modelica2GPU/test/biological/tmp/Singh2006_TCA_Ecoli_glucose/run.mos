@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD222.mo");
+getErrorString();
+simulate(BIOMD222, stopTime=100.0);
+getErrorString();
+plot({cit,icit,akg,sca}, externalWindow=true);
+getErrorString();
+plot({suc,fa,mal,gly}, externalWindow=true);
+getErrorString();

@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD199.mo");
+getErrorString();
+simulate(BIOMD199, stopTime=100.0);
+getErrorString();
+plot({FeIII,FeII,FeII_O2,FeIII_star}, externalWindow=true);
+getErrorString();
+plot({FeII_star,FeII_star_O2,FeIII_NO,FeII_NO}, externalWindow=true);
+getErrorString();

@@ -1,0 +1,16 @@
+
+loadModel(Modelica);
+loadFile("BIOMD160.mo");
+getErrorString();
+simulate(BIOMD160, stopTime=100.0);
+getErrorString();
+plot({CC,CCPT,clkm,perm}, externalWindow=true);
+getErrorString();
+plot({PT,vrim,VRI,pdpm}, externalWindow=true);
+getErrorString();
+plot({PDP,CLK,PER,timm}, externalWindow=true);
+getErrorString();
+plot({TIM,prcper,prcv,prcpdp}, externalWindow=true);
+getErrorString();
+plot({prvc,prpc,prct}, externalWindow=true);
+getErrorString();

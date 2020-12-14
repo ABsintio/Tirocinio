@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD178.mo");
+getErrorString();
+simulate(BIOMD178, stopTime=100.0);
+getErrorString();
+plot({bulk,free,bound,translocate}, externalWindow=true);
+getErrorString();
+plot({lytic}, externalWindow=true);
+getErrorString();

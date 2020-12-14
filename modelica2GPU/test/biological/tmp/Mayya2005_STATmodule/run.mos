@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD167.mo");
+getErrorString();
+simulate(BIOMD167, stopTime=100.0);
+getErrorString();
+plot({stat_sol,Pstat_sol,PstatDimer_sol,PstatDimer_nuc}, externalWindow=true);
+getErrorString();
+plot({stat_nuc,Pstat_nuc,species_test}, externalWindow=true);
+getErrorString();
