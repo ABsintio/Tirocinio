@@ -74,8 +74,9 @@ equation
     der(Galpha_GTP) = (1.0 * k0) + (1.0 * k1 * Galpha_GTP) - (1.0 * k2 * Raplc * Galpha_GTP) - (1.0 * k3 * Rpkc * Galpha_GTP);
     der(APLC) = (1.0 * k4 * Rgalpha_gtp * Rdg * PLC) - (1.0 * k5 * APLC);
     der(IP3) = (1.0 * k6 * APLC) - (1.0 * k7 * IP3);
-    der(Ca_1.0) =  - (0.001 * 1.0 * (k8 * Rip3 * Rer - k9 * Rcyt1));
+    der(Ca_ER) =  - (0.001 * 1.0 * (k8 * Rip3 * Rer - k9 * Rcyt1));
     der(Ca_Cyt) = (0.01 * 1.0 * (k8 * Rip3 * Rer - k9 * Rcyt1)) + (0.05 * 1.0 * k11) - (0.05 * 1.0 * k10 * Rcyt2);
+
 
 
 

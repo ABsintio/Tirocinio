@@ -243,6 +243,7 @@ equation
     der(pRbY11) = (1.0 * kupYD4YYpRb * Cdk4Y01YpRbY01YpRbY11YInt) + (1.0 * kuYE2YYpRb * Cdk2Y011YpRbY11YpRbY21YInt) + (1.0 * kuYA2YYpRb * Cdk2Y012YpRbY11YpRbY21YInt) + (1.0 * kuYA1YYpRb * Cdk1Y11YpRbY11YpRbY21YInt) + (1.0 * kbYE2FYYpRb * pRbY10 * E2F) - (kdYE2F * pRbY11 * 1.0) - (1.0 * kbYE2YYpRb * pRbY11 * Cdk2Y011) - (1.0 * kbYA2YYpRb * pRbY11 * Cdk2Y012) - (1.0 * kbYA1YYpRb * pRbY10 * Cdk1Y11) - (1.0 * kuYE2FYYpRb * pRbY11);
     der(pRbY20) = (kdYE2F * pRbY21 * 1.0) + (1.0 * kupYE2YYpRb * Cdk2Y011YpRbY10YpRbY20YInt) + (1.0 * kupYA2YYpRb * Cdk2Y012YpRbY10YpRbY20YInt) + (1.0 * kupYA1YYpRb * Cdk1Y11YpRbY10YpRbY20YInt) + (1.0 * kuYE2FYYpRb * pRbY21) - (1.0 * ktYpRbYYDephos * pRbY20);
     der(pRbY21) = (1.0 * kupYE2YYpRb * Cdk2Y011YpRbY11YpRbY21YInt) + (1.0 * kupYA2YYpRb * Cdk2Y012YpRbY11YpRbY21YInt) + (1.0 * kupYA1YYpRb * Cdk1Y11YpRbY11YpRbY21YInt) - (kdYE2F * pRbY21 * 1.0) - (1.0 * ktYpRbYYDephos * pRbY21) - (1.0 * kuYE2FYYpRb * pRbY21);
+    der(kYact)=0.0;
 
     when time > 240.0637 then
         reinit(kYact,k1Yact);

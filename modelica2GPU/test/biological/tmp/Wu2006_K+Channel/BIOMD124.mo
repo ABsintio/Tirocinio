@@ -106,6 +106,7 @@ equation
     der(V) = -(ica + ik + ikca + ikatp + iir) / cm;
     der(c) = (1.0 * fcyt * (jmem + jer)) ;
     der(cer) = (-fer * vcytver * jer * 1.0) ;
+    der(gkatp)=0.0;
 
     when time > 3e4 then
         reinit(gkatp,530);

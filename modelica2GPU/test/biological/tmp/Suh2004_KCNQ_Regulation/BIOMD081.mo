@@ -96,37 +96,38 @@ initial equation
     GGDP_M = 200.0;
 
 equation
-    1.0gSat10 = 0.2 + 0.8 * 1 * (1 / (1 + K1.0gGTPase * (1 / 1.0g2_C)));
+    MgSat10 = 0.2 + 0.8 * 1 * (1 / (1 + K1.0gGTPase * (1 / 1.0g2_C)));
     I_KCNQ = 1.33 * pow(0.025 * PIP2xKCNQ_1.0, nHill);
     ATPSat300 = 1 * (1 / (1 + 300 * (1 / (0.5 + ATP_C))));
     GTP_C = 100 - 50 * exp(-(0.00833333333333333 * (290 + time)));
     ATPSat1000 = 1 * (1 / (1 + 1000 * (1 / (0.5 + ATP_C))));
     fGactive = (GGTP1.0g_1.0 + GGTPgS1.0g_1.0 + GGDPAlF41.0g_1.0) / 200;
     OxoSat = 1 * (1 / (1 + Koxom * (1 / (1e-5 + oxo1.0_1.0))));
-    1.0gSat20 = 1 * (1 / (1 + 20 * (1 / 1.0g2_C)));
+    MgSat20 = 1 * (1 / (1 + 20 * (1 / 1.0g2_C)));
     Gactive = GGTP1.0g_1.0 + GGTPgS1.0g_1.0 + GGDPAlF41.0g_1.0;
     der(GTPgS_C) =  - (0.0009967 * Function_for_GTPgSon(GGTPgS_1.0, GTPgS_C, G_1.0, 1.0, kGTPgSoff_GTPgSon, kGTPgSon_GTPgSon));
-    der(KCNQsites_1.0) =  - (1.0 * Function_for_PIP2binding(KCNQsites_1.0, PIP2_1.0, PIP2xKCNQ_1.0, kPIP2off_PIP2binding, kPIP2on_PIP2binding));
-    der(PIP2_1.0) = (Function_for_PIP5kinase(ATPSat300, 1.0gSat20, PIP_1.0, kPIP5Kinase_PIP5kinase)) - (1.0 * Function_for_PIP2binding(KCNQsites_1.0, PIP2_1.0, PIP2xKCNQ_1.0, kPIP2off_PIP2binding, kPIP2on_PIP2binding)) - (1.0 * Function_for_PIP2_5Pase(1.0gSat20, PIP2_1.0, kPIP2Pase_PIP2_5Pase)) - (Function_for_PLC(1.0, PIP2_1.0, PLCspont_PLC, fGactive, kPLC_PLC));
-    der(GGDPbS_1.0) = (Function_for_GDPbSon(GDPbS_C, GGDPbS_1.0, G_1.0, 1.0, OxoSat, kGDPbSon_GDPbSon, kGGDPbSoff_GDPbSon)) ;
-    der(1.0g2_C) = 0.0;
+    der(KCNQsites_M) =  - (1.0 * Function_for_PIP2binding(KCNQsites_1.0, PIP2_1.0, PIP2xKCNQ_1.0, kPIP2off_PIP2binding, kPIP2on_PIP2binding));
+    der(PIP2_M) = (Function_for_PIP5kinase(ATPSat300, 1.0gSat20, PIP_1.0, kPIP5Kinase_PIP5kinase)) - (1.0 * Function_for_PIP2binding(KCNQsites_1.0, PIP2_1.0, PIP2xKCNQ_1.0, kPIP2off_PIP2binding, kPIP2on_PIP2binding)) - (1.0 * Function_for_PIP2_5Pase(1.0gSat20, PIP2_1.0, kPIP2Pase_PIP2_5Pase)) - (Function_for_PLC(1.0, PIP2_1.0, PLCspont_PLC, fGactive, kPLC_PLC));
+    der(GGDPbS_M) = (Function_for_GDPbSon(GDPbS_C, GGDPbS_1.0, G_1.0, 1.0, OxoSat, kGDPbSon_GDPbSon, kGGDPbSoff_GDPbSon)) ;
+    der(Mg2_C) = 0.0;
     der(ATP_C) =  - (0.0009967 * Function_for_PIP5kinase(ATPSat300, 1.0gSat20, PIP_1.0, kPIP5Kinase_PIP5kinase)) - (0.0009967 * Function_for_PI4Kinase(ATPSat1000, 1.0, 1.0gSat20, PI_1.0, kPI4Kinase_PI4Kinase));
-    der(oxo1.0_1.0) = 0.0;
+    der(oxoM_EX) = 0.0;
     der(GDPbS_C) =  - (0.0009967 * Function_for_GDPbSon(GDPbS_C, GGDPbS_1.0, G_1.0, 1.0, OxoSat, kGDPbSon_GDPbSon, kGGDPbSoff_GDPbSon));
-    der(GGTP1.0g_1.0) = (Function_for_1.0gGTPon(GGTP_1.0, 1.0, 1.0g2_C, k1.0g2onGTP_1.0gGTPon)) - (1.0 * Function_for_GGTPase(GGTP1.0g_1.0, 1.0gSat10, kGGTPase_GGTPase));
+    der(GGTPMg_M) = (Function_for_1.0gGTPon(GGTP_1.0, 1.0, 1.0g2_C, k1.0g2onGTP_1.0gGTPon)) - (1.0 * Function_for_GGTPase(GGTP1.0g_1.0, 1.0gSat10, kGGTPase_GGTPase));
     der(GDP_C) = (0.0009967 * Function_for_GDPdissoc(GDP_C, GGDP_1.0, G_1.0, 1.0, OxoSat, TonicAct_GDPdissoc, kGDPoff_GDPdissoc, kGDPon_GDPdissoc)) ;
-    der(GGDPAlF41.0g_1.0) = (Function_for_1.0gonGDPAIF4(GGDPAlF4_1.0, 1.0, 1.0g2_C, k1.0gonAlF4_1.0gonGDPAlF4)) ;
+    der(GGDPAlF4Mg_M) = (Function_for_1.0gonGDPAIF4(GGDPAlF4_1.0, 1.0, 1.0g2_C, k1.0gonAlF4_1.0gonGDPAlF4)) ;
     der(ip3_C) = (0.0009967 * Function_for_PLC(1.0, PIP2_1.0, PLCspont_PLC, fGactive, kPLC_PLC)) - (1.666111296e-18 * 1.0 * Function_for_IP3Phosphatase(NA_micro, ip3_C, kIP3ase_IP3Phosphatase));
     der(AlF4_C) =  - (0.0009967 * Function_for_AIF4on(AlF4_C, GGDPAlF4_1.0, GGDP_1.0, 1.0, kAlF4off_AlF4on, kAlF4on_AlF4on));
-    der(G_1.0) = (Function_for_GDPdissoc(GDP_C, GGDP_1.0, G_1.0, 1.0, OxoSat, TonicAct_GDPdissoc, kGDPoff_GDPdissoc, kGDPon_GDPdissoc)) - (Function_for_GTPon(GGTP_1.0, GTP_C, G_1.0, 1.0, kGTPoff_GTPon, kGTPon_GTPon)) - (Function_for_GTPgSon(GGTPgS_1.0, GTPgS_C, G_1.0, 1.0, kGTPgSoff_GTPgSon, kGTPgSon_GTPgSon)) - (Function_for_GDPbSon(GDPbS_C, GGDPbS_1.0, G_1.0, 1.0, OxoSat, kGDPbSon_GDPbSon, kGGDPbSoff_GDPbSon));
-    der(GGTP_1.0) = (Function_for_GTPon(GGTP_1.0, GTP_C, G_1.0, 1.0, kGTPoff_GTPon, kGTPon_GTPon)) - (Function_for_1.0gGTPon(GGTP_1.0, 1.0, 1.0g2_C, k1.0g2onGTP_1.0gGTPon));
-    der(GGDPAlF4_1.0) = (Function_for_AIF4on(AlF4_C, GGDPAlF4_1.0, GGDP_1.0, 1.0, kAlF4off_AlF4on, kAlF4on_AlF4on)) - (Function_for_1.0gonGDPAIF4(GGDPAlF4_1.0, 1.0, 1.0g2_C, k1.0gonAlF4_1.0gonGDPAlF4));
-    der(GGTPgS_1.0) = (Function_for_GTPgSon(GGTPgS_1.0, GTPgS_C, G_1.0, 1.0, kGTPgSoff_GTPgSon, kGTPgSon_GTPgSon)) - (Function_for_1.0gonGGTPgS(GGTPgS_1.0, 1.0, 1.0g2_C, k1.0g2onGTPgS_1.0gonGGTPgS));
-    der(PI_1.0) =  - (Function_for_PI4Kinase(ATPSat1000, 1.0, 1.0gSat20, PI_1.0, kPI4Kinase_PI4Kinase));
-    der(PIP_1.0) = (1.0 * Function_for_PIP2_5Pase(1.0gSat20, PIP2_1.0, kPIP2Pase_PIP2_5Pase)) + (Function_for_PI4Kinase(ATPSat1000, 1.0, 1.0gSat20, PI_1.0, kPI4Kinase_PI4Kinase)) - (Function_for_PIP5kinase(ATPSat300, 1.0gSat20, PIP_1.0, kPIP5Kinase_PIP5kinase));
-    der(PIP2xKCNQ_1.0) = (1.0 * Function_for_PIP2binding(KCNQsites_1.0, PIP2_1.0, PIP2xKCNQ_1.0, kPIP2off_PIP2binding, kPIP2on_PIP2binding)) ;
-    der(GGTPgS1.0g_1.0) = (Function_for_1.0gonGGTPgS(GGTPgS_1.0, 1.0, 1.0g2_C, k1.0g2onGTPgS_1.0gonGGTPgS)) ;
-    der(GGDP_1.0) = (1.0 * Function_for_GGTPase(GGTP1.0g_1.0, 1.0gSat10, kGGTPase_GGTPase)) - (Function_for_GDPdissoc(GDP_C, GGDP_1.0, G_1.0, 1.0, OxoSat, TonicAct_GDPdissoc, kGDPoff_GDPdissoc, kGDPon_GDPdissoc)) - (Function_for_AIF4on(AlF4_C, GGDPAlF4_1.0, GGDP_1.0, 1.0, kAlF4off_AlF4on, kAlF4on_AlF4on));
+    der(G_M) = (Function_for_GDPdissoc(GDP_C, GGDP_1.0, G_1.0, 1.0, OxoSat, TonicAct_GDPdissoc, kGDPoff_GDPdissoc, kGDPon_GDPdissoc)) - (Function_for_GTPon(GGTP_1.0, GTP_C, G_1.0, 1.0, kGTPoff_GTPon, kGTPon_GTPon)) - (Function_for_GTPgSon(GGTPgS_1.0, GTPgS_C, G_1.0, 1.0, kGTPgSoff_GTPgSon, kGTPgSon_GTPgSon)) - (Function_for_GDPbSon(GDPbS_C, GGDPbS_1.0, G_1.0, 1.0, OxoSat, kGDPbSon_GDPbSon, kGGDPbSoff_GDPbSon));
+    der(GGTP_M) = (Function_for_GTPon(GGTP_1.0, GTP_C, G_1.0, 1.0, kGTPoff_GTPon, kGTPon_GTPon)) - (Function_for_1.0gGTPon(GGTP_1.0, 1.0, 1.0g2_C, k1.0g2onGTP_1.0gGTPon));
+    der(GGDPAlF4_M) = (Function_for_AIF4on(AlF4_C, GGDPAlF4_1.0, GGDP_1.0, 1.0, kAlF4off_AlF4on, kAlF4on_AlF4on)) - (Function_for_1.0gonGDPAIF4(GGDPAlF4_1.0, 1.0, 1.0g2_C, k1.0gonAlF4_1.0gonGDPAlF4));
+    der(GGTPgS_M) = (Function_for_GTPgSon(GGTPgS_1.0, GTPgS_C, G_1.0, 1.0, kGTPgSoff_GTPgSon, kGTPgSon_GTPgSon)) - (Function_for_1.0gonGGTPgS(GGTPgS_1.0, 1.0, 1.0g2_C, k1.0g2onGTPgS_1.0gonGGTPgS));
+    der(PI_M) =  - (Function_for_PI4Kinase(ATPSat1000, 1.0, 1.0gSat20, PI_1.0, kPI4Kinase_PI4Kinase));
+    der(PIP_M) = (1.0 * Function_for_PIP2_5Pase(1.0gSat20, PIP2_1.0, kPIP2Pase_PIP2_5Pase)) + (Function_for_PI4Kinase(ATPSat1000, 1.0, 1.0gSat20, PI_1.0, kPI4Kinase_PI4Kinase)) - (Function_for_PIP5kinase(ATPSat300, 1.0gSat20, PIP_1.0, kPIP5Kinase_PIP5kinase));
+    der(PIP2xKCNQ_M) = (1.0 * Function_for_PIP2binding(KCNQsites_1.0, PIP2_1.0, PIP2xKCNQ_1.0, kPIP2off_PIP2binding, kPIP2on_PIP2binding)) ;
+    der(GGTPgSMg_M) = (Function_for_1.0gonGGTPgS(GGTPgS_1.0, 1.0, 1.0g2_C, k1.0g2onGTPgS_1.0gonGGTPgS)) ;
+    der(GGDP_M) = (1.0 * Function_for_GGTPase(GGTP1.0g_1.0, 1.0gSat10, kGGTPase_GGTPase)) - (Function_for_GDPdissoc(GDP_C, GGDP_1.0, G_1.0, 1.0, OxoSat, TonicAct_GDPdissoc, kGDPoff_GDPdissoc, kGDPon_GDPdissoc)) - (Function_for_AIF4on(AlF4_C, GGDPAlF4_1.0, GGDP_1.0, 1.0, kAlF4off_AlF4on, kAlF4on_AlF4on));
+
 
     when time >= 3 then
         reinit(oxoM_EX,10);

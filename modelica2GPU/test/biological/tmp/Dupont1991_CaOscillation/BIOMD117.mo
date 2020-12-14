@@ -37,6 +37,7 @@ equation
     beta = flag * 0.96 * exp(-0.2 * (time - tstim));
     der(z) = (v1 * beta * 1.0) + (v0 * 1.0) + (kf * y * 1.0) + (1.0 * VM3 * (y^m / (KR^m + y^m)) * (z^p / (KA^p + z^p))) - (1.0 * VM2 * z^n / (K2^n + z^n)) - (k * z * 1.0);
     der(y) = (1.0 * VM2 * z^n / (K2^n + z^n)) - (kf * y * 1.0) - (1.0 * VM3 * (y^m / (KR^m + y^m)) * (z^p / (KA^p + z^p)));
+    der(flag)=0.0;
 
     when time > tstim then
         reinit(flag,1);

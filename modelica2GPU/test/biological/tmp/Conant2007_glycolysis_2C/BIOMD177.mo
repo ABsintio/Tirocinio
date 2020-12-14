@@ -187,7 +187,7 @@ equation
     der(P2G) = (1.0 * Vmax_9_PGM * WGD_E * (P3G / Kp3g_9_PGM - P2G / (Kp3g_9_PGM * Keq_9_PGM)) / (1 + P3G / Kp3g_9_PGM + P2G / Kp2g_9_PGM)) - (1.0 * Vmax_10_ENO * WGD_E * (P2G / Kp2g_10_ENO - PEP / (Kp2g_10_ENO * Keq_10_ENO)) / (1 + P2G / Kp2g_10_ENO + PEP / Kpep_10_ENO));
     der(PEP) = (1.0 * Vmax_10_ENO * WGD_E * (P2G / Kp2g_10_ENO - PEP / (Kp2g_10_ENO * Keq_10_ENO)) / (1 + P2G / Kp2g_10_ENO + PEP / Kpep_10_ENO)) - (1.0 * Vmax_11_PYK * WGD_E * (PEP * ADP / (Kpep_11_PYK * Kadp_11_PYK) - PYR * ATP / (Kpep_11_PYK * Kadp_11_PYK * Keq_11_PYK)) / ((1 + PEP / Kpep_11_PYK + PYR / Kpyr_11_PYK) * (1 + ADP / Kadp_11_PYK + ATP / Katp_11_PYK)));
     der(PYR) = (1.0 * Vmax_11_PYK * WGD_E * (PEP * ADP / (Kpep_11_PYK * Kadp_11_PYK) - PYR * ATP / (Kpep_11_PYK * Kadp_11_PYK * Keq_11_PYK)) / ((1 + PEP / Kpep_11_PYK + PYR / Kpyr_11_PYK) * (1 + ADP / Kadp_11_PYK + ATP / Katp_11_PYK))) - (1.0 * Vmax_12_PDC * WGD_E * (PYR / Kpyr_12_PDC)^nH_12_PDC / (1 + (PYR / Kpyr_12_PDC)^nH_12_PDC)) - (t_m * (k1_PYR_shut * PYR - k2_PYR_shut * PYR1.0));
-    der(PYR1.0) = (t_m * (k1_PYR_shut * PYR - k2_PYR_shut * PYR1.0)) - (1.0 * WGD_E * Vmax_PDH_PDH * PYR1.0 * (NADX_tot_PDH - NADX_tot_PDH / (1 + NAD / NADH)) / (NADX_tot_PDH * Ki_PYR_PDH * K_NAD_PDH / Ki_NADH_PDH / (1 + NAD / NADH) + K_PYR_PDH * (NADX_tot_PDH - NADX_tot_PDH / (1 + NAD / NADH)) + K_NAD_PDH * PYR1.0 + (NADX_tot_PDH * K_NAD_PDH / Ki_NADH_PDH) * PYR1.0 / (1 + NAD / NADH) + (NADX_tot_PDH - NADX_tot_PDH / (1 + NAD / NADH)) * PYR1.0));
+    der(PYRmito) = (t_m * (k1_PYR_shut * PYR - k2_PYR_shut * PYR1.0)) - (1.0 * WGD_E * Vmax_PDH_PDH * PYR1.0 * (NADX_tot_PDH - NADX_tot_PDH / (1 + NAD / NADH)) / (NADX_tot_PDH * Ki_PYR_PDH * K_NAD_PDH / Ki_NADH_PDH / (1 + NAD / NADH) + K_PYR_PDH * (NADX_tot_PDH - NADX_tot_PDH / (1 + NAD / NADH)) + K_NAD_PDH * PYR1.0 + (NADX_tot_PDH * K_NAD_PDH / Ki_NADH_PDH) * PYR1.0 / (1 + NAD / NADH) + (NADX_tot_PDH - NADX_tot_PDH / (1 + NAD / NADH)) * PYR1.0));
     der(AcAld) = (1.0 * Vmax_12_PDC * WGD_E * (PYR / Kpyr_12_PDC)^nH_12_PDC / (1 + (PYR / Kpyr_12_PDC)^nH_12_PDC)) + (1.0 * Vmax_13_ADH * WGD_E * (EtOH * NAD / (Ketoh_13_ADH * Kinad_13_ADH) - AcAld * NADH / (Ketoh_13_ADH * Kinad_13_ADH * Keq_13_ADH)) / (1 + NAD / Kinad_13_ADH + EtOH * Knad_13_ADH / (Kinad_13_ADH * Ketoh_13_ADH) + AcAld * Knadh_13_ADH / (Kinadh_13_ADH * Kacald_13_ADH) + NADH / Kinadh_13_ADH + EtOH * NAD / (Kinad_13_ADH * Ketoh_13_ADH) + NAD * AcAld * Knadh_13_ADH / (Kinad_13_ADH * Kinadh_13_ADH * Kacald_13_ADH) + EtOH * NADH * Knad_13_ADH / (Kinad_13_ADH * Kinadh_13_ADH * Ketoh_13_ADH) + AcAld * NADH / (Kacald_13_ADH * Kinadh_13_ADH) + EtOH * NAD * AcAld / (Kinad_13_ADH * Kiacald_13_ADH * Ketoh_13_ADH) + EtOH * AcAld * NADH / (Kietoh_13_ADH * Kinadh_13_ADH * Kacald_13_ADH))) - (2.0 * 1.0 * k_19_succinate_syn * AcAld);
     der(GLCo) = 0.0;
     der(CO2) = 0.0;
@@ -197,7 +197,8 @@ equation
     der(Trehalose) = 0.0;
     der(Succinate) = 0.0;
     der(AcCoA) = 0.0;
-    der(CO21.0) = 0.0;
+    der(CO2mito) = 0.0;
+
 
 
 

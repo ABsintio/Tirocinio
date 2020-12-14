@@ -118,6 +118,7 @@ equation
     der(IEa_1) = (1.0 * (kaie * (1 - IEa_1) * MPFn / (Jaie + 1 - IEa_1))) - (1.0 * (kiie * IEa_1 / (Jiie + IEa_1)));
     der(N) = (0) ;
 
+
     when FZYa >= kez_1 then
         reinit(N,factor_1 * N);
         reinit(MPFn,MPFn / 1.95);

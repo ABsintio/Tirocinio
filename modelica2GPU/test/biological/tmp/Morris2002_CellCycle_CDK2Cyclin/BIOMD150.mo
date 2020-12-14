@@ -34,6 +34,7 @@ equation
     der(CyclinA) =  - (kf_Binding * Cdk2 * CyclinA * 1.0 - kb_Binding * CDK2cycA * 1.0);
     der(Cdk2) =  - (kf_Binding * Cdk2 * CyclinA * 1.0 - kb_Binding * CDK2cycA * 1.0);
     der(CDK2cycA_star_) = (kf_Activation * CDK2cycA * 1.0 - kb_Activation * CDK2cycA_star_ * 1.0) ;
+    der(basal_fluorescence)=0.0;
 
 
 

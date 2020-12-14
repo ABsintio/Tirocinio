@@ -66,6 +66,8 @@ equation
     der(APC) = (u_prime * k7r * MCC_APC * 1.0) - (u * k7f * MCC * APC * 1.0) - (1.0 * (k8f * APC * Cdc20 - k8r * APC_Cdc20));
     der(MCC_APC) = (u * k7f * MCC * APC * 1.0) - (u_prime * k7r * MCC_APC * 1.0);
     der(APC_Cdc20) = (1.0 * (k8f * APC * Cdc20 - k8r * APC_Cdc20)) ;
+    der(u)=0.0;
+    der(u_prime)=0.0;
 
     when time > 2000 then
         reinit(u,const_val_0);

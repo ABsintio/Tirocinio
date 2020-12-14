@@ -40,6 +40,7 @@ equation
     der(x0) = 0.0;
     der(y0) = 0.0;
 
+
     when time > 1 then
         reinit(x0,0);
     end when;

@@ -38,6 +38,7 @@ equation
     der(Mad1_CMad2_OMad2) = (1.0 * (u * alpha_T * Mad1_CMad2 * OMad2 - beta_T * Mad1_CMad2_OMad2)) - (1.0 * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20);
     der(Cdc20) = (1.0 * eta_T * Cdc20_CMad2) - (1.0 * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20);
     der(Cdc20_CMad2) = (1.0 * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20) - (1.0 * eta_T * Cdc20_CMad2);
+    der(u)=0.0;
 
     when time > 2000 then
         reinit(u,const_val_0);

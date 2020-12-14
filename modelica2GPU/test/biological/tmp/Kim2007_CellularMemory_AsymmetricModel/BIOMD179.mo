@@ -55,6 +55,7 @@ equation
     der(P2) = (sP2R2 * R2) - (d_P2 * P2);
     der(P2_prime) = (sP2_prime_P2 * P2) + (s2 / (1 + P1_prime^n)) - (d_P2_prime * P2_prime);
     der(P3_prime) = (sP3_prime_P2_prime * (P2_prime^n / (1 + P2_prime^n))) - (d_P3_prime * P3_prime);
+    der(i1)=0.0;
 
 
 

@@ -76,11 +76,12 @@ equation
     der(h) = A * (Kd - (Ca_Cyt + Kd) * h);
     der(Ca_Cyt) = (1.0 * (L + P_IP3R * IP3_Cyt^3 * Ca_Cyt^3 * h^3 / ((IP3_Cyt + Ki)^3 * (Ca_Cyt + Ka)^3)) * (Ca_1.0 - Ca_Cyt)) + (1.0 * (k_soc * O_o + V_1.0leak) * (Ca_ec - Ca_Cyt)) - (1.0 * (V_S1.0CA * Ca_Cyt^p / (K_S1.0CA^p + Ca_Cyt^p))) - (1.0 * (V_1.0CA * Ca_Cyt^q / (K_1.0CA^q + Ca_Cyt^q)));
     der(IP3_Cyt) = (1.0 * (V_PLC * Ca_Cyt^2 / (K_PLC^2 + Ca_Cyt^2))) - (1.0 * (kdeg * Ca_Cyt^2 / (K_deg^2 + Ca_Cyt^2)) * IP3_Cyt);
-    der(Ca_1.0) = (1.0 * (V_S1.0CA * Ca_Cyt^p / (K_S1.0CA^p + Ca_Cyt^p))) - (1.0 * (L + P_IP3R * IP3_Cyt^3 * Ca_Cyt^3 * h^3 / ((IP3_Cyt + Ki)^3 * (Ca_Cyt + Ka)^3)) * (Ca_1.0 - Ca_Cyt));
+    der(Ca_ER) = (1.0 * (V_S1.0CA * Ca_Cyt^p / (K_S1.0CA^p + Ca_Cyt^p))) - (1.0 * (L + P_IP3R * IP3_Cyt^3 * Ca_Cyt^3 * h^3 / ((IP3_Cyt + Ki)^3 * (Ca_Cyt + Ka)^3)) * (Ca_1.0 - Ca_Cyt));
     der(S2a) = (1.0 * k_a * S2) - (1.0 * k_i * S2a);
     der(S4) = (1.0 * (Vs4 * S2^2 / (S2^2 + K2^2))) - (1.0 * kd_oligo * S4);
     der(Oc) = (1.0 * (Vcp * Orai1^n_hill / (Kc^n_hill + Orai1^n_hill))) + (1.0 * kod * O_o) - (1.0 * kdc * Oc) - (1.0 * (kop * S2a^l_hill * Oc / (Ko^l_hill + S2a^l_hill)));
     der(O_o) = (1.0 * (kop * S2a^l_hill * Oc / (Ko^l_hill + S2a^l_hill))) - (1.0 * kod * O_o) - (1.0 * kdo * O_o);
+
 
 
 

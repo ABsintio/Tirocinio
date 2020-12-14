@@ -47,6 +47,7 @@ equation
     der(Y) = (1.0 * (Vm2 * Z^n / (Kp^n + Z^n))) - (1.0 * (Vm3 * Y^m * Z^p / ((Kr^m + Y^m) * (K_A^p + Z^p)))) - (1.0 * kf * Y);
     der(Wt) = 0.0;
     der(W_star) = (1.0 * (vp / Wt) * ((vk / vp) * ((1 - W_star) / (K1 + 1 - W_star)) - W_star / (K2 + W_star))) ;
+    der(vMK)=0.0;
 
 
 

@@ -52,6 +52,7 @@ equation
     der(Bub3_BubR1) =  - (1.0 * (u * k4f * Cdc20_CMad2 * Bub3_BubR1 - k4r * MCC)) - (1.0 * (u * k5f * Bub3_BubR1 * Cdc20 - k5r * Bub3_BubR1_Cdc20));
     der(MCC) = (1.0 * (u * k4f * Cdc20_CMad2 * Bub3_BubR1 - k4r * MCC)) ;
     der(Bub3_BubR1_Cdc20) = (1.0 * (u * k5f * Bub3_BubR1 * Cdc20 - k5r * Bub3_BubR1_Cdc20)) ;
+    der(u)=0.0;
 
     when time > 2000 then
         reinit(u,const_val_0);

@@ -138,6 +138,9 @@ equation
     der(IkBbeta_transcript) = (1.0 * tr2b) - (1.0 * tr3 * IkBbeta_transcript);
     der(IkBeps_transcript) = (1.0 * tr2e) - (1.0 * tr3 * IkBeps_transcript);
     der(IkBeps_nuc_NFkB_nuc) = (1.0 * (a6 * IkBeps_nuc * NFkB_nuc - d6 * IkBeps_nuc_NFkB_nuc)) - (1.0 * 0.5 * k2_eps * IkBeps_nuc_NFkB_nuc);
+    der(trigger_value)=0.0;
+    der(fr)=0.0;
+    der(flag_for_after_trigger)=0.0;
 
     when (time >= 2000) and (trigger_value == 0) then
         reinit(IKK,0.1);

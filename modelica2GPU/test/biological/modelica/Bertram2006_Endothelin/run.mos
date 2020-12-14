@@ -1,0 +1,10 @@
+
+loadModel(Modelica);
+loadFile("BIOMD128.mo");
+getErrorString();
+simulate(BIOMD128, stopTime=175000.0);
+getErrorString();
+plot({h,inh,V,n}, externalWindow=true);
+getErrorString();
+plot({c,cer,cAMP}, externalWindow=true);
+getErrorString();
