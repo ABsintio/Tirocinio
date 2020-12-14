@@ -2,9 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD203.mo");
 getErrorString();
-simulate(BIOMD203, stopTime=100.0);
-getErrorString();
-plot({OCT4,SOX2,NANOG,OCT4_SOX2}, externalWindow=true);
-getErrorString();
-plot({Protein}, externalWindow=true);
+simulate(BIOMD203, stopTime=100.0, outputFormat="csv");
 getErrorString();

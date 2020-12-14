@@ -2,11 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD190.mo");
 getErrorString();
-simulate(BIOMD190, stopTime=100.0);
-getErrorString();
-plot({Vmaxodc,Vmaxssat,Vmaxsamdc,Antz}, externalWindow=true);
-getErrorString();
-plot({SAM,A,P,S}, externalWindow=true);
-getErrorString();
-plot({D,aS,aD}, externalWindow=true);
+simulate(BIOMD190, stopTime=100.0, outputFormat="csv");
 getErrorString();

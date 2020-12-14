@@ -2,11 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD206.mo");
 getErrorString();
-simulate(BIOMD206, stopTime=100.0);
-getErrorString();
-plot({s1,at,s2,s3}, externalWindow=true);
-getErrorString();
-plot({na,s4,s5,s6}, externalWindow=true);
-getErrorString();
-plot({s6o}, externalWindow=true);
+simulate(BIOMD206, stopTime=100.0, outputFormat="csv");
 getErrorString();

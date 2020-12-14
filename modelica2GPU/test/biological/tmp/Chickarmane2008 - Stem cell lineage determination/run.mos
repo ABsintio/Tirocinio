@@ -2,9 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD209.mo");
 getErrorString();
-simulate(BIOMD209, stopTime=100.0);
-getErrorString();
-plot({OCT4,SOX2,NANOG,GATA6}, externalWindow=true);
-getErrorString();
-plot({CDX2,GCNF}, externalWindow=true);
+simulate(BIOMD209, stopTime=100.0, outputFormat="csv");
 getErrorString();

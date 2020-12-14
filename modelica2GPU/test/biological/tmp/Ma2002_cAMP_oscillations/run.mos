@@ -2,9 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD229.mo");
 getErrorString();
-simulate(BIOMD229, stopTime=100.0);
-getErrorString();
-plot({ACA,CAR1,PKA,incAMP}, externalWindow=true);
-getErrorString();
-plot({ERK2,REGA,excAMP}, externalWindow=true);
+simulate(BIOMD229, stopTime=100.0, outputFormat="csv");
 getErrorString();

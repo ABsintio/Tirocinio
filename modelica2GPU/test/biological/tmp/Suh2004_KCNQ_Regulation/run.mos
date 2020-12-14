@@ -2,15 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD081.mo");
 getErrorString();
-simulate(BIOMD081, stopTime=100.0);
-getErrorString();
-plot({GTPgS_C,KCNQsites_M,PIP2_M,GGDPbS_M}, externalWindow=true);
-getErrorString();
-plot({ATP_C,GDPbS_C,GGTPMg_M,GDP_C}, externalWindow=true);
-getErrorString();
-plot({GGDPAlF4Mg_M,ip3_C,AlF4_C,G_M}, externalWindow=true);
-getErrorString();
-plot({GGTP_M,GGDPAlF4_M,GGTPgS_M,PI_M}, externalWindow=true);
-getErrorString();
-plot({PIP_M,PIP2xKCNQ_M,GGTPgSMg_M,GGDP_M}, externalWindow=true);
+simulate(BIOMD081, stopTime=100.0, outputFormat="csv");
 getErrorString();

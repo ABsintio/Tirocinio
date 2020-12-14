@@ -2,11 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD192.mo");
 getErrorString();
-simulate(BIOMD192, stopTime=100.0);
-getErrorString();
-plot({RanGDP_nuc,RCC1_RanGDP,RCC1,RCC1_RanGTP}, externalWindow=true);
-getErrorString();
-plot({RCC1_Ran,RanGTP_nuc,RanBP1,RanGTP_cy}, externalWindow=true);
-getErrorString();
-plot({RanGTP_RanBP1,RanGDP_cy}, externalWindow=true);
+simulate(BIOMD192, stopTime=100.0, outputFormat="csv");
 getErrorString();

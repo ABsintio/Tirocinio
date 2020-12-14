@@ -80,7 +80,6 @@ initial equation
     MPFc = 1.0;
     preMPFc = 0.0;
     StgPc = 0.8;
-    Wee1c = 0.0;
     Wee1Pc = 0.8;
     Stgm = 1.0;
     Xp = 0.0;

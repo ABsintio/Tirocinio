@@ -2,13 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD201.mo");
 getErrorString();
-simulate(BIOMD201, stopTime=100.0);
-getErrorString();
-plot({N,Na,Nan,MF}, externalWindow=true);
-getErrorString();
-plot({F,Bp,BN,A}, externalWindow=true);
-getErrorString();
-plot({K,B,MAx,Rasa}, externalWindow=true);
-getErrorString();
-plot({ERKa,Xa,MDusp,Dusp}, externalWindow=true);
+simulate(BIOMD201, stopTime=100.0, outputFormat="csv");
 getErrorString();

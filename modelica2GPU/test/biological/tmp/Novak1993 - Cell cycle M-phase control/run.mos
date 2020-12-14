@@ -2,11 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD107.mo");
 getErrorString();
-simulate(BIOMD107, stopTime=100.0);
-getErrorString();
-plot({cyclin,dimer,dimer_p,p_dimer}, externalWindow=true);
-getErrorString();
-plot({p_dimer_p,cdc25_p,wee1_p,IE_p}, externalWindow=true);
-getErrorString();
-plot({UbE_star}, externalWindow=true);
+simulate(BIOMD107, stopTime=100.0, outputFormat="csv");
 getErrorString();

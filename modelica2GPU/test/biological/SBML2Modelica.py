@@ -37,14 +37,15 @@ equation
 end {model_name};
 """
 
+
 RUN_MOS = """
 loadModel(Modelica);
 loadFile("{model_name}.mo");
 getErrorString();
-simulate({model_name}, stopTime=100.0);
+simulate({model_name}, stopTime=100.0, outputFormat="csv");
 getErrorString();
-{plot}
 """
+
 
 BUILD_MOS = """
 loadModel(Modelica);
@@ -52,6 +53,44 @@ loadFile("{model_name}.mo");
 getErrorString();
 buildModel({model_name}, stopTime=100.0);
 getErrorString();
+"""
+
+
+OMCPLOT_PY = """
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-c", "--csv", help="Path relativo o assoluto del file CSV contenente i dati")
+args = parser.parse_args()
+csv_file = args.csv
+
+# Apriamo e leggiamo il CSV in input
+csv_data = pd.read_csv(csv_file)
+
+# Prendiamo i nomi delle species con gli indici corrispettivi che utilizzeremo per il plotting
+variables_to_plot = [{species}]
+species_tuple = [(idx, specie) for idx, specie in enumerate(csv_data.head(0)) if specie in variables_to_plot and specie != "time"]
+
+# Creiamo un array numpy per salvare i dati estrapolati dal CSV
+data_numpy = np.array(csv_data)
+
+# Prendiamo la colonna del tempo
+time = data_numpy[:, 0]
+
+# Prendiamo i valori a tuple di quattro i quali formeranno un singolo plot
+plot_number = 1
+for i in range(0, len(species_tuple), 4):
+    current_vars = species_tuple[i:i+4]
+    plt.figure()
+    for j, var in current_vars:
+        plt.plot(time, data_numpy[:, j], marker="_", label=var)
+    plt.xlabel("Time")
+    plt.legend(loc="upper left")
+    plt.savefig("OMCPlot" + str(plot_number) + ".png")
+    plot_number += 1
 """
 
 
@@ -464,17 +503,11 @@ def create_run_mos(output_directory, sbml_model, file_name):
     """ Create run.mos file  """
     global RUN_MOS
     model_name = file_name
-    str_format_to_plot = "plot({%s}, externalWindow=true);\ngetErrorString();"
-    plots = []
-    variables = [rate_rule_key for rate_rule_key, rate_rule_var in sbml_model.rate_rules_dict.items() if rate_rule_var.rhs != "0.0"]
-    for i in range(0, len(variables), 4):
-        current_vars = ",".join(variables[i:i+4])
-        plots.append(str_format_to_plot % (current_vars))
     try:
         stream = open(os.path.join(output_directory, "run.mos"), mode="x")
     except FileExistsError:
         stream = open(os.path.join(output_directory, "run.mos"), mode="w")
-    stream.write(RUN_MOS.format(model_name=model_name,plot="\n".join(plots)))
+    stream.write(RUN_MOS.format(model_name=model_name))
     stream.flush()
     stream.close()
     print(f"Created run.mos file into -> {output_directory}/run.mos")
@@ -501,6 +534,18 @@ def create_clear_sh(output_directory, file_name):
     stream.flush()
     stream.close()
     print(f"Created clear.sh file into -> {output_directory}/clear.sh")
+
+
+def create_omcplot_py(output_directory, species_list):
+    global OMCPLOT_PY
+    try:
+        stream = open(os.path.join(output_directory, "OMCPlot.py"), mode="x")
+    except FileExistsError:
+        stream = open(os.path.join(output_directory, "OMCPlot.py"), mode="w")
+    stream.write(OMCPLOT_PY.format(species=species_list))
+    stream.flush()
+    stream.close()
+    print(f"Created OMCPlot.py file into -> {output_directory}/OMCPlot.py")
 
 
 def run(file, output_directory):
@@ -530,6 +575,7 @@ def run(file, output_directory):
     create_run_mos(save_directory, sbmlmodel, filename) # Creiamo il file run.mos per il plotting del risultato della simulazione
     create_build_mos(save_directory, filename) # Creiamo il file build.mos per fare il build del modello e costruire l'esegubile per il testing
     create_clear_sh(save_directory, filename)
+    create_omcplot_py(save_directory, ",".join(['"' + x + '"' for x in sbmlmodel.species.keys()]))
 
 
 def main():

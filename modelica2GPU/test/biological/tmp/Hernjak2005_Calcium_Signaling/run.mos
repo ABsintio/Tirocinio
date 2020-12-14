@@ -2,17 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD162.mo");
 getErrorString();
-simulate(BIOMD162, stopTime=100.0);
-getErrorString();
-plot({PA_D_Cytosol,PABCa_D_Cytosol,h_D_ERM,PABMg_D_Cytosol}, externalWindow=true);
-getErrorString();
-plot({CG_D_Cytosol,D28kB_D_Cytosol,PA_Cytosol,CG_Cytosol}, externalWindow=true);
-getErrorString();
-plot({PABCa_Cytosol,D28k_high_Cytosol,D28k_high_D_Cytosol,D28kB_high_D_Cytosol}, externalWindow=true);
-getErrorString();
-plot({CGB_D_Cytosol,Ca_D_Cytosol,CGB_Cytosol,D28k_Cytosol}, externalWindow=true);
-getErrorString();
-plot({D28kB_high_Cytosol,PABMg_Cytosol,IP3_Cytosol,D28k_D_Cytosol}, externalWindow=true);
-getErrorString();
-plot({IP3_D_Cytosol,Ca_Cytosol,h_ERM,D28kB_Cytosol}, externalWindow=true);
+simulate(BIOMD162, stopTime=100.0, outputFormat="csv");
 getErrorString();

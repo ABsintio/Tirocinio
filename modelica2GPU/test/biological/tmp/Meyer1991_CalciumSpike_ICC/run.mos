@@ -2,7 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD224.mo");
 getErrorString();
-simulate(BIOMD224, stopTime=100.0);
-getErrorString();
-plot({CaI,IP3,CaS,g}, externalWindow=true);
+simulate(BIOMD224, stopTime=100.0, outputFormat="csv");
 getErrorString();

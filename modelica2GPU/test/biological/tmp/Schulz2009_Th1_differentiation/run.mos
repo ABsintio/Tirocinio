@@ -2,9 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD215.mo");
 getErrorString();
-simulate(BIOMD215, stopTime=100.0);
-getErrorString();
-plot({Tbet_mRNA,Ifn_mRNA,Ifn_Prot,Rec_Prot}, externalWindow=true);
-getErrorString();
-plot({Tbet_Prot,Rec_mRNA}, externalWindow=true);
+simulate(BIOMD215, stopTime=100.0, outputFormat="csv");
 getErrorString();

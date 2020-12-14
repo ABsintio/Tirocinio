@@ -2,11 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD198.mo");
 getErrorString();
-simulate(BIOMD198, stopTime=100.0);
-getErrorString();
-plot({sGCfast,NO_sGCfast,NO_sGCfast_6coord,NO_sGCfast_5coord}, externalWindow=true);
-getErrorString();
-plot({sGCslow,NO_sGCslow,NO_sGCslow_6coord,NO_sGCslow_6coord_NO_int}, externalWindow=true);
-getErrorString();
-plot({NO_sGCslow_5coord}, externalWindow=true);
+simulate(BIOMD198, stopTime=100.0, outputFormat="csv");
 getErrorString();

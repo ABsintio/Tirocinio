@@ -2,9 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD212.mo");
 getErrorString();
-simulate(BIOMD212, stopTime=100.0);
-getErrorString();
-plot({Lys,AspP,Thr,ASA}, externalWindow=true);
-getErrorString();
-plot({Hser,PHser,Ile}, externalWindow=true);
+simulate(BIOMD212, stopTime=100.0, outputFormat="csv");
 getErrorString();

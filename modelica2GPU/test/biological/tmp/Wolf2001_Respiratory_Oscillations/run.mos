@@ -2,13 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD090.mo");
 getErrorString();
-simulate(BIOMD090, stopTime=100.0);
-getErrorString();
-plot({oxy,A3c,aps,pap}, externalWindow=true);
-getErrorString();
-plot({sul,eth,hyd,cys}, externalWindow=true);
-getErrorString();
-plot({N2,aco,oah,S1}, externalWindow=true);
-getErrorString();
-plot({A3m}, externalWindow=true);
+simulate(BIOMD090, stopTime=100.0, outputFormat="csv");
 getErrorString();

@@ -2,9 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD145.mo");
 getErrorString();
-simulate(BIOMD145, stopTime=100.0);
-getErrorString();
-plot({Galpha_GTP,APLC,IP3,Ca_ER}, externalWindow=true);
-getErrorString();
-plot({Ca_Cyt}, externalWindow=true);
+simulate(BIOMD145, stopTime=100.0, outputFormat="csv");
 getErrorString();

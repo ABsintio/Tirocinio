@@ -2,15 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD143.mo");
 getErrorString();
-simulate(BIOMD143, stopTime=100.0);
-getErrorString();
-plot({H2O2_p,per3_p,coI_p,MLTH_p}, externalWindow=true);
-getErrorString();
-plot({coII_p,MLT_p,O2minus_p,H_p}, externalWindow=true);
-getErrorString();
-plot({O2_p,NADPH_c,O2_c,NADPplus_c}, externalWindow=true);
-getErrorString();
-plot({H2O2_c,NADP_c,O2minus_c,H_c}, externalWindow=true);
-getErrorString();
-plot({MLT_c,MLTH_c,coIII_p,NADP2_c}, externalWindow=true);
+simulate(BIOMD143, stopTime=100.0, outputFormat="csv");
 getErrorString();

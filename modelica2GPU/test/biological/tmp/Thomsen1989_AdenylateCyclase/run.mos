@@ -2,11 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD080.mo");
 getErrorString();
-simulate(BIOMD080, stopTime=100.0);
-getErrorString();
-plot({D,DR,DRG_GDP,G_GDP}, externalWindow=true);
-getErrorString();
-plot({DRG,GDP,DRG_GTP,GTP}, externalWindow=true);
-getErrorString();
-plot({G_GTP,R}, externalWindow=true);
+simulate(BIOMD080, stopTime=100.0, outputFormat="csv");
 getErrorString();

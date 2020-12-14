@@ -2,17 +2,5 @@
 loadModel(Modelica);
 loadFile("BIOMD230.mo");
 getErrorString();
-simulate(BIOMD230, stopTime=100.0);
-getErrorString();
-plot({NFkB,IKKIkBa,IKKIkBaNFkB,IKK}, externalWindow=true);
-getErrorString();
-plot({IkBa,IKKIkBb,IKKIkBbNFkB,IkBb}, externalWindow=true);
-getErrorString();
-plot({IKKIkBe,IKKIkBeNFkB,IkBe,IkBaNFkB}, externalWindow=true);
-getErrorString();
-plot({IkBbNFkB,IkBeNFkB,IkBat,NFkBn}, externalWindow=true);
-getErrorString();
-plot({IkBan,IkBanNFkBn,IkBbn,IkBbnNFkBn}, externalWindow=true);
-getErrorString();
-plot({IkBbt,IkBen,IkBenNFkBn,IkBet}, externalWindow=true);
+simulate(BIOMD230, stopTime=100.0, outputFormat="csv");
 getErrorString();
