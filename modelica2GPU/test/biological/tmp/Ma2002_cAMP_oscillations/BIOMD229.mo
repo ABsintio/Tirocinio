@@ -23,6 +23,7 @@ model BIOMD229 "Ma2002_cAMP_oscillations"
     parameter Real k12 = 4.9;
     parameter Real k13 = 23.0;
     parameter Real k14 = 4.5;
+    parameter Real compartment = 1.0;
 
 
 

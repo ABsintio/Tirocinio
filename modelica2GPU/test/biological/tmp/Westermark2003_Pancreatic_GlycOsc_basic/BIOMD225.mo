@@ -25,6 +25,7 @@ model BIOMD225 "Westermark2003_Pancreatic_GlycOsc_basic"
     parameter Real Vgk_min = 10.0;
     parameter Real Vpfk_min = 100.0;
     parameter Real Vfba_min = 25.0;
+    parameter Real comp = 1.0;
 
     Real Vgk(start=0.0);
     Real Vpfk(start=0.0);
@@ -39,7 +40,6 @@ model BIOMD225 "Westermark2003_Pancreatic_GlycOsc_basic"
 initial equation
     GLC = 10.0;
     G6P_F6P = 3.71728;
-    F6P = 0.0;
     FBP = 0.00063612;
     G3P = 0.0;
 
@@ -49,8 +49,8 @@ equation
     Vfba = Vfba_min * dw_per_ml / min_to_sec;
     F6P = G6P_F6P * KeqGPI / (1 + KeqGPI);
     der(GLC) = 0.0;
-    der(G6P_F6P) = (1.0 * Vgk * (GLC / Sgk)^hGK / (1 + (GLC / Sgk)^hGK)) - (1.0 * Vpfk * (F6P / Spfk)^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) / ((F6P / Spfk)^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) + (1 + (FBP / Xpfk)^hx) / (1 + alpha^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) * (FBP / Xpfk)^hx)));
-    der(FBP) = (1.0 * Vpfk * (F6P / Spfk)^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) / ((F6P / Spfk)^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) + (1 + (FBP / Xpfk)^hx) / (1 + alpha^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) * (FBP / Xpfk)^hx))) - (1.0 * Vfba * (FBP / Sfba) / (FBP / Sfba + 1));
+    der(G6P_F6P) = (comp * Vgk * (GLC / Sgk)^hGK / (1 + (GLC / Sgk)^hGK)) - (comp * Vpfk * (F6P / Spfk)^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) / ((F6P / Spfk)^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) + (1 + (FBP / Xpfk)^hx) / (1 + alpha^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) * (FBP / Xpfk)^hx)));
+    der(FBP) = (comp * Vpfk * (F6P / Spfk)^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) / ((F6P / Spfk)^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) + (1 + (FBP / Xpfk)^hx) / (1 + alpha^(hpfk - (hpfk - hact) * (FBP / Sfba / (1 + FBP / Sfba))) * (FBP / Xpfk)^hx))) - (comp * Vfba * (FBP / Sfba) / (FBP / Sfba + 1));
     der(G3P) = 0.0;
 
 

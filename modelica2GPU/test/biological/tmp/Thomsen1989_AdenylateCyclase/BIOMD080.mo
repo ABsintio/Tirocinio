@@ -19,6 +19,7 @@ model BIOMD080 "Thomsen1989_AdenylateCyclase"
     parameter Real k10_Reaction_4 = 55.0;
     parameter Real k5_Reaction_5 = 1.0;
     parameter Real k6_Reaction_6 = 2.0;
+    parameter Real cell = 1.0;
 
 
 
@@ -47,16 +48,16 @@ initial equation
 
 equation
 
-    der(D) =  - (1.0 * (k1_Reaction_1 * D * R - k7_Reaction_1 * DR));
-    der(DR) = (1.0 * (k1_Reaction_1 * D * R - k7_Reaction_1 * DR)) + (1.0 * k5_Reaction_5 * DRG_GTP) - (1.0 * (k2_Reaction_2 * DR * G_GDP - k8_Reaction_2 * DRG_GDP));
-    der(DRG_GDP) = (1.0 * (k2_Reaction_2 * DR * G_GDP - k8_Reaction_2 * DRG_GDP)) - (1.0 * (k3_Reaction_3 * DRG_GDP - k9_Reaction_3 * GDP * DRG));
-    der(G_GDP) = (1.0 * k6_Reaction_6 * G_GTP) - (1.0 * (k2_Reaction_2 * DR * G_GDP - k8_Reaction_2 * DRG_GDP));
-    der(DRG) = (1.0 * (k3_Reaction_3 * DRG_GDP - k9_Reaction_3 * GDP * DRG)) - (1.0 * (k4_Reaction_4 * DRG * GTP - k10_Reaction_4 * DRG_GTP));
-    der(GDP) = (1.0 * (k3_Reaction_3 * DRG_GDP - k9_Reaction_3 * GDP * DRG)) ;
-    der(DRG_GTP) = (1.0 * (k4_Reaction_4 * DRG * GTP - k10_Reaction_4 * DRG_GTP)) - (1.0 * k5_Reaction_5 * DRG_GTP);
-    der(GTP) =  - (1.0 * (k4_Reaction_4 * DRG * GTP - k10_Reaction_4 * DRG_GTP));
-    der(G_GTP) = (1.0 * k5_Reaction_5 * DRG_GTP) - (1.0 * k6_Reaction_6 * G_GTP);
-    der(R) =  - (1.0 * (k1_Reaction_1 * D * R - k7_Reaction_1 * DR));
+    der(D) =  - (cell * (k1_Reaction_1 * D * R - k7_Reaction_1 * DR));
+    der(DR) = (cell * (k1_Reaction_1 * D * R - k7_Reaction_1 * DR)) + (cell * k5_Reaction_5 * DRG_GTP) - (cell * (k2_Reaction_2 * DR * G_GDP - k8_Reaction_2 * DRG_GDP));
+    der(DRG_GDP) = (cell * (k2_Reaction_2 * DR * G_GDP - k8_Reaction_2 * DRG_GDP)) - (cell * (k3_Reaction_3 * DRG_GDP - k9_Reaction_3 * GDP * DRG));
+    der(G_GDP) = (cell * k6_Reaction_6 * G_GTP) - (cell * (k2_Reaction_2 * DR * G_GDP - k8_Reaction_2 * DRG_GDP));
+    der(DRG) = (cell * (k3_Reaction_3 * DRG_GDP - k9_Reaction_3 * GDP * DRG)) - (cell * (k4_Reaction_4 * DRG * GTP - k10_Reaction_4 * DRG_GTP));
+    der(GDP) = (cell * (k3_Reaction_3 * DRG_GDP - k9_Reaction_3 * GDP * DRG)) ;
+    der(DRG_GTP) = (cell * (k4_Reaction_4 * DRG * GTP - k10_Reaction_4 * DRG_GTP)) - (cell * k5_Reaction_5 * DRG_GTP);
+    der(GTP) =  - (cell * (k4_Reaction_4 * DRG * GTP - k10_Reaction_4 * DRG_GTP));
+    der(G_GTP) = (cell * k5_Reaction_5 * DRG_GTP) - (cell * k6_Reaction_6 * G_GTP);
+    der(R) =  - (cell * (k1_Reaction_1 * D * R - k7_Reaction_1 * DR));
 
 
 

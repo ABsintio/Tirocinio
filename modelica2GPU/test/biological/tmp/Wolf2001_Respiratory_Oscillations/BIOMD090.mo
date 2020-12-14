@@ -37,6 +37,9 @@ model BIOMD090 "Wolf2001_Respiratory_Oscillations"
     parameter Real S = 2.0;
     parameter Real N = 2.0;
     parameter Real Kh = 0.5;
+    parameter Real c0 = 1.0;
+    parameter Real c1 = 1.0;
+    parameter Real c2 = 1.0;
 
 
 
@@ -79,18 +82,14 @@ initial equation
     pap = 0.4;
     sul = 0.4;
     eth = 4.0;
-    A2c = 0.5;
     hyd = 0.5;
     cys = 0.3;
     N2 = 2.0;
-    N1 = 0.0;
     aco = 0.3;
     oah = 1.5;
     S1 = 1.5;
-    S2 = 0.5;
     C1 = 0.0;
     C2 = 0.0;
-    A2m = 0.5;
     A3m = 1.5;
     Ho = 0.0;
     Hm = 0.0;
@@ -103,23 +102,23 @@ equation
     der(sul_ex) = 0.0;
     der(eth_ex) = 0.0;
     der(oxy_ex) = 0.0;
-    der(oxy) = (1.0 * k_v10) - (1.0 * k14 * oxy) - (1.0 * k11 * N2 * oxy / ((a * N2 + oxy) * (1 + (hyd / Kh)^m)));
+    der(oxy) = (c0 * k_v10) - (c2 * k14 * oxy) - (c2 * k11 * N2 * oxy / ((a * N2 + oxy) * (1 + (hyd / Kh)^m)));
     der(H2O) = 0.0;
-    der(A3c) = (1.0 * k16 * A3m * A2c) - (1.0 * k2 * sul * A3c) - (1.0 * k3 * aps * A3c) - (1.0 * k12 * A3c);
-    der(aps) = (1.0 * k2 * sul * A3c) - (1.0 * k3 * aps * A3c);
+    der(A3c) = (c2 * k16 * A3m * A2c) - (c1 * k2 * sul * A3c) - (c1 * k3 * aps * A3c) - (c1 * k12 * A3c);
+    der(aps) = (c1 * k2 * sul * A3c) - (c1 * k3 * aps * A3c);
     der(PPi) = 0.0;
-    der(pap) = (1.0 * k3 * aps * A3c) - (1.0 * k4 * pap * N2);
-    der(sul) = (1.0 * k_v0 / (1 + (cys / Kc)^n)) - (1.0 * k2 * sul * A3c);
-    der(eth) = (1.0 * k_v13) - (1.0 * k7 * eth * N1);
-    der(hyd) = (1.0 * k4 * pap * N2) - (1.0 * k5 * hyd * oah) - (1.0 * k17 * hyd);
-    der(cys) = (1.0 * k5 * hyd * oah) - (1.0 * k6 * cys);
-    der(N2) = (2.0 * 1.0 * k7 * eth * N1) + (4.0 * 1.0 * k9 * S1 * N1) - (3.0 * 1.0 * k4 * pap * N2) - (1.0 * k11 * N2 * oxy / ((a * N2 + oxy) * (1 + (hyd / Kh)^m)));
-    der(aco) = (1.0 * k7 * eth * N1) - (1.0 * k15 * aco) - (1.0 * k8 * aco * S2);
-    der(oah) = (1.0 * k15 * aco) - (1.0 * k5 * hyd * oah) - (1.0 * k18 * oah);
-    der(S1) = (1.0 * k8 * aco * S2) - (1.0 * k9 * S1 * N1);
+    der(pap) = (c1 * k3 * aps * A3c) - (c1 * k4 * pap * N2);
+    der(sul) = (c0 * k_v0 / (1 + (cys / Kc)^n)) - (c1 * k2 * sul * A3c);
+    der(eth) = (c0 * k_v13) - (c1 * k7 * eth * N1);
+    der(hyd) = (c1 * k4 * pap * N2) - (c1 * k5 * hyd * oah) - (c1 * k17 * hyd);
+    der(cys) = (c1 * k5 * hyd * oah) - (c1 * k6 * cys);
+    der(N2) = (2.0 * c1 * k7 * eth * N1) + (4.0 * c2 * k9 * S1 * N1) - (3.0 * c1 * k4 * pap * N2) - (c2 * k11 * N2 * oxy / ((a * N2 + oxy) * (1 + (hyd / Kh)^m)));
+    der(aco) = (c1 * k7 * eth * N1) - (c1 * k15 * aco) - (c2 * k8 * aco * S2);
+    der(oah) = (c1 * k15 * aco) - (c1 * k5 * hyd * oah) - (c1 * k18 * oah);
+    der(S1) = (c2 * k8 * aco * S2) - (c2 * k9 * S1 * N1);
     der(C1) = 0.0;
     der(C2) = 0.0;
-    der(A3m) = ((1.0 * 3 * k11 * N2 * oxy / ((a * N2 + oxy) * (1 + (hyd / Kh)^m))) * A2m / (Ka + A2m)) - (1.0 * k16 * A3m * A2c);
+    der(A3m) = ((c2 * 3 * k11 * N2 * oxy / ((a * N2 + oxy) * (1 + (hyd / Kh)^m))) * A2m / (Ka + A2m)) - (c2 * k16 * A3m * A2c);
     der(Ho) = 0.0;
     der(Hm) = 0.0;
 

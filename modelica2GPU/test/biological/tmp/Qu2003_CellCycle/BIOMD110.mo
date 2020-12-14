@@ -39,6 +39,7 @@ model BIOMD110 "Qu2003_CellCycle"
     parameter Real cw = 1.0;
     parameter Real ci = 1.0;
     parameter Real Tau = 25.0;
+    parameter Real cell = 1.0;
 
 
 
@@ -62,7 +63,6 @@ initial equation
     x1 = 0.1;
     x = 0.1;
     c0 = 200.0;
-    c = 0.0;
     z0 = 0.0;
     z1 = 0.0;
     z2 = 0.0;
@@ -73,24 +73,23 @@ initial equation
     ix = 0.0;
     ixp = 0.0;
     y = 0.0;
-    totalCyclin = 0.0;
 
 equation
-    c = (c0 - (x + x1 + ix + ixp)) / (c0 * 1.0);
+    c = (c0 - (x + x1 + ix + ixp)) / (c0 * cell);
     totalCyclin = x + x1 + y;
-    der(x1) = (1.0 * (k3 * c * y - x1 * k4)) + (1.0 * ((k6 + w0) * x - (k5 + z2) * x1)) ;
-    der(x) = (1.0 * k16 * k16u * ixp) - (1.0 * ((k6 + w0) * x - (k5 + z2) * x1)) - ((k14 * x * i - k15 * ix) * 1.0) - (1.0 * (k7 + k7u * u) * x);
+    der(x1) = (cell * (k3 * c * y - x1 * k4)) + (cell * ((k6 + w0) * x - (k5 + z2) * x1)) ;
+    der(x) = (cell * k16 * k16u * ixp) - (cell * ((k6 + w0) * x - (k5 + z2) * x1)) - ((k14 * x * i - k15 * ix) * cell) - (cell * (k7 + k7u * u) * x);
     der(c0) = 0.0;
-    der(z0) = (1.0 * k8) - (1.0 * ((bz + cz * x) * z0 - z1 * az)) - (1.0 * k9 * z0);
-    der(z1) = (1.0 * ((bz + cz * x) * z0 - z1 * az)) - (1.0 * ((bz + cz * x) * z1 - az * z2)) - (1.0 * k9 * z1);
-    der(z2) = (1.0 * ((bz + cz * x) * z1 - az * z2)) - (1.0 * k9 * z2);
-    der(w0) = (k10 * 1.0) - (1.0 * ((bw + cw * x) * w0 - aw * w1)) - (1.0 * w0 * k11);
-    der(w1) = (1.0 * ((bw + cw * x) * w0 - aw * w1)) - (1.0 * k11 * w1);
-    der(u) = (1.0 * x^2 / (a^2 + x^2) / Tau) - (1.0 * u / Tau);
-    der(i) = (k12 * 1.0) - ((k14 * x * i - k15 * ix) * 1.0) - (1.0 * k13 * i);
-    der(ix) = ((k14 * x * i - k15 * ix) * 1.0) - (1.0 * ((bi + ci * x) * ix - ai * ixp));
-    der(ixp) = (1.0 * ((bi + ci * x) * ix - ai * ixp)) - (1.0 * k16 * k16u * ixp);
-    der(y) = (k1 * 1.0) - (1.0 * (k3 * c * y - x1 * k4)) - (1.0 * (k2 + k2u * u) * y);
+    der(z0) = (cell * k8) - (cell * ((bz + cz * x) * z0 - z1 * az)) - (cell * k9 * z0);
+    der(z1) = (cell * ((bz + cz * x) * z0 - z1 * az)) - (cell * ((bz + cz * x) * z1 - az * z2)) - (cell * k9 * z1);
+    der(z2) = (cell * ((bz + cz * x) * z1 - az * z2)) - (cell * k9 * z2);
+    der(w0) = (k10 * cell) - (cell * ((bw + cw * x) * w0 - aw * w1)) - (cell * w0 * k11);
+    der(w1) = (cell * ((bw + cw * x) * w0 - aw * w1)) - (cell * k11 * w1);
+    der(u) = (cell * x^2 / (a^2 + x^2) / Tau) - (cell * u / Tau);
+    der(i) = (k12 * cell) - ((k14 * x * i - k15 * ix) * cell) - (cell * k13 * i);
+    der(ix) = ((k14 * x * i - k15 * ix) * cell) - (cell * ((bi + ci * x) * ix - ai * ixp));
+    der(ixp) = (cell * ((bi + ci * x) * ix - ai * ixp)) - (cell * k16 * k16u * ixp);
+    der(y) = (k1 * cell) - (cell * (k3 * c * y - x1 * k4)) - (cell * (k2 + k2u * u) * y);
 
 
 

@@ -33,6 +33,8 @@ model BIOMD170 "Weimann2004_CircadianOscillator"
     parameter Real k6a = 0.09;
     parameter Real k7a = 0.003;
     parameter Real k7d = 0.09;
+    parameter Real Nucleus = 1.0;
+    parameter Real Cytoplasm = 1.0;
 
     Real trans_per2_cry(start=0.0);
     Real trans_Bmal1(start=0.0);
@@ -59,13 +61,13 @@ equation
     trans_per2_cry = v1b * (y7 + c) / (k1b * (1 + pow(y3 / k1i, hill_coeff)) + y7 + c);
     trans_Bmal1 = v4b * pow(y3, r) / (pow(k4b, r) + pow(y3, r));
     y5_y6_y7 = y5 + y6 + y7;
-    der(y1) = (1.0 * trans_per2_cry) - (1.0 * k1d * y1);
-    der(y2) = (1.0 * k2b * y1^q) + (1.0 * k3t * y3) - (1.0 * k2d * y2) - (1.0 * k2t * y2);
-    der(y3) = (1.0 * k2t * y2) - (1.0 * k3t * y3) - (1.0 * k3d * y3);
-    der(y4) = (1.0 * trans_Bmal1) - (1.0 * k4d * y4);
-    der(y5) = (1.0 * k5b * y4) + (1.0 * k6t * y6) - (1.0 * k5d * y5) - (1.0 * k5t * y5);
-    der(y6) = (1.0 * k5t * y5) + (1.0 * k7a * y7) - (1.0 * k6t * y6) - (1.0 * k6d * y6) - (1.0 * k6a * y6);
-    der(y7) = (1.0 * k6a * y6) - (1.0 * k7a * y7) - (1.0 * k7d * y7);
+    der(y1) = (Cytoplasm * trans_per2_cry) - (Cytoplasm * k1d * y1);
+    der(y2) = (Cytoplasm * k2b * y1^q) + (Nucleus * k3t * y3) - (Cytoplasm * k2d * y2) - (Cytoplasm * k2t * y2);
+    der(y3) = (Cytoplasm * k2t * y2) - (Nucleus * k3t * y3) - (Nucleus * k3d * y3);
+    der(y4) = (Cytoplasm * trans_Bmal1) - (Cytoplasm * k4d * y4);
+    der(y5) = (Cytoplasm * k5b * y4) + (Nucleus * k6t * y6) - (Cytoplasm * k5d * y5) - (Cytoplasm * k5t * y5);
+    der(y6) = (Cytoplasm * k5t * y5) + (Nucleus * k7a * y7) - (Nucleus * k6t * y6) - (Nucleus * k6d * y6) - (Nucleus * k6a * y6);
+    der(y7) = (Nucleus * k6a * y6) - (Nucleus * k7a * y7) - (Nucleus * k7d * y7);
 
 
 

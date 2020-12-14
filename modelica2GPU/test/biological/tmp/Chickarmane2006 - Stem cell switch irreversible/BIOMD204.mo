@@ -41,6 +41,7 @@ model BIOMD204 "Chickarmane2006 - Stem cell switch irreversible"
     parameter Real h1 = 0.0011;
     parameter Real h2 = 1.0;
     parameter Real gamma4 = 0.01;
+    parameter Real compartment = 1.0;
 
 
 

@@ -25,6 +25,8 @@ model BIOMD192 "Görlich2003_RanGTP_gradient"
     parameter Real Km_RanBP1_RanGDP = 0.1;
     parameter Real kcat_GAP_RanGAP_RanGDP = 10.6;
     parameter Real Km_GAP_RanGAP_RanGDP = 0.7;
+    parameter Real nucleus = 1.0;
+    parameter Real cytoplasm = 1.0;
 
 
 
@@ -59,19 +61,19 @@ initial equation
 
 equation
 
-    der(RanGDP_nuc) =  - (1.0 * (r1_RCC1_binding * RanGDP_nuc * RCC1 - r8_RCC1_binding * RCC1_RanGDP)) - (kpermRanGDP_Nucleoplasmic_transfer * 1.0 * (RanGDP_nuc - RanGDP_cy));
-    der(RCC1_RanGDP) = (1.0 * (r1_RCC1_binding * RanGDP_nuc * RCC1 - r8_RCC1_binding * RCC1_RanGDP)) - (1.0 * (r2_GDP_dissociation * RCC1_RanGDP - r7_GDP_dissociation * RCC1_Ran * GDP));
+    der(RanGDP_nuc) =  - (nucleus * (r1_RCC1_binding * RanGDP_nuc * RCC1 - r8_RCC1_binding * RCC1_RanGDP)) - (kpermRanGDP_Nucleoplasmic_transfer * nucleus * (RanGDP_nuc - RanGDP_cy));
+    der(RCC1_RanGDP) = (nucleus * (r1_RCC1_binding * RanGDP_nuc * RCC1 - r8_RCC1_binding * RCC1_RanGDP)) - (nucleus * (r2_GDP_dissociation * RCC1_RanGDP - r7_GDP_dissociation * RCC1_Ran * GDP));
     der(GDP) = 0.0;
-    der(RCC1) = (1.0 * (r4_RanGTP_release * RCC1_RanGTP - r5_RanGTP_release * RanGTP_nuc * RCC1)) - (1.0 * (r1_RCC1_binding * RanGDP_nuc * RCC1 - r8_RCC1_binding * RCC1_RanGDP));
-    der(RCC1_RanGTP) = (1.0 * (r3_GTP_binding * RCC1_Ran * GTP - r6_GTP_binding * RCC1_RanGTP)) - (1.0 * (r4_RanGTP_release * RCC1_RanGTP - r5_RanGTP_release * RanGTP_nuc * RCC1));
-    der(RCC1_Ran) = (1.0 * (r2_GDP_dissociation * RCC1_RanGDP - r7_GDP_dissociation * RCC1_Ran * GDP)) - (1.0 * (r3_GTP_binding * RCC1_Ran * GTP - r6_GTP_binding * RCC1_RanGTP));
+    der(RCC1) = (nucleus * (r4_RanGTP_release * RCC1_RanGTP - r5_RanGTP_release * RanGTP_nuc * RCC1)) - (nucleus * (r1_RCC1_binding * RanGDP_nuc * RCC1 - r8_RCC1_binding * RCC1_RanGDP));
+    der(RCC1_RanGTP) = (nucleus * (r3_GTP_binding * RCC1_Ran * GTP - r6_GTP_binding * RCC1_RanGTP)) - (nucleus * (r4_RanGTP_release * RCC1_RanGTP - r5_RanGTP_release * RanGTP_nuc * RCC1));
+    der(RCC1_Ran) = (nucleus * (r2_GDP_dissociation * RCC1_RanGDP - r7_GDP_dissociation * RCC1_Ran * GDP)) - (nucleus * (r3_GTP_binding * RCC1_Ran * GTP - r6_GTP_binding * RCC1_RanGTP));
     der(GTP) = 0.0;
-    der(RanGTP_nuc) = (1.0 * (r4_RanGTP_release * RCC1_RanGTP - r5_RanGTP_release * RanGTP_nuc * RCC1)) - (kpermRanGTP_Cytoplasmic_transfer * 1.0 * (RanGTP_nuc - RanGTP_cy));
+    der(RanGTP_nuc) = (nucleus * (r4_RanGTP_release * RCC1_RanGTP - r5_RanGTP_release * RanGTP_nuc * RCC1)) - (kpermRanGTP_Cytoplasmic_transfer * nucleus * (RanGTP_nuc - RanGTP_cy));
     der(RanGAP) = 0.0;
-    der(RanBP1) = (1.0 * kcat_RanBP1_RanGDP * RanGTP_RanBP1 * RanGAP / (RanGTP_RanBP1 + Km_RanBP1_RanGDP)) - ((kon_RanGTP_binding * RanGTP_cy * RanBP1 - koff_RanGTP_binding * RanGTP_RanBP1) * 1.0);
-    der(RanGTP_cy) = (kpermRanGTP_Cytoplasmic_transfer * 1.0 * (RanGTP_nuc - RanGTP_cy)) - ((kon_RanGTP_binding * RanGTP_cy * RanBP1 - koff_RanGTP_binding * RanGTP_RanBP1) * 1.0) - (1.0 * kcat_GAP_RanGAP_RanGDP * RanGTP_cy * RanGAP / (Km_GAP_RanGAP_RanGDP + RanGTP_cy));
-    der(RanGTP_RanBP1) = ((kon_RanGTP_binding * RanGTP_cy * RanBP1 - koff_RanGTP_binding * RanGTP_RanBP1) * 1.0) - (1.0 * kcat_RanBP1_RanGDP * RanGTP_RanBP1 * RanGAP / (RanGTP_RanBP1 + Km_RanBP1_RanGDP));
-    der(RanGDP_cy) = (kpermRanGDP_Nucleoplasmic_transfer * 1.0 * (RanGDP_nuc - RanGDP_cy)) + (1.0 * kcat_RanBP1_RanGDP * RanGTP_RanBP1 * RanGAP / (RanGTP_RanBP1 + Km_RanBP1_RanGDP)) + (1.0 * kcat_GAP_RanGAP_RanGDP * RanGTP_cy * RanGAP / (Km_GAP_RanGAP_RanGDP + RanGTP_cy)) ;
+    der(RanBP1) = (cytoplasm * kcat_RanBP1_RanGDP * RanGTP_RanBP1 * RanGAP / (RanGTP_RanBP1 + Km_RanBP1_RanGDP)) - ((kon_RanGTP_binding * RanGTP_cy * RanBP1 - koff_RanGTP_binding * RanGTP_RanBP1) * cytoplasm);
+    der(RanGTP_cy) = (kpermRanGTP_Cytoplasmic_transfer * nucleus * (RanGTP_nuc - RanGTP_cy)) - ((kon_RanGTP_binding * RanGTP_cy * RanBP1 - koff_RanGTP_binding * RanGTP_RanBP1) * cytoplasm) - (cytoplasm * kcat_GAP_RanGAP_RanGDP * RanGTP_cy * RanGAP / (Km_GAP_RanGAP_RanGDP + RanGTP_cy));
+    der(RanGTP_RanBP1) = ((kon_RanGTP_binding * RanGTP_cy * RanBP1 - koff_RanGTP_binding * RanGTP_RanBP1) * cytoplasm) - (cytoplasm * kcat_RanBP1_RanGDP * RanGTP_RanBP1 * RanGAP / (RanGTP_RanBP1 + Km_RanBP1_RanGDP));
+    der(RanGDP_cy) = (kpermRanGDP_Nucleoplasmic_transfer * nucleus * (RanGDP_nuc - RanGDP_cy)) + (cytoplasm * kcat_RanBP1_RanGDP * RanGTP_RanBP1 * RanGAP / (RanGTP_RanBP1 + Km_RanBP1_RanGDP)) + (cytoplasm * kcat_GAP_RanGAP_RanGDP * RanGTP_cy * RanGAP / (Km_GAP_RanGAP_RanGDP + RanGTP_cy)) ;
 
 
 

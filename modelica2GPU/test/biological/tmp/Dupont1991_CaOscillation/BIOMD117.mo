@@ -22,6 +22,9 @@ model BIOMD117 "Dupont1991_CaOscillation"
     parameter Real m = 2.0;
     parameter Real p = 4.0;
     parameter Real tstim = 4.0;
+    parameter Real extracellular = 1.0;
+    parameter Real Cytosol = 1.0;
+    parameter Real intracellular_Ca_storepool = 1.0;
 
     Real beta(start=0.0);
     Real flag(start=0.0);
@@ -35,8 +38,8 @@ initial equation
 
 equation
     beta = flag * 0.96 * exp(-0.2 * (time - tstim));
-    der(z) = (v1 * beta * 1.0) + (v0 * 1.0) + (kf * y * 1.0) + (1.0 * VM3 * (y^m / (KR^m + y^m)) * (z^p / (KA^p + z^p))) - (1.0 * VM2 * z^n / (K2^n + z^n)) - (k * z * 1.0);
-    der(y) = (1.0 * VM2 * z^n / (K2^n + z^n)) - (kf * y * 1.0) - (1.0 * VM3 * (y^m / (KR^m + y^m)) * (z^p / (KA^p + z^p)));
+    der(z) = (v1 * beta * Cytosol) + (v0 * Cytosol) + (kf * y * Cytosol) + (Cytosol * VM3 * (y^m / (KR^m + y^m)) * (z^p / (KA^p + z^p))) - (intracellular_Ca_storepool * VM2 * z^n / (K2^n + z^n)) - (k * z * extracellular);
+    der(y) = (intracellular_Ca_storepool * VM2 * z^n / (K2^n + z^n)) - (kf * y * Cytosol) - (Cytosol * VM3 * (y^m / (KR^m + y^m)) * (z^p / (KA^p + z^p)));
     der(flag)=0.0;
 
     when time > tstim then

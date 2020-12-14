@@ -79,6 +79,7 @@ model BIOMD201 "Goldbeter2008_Somite_Segmentation_Clock_Notch_Wnt_FGF"
     parameter Real VMaErk = 3.3;
     parameter Real VMaX = 1.6;
     parameter Real VMdX = 0.5;
+    parameter Real cytosol = 1.0;
 
     Real vsFK(start=0.0);
 
@@ -126,14 +127,10 @@ initial equation
     Xa = 0.1;
     MDusp = 0.1;
     Dusp = 0.1;
-    Rasi = 0.0;
-    ERKi = 0.0;
-    Xi = 0.0;
     Rast = 2.0;
     ERKt = 2.0;
     Xt = 2.0;
     D = 2.0;
-    AK = 0.0;
     Kt = 3.0;
     Fgf = 1.0;
 
@@ -143,22 +140,22 @@ equation
     Rasi = Rast - Rasa;
     ERKi = ERKt - ERKa;
     Xi = Xt - Xa;
-    der(N) = (1.0 * epsilon * vsN) - (epsilon * 1.0 * vdN * N / (KdN + N)) - (epsilon * 1.0 * kc * N * KIF^j / (KIF^j + F^j));
-    der(Na) = (epsilon * 1.0 * kc * N * KIF^j / (KIF^j + F^j)) - (epsilon * 1.0 * VdNa * Na / (KdNa + Na)) - (epsilon * 1.0 * (kt1 * Na - kt2 * Nan));
-    der(Nan) = (epsilon * 1.0 * (kt1 * Na - kt2 * Nan)) - (epsilon * 1.0 * VdNan * Nan / (KdNan + Nan));
-    der(MF) = (epsilon * 1.0 * vsFK * Nan^p / (KA^p + Nan^p)) - (epsilon * 1.0 * vmF * MF / (KdMF + MF));
-    der(F) = (epsilon * 1.0 * ksF * MF) - (epsilon * 1.0 * vdF * F / (KdF + F));
-    der(Bp) = (((theta * 1.0 * VMK * KID / (KID + D)) * B / (K1 + B)) * AK / Kt) - (theta * 1.0 * VMP * Bp / (K2 + Bp)) - (theta * 1.0 * kd2 * Bp);
-    der(BN) =  - (theta * 1.0 * (kt4 * BN - kt3 * B));
-    der(A) = (theta * 1.0 * (d1 * AK - a1 * A * K)) + (theta * 1.0 * ksAx * MAx) - (theta * 1.0 * vdAx * A / (KdAx + A));
-    der(K) = (theta * 1.0 * (d1 * AK - a1 * A * K)) ;
-    der(B) = (theta * 1.0 * vsB) + (theta * 1.0 * VMP * Bp / (K2 + Bp)) + (theta * 1.0 * (kt4 * BN - kt3 * B)) - (theta * 1.0 * kd1 * B) - (((theta * 1.0 * VMK * KID / (KID + D)) * B / (K1 + B)) * AK / Kt);
-    der(MAx) = (theta * 1.0 * v0) + (theta * 1.0 * (vMB * BN^n / (KaB^n + BN^n))) + (theta * 1.0 * (vMXa * Xa^m / (KaXa^m + Xa^m))) - (theta * 1.0 * vmd * MAx / (Kmd + MAx));
-    der(Rasa) = ((eta * 1.0 * VMaRas * Fgf^r / (KaFgf^r + Fgf^r)) * Rasi / (KaRas + Rasi)) - (eta * 1.0 * VMdRas * Rasa / (KdRas + Rasa));
-    der(ERKa) = ((eta * 1.0 * VMaErk * Rasa / Rast) * ERKi / (KaErk + ERKi)) - (eta * 1.0 * kcDusp * Dusp * ERKa / (KdErk + ERKa));
-    der(Xa) = ((eta * 1.0 * VMaX * ERKa / ERKt) * Xi / (KaX + Xi)) - (eta * 1.0 * VMdX * Xa / (KdX + Xa));
-    der(MDusp) = (eta * 1.0 * VMsMDusp * Xa^q / (KaMDusp^q + Xa^q)) - (eta * 1.0 * VMdMDusp * MDusp / (KdMDusp + MDusp));
-    der(Dusp) = (eta * 1.0 * ksDusp * MDusp) - (eta * 1.0 * vdDusp * Dusp / (KdDusp + Dusp));
+    der(N) = (cytosol * epsilon * vsN) - (epsilon * cytosol * vdN * N / (KdN + N)) - (epsilon * cytosol * kc * N * KIF^j / (KIF^j + F^j));
+    der(Na) = (epsilon * cytosol * kc * N * KIF^j / (KIF^j + F^j)) - (epsilon * cytosol * VdNa * Na / (KdNa + Na)) - (epsilon * cytosol * (kt1 * Na - kt2 * Nan));
+    der(Nan) = (epsilon * cytosol * (kt1 * Na - kt2 * Nan)) - (epsilon * cytosol * VdNan * Nan / (KdNan + Nan));
+    der(MF) = (epsilon * cytosol * vsFK * Nan^p / (KA^p + Nan^p)) - (epsilon * cytosol * vmF * MF / (KdMF + MF));
+    der(F) = (epsilon * cytosol * ksF * MF) - (epsilon * cytosol * vdF * F / (KdF + F));
+    der(Bp) = (((theta * cytosol * VMK * KID / (KID + D)) * B / (K1 + B)) * AK / Kt) - (theta * cytosol * VMP * Bp / (K2 + Bp)) - (theta * cytosol * kd2 * Bp);
+    der(BN) =  - (theta * cytosol * (kt4 * BN - kt3 * B));
+    der(A) = (theta * cytosol * (d1 * AK - a1 * A * K)) + (theta * cytosol * ksAx * MAx) - (theta * cytosol * vdAx * A / (KdAx + A));
+    der(K) = (theta * cytosol * (d1 * AK - a1 * A * K)) ;
+    der(B) = (theta * cytosol * vsB) + (theta * cytosol * VMP * Bp / (K2 + Bp)) + (theta * cytosol * (kt4 * BN - kt3 * B)) - (theta * cytosol * kd1 * B) - (((theta * cytosol * VMK * KID / (KID + D)) * B / (K1 + B)) * AK / Kt);
+    der(MAx) = (theta * cytosol * v0) + (theta * cytosol * (vMB * BN^n / (KaB^n + BN^n))) + (theta * cytosol * (vMXa * Xa^m / (KaXa^m + Xa^m))) - (theta * cytosol * vmd * MAx / (Kmd + MAx));
+    der(Rasa) = ((eta * cytosol * VMaRas * Fgf^r / (KaFgf^r + Fgf^r)) * Rasi / (KaRas + Rasi)) - (eta * cytosol * VMdRas * Rasa / (KdRas + Rasa));
+    der(ERKa) = ((eta * cytosol * VMaErk * Rasa / Rast) * ERKi / (KaErk + ERKi)) - (eta * cytosol * kcDusp * Dusp * ERKa / (KdErk + ERKa));
+    der(Xa) = ((eta * cytosol * VMaX * ERKa / ERKt) * Xi / (KaX + Xi)) - (eta * cytosol * VMdX * Xa / (KdX + Xa));
+    der(MDusp) = (eta * cytosol * VMsMDusp * Xa^q / (KaMDusp^q + Xa^q)) - (eta * cytosol * VMdMDusp * MDusp / (KdMDusp + MDusp));
+    der(Dusp) = (eta * cytosol * ksDusp * MDusp) - (eta * cytosol * vdDusp * Dusp / (KdDusp + Dusp));
     der(Rast) = 0.0;
     der(ERKt) = 0.0;
     der(Xt) = 0.0;

@@ -27,6 +27,7 @@ model BIOMD084 "Hornberg2005_ERKcascade"
     parameter Real Km8_v8 = 1.0;
     parameter Real Inh_v8 = 0.0;
     parameter Real Ki8_v8 = 1.0;
+    parameter Real compartment = 1.0;
 
 
 

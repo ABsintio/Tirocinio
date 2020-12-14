@@ -16,6 +16,9 @@ model BIOMD114 "Somogyi1990_CaOscillations"
     parameter Real k1 = 2.0;
     parameter Real beta = 1.0;
     parameter Real gamma = 1.0;
+    parameter Real cytoplasm = 1.0;
+    parameter Real ER = 1.0;
+    parameter Real extracellular = 1.0;
 
     Real fy(start=0.0);
 
@@ -28,8 +31,8 @@ initial equation
 
 equation
     fy = pow(y, n) / (pow(a, n) + pow(y, n));
-    der(x) =  - (k * x * 1.0 - k1 * y * 1.0) - (alpha * fy * x * 1.0);
-    der(y) = (gamma * 1.0) + (k * x * 1.0 - k1 * y * 1.0) + (alpha * fy * x * 1.0) - (beta * y * 1.0);
+    der(x) =  - (k * x * cytoplasm - k1 * y * ER) - (alpha * fy * x * cytoplasm);
+    der(y) = (gamma * cytoplasm) + (k * x * cytoplasm - k1 * y * ER) + (alpha * fy * x * cytoplasm) - (beta * y * extracellular);
 
 
 

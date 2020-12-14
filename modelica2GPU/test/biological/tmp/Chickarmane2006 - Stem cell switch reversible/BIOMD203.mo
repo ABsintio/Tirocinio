@@ -41,6 +41,7 @@ model BIOMD203 "Chickarmane2006 - Stem cell switch reversible"
     parameter Real h1 = 0.0019;
     parameter Real h2 = 0.05;
     parameter Real gamma4 = 0.01;
+    parameter Real compartment = 1.0;
 
 
 

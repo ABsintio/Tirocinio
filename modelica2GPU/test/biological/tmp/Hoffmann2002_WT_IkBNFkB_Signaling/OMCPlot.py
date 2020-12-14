@@ -13,7 +13,7 @@ csv_file = args.csv
 csv_data = pd.read_csv(csv_file)
 
 # Prendiamo i nomi delle species con gli indici corrispettivi che utilizzeremo per il plotting
-variables_to_plot = ["IkBalpha","NFkB","IkBalpha_NFkB","IkBbeta","IkBbeta_NFkB","IkBeps","IkBeps_NFkB","IKK_IkBalpha","IKK_IkBalpha_NFkB","IKK","IKK_IkBbeta","IKK_IkBbeta_NFkB","IKK_IkBeps","IKK_IkBeps_NFkB","NFkB_nuc","IkBalpha_nuc","IkBalpha_nuc_NFkB_nuc","IkBbeta_nuc","IkBbeta_nuc_NFkB_nuc","IkBeps_nuc","IkBalpha_transcript","IkBbeta_transcript","IkBeps_transcript","IkBeps_nuc_NFkB_nuc"]
+variables_to_plot = ["fr_after_trigger","IkBalpha","NFkB","IkBalpha_NFkB","IkBbeta","IkBbeta_NFkB","IkBeps","IkBeps_NFkB","IKK_IkBalpha","IKK_IkBalpha_NFkB","IKK","IKK_IkBbeta","IKK_IkBbeta_NFkB","IKK_IkBeps","IKK_IkBeps_NFkB","NFkB_nuc","IkBalpha_nuc","IkBalpha_nuc_NFkB_nuc","IkBbeta_nuc","IkBbeta_nuc_NFkB_nuc","IkBeps_nuc","IkBalpha_transcript","IkBbeta_transcript","IkBeps_transcript","IkBeps_nuc_NFkB_nuc"]
 species_tuple = [(idx, specie) for idx, specie in enumerate(csv_data.head(0)) if specie in variables_to_plot and specie != "time"]
 
 # Creiamo un array numpy per salvare i dati estrapolati dal CSV

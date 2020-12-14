@@ -23,6 +23,8 @@ model BIOMD184 "Lavrentovich2008_Ca_Oscillations"
     parameter Real vp = 0.05;
     parameter Real kp = 0.3;
     parameter Real kdeg = 0.08;
+    parameter Real compartment = 1.0;
+    parameter Real ER = 1.0;
 
 
 
@@ -37,9 +39,9 @@ initial equation
 
 equation
 
-    der(X) = (1.0 * vin) + (1.0 * 4 * vM3 * k_CaA^n * (X^n / ((X^n + k_CaA^n) * (X^n + k_CaI^n))) * (Z^m / (Z^m + kip3^m)) * (Y - X)) + (1.0 * kf * (Y - X)) - (1.0 * kout * X) - (1.0 * vM2 * X^2 / (X^2 + k2^2));
-    der(Y) = (1.0 * vM2 * X^2 / (X^2 + k2^2)) - (1.0 * 4 * vM3 * k_CaA^n * (X^n / ((X^n + k_CaA^n) * (X^n + k_CaI^n))) * (Z^m / (Z^m + kip3^m)) * (Y - X)) - (1.0 * kf * (Y - X));
-    der(Z) = (1.0 * vp * X^2 / (X^2 + kp^2)) - (1.0 * kdeg * Z);
+    der(X) = (compartment * vin) + (ER * 4 * vM3 * k_CaA^n * (X^n / ((X^n + k_CaA^n) * (X^n + k_CaI^n))) * (Z^m / (Z^m + kip3^m)) * (Y - X)) + (ER * kf * (Y - X)) - (compartment * kout * X) - (compartment * vM2 * X^2 / (X^2 + k2^2));
+    der(Y) = (compartment * vM2 * X^2 / (X^2 + k2^2)) - (ER * 4 * vM3 * k_CaA^n * (X^n / ((X^n + k_CaA^n) * (X^n + k_CaI^n))) * (Z^m / (Z^m + kip3^m)) * (Y - X)) - (ER * kf * (Y - X));
+    der(Z) = (compartment * vp * X^2 / (X^2 + kp^2)) - (compartment * kdeg * Z);
 
 
 

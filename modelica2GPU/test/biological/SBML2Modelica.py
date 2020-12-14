@@ -91,6 +91,7 @@ for i in range(0, len(species_tuple), 4):
     plt.legend(loc="upper left")
     plt.savefig("OMCPlot" + str(plot_number) + ".png")
     plot_number += 1
+    plt.close()
 """
 
 
@@ -218,7 +219,9 @@ class SBMLModel:
         formula_list = []
         for reaction_id, stoichiometry_value in specie_obj.involved_as_product:
             stoichiometry_value = str(stoichiometry_value) + " * " if stoichiometry_value != 1.0 else ""
-            formula_list.append(f"({stoichiometry_value}{self.reactions[reaction_id].math_formula})")
+            math_formula = self.reactions[reaction_id].math_formula
+            math_formula = math_formula if not math_formula.startswith("-") else f"({math_formula})"
+            formula_list.append(f"({stoichiometry_value}{math_formula})")
         return " + ".join(formula_list)
 
     def create_rate_rule(self):
@@ -258,6 +261,8 @@ class SBMLTranslator:
         for param_id, param_obj in self.model.parameters.items():
             if param_obj.constant:
                 lines.append(line_code.format(param_name=param_id, param_value=param_obj.value))
+        for comp_id in self.model.compartments:
+            lines.append(line_code.format(param_name=comp_id, param_value="1.0"))
         return lines
 
     def getvariable_parameter_modelica_code(self):
@@ -265,14 +270,15 @@ class SBMLTranslator:
         lines = []
         for param_id, param_obj in self.model.parameters.items():
             if not param_obj.constant:
-                lines.append(line_code.format(param_name=param_id, ivalue=param_obj.value))
+                ivalue = param_obj.value if not math.isnan(param_obj.value) else "0.0"
+                lines.append(line_code.format(param_name=param_id, ivalue=ivalue))
         return lines
 
     def getspecies_modelica_code(self):
         return [f"    Real {name};" for name in self.model.species]
 
     def getinitialequation_modelica_code(self):
-        return [f"    {name} = {species.ivalue};" for name, species in self.model.species.items() if not math.isnan(species.ivalue)]
+        return [f"    {name} = {species.ivalue};" for name, species in self.model.species.items() if not math.isnan(species.ivalue) and name not in self.model.assignment_rules.keys()]
     
     def getraterules_modelica_code(self):
         return [f"    {rate_rule.lhs} = {rate_rule.rhs};" for rate_rule in self.model.rate_rules_dict.values() if rate_rule.lhs[4:-1] not in self.model.assignment_rules.keys()]
@@ -382,8 +388,6 @@ class SBMLExtrapolator:
         for rule in self.model.getListOfRules():
             if isinstance(rule, libsbml.AssignmentRule):
                 formula = rule.getFormula()
-                for comp in self.comp_dict:
-                    formula = formula.replace(comp, "1.0")
                 self.assignment_dict[rule.getVariable()] = AssignmentRule(
                     rule.getVariable(), formula)
     
@@ -392,14 +396,13 @@ class SBMLExtrapolator:
         for rule in self.model.getListOfRules():
             if isinstance(rule, libsbml.RateRule):
                 formula = rule.getFormula()
-                for comp in self.comp_dict:
-                    formula = formula.replace(comp, "1.0")
                 self.rate_dict[rule.getVariable()] = RateRule(
                     rule.getVariable(), formula
                 )
 
     def getreactions(self):
         self.reaction_dict = dict()
+        id_reaction = 0
         for reaction in self.model.getListOfReactions():
             reaction_name = reaction.getId()
             second_reaction_name = reaction.getName()
@@ -411,19 +414,18 @@ class SBMLExtrapolator:
             list_of_parameters = list(filter(lambda x: isinstance(x, libsbml.Parameter), reaction.getListOfAllElements()))
             # Devo vedere se ci sono parametri locali alla reazione
             for param in list_of_parameters:
-                self.parameter_dict[param.getId() + "_" + reaction_name] = Parameter(
-                    param.getId(), # Nome
+                self.parameter_dict[param.getId() + "_" + str(id_reaction)] = Parameter(
+                    param.getId() + "_" + str(id_reaction), # Nome
                     param.getValue(), # Valore
                     param.getConstant() # Se è costante oppure no
                 )
                 parameters.append(param.getId())
-                kinetic_law = kinetic_law.replace(param.getId(), param.getId() + "_" + reaction_name)
-            for comp in self.comp_dict:
-                kinetic_law = kinetic_law.replace(comp, "1.0")
+                kinetic_law = kinetic_law.replace(param.getId(), param.getId() + "_" + str(id_reaction))
             self.reaction_dict[reaction_name] = Reaction(
                 reaction_name, second_reaction_name, reactants, 
                 products, modifiers, parameters, kinetic_law
             )
+            id_reaction += 1
         
     def get_and_set(self, reaction_name, lista, category):
         # Prendo tutti i reagenti con i loro valori stechiometrici
@@ -575,7 +577,7 @@ def run(file, output_directory):
     create_run_mos(save_directory, sbmlmodel, filename) # Creiamo il file run.mos per il plotting del risultato della simulazione
     create_build_mos(save_directory, filename) # Creiamo il file build.mos per fare il build del modello e costruire l'esegubile per il testing
     create_clear_sh(save_directory, filename)
-    create_omcplot_py(save_directory, ",".join(['"' + x + '"' for x in sbmlmodel.species.keys()]))
+    create_omcplot_py(save_directory, ",".join(['"' + x + '"' for x in sbmlmodel.rate_rules_dict.keys()]))
 
 
 def main():

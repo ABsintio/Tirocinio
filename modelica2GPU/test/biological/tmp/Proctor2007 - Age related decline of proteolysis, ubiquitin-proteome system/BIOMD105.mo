@@ -26,6 +26,7 @@ model BIOMD105 "Proctor2007 - Age related decline of proteolysis, ubiquitin-prot
     parameter Real k72 = 1e-08;
     parameter Real k73 = 0.001;
     parameter Real k74 = 1e-05;
+    parameter Real cytosol = 1.0;
 
 
 

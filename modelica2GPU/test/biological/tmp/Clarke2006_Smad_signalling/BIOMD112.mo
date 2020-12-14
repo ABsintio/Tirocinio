@@ -22,6 +22,8 @@ model BIOMD112 "Clarke2006_Smad_signalling"
     parameter Real k6a_reaction_6 = 0.000144;
     parameter Real Vmax7_reaction_7 = 17100.0;
     parameter Real K7_reaction_7 = 8950.0;
+    parameter Real cytoplasm = 1.0;
+    parameter Real nucleus = 1.0;
 
     Real sum_R_smad_cyt(start=0.0);
     Real sum_R_smad_nuc(start=0.0);

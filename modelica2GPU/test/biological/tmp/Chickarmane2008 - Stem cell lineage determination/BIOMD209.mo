@@ -58,6 +58,7 @@ model BIOMD209 "Chickarmane2008 - Stem cell lineage determination"
     parameter Real q3 = 10.0;
     parameter Real gammag = 0.1;
     parameter Real gamman = 0.01;
+    parameter Real cell = 1.0;
 
 
 

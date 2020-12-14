@@ -55,6 +55,7 @@ model BIOMD210 "Chickarmane2008 - Stem cell lineage - NANOG GATA-6 switch"
     parameter Real q2 = 15.0;
     parameter Real gammag = 0.01;
     parameter Real gamman = 0.01;
+    parameter Real cell = 1.0;
 
 
 

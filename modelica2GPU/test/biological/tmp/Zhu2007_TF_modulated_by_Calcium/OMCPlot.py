@@ -33,3 +33,4 @@ for i in range(0, len(species_tuple), 4):
     plt.legend(loc="upper left")
     plt.savefig("OMCPlot" + str(plot_number) + ".png")
     plot_number += 1
+    plt.close()

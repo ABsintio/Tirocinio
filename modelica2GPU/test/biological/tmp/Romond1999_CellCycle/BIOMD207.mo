@@ -37,6 +37,7 @@ model BIOMD207 "Romond1999_CellCycle"
     parameter Real H3 = 0.01;
     parameter Real U4 = 0.05;
     parameter Real H4 = 0.01;
+    parameter Real compartment = 1.0;
 
     Real V1(start=0.0);
     Real V3(start=0.0);
@@ -67,8 +68,8 @@ equation
     der(X1) = V3 * (1 - X1) / (K3 + (1 - X1)) - V4 * X1 / (K4 + X1);
     der(M2) = U1 * (1 - M2) / (H1 + (1 - M2)) - U2 * M2 / (H2 + M2);
     der(X2) = U3 * (1 - X2) / (H3 + (1 - X2)) - U4 * X2 / (H4 + X2);
-    der(C1) = (1.0 * vi1 * Kim1 / (Kim1 + M2)) - (1.0 * vd1 * X1 * C1 / (K_d1 + C1)) - (1.0 * kd1 * C1);
-    der(C2) = (1.0 * vi2 * Kim2 / (Kim2 + M1)) - (1.0 * vd2 * X2 * C2 / (K_d2 + C2)) - (1.0 * kd2 * C2);
+    der(C1) = (compartment * vi1 * Kim1 / (Kim1 + M2)) - (compartment * vd1 * X1 * C1 / (K_d1 + C1)) - (compartment * kd1 * C1);
+    der(C2) = (compartment * vi2 * Kim2 / (Kim2 + M1)) - (compartment * vd2 * X2 * C2 / (K_d2 + C2)) - (compartment * kd2 * C2);
 
 
 

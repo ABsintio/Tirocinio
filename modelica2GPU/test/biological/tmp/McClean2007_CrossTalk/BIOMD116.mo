@@ -29,6 +29,7 @@ model BIOMD116 "McClean2007_CrossTalk"
     parameter Real parameter_17 = 1.0;
     parameter Real parameter_18 = 1.0;
     parameter Real parameter_19 = 1.0;
+    parameter Real compartment_0 = 1.0;
 
 
 
@@ -49,12 +50,12 @@ initial equation
 
 equation
 
-    der(species_0) = ((1.0 * parameter_6 * parameter_7 / (1 + parameter_7 / parameter_8)) * (parameter_0 - species_0)) - (1.0 * parameter_9 * species_0 * (parameter_1 - species_1)) - (1.0 * parameter_12 * species_0 * (parameter_4 - species_4));
-    der(species_1) = (1.0 * parameter_9 * species_0 * (parameter_1 - species_1)) + (1.0 * parameter_12 * species_3 * (parameter_1 - species_1)) - (1.0 * parameter_10 * species_1 * (parameter_2 - species_2));
-    der(species_2) = (1.0 * parameter_10 * species_1 * (parameter_2 - species_2)) - (1.0 * parameter_11 * species_5 * species_2 / (1 + species_2 / parameter_13));
-    der(species_3) = ((1.0 * parameter_15 * parameter_14 / (1 + parameter_14 / parameter_16)) * (parameter_3 - species_3)) - (1.0 * parameter_17 * species_3 * (parameter_4 - species_4)) - (1.0 * parameter_12 * species_3 * (parameter_1 - species_1));
-    der(species_4) = (1.0 * parameter_17 * species_3 * (parameter_4 - species_4)) + (1.0 * parameter_12 * species_0 * (parameter_4 - species_4)) - (1.0 * parameter_18 * species_4 * (parameter_5 - species_5));
-    der(species_5) = (1.0 * parameter_18 * species_4 * (parameter_5 - species_5)) - (1.0 * parameter_11 * species_5 * species_2 / (1 + species_5 / parameter_19));
+    der(species_0) = ((compartment_0 * parameter_6 * parameter_7 / (1 + parameter_7 / parameter_8)) * (parameter_0 - species_0)) - (compartment_0 * parameter_9 * species_0 * (parameter_1 - species_1)) - (compartment_0 * parameter_12 * species_0 * (parameter_4 - species_4));
+    der(species_1) = (compartment_0 * parameter_9 * species_0 * (parameter_1 - species_1)) + (compartment_0 * parameter_12 * species_3 * (parameter_1 - species_1)) - (compartment_0 * parameter_10 * species_1 * (parameter_2 - species_2));
+    der(species_2) = (compartment_0 * parameter_10 * species_1 * (parameter_2 - species_2)) - (compartment_0 * parameter_11 * species_5 * species_2 / (1 + species_2 / parameter_13));
+    der(species_3) = ((compartment_0 * parameter_15 * parameter_14 / (1 + parameter_14 / parameter_16)) * (parameter_3 - species_3)) - (compartment_0 * parameter_17 * species_3 * (parameter_4 - species_4)) - (compartment_0 * parameter_12 * species_3 * (parameter_1 - species_1));
+    der(species_4) = (compartment_0 * parameter_17 * species_3 * (parameter_4 - species_4)) + (compartment_0 * parameter_12 * species_0 * (parameter_4 - species_4)) - (compartment_0 * parameter_18 * species_4 * (parameter_5 - species_5));
+    der(species_5) = (compartment_0 * parameter_18 * species_4 * (parameter_5 - species_5)) - (compartment_0 * parameter_11 * species_5 * species_2 / (1 + species_5 / parameter_19));
 
 
 

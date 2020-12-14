@@ -16,6 +16,9 @@ model BIOMD115 "Somogyi1990_CaOscillations_SingleCaSpike"
     parameter Real k1 = 2.0;
     parameter Real beta = 1.0;
     parameter Real gamma = 1.0;
+    parameter Real Cytosol = 1.0;
+    parameter Real ER = 1.0;
+    parameter Real Extracellular = 1.0;
 
     Real fy(start=0.0);
 
@@ -28,8 +31,8 @@ initial equation
 
 equation
     fy = pow(y, n) / (pow(a, n) + pow(y, n));
-    der(x) = (k1 * y * 1.0) - (1.0 * k * (x - y)) - (alpha * fy * (x - y) * 1.0);
-    der(y) = (gamma * 1.0) + (1.0 * k * (x - y)) + (alpha * fy * (x - y) * 1.0) - (k1 * y * 1.0) - (beta * y * 1.0);
+    der(x) = (k1 * y * ER) - (Cytosol * k * (x - y)) - (alpha * fy * (x - y) * Cytosol);
+    der(y) = (gamma * Cytosol) + (Cytosol * k * (x - y)) + (alpha * fy * (x - y) * Cytosol) - (k1 * y * ER) - (beta * y * Extracellular);
 
 
 

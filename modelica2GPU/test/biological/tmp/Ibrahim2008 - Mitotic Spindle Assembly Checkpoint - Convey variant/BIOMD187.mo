@@ -24,6 +24,7 @@ model BIOMD187 "Ibrahim2008 - Mitotic Spindle Assembly Checkpoint - Convey varia
     parameter Real k8r = 0.08;
     parameter Real const_val_0 = 0.0;
     parameter Real const_val_1 = 1.0;
+    parameter Real Cytoplasm = 1.0;
 
     Real u(start=1.0);
     Real u_prime(start=0.0);
@@ -55,17 +56,17 @@ initial equation
 
 equation
 
-    der(Mad1_CMad2) = (u * k2f * Mad1_CMad2_OMad2 * Cdc20 * 1.0) - (1.0 * (u * k1f * Mad1_CMad2 * OMad2 - k1r * Mad1_CMad2_OMad2));
-    der(OMad2) = (k3f * Cdc20_CMad2 * 1.0) + (u_prime * k7bf * MCC_APC * 1.0) - (1.0 * (u * k1f * Mad1_CMad2 * OMad2 - k1r * Mad1_CMad2_OMad2)) - (kf6 * OMad2 * Cdc20 * 1.0);
-    der(Mad1_CMad2_OMad2) = (1.0 * (u * k1f * Mad1_CMad2 * OMad2 - k1r * Mad1_CMad2_OMad2)) - (u * k2f * Mad1_CMad2_OMad2 * Cdc20 * 1.0);
-    der(Cdc20) = (k3f * Cdc20_CMad2 * 1.0) - (u * k2f * Mad1_CMad2_OMad2 * Cdc20 * 1.0) - (1.0 * (u * k5f * Bub3_BubR1 * Cdc20 - k5r * Bub3_BubR1_Cdc20)) - (kf6 * OMad2 * Cdc20 * 1.0) - (1.0 * (k8f * APC * Cdc20 - k8r * APC_Cdc20));
-    der(Cdc20_CMad2) = (u * k2f * Mad1_CMad2_OMad2 * Cdc20 * 1.0) + (kf6 * OMad2 * Cdc20 * 1.0) - (k3f * Cdc20_CMad2 * 1.0) - (1.0 * (u * k4f * Cdc20_CMad2 * Bub3_BubR1 - k4r * MCC));
-    der(Bub3_BubR1) = (u_prime * k7bf * MCC_APC * 1.0) - (1.0 * (u * k4f * Cdc20_CMad2 * Bub3_BubR1 - k4r * MCC)) - (1.0 * (u * k5f * Bub3_BubR1 * Cdc20 - k5r * Bub3_BubR1_Cdc20));
-    der(MCC) = (1.0 * (u * k4f * Cdc20_CMad2 * Bub3_BubR1 - k4r * MCC)) - (u * k7f * MCC * APC * 1.0);
-    der(Bub3_BubR1_Cdc20) = (1.0 * (u * k5f * Bub3_BubR1 * Cdc20 - k5r * Bub3_BubR1_Cdc20)) ;
-    der(APC) =  - (u * k7f * MCC * APC * 1.0) - (1.0 * (k8f * APC * Cdc20 - k8r * APC_Cdc20));
-    der(MCC_APC) = (u * k7f * MCC * APC * 1.0) - (u_prime * k7bf * MCC_APC * 1.0);
-    der(APC_Cdc20) = (u_prime * k7bf * MCC_APC * 1.0) + (1.0 * (k8f * APC * Cdc20 - k8r * APC_Cdc20)) ;
+    der(Mad1_CMad2) = (u * k2f * Mad1_CMad2_OMad2 * Cdc20 * Cytoplasm) - (Cytoplasm * (u * k1f * Mad1_CMad2 * OMad2 - k1r * Mad1_CMad2_OMad2));
+    der(OMad2) = (k3f * Cdc20_CMad2 * Cytoplasm) + (u_prime * k7bf * MCC_APC * Cytoplasm) - (Cytoplasm * (u * k1f * Mad1_CMad2 * OMad2 - k1r * Mad1_CMad2_OMad2)) - (kf6 * OMad2 * Cdc20 * Cytoplasm);
+    der(Mad1_CMad2_OMad2) = (Cytoplasm * (u * k1f * Mad1_CMad2 * OMad2 - k1r * Mad1_CMad2_OMad2)) - (u * k2f * Mad1_CMad2_OMad2 * Cdc20 * Cytoplasm);
+    der(Cdc20) = (k3f * Cdc20_CMad2 * Cytoplasm) - (u * k2f * Mad1_CMad2_OMad2 * Cdc20 * Cytoplasm) - (Cytoplasm * (u * k5f * Bub3_BubR1 * Cdc20 - k5r * Bub3_BubR1_Cdc20)) - (kf6 * OMad2 * Cdc20 * Cytoplasm) - (Cytoplasm * (k8f * APC * Cdc20 - k8r * APC_Cdc20));
+    der(Cdc20_CMad2) = (u * k2f * Mad1_CMad2_OMad2 * Cdc20 * Cytoplasm) + (kf6 * OMad2 * Cdc20 * Cytoplasm) - (k3f * Cdc20_CMad2 * Cytoplasm) - (Cytoplasm * (u * k4f * Cdc20_CMad2 * Bub3_BubR1 - k4r * MCC));
+    der(Bub3_BubR1) = (u_prime * k7bf * MCC_APC * Cytoplasm) - (Cytoplasm * (u * k4f * Cdc20_CMad2 * Bub3_BubR1 - k4r * MCC)) - (Cytoplasm * (u * k5f * Bub3_BubR1 * Cdc20 - k5r * Bub3_BubR1_Cdc20));
+    der(MCC) = (Cytoplasm * (u * k4f * Cdc20_CMad2 * Bub3_BubR1 - k4r * MCC)) - (u * k7f * MCC * APC * Cytoplasm);
+    der(Bub3_BubR1_Cdc20) = (Cytoplasm * (u * k5f * Bub3_BubR1 * Cdc20 - k5r * Bub3_BubR1_Cdc20)) ;
+    der(APC) =  - (u * k7f * MCC * APC * Cytoplasm) - (Cytoplasm * (k8f * APC * Cdc20 - k8r * APC_Cdc20));
+    der(MCC_APC) = (u * k7f * MCC * APC * Cytoplasm) - (u_prime * k7bf * MCC_APC * Cytoplasm);
+    der(APC_Cdc20) = (u_prime * k7bf * MCC_APC * Cytoplasm) + (Cytoplasm * (k8f * APC * Cdc20 - k8r * APC_Cdc20)) ;
     der(u)=0.0;
     der(u_prime)=0.0;
 

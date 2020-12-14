@@ -33,6 +33,8 @@ model BIOMD143 "Olsen2003_neutrophil_oscillatory_metabolism"
     parameter Real V = 288.0;
     parameter Real L = 550.0;
     parameter Real Ko = 1.5;
+    parameter Real phagosome = 1.0;
+    parameter Real cytoplasm = 1.0;
 
 
 
@@ -81,26 +83,26 @@ initial equation
 
 equation
 
-    der(H2O2_p) = (1.0 * k5 * O2minus_p^2) - (1.0 * (k1 * H2O2_p * per3_p - kminus1 * coI_p)) - (1.0 * (k15 * H2O2_p - k15 * H2O2_c));
-    der(per3_p) = (1.0 * k3 * coII_p * MLTH_p) - (1.0 * (k1 * H2O2_p * per3_p - kminus1 * coI_p)) - (1.0 * k4 * per3_p * O2minus_p);
-    der(coI_p) = (1.0 * (k1 * H2O2_p * per3_p - kminus1 * coI_p)) + (1.0 * k6 * coIII_p * O2minus_p) - (1.0 * k2 * coI_p * MLTH_p);
-    der(MLTH_p) =  - (1.0 * k2 * coI_p * MLTH_p) - (1.0 * k3 * coII_p * MLTH_p) - (1.0 * (k16 * MLTH_p - k16 * MLTH_c));
-    der(coII_p) = (1.0 * k2 * coI_p * MLTH_p) - (1.0 * k3 * coII_p * MLTH_p);
-    der(MLT_p) = (1.0 * k2 * coI_p * MLTH_p) + (1.0 * k3 * coII_p * MLTH_p) - (1.0 * (k17 * MLT_p - k17 * MLT_c));
-    der(O2minus_p) = (2.0 * 1.0 * ((V * NADPH_c / Knadph) * (1 + NADPH_c / Knadph) * O2_p / ((L + (1 + NADPH_c / Knadph)^2) * (Ko + O2_p)))) - (1.0 * k4 * per3_p * O2minus_p) - (2.0 * 1.0 * k5 * O2minus_p^2) - (1.0 * k6 * coIII_p * O2minus_p) - (1.0 * (k18 * O2minus_p - k18 * O2minus_c));
-    der(H_p) =  - (2.0 * 1.0 * k5 * O2minus_p^2);
-    der(O2_p) = (1.0 * k5 * O2minus_p^2) + (1.0 * k6 * coIII_p * O2minus_p) - (1.0 * (k14 * O2_p - k14 * O2_c)) - (2.0 * 1.0 * ((V * NADPH_c / Knadph) * (1 + NADPH_c / Knadph) * O2_p / ((L + (1 + NADPH_c / Knadph)^2) * (Ko + O2_p))));
-    der(NADPH_c) = (1.0 * k12) - (1.0 * k7 * NADPH_c * O2_c) - (1.0 * k10 * MLT_c * NADPH_c) - (1.0 * ((V * NADPH_c / Knadph) * (1 + NADPH_c / Knadph) * O2_p / ((L + (1 + NADPH_c / Knadph)^2) * (Ko + O2_p))));
-    der(O2_c) = (1.0 * k9 * O2minus_c^2) + (1.0 * k13) + (1.0 * (k14 * O2_p - k14 * O2_c)) - (1.0 * k7 * NADPH_c * O2_c) - (1.0 * k8 * NADP_c * O2_c) - (1.0 * kminus13 * O2_c);
-    der(NADPplus_c) = (1.0 * k7 * NADPH_c * O2_c) + (1.0 * k8 * NADP_c * O2_c) + (1.0 * ((V * NADPH_c / Knadph) * (1 + NADPH_c / Knadph) * O2_p / ((L + (1 + NADPH_c / Knadph)^2) * (Ko + O2_p)))) ;
-    der(H2O2_c) = (1.0 * k7 * NADPH_c * O2_c) + (1.0 * k9 * O2minus_c^2) + (1.0 * (k15 * H2O2_p - k15 * H2O2_c)) ;
-    der(NADP_c) = (1.0 * k10 * MLT_c * NADPH_c) - (1.0 * k8 * NADP_c * O2_c) - (2.0 * 1.0 * k11 * NADP_c^2);
-    der(O2minus_c) = (1.0 * k8 * NADP_c * O2_c) + (1.0 * (k18 * O2minus_p - k18 * O2minus_c)) - (2.0 * 1.0 * k9 * O2minus_c^2);
-    der(H_c) =  - (2.0 * 1.0 * k9 * O2minus_c^2);
-    der(MLT_c) = (1.0 * (k17 * MLT_p - k17 * MLT_c)) - (1.0 * k10 * MLT_c * NADPH_c);
-    der(MLTH_c) = (1.0 * k10 * MLT_c * NADPH_c) + (1.0 * (k16 * MLTH_p - k16 * MLTH_c)) ;
-    der(coIII_p) = (1.0 * k4 * per3_p * O2minus_p) - (1.0 * k6 * coIII_p * O2minus_p);
-    der(NADP2_c) = (1.0 * k11 * NADP_c^2) ;
+    der(H2O2_p) = (phagosome * k5 * O2minus_p^2) - (phagosome * (k1 * H2O2_p * per3_p - kminus1 * coI_p)) - (phagosome * (k15 * H2O2_p - k15 * H2O2_c));
+    der(per3_p) = (phagosome * k3 * coII_p * MLTH_p) - (phagosome * (k1 * H2O2_p * per3_p - kminus1 * coI_p)) - (phagosome * k4 * per3_p * O2minus_p);
+    der(coI_p) = (phagosome * (k1 * H2O2_p * per3_p - kminus1 * coI_p)) + (phagosome * k6 * coIII_p * O2minus_p) - (phagosome * k2 * coI_p * MLTH_p);
+    der(MLTH_p) =  - (phagosome * k2 * coI_p * MLTH_p) - (phagosome * k3 * coII_p * MLTH_p) - (phagosome * (k16 * MLTH_p - k16 * MLTH_c));
+    der(coII_p) = (phagosome * k2 * coI_p * MLTH_p) - (phagosome * k3 * coII_p * MLTH_p);
+    der(MLT_p) = (phagosome * k2 * coI_p * MLTH_p) + (phagosome * k3 * coII_p * MLTH_p) - (phagosome * (k17 * MLT_p - k17 * MLT_c));
+    der(O2minus_p) = (2.0 * phagosome * ((V * NADPH_c / Knadph) * (1 + NADPH_c / Knadph) * O2_p / ((L + (1 + NADPH_c / Knadph)^2) * (Ko + O2_p)))) - (phagosome * k4 * per3_p * O2minus_p) - (2.0 * phagosome * k5 * O2minus_p^2) - (phagosome * k6 * coIII_p * O2minus_p) - (phagosome * (k18 * O2minus_p - k18 * O2minus_c));
+    der(H_p) =  - (2.0 * phagosome * k5 * O2minus_p^2);
+    der(O2_p) = (phagosome * k5 * O2minus_p^2) + (phagosome * k6 * coIII_p * O2minus_p) - (phagosome * (k14 * O2_p - k14 * O2_c)) - (2.0 * phagosome * ((V * NADPH_c / Knadph) * (1 + NADPH_c / Knadph) * O2_p / ((L + (1 + NADPH_c / Knadph)^2) * (Ko + O2_p))));
+    der(NADPH_c) = (cytoplasm * k12) - (cytoplasm * k7 * NADPH_c * O2_c) - (cytoplasm * k10 * MLT_c * NADPH_c) - (phagosome * ((V * NADPH_c / Knadph) * (1 + NADPH_c / Knadph) * O2_p / ((L + (1 + NADPH_c / Knadph)^2) * (Ko + O2_p))));
+    der(O2_c) = (cytoplasm * k9 * O2minus_c^2) + (cytoplasm * k13) + (phagosome * (k14 * O2_p - k14 * O2_c)) - (cytoplasm * k7 * NADPH_c * O2_c) - (cytoplasm * k8 * NADP_c * O2_c) - (cytoplasm * kminus13 * O2_c);
+    der(NADPplus_c) = (cytoplasm * k7 * NADPH_c * O2_c) + (cytoplasm * k8 * NADP_c * O2_c) + (phagosome * ((V * NADPH_c / Knadph) * (1 + NADPH_c / Knadph) * O2_p / ((L + (1 + NADPH_c / Knadph)^2) * (Ko + O2_p)))) ;
+    der(H2O2_c) = (cytoplasm * k7 * NADPH_c * O2_c) + (cytoplasm * k9 * O2minus_c^2) + (phagosome * (k15 * H2O2_p - k15 * H2O2_c)) ;
+    der(NADP_c) = (cytoplasm * k10 * MLT_c * NADPH_c) - (cytoplasm * k8 * NADP_c * O2_c) - (2.0 * cytoplasm * k11 * NADP_c^2);
+    der(O2minus_c) = (cytoplasm * k8 * NADP_c * O2_c) + (phagosome * (k18 * O2minus_p - k18 * O2minus_c)) - (2.0 * cytoplasm * k9 * O2minus_c^2);
+    der(H_c) =  - (2.0 * cytoplasm * k9 * O2minus_c^2);
+    der(MLT_c) = (phagosome * (k17 * MLT_p - k17 * MLT_c)) - (cytoplasm * k10 * MLT_c * NADPH_c);
+    der(MLTH_c) = (cytoplasm * k10 * MLT_c * NADPH_c) + (phagosome * (k16 * MLTH_p - k16 * MLTH_c)) ;
+    der(coIII_p) = (phagosome * k4 * per3_p * O2minus_p) - (phagosome * k6 * coIII_p * O2minus_p);
+    der(NADP2_c) = (cytoplasm * k11 * NADP_c^2) ;
 
 
 

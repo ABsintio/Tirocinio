@@ -13,6 +13,7 @@ model BIOMD092 "Fuentes2005_ZymogenActivation"
     parameter Real k21_v2 = 1000.0;
     parameter Real k22_v2 = 0.00021;
     parameter Real k3_v3 = 0.00054;
+    parameter Real compartment = 1.0;
 
 
 
@@ -29,10 +30,10 @@ initial equation
 
 equation
 
-    der(z) =  - (1.0 * k1_v1 * z) - (1.0 * (k21_v2 * e * z - k22_v2 * ez));
-    der(e) = (1.0 * k1_v1 * z) + (2.0 * 1.0 * k3_v3 * ez) - (1.0 * (k21_v2 * e * z - k22_v2 * ez));
-    der(w) = (1.0 * k1_v1 * z) + (1.0 * k3_v3 * ez) ;
-    der(ez) = (1.0 * (k21_v2 * e * z - k22_v2 * ez)) - (1.0 * k3_v3 * ez);
+    der(z) =  - (compartment * k1_v1 * z) - (compartment * (k21_v2 * e * z - k22_v2 * ez));
+    der(e) = (compartment * k1_v1 * z) + (2.0 * compartment * k3_v3 * ez) - (compartment * (k21_v2 * e * z - k22_v2 * ez));
+    der(w) = (compartment * k1_v1 * z) + (compartment * k3_v3 * ez) ;
+    der(ez) = (compartment * (k21_v2 * e * z - k22_v2 * ez)) - (compartment * k3_v3 * ez);
 
 
 

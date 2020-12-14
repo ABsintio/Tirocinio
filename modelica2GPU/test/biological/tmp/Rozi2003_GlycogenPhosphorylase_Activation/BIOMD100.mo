@@ -39,6 +39,9 @@ model BIOMD100 "Rozi2003_GlycogenPhosphorylase_Activation"
     parameter Real Kp2 = 0.2;
     parameter Real Ka2 = 10000.0;
     parameter Real p = 2.0;
+    parameter Real extracellular = 1.0;
+    parameter Real cytosol = 1.0;
+    parameter Real intravesicular = 1.0;
 
 
 
@@ -58,10 +61,10 @@ initial equation
 equation
 
     der(EC) = 0.0;
-    der(Z) = (1.0 * (v0 + v1 * beta)) + (1.0 * Vm3 * A^4 * Y^2 * Z^m / ((Ka^4 + A^4) * (Ky^2 + Y^2) * (Kz^m + Z^m))) + (1.0 * Kf * Y) - (1.0 * (Vm2 * Z^2 / (K2^2 + Z^2))) - (1.0 * K * Z);
-    der(A) = (1.0 * beta * V4) - (1.0 * Vm5 * A^p * Z^n / ((K5^p + A^p) * (Kd^n + Z^n))) - (1.0 * epsilon * A);
-    der(Y) = (1.0 * (Vm2 * Z^2 / (K2^2 + Z^2))) - (1.0 * Vm3 * A^4 * Y^2 * Z^m / ((Ka^4 + A^4) * (Ky^2 + Y^2) * (Kz^m + Z^m))) - (1.0 * Kf * Y);
-    der(GP) = (1.0 * (Vpm1 * (1 + gamma * Z^4 / (Ka5^4 + Z^4)) * (1 - GP) / (K1 / (1 + Z^4 / Ka6^4) + 1 - GP))) - (1.0 * (Vpm2 * (1 + alpha * G / (Ka1 + G)) * GP / (Kp2 / (1 + G / Ka2) + GP)));
+    der(Z) = (extracellular * (v0 + v1 * beta)) + (intravesicular * Vm3 * A^4 * Y^2 * Z^m / ((Ka^4 + A^4) * (Ky^2 + Y^2) * (Kz^m + Z^m))) + (intravesicular * Kf * Y) - (cytosol * (Vm2 * Z^2 / (K2^2 + Z^2))) - (cytosol * K * Z);
+    der(A) = (cytosol * beta * V4) - (cytosol * Vm5 * A^p * Z^n / ((K5^p + A^p) * (Kd^n + Z^n))) - (cytosol * epsilon * A);
+    der(Y) = (cytosol * (Vm2 * Z^2 / (K2^2 + Z^2))) - (intravesicular * Vm3 * A^4 * Y^2 * Z^m / ((Ka^4 + A^4) * (Ky^2 + Y^2) * (Kz^m + Z^m))) - (intravesicular * Kf * Y);
+    der(GP) = (cytosol * (Vpm1 * (1 + gamma * Z^4 / (Ka5^4 + Z^4)) * (1 - GP) / (K1 / (1 + Z^4 / Ka6^4) + 1 - GP))) - (cytosol * (Vpm2 * (1 + alpha * G / (Ka1 + G)) * GP / (Kp2 / (1 + G / Ka2) + GP)));
 
 
 

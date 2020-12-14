@@ -17,6 +17,7 @@ model BIOMD157 "Zatorsky2006_p53_Model4"
     parameter Real alpha_0 = 0.8;
     parameter Real k = 0.0001;
     parameter Real alpha_k = 1.7;
+    parameter Real compartment = 1.0;
 
 
 
@@ -31,9 +32,9 @@ initial equation
 
 equation
 
-    der(x) = (1.0 * beta_x * psi) - (1.0 * alpha_x * x) - (1.0 * alpha_k * y * x / (x + k));
-    der(y) = (1.0 * alpha_0 * y0) - (1.0 * alpha_y * y);
-    der(y0) = (1.0 * beta_y * x * psi) - (1.0 * alpha_0 * y0);
+    der(x) = (compartment * beta_x * psi) - (compartment * alpha_x * x) - (compartment * alpha_k * y * x / (x + k));
+    der(y) = (compartment * alpha_0 * y0) - (compartment * alpha_y * y);
+    der(y0) = (compartment * beta_y * x * psi) - (compartment * alpha_0 * y0);
 
 
 

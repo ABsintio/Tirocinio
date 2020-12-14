@@ -73,6 +73,7 @@ model BIOMD230 "Ihekwaba2004_NFkB_Sensitivity"
     parameter Real k62 = 0.00407;
     parameter Real k63 = 0.0015;
     parameter Real k64 = 0.0022;
+    parameter Real compartment = 1.0;
 
 
 

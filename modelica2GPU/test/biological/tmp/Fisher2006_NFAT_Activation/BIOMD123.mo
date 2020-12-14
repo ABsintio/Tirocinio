@@ -31,6 +31,8 @@ model BIOMD123 "Fisher2006_NFAT_Activation"
     parameter Real k20 = 1.0;
     parameter Real k21 = 0.21;
     parameter Real k22 = 0.5;
+    parameter Real cytosol = 1.0;
+    parameter Real nucleus = 1.0;
 
 
 
@@ -67,20 +69,20 @@ initial equation
 
 equation
 
-    der(Ca_Nuc) = (1.0 * k21 * Ca_Cyt - 1.0 * k22 * Ca_Nuc) - (3.0 * 1.0 * (k19 * Inact_C_Nuc * Ca_Nuc^3 - k20 * Act_C_Nuc));
-    der(Ca_Cyt) =  - (3.0 * 1.0 * (k19 * Inact_C_Cyt * Ca_Cyt^3 - k20 * Act_C_Cyt)) - (1.0 * k21 * Ca_Cyt - 1.0 * k22 * Ca_Nuc);
-    der(NFAT_Nuc) = (1.0 * (k1 * NFAT_Pi_Nuc - k2 * NFAT_Nuc)) - (1.0 * (k16 * NFAT_Nuc * Act_C_Nuc - k15 * NFAT_Act_C_Nuc)) - (1.0 * k18 * NFAT_Nuc - 1.0 * k17 * NFAT_Cyt);
-    der(Act_C_Nuc) = (1.0 * (k1 * NFAT_Pi_Nuc - k2 * NFAT_Nuc)) + (1.0 * (k12 * NFAT_Pi_Act_C_Nuc - k11 * NFAT_Pi_Nuc * Act_C_Nuc)) + (1.0 * (k19 * Inact_C_Nuc * Ca_Nuc^3 - k20 * Act_C_Nuc)) - (1.0 * (k1 * NFAT_Pi_Nuc - k2 * NFAT_Nuc)) - (1.0 * (k16 * NFAT_Nuc * Act_C_Nuc - k15 * NFAT_Act_C_Nuc)) - (1.0 * k6 * Act_C_Nuc - 1.0 * k5 * Act_C_Cyt);
-    der(NFAT_Pi_Nuc) = (1.0 * (k12 * NFAT_Pi_Act_C_Nuc - k11 * NFAT_Pi_Nuc * Act_C_Nuc)) + (1.0 * k3 * NFAT_Pi_Cyt - 1.0 * k4 * NFAT_Pi_Nuc) - (1.0 * (k1 * NFAT_Pi_Nuc - k2 * NFAT_Nuc));
-    der(NFAT_Act_C_Nuc) = (1.0 * (k16 * NFAT_Nuc * Act_C_Nuc - k15 * NFAT_Act_C_Nuc)) - (1.0 * (k14 * NFAT_Act_C_Nuc - k13 * NFAT_Pi_Act_C_Nuc)) - (1.0 * k10 * NFAT_Act_C_Nuc - 1.0 * k9 * NFAT_Act_C_Cyt);
-    der(NFAT_Pi_Act_C_Nuc) = (1.0 * (k14 * NFAT_Act_C_Nuc - k13 * NFAT_Pi_Act_C_Nuc)) + (1.0 * k7 * NFAT_Pi_Act_C_Cyt - 1.0 * k8 * NFAT_Pi_Act_C_Nuc) - (1.0 * (k12 * NFAT_Pi_Act_C_Nuc - k11 * NFAT_Pi_Nuc * Act_C_Nuc));
-    der(Inact_C_Nuc) = (1.0 * k5 * Inact_C_Cyt - 1.0 * k6 * Inact_C_Nuc) - (1.0 * (k19 * Inact_C_Nuc * Ca_Nuc^3 - k20 * Act_C_Nuc));
-    der(NFAT_Cyt) = (1.0 * k18 * NFAT_Nuc - 1.0 * k17 * NFAT_Cyt) + (1.0 * (k15 * NFAT_Act_C_Cyt - k16 * NFAT_Cyt * Act_C_Cyt)) + (1.0 * (k1 * NFAT_Pi_Cyt - k2 * NFAT_Cyt)) ;
-    der(Act_C_Cyt) = (1.0 * k6 * Act_C_Nuc - 1.0 * k5 * Act_C_Cyt) + (1.0 * (k12 * NFAT_Pi_Act_C_Cyt - k11 * NFAT_Pi_Cyt * Act_C_Cyt)) + (1.0 * (k15 * NFAT_Act_C_Cyt - k16 * NFAT_Cyt * Act_C_Cyt)) + (1.0 * (k1 * NFAT_Pi_Cyt - k2 * NFAT_Cyt)) + (1.0 * (k19 * Inact_C_Cyt * Ca_Cyt^3 - k20 * Act_C_Cyt)) - (1.0 * (k1 * NFAT_Pi_Cyt - k2 * NFAT_Cyt));
-    der(NFAT_Pi_Cyt) = (1.0 * (k12 * NFAT_Pi_Act_C_Cyt - k11 * NFAT_Pi_Cyt * Act_C_Cyt)) - (1.0 * k3 * NFAT_Pi_Cyt - 1.0 * k4 * NFAT_Pi_Nuc) - (1.0 * (k1 * NFAT_Pi_Cyt - k2 * NFAT_Cyt));
-    der(NFAT_Act_C_Cyt) = (1.0 * k10 * NFAT_Act_C_Nuc - 1.0 * k9 * NFAT_Act_C_Cyt) - (1.0 * (k14 * NFAT_Act_C_Cyt - k13 * NFAT_Pi_Act_C_Cyt)) - (1.0 * (k15 * NFAT_Act_C_Cyt - k16 * NFAT_Cyt * Act_C_Cyt));
-    der(NFAT_Pi_Act_C_Cyt) = (1.0 * (k14 * NFAT_Act_C_Cyt - k13 * NFAT_Pi_Act_C_Cyt)) - (1.0 * (k12 * NFAT_Pi_Act_C_Cyt - k11 * NFAT_Pi_Cyt * Act_C_Cyt)) - (1.0 * k7 * NFAT_Pi_Act_C_Cyt - 1.0 * k8 * NFAT_Pi_Act_C_Nuc);
-    der(Inact_C_Cyt) =  - (1.0 * (k19 * Inact_C_Cyt * Ca_Cyt^3 - k20 * Act_C_Cyt)) - (1.0 * k5 * Inact_C_Cyt - 1.0 * k6 * Inact_C_Nuc);
+    der(Ca_Nuc) = (cytosol * k21 * Ca_Cyt - nucleus * k22 * Ca_Nuc) - (3.0 * nucleus * (k19 * Inact_C_Nuc * Ca_Nuc^3 - k20 * Act_C_Nuc));
+    der(Ca_Cyt) =  - (3.0 * cytosol * (k19 * Inact_C_Cyt * Ca_Cyt^3 - k20 * Act_C_Cyt)) - (cytosol * k21 * Ca_Cyt - nucleus * k22 * Ca_Nuc);
+    der(NFAT_Nuc) = (nucleus * (k1 * NFAT_Pi_Nuc - k2 * NFAT_Nuc)) - (nucleus * (k16 * NFAT_Nuc * Act_C_Nuc - k15 * NFAT_Act_C_Nuc)) - (nucleus * k18 * NFAT_Nuc - cytosol * k17 * NFAT_Cyt);
+    der(Act_C_Nuc) = (nucleus * (k1 * NFAT_Pi_Nuc - k2 * NFAT_Nuc)) + (nucleus * (k12 * NFAT_Pi_Act_C_Nuc - k11 * NFAT_Pi_Nuc * Act_C_Nuc)) + (nucleus * (k19 * Inact_C_Nuc * Ca_Nuc^3 - k20 * Act_C_Nuc)) - (nucleus * (k1 * NFAT_Pi_Nuc - k2 * NFAT_Nuc)) - (nucleus * (k16 * NFAT_Nuc * Act_C_Nuc - k15 * NFAT_Act_C_Nuc)) - (nucleus * k6 * Act_C_Nuc - cytosol * k5 * Act_C_Cyt);
+    der(NFAT_Pi_Nuc) = (nucleus * (k12 * NFAT_Pi_Act_C_Nuc - k11 * NFAT_Pi_Nuc * Act_C_Nuc)) + (cytosol * k3 * NFAT_Pi_Cyt - nucleus * k4 * NFAT_Pi_Nuc) - (nucleus * (k1 * NFAT_Pi_Nuc - k2 * NFAT_Nuc));
+    der(NFAT_Act_C_Nuc) = (nucleus * (k16 * NFAT_Nuc * Act_C_Nuc - k15 * NFAT_Act_C_Nuc)) - (nucleus * (k14 * NFAT_Act_C_Nuc - k13 * NFAT_Pi_Act_C_Nuc)) - (nucleus * k10 * NFAT_Act_C_Nuc - cytosol * k9 * NFAT_Act_C_Cyt);
+    der(NFAT_Pi_Act_C_Nuc) = (nucleus * (k14 * NFAT_Act_C_Nuc - k13 * NFAT_Pi_Act_C_Nuc)) + (cytosol * k7 * NFAT_Pi_Act_C_Cyt - nucleus * k8 * NFAT_Pi_Act_C_Nuc) - (nucleus * (k12 * NFAT_Pi_Act_C_Nuc - k11 * NFAT_Pi_Nuc * Act_C_Nuc));
+    der(Inact_C_Nuc) = (cytosol * k5 * Inact_C_Cyt - nucleus * k6 * Inact_C_Nuc) - (nucleus * (k19 * Inact_C_Nuc * Ca_Nuc^3 - k20 * Act_C_Nuc));
+    der(NFAT_Cyt) = (nucleus * k18 * NFAT_Nuc - cytosol * k17 * NFAT_Cyt) + (cytosol * (k15 * NFAT_Act_C_Cyt - k16 * NFAT_Cyt * Act_C_Cyt)) + (cytosol * (k1 * NFAT_Pi_Cyt - k2 * NFAT_Cyt)) ;
+    der(Act_C_Cyt) = (nucleus * k6 * Act_C_Nuc - cytosol * k5 * Act_C_Cyt) + (cytosol * (k12 * NFAT_Pi_Act_C_Cyt - k11 * NFAT_Pi_Cyt * Act_C_Cyt)) + (cytosol * (k15 * NFAT_Act_C_Cyt - k16 * NFAT_Cyt * Act_C_Cyt)) + (cytosol * (k1 * NFAT_Pi_Cyt - k2 * NFAT_Cyt)) + (cytosol * (k19 * Inact_C_Cyt * Ca_Cyt^3 - k20 * Act_C_Cyt)) - (cytosol * (k1 * NFAT_Pi_Cyt - k2 * NFAT_Cyt));
+    der(NFAT_Pi_Cyt) = (cytosol * (k12 * NFAT_Pi_Act_C_Cyt - k11 * NFAT_Pi_Cyt * Act_C_Cyt)) - (cytosol * k3 * NFAT_Pi_Cyt - nucleus * k4 * NFAT_Pi_Nuc) - (cytosol * (k1 * NFAT_Pi_Cyt - k2 * NFAT_Cyt));
+    der(NFAT_Act_C_Cyt) = (nucleus * k10 * NFAT_Act_C_Nuc - cytosol * k9 * NFAT_Act_C_Cyt) - (cytosol * (k14 * NFAT_Act_C_Cyt - k13 * NFAT_Pi_Act_C_Cyt)) - (cytosol * (k15 * NFAT_Act_C_Cyt - k16 * NFAT_Cyt * Act_C_Cyt));
+    der(NFAT_Pi_Act_C_Cyt) = (cytosol * (k14 * NFAT_Act_C_Cyt - k13 * NFAT_Pi_Act_C_Cyt)) - (cytosol * (k12 * NFAT_Pi_Act_C_Cyt - k11 * NFAT_Pi_Cyt * Act_C_Cyt)) - (cytosol * k7 * NFAT_Pi_Act_C_Cyt - nucleus * k8 * NFAT_Pi_Act_C_Nuc);
+    der(Inact_C_Cyt) =  - (cytosol * (k19 * Inact_C_Cyt * Ca_Cyt^3 - k20 * Act_C_Cyt)) - (cytosol * k5 * Inact_C_Cyt - nucleus * k6 * Inact_C_Nuc);
 
 
 

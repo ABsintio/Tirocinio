@@ -37,6 +37,7 @@ model BIOMD124 "Wu2006_K+Channel"
     parameter Real sa = 0.1;
     parameter Real r = 0.14;
     parameter Real taua = 300000.0;
+    parameter Real cell = 1.0;
 
     Real gkatp(start=500.0);
     Real alphaIRn(start=0.0);
@@ -104,8 +105,8 @@ equation
     der(n) = (ninf - n) / taun;
     der(a) = (ainf - a) / taua;
     der(V) = -(ica + ik + ikca + ikatp + iir) / cm;
-    der(c) = (1.0 * fcyt * (jmem + jer)) ;
-    der(cer) = (-fer * vcytver * jer * 1.0) ;
+    der(c) = (cell * fcyt * (jmem + jer)) ;
+    der(cer) = ((-fer * vcytver * jer * cell)) ;
     der(gkatp)=0.0;
 
     when time > 3e4 then

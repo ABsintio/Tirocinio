@@ -63,6 +63,7 @@ model BIOMD106 "Yang2007_ArachidonicAcid"
     parameter Real KI24 = 2.3e-05;
     parameter Real a24 = 0.15;
     parameter Real ks = 500.0;
+    parameter Real cell = 1.0;
 
 
 
@@ -121,31 +122,31 @@ initial equation
 
 equation
 
-    der(x1) = (1.0 * K15 * x15 * lin * (1 + x4 / KI19 + x2 / KI20 + x13 / KI21 + x11 / KI22) / (lin + k15 * (1 + x1 / ks))) - (1.0 * K16 * x16 * x1 / (x1 + k16 * (1 + x2 / ks))) - (1.0 * K17 * x17 * x1 / (x1 + k17 * (1 + x4 / ki18 + x3 / ki16 + x4 / ks))) - (1.0 * K18 * x18 * x1 / (x1 + k18 * (1 + x7 / ki3 + x6 / ks))) - (1.0 * K21 * x21 * x1 / (x1 + k21 * (1 + x5 / ki7 + x3 / ki8 + x7 / ki11 + x11 / ki12 + x10 / ks))) - (0.1 * x1 * 1.0);
-    der(x10) = (1.0 * K21 * x21 * x1 / (x1 + k21 * (1 + x5 / ki7 + x3 / ki8 + x7 / ki11 + x11 / ki12 + x10 / ks))) - (1.0 * K24 * x24 * x10 / (x10 + k24 * (1 + x11 / ks))) - (1.0 * K21 * x21 * x10 / (x10 + k21 * (1 + x5 / ki7 + x3 / ki8 + x7 / ki11 + x11 / ki12 + x12 / ks)));
-    der(x11) = (1.0 * K24 * x24 * x10 / (x10 + k24 * (1 + x11 / ks))) - (kd11 * x11 * 1.0);
-    der(x12) = (1.0 * K21 * x21 * x10 / (x10 + k21 * (1 + x5 / ki7 + x3 / ki8 + x7 / ki11 + x11 / ki12 + x12 / ks))) - (1.0 * K22 * x22 * x12 / (x12 + k22 * (1 + x13 / ks))) - (1.0 * x12 * kd12);
-    der(x13) = (1.0 * K22 * x22 * x12 / (x12 + k22 * (1 + x13 / ks))) - (1.0 * K23 * x23 * x13 / (x13 + k23 * (1 + x5 / ki14 + x11 / ki15 + x14 / ks))) - (1.0 * kd13 * x13);
-    der(x14) = (1.0 * K23 * x23 * x13 / (x13 + k23 * (1 + x5 / ki14 + x11 / ki15 + x14 / ks))) ;
+    der(x1) = (cell * K15 * x15 * lin * (1 + x4 / KI19 + x2 / KI20 + x13 / KI21 + x11 / KI22) / (lin + k15 * (1 + x1 / ks))) - (cell * K16 * x16 * x1 / (x1 + k16 * (1 + x2 / ks))) - (cell * K17 * x17 * x1 / (x1 + k17 * (1 + x4 / ki18 + x3 / ki16 + x4 / ks))) - (cell * K18 * x18 * x1 / (x1 + k18 * (1 + x7 / ki3 + x6 / ks))) - (cell * K21 * x21 * x1 / (x1 + k21 * (1 + x5 / ki7 + x3 / ki8 + x7 / ki11 + x11 / ki12 + x10 / ks))) - (0.1 * x1 * cell);
+    der(x10) = (cell * K21 * x21 * x1 / (x1 + k21 * (1 + x5 / ki7 + x3 / ki8 + x7 / ki11 + x11 / ki12 + x10 / ks))) - (cell * K24 * x24 * x10 / (x10 + k24 * (1 + x11 / ks))) - (cell * K21 * x21 * x10 / (x10 + k21 * (1 + x5 / ki7 + x3 / ki8 + x7 / ki11 + x11 / ki12 + x12 / ks)));
+    der(x11) = (cell * K24 * x24 * x10 / (x10 + k24 * (1 + x11 / ks))) - (kd11 * x11 * cell);
+    der(x12) = (cell * K21 * x21 * x10 / (x10 + k21 * (1 + x5 / ki7 + x3 / ki8 + x7 / ki11 + x11 / ki12 + x12 / ks))) - (cell * K22 * x22 * x12 / (x12 + k22 * (1 + x13 / ks))) - (cell * x12 * kd12);
+    der(x13) = (cell * K22 * x22 * x12 / (x12 + k22 * (1 + x13 / ks))) - (cell * K23 * x23 * x13 / (x13 + k23 * (1 + x5 / ki14 + x11 / ki15 + x14 / ks))) - (cell * kd13 * x13);
+    der(x14) = (cell * K23 * x23 * x13 / (x13 + k23 * (1 + x5 / ki14 + x11 / ki15 + x14 / ks))) ;
     der(x15) = 0.0;
-    der(x16) = (1.0 * a24 * x7 * x7 / (x7 * x7 + KI24 * KI24)) - (1.0 * kd16 * x16);
-    der(x17) =  - (1.0 * ki17 * x2 * x17);
+    der(x16) = (cell * a24 * x7 * x7 / (x7 * x7 + KI24 * KI24)) - (cell * kd16 * x16);
+    der(x17) =  - (cell * ki17 * x2 * x17);
     der(x18) = 0.0;
     der(x19) = 0.0;
-    der(x2) = (1.0 * K16 * x16 * x1 / (x1 + k16 * (1 + x2 / ks))) - (1.0 * K24 * x24 * x2 / (x2 + k24 * (1 + x3 / ks))) - (kd2 * 1.0 * x2);
-    der(x20) =  - (ki4 * x2 * x20 * 1.0) - (1.0 * ki5 * x6 * x20);
-    der(x21) = (1.0 * KI23 * x13 * x21) - (1.0 * ki9 * x12 * x21) - (1.0 * ki10 * x10 * x21) - (1.0 * ki6 * x21 * x2);
-    der(x22) =  - (1.0 * K22 * x22 * x12 / ((x12 + k22) * 129));
+    der(x2) = (cell * K16 * x16 * x1 / (x1 + k16 * (1 + x2 / ks))) - (cell * K24 * x24 * x2 / (x2 + k24 * (1 + x3 / ks))) - (kd2 * cell * x2);
+    der(x20) =  - (ki4 * x2 * x20 * cell) - (cell * ki5 * x6 * x20);
+    der(x21) = (cell * KI23 * x13 * x21) - (cell * ki9 * x12 * x21) - (cell * ki10 * x10 * x21) - (cell * ki6 * x21 * x2);
+    der(x22) =  - (cell * K22 * x22 * x12 / ((x12 + k22) * 129));
     der(x23) = 0.0;
     der(x24) = 0.0;
     der(x25) = 0.0;
-    der(x3) = (1.0 * K24 * x24 * x2 / (x2 + k24 * (1 + x3 / ks))) - (kd3 * x3 * 1.0);
-    der(x4) = (1.0 * K17 * x17 * x1 / (x1 + k17 * (1 + x4 / ki18 + x3 / ki16 + x4 / ks))) - (1.0 * K24 * x24 * x4 / (x4 + k24 * (1 + x5 / ks)));
-    der(x5) = (1.0 * K24 * x24 * x4 / (x4 + k24 * (1 + x5 / ks))) ;
-    der(x6) = (1.0 * K18 * x18 * x1 / (x1 + k18 * (1 + x7 / ki3 + x6 / ks))) - (1.0 * K19 * x19 * x6 / (x6 + k19 * (1 + x1 / ki1 + x3 / ki2 + x7 / ks))) - (1.0 * K20 * x20 * x6 / (x6 + k20 * (1 + x8 / ks)));
-    der(x7) = (1.0 * K19 * x19 * x6 / (x6 + k19 * (1 + x1 / ki1 + x3 / ki2 + x7 / ks))) ;
-    der(x8) = (1.0 * K20 * x20 * x6 / (x6 + k20 * (1 + x8 / ks))) - (1.0 * kd8 * x8);
-    der(x9) = (kd8 * x8 * 1.0) - (kd9 * x9 * 1.0);
+    der(x3) = (cell * K24 * x24 * x2 / (x2 + k24 * (1 + x3 / ks))) - (kd3 * x3 * cell);
+    der(x4) = (cell * K17 * x17 * x1 / (x1 + k17 * (1 + x4 / ki18 + x3 / ki16 + x4 / ks))) - (cell * K24 * x24 * x4 / (x4 + k24 * (1 + x5 / ks)));
+    der(x5) = (cell * K24 * x24 * x4 / (x4 + k24 * (1 + x5 / ks))) ;
+    der(x6) = (cell * K18 * x18 * x1 / (x1 + k18 * (1 + x7 / ki3 + x6 / ks))) - (cell * K19 * x19 * x6 / (x6 + k19 * (1 + x1 / ki1 + x3 / ki2 + x7 / ks))) - (cell * K20 * x20 * x6 / (x6 + k20 * (1 + x8 / ks)));
+    der(x7) = (cell * K19 * x19 * x6 / (x6 + k19 * (1 + x1 / ki1 + x3 / ki2 + x7 / ks))) ;
+    der(x8) = (cell * K20 * x20 * x6 / (x6 + k20 * (1 + x8 / ks))) - (cell * kd8 * x8);
+    der(x9) = (kd8 * x8 * cell) - (kd9 * x9 * cell);
 
 
 

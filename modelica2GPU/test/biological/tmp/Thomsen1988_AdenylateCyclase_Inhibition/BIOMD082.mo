@@ -19,6 +19,7 @@ model BIOMD082 "Thomsen1988_AdenylateCyclase_Inhibition"
     parameter Real k10_reaction_3 = 0.1;
     parameter Real k5_reaction_4 = 0.05;
     parameter Real k6_reaction_5 = 0.1;
+    parameter Real cell = 1.0;
 
 
 
@@ -47,16 +48,16 @@ initial equation
 
 equation
 
-    der(agonist) =  - (1.0 * (k1_Forming * agonist * Recptor - k7_Forming * DR));
-    der(DR) = (1.0 * (k1_Forming * agonist * Recptor - k7_Forming * DR)) + (1.0 * k5_reaction_4 * DRG_GTP) - (1.0 * (k2_reaction_1 * DR * G_GDP - k8_reaction_1 * DRG_GDP));
-    der(DRG_GDP) = (1.0 * (k2_reaction_1 * DR * G_GDP - k8_reaction_1 * DRG_GDP)) - (1.0 * (k3_reaction_2 * DRG_GDP - k9_reaction_2 * DRG * GDP));
-    der(DRG) = (1.0 * (k3_reaction_2 * DRG_GDP - k9_reaction_2 * DRG * GDP)) - (1.0 * (k4_reaction_3 * DRG * GTP - k10_reaction_3 * DRG_GTP));
-    der(GDP) = (1.0 * (k3_reaction_2 * DRG_GDP - k9_reaction_2 * DRG * GDP)) ;
-    der(DRG_GTP) = (1.0 * (k4_reaction_3 * DRG * GTP - k10_reaction_3 * DRG_GTP)) - (1.0 * k5_reaction_4 * DRG_GTP);
-    der(GTP) =  - (1.0 * (k4_reaction_3 * DRG * GTP - k10_reaction_3 * DRG_GTP));
-    der(Recptor) =  - (1.0 * (k1_Forming * agonist * Recptor - k7_Forming * DR));
-    der(G_GDP) = (1.0 * k6_reaction_5 * G_GTP) - (1.0 * (k2_reaction_1 * DR * G_GDP - k8_reaction_1 * DRG_GDP));
-    der(G_GTP) = (1.0 * k5_reaction_4 * DRG_GTP) - (1.0 * k6_reaction_5 * G_GTP);
+    der(agonist) =  - (cell * (k1_Forming * agonist * Recptor - k7_Forming * DR));
+    der(DR) = (cell * (k1_Forming * agonist * Recptor - k7_Forming * DR)) + (cell * k5_reaction_4 * DRG_GTP) - (cell * (k2_reaction_1 * DR * G_GDP - k8_reaction_1 * DRG_GDP));
+    der(DRG_GDP) = (cell * (k2_reaction_1 * DR * G_GDP - k8_reaction_1 * DRG_GDP)) - (cell * (k3_reaction_2 * DRG_GDP - k9_reaction_2 * DRG * GDP));
+    der(DRG) = (cell * (k3_reaction_2 * DRG_GDP - k9_reaction_2 * DRG * GDP)) - (cell * (k4_reaction_3 * DRG * GTP - k10_reaction_3 * DRG_GTP));
+    der(GDP) = (cell * (k3_reaction_2 * DRG_GDP - k9_reaction_2 * DRG * GDP)) ;
+    der(DRG_GTP) = (cell * (k4_reaction_3 * DRG * GTP - k10_reaction_3 * DRG_GTP)) - (cell * k5_reaction_4 * DRG_GTP);
+    der(GTP) =  - (cell * (k4_reaction_3 * DRG * GTP - k10_reaction_3 * DRG_GTP));
+    der(Recptor) =  - (cell * (k1_Forming * agonist * Recptor - k7_Forming * DR));
+    der(G_GDP) = (cell * k6_reaction_5 * G_GTP) - (cell * (k2_reaction_1 * DR * G_GDP - k8_reaction_1 * DRG_GDP));
+    der(G_GTP) = (cell * k5_reaction_4 * DRG_GTP) - (cell * k6_reaction_5 * G_GTP);
 
 
 

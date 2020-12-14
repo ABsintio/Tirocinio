@@ -49,6 +49,7 @@ model BIOMD228 "Swat2004_Mammalian_G1_S_Transition"
     parameter Real k98 = 0.01;
     parameter Real phi_CycEi = 0.06;
     parameter Real phi_CycEa = 0.05;
+    parameter Real cell = 1.0;
 
 
 
@@ -75,15 +76,15 @@ initial equation
 
 equation
 
-    der(pRB) = (1.0 * k1 * (E2F1 / (Km1 + E2F1)) * (J11 / (J11 + pRB)) * (J61 / (J61 + pRBp))) + (1.0 * k61 * pRBp) - (1.0 * k16 * pRB * CycDa) - (1.0 * phi_pRB * pRB);
-    der(pRBp) = (1.0 * k16 * pRB * CycDa) + (1.0 * k76 * pRBpp) - (1.0 * k61 * pRBp) - (1.0 * k67 * pRBp * CycEa) - (1.0 * phi_pRBp * pRBp);
-    der(E2F1) = (1.0 * (kp + (k2 * (a^2 + E2F1^2) / (Km2^2 + E2F1^2)) * (J12 / (J12 + pRB)) * (J62 / (J62 + pRBp)))) - (1.0 * phi_E2F1 * E2F1);
-    der(CycDi) = (1.0 * (k3 * AP1 + k23 * E2F1 * (J13 / (J13 + pRB)) * (J63 / (J63 + pRBp)))) + (1.0 * k43 * CycDa) - (1.0 * k34 * CycDi * (CycDa / (Km4 + CycDa))) - (1.0 * phi_CycDi * CycDi);
-    der(CycDa) = (1.0 * k34 * CycDi * (CycDa / (Km4 + CycDa))) - (1.0 * k43 * CycDa) - (1.0 * phi_CycDa * CycDa);
-    der(AP1) = (1.0 * (Fm + k25 * E2F1 * (J15 / (J15 + pRB)) * (J65 / (J65 + pRBp)))) - (1.0 * phi_AP1 * AP1);
-    der(pRBpp) = (1.0 * k67 * pRBp * CycEa) - (1.0 * k76 * pRBpp) - (1.0 * phi_pRBpp * pRBpp);
-    der(CycEi) = (1.0 * k28 * E2F1 * (J18 / (J18 + pRB)) * (J68 / (J68 + pRBp))) + (1.0 * k98 * CycEa) - (1.0 * k89 * CycEi * CycEa / (Km9 + CycEa)) - (1.0 * phi_CycEi * CycEi);
-    der(CycEa) = (1.0 * k89 * CycEi * CycEa / (Km9 + CycEa)) - (1.0 * k98 * CycEa) - (1.0 * phi_CycEa * CycEa);
+    der(pRB) = (cell * k1 * (E2F1 / (Km1 + E2F1)) * (J11 / (J11 + pRB)) * (J61 / (J61 + pRBp))) + (cell * k61 * pRBp) - (cell * k16 * pRB * CycDa) - (cell * phi_pRB * pRB);
+    der(pRBp) = (cell * k16 * pRB * CycDa) + (cell * k76 * pRBpp) - (cell * k61 * pRBp) - (cell * k67 * pRBp * CycEa) - (cell * phi_pRBp * pRBp);
+    der(E2F1) = (cell * (kp + (k2 * (a^2 + E2F1^2) / (Km2^2 + E2F1^2)) * (J12 / (J12 + pRB)) * (J62 / (J62 + pRBp)))) - (cell * phi_E2F1 * E2F1);
+    der(CycDi) = (cell * (k3 * AP1 + k23 * E2F1 * (J13 / (J13 + pRB)) * (J63 / (J63 + pRBp)))) + (cell * k43 * CycDa) - (cell * k34 * CycDi * (CycDa / (Km4 + CycDa))) - (cell * phi_CycDi * CycDi);
+    der(CycDa) = (cell * k34 * CycDi * (CycDa / (Km4 + CycDa))) - (cell * k43 * CycDa) - (cell * phi_CycDa * CycDa);
+    der(AP1) = (cell * (Fm + k25 * E2F1 * (J15 / (J15 + pRB)) * (J65 / (J65 + pRBp)))) - (cell * phi_AP1 * AP1);
+    der(pRBpp) = (cell * k67 * pRBp * CycEa) - (cell * k76 * pRBpp) - (cell * phi_pRBpp * pRBpp);
+    der(CycEi) = (cell * k28 * E2F1 * (J18 / (J18 + pRB)) * (J68 / (J68 + pRBp))) + (cell * k98 * CycEa) - (cell * k89 * CycEi * CycEa / (Km9 + CycEa)) - (cell * phi_CycEi * CycEi);
+    der(CycEa) = (cell * k89 * CycEi * CycEa / (Km9 + CycEa)) - (cell * k98 * CycEa) - (cell * phi_CycEa * CycEa);
 
 
 

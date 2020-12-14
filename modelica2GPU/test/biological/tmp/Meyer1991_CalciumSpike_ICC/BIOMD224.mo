@@ -20,6 +20,8 @@ model BIOMD224 "Meyer1991_CalciumSpike_ICC"
     parameter Real k3 = 1.0;
     parameter Real L = 0.01;
     parameter Real R = 0.09;
+    parameter Real cytosol = 1.0;
+    parameter Real ER_store = 1.0;
 
 
 

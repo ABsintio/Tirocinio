@@ -22,6 +22,8 @@ model BIOMD098 "Goldbeter1990_CalciumSpike_CICR"
     parameter Real kf = 1.0;
     parameter Real k = 10.0;
     parameter Real p = 4.0;
+    parameter Real cytosol = 1.0;
+    parameter Real store = 1.0;
 
 
 
@@ -34,8 +36,8 @@ initial equation
 
 equation
 
-    der(Z) = (1.0 * v0) + (1.0 * v1 * beta) + (1.0 * (Vm3 * Y^m * Z^p / ((Kr^m + Y^m) * (Ka^p + Z^p)))) + (1.0 * kf * Y) - (1.0 * (Vm2 * Z^n / (K2^n + Z^n))) - (1.0 * k * Z);
-    der(Y) = (1.0 * (Vm2 * Z^n / (K2^n + Z^n))) - (1.0 * (Vm3 * Y^m * Z^p / ((Kr^m + Y^m) * (Ka^p + Z^p)))) - (1.0 * kf * Y);
+    der(Z) = (cytosol * v0) + (cytosol * v1 * beta) + (store * (Vm3 * Y^m * Z^p / ((Kr^m + Y^m) * (Ka^p + Z^p)))) + (store * kf * Y) - (cytosol * (Vm2 * Z^n / (K2^n + Z^n))) - (cytosol * k * Z);
+    der(Y) = (cytosol * (Vm2 * Z^n / (K2^n + Z^n))) - (store * (Vm3 * Y^m * Z^p / ((Kr^m + Y^m) * (Ka^p + Z^p)))) - (store * kf * Y);
 
 
 

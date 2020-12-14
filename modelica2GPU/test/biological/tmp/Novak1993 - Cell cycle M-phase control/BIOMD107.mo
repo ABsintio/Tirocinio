@@ -40,6 +40,7 @@ model BIOMD107 "Novak1993 - Cell cycle M-phase control"
     parameter Real K_c = 0.01;
     parameter Real kd_anti_IE = 0.095;
     parameter Real K_d = 0.01;
+    parameter Real cytoplasm = 1.0;
 
     Real k25(start=0.0);
     Real kwee(start=0.0);
@@ -72,11 +73,6 @@ initial equation
     wee1_p = 0.0;
     IE_p = 0.0;
     UbE_star = 0.0;
-    cdc2 = 0.0;
-    cdc25 = 0.0;
-    wee1 = 0.0;
-    IE = 0.0;
-    UbE = 0.0;
 
 equation
     cdc2 = total_cdc2 - (dimer + p_dimer + p_dimer_p + dimer_p);

@@ -30,6 +30,7 @@ model BIOMD091 "Proctor2005 - Actions of chaperones and their role in ageing"
     parameter Real k19 = 0.02;
     parameter Real k20 = 0.1;
     parameter Real k21 = 0.001;
+    parameter Real compartment = 1.0;
 
 
 

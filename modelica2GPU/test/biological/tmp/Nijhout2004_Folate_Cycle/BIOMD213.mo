@@ -47,6 +47,7 @@ model BIOMD213 "Nijhout2004_Folate_Cycle"
     parameter Real MTD_Km_5_10_CH2THF = 2.0;
     parameter Real MTD_VmaxR = 594000.0;
     parameter Real MTD_Km_5_10_CHTHF = 10.0;
+    parameter Real compartment = 1.0;
 
 
 

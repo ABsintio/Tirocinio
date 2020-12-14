@@ -27,6 +27,7 @@ model BIOMD206 "Wolf2000_Glycolytic_Oscillations"
     parameter Real ntot = 1.0;
     parameter Real n = 4.0;
     parameter Real ki = 1.0;
+    parameter Real compartment = 1.0;
 
 
 
@@ -53,15 +54,15 @@ initial equation
 
 equation
 
-    der(s1) = (1.0 * k0) - (1.0 * k1 * s1 * at / (1 + (at / ki)^n));
-    der(at) = (1.0 * ((k31 * k32 * s3 * na * (atot - at) - k33 * k34 * s4 * at * (ntot - na)) / (k33 * (ntot - na) + k32 * (atot - at)))) + (1.0 * k4 * s4 * (atot - at)) - (2.0 * 1.0 * k1 * s1 * at / (1 + (at / ki)^n)) - (1.0 * k7 * at);
-    der(s2) = (1.0 * k1 * s1 * at / (1 + (at / ki)^n)) - (1.0 * k2 * s2);
-    der(s3) = (2.0 * 1.0 * k2 * s2) - (1.0 * ((k31 * k32 * s3 * na * (atot - at) - k33 * k34 * s4 * at * (ntot - na)) / (k33 * (ntot - na) + k32 * (atot - at)))) - (1.0 * k8 * s3 * (ntot - na));
-    der(na) = (1.0 * k8 * s3 * (ntot - na)) + (1.0 * k6 * s6 * (ntot - na)) - (1.0 * ((k31 * k32 * s3 * na * (atot - at) - k33 * k34 * s4 * at * (ntot - na)) / (k33 * (ntot - na) + k32 * (atot - at))));
-    der(s4) = (1.0 * ((k31 * k32 * s3 * na * (atot - at) - k33 * k34 * s4 * at * (ntot - na)) / (k33 * (ntot - na) + k32 * (atot - at)))) - (1.0 * k4 * s4 * (atot - at));
-    der(s5) = (1.0 * k4 * s4 * (atot - at)) - (1.0 * k5 * s5);
-    der(s6) = (1.0 * k5 * s5) - (1.0 * k10 * (s6 - s6o)) - (1.0 * k6 * s6 * (ntot - na));
-    der(s6o) = (0.1 * 1.0 * k10 * (s6 - s6o)) - (1.0 * k9 * s6o);
+    der(s1) = (compartment * k0) - (compartment * k1 * s1 * at / (1 + (at / ki)^n));
+    der(at) = (compartment * ((k31 * k32 * s3 * na * (atot - at) - k33 * k34 * s4 * at * (ntot - na)) / (k33 * (ntot - na) + k32 * (atot - at)))) + (compartment * k4 * s4 * (atot - at)) - (2.0 * compartment * k1 * s1 * at / (1 + (at / ki)^n)) - (compartment * k7 * at);
+    der(s2) = (compartment * k1 * s1 * at / (1 + (at / ki)^n)) - (compartment * k2 * s2);
+    der(s3) = (2.0 * compartment * k2 * s2) - (compartment * ((k31 * k32 * s3 * na * (atot - at) - k33 * k34 * s4 * at * (ntot - na)) / (k33 * (ntot - na) + k32 * (atot - at)))) - (compartment * k8 * s3 * (ntot - na));
+    der(na) = (compartment * k8 * s3 * (ntot - na)) + (compartment * k6 * s6 * (ntot - na)) - (compartment * ((k31 * k32 * s3 * na * (atot - at) - k33 * k34 * s4 * at * (ntot - na)) / (k33 * (ntot - na) + k32 * (atot - at))));
+    der(s4) = (compartment * ((k31 * k32 * s3 * na * (atot - at) - k33 * k34 * s4 * at * (ntot - na)) / (k33 * (ntot - na) + k32 * (atot - at)))) - (compartment * k4 * s4 * (atot - at));
+    der(s5) = (compartment * k4 * s4 * (atot - at)) - (compartment * k5 * s5);
+    der(s6) = (compartment * k5 * s5) - (compartment * k10 * (s6 - s6o)) - (compartment * k6 * s6 * (ntot - na));
+    der(s6o) = (0.1 * compartment * k10 * (s6 - s6o)) - (compartment * k9 * s6o);
 
 
 

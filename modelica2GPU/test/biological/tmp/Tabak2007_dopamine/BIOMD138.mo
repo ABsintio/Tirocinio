@@ -34,6 +34,7 @@ model BIOMD138 "Tabak2007_dopamine"
     parameter Real ks = 0.5;
     parameter Real ff = 0.01;
     parameter Real alpha = 0.0015;
+    parameter Real cell = 1.0;
 
     Real phik(start=0.0);
     Real phia(start=0.0);
@@ -72,7 +73,7 @@ equation
     der(V) = -(ica + ik) / Cm;
     der(n) = lambda * (phik - n) / taun;
     der(h) = (phih - h) / tauh;
-    der(c) = (-ff * (alpha * ica + kc * c) * 1.0) ;
+    der(c) = ((-ff * (alpha * ica + kc * c) * cell)) ;
 
 
 

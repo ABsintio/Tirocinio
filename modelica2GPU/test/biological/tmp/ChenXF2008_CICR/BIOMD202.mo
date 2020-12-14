@@ -46,6 +46,9 @@ model BIOMD202 "ChenXF2008_CICR"
     parameter Real kdo = 0.6;
     parameter Real r_hill = 4.0;
     parameter Real Orai1_t = 0.001;
+    parameter Real Cytoplasm = 1.0;
+    parameter Real ER = 1.0;
+    parameter Real PM = 1.0;
 
     Real h(start=0.0);
 
@@ -63,24 +66,22 @@ initial equation
     Ca_Cyt = 0.0;
     IP3_Cyt = 0.0;
     Ca_ER = 0.0;
-    S2 = 0.54;
     S2a = 0.06;
     S4 = 0.0;
     Oc = 0.0;
     O_o = 0.0;
-    Orai1 = 0.001;
 
 equation
     Orai1 = Orai1_t - (r_hill * Oc + r_hill * O_o);
-    S2 = pow(K1, 2) / (pow(Ca_1.0, 2) + pow(K1, 2)) * (St - S2a);
+    S2 = pow(K1, 2) / (pow(Ca_ER, 2) + pow(K1, 2)) * (St - S2a);
     der(h) = A * (Kd - (Ca_Cyt + Kd) * h);
-    der(Ca_Cyt) = (1.0 * (L + P_IP3R * IP3_Cyt^3 * Ca_Cyt^3 * h^3 / ((IP3_Cyt + Ki)^3 * (Ca_Cyt + Ka)^3)) * (Ca_1.0 - Ca_Cyt)) + (1.0 * (k_soc * O_o + V_1.0leak) * (Ca_ec - Ca_Cyt)) - (1.0 * (V_S1.0CA * Ca_Cyt^p / (K_S1.0CA^p + Ca_Cyt^p))) - (1.0 * (V_1.0CA * Ca_Cyt^q / (K_1.0CA^q + Ca_Cyt^q)));
-    der(IP3_Cyt) = (1.0 * (V_PLC * Ca_Cyt^2 / (K_PLC^2 + Ca_Cyt^2))) - (1.0 * (kdeg * Ca_Cyt^2 / (K_deg^2 + Ca_Cyt^2)) * IP3_Cyt);
-    der(Ca_ER) = (1.0 * (V_S1.0CA * Ca_Cyt^p / (K_S1.0CA^p + Ca_Cyt^p))) - (1.0 * (L + P_IP3R * IP3_Cyt^3 * Ca_Cyt^3 * h^3 / ((IP3_Cyt + Ki)^3 * (Ca_Cyt + Ka)^3)) * (Ca_1.0 - Ca_Cyt));
-    der(S2a) = (1.0 * k_a * S2) - (1.0 * k_i * S2a);
-    der(S4) = (1.0 * (Vs4 * S2^2 / (S2^2 + K2^2))) - (1.0 * kd_oligo * S4);
-    der(Oc) = (1.0 * (Vcp * Orai1^n_hill / (Kc^n_hill + Orai1^n_hill))) + (1.0 * kod * O_o) - (1.0 * kdc * Oc) - (1.0 * (kop * S2a^l_hill * Oc / (Ko^l_hill + S2a^l_hill)));
-    der(O_o) = (1.0 * (kop * S2a^l_hill * Oc / (Ko^l_hill + S2a^l_hill))) - (1.0 * kod * O_o) - (1.0 * kdo * O_o);
+    der(Ca_Cyt) = (Cytoplasm * (L + P_IP3R * IP3_Cyt^3 * Ca_Cyt^3 * h^3 / ((IP3_Cyt + Ki)^3 * (Ca_Cyt + Ka)^3)) * (Ca_ER - Ca_Cyt)) + (Cytoplasm * (k_soc * O_o + V_PMleak) * (Ca_ec - Ca_Cyt)) - (Cytoplasm * (V_SERCA * Ca_Cyt^p / (K_SERCA^p + Ca_Cyt^p))) - (Cytoplasm * (V_PMCA * Ca_Cyt^q / (K_PMCA^q + Ca_Cyt^q)));
+    der(IP3_Cyt) = (Cytoplasm * (V_PLC * Ca_Cyt^2 / (K_PLC^2 + Ca_Cyt^2))) - (Cytoplasm * (kdeg * Ca_Cyt^2 / (K_deg^2 + Ca_Cyt^2)) * IP3_Cyt);
+    der(Ca_ER) = (Cytoplasm * (V_SERCA * Ca_Cyt^p / (K_SERCA^p + Ca_Cyt^p))) - (Cytoplasm * (L + P_IP3R * IP3_Cyt^3 * Ca_Cyt^3 * h^3 / ((IP3_Cyt + Ki)^3 * (Ca_Cyt + Ka)^3)) * (Ca_ER - Ca_Cyt));
+    der(S2a) = (ER * k_a * S2) - (ER * k_i * S2a);
+    der(S4) = (ER * (Vs4 * S2^2 / (S2^2 + K2^2))) - (ER * kd_oligo * S4);
+    der(Oc) = (PM * (Vcp * Orai1^n_hill / (Kc^n_hill + Orai1^n_hill))) + (PM * kod * O_o) - (PM * kdc * Oc) - (PM * (kop * S2a^l_hill * Oc / (Ko^l_hill + S2a^l_hill)));
+    der(O_o) = (PM * (kop * S2a^l_hill * Oc / (Ko^l_hill + S2a^l_hill))) - (PM * kod * O_o) - (PM * kdo * O_o);
 
 
 

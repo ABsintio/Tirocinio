@@ -25,6 +25,7 @@ model BIOMD108 "Kowald2006_SOD"
     parameter Real k17 = 30000.0;
     parameter Real k18 = 7.0;
     parameter Real k19 = 88000.0;
+    parameter Real compartment_0000001 = 1.0;
 
     Real HO2star(start=0.0);
     Real Cu_I_ZnSOD(start=0.0);
@@ -53,13 +54,13 @@ initial equation
 equation
     HO2star = species_0000001 / 100;
     Cu_I_ZnSOD = species_0000016 - species_0000002;
-    der(species_0000001) = (1.0 * k1) - (1.0 * k2 * species_0000001 * species_0000002) - (1.0 * k3 * species_0000001 * Cu_I_ZnSOD) - (1.0 * k4 * species_0000001 * species_0000007) - (1.0 * k5 * species_0000001 * species_0000006) - (k10 * HO2star * 1.0);
-    der(species_0000002) = (1.0 * k3 * species_0000001 * Cu_I_ZnSOD) + (1.0 * k13a * Cu_I_ZnSOD) - (1.0 * k2 * species_0000001 * species_0000002) - (1.0 * k13b * species_0000002);
-    der(species_0000006) = (1.0 * k3 * species_0000001 * Cu_I_ZnSOD) + (1.0 * k10 * HO2star) - (1.0 * k5 * species_0000001 * species_0000006) - (1.0 * k6 * species_0000006 * species_0000002) - (1.0 * k7 * species_0000006 * species_0000017);
-    der(species_0000007) = (1.0 * k17 * species_0000011) - (1.0 * k4 * species_0000001 * species_0000007) - (1.0 * k18 * species_0000007) - (2.0 * 1.0 * k19 * species_0000007^2);
-    der(species_0000008) = (2.0 * 1.0 * k5 * species_0000001 * species_0000006) + (2.0 * 1.0 * k6 * species_0000006 * species_0000002) - (1.0 * k9 * species_0000008) - (1.0 * k11 * species_0000008);
-    der(species_0000009) = (1.0 * k4 * species_0000001 * species_0000007) + (1.0 * k18 * species_0000007) - (1.0 * k12 * species_0000009);
-    der(species_0000011) = (1.0 * k10 * HO2star) + (1.0 * k11 * species_0000008) + (1.0 * k18 * species_0000007) - (1.0 * k17 * species_0000011);
+    der(species_0000001) = (compartment_0000001 * k1) - (compartment_0000001 * k2 * species_0000001 * species_0000002) - (compartment_0000001 * k3 * species_0000001 * Cu_I_ZnSOD) - (compartment_0000001 * k4 * species_0000001 * species_0000007) - (compartment_0000001 * k5 * species_0000001 * species_0000006) - (k10 * HO2star * compartment_0000001);
+    der(species_0000002) = (compartment_0000001 * k3 * species_0000001 * Cu_I_ZnSOD) + (compartment_0000001 * k13a * Cu_I_ZnSOD) - (compartment_0000001 * k2 * species_0000001 * species_0000002) - (compartment_0000001 * k13b * species_0000002);
+    der(species_0000006) = (compartment_0000001 * k3 * species_0000001 * Cu_I_ZnSOD) + (compartment_0000001 * k10 * HO2star) - (compartment_0000001 * k5 * species_0000001 * species_0000006) - (compartment_0000001 * k6 * species_0000006 * species_0000002) - (compartment_0000001 * k7 * species_0000006 * species_0000017);
+    der(species_0000007) = (compartment_0000001 * k17 * species_0000011) - (compartment_0000001 * k4 * species_0000001 * species_0000007) - (compartment_0000001 * k18 * species_0000007) - (2.0 * compartment_0000001 * k19 * species_0000007^2);
+    der(species_0000008) = (2.0 * compartment_0000001 * k5 * species_0000001 * species_0000006) + (2.0 * compartment_0000001 * k6 * species_0000006 * species_0000002) - (compartment_0000001 * k9 * species_0000008) - (compartment_0000001 * k11 * species_0000008);
+    der(species_0000009) = (compartment_0000001 * k4 * species_0000001 * species_0000007) + (compartment_0000001 * k18 * species_0000007) - (compartment_0000001 * k12 * species_0000009);
+    der(species_0000011) = (compartment_0000001 * k10 * HO2star) + (compartment_0000001 * k11 * species_0000008) + (compartment_0000001 * k18 * species_0000007) - (compartment_0000001 * k17 * species_0000011);
     der(species_0000016) = 0.0;
     der(species_0000017) = 0.0;
 

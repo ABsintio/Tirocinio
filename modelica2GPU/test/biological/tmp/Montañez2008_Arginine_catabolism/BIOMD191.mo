@@ -27,6 +27,8 @@ model BIOMD191 "Montañez2008_Arginine_catabolism"
     parameter Real Kmnos1_NOS = 16.0;
     parameter Real Vmaxodc_ODC = 0.013;
     parameter Real Kmodc_ODC = 90.0;
+    parameter Real extracellular = 1.0;
+    parameter Real cytosol = 1.0;
 
 
 
@@ -42,8 +44,8 @@ initial equation
 equation
 
     der(ARGex) = 0.0;
-    der(ORN) = (1.0 * (Vmaxarg_Arginase * ARGin / (Kmarg_Arginase * (1 + ORN / Kioarg_Arginase) + ARGin))) - (1.0 * ((Vmaxefflhat_Ornithine_efflux / (1 + ARGex / Kmhat_Ornithine_efflux)) * (ORN / (Kiornhat_Ornithine_efflux * (1 + ARGin / Kmhat_Ornithine_efflux) + ORN)) + (Vmaxeffllat_Ornithine_efflux / (1 + ARGex / Kmlat_Ornithine_efflux)) * (ORN / (Kmeffllat_Ornithine_efflux * (1 + ARGin / Kmlat_Ornithine_efflux) + ORN)))) - (1.0 * (Vmaxodc_ODC * ORN / (Kmodc_ODC + ORN)));
-    der(ARGin) = (1.0 * ((ARGex / (Kmhat_Arginine_transport + ARGex)) * (Vmaxhat_Arginine_transport / (1 + ORN / Kiornhat_Arginine_transport + ARGin / Kmhat_Arginine_transport)) + (ARGex / (Kmlat_Arginine_transport + ARGex)) * (Vmaxlat_Arginine_transport / (1 + ORN / Kiornhat_Arginine_transport + ARGin / Kmlat_Arginine_transport)))) - (1.0 * (Vmaxarg_Arginase * ARGin / (Kmarg_Arginase * (1 + ORN / Kioarg_Arginase) + ARGin))) - (1.0 * (Vmaxnos1_NOS * ARGin / (Kmnos1_NOS + ARGin)));
+    der(ORN) = (cytosol * (Vmaxarg_Arginase * ARGin / (Kmarg_Arginase * (1 + ORN / Kioarg_Arginase) + ARGin))) - (cytosol * ((Vmaxefflhat_Ornithine_efflux / (1 + ARGex / Kmhat_Ornithine_efflux)) * (ORN / (Kiornhat_Ornithine_efflux * (1 + ARGin / Kmhat_Ornithine_efflux) + ORN)) + (Vmaxeffllat_Ornithine_efflux / (1 + ARGex / Kmlat_Ornithine_efflux)) * (ORN / (Kmeffllat_Ornithine_efflux * (1 + ARGin / Kmlat_Ornithine_efflux) + ORN)))) - (cytosol * (Vmaxodc_ODC * ORN / (Kmodc_ODC + ORN)));
+    der(ARGin) = (extracellular * ((ARGex / (Kmhat_Arginine_transport + ARGex)) * (Vmaxhat_Arginine_transport / (1 + ORN / Kiornhat_Arginine_transport + ARGin / Kmhat_Arginine_transport)) + (ARGex / (Kmlat_Arginine_transport + ARGex)) * (Vmaxlat_Arginine_transport / (1 + ORN / Kiornhat_Arginine_transport + ARGin / Kmlat_Arginine_transport)))) - (cytosol * (Vmaxarg_Arginase * ARGin / (Kmarg_Arginase * (1 + ORN / Kioarg_Arginase) + ARGin))) - (cytosol * (Vmaxnos1_NOS * ARGin / (Kmnos1_NOS + ARGin)));
 
 
 

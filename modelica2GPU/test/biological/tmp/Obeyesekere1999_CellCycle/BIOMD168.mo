@@ -29,6 +29,7 @@ model BIOMD168 "Obeyesekere1999_CellCycle"
     parameter Real g_1 = 0.528;
     parameter Real dX_1 = 1.04;
     parameter Real qX_1 = 0.8;
+    parameter Real cell_1 = 1.0;
 
     Real unpho_RB(start=0.0);
 
@@ -46,8 +47,6 @@ initial equation
     RS_1 = 1.0;
     R_1 = 0.5;
     X_1 = 0.7;
-    E2F_1 = 0.0;
-    RP_1 = 0.0;
 
 equation
     E2F_1 = theta_1 - RS_1;

@@ -15,6 +15,7 @@ model BIOMD194 "Ibrahim2008_Cdc20_Sequestring_Template_Model"
     parameter Real beta_T = 0.2;
     parameter Real const_val_0 = 0.0;
     parameter Real const_val_1 = 1.0;
+    parameter Real Cytoplasm = 1.0;
 
     Real u(start=1.0);
 
@@ -33,11 +34,11 @@ initial equation
 
 equation
 
-    der(Mad1_CMad2) = (1.0 * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20) - (1.0 * (u * alpha_T * Mad1_CMad2 * OMad2 - beta_T * Mad1_CMad2_OMad2));
-    der(OMad2) = (1.0 * eta_T * Cdc20_CMad2) - (1.0 * (u * alpha_T * Mad1_CMad2 * OMad2 - beta_T * Mad1_CMad2_OMad2));
-    der(Mad1_CMad2_OMad2) = (1.0 * (u * alpha_T * Mad1_CMad2 * OMad2 - beta_T * Mad1_CMad2_OMad2)) - (1.0 * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20);
-    der(Cdc20) = (1.0 * eta_T * Cdc20_CMad2) - (1.0 * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20);
-    der(Cdc20_CMad2) = (1.0 * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20) - (1.0 * eta_T * Cdc20_CMad2);
+    der(Mad1_CMad2) = (Cytoplasm * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20) - (Cytoplasm * (u * alpha_T * Mad1_CMad2 * OMad2 - beta_T * Mad1_CMad2_OMad2));
+    der(OMad2) = (Cytoplasm * eta_T * Cdc20_CMad2) - (Cytoplasm * (u * alpha_T * Mad1_CMad2 * OMad2 - beta_T * Mad1_CMad2_OMad2));
+    der(Mad1_CMad2_OMad2) = (Cytoplasm * (u * alpha_T * Mad1_CMad2 * OMad2 - beta_T * Mad1_CMad2_OMad2)) - (Cytoplasm * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20);
+    der(Cdc20) = (Cytoplasm * eta_T * Cdc20_CMad2) - (Cytoplasm * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20);
+    der(Cdc20_CMad2) = (Cytoplasm * u * gamma_T * Mad1_CMad2_OMad2 * Cdc20) - (Cytoplasm * eta_T * Cdc20_CMad2);
     der(u)=0.0;
 
     when time > 2000 then

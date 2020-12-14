@@ -27,6 +27,7 @@ model BIOMD185 "Locke2008_Circadian_Clock"
     parameter Real k7 = 0.2282;
     parameter Real v_8 = 3.5216;
     parameter Real K8 = 7.4519;
+    parameter Real compartment = 1.0;
 
     Real F(start=0.0);
 
@@ -51,14 +52,14 @@ initial equation
 
 equation
     F = 1 / 2 * (V1 + V2);
-    der(X1) = (1.0 * v_1 * K1^n / (K1^n + Z1^n)) + (1.0 * vc * K * F / (Kc + K * F)) + (1.0 * L) - (1.0 * v_2 * X1 / (K2 + X1));
-    der(Y1) = (1.0 * k3 * X1) - (1.0 * v_4 * Y1 / (K4 + Y1));
-    der(Z1) = (1.0 * k5 * Y1) - (1.0 * v_6 * Z1 / (K6 + Z1));
-    der(V1) = (1.0 * k7 * X1) - (1.0 * v_8 * V1 / (K8 + V1));
-    der(X2) = (1.0 * v_1 * K1^n / (K1^n + Z2^n)) + (1.0 * vc * K * F / (Kc + K * F)) + (1.0 * L) - (1.0 * v_2 * X2 / (K2 + X2));
-    der(Y2) = (1.0 * k3 * X2) - (1.0 * v_4 * Y2 / (K4 + Y2));
-    der(Z2) = (1.0 * k5 * Y2) - (1.0 * v_6 * Z2 / (K6 + Z2));
-    der(V2) = (1.0 * k7 * X2) - (1.0 * v_8 * V2 / (K8 + V2));
+    der(X1) = (compartment * v_1 * K1^n / (K1^n + Z1^n)) + (compartment * vc * K * F / (Kc + K * F)) + (compartment * L) - (compartment * v_2 * X1 / (K2 + X1));
+    der(Y1) = (compartment * k3 * X1) - (compartment * v_4 * Y1 / (K4 + Y1));
+    der(Z1) = (compartment * k5 * Y1) - (compartment * v_6 * Z1 / (K6 + Z1));
+    der(V1) = (compartment * k7 * X1) - (compartment * v_8 * V1 / (K8 + V1));
+    der(X2) = (compartment * v_1 * K1^n / (K1^n + Z2^n)) + (compartment * vc * K * F / (Kc + K * F)) + (compartment * L) - (compartment * v_2 * X2 / (K2 + X2));
+    der(Y2) = (compartment * k3 * X2) - (compartment * v_4 * Y2 / (K4 + Y2));
+    der(Z2) = (compartment * k5 * Y2) - (compartment * v_6 * Z2 / (K6 + Z2));
+    der(V2) = (compartment * k7 * X2) - (compartment * v_8 * V2 / (K8 + V2));
 
 
 

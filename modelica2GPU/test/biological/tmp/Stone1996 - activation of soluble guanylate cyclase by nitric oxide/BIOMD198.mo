@@ -24,6 +24,7 @@ model BIOMD198 "Stone1996 - activation of soluble guanylate cyclase by nitric ox
     parameter Real e5c = 0.11;
     parameter Real e5c_NO = 0.025;
     parameter Real e6c_NO = 0.064;
+    parameter Real cytosol = 1.0;
 
     Real ext(start=0.0);
 
@@ -51,23 +52,21 @@ initial equation
     NO_sGCslow_6coord = 0.0;
     NO_sGCslow_6coord_NO_int = 0.0;
     NO_sGCslow_5coord = 0.0;
-    NO_sGC_5coord_tot = 0.0;
-    sGC_inact_tot = 0.0;
 
 equation
     NO_sGC_5coord_tot = NO_sGCfast_5coord + NO_sGCslow_5coord;
     sGC_inact_tot = sGCfast + NO_sGCfast + NO_sGCfast_6coord + sGCslow + NO_sGCslow + NO_sGCslow_6coord + NO_sGCslow_6coord_NO_int;
     ext = e5c * (sGCfast + NO_sGCfast + sGCslow + NO_sGCslow) + e5c_NO * (NO_sGCfast_5coord + NO_sGCslow_5coord) + e6c_NO * (NO_sGCfast_6coord + NO_sGCslow_6coord + NO_sGCslow_6coord_NO_int);
     der(NO) = 0.0;
-    der(sGCfast) =  - (1.0 * (k1 * NO * sGCfast - k2 * NO_sGCfast));
-    der(NO_sGCfast) = (1.0 * (k1 * NO * sGCfast - k2 * NO_sGCfast)) - (k3 * 1.0 * NO_sGCfast);
-    der(NO_sGCfast_6coord) = (k3 * 1.0 * NO_sGCfast) - (1.0 * (k4 * NO_sGCfast_6coord - k5 * NO_sGCfast_5coord));
-    der(NO_sGCfast_5coord) = (1.0 * (k4 * NO_sGCfast_6coord - k5 * NO_sGCfast_5coord)) ;
-    der(sGCslow) =  - (1.0 * (k6 * NO * sGCslow - k7 * NO_sGCslow));
-    der(NO_sGCslow) = (1.0 * (k6 * NO * sGCslow - k7 * NO_sGCslow)) - (k8 * 1.0 * NO_sGCslow);
-    der(NO_sGCslow_6coord) = (k8 * 1.0 * NO_sGCslow) - (1.0 * (k9 * NO * NO_sGCslow_6coord - k10 * NO_sGCslow_6coord_NO_int));
-    der(NO_sGCslow_6coord_NO_int) = (1.0 * (k9 * NO * NO_sGCslow_6coord - k10 * NO_sGCslow_6coord_NO_int)) - (1.0 * (k11 * NO_sGCslow_6coord_NO_int - k12 * NO_sGCslow_5coord));
-    der(NO_sGCslow_5coord) = (1.0 * (k11 * NO_sGCslow_6coord_NO_int - k12 * NO_sGCslow_5coord)) ;
+    der(sGCfast) =  - (cytosol * (k1 * NO * sGCfast - k2 * NO_sGCfast));
+    der(NO_sGCfast) = (cytosol * (k1 * NO * sGCfast - k2 * NO_sGCfast)) - (k3 * cytosol * NO_sGCfast);
+    der(NO_sGCfast_6coord) = (k3 * cytosol * NO_sGCfast) - (cytosol * (k4 * NO_sGCfast_6coord - k5 * NO_sGCfast_5coord));
+    der(NO_sGCfast_5coord) = (cytosol * (k4 * NO_sGCfast_6coord - k5 * NO_sGCfast_5coord)) ;
+    der(sGCslow) =  - (cytosol * (k6 * NO * sGCslow - k7 * NO_sGCslow));
+    der(NO_sGCslow) = (cytosol * (k6 * NO * sGCslow - k7 * NO_sGCslow)) - (k8 * cytosol * NO_sGCslow);
+    der(NO_sGCslow_6coord) = (k8 * cytosol * NO_sGCslow) - (cytosol * (k9 * NO * NO_sGCslow_6coord - k10 * NO_sGCslow_6coord_NO_int));
+    der(NO_sGCslow_6coord_NO_int) = (cytosol * (k9 * NO * NO_sGCslow_6coord - k10 * NO_sGCslow_6coord_NO_int)) - (cytosol * (k11 * NO_sGCslow_6coord_NO_int - k12 * NO_sGCslow_5coord));
+    der(NO_sGCslow_5coord) = (cytosol * (k11 * NO_sGCslow_6coord_NO_int - k12 * NO_sGCslow_5coord)) ;
 
 
 
