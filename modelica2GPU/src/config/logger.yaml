@@ -7,6 +7,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Birtwistle2007_ErbB_Signalling/log/BIOMD175.log
     formatter: simple
     level: DEBUG
+  BIOMD200_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Bray1995_chemotaxis_receptorlinkedcomplex/log/BIOMD200.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -15,6 +20,11 @@ loggers:
   BIOMD175:
     handlers:
     - BIOMD175_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD200:
+    handlers:
+    - BIOMD200_handler
     level: DEBUG
     propagate: 'no'
   root:
