@@ -2,6 +2,11 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
+  BIOMD144_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Calzone2007_CellCycle/log/BIOMD144.log
+    formatter: simple
+    level: DEBUG
   BIOMD175_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Birtwistle2007_ErbB_Signalling/log/BIOMD175.log
@@ -22,6 +27,11 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  BIOMD144:
+    handlers:
+    - BIOMD144_handler
+    level: DEBUG
+    propagate: 'no'
   BIOMD175:
     handlers:
     - BIOMD175_handler
