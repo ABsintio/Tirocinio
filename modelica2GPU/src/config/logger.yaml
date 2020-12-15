@@ -17,6 +17,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Bray1995_chemotaxis_receptorlinkedcomplex/log/BIOMD200.log
     formatter: simple
     level: DEBUG
+  BIOMD202_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/ChenXF2008_CICR/log/BIOMD202.log
+    formatter: simple
+    level: DEBUG
   BIOMD217_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Bruggeman2005_AmmoniumAssimilation//log/BIOMD217.log
@@ -40,6 +45,11 @@ loggers:
   BIOMD200:
     handlers:
     - BIOMD200_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD202:
+    handlers:
+    - BIOMD202_handler
     level: DEBUG
     propagate: 'no'
   BIOMD217:
