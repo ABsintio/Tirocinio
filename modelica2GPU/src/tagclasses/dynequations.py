@@ -236,7 +236,7 @@ class Exp(UnaryOperator):
     def __init__(self, value):
         super().__init__(value)
 
-    def __str__(self): return Pow(math.pi, self.value).__str__()
+    def __str__(self): return Pow(math.e, self.value).__str__()
 
 
 class Log(UnaryOperator):
