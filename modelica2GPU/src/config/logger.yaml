@@ -32,6 +32,12 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Fisher2006_NFAT_Activation/log/BIOMD123.log
     formatter: simple
     level: DEBUG
+  BIOMD192_handler:
+    class: logging.FileHandler
+    filename: "/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/G\xF6\
+      rlich2003_RanGTP_gradient/log/BIOMD192.log"
+    formatter: simple
+    level: DEBUG
   BIOMD201_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Goldbeter2008_Somite_Segmentation_Clock_Notch_Wnt_FGF/log/BIOMD201.log
@@ -99,6 +105,11 @@ loggers:
   BIOMD123:
     handlers:
     - BIOMD123_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD192:
+    handlers:
+    - BIOMD192_handler
     level: DEBUG
     propagate: 'no'
   BIOMD201:
