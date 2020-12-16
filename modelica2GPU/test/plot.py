@@ -79,6 +79,8 @@ def parseXML():
         model_name = test[0].attrib['value']
         workdir    = test[1].attrib['value']
         succ_trans = test[2].attrib['value']
+        if "description" in test[2].attrib:
+            succ_trans += ", " + test[2].attrib['description']
         trans_time = test[3].attrib['value']
         mgps_comil = test[4].attrib['value']
         plot_value = test[7].attrib['value']
