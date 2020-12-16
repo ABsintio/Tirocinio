@@ -1,0 +1,2258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD123"
+  modelIdentifier="BIOMD123"
+  guid="{c4d69761-0a30-4986-845c-8f09443da189}"
+  generationDateAndTime="2020-12-16T19:34:53"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="14"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="Act_C_Cyt"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Act_C_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Act_C_Nuc"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Act_C_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Ca_Cyt"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Ca_Nuc"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Inact_C_Cyt"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Inact_C_Nuc"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Inact_C_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFAT_Act_C_Cyt"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFAT_Act_C_Nuc"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFAT_Cyt"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFAT_Nuc"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFAT_Pi_Act_C_Cyt"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFAT_Pi_Act_C_Nuc"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFAT_Pi_Cyt"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFAT_Pi_Nuc"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(Act_C_Cyt)"  valueReference="14" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Act_C_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Act_C_Nuc)"  valueReference="15" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Act_C_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Ca_Cyt)"  valueReference="16" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Ca_Nuc)"  valueReference="17" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Inact_C_Cyt)"  valueReference="18" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Inact_C_Nuc)"  valueReference="19" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Inact_C_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFAT_Act_C_Cyt)"  valueReference="20" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFAT_Act_C_Nuc)"  valueReference="21" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFAT_Cyt)"  valueReference="22" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFAT_Nuc)"  valueReference="23" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFAT_Pi_Act_C_Cyt)"  valueReference="24" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFAT_Pi_Act_C_Nuc)"  valueReference="25" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFAT_Pi_Cyt)"  valueReference="26" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFAT_Pi_Nuc)"  valueReference="27" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="cytosol"  valueReference="28" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="cytosol"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1"  valueReference="29" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.56e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k10"  valueReference="30" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.005" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k10"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k11"  valueReference="31" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6.63" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k11"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k12"  valueReference="32" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.00168" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k12"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k13"  valueReference="33" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k13"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k14"  valueReference="34" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.00256" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k14"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k15"  valueReference="35" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.00168" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k15"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k16"  valueReference="36" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6.63" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k16"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k17"  valueReference="37" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0015" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k17"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k18"  valueReference="38" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.00096" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k18"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k19"  valueReference="39" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k19"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k2"  valueReference="40" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.00256" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k20"  valueReference="41" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k20"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k21"  valueReference="42" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.21" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k21"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k22"  valueReference="43" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k22"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k3"  valueReference="44" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.005" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k4"  valueReference="45" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k5"  valueReference="46" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0019" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k6"  valueReference="47" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.00092" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k7"  valueReference="48" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.005" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k7"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k8"  valueReference="49" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k9"  valueReference="50" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k9"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="nucleus"  valueReference="51" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="cytosol"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.56e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k10"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.005</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k11"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6.63</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k12"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.00168</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k13"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k14"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.00256</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k15"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.00168</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k16"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6.63</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k17"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0015</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k18"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.00096</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k19"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.00256</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k20"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k21"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.21</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k22"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.005</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k4"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k5"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0019</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k6"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.00092</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k7"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.005</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k8"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k9"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="nucleus"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytosol"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k20"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k19"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+                  </exp:Identifier>
+                  <exp:Pow>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Ca_Cyt"/>
+                    </exp:Identifier>
+                    <exp:RealLiteral>3.0</exp:RealLiteral>
+                  </exp:Pow>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k6"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Inact_C_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k5"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytosol"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k14"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k11"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k12"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k13"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k8"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k7"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k10"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytosol"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k13"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k14"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k9"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k16"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="NFAT_Cyt"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Mul>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k15"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytosol"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k12"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k11"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k4"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k2"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Cyt"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k1"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k3"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Act_C_Cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k6"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Act_C_Nuc"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytosol"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k12"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k15"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k1"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k19"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+                        </exp:Identifier>
+                        <exp:Pow>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Ca_Cyt"/>
+                          </exp:Identifier>
+                          <exp:RealLiteral>3.0</exp:RealLiteral>
+                        </exp:Pow>
+                      </exp:Mul>
+                    </exp:Mul>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k2"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="NFAT_Cyt"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                      <exp:Sub>
+                        <exp:Sub>
+                          <exp:Sub>
+                            <exp:Sub>
+                              <exp:Sub>
+                                <exp:Mul>
+                                    <exp:Neg>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="k16"/>
+                                      </exp:Identifier>
+                                    </exp:Neg>
+                                  <exp:Mul>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="NFAT_Cyt"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                                    </exp:Identifier>
+                                  </exp:Mul>
+                                </exp:Mul>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="k20"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                                  </exp:Identifier>
+                                </exp:Mul>
+                              </exp:Sub>
+                              <exp:Mul>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="k5"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                                </exp:Identifier>
+                              </exp:Mul>
+                            </exp:Sub>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="k11"/>
+                              </exp:Identifier>
+                              <exp:Mul>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                                </exp:Identifier>
+                              </exp:Mul>
+                            </exp:Mul>
+                          </exp:Sub>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k2"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="NFAT_Cyt"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                        </exp:Sub>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k1"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                      </exp:Sub>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFAT_Cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k18"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="NFAT_Nuc"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytosol"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k15"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Cyt"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k16"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k17"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                </exp:Mul>
+                <exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k1"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k2"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFAT_Cyt"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Inact_C_Nuc"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytosol"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k5"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k20"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Inact_C_Nuc"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Mul>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k19"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Pow>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Ca_Nuc"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>3.0</exp:RealLiteral>
+                    </exp:Pow>
+                  </exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k6"/>
+                  </exp:Identifier>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k14"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k13"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k7"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k11"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k12"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k8"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k16"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Nuc"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k13"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k14"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k15"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k9"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k10"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k12"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k11"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k3"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k2"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k1"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k4"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Act_C_Nuc"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k1"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k12"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k19"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Inact_C_Nuc"/>
+                      </exp:Identifier>
+                      <exp:Pow>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Ca_Nuc"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>3.0</exp:RealLiteral>
+                      </exp:Pow>
+                    </exp:Mul>
+                  </exp:Mul>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k2"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="NFAT_Nuc"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k15"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+                          </exp:Identifier>
+                          <exp:Sub>
+                            <exp:Mul>
+                                <exp:Neg>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="k11"/>
+                                  </exp:Identifier>
+                                </exp:Neg>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k1"/>
+                            </exp:Identifier>
+                          </exp:Sub>
+                        </exp:Mul>
+                        <exp:Sub>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="NFAT_Nuc"/>
+                            </exp:Identifier>
+                            <exp:Sub>
+                              <exp:Mul>
+                                  <exp:Neg>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="k16"/>
+                                    </exp:Identifier>
+                                  </exp:Neg>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                                </exp:Identifier>
+                              </exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="k2"/>
+                              </exp:Identifier>
+                            </exp:Sub>
+                          </exp:Mul>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k20"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                        </exp:Sub>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k5"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k6"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFAT_Nuc"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k1"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k15"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFAT_Nuc"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k16"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k2"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k17"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k18"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFAT_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ca_Cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:RealLiteral>-3.0</exp:RealLiteral>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k19"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+                    </exp:Identifier>
+                    <exp:Pow>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Ca_Cyt"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>3.0</exp:RealLiteral>
+                    </exp:Pow>
+                  </exp:Mul>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k20"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Act_C_Cyt"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k22"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytosol"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k21"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_Cyt"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ca_Nuc"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytosol"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k21"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_Cyt"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:RealLiteral>-3.0</exp:RealLiteral>
+                <exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k19"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Inact_C_Nuc"/>
+                      </exp:Identifier>
+                      <exp:Pow>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Ca_Nuc"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>3.0</exp:RealLiteral>
+                      </exp:Pow>
+                    </exp:Mul>
+                  </exp:Mul>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k20"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Act_C_Nuc"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k22"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_Nuc"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Inact_C_Cyt"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0097108</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Cyt"/>
+        </exp:Identifier>
+        <exp:RealLiteral>2.2e-06</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFAT_Act_C_Cyt"/>
+        </exp:Identifier>
+        <exp:RealLiteral>6.1e-06</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFAT_Pi_Cyt"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.009439700000000001</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Act_C_Cyt"/>
+        </exp:Identifier>
+        <exp:RealLiteral>9.099999999999999e-06</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFAT_Cyt"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0001101</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Inact_C_Nuc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.049198</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFAT_Pi_Act_C_Nuc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>2.5e-06</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFAT_Act_C_Nuc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0009477</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFAT_Pi_Nuc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0002272</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Act_C_Nuc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>5.05e-05</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFAT_Nuc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0005218999999999999</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Ca_Cyt"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Ca_Nuc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
