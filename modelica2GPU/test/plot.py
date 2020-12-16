@@ -93,6 +93,8 @@ def parseXML():
                 gpus_time.append(float(sim.attrib['gpu'][:-2])/1000)
             
             sim_result = test[6].attrib['value']
+            if "description" in test[6].attrib:
+                sim_result += ", " + test[6].attrib['description']
             tests.append(Test(test_id, model_name, workdir, succ_trans, trans_time, mgps_comil, cpus_time, gpus_time, sim_result))
     
     return tests
