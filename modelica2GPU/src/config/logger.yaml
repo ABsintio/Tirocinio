@@ -14,6 +14,12 @@ handlers:
       - Stem cell switch irreversible/log/BIOMD204.log
     formatter: simple
     level: DEBUG
+  BIOMD209_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Chickarmane2008
+      - Stem cell lineage determination/log/BIOMD209.log
+    formatter: simple
+    level: DEBUG
   BIOMD210_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Chickarmane2008
@@ -33,6 +39,11 @@ loggers:
   BIOMD204:
     handlers:
     - BIOMD204_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD209:
+    handlers:
+    - BIOMD209_handler
     level: DEBUG
     propagate: 'no'
   BIOMD210:
