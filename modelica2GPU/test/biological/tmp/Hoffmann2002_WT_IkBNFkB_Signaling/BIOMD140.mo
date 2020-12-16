@@ -115,7 +115,7 @@ equation
     Total_IkBeps = IkBeps + IkBeps_NFkB + IKK_IkBeps + IKK_IkBeps_NFkB;
     Total_IkBalpha = IkBalpha + IkBalpha_NFkB + IKK_IkBalpha + IKK_IkBalpha_NFkB;
     Total_NFkBn = IkBbeta_nuc_NFkB_nuc + NFkB_nuc;
-    der(fr_after_trigger) = trigger_value * (-0.5 / pow(1 + (t - 2000), 2));
+    der(fr_after_trigger) = trigger_value * (-0.5 / pow(1 + (time - 2000), 2));
     der(IkBalpha) = (nucleus * tr1 * IkBalpha_transcript) - (cytoplasm * (a4 * IkBalpha * NFkB - d4 * IkBalpha_NFkB)) - (cytoplasm * (a1 * IkBalpha * IKK - d1 * IKK_IkBalpha)) - (cytoplasm * deg1 * IkBalpha) - (cytoplasm * tp1 * IkBalpha - nucleus * tp2 * IkBalpha_nuc);
     der(NFkB) = (cytoplasm * r4 * IKK_IkBalpha_NFkB) + (cytoplasm * r5 * IKK_IkBbeta_NFkB) + (cytoplasm * r6 * IKK_IkBeps_NFkB) + (cytoplasm * deg4 * IkBalpha_NFkB) + (cytoplasm * deg4 * IkBbeta_NFkB) + (cytoplasm * deg4 * IkBeps_NFkB) - (cytoplasm * (a4 * IkBalpha * NFkB - d4 * IkBalpha_NFkB)) - (cytoplasm * (a5 * IkBbeta * NFkB - d5 * IkBbeta_NFkB)) - (cytoplasm * (a6 * IkBeps * NFkB - d6 * IkBeps_NFkB)) - (cytoplasm * (a4 * IKK_IkBalpha * NFkB - d4 * IKK_IkBalpha_NFkB)) - (cytoplasm * (a5 * IKK_IkBbeta * NFkB - d5 * IKK_IkBbeta_NFkB)) - (cytoplasm * (a6 * IKK_IkBeps * NFkB - d6 * IKK_IkBeps_NFkB)) - (cytoplasm * k1 * NFkB - nucleus * k01 * NFkB_nuc);
     der(IkBalpha_NFkB) = (cytoplasm * (a4 * IkBalpha * NFkB - d4 * IkBalpha_NFkB)) + (nucleus * k2 * IkBalpha_nuc_NFkB_nuc) - (cytoplasm * deg4 * IkBalpha_NFkB) - (cytoplasm * (a7 * IKK * IkBalpha_NFkB - d1 * IKK_IkBalpha_NFkB));

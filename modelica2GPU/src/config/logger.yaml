@@ -42,6 +42,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Hoffmann2002_KnockOut_IkBNFkB_Signaling/log/BIOMD139.log
     formatter: simple
     level: DEBUG
+  BIOMD140_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Hoffmann2002_WT_IkBNFkB_Signaling/log/BIOMD140.log
+    formatter: simple
+    level: DEBUG
   BIOMD146_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Hatakeyama2003_MAPK/log/BIOMD146.log
@@ -130,6 +135,11 @@ loggers:
   BIOMD139:
     handlers:
     - BIOMD139_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD140:
+    handlers:
+    - BIOMD140_handler
     level: DEBUG
     propagate: 'no'
   BIOMD146:
