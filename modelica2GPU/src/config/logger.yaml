@@ -14,6 +14,12 @@ handlers:
       - Stem cell switch irreversible/log/BIOMD204.log
     formatter: simple
     level: DEBUG
+  BIOMD210_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Chickarmane2008
+      - Stem cell lineage - NANOG GATA-6 switch/log/BIOMD210.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -27,6 +33,11 @@ loggers:
   BIOMD204:
     handlers:
     - BIOMD204_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD210:
+    handlers:
+    - BIOMD210_handler
     level: DEBUG
     propagate: 'no'
   root:
