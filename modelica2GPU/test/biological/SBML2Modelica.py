@@ -414,13 +414,16 @@ class SBMLExtrapolator:
             list_of_parameters = list(filter(lambda x: isinstance(x, libsbml.Parameter), reaction.getListOfAllElements()))
             # Devo vedere se ci sono parametri locali alla reazione
             for param in list_of_parameters:
-                self.parameter_dict[param.getId() + "_" + str(id_reaction)] = Parameter(
-                    param.getId() + "_" + str(id_reaction), # Nome
+                param_name = param.getId() + "_" + str(id_reaction)
+                while param_name in self.parameter_dict:
+                    param_name += "_" + str(id_reaction)
+                self.parameter_dict[param_name] = Parameter(
+                    param_name, # Nome
                     param.getValue(), # Valore
                     param.getConstant() # Se è costante oppure no
                 )
                 parameters.append(param.getId())
-                kinetic_law = kinetic_law.replace(param.getId(), param.getId() + "_" + str(id_reaction))
+                kinetic_law = kinetic_law.replace(param.getId(), param_name)
             self.reaction_dict[reaction_name] = Reaction(
                 reaction_name, second_reaction_name, reactants, 
                 products, modifiers, parameters, kinetic_law
