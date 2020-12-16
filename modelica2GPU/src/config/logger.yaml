@@ -2,6 +2,12 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
+  BIOMD203_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Chickarmane2006
+      - Stem cell switch reversible/log/BIOMD203.log
+    formatter: simple
+    level: DEBUG
   BIOMD204_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Chickarmane2006
@@ -13,6 +19,11 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
+  BIOMD203:
+    handlers:
+    - BIOMD203_handler
+    level: DEBUG
+    propagate: 'no'
   BIOMD204:
     handlers:
     - BIOMD204_handler
