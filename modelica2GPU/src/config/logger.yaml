@@ -7,6 +7,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Clarke2006_Smad_signalling/log/BIOMD112.log
     formatter: simple
     level: DEBUG
+  BIOMD113_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Dupont1992_Ca_dpt_protein_phospho/log/BIOMD113.log
+    formatter: simple
+    level: DEBUG
   BIOMD117_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Dupont1991_CaOscillation/log/BIOMD117.log
@@ -49,6 +54,11 @@ loggers:
   BIOMD112:
     handlers:
     - BIOMD112_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD113:
+    handlers:
+    - BIOMD113_handler
     level: DEBUG
     propagate: 'no'
   BIOMD117:
