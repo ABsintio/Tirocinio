@@ -31,6 +31,11 @@ handlers:
       - Stem cell lineage - NANOG GATA-6 switch/log/BIOMD210.log
     formatter: simple
     level: DEBUG
+  BIOMD212_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Curien2009_Aspartate_Metabolism/log/BIOMD212.log
+    formatter: simple
+    level: DEBUG
   console:
     class: logging.StreamHandler
     level: DEBUG
@@ -59,6 +64,11 @@ loggers:
   BIOMD210:
     handlers:
     - BIOMD210_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD212:
+    handlers:
+    - BIOMD212_handler
     level: DEBUG
     propagate: 'no'
   root:
