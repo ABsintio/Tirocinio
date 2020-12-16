@@ -8,14 +8,14 @@
 
 #define PI 3.14159265358979323846
 
-#include "BIOMD187_SystemDefinition.cuh"
+#include "BIOMD186_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 13;
 const int NCP  = 1;
 const int NSP  = 16;
@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 1;
 const int NA   = 1;
 const int NIA  = 0;
-const int NDO  = 1000;
+const int NDO  = 2500000;
 
 
 void FillSolverObject(
@@ -97,8 +97,8 @@ void SaveData(
         DataFile.width(Width); DataFile << "sPAR_k4r" << ',';
         DataFile.width(Width); DataFile << "sPAR_k5f" << ',';
         DataFile.width(Width); DataFile << "sPAR_k5r" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k7bf" << ',';
         DataFile.width(Width); DataFile << "sPAR_k7f" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k7r" << ',';
         DataFile.width(Width); DataFile << "sPAR_k8f" << ',';
         DataFile.width(Width); DataFile << "sPAR_k8r" << ',';
         DataFile.width(Width); DataFile << "sPAR_kf6" << ',';
@@ -163,7 +163,7 @@ int main() {
     Solver.SolverOption(MinimumTimeStep, 1e-14);
     Solver.SolverOption(TimeStepGrowLimit, 5.0);
 
-    Solver.SolverOption(TimeStepShrinkLimit, 0.1);
+    Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
 
     Solver.SolverOption(EventDirection, 0, 0);
@@ -201,7 +201,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD187.csv" );
+    DataFile.open ( "BIOMD186.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
