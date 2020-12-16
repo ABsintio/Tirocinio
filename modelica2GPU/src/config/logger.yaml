@@ -7,6 +7,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Fuentes2005_ZymogenActivation/log/BIOMD092.log
     formatter: simple
     level: DEBUG
+  BIOMD098_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Goldbeter1990_CalciumSpike_CICR/log/BIOMD098.log
+    formatter: simple
+    level: DEBUG
   BIOMD112_handler:
     class: logging.FileHandler
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Clarke2006_Smad_signalling/log/BIOMD112.log
@@ -64,6 +69,11 @@ loggers:
   BIOMD092:
     handlers:
     - BIOMD092_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD098:
+    handlers:
+    - BIOMD098_handler
     level: DEBUG
     propagate: 'no'
   BIOMD112:
