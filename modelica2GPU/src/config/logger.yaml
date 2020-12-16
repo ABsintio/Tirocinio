@@ -57,6 +57,12 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Hatakeyama2003_MAPK/log/BIOMD146.log
     formatter: simple
     level: DEBUG
+  BIOMD187_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Ibrahim2008
+      - Mitotic Spindle Assembly Checkpoint - Convey variant/log/BIOMD187.log
+    formatter: simple
+    level: DEBUG
   BIOMD192_handler:
     class: logging.FileHandler
     filename: "/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/G\xF6\
@@ -155,6 +161,11 @@ loggers:
   BIOMD146:
     handlers:
     - BIOMD146_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD187:
+    handlers:
+    - BIOMD187_handler
     level: DEBUG
     propagate: 'no'
   BIOMD192:
