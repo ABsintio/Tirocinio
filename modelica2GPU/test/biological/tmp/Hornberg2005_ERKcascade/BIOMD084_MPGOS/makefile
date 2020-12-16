@@ -10,3 +10,4 @@ BIOMD084.exe: BIOMD084.cu
 clean:
 	rm -f BIOMD084.exe
 	rm -f *.txt
+	rm -f *.csv

@@ -282,6 +282,7 @@ all: {modelname}.exe
 clean:
 \trm -f {modelname}.exe
 \trm -f *.txt
+\trm -f *.csv
 """
 
 
