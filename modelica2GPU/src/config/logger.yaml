@@ -37,6 +37,11 @@ handlers:
     filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Fisher2006_NFAT_Activation/log/BIOMD123.log
     formatter: simple
     level: DEBUG
+  BIOMD146_handler:
+    class: logging.FileHandler
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Hatakeyama2003_MAPK/log/BIOMD146.log
+    formatter: simple
+    level: DEBUG
   BIOMD192_handler:
     class: logging.FileHandler
     filename: "/home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/G\xF6\
@@ -115,6 +120,11 @@ loggers:
   BIOMD123:
     handlers:
     - BIOMD123_handler
+    level: DEBUG
+    propagate: 'no'
+  BIOMD146:
+    handlers:
+    - BIOMD146_handler
     level: DEBUG
     propagate: 'no'
   BIOMD192:
