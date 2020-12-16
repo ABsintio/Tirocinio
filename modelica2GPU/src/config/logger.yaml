@@ -2,29 +2,10 @@ formatters:
   simple:
     format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
 handlers:
-  BIOMD144_handler:
+  BIOMD204_handler:
     class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Calzone2007_CellCycle/log/BIOMD144.log
-    formatter: simple
-    level: DEBUG
-  BIOMD175_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Birtwistle2007_ErbB_Signalling/log/BIOMD175.log
-    formatter: simple
-    level: DEBUG
-  BIOMD200_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Bray1995_chemotaxis_receptorlinkedcomplex/log/BIOMD200.log
-    formatter: simple
-    level: DEBUG
-  BIOMD202_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/ChenXF2008_CICR/log/BIOMD202.log
-    formatter: simple
-    level: DEBUG
-  BIOMD217_handler:
-    class: logging.FileHandler
-    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Bruggeman2005_AmmoniumAssimilation//log/BIOMD217.log
+    filename: /home/yorunoomo/Scrivania/Tirocinio/modelica2GPU/test/biological/tmp/Chickarmane2006
+      - Stem cell switch irreversible/log/BIOMD204.log
     formatter: simple
     level: DEBUG
   console:
@@ -32,29 +13,9 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
 loggers:
-  BIOMD144:
+  BIOMD204:
     handlers:
-    - BIOMD144_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD175:
-    handlers:
-    - BIOMD175_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD200:
-    handlers:
-    - BIOMD200_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD202:
-    handlers:
-    - BIOMD202_handler
-    level: DEBUG
-    propagate: 'no'
-  BIOMD217:
-    handlers:
-    - BIOMD217_handler
+    - BIOMD204_handler
     level: DEBUG
     propagate: 'no'
   root:
