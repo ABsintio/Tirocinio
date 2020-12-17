@@ -134,6 +134,13 @@ class Logger:
         self.logger = logging.getLogger(self.modelname)
         if self.logger:
             self.logger.info("Logger %s creato con successo" % (self.logger.__str__()))
+
+    def remove_logger(self):
+        """ Rimuove il logger corrente, ossia quello del corrente model_name """
+        yaml_dict = yaml.load(open(self.config_file, mode="r"))
+        yaml_dict["handlers"].pop(self.modelname + "_handler")
+        yaml_dict['loggers'].pop(self.modelname)
+        yaml.dump(yaml_dict, open(self.config_file, mode="w"))
     
     def info(self, finfo, cinfo):
         """

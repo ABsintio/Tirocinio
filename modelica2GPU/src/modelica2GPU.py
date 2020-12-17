@@ -386,6 +386,10 @@ try:
     end = time.time()
     msg = f"Operazione di traduzione terminata con successo in {end - start}ms."
     m2g_logger.debug(msg, msg)
+    m2g_logger.remove_logger()
+    n = Notifier("modelica2GPU")
+    n.setupforsimple("Modelica2GPU Notification", "Operazione di traduzione terminata con successo")
+    n.show()
     # END LOG
 except Exception as e:
     msg = f"modelica2GPU ha riscontrato il seguente errore. {e.args[0]}. Per favore controlla che l'XML sia ben formattato!"
