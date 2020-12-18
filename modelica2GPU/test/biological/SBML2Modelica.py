@@ -7,6 +7,16 @@ import argparse
 import math
 
 
+FUNCTION_FORMAT = """
+    function {function_name}
+        {inputs}
+        output Real y;
+    algorithm
+        {math}
+    end {function_name};
+"""
+
+
 MODELICA_CODE = """
 model {model_name} "{name}"
 
@@ -17,6 +27,8 @@ model {model_name} "{name}"
         algorithm
             y := x^power;
     end pow;
+
+{functions}
 
 {constant_parameters}
 
@@ -188,6 +200,22 @@ class Event:
         return obj2str(self)
 
 
+class Function:
+    def __init__(self, name, inputs, math_formula):
+        self.name = name
+        self.inputs = inputs
+        self.math_formula = math_formula
+
+    def build_modelica_function(self):
+        global FUNCTION_FORMAT
+        input_string = "\n".join([f"\tinput Real {x};" for x in self.inputs])
+        math = f"y = {self.math_formula};"
+        return FUNCTION_FORMAT.format(function_name=self.name,inputs=input_string,math=math)
+    
+    def __str__(self):
+        return obj2str(self)
+
+
 class SBMLModel:
     def __init__(self, name, 
                        compartmnents, 
@@ -196,7 +224,8 @@ class SBMLModel:
                        assignment_rules, 
                        reactions,
                        rate_rules,
-                       event_list
+                       event_list,
+                       function_list
                 ):
         self.name = name
         self.compartments = compartmnents
@@ -206,6 +235,7 @@ class SBMLModel:
         self.reactions = reactions
         self.rate_rules_dict = rate_rules
         self.event_list = event_list
+        self.function_list = function_list
         self.create_rate_rule()
 
     def create_sum_from_reactant(self, specie_name, specie_obj):
@@ -305,6 +335,9 @@ class SBMLTranslator:
                 lines.append(line_code.format(var=param))
         return lines
     
+    def getfunction_modelica_code(self):
+        return [func_definition.build_modelica_function()  for func_definition in self.model.function_list.values()]
+    
     def SBML_into_Modelica(self):
         global MODELICA_CODE
         constant_parameter_list = "\n".join(self.getconstant_parameter_modelica_code())
@@ -315,6 +348,7 @@ class SBMLTranslator:
         raterules_list = "\n".join(self.getraterules_modelica_code())
         events_list = "\n".join(self.getevents_modelica_code())
         zeroder_list = "\n".join(self.getzeroder_modelica_code())
+        function_list = "\n".join(self.getfunction_modelica_code())
         return MODELICA_CODE.format(
             model_name=self.filename,
             name=self.model.name,
@@ -325,7 +359,8 @@ class SBMLTranslator:
             events=events_list,
             assignment_rules=assignmentrules_list,
             rate_rules=raterules_list,
-            zero_der=zeroder_list 
+            zero_der=zeroder_list,
+            functions=function_list
         )
 
 
@@ -342,6 +377,7 @@ class SBMLExtrapolator:
         self.getrules()
         self.getreactions()
         self.getevents()
+        self.getfunctions()
     
     def getmodelname(self):
         self.nome = self.model.getName()
@@ -469,6 +505,15 @@ class SBMLExtrapolator:
             when_condition = when_condition.replace("&&", "and").replace("||", "or")
             event_assignments = [f"reinit({ass.getId()},{libsbml.formulaToL3String(ass.getMath())})" for ass in event.getListOfEventAssignments()]
             self.event_dict[event_id] = Event(event_id, when_condition, event_assignments)
+    
+    def getfunctions(self):
+        self.function_dict = dict()
+        for func in self.model.getListOfFunctionDefinitions():
+            function_id = func.getId()
+            function_mathml = libsbml.formulaToL3String(func.getMath())[7:-1]
+            input_params = [x.strip() for x in function_mathml.split(",")[:-1]]
+            math_formula = function_mathml.split(",")[-1]
+            self.function_dict[function_id] = Function(function_id, input_params, math_formula)
 
 
 def save_modelica(modelica_model, modelica_file):
@@ -563,7 +608,8 @@ def run(file, output_directory):
         sbmlext.assignment_dict,
         sbmlext.reaction_dict,
         sbmlext.rate_dict,
-        sbmlext.event_dict
+        sbmlext.event_dict,
+        sbmlext.function_dict
     )
     final_index = -5 if file.endswith(".sbml") else -4
     filename = file.split("/")[-1][:final_index]
