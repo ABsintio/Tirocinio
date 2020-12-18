@@ -16,7 +16,7 @@ model BIOMD242 "Bai2003_G1phaseRegulation"
 	input Real S2;
         output Real y;
     algorithm
-        y =  k1 * S1 * S2;
+        y :=  k1 * S1 * S2;
     end Mass_Action_2_1;
 
 
@@ -66,11 +66,11 @@ initial equation
 
 equation
     Rb_phos = RT_1 - RS_1 - R_1;
-    der(D_1) = (cell * aD_1 * (GF_1 / (k1_1^-1 + GF_1))) - (cell * dD_1 * E_1 * D_1);
-    der(E_1) = (cell * aE_1 * (GF_1 / (k2_1^-1 + GF_1) + aF_1 * theta_1)) - (cell * dE_1 * X_1 * E_1);
+    der(D_1) = (cell * aD_1 * (GF_1 / (k1_1^(-1) + GF_1))) - (cell * dD_1 * E_1 * D_1);
+    der(E_1) = (cell * aE_1 * (GF_1 / (k2_1^(-1) + GF_1) + aF_1 * theta_1)) - (cell * dE_1 * X_1 * E_1);
     der(R_1) = (cell * (pX_1 * (RT_1 - RS_1 - R_1) * X_1 / ((qX_1 + RT_1 - RS_1 - R_1) + X_1))) - (cell * Mass_Action_2_1(pS_1, R_1, theta_1));
     der(RS_1) = (cell * Mass_Action_2_1(pS_1, R_1, theta_1)) - (cell * (pD_1 * RS_1 * D_1 / (qD_1 + RS_1 + D_1))) - (cell * (pE_1 * RS_1 * E_1 / (qE_1 + RS_1 + E_1)));
-    der(theta_1) = (cell * (pD_1 * RS_1 * D_1 / (qD_1 + RS_1 + D_1))) + (cell * (pE_1 * RS_1 * E_1 / (qE_1 + RS_1 + E_1))) + (cell * atheta_1 * (GF_1 / (k3_1^-1 + GF_1) + fC_1_1 * theta_1)) - (cell * Mass_Action_2_1(pS_1, R_1, theta_1)) - (cell * dtheta_1 * (X_1 / (qtheta_1 + X_1)) * theta_1);
+    der(theta_1) = (cell * (pD_1 * RS_1 * D_1 / (qD_1 + RS_1 + D_1))) + (cell * (pE_1 * RS_1 * E_1 / (qE_1 + RS_1 + E_1))) + (cell * atheta_1 * (GF_1 / (k3_1^(-1) + GF_1) + fC_1_1 * theta_1)) - (cell * Mass_Action_2_1(pS_1, R_1, theta_1)) - (cell * dtheta_1 * (X_1 / (qtheta_1 + X_1)) * theta_1);
     der(X_1) = (cell * (aX_1 * E_1 + f_1 * theta_1 + g_1 * X_1^2 * E_1)) - (cell * dX_1 * X_1);
 
 

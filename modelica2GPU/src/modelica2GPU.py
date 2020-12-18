@@ -386,7 +386,6 @@ try:
     end = time.time()
     msg = f"Operazione di traduzione terminata con successo in {end - start}s."
     m2g_logger.debug(msg, msg)
-    m2g_logger.remove_logger()
     n = Notifier("modelica2GPU")
     n.setupforsimple("Modelica2GPU Notification", "Operazione di traduzione terminata con successo")
     n.show()
@@ -395,6 +394,8 @@ except Exception as e:
     msg = f"modelica2GPU ha riscontrato il seguente errore. {e.args[0]}. Per favore controlla che l'XML sia ben formattato!"
     m2g_logger.error(msg, msg)
     sys.exit(1)
+finally:
+    m2g_logger.remove_logger()
 
 print("\n\n\033[1;32;40mMESSAGGIO DA MODELICA2GPU")
 print("\033[1;32;40mDurante l'operazione modelica2GPU non riscontrato alcun errore rilevante.")

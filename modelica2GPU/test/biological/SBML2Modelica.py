@@ -215,7 +215,7 @@ class Function:
     def build_modelica_function(self):
         global FUNCTION_FORMAT
         input_string = "\n".join([f"\tinput Real {x};" for x in self.inputs])
-        math = f"y = {self.math_formula};"
+        math = f"y := {self.math_formula};"
         return FUNCTION_FORMAT.format(function_name=self.name,inputs=input_string,math=math)
     
     def __str__(self):
@@ -449,7 +449,7 @@ class SBMLExtrapolator:
         for reaction in self.model.getListOfReactions():
             reaction_name = reaction.getId()
             second_reaction_name = reaction.getName()
-            kinetic_law = libsbml.formulaToL3String(reaction.getKineticLaw().getMath())
+            kinetic_law = libsbml.formulaToString(reaction.getKineticLaw().getMath())
             reactants = self.get_and_set(reaction_name, reaction.getListOfReactants(), "r")
             products = self.get_and_set(reaction_name, reaction.getListOfProducts(), "p")
             modifiers = self.get_and_set_modifier(reaction, reaction_name)
