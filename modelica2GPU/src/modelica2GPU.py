@@ -384,7 +384,7 @@ try:
 
     # START LOG
     end = time.time()
-    msg = f"Operazione di traduzione terminata con successo in {end - start}ms."
+    msg = f"Operazione di traduzione terminata con successo in {end - start}s."
     m2g_logger.debug(msg, msg)
     m2g_logger.remove_logger()
     n = Notifier("modelica2GPU")
