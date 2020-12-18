@@ -28,7 +28,7 @@ model BIOMD282 "Chance1952_Catalase_Mechanism"
 
 initial equation
     e = 1.36;
-    x = 2.0;
+    x = 4.0;
     p = 0.0;
     p1 = 0.0;
     a = 0.0;
