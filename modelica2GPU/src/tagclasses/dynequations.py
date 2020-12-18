@@ -255,6 +255,21 @@ class Log10(UnaryOperator):
     def __str__(self): return f"log10({self.value.__str__()})"
 
 
+class Floor(UnaryOperator):
+    """ Rappresenta l'operatore di floor """
+    def __init__(self, value):
+        super().__init__(value)
+
+    def __str__(self): return f"floor({self.value.__str__()})"
+
+class Ceil(UnaryOperator):
+    """ Rappresenta l'operatore di ceil """
+    def __init__(self, value):
+        super().__init__(value)
+
+    def __str__(self): return f"ceil({self.value.__str__()})"
+
+
 # ----------------------------------------- # CLASSI CHE DEFINISCONO ALTRI TAG GENERICI # ----------------------------------------------- #
 
 
@@ -544,6 +559,8 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Exp"            : (Exp,              1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Log"            : (Log,              1),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Log10"          : (Log10,            1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}floor"          : (Floor,            1),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}ceil"           : (Ceil,             1),
     # BinaryOperator
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Add"            : (Add,              0),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sub"            : (Sub,              0),
