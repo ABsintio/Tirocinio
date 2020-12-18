@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD319"
+  modelIdentifier="BIOMD319"
+  guid="{91a0d106-0fbf-40fe-b243-a86ccdd6ff3a}"
+  generationDateAndTime="2020-12-19T00:48:02"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="3"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="alpha"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="alpha"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="beta"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="beta"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="gamma"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="gamma"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(alpha)"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="alpha"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(beta)"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="beta"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(gamma)"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="gamma"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="L1_1"  valueReference="6" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="500000000.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="L1_1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="L2_2"  valueReference="7" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="100.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="L2_2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="cell"  valueReference="8" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="cell"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d_2"  valueReference="9" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d_2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ks_3"  valueReference="10" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.99" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ks_3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="sigma1_1"  valueReference="11" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="10.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="sigma1_1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="sigma2_2"  valueReference="12" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="10.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="sigma2_2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="v_Km1_0"  valueReference="13" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.45" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="v_Km1_0"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="L1_1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>500000000.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="L2_2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="cell"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d_2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ks_3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.99</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="sigma1_1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="sigma2_2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="v_Km1_0"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.45</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="gamma"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:RealLiteral>0.02</exp:RealLiteral>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="sigma2_2"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="beta"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Add>
+                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="d_2"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="beta"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Add>
+                  <exp:Div>
+                    <exp:Pow>
+                      <exp:Add>
+                        <exp:RealLiteral>1.0</exp:RealLiteral>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="gamma"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                      <exp:RealLiteral>2.0</exp:RealLiteral>
+                    </exp:Pow>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="L2_2"/>
+                      </exp:Identifier>
+                      <exp:Pow>
+                        <exp:Mul>
+                          <exp:Add>
+                            <exp:RealLiteral>1.0</exp:RealLiteral>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="d_2"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="beta"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                          </exp:Add>
+                          <exp:Add>
+                            <exp:RealLiteral>1.0</exp:RealLiteral>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="gamma"/>
+                            </exp:Identifier>
+                          </exp:Add>
+                        </exp:Mul>
+                        <exp:RealLiteral>2.0</exp:RealLiteral>
+                      </exp:Pow>
+                    </exp:Add>
+                  </exp:Div>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="ks_3"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="gamma"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="beta"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:RealLiteral>50.0</exp:RealLiteral>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="sigma1_1"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="alpha"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Add>
+                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="alpha"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                  <exp:Div>
+                    <exp:Pow>
+                      <exp:Add>
+                        <exp:RealLiteral>1.0</exp:RealLiteral>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="beta"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                      <exp:RealLiteral>2.0</exp:RealLiteral>
+                    </exp:Pow>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="L1_1"/>
+                      </exp:Identifier>
+                      <exp:Pow>
+                        <exp:Mul>
+                          <exp:Add>
+                            <exp:RealLiteral>1.0</exp:RealLiteral>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="alpha"/>
+                            </exp:Identifier>
+                          </exp:Add>
+                          <exp:Add>
+                            <exp:RealLiteral>1.0</exp:RealLiteral>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="beta"/>
+                            </exp:Identifier>
+                          </exp:Add>
+                        </exp:Mul>
+                        <exp:RealLiteral>2.0</exp:RealLiteral>
+                      </exp:Pow>
+                    </exp:Add>
+                  </exp:Div>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="sigma2_2"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="beta"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Add>
+                  <exp:RealLiteral>1.0</exp:RealLiteral>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d_2"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="beta"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Add>
+                <exp:Div>
+                  <exp:Pow>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="gamma"/>
+                      </exp:Identifier>
+                    </exp:Add>
+                    <exp:RealLiteral>2.0</exp:RealLiteral>
+                  </exp:Pow>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="L2_2"/>
+                    </exp:Identifier>
+                    <exp:Pow>
+                      <exp:Mul>
+                        <exp:Add>
+                          <exp:RealLiteral>1.0</exp:RealLiteral>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="d_2"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="beta"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                        </exp:Add>
+                        <exp:Add>
+                          <exp:RealLiteral>1.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="gamma"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:RealLiteral>2.0</exp:RealLiteral>
+                    </exp:Pow>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="alpha"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="v_Km1_0"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="sigma1_1"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="alpha"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Add>
+                  <exp:RealLiteral>1.0</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="alpha"/>
+                  </exp:Identifier>
+                </exp:Add>
+                <exp:Div>
+                  <exp:Pow>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="beta"/>
+                      </exp:Identifier>
+                    </exp:Add>
+                    <exp:RealLiteral>2.0</exp:RealLiteral>
+                  </exp:Pow>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="L1_1"/>
+                    </exp:Identifier>
+                    <exp:Pow>
+                      <exp:Mul>
+                        <exp:Add>
+                          <exp:RealLiteral>1.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="alpha"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                        <exp:Add>
+                          <exp:RealLiteral>1.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="beta"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:RealLiteral>2.0</exp:RealLiteral>
+                    </exp:Pow>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="gamma"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.3367</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="beta"/>
+        </exp:Identifier>
+        <exp:RealLiteral>188.8</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="alpha"/>
+        </exp:Identifier>
+        <exp:RealLiteral>29.19988</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
