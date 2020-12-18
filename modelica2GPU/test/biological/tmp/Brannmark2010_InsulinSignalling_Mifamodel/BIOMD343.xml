@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD343"
+  modelIdentifier="BIOMD343"
+  guid="{b2347515-dc75-4b9a-88b7-68a9d61a1720}"
+  generationDateAndTime="2020-12-18T22:18:03"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="10"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="IR"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IR"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IRS"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRS"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IRSip"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRSip"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IRi"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IRins"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRins"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IRip"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRip"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IRp"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="X"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="X"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Xp"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Xp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="measIRp"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="measIRp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(IR)"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IR"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IRS)"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRS"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IRSip)"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRSip"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IRi)"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IRins)"  valueReference="14" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRins"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IRip)"  valueReference="15" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRip"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IRp)"  valueReference="16" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(X)"  valueReference="17" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="X"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Xp)"  valueReference="18" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Xp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(measIRp)"  valueReference="19" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="measIRp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="V1a"  valueReference="20" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V1a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V1b"  valueReference="21" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V1b"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V1c"  valueReference="22" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V1c"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V1d"  valueReference="23" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V1d"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V1e"  valueReference="24" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V1e"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V1g"  valueReference="25" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V1g"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V1r"  valueReference="26" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V1r"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V2"  valueReference="27" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V3"  valueReference="28" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vm2"  valueReference="29" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vm2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vm3"  valueReference="30" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vm3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="intamount"  valueReference="31" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="intamount"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="measanna"  valueReference="32" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="measanna"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="measdosR"  valueReference="33" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="measdosR"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="measdoublestep"  valueReference="34" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="measdoublestep"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="simXP"  valueReference="35" variability="continuous" causality="internal" alias="Xp">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="simXP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="compartment_0000001"  valueReference="36" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="compartment_0000001"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ins"  valueReference="37" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="100.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ins"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1a"  valueReference="38" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.3892881852" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1abasic"  valueReference="39" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.012452744" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1abasic"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1b"  valueReference="40" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.02000224505" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1b"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1c"  valueReference="41" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.3635167928" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1c"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1d"  valueReference="42" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1580.6782649401" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1d"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1e"  valueReference="43" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="4.38334e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1e"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1f"  valueReference="44" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="20.0726035037" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1f"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1g"  valueReference="45" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="286.6994648072" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1g"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1r"  valueReference="46" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.6327773442" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1r"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k21"  valueReference="47" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.6722503302" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k21"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k22"  valueReference="48" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.036381619" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k22"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k3"  valueReference="49" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.6286590231" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="km2"  valueReference="50" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="32.5942371891" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="km2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="km3"  valueReference="51" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.1131073982" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="km3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ky1"  valueReference="52" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="152.9631668536" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ky1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ky2"  valueReference="53" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="8936.219557405" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ky2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kyDosR"  valueReference="54" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="13740.4321729991" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kyDosR"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kyanna"  valueReference="55" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="16760.1203140926" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kyanna"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="compartment_0000001"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ins"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.3892881852</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1abasic"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.012452744</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1b"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.02000224505</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1c"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.3635167928</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1d"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1580.6782649401</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1e"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>4.38334e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1f"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>20.0726035037</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1g"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>286.6994648072</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1r"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.6327773442</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k21"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.6722503302</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k22"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.036381619</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.6286590231</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="km2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>32.5942371891</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="km3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.1131073982</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ky1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>152.9631668536</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ky2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>8936.219557405</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kyDosR"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>13740.4321729991</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kyanna"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>16760.1203140926</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="measIRp"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="intamount"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.1</exp:RealLiteral>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IRi"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IRip"/>
+            </exp:Identifier>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vm3"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="km3"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Xp"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V3"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k3"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="X"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IRSip"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="X"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Vm3"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V3"/>
+          </exp:Identifier>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Xp"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V3"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Vm3"/>
+          </exp:Identifier>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vm2"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="km2"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRSip"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V2"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k21"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IRp"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k22"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IRip"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IRS"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRS"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Vm2"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V2"/>
+          </exp:Identifier>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRSip"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V2"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Vm2"/>
+          </exp:Identifier>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V1r"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k1r"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRi"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V1g"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k1g"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRp"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V1e"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRip"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k1e"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k1f"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Xp"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:RealLiteral>1.0</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Xp"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRi"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V1e"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V1r"/>
+          </exp:Identifier>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V1d"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k1d"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRp"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRip"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V1d"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V1e"/>
+          </exp:Identifier>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V1c"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k1c"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRins"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRp"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V1c"/>
+          </exp:Identifier>
+          <exp:Sub>
+              <exp:Neg>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="V1d"/>
+                </exp:Identifier>
+              </exp:Neg>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="V1g"/>
+            </exp:Identifier>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V1b"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k1b"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRins"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V1a"/>
+        </exp:Identifier>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k1a"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ins"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IR"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k1abasic"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IR"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IR"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V1b"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="V1r"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V1g"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V1a"/>
+              </exp:Identifier>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRins"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V1a"/>
+          </exp:Identifier>
+          <exp:Sub>
+              <exp:Neg>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="V1b"/>
+                </exp:Identifier>
+              </exp:Neg>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="V1c"/>
+            </exp:Identifier>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="measdoublestep"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="ky2"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRSip"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="measdosR"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="kyDosR"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRSip"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="measanna"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="kyanna"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRSip"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Xp"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="X"/>
+        </exp:Identifier>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IRSip"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IRS"/>
+        </exp:Identifier>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IRi"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IRip"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IRp"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IRins"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IR"/>
+        </exp:Identifier>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="measIRp"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
