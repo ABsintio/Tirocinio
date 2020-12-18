@@ -9,6 +9,8 @@ model BIOMD320 "Grange2001 - PK interaction of L-dopa and benserazide"
             y := x^power;
     end pow;
 
+
+
     parameter Real F_G = 1.0;
     parameter Real Q = 0.828;
     parameter Real f_H = 0.13;
@@ -29,7 +31,7 @@ model BIOMD320 "Grange2001 - PK interaction of L-dopa and benserazide"
     parameter Real L_Dopa_per_kg_rat = 404.0;
     parameter Real Benserazide_per_kg_rat = 78.0;
     parameter Real rat_body_mass = 0.25;
-    parameter Real A_bens_tot = 0.0;
+    parameter Real A_bens_tot = Benserazide_per_kg_rat * rat_body_mass;
     parameter Real B_M_frac = 0.07;
     parameter Real gut = 1.0;
     parameter Real Vdopa = 1.0;
@@ -60,9 +62,9 @@ model BIOMD320 "Grange2001 - PK interaction of L-dopa and benserazide"
     Real C2_B;
 
 initial equation
-    A_dopa = 0.0;
-    A_B = 0.0;
-    A_M = 0.0;
+    A_dopa = L_Dopa_per_kg_rat * rat_body_mass;
+    A_B = A_bens_tot * (1 - B_M_frac);
+    A_M = A_bens_tot * B_M_frac;
     C_dopa = 0.0;
     C_OMD = 0.0;
     C1_M = 0.0;

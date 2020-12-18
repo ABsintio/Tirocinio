@@ -9,6 +9,8 @@ model BIOMD237 "Schaber2006_Pheromone_Starvation_Crosstalk"
             y := x^power;
     end pow;
 
+
+
     parameter Real alphaA = 1.0;
     parameter Real betaA = 1.0;
     parameter Real alphat = 0.0;

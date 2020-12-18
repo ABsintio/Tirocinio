@@ -9,6 +9,8 @@ model BIOMD342 "Zi2011_TGF-beta_Pathway"
             y := x^power;
     end pow;
 
+
+
     parameter Real stimulation_type = 1.0;
     parameter Real single_pulse_duration = 0.5;
     parameter Real ki = 0.333;
@@ -46,7 +48,7 @@ model BIOMD342 "Zi2011_TGF-beta_Pathway"
     Real totalSmad2c(start=60.6);
     Real totalSmad2n(start=28.5);
     Real medium_TGF_beta_amount(start=0.0);
-    Real TGF_beta_dose_mol_per_cell(start=0.0);
+    Real TGF_beta_dose_mol_per_cell(start=TGF_beta_ex * 1e-9 * Vmed * 6e23);
     Real koff_ns(start=2.03306);
 
     Real TGF_beta_ex;
@@ -73,10 +75,10 @@ model BIOMD342 "Zi2011_TGF-beta_Pathway"
 
 initial equation
     TGF_beta_ex = 0.05;
-    T1R_surf = 0.702494;
-    T1R_endo = 6.52344;
-    T2R_surf = 0.201077;
-    T2R_endo = 1.43997;
+    T1R_surf = (k_T1R * kdeg_T1R + k_T1R * kr) / (kdeg_T1R * ki);
+    T1R_endo = k_T1R / kdeg_T1R;
+    T2R_surf = (k_T2R * kdeg_T2R + k_T2R * kr) / (kdeg_T2R * ki);
+    T2R_endo = k_T2R / kdeg_T2R;
     LRC_surf = 0.0;
     LRC_endo = 0.0;
     Smad2c = 60.6;

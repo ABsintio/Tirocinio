@@ -9,6 +9,8 @@ model BIOMD294 "Restif2007 - Vaccination invasion"
             y := x^power;
     end pow;
 
+
+
     parameter Real l_e = 50.0;
     parameter Real R0 = 17.0;
     parameter Real p = 1.0;

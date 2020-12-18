@@ -9,6 +9,8 @@ model BIOMD341 "Topp2000_BetaCellMass_Diabetes"
             y := x^power;
     end pow;
 
+
+
     parameter Real si = 0.72;
     parameter Real Eg0 = 1.44;
     parameter Real R0 = 864.0;

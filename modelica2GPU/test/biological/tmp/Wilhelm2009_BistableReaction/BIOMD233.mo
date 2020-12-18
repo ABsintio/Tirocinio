@@ -9,6 +9,8 @@ model BIOMD233 "Wilhelm2009_BistableReaction"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1_0 = 8.0;
     parameter Real k2_1 = 1.0;
     parameter Real k3_2 = 1.0;

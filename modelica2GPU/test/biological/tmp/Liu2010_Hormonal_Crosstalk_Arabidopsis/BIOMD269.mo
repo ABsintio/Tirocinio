@@ -9,6 +9,188 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
             y := x^power;
     end pow;
 
+
+    function function_1
+        	input Real k3;
+	input Real k3a;
+	input Real X;
+	input Real Auxin;
+        output Real y;
+    algorithm
+        y =  (k3 + k3a * X) * Auxin;
+    end function_1;
+
+
+    function function_2
+        	input Real k1a;
+	input Real X;
+	input Real k1;
+        output Real y;
+    algorithm
+        y =  k1a / (1 + X / k1);
+    end function_2;
+
+
+    function function_3
+        	input Real k2;
+	input Real k2a;
+	input Real ET;
+	input Real CK;
+	input Real k2b;
+	input Real PLSp;
+	input Real k2c;
+        output Real y;
+    algorithm
+        y =  k2 + k2a * (ET / (1 + CK / k2b)) * (PLSp / (k2c + PLSp));
+    end function_3;
+
+
+    function function_4
+        	input Real k4;
+	input Real Auxin;
+	input Real Ra;
+        output Real y;
+    algorithm
+        y =  k4 * Auxin * Ra;
+    end function_4;
+
+
+    function function_6
+        	input Real k6;
+	input Real Ra_star;
+	input Real ET;
+	input Real k6a;
+        output Real y;
+    algorithm
+        y =  k6 * Ra_star / (1 + ET / k6a);
+    end function_6;
+
+
+    function function_7
+        	input Real k7;
+	input Real PLSm;
+        output Real y;
+    algorithm
+        y =  k7 * PLSm;
+    end function_7;
+
+
+    function function_8
+        	input Real k8;
+	input Real PLSm;
+        output Real y;
+    algorithm
+        y =  k8 * PLSm;
+    end function_8;
+
+
+    function function_9
+        	input Real k9;
+	input Real PLSp;
+        output Real y;
+    algorithm
+        y =  k9 * PLSp;
+    end function_9;
+
+
+    function function_10
+        	input Real k10;
+	input Real PLSp;
+	input Real k10a;
+	input Real Re;
+        output Real y;
+    algorithm
+        y =  (k10 + k10a * PLSp) * Re;
+    end function_10;
+
+
+    function function_12
+        	input Real Re_star;
+	input Real ET;
+	input Real k11;
+        output Real y;
+    algorithm
+        y =  k11 * Re_star * ET;
+    end function_12;
+
+
+    function function_13
+        	input Real Auxin;
+	input Real CK;
+	input Real k12;
+	input Real k12a;
+        output Real y;
+    algorithm
+        y =  k12 + k12a * Auxin * CK;
+    end function_13;
+
+
+    function function_15
+        	input Real ET;
+	input Real k13;
+        output Real y;
+    algorithm
+        y =  k13 * ET;
+    end function_15;
+
+
+    function function_16
+        	input Real Re_star;
+	input Real k14;
+	input Real CTR1;
+        output Real y;
+    algorithm
+        y =  k14 * Re_star * CTR1;
+    end function_16;
+
+
+    function function_17
+        	input Real CTR1_star;
+	input Real k15;
+        output Real y;
+    algorithm
+        y =  k15 * CTR1_star;
+    end function_17;
+
+
+    function function_20
+        	input Real Auxin;
+	input Real k18a;
+	input Real k18;
+        output Real y;
+    algorithm
+        y =  k18a / (1 + Auxin / k18);
+    end function_20;
+
+
+    function function_18
+        	input Real CTR1_star;
+	input Real k16;
+	input Real k16a;
+        output Real y;
+    algorithm
+        y =  k16 - k16a * CTR1_star;
+    end function_18;
+
+
+    function function_19
+        	input Real X;
+	input Real k17;
+        output Real y;
+    algorithm
+        y =  k17 * X;
+    end function_19;
+
+
+    function function_21
+        	input Real CK;
+	input Real k19;
+        output Real y;
+    algorithm
+        y =  k19 * CK;
+    end function_21;
+
+
     parameter Real k1a = 1.0;
     parameter Real k1 = 1.0;
     parameter Real k2 = 0.2;

@@ -9,6 +9,8 @@ model BIOMD253 "Teusink1998_Glycolysis_TurboDesign"
             y := x^power;
     end pow;
 
+
+
     parameter Real KRHMP = 1.0;
     parameter Real gR = 10.0;
     parameter Real c1 = 0.0005;

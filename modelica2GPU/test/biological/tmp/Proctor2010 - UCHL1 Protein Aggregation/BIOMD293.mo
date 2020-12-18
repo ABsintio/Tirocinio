@@ -9,6 +9,8 @@ model BIOMD293 "Proctor2010 - UCHL1 Protein Aggregation"
             y := x^power;
     end pow;
 
+
+
     parameter Real ksynNatP = 2.4;
     parameter Real kmisfold = 4e-05;
     parameter Real krefold = 8e-05;

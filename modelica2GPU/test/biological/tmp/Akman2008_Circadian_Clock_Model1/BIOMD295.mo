@@ -9,6 +9,8 @@ model BIOMD295 "Akman2008_Circadian_Clock_Model1"
             y := x^power;
     end pow;
 
+
+
     parameter Real vs = 1.2236333742524;
     parameter Real ki = 5.04543346939346;
     parameter Real n = 6.3958;

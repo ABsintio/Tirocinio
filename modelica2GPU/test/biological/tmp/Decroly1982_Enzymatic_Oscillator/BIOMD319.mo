@@ -9,6 +9,8 @@ model BIOMD319 "Decroly1982_Enzymatic_Oscillator"
             y := x^power;
     end pow;
 
+
+
     parameter Real v_Km1_0 = 0.45;
     parameter Real L1_1 = 500000000.0;
     parameter Real sigma1_1 = 10.0;

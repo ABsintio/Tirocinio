@@ -9,6 +9,8 @@ model BIOMD335 "Hockin2002_BloodCoagulation"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 0.0031;
     parameter Real k2 = 3200000.0;
     parameter Real k3 = 0.0031;

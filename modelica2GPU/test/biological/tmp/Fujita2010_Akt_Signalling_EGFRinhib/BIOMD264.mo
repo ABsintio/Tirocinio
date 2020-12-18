@@ -9,6 +9,8 @@ model BIOMD264 "Fujita2010_Akt_Signalling_EGFRinhib"
             y := x^power;
     end pow;
 
+
+
     parameter Real pEGFR_scaleFactor = 0.000181735;
     parameter Real pAkt_scaleFactor = 60.0588;
     parameter Real pS6_scaleFactor = 49886.2;
@@ -54,7 +56,7 @@ model BIOMD264 "Fujita2010_Akt_Signalling_EGFRinhib"
     Real Inhibitor;
 
 initial equation
-    EGFR = 68190.2000000002;
+    EGFR = pro_EGFR / (1 + inhibitor_binding_kf * Inhibitor / (inhibitor_binding_kb + EGFR_turnover));
     pEGFR = 0.0;
     pEGFR_Akt = 0.0;
     Akt = 0.043309;
@@ -64,7 +66,7 @@ initial equation
     pS6 = 0.0;
     pro_EGFR = 68190.2000000002;
     EGF_EGFR = 0.0;
-    EGFR_i = 0.0;
+    EGFR_i = pro_EGFR - EGFR;
     EGF_EGFR_i = 0.0;
     Inhibitor = 0.0;
 

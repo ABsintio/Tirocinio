@@ -9,6 +9,8 @@ model BIOMD249 "Restif2006 - Whooping cough"
             y := x^power;
     end pow;
 
+
+
     parameter Real l_e = 50.0;
     parameter Real R0_1 = 17.0;
     parameter Real R0_2 = 17.0;

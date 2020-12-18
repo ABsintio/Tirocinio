@@ -9,6 +9,8 @@ model BIOMD299 "Leloup1999_CircadianRhythms_Neurospora"
             y := x^power;
     end pow;
 
+
+
     parameter Real vs = 1.6;
     parameter Real vm = 0.505;
     parameter Real Km = 0.5;

@@ -9,6 +9,8 @@ model BIOMD278 "Lemaire2004 - Role of RANK RANKL OPG pathway in bone remodelling
             y := x^power;
     end pow;
 
+
+
     parameter Real C_s = 0.005;
     parameter Real D_A = 0.7;
     parameter Real d_B = 0.7;

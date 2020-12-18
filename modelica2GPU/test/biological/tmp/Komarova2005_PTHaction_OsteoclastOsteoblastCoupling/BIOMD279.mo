@@ -9,6 +9,8 @@ model BIOMD279 "Komarova2005_PTHaction_OsteoclastOsteoblastCoupling"
             y := x^power;
     end pow;
 
+
+
     parameter Real alpha1 = 3.0;
     parameter Real beta1 = 0.2;
     parameter Real alpha2 = 4.0;

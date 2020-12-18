@@ -9,6 +9,8 @@ model BIOMD263 "Fujita2010_Akt_Signalling_NGF"
             y := x^power;
     end pow;
 
+
+
     parameter Real pTrkA_scaleFactor = 0.848783474941268;
     parameter Real pAkt_scaleFactor = 2.42381211094508;
     parameter Real pS6_scaleFactor = 0.525842718263069;
@@ -49,7 +51,7 @@ model BIOMD263 "Fujita2010_Akt_Signalling_NGF"
     Real NGF_TrkA;
 
 initial equation
-    TrkA = 8.52065090518276;
+    TrkA = pro_TrkA;
     pTrkA = 0.0;
     pTrkA_Akt = 0.0;
     Akt = 1.15594897919397;

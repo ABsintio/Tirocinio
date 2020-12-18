@@ -9,6 +9,8 @@ model BIOMD304 "Plant1981_BurstingNerveCells"
             y := x^power;
     end pow;
 
+
+
     parameter Real V_I = 30.0;
     parameter Real V_K = -75.0;
     parameter Real V_L = -40.0;

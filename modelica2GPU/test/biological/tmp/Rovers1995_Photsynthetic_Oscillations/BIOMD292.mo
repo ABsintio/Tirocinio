@@ -9,6 +9,8 @@ model BIOMD292 "Rovers1995_Photsynthetic_Oscillations"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 0.123;
     parameter Real k2 = 0.625;
     parameter Real k3 = 0.3;

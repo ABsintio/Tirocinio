@@ -9,6 +9,8 @@ model BIOMD282 "Chance1952_Catalase_Mechanism"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 11.0;
     parameter Real k2 = 0.0;
     parameter Real k4_prime = 16.6;

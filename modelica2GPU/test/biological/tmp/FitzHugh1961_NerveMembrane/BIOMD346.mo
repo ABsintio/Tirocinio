@@ -9,6 +9,8 @@ model BIOMD346 "FitzHugh1961_NerveMembrane"
             y := x^power;
     end pow;
 
+
+
     parameter Real a = 0.7;
     parameter Real b = 0.8;
     parameter Real c = 3.0;
@@ -25,8 +27,8 @@ initial equation
 
 equation
 
-    der(x) = c * (x + -(pow(x, 3) / 3) + y + z);
-    der(y) = -(1 / c) * (x + -a + b * y);
+    der(x) = c * (x -(pow(x, 3) / 3) + y + z);
+    der(y) = -(1 / c) * (x -a + b * y);
     der(z)=0.0;
 
 

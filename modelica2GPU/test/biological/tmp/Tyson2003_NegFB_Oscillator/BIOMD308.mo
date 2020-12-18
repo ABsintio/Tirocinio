@@ -9,6 +9,8 @@ model BIOMD308 "Tyson2003_NegFB_Oscillator"
             y := x^power;
     end pow;
 
+
+
     parameter Real k0 = 0.0;
     parameter Real k1 = 1.0;
     parameter Real k2 = 0.01;

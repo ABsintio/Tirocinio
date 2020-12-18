@@ -9,6 +9,8 @@ model BIOMD321 "Grange2001 - L Dopa PK model"
             y := x^power;
     end pow;
 
+
+
     parameter Real F_G = 0.24;
     parameter Real Q = 0.828;
     parameter Real f_H = 0.13;
@@ -37,7 +39,7 @@ model BIOMD321 "Grange2001 - L Dopa PK model"
     Real C_OMD;
 
 initial equation
-    A_dopa = 0.0;
+    A_dopa = L_Dopa_per_kg_rat * rat_body_mass;
     C_dopa = 0.0;
     C_OMD = 0.0;
 

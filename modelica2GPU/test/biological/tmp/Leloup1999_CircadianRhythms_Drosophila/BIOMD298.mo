@@ -9,6 +9,8 @@ model BIOMD298 "Leloup1999_CircadianRhythms_Drosophila"
             y := x^power;
     end pow;
 
+
+
     parameter Real vsP = 1.1;
     parameter Real vmP = 1.0;
     parameter Real KmP = 0.2;

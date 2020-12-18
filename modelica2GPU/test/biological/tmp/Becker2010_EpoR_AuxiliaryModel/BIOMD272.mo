@@ -9,6 +9,8 @@ model BIOMD272 "Becker2010_EpoR_AuxiliaryModel"
             y := x^power;
     end pow;
 
+
+
     parameter Real kt = 0.0329366;
     parameter Real Bmax_SAv = 76.0;
     parameter Real kon_SAv = 2.29402e-06;

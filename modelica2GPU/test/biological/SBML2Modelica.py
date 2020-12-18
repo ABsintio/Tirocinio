@@ -134,6 +134,9 @@ class Specie:
     
     def add_reaction_as_modifier(self, reaction):
         self.involved_as_modifier.append(reaction)
+
+    def set_new_ivalue(self, new):
+        self.ivalue = new
     
 
 class Compartment:
@@ -155,6 +158,9 @@ class Parameter:
 
     def __str__(self):
         return obj2str(self)
+
+    def set_value(self, new_value):
+        self.value = new_value
 
 
 class Reaction:
@@ -300,7 +306,7 @@ class SBMLTranslator:
         lines = []
         for param_id, param_obj in self.model.parameters.items():
             if not param_obj.constant:
-                ivalue = param_obj.value if not math.isnan(param_obj.value) else "0.0"
+                ivalue = param_obj.value if isinstance(param_obj.value, str) or (not math.isnan(param_obj.value)) else "0.0"
                 lines.append(line_code.format(param_name=param_id, ivalue=ivalue))
         return lines
 
@@ -308,7 +314,7 @@ class SBMLTranslator:
         return [f"    Real {name};" for name in self.model.species]
 
     def getinitialequation_modelica_code(self):
-        return [f"    {name} = {species.ivalue};" for name, species in self.model.species.items() if not math.isnan(species.ivalue) and name not in self.model.assignment_rules.keys()]
+        return [f"    {name} = {species.ivalue};" for name, species in self.model.species.items() if isinstance(species.ivalue, str) or (not math.isnan(species.ivalue) and name not in self.model.assignment_rules.keys())]
     
     def getraterules_modelica_code(self):
         return [f"    {rate_rule.lhs} = {rate_rule.rhs};" for rate_rule in self.model.rate_rules_dict.values() if rate_rule.lhs[4:-1] not in self.model.assignment_rules.keys()]
@@ -378,6 +384,7 @@ class SBMLExtrapolator:
         self.getreactions()
         self.getevents()
         self.getfunctions()
+        self.getinit_assignment()
     
     def getmodelname(self):
         self.nome = self.model.getName()
@@ -515,13 +522,23 @@ class SBMLExtrapolator:
             math_formula = function_mathml.split(",")[-1]
             self.function_dict[function_id] = Function(function_id, input_params, math_formula)
 
+    def getinit_assignment(self):
+        for init_ass in self.model.getListOfInitialAssignments():
+            symbol = init_ass.getSymbol()
+            to = libsbml.formulaToL3String(init_ass.getMath())
+            try:
+                self.species_dict[symbol].set_new_ivalue(to)
+            except KeyError:
+                self.parameter_dict[symbol].set_value(to)
+            
+            
 
 def save_modelica(modelica_model, modelica_file):
     try:
         stream = open(modelica_file, mode="x")
     except FileExistsError:
         stream = open(modelica_file, mode="w")
-    stream.write(modelica_model)
+    stream.write(modelica_model.replace("+ -", "-"))
     stream.flush()
     stream.close()
 
@@ -575,7 +592,7 @@ def create_build_mos(output_directory, file_name):
     print(f"Created build.mos file into -> {output_directory}/build.mos")
 
 def create_clear_sh(output_directory, file_name):
-    clear_sh = f"rm *.o *.c *.h *.json {file_name} *.mat *.makefile *.log *.libs *_init.xml"
+    clear_sh = f"rm *.o *.c *.h *.json {file_name} *.makefile *.log *.libs *_init.xml"
     try:
         stream = open(os.path.join(output_directory, "clear.sh"), mode="x")
     except FileExistsError:
@@ -599,6 +616,7 @@ def create_omcplot_py(output_directory, species_list):
 
 
 def run(file, output_directory):
+    print(file)
     sbmlext = SBMLExtrapolator(file)
     sbmlmodel = SBMLModel(
         sbmlext.nome, 

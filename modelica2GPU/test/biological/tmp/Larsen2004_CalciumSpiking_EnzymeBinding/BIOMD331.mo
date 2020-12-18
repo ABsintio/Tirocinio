@@ -9,6 +9,8 @@ model BIOMD331 "Larsen2004_CalciumSpiking_EnzymeBinding"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 0.01;
     parameter Real k2 = 1.65;
     parameter Real k3 = 0.64;

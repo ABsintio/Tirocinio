@@ -9,6 +9,8 @@ model BIOMD326 "DellOrco2009_phototransduction"
             y := x^power;
     end pow;
 
+
+
     parameter Real Rtot = 3600000000.0;
     parameter Real PDEtot = 13350000.0;
     parameter Real Gtot = 360000000.0;

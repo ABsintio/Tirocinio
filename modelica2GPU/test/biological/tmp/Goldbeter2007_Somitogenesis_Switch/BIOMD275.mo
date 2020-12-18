@@ -9,6 +9,8 @@ model BIOMD275 "Goldbeter2007_Somitogenesis_Switch"
             y := x^power;
     end pow;
 
+
+
     parameter Real kd5 = 0.0;
     parameter Real kd1 = 1.0;
     parameter Real V0 = 0.365;

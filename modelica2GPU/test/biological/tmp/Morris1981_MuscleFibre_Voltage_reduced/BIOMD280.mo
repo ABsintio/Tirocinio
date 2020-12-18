@@ -9,6 +9,8 @@ model BIOMD280 "Morris1981_MuscleFibre_Voltage_reduced"
             y := x^power;
     end pow;
 
+
+
     parameter Real V1 = 10.0;
     parameter Real V2 = 15.0;
     parameter Real V3 = -1.0;
@@ -28,7 +30,7 @@ model BIOMD280 "Morris1981_MuscleFibre_Voltage_reduced"
     Real V(start=-50.0);
     Real Ninf(start=0.0);
     Real lambdaN(start=0.0);
-    Real N(start=0.0);
+    Real N(start=(1 + tanh((V - V3) / V4)) / 2);
 
 
 

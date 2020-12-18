@@ -9,6 +9,8 @@ model BIOMD266 "Voit2003_Trehalose_Cycle"
             y := x^power;
     end pow;
 
+
+
     parameter Real heat_shock = 0.0;
     parameter Real cell = 1.0;
     parameter Real external = 1.0;

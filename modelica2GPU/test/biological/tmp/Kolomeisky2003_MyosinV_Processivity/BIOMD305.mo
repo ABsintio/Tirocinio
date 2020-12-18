@@ -9,6 +9,8 @@ model BIOMD305 "Kolomeisky2003_MyosinV_Processivity"
             y := x^power;
     end pow;
 
+
+
     parameter Real k_1 = 0.7;
     parameter Real th_1 = -0.01;
     parameter Real Force = 0.0;

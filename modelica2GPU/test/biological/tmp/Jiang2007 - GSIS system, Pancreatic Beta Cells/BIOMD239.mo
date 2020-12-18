@@ -9,6 +9,8 @@ model BIOMD239 "Jiang2007 - GSIS system, Pancreatic Beta Cells"
             y := x^power;
     end pow;
 
+
+
     parameter Real flow = 0.011;
     parameter Real Glc_F_0 = 64.941;
     parameter Real V1_3 = 0.0005;

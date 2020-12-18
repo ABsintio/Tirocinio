@@ -1,5 +1,5 @@
 
-model BIOMD349.sbml "Fridlyand2010_GlucoseSensitivity_B"
+model BIOMD349 "Fridlyand2010_GlucoseSensitivity_B"
 
     function pow
         input  Real x;
@@ -116,8 +116,8 @@ model BIOMD349.sbml "Fridlyand2010_GlucoseSensitivity_B"
     Real NADm(start=0.0);
     Real nKCa(start=0.0);
     Real PVCa(start=0.0);
-    Real Vp(start=0.0);
-    Real Cac(start=0.0);
+    Real Vp(start=Vp_init);
+    Real Cac(start=Cac_init);
 
     Real G3P;
     Real PYR;
@@ -128,18 +128,18 @@ model BIOMD349.sbml "Fridlyand2010_GlucoseSensitivity_B"
     Real Cam;
 
 initial equation
-    G3P = 0.0;
-    PYR = 0.0;
-    ATP = 0.0;
-    NADHm = 0.0;
-    NADHc = 0.0;
-    Vm = 0.0;
-    Cam = 0.0;
+    G3P = G3P_init;
+    PYR = PYR_init;
+    ATP = ATP_init;
+    NADHm = NADHm_init;
+    NADHc = NADHc_init;
+    Vm = Vm_init;
+    Cam = Cam_init;
 
 equation
-    ACa = 1 + -(1 * (1 / exp(Cam * (1 / KpCam))));
+    ACa = 1 -(1 * (1 / exp(Cam * (1 / KpCam))));
     AD = MgADP * MgADP * (1 / (MgADP * MgADP + Kmadp * Kmadp));
-    ADP = Ao + -ATP;
+    ADP = Ao -ATP;
     AT = pow(Vm, hp) * (1 / (pow(Kmph, hp) + pow(Vm, hp)));
     DelJNCa = 1 + pow(Ni, 3) * (1 / pow(KNaj, 3)) + Cam * (1 / KCaj) + pow(Ni, 3) * Cam * (1 / (pow(KNaj, 3) * KCaj)) + pow(Nam, 3) * (1 / pow(KNaj, 3)) + Cac * (1 / KCaj) + pow(Nam, 3) * Cac * (1 / (pow(KNaj, 3) * KCaj));
     FDe = NADHm * (1 / (KmNh + NADHm));
@@ -157,28 +157,28 @@ equation
     Jhl = (Plb + Plr) * exp(klp * Vm);
     Jhres = Vme * FTe * FDe;
     JLDH = Vmldh * FLNADc * PYR * (1 / (KmLD + PYR));
-    JNCa = Vmnc * (exp(0.5 * Vm * pow(Ni, 3) * Cam * (1 / (Tv * pow(KNaj, 3) * KCaj))) + -exp(-(0.5 * Vm * pow(Nam, 3) * Cac * (1 / (Tv * pow(KNaj, 3) * KCaj))))) * (1 / DelJNCa);
+    JNCa = Vmnc * (exp(0.5 * Vm * pow(Ni, 3) * Cam * (1 / (Tv * pow(KNaj, 3) * KCaj))) -exp(-(0.5 * Vm * pow(Nam, 3) * Cac * (1 / (Tv * pow(KNaj, 3) * KCaj))))) * (1 / DelJNCa);
     JO2 = 0.1 * Jhres;
     Jph = Vmph * AD * AT * ACa;
     JPYR = Vmpdh * FPNAD * FPCa * FPYR;
     Jtnadh = Tnadh * FNADc * NADm * (1 / (KTNm + NADm * (1 / NADHm))) * (1 / NADHm);
-    Juni = PCa * ZCa * Vm * (am * Cam * exp(-(Vm * ZCa * (1 / Tv))) + -(ai * Cac)) * (1 / Tv) * (1 / (-1 + exp(-(Vm * ZCa * (1 / Tv)))));
+    Juni = PCa * ZCa * Vm * (am * Cam * exp(-(Vm * ZCa * (1 / Tv))) -(ai * Cac)) * (1 / Tv) * (1 / (-1 + exp(-(Vm * ZCa * (1 / Tv)))));
     MgADP = 0.055 * ADP;
-    NADc = Ntc + -NADHc;
-    NADm = Ntm + -NADHm;
+    NADc = Ntc -NADHc;
+    NADm = Ntm -NADHm;
     nKCa = pow(Cac, 3) * (1 / (0.015625 + pow(Cac, 3)));
-    PVCa = 1 * (1 / (1 + exp(0.105263157894737 * (-19 + -Vp))));
-    der(G3P) = (2 * JGlu + -Jgpd) * (1 / Vi) + -(kgpd * G3P);
-    der(PYR) = (Jgpd + -JPYR + -JLDH) * (1 / (Vi + Vmmit));
+    PVCa = 1 * (1 / (1 + exp(0.105263157894737 * (-19 -Vp))));
+    der(G3P) = (2 * JGlu -Jgpd) * (1 / Vi) -(kgpd * G3P);
+    der(PYR) = (Jgpd -JPYR -JLDH) * (1 / (Vi + Vmmit));
     der(ATP) = -((kATP + kATPCa * Cac) * ATP) + (2 * JGlu + 0.231 * Jph) * (1 / Vi);
-    der(NADHm) = (4.6 * JPYR + -(0.1 * Jhres) + Jtnadh) * (1 / Vmmit) + -(knadhm * NADHm);
-    der(NADHc) = (Jgpd + -Jtnadh + -JLDH) * (1 / Vi) + -(knadhc * NADHc);
-    der(Vm) = (Jhres + -Jph + -Jhl + -(2 * Juni) + -JNCa) * (1 / Cmit);
-    der(Cam) = fm * (Juni + -JNCa) * (1 / Vmmit);
+    der(NADHm) = (4.6 * JPYR -(0.1 * Jhres) + Jtnadh) * (1 / Vmmit) -(knadhm * NADHm);
+    der(NADHc) = (Jgpd -Jtnadh -JLDH) * (1 / Vi) -(knadhc * NADHc);
+    der(Vm) = (Jhres -Jph -Jhl -(2 * Juni) -JNCa) * (1 / Cmit);
+    der(Cam) = fm * (Juni -JNCa) * (1 / Vmmit);
     der(Vp) = -((IVCa + IKCa) * (1 / Cmp));
-    der(Cac) = -(fi * IVCa * (1 / (2 * F * Vci))) + -(ksg * Cac);
+    der(Cac) = -(fi * IVCa * (1 / (2 * F * Vci))) -(ksg * Cac);
 
 
 
 
-end BIOMD349.sbml;
+end BIOMD349;

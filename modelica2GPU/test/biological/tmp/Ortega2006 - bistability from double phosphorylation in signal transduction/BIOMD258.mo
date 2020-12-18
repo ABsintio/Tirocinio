@@ -9,6 +9,8 @@ model BIOMD258 "Ortega2006 - bistability from double phosphorylation in signal t
             y := x^power;
     end pow;
 
+
+
     parameter Real r31 = 1.0;
     parameter Real r24 = 1.0;
     parameter Real Chi14 = 1.1;

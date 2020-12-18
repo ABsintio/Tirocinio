@@ -9,6 +9,8 @@ model BIOMD246 "Vasalou2010_Pacemaker_Neuron_SCN"
             y := x^power;
     end pow;
 
+
+
     parameter Real v_vo = 0.09;
     parameter Real n_vo = 4.5;
     parameter Real K_vo = 4.5;
@@ -48,7 +50,7 @@ model BIOMD246 "Vasalou2010_Pacemaker_Neuron_SCN"
     parameter Real kd_mB = 0.01;
     parameter Real ks_P = 0.6;
     parameter Real kd_n = 0.01;
-    parameter Real V1_P = 0.0;
+    parameter Real V1_P = V_phos;
     parameter Real K_p = 0.1;
     parameter Real V2_P = 0.3;
     parameter Real K_dp = 0.1;
@@ -63,10 +65,10 @@ model BIOMD246 "Vasalou2010_Pacemaker_Neuron_SCN"
     parameter Real v_dCC = 0.7;
     parameter Real k1 = 0.45;
     parameter Real k2 = 0.2;
-    parameter Real V1_PC = 0.0;
+    parameter Real V1_PC = V_phos;
     parameter Real V2_PC = 0.1;
     parameter Real vd_PCC = 0.7;
-    parameter Real V3_PC = 0.0;
+    parameter Real V3_PC = V_phos;
     parameter Real V4_PC = 0.1;
     parameter Real vd_PCN = 0.7;
     parameter Real k7 = 0.5;

@@ -9,6 +9,8 @@ model BIOMD236 "Westermark2003_Pancreatic_GlycOsc_extended"
             y := x^power;
     end pow;
 
+
+
     parameter Real hGK = 1.7;
     parameter Real KeqGPI = 0.3;
     parameter Real KeqTPI = 0.045455;

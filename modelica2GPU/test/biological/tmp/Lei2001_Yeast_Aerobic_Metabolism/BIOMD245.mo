@@ -9,6 +9,8 @@ model BIOMD245 "Lei2001_Yeast_Aerobic_Metabolism"
             y := x^power;
     end pow;
 
+
+
     parameter Real k_1h = 0.584;
     parameter Real K_1h = 0.0116;
     parameter Real k_1l = 1.43;

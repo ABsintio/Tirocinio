@@ -9,6 +9,8 @@ model BIOMD337 "Pfeiffer2001_ATP-ProducingPathways_CooperationCompetition"
             y := x^power;
     end pow;
 
+
+
     parameter Real v = 10.0;
     parameter Real d = 1.0;
     parameter Real compartment = 1.0;

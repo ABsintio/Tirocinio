@@ -9,6 +9,8 @@ model BIOMD254 "Bier2000_GlycolyticOscillation"
             y := x^power;
     end pow;
 
+
+
     parameter Real V_in = 0.36;
     parameter Real k1 = 0.02;
     parameter Real kp = 6.0;

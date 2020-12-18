@@ -9,6 +9,8 @@ model BIOMD312 "Tyson2003_Perfect_Adaption"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 2.0;
     parameter Real k2 = 2.0;
     parameter Real k3 = 1.0;
@@ -23,7 +25,7 @@ model BIOMD312 "Tyson2003_Perfect_Adaption"
     Real S;
 
 initial equation
-    R = 0.0;
+    R = k1 * k4 / (k2 * k3);
     X = 0.0;
 
 equation

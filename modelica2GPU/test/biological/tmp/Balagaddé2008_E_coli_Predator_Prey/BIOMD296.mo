@@ -9,6 +9,8 @@ model BIOMD296 "Balagaddé2008_E_coli_Predator_Prey"
             y := x^power;
     end pow;
 
+
+
     parameter Real kc1 = 0.8;
     parameter Real kc2 = 0.4;
     parameter Real Cm = 100.0;

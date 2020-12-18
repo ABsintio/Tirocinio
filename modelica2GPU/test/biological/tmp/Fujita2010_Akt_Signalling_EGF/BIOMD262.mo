@@ -9,6 +9,8 @@ model BIOMD262 "Fujita2010_Akt_Signalling_EGF"
             y := x^power;
     end pow;
 
+
+
     parameter Real pEGFR_scaleFactor = 0.000181734813832032;
     parameter Real pAkt_scaleFactor = 60.0587507734138;
     parameter Real pS6_scaleFactor = 49886.2313741851;
@@ -49,7 +51,7 @@ model BIOMD262 "Fujita2010_Akt_Signalling_EGF"
     Real EGF_EGFR;
 
 initial equation
-    EGFR = 68190.1837333797;
+    EGFR = pro_EGFR;
     pEGFR = 0.0;
     pEGFR_Akt = 0.0;
     Akt = 0.0433090165709309;

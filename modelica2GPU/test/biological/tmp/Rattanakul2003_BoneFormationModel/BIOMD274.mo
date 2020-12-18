@@ -9,6 +9,8 @@ model BIOMD274 "Rattanakul2003_BoneFormationModel"
             y := x^power;
     end pow;
 
+
+
     parameter Real epsilon = 0.1;
     parameter Real delta = 0.9;
     parameter Real a1 = 0.05;

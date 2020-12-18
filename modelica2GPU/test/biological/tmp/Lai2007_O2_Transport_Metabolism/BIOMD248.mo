@@ -9,6 +9,8 @@ model BIOMD248 "Lai2007_O2_Transport_Metabolism"
             y := x^power;
     end pow;
 
+
+
     parameter Real KatpaseW = 0.3207601;
     parameter Real Kadp = 0.058;
     parameter Real Kia = 0.135;

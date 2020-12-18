@@ -9,6 +9,8 @@ model BIOMD286 "Proctor2010 - a link between GSK3 and p53 in Alzheimer's Disease
             y := x^power;
     end pow;
 
+
+
     parameter Real ksynp53mRNA = 0.001;
     parameter Real kdegp53mRNA = 0.0001;
     parameter Real ksynMdm2mRNA = 0.0005;

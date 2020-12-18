@@ -9,6 +9,8 @@ model BIOMD232 "Nazaret2009_TCA_RC_ATP"
             y := x^power;
     end pow;
 
+
+
     parameter Real At = 4.16;
     parameter Real C = 6.75e-06;
     parameter Real DeltaPsim = 150.0;
@@ -38,7 +40,7 @@ model BIOMD232 "Nazaret2009_TCA_RC_ATP"
 
     Real ATPcrit(start=0.0);
     Real DeltaGtransport(start=0.0);
-    Real DeltaPsi(start=0.0);
+    Real DeltaPsi(start=150);
     Real JANT(start=0.0);
     Real JATP(start=0.0);
     Real Jleak(start=0.0);

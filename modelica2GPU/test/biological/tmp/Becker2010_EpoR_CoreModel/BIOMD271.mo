@@ -9,6 +9,8 @@ model BIOMD271 "Becker2010_EpoR_CoreModel"
             y := x^power;
     end pow;
 
+
+
     parameter Real kt = 0.0329366;
     parameter Real Bmax = 516.0;
     parameter Real kon = 0.00010496;

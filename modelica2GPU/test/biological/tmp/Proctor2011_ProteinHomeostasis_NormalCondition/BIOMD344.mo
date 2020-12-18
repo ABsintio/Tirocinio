@@ -9,6 +9,8 @@ model BIOMD344 "Proctor2011_ProteinHomeostasis_NormalCondition"
             y := x^power;
     end pow;
 
+
+
     parameter Real ksynNatP = 0.042;
     parameter Real kmisfold = 2e-06;
     parameter Real kbinMisPProt = 1e-07;

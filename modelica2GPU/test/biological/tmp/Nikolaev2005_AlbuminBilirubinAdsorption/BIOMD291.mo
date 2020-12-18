@@ -9,6 +9,8 @@ model BIOMD291 "Nikolaev2005_AlbuminBilirubinAdsorption"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 0.484;
     parameter Real k2 = 0.07958;
     parameter Real k3 = 5.095e-06;

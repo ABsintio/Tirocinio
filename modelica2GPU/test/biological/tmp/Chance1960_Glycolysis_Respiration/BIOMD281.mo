@@ -9,6 +9,8 @@ model BIOMD281 "Chance1960_Glycolysis_Respiration"
             y := x^power;
     end pow;
 
+
+
     parameter Real k_0 = 3000000000.0;
     parameter Real k_1 = 10000000000.0;
     parameter Real k_2 = 40000000000.0;

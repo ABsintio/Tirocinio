@@ -9,6 +9,8 @@ model BIOMD347 "Bachmann2011_JAK2-STAT5_FeedbackControl"
             y := x^power;
     end pow;
 
+
+
     parameter Real ActD = 0.0;
     parameter Real CISEqc = 432.871;
     parameter Real CISEqcOE = 0.530261;

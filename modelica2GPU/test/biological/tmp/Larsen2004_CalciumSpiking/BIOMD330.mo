@@ -9,6 +9,8 @@ model BIOMD330 "Larsen2004_CalciumSpiking"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 0.35;
     parameter Real k2 = 0.0;
     parameter Real k3 = 0.0001;

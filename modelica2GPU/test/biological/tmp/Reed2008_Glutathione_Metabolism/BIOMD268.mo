@@ -9,6 +9,29 @@ model BIOMD268 "Reed2008_Glutathione_Metabolism"
             y := x^power;
     end pow;
 
+
+    function MM
+        	input Real Vmax;
+	input Real Km;
+	input Real S;
+        output Real y;
+    algorithm
+        y =  Vmax * S / (Km + S);
+    end MM;
+
+
+    function MM_twosubst
+        	input Real Vmax;
+	input Real Km1;
+	input Real Km2;
+	input Real S1;
+	input Real S2;
+        output Real y;
+    algorithm
+        y =  Vmax * S1 * S2 / ((Km1 + S1) * (Km2 + S2));
+    end MM_twosubst;
+
+
     parameter Real V_gshHb = 150.0;
     parameter Real K_gshHb = 150.0;
     parameter Real V_gshLb = 1100.0;
@@ -228,6 +251,8 @@ initial equation
     H2O2 = 0.01;
     CO = 0.0;
     HCHO = 500.0;
+    c_thf = Fol / (2 * 3 / 4) - (c_5mf + c_2cf + c_1cf + c_10f + c_dhf);
+    m_thf = Fol / (2 * 1 / 4) - (m_2cf + m_1cf + m_10f);
     c_5mf = 4.4965335653401;
     c_2cf = 0.506278119133034;
     c_1cf = 0.278602708139276;

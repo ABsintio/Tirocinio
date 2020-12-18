@@ -9,6 +9,8 @@ model BIOMD288 "Wang2009 - PI3K Ras Crosstalk"
             y := x^power;
     end pow;
 
+
+
     parameter Real L = 1.0;
     parameter Real KDL = 1.5;
     parameter Real kxR0 = 0.3;

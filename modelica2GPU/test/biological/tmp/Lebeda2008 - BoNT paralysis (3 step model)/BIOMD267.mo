@@ -9,6 +9,8 @@ model BIOMD267 "Lebeda2008 - BoNT paralysis (3 step model)"
             y := x^power;
     end pow;
 
+
+
     parameter Real kT_0 = 0.141;
     parameter Real kL_1 = 0.013;
     parameter Real kB_2 = 0.058;

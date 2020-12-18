@@ -9,6 +9,8 @@ model BIOMD345 "Koschorreck2008_InsulinClearance"
             y := x^power;
     end pow;
 
+
+
     parameter Real kins = 0.001;
     parameter Real kins1d = 0.0004;
     parameter Real kins2d = 0.04;

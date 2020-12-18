@@ -9,6 +9,8 @@ model BIOMD240 "Veening2008_DegU_Regulation"
             y := x^power;
     end pow;
 
+
+
     parameter Real Imax = 0.048;
     parameter Real Io = 0.004;
     parameter Real Irmax = 0.4;

@@ -9,6 +9,8 @@ model BIOMD343 "Brannmark2010_InsulinSignalling_Mifamodel"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1a = 0.3892881852;
     parameter Real k1abasic = 0.012452744;
     parameter Real k1b = 0.02000224505;

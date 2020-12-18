@@ -9,6 +9,8 @@ model BIOMD247 "Ralser2007_Carbohydrate_Rerouting_ROS"
             y := x^power;
     end pow;
 
+
+
     parameter Real k_rel_TPI = 1.0;
     parameter Real k_rel_GAPDH = 1.0;
     parameter Real SUMAXP = 4.1;

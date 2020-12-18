@@ -9,6 +9,8 @@ model BIOMD270 "Schilling2009 - ERK distributive"
             y := x^power;
     end pow;
 
+
+
     parameter Real JAK2_phosphorylation_by_Epo = 0.0122149;
     parameter Real EpoR_phosphorylation_by_pJAK2 = 3.15714;
     parameter Real SHP1_activation_by_pEpoR = 0.408408;

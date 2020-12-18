@@ -9,6 +9,8 @@ model BIOMD252 "Hunziker2010_p53_StressSpecificResponse"
             y := x^power;
     end pow;
 
+
+
     parameter Real S = 1000.0;
     parameter Real alpha = 0.1;
     parameter Real k_t = 0.03;

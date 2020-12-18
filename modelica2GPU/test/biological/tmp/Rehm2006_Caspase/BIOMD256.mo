@@ -9,6 +9,8 @@ model BIOMD256 "Rehm2006_Caspase"
             y := x^power;
     end pow;
 
+
+
     parameter Real k3 = 6.0;
     parameter Real k4 = 12.0;
     parameter Real k5 = 48.0;
@@ -89,16 +91,16 @@ model BIOMD256 "Rehm2006_Caspase"
     Real k51(start=0.0347);
     Real apo_lim(start=0.0);
     Real SMAC_norm(start=0.0);
-    Real XIAP_ini(start=0.0);
+    Real XIAP_ini(start=XIAP);
     Real XIAP_2SMAC_norm(start=0.0);
     Real C9norm(start=0.0);
-    Real C9_tot(start=0.0);
+    Real C9_tot(start=PC9);
     Real C9Pnorm(start=0.0);
     Real C3norm(start=0.0);
-    Real C3_tot(start=0.0);
+    Real C3_tot(start=PC3);
     Real PC3norm(start=0.0);
     Real SMAC_rel(start=0.0);
-    Real SMAC_tot(start=0.0);
+    Real SMAC_tot(start=SMAC_mito);
     Real Apoform(start=0.0);
     Real XIAP_norm(start=0.0);
     Real XIAP_C3_norm(start=0.0);
@@ -109,8 +111,8 @@ model BIOMD256 "Rehm2006_Caspase"
     Real BIR12_C3_norm(start=0.0);
     Real BIR3R_C9_norm(start=0.0);
     Real BIR3R_p2frag_norm(start=0.0);
-    Real CytC_tot(start=0.0);
-    Real APAF1_tot(start=0.0);
+    Real CytC_tot(start=CytC_mit);
+    Real APAF1_tot(start=APAF1);
 
     Real PC3;
     Real XIAP;

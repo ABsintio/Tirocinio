@@ -9,6 +9,8 @@ model BIOMD243 "Neumann2010_CD95Stimulation_NFkB_Apoptosis"
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 1.0;
     parameter Real k2 = 0.0001277248;
     parameter Real k3 = 0.6693316;
