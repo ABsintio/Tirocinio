@@ -8,22 +8,22 @@
 
 #define PI 3.14159265358979323846
 
-#include "BIOMD343_SystemDefinition.cuh"
+#include "BIOMD328_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
-const int SD   = 10;
+const int NT   = 1;
+const int SD   = 18;
 const int NCP  = 1;
-const int NSP  = 20;
+const int NSP  = 33;
 const int NISP = 0;
 const int NE   = 0;
-const int NA   = 15;
+const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 1000;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -73,51 +73,57 @@ void SaveData(
 	
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
-        DataFile.width(Width); DataFile << "X_IR" << ',';
-        DataFile.width(Width); DataFile << "X_IRS" << ',';
-        DataFile.width(Width); DataFile << "X_IRSip" << ',';
-        DataFile.width(Width); DataFile << "X_IRi" << ',';
-        DataFile.width(Width); DataFile << "X_IRins" << ',';
-        DataFile.width(Width); DataFile << "X_IRip" << ',';
-        DataFile.width(Width); DataFile << "X_IRp" << ',';
-        DataFile.width(Width); DataFile << "X_X" << ',';
-        DataFile.width(Width); DataFile << "X_Xp" << ',';
-        DataFile.width(Width); DataFile << "X_measIRp" << ',';
-        DataFile.width(Width); DataFile << "sPAR_compartment_0000001" << ',';
-        DataFile.width(Width); DataFile << "sPAR_ins" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1a" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1abasic" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1b" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1c" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1d" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1e" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1f" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1g" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1r" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k21" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k22" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k3" << ',';
-        DataFile.width(Width); DataFile << "sPAR_km2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_km3" << ',';
-        DataFile.width(Width); DataFile << "sPAR_ky1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_ky2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_kyDosR" << ',';
-        DataFile.width(Width); DataFile << "sPAR_kyanna" << ',';
-        DataFile.width(Width); DataFile << "ACC_V1a" << ',';
-        DataFile.width(Width); DataFile << "ACC_V1b" << ',';
-        DataFile.width(Width); DataFile << "ACC_V1c" << ',';
-        DataFile.width(Width); DataFile << "ACC_V1d" << ',';
-        DataFile.width(Width); DataFile << "ACC_V1e" << ',';
-        DataFile.width(Width); DataFile << "ACC_V1g" << ',';
-        DataFile.width(Width); DataFile << "ACC_V1r" << ',';
-        DataFile.width(Width); DataFile << "ACC_V2" << ',';
-        DataFile.width(Width); DataFile << "ACC_V3" << ',';
-        DataFile.width(Width); DataFile << "ACC_Vm2" << ',';
-        DataFile.width(Width); DataFile << "ACC_Vm3" << ',';
-        DataFile.width(Width); DataFile << "ACC_intamount" << ',';
-        DataFile.width(Width); DataFile << "ACC_measanna" << ',';
-        DataFile.width(Width); DataFile << "ACC_measdosR" << ',';
-        DataFile.width(Width); DataFile << "ACC_measdoublestep" << ',';
+        DataFile.width(Width); DataFile << "X_ASL_b" << ',';
+        DataFile.width(Width); DataFile << "X_ASL_c" << ',';
+        DataFile.width(Width); DataFile << "X_ASL_m" << ',';
+        DataFile.width(Width); DataFile << "X_ASLoOH_b" << ',';
+        DataFile.width(Width); DataFile << "X_ASLoOH_c" << ',';
+        DataFile.width(Width); DataFile << "X_ASLoOH_m" << ',';
+        DataFile.width(Width); DataFile << "X_ASLpOH_b" << ',';
+        DataFile.width(Width); DataFile << "X_ASLpOH_c" << ',';
+        DataFile.width(Width); DataFile << "X_ASLpOH_m" << ',';
+        DataFile.width(Width); DataFile << "X_AS_b" << ',';
+        DataFile.width(Width); DataFile << "X_AS_c" << ',';
+        DataFile.width(Width); DataFile << "X_AS_m" << ',';
+        DataFile.width(Width); DataFile << "X_ASoOH_b" << ',';
+        DataFile.width(Width); DataFile << "X_ASoOH_c" << ',';
+        DataFile.width(Width); DataFile << "X_ASoOH_m" << ',';
+        DataFile.width(Width); DataFile << "X_ASpOH_b" << ',';
+        DataFile.width(Width); DataFile << "X_ASpOH_c" << ',';
+        DataFile.width(Width); DataFile << "X_ASpOH_m" << ',';
+        DataFile.width(Width); DataFile << "sPAR_CYP3A4_ASLoOH_Km1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_CYP3A4_ASLoOH_Vmax" << ',';
+        DataFile.width(Width); DataFile << "sPAR_CYP3A4_ASLpOH_Km1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_CYP3A4_ASLpOH_Vmax" << ',';
+        DataFile.width(Width); DataFile << "sPAR_CYP3A4_ASoOH_Km1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_CYP3A4_ASoOH_Vmax" << ',';
+        DataFile.width(Width); DataFile << "sPAR_CYP3A4_ASpOH_Km1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_CYP3A4_ASpOH_Vmax" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Export_ASL_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Export_ASLoOH_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Export_ASLpOH_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Export_AS_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Export_ASoOH_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Export_ASpOH_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Import_ASL_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Import_ASLoOH_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Import_ASLpOH_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Import_AS_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Import_ASoOH_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Import_ASpOH_k" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Prot_k1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_UGT1A3_AS_KI1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_UGT1A3_AS_Km1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_UGT1A3_AS_Vmax" << ',';
+        DataFile.width(Width); DataFile << "sPAR_cell" << ',';
+        DataFile.width(Width); DataFile << "sPAR_compartment" << ',';
+        DataFile.width(Width); DataFile << "sPAR_fu_AS" << ',';
+        DataFile.width(Width); DataFile << "sPAR_fu_ASL" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k_CR_ASL_c" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k_CR_ASL_m" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k_PON_ASL_c" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k_PON_OH_c" << ',';
+        DataFile.width(Width); DataFile << "sPAR_medium" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
@@ -129,6 +135,14 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 7) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 8) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 9) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 10) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 11) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 12) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 13) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 14) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 15) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 16) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 17) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 2) << ',';
@@ -149,21 +163,19 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 17) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 18) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 19) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 2) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 3) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 4) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 5) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 6) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 7) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 8) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 9) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 10) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 11) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 12) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 13) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 14) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 20) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 21) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 22) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 23) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 24) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 25) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 26) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 27) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 28) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 29) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 30) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 31) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 32) << ',';
 
         DataFile << '\n';
     }
@@ -209,6 +221,14 @@ int main() {
     Solver.SolverOption(AbsoluteTolerance, 7, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 8, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 9, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 10, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 11, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 12, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 13, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 14, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 15, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 16, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 17, 1e-06);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
     Solver.SolverOption(RelativeTolerance, 1, 1e-06);
@@ -220,11 +240,19 @@ int main() {
     Solver.SolverOption(RelativeTolerance, 7, 1e-06);
     Solver.SolverOption(RelativeTolerance, 8, 1e-06);
     Solver.SolverOption(RelativeTolerance, 9, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 10, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 11, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 12, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 13, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 14, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 15, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 16, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 17, 1e-06);
    
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD343.csv" );
+    DataFile.open ( "BIOMD328.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
