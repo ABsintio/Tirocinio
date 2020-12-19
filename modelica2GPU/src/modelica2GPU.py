@@ -84,7 +84,7 @@ def getdefaultoptions(nevents, nstates, xmlfile):
     # Infine settiamo gli attributi rimanenti
     numberOfThreads            = 1
     numberOfProblems           = numberOfThreads
-    numberOfDenseOutput        = 1000
+    numberOfDenseOutput        = 100000
     threadsPerBlock            = 512
     initialTimeStep            = 1.0e-2
     preferSharedMemory         = 1
@@ -95,7 +95,7 @@ def getdefaultoptions(nevents, nstates, xmlfile):
     denseOutputSaveFrequency   = 1
     tolerance                  = [get_tolerance_fromXML(xmlfile) for _ in range(nstates)]
     timeDomainStart            = 0.0
-    timeDomainEnd              = 10.0
+    timeDomainEnd              = 100.0
     return [
         major, minor,
         numberOfThreads,            numberOfProblems,  numberOfDenseOutput,
