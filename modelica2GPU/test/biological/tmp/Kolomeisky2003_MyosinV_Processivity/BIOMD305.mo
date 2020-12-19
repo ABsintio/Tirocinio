@@ -52,7 +52,7 @@ initial equation
 
 equation
     S_tot = S0 + S1;
-    V = d * ((Fw_1st_step + Fw_2nd_step) / 2 - (Bw_1st_step + Bw_2nd_step) / 2) / S_tot;
+    V = d * (((k_1 * S0 * ATP * exp(-th_1 * Force * d / kT)) + (k_2 * S1 * exp(-th_2 * Force * d / kT))) / 2 - ((k_3 * S0 * ATP * exp(th_3 * Force * d / kT)) + (k_4 * S1 * exp(th_4 * Force * d / kT))) / 2) / S_tot;
     V_ave = d * ((fwd_step1 + fwd_step2) / 2 - (back_step1 + back_step2) / 2) / (S_tot * time);
     tau = (k_1 * ATP * exp(-th_1 * Force * d / kT) + k_2 * exp(-th_2 * Force * d / kT) + k_3 * ATP * exp(th_3 * Force * d / kT) + k_4 * exp(th_4 * Force * d / kT)) / (k_1 * ATP * exp(-th_1 * Force * d / kT) * k_2 * exp(-th_2 * Force * d / kT) + k_3 * ATP * exp(th_3 * Force * d / kT) * k_4 * exp(th_4 * Force * d / kT));
     der(S0) = (k_2 * S1 * exp(-th_2 * Force * d / kT)) + (k_4 * S1 * exp(th_4 * Force * d / kT)) - (k_1 * S0 * ATP * exp(-th_1 * Force * d / kT)) - (k_3 * S0 * ATP * exp(th_3 * Force * d / kT));

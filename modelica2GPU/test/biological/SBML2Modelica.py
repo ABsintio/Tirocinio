@@ -465,8 +465,10 @@ class SBMLExtrapolator:
                     param.getValue(), # Valore
                     param.getConstant() # Se è costante oppure no
                 )
-                parameters.append(param.getId())
+                parameters.append(param_name)
+                print(kinetic_law)
                 kinetic_law = kinetic_law.replace(param.getId(), param_name)
+                print(kinetic_law)
             self.reaction_dict[reaction_name] = Reaction(
                 reaction_name, second_reaction_name, reactants, 
                 products, modifiers, parameters, kinetic_law
