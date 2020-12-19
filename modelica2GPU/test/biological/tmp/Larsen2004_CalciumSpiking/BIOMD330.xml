@@ -1,0 +1,1549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD330"
+  modelIdentifier="BIOMD330"
+  guid="{b29e451e-f24c-4d0a-b791-69dd6a5b431b}"
+  generationDateAndTime="2020-12-19T22:44:09"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="5"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="Ca_ER"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_ER"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Ca_cyt"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Ca_mit"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_mit"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="G_alpha"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="G_alpha"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="PLC"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="PLC"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(Ca_ER)"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_ER"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Ca_cyt)"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_cyt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Ca_mit)"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ca_mit"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(G_alpha)"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="G_alpha"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(PLC)"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="PLC"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="$cse1"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$cse1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$cse2"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$cse2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$cse3"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$cse3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="$cse4"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="$cse4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="ER"  valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ER"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K11"  valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.667" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K11"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K15"  valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.16" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K15"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K17"  valueReference="17" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K17"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K19"  valueReference="18" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K19"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K21"  valueReference="19" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K21"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K4"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.783" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K6"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.7" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K9"  valueReference="22" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="29.09" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K9"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="cytoplasm"  valueReference="23" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1"  valueReference="24" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.35" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k10"  valueReference="25" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.93" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k10"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k12"  valueReference="26" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.76" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k12"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k13"  valueReference="27" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k13"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k14"  valueReference="28" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="149.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k14"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k16"  valueReference="29" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="20.9" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k16"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k18"  valueReference="30" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="79.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k18"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k2"  valueReference="31" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k20"  valueReference="32" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k20"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k3"  valueReference="33" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k5"  valueReference="34" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.24" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k7"  valueReference="35" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.82" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k7"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k8"  valueReference="36" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="32.24" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mit"  valueReference="37" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mit"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ER"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K11"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.667</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K15"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.16</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K17"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K19"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K21"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K4"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.783</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K6"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.7</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K9"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>29.09</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="cytoplasm"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.35</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k10"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.93</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k12"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.76</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k13"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k14"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>149.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k16"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>20.9</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k18"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>79.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k20"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k5"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.24</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k7"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.82</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k8"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>32.24</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mit"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$cse1"/>
+        </exp:Identifier>
+        <exp:FunctionCall>
+          <exp:Name>
+            <exp:QualifiedNamePart name="BIOMD330"/>
+            <exp:QualifiedNamePart name="pow"/>
+          </exp:Name>
+          <exp:Arguments>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="PLC"/>
+            </exp:Identifier>
+            <exp:RealLiteral>4.0</exp:RealLiteral>
+          </exp:Arguments>
+        </exp:FunctionCall>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$cse3"/>
+        </exp:Identifier>
+        <exp:FunctionCall>
+          <exp:Name>
+            <exp:QualifiedNamePart name="BIOMD330"/>
+            <exp:QualifiedNamePart name="pow"/>
+          </exp:Name>
+          <exp:Arguments>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Ca_cyt"/>
+            </exp:Identifier>
+            <exp:RealLiteral>8.0</exp:RealLiteral>
+          </exp:Arguments>
+        </exp:FunctionCall>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ca_mit"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k18"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="$cse3"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="$cse4"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="$cse3"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_cyt"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_mit"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k20"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_cyt"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Ca_cyt"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="K21"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ca_ER"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k16"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_cyt"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_cyt"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="K17"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_cyt"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_ER"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k10"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_cyt"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="$cse1"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="$cse1"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="$cse2"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ca_cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_ER"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_cyt"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k10"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_cyt"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="$cse1"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="$cse1"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="$cse2"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k12"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="PLC"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k13"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="G_alpha"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Ca_cyt"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Div>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k14"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Ca_cyt"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="K15"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Div>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k16"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Ca_cyt"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="K17"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Div>
+                  </exp:Sub>
+                </exp:Mul>
+                <exp:Sub>
+                  <exp:Mul>
+                    <exp:Sub>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Ca_mit"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Ca_cyt"/>
+                      </exp:Identifier>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k20"/>
+                      </exp:Identifier>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Ca_cyt"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Ca_cyt"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="K21"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Div>
+                    </exp:Mul>
+                  </exp:Mul>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k18"/>
+                    </exp:Identifier>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="$cse3"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="$cse4"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="$cse3"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Div>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Add>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="PLC"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k7"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="G_alpha"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k8"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="PLC"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="PLC"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="K9"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="G_alpha"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k1"/>
+          </exp:Identifier>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="G_alpha"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k2"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k3"/>
+                  </exp:Identifier>
+                  <exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="PLC"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="G_alpha"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="K4"/>
+                      </exp:Identifier>
+                    </exp:Add>
+                  </exp:Div>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k5"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="G_alpha"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Ca_cyt"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="G_alpha"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="K6"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Ca_mit"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.001</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Ca_ER"/>
+        </exp:Identifier>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Ca_cyt"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ca_mit"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k18"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD330"/>
+                  <exp:QualifiedNamePart name="pow"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Ca_cyt"/>
+                  </exp:Identifier>
+                  <exp:RealLiteral>8.0</exp:RealLiteral>
+                </exp:Arguments>
+              </exp:FunctionCall>
+              <exp:Add>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD330"/>
+                    <exp:QualifiedNamePart name="pow"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="K19"/>
+                    </exp:Identifier>
+                    <exp:RealLiteral>8.0</exp:RealLiteral>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD330"/>
+                    <exp:QualifiedNamePart name="pow"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Ca_cyt"/>
+                    </exp:Identifier>
+                    <exp:RealLiteral>8.0</exp:RealLiteral>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_cyt"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_mit"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k20"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_cyt"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Ca_cyt"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="K21"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="PLC"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ca_ER"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k16"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_cyt"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_cyt"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="K17"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_cyt"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_ER"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k10"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_cyt"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:FunctionCall>
+                    <exp:Name>
+                      <exp:QualifiedNamePart name="BIOMD330"/>
+                      <exp:QualifiedNamePart name="pow"/>
+                    </exp:Name>
+                    <exp:Arguments>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="PLC"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>4.0</exp:RealLiteral>
+                    </exp:Arguments>
+                  </exp:FunctionCall>
+                  <exp:Add>
+                    <exp:FunctionCall>
+                      <exp:Name>
+                        <exp:QualifiedNamePart name="BIOMD330"/>
+                        <exp:QualifiedNamePart name="pow"/>
+                      </exp:Name>
+                      <exp:Arguments>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="PLC"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>4.0</exp:RealLiteral>
+                      </exp:Arguments>
+                    </exp:FunctionCall>
+                    <exp:FunctionCall>
+                      <exp:Name>
+                        <exp:QualifiedNamePart name="BIOMD330"/>
+                        <exp:QualifiedNamePart name="pow"/>
+                      </exp:Name>
+                      <exp:Arguments>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="K11"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>4.0</exp:RealLiteral>
+                      </exp:Arguments>
+                    </exp:FunctionCall>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="G_alpha"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ca_cyt"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_ER"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ca_cyt"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k10"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ca_cyt"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:FunctionCall>
+                    <exp:Name>
+                      <exp:QualifiedNamePart name="BIOMD330"/>
+                      <exp:QualifiedNamePart name="pow"/>
+                    </exp:Name>
+                    <exp:Arguments>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="PLC"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>4.0</exp:RealLiteral>
+                    </exp:Arguments>
+                  </exp:FunctionCall>
+                  <exp:Add>
+                    <exp:FunctionCall>
+                      <exp:Name>
+                        <exp:QualifiedNamePart name="BIOMD330"/>
+                        <exp:QualifiedNamePart name="pow"/>
+                      </exp:Name>
+                      <exp:Arguments>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="PLC"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>4.0</exp:RealLiteral>
+                      </exp:Arguments>
+                    </exp:FunctionCall>
+                    <exp:FunctionCall>
+                      <exp:Name>
+                        <exp:QualifiedNamePart name="BIOMD330"/>
+                        <exp:QualifiedNamePart name="pow"/>
+                      </exp:Name>
+                      <exp:Arguments>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="K11"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>4.0</exp:RealLiteral>
+                      </exp:Arguments>
+                    </exp:FunctionCall>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k12"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="PLC"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k13"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="G_alpha"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Ca_cyt"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Div>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k14"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Ca_cyt"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="K15"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Div>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k16"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Ca_cyt"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="K17"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Div>
+                  </exp:Sub>
+                </exp:Mul>
+                <exp:Sub>
+                  <exp:Mul>
+                    <exp:Sub>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Ca_mit"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Ca_cyt"/>
+                      </exp:Identifier>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k20"/>
+                      </exp:Identifier>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Ca_cyt"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Ca_cyt"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="K21"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Div>
+                    </exp:Mul>
+                  </exp:Mul>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k18"/>
+                    </exp:Identifier>
+                    <exp:Div>
+                      <exp:FunctionCall>
+                        <exp:Name>
+                          <exp:QualifiedNamePart name="BIOMD330"/>
+                          <exp:QualifiedNamePart name="pow"/>
+                        </exp:Name>
+                        <exp:Arguments>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Ca_cyt"/>
+                          </exp:Identifier>
+                          <exp:RealLiteral>8.0</exp:RealLiteral>
+                        </exp:Arguments>
+                      </exp:FunctionCall>
+                      <exp:Add>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD330"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="K19"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>8.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD330"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Ca_cyt"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>8.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                      </exp:Add>
+                    </exp:Div>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Add>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD330"/>
+        <exp:QualifiedNamePart name="pow"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="power"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Pow>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="x"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="power"/>
+              </exp:Identifier>
+            </exp:Pow>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
