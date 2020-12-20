@@ -66,7 +66,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     X[0]=0.0; //bound
     X[1]=1.0; //bulk
     X[2]=0.0; //free
-    X[3]=0.0; //lytic
+    X[3]=1.0; //lytic
     X[4]=0.0; //translocate
 
 }

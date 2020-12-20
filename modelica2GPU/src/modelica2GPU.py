@@ -106,13 +106,6 @@ def getdefaultoptions(nevents, nstates, xmlfile):
     ], device
 
 
-def checkGPUexists(ccapability):
-    """ Controlla l'esistenza della GPU con la capability data in input """
-    assert cuda.Device.count() > 0, "Non sembrano essere presenti GPU nVidia sul dispositivo"
-    capabilities = [cuda.Device(count - 1).compute_capability() for count in range(cuda.Device.count())]
-    assert any(list(filter(lambda x: x == ccapability, capabilities))), "La GPU scelta non esiste"
-
-
 def getnumevents(xmlfile):
     """ Dall'XML prende il numero di eventi """
     root = ET.parse(xmlfile).getroot()
@@ -127,7 +120,7 @@ def getnumstate(xmlfile):
 
 def gpu_from_capability(ccapability):
     """ Dalla cuda capability, ottiene la GPU associata """
-    capabilities = [cuda.Device(count - 1).compute_capability() for count in range(cuda.Device.count())]
+    capabilities = [cuda.Device(count).compute_capability() for count in range(cuda.Device.count())]
     return cuda.Device(capabilities.index(ccapability))
 
 
@@ -234,21 +227,22 @@ def get_modelica2GPU_configuration(config_file):
             builder_config['modeldefinition']['numberOfDenseOutput'], builder_config['modeldefinition']['threadsPerBlock'],
             builder_config['modeldefinition']['initialTimeStep'], builder_config['modeldefinition']['preferSharedMemory'],
             builder_config['modeldefinition']['maximumTimeStep'], builder_config['modeldefinition']['minimumTimeStep'],
-            list(builder_config['modeldefinition']['eventDirection'].values()),
+            list(builder_config['modeldefinition']['eventDirection'].values()) if builder_config['modeldefinition']['eventDirection']is not None else None,
             builder_config['modeldefinition']['denseOutputMinimumTimeStep'],
             builder_config['modeldefinition']['denseOutputSaveFrequency'],
-            list(builder_config['modeldefinition']['tolerance'].values()),
+            list(builder_config['modeldefinition']['tolerance'].values()) if builder_config['modeldefinition']['tolerance']is not None else None,
+            builder_config['modeldefinition']['timeDomainInit'], builder_config['modeldefinition']['timeDomainEnd']
         ]
-
         if builder_config['usedefaultoptions']:
             # Per tutti quei valori pari a null inseriamo il valore di default, mentre per tutti gli
             # altri prendiamo quello inserito. Questo serve per evitare che l'utente nel momento in cui deve 
             # cambiare un singolo parametro non debba rimetterli tutti. Questo fa in modo che l'utente inserisca
             # solo quello voluto e settando tutti gli altri a default.
             default_opts = getdefaultoptions(event_num, state_num, xmlfile)
-            for idx, value in enumerate(default_opts[0]):
+            for idx, value in enumerate(builder_options):
                 if value is None:
-                    builder_options[idx] = default_opts[0][idx]
+                    builder_options[idx] = default_opts[0][idx - 1]
+        
         device = gpu_from_capability((builder_options[1], builder_options[2]))
 
         config_dict = {
