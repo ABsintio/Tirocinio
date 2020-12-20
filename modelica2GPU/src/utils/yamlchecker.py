@@ -1,6 +1,8 @@
 import yaml
 import os
 import sys
+import pycuda.driver as cuda
+import pycuda.autoinit
 
 
 def extract_data_from_yaml(yaml_file):
@@ -10,6 +12,13 @@ def extract_data_from_yaml(yaml_file):
     except FileExistsError:
         print("Il file yaml inserito non esiste ... ")
         sys.exit(1)
+
+
+def checkGPUexists(ccapability):
+    """ Controlla l'esistenza della GPU con la capability data in input """
+    assert cuda.Device.count() > 0, "Non sembrano essere presenti GPU nVidia sul dispositivo"
+    capabilities = [cuda.Device(count - 1).compute_capability() for count in range(cuda.Device.count())]
+    assert any(list(filter(lambda x: x == ccapability, capabilities))), "La GPU scelta non esiste"
 
 
 class YAMLChecker:
@@ -69,6 +78,9 @@ class YAMLChecker:
             self.check_modelica2gpu_modelfilename(),
             self.check_modelica2gpu_notifier(),
             self.check_modelica2gpu_filelogger(),
+            self.check_build_MPGOSsourcedir(),
+            self.check_build_usedefaultoptions(),
+            self.check_build_major_and_minor(),
             self.check_build_numberOfThreads(),
             self.check_build_numberOfProblems(),
             self.check_build_numberOfDenseOutputs(),
@@ -93,8 +105,8 @@ class YAMLChecker:
             for key, value in type_dict.items():
                 string += f"{key}: {value[0]} -> {value[1]}\n"
             print(bool_list)
-            return string
-        return 
+            return string, result
+        return "", result
 
     def check_modelica2gpu_generateXML(self):
         return isinstance(self.modelica2gpu_settings["generateXML"], self.TYPER_DICT["generateXML"])
@@ -135,8 +147,19 @@ class YAMLChecker:
             ((self.builder_settings["modeldefinition"][option_name] is None and self.builder_settings["usedefaultoptions"]) or \
              (self.builder_settings["modeldefinition"][option_name] is not None))
 
-    # TODO: check minor
-    # TODO: check major
+    def check_build_major_and_minor(self):
+        minor_control_type = type(self.builder_settings["gpu"]["minor"]) in self.TYPER_DICT["minor"] and \
+            ((self.builder_settings["gpu"]["minor"] is None and self.builder_settings["usedefaultoptions"]) or \
+             (self.builder_settings["gpu"]["minor"] is not None))
+        major_control_type = type(self.builder_settings["gpu"]["major"]) in self.TYPER_DICT["major"] and \
+            ((self.builder_settings["gpu"]["major"] is None and self.builder_settings["usedefaultoptions"]) or \
+             (self.builder_settings["gpu"]["major"] is not None))
+        both_exsistance_control = (self.builder_settings["gpu"]["major"] is None and self.builder_settings["gpu"]["minor"] is None) or \
+            (self.builder_settings["gpu"]["major"] is not None and self.builder_settings["gpu"]["minor"] is not None)
+        gpu_exsist = True
+        if self.builder_settings["gpu"]["major"] is not None:
+            gpu_exsist = checkGPUexists((self.builder_settings["gpu"]["major"], self.builder_settings["gpu"]["minor"]))
+        return minor_control_type and major_control_type and both_exsistance_control and gpu_exsist
     
     def check_build_numberOfThreads(self):
         return self.check_build_option("numberOfThreads")

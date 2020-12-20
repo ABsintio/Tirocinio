@@ -24,7 +24,7 @@ except ImportError:
     sys.exit(1)
 
 import yaml
-from utils import logger, notifier
+from utils import logger, notifier, yamlchecker
 import xml.etree.ElementTree as ET
 import os
 import subprocess
@@ -113,53 +113,6 @@ def checkGPUexists(ccapability):
     assert any(list(filter(lambda x: x == ccapability, capabilities))), "La GPU scelta non esiste"
 
 
-def checkconfig(config_dict):
-    """ Controlla che tutti i campi siano stati settati correttamente """
-    m2g_conf = config_dict['modelica2gpu']
-    # Uno tra i due campi deve essere inserito, altrimenti non è corretto
-    msg = "Uno tra i due campi, generateXML e xml, deve essere inserito diverso da null"
-    assert m2g_conf['generateXML'] is not None or m2g_conf['xml'] is not None, msg
-    # Inoltre generateXML deve essere un booleano
-    assert isinstance(m2g_conf['generateXML'], bool), "generateXML deve avere valore booleano"
-    # Se l'XML è stato settato controllo che sia un file esistente
-    if m2g_conf['xml'] is not None: assert os.path.isfile(m2g_conf['xml']), f"l'XML {m2g_conf['xml']} non esiste"
-    # Controllo che la cartella data come wd sia effettivamente una cartella
-    assert os.path.isdir(m2g_conf['workingdir']), f"{m2g_conf['workingdir']} non è una cartella"
-    # Controllo che il model filename sia un file presente nella cartella wd
-    if m2g_conf['generateXML']:
-        msg = f"il modello {m2g_conf['modelfilename']} non è nella workingdir dichiarata"
-        assert os.path.isdir(m2g_conf['omlibrary']), "La directory per la libreria Modelica non esiste"
-        assert os.path.isfile(os.path.join(m2g_conf['workingdir'], m2g_conf['modelfilename'])), msg
-    # Controllo che notifier e logger siano campi booleani
-    n, l = m2g_conf['notifier'], m2g_conf['filelogger']
-    assert isinstance(n, bool) and isinstance(l, bool), "I campi notifier e logger devono essere booleani"
-
-    builder_config = config_dict['builder']
-    # La source dir per MPGOS deve esistere
-    src_dir = builder_config['MPGOSsourcedir']
-    assert os.path.isdir(src_dir), f"Il path alla directory SourceDir di MPGOS è errato: {src_dir}"
-    # Il campo usedefaultoption deve essere booleano
-    assert isinstance(builder_config['usedefaultoptions'], bool), "Il campo userdefaultoptions deve essere di tipo bool"
-    # Se il campo userdefaultoptions è False allora tutti i restanti devono essere settati e interi
-    if not builder_config['usedefaultoptions']:
-        assert isinstance(builder_config['gpu']['major'], int) and \
-               isinstance(builder_config['gpu']['minor'], int)  and \
-               isinstance(builder_config['modeldefinition']['numberOfProblems'], int) and \
-               isinstance(builder_config['modeldefinition']['numberOfThreads'], int) and \
-               isinstance(builder_config['modeldefinition']['numberOfDenseOutput'], int) and \
-               isinstance(builder_config['modeldefinition']['threadsPerBlock'], int) and \
-               isinstance(builder_config['modeldefinition']['preferSharedMemory'], int) and \
-               isinstance(builder_config['modeldefinition']['maximumTimeStep'], float) and \
-               isinstance(builder_config['modeldefinition']['minimumTimeStep'], float) and \
-               isinstance(builder_config['modeldefinition']['denseOutputMinimumTimeStep'], float) and \
-               isinstance(builder_config['modeldefinition']['denseOutputSaveFrequency'], int) and \
-               isinstance(builder_config['modeldefinition']['timeDomainStart'], float) and \
-               isinstance(builder_config['modeldefinition']['timeDomainEnd'], float), \
-               "Se il campo userdefaultoptions è False allora tutti i restanti devono essere settati e interi"
-        # Controlla che la GPU settata esista
-        checkGPUexists((builder_config['gpu']['major'], builder_config['gpu']['minor']))
-
-
 def getnumevents(xmlfile):
     """ Dall'XML prende il numero di eventi """
     root = ET.parse(xmlfile).getroot()
@@ -232,7 +185,11 @@ def get_modelica2GPU_configuration(config_file):
         msg = f"Controllo della struttura del configuratore {config_file}"
         tmp_logger.debug(msg, msg)
         # END LOG
-        checkconfig(config_dict)
+        yc = yamlchecker.YAMLChecker(config_file)
+        msg, result = yc.check_correctness()
+        if not result:
+            print(msg)
+            sys.exit(1)
         # START LOG
         msg = f"Controllo andato a buon fine"
         tmp_logger.debug(msg, msg)
@@ -251,8 +208,8 @@ def get_modelica2GPU_configuration(config_file):
         builder_options = [builder_config['MPGOSsourcedir']]
         device = None
 
-        # Prima però dobbiamo controllare i parametri eventDirection e tolerance
-        if not builder_config['usedefaultoptions']:
+        # Controlliamo che il parametro eventDirection sia settato nel modo corretto
+        if builder_config['modeldefinition']['eventDirection'] is not None:
             # Check del parametro eventDirection
             check_multiple_config(
                 "Il parametro eventDirection è None nonostante ci sono eventi, oppure viceversa",
@@ -261,6 +218,8 @@ def get_modelica2GPU_configuration(config_file):
                 builder_config, 'eventDirection', event_num, int
             )
 
+        # Controlliamo che il parametro tolerance sia settato nel modo corretto
+        if builder_config['modeldefinition']['tolerance'] is not None:
             # Check del parametro tolerance
             check_multiple_config(
                 "Il parametro tolerance è None nonostante ci sono stati, oppure viceversa",
@@ -269,23 +228,28 @@ def get_modelica2GPU_configuration(config_file):
                 builder_config, 'tolerance', state_num, float
             )
 
-            builder_options += [
-                builder_config['gpu']['major'], builder_config['gpu']['minor'],
-                builder_config['modeldefinition']['numberOfThreads'], builder_config['modeldefinition']['numberOfProblems'],
-                builder_config['modeldefinition']['numberOfDenseOutput'], builder_config['modeldefinition']['threadsPerBlock'],
-                builder_config['modeldefinition']['initialTimeStep'], builder_config['modeldefinition']['preferSharedMemory'],
-                builder_config['modeldefinition']['maximumTimeStep'], builder_config['modeldefinition']['minimumTimeStep'],
-                list(builder_config['modeldefinition']['eventDirection'].values()),
-                builder_config['modeldefinition']['denseOutputMinimumTimeStep'],
-                builder_config['modeldefinition']['denseOutputSaveFrequency'],
-                list(builder_config['modeldefinition']['tolerance'].values()),
+        builder_options += [
+            builder_config['gpu']['major'], builder_config['gpu']['minor'],
+            builder_config['modeldefinition']['numberOfThreads'], builder_config['modeldefinition']['numberOfProblems'],
+            builder_config['modeldefinition']['numberOfDenseOutput'], builder_config['modeldefinition']['threadsPerBlock'],
+            builder_config['modeldefinition']['initialTimeStep'], builder_config['modeldefinition']['preferSharedMemory'],
+            builder_config['modeldefinition']['maximumTimeStep'], builder_config['modeldefinition']['minimumTimeStep'],
+            list(builder_config['modeldefinition']['eventDirection'].values()),
+            builder_config['modeldefinition']['denseOutputMinimumTimeStep'],
+            builder_config['modeldefinition']['denseOutputSaveFrequency'],
+            list(builder_config['modeldefinition']['tolerance'].values()),
+        ]
 
-            ]
-            device = gpu_from_capability((builder_options[1], builder_options[2]))
-        else:
-            def_opts = getdefaultoptions(event_num, state_num, xmlfile)
-            builder_options += def_opts[0]
-            device = def_opts[1]
+        if builder_config['usedefaultoptions']:
+            # Per tutti quei valori pari a null inseriamo il valore di default, mentre per tutti gli
+            # altri prendiamo quello inserito. Questo serve per evitare che l'utente nel momento in cui deve 
+            # cambiare un singolo parametro non debba rimetterli tutti. Questo fa in modo che l'utente inserisca
+            # solo quello voluto e settando tutti gli altri a default.
+            default_opts = getdefaultoptions(event_num, state_num, xmlfile)
+            for idx, value in enumerate(default_opts[0]):
+                if value is None:
+                    builder_options[idx] = default_opts[0][idx]
+        device = gpu_from_capability((builder_options[1], builder_options[2]))
 
         config_dict = {
             "xmlfile"                   : xmlfile,
