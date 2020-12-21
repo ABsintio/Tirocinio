@@ -32,13 +32,9 @@ model BIOMD324 "Morris1981_MuscleFibre_Voltage_full"
     Real Ninf(start=0.0);
     Real lambdaN(start=0.0);
     Real lambdaM(start=0.0);
-    Real N(start=(1 + tanh((V - V3) / V4)) / 2);
-    Real M(start=(1 + tanh((V - V1) / V2)) / 2);
-
-
-
-initial equation
-
+    Real N(start=6.14417460e-06);
+    Real M(start=0.00127101);
+    
 
 equation
     Minf = (1 + tanh((V - V1) / V2)) / 2;
