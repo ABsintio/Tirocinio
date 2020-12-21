@@ -64,7 +64,7 @@ equation
     der(ppERKn) = (compartment * (k1_2 * ppERKc - k2_2 * ppERKn - k3_2 * DUSP * ppERKn)) ;
     der(DUSP) = (compartment * k_3 * ppERKn) ;
     der(pRSKn) = (compartment * (k4_4 * ppERKn - k5_4 * pRSKn)) ;
-    der(cFOSp) = (compartmen_5t * ((ppERKn_5 * pRSKn_5)^n_5 / (k6_5^n_5 + (ppERKn_5 * pRSKn_5)^n_5) - k7 * cFOSp)) ;
+    der(cFOSp) = (compartment * ((ppERKn * pRSKn)^n_5 / (k6_5^n_5 + (ppERKn * pRSKn)^n_5) - k7 * cFOSp)) ;
     der(cFOS) = (compartment * ((k9_7 * cFOSm - k10_7 * cFOS - k11 * cFOS * ppERKc) + k13 * pcFOS)) ;
     der(pcFOS) = (compartment * (k11 * cFOS * ppERKc - k12_8 * pcFOS - k13 * pcFOS)) ;
     der(cFOSm) = (compartment * (k7 * cFOSp - k8_6 * cFOSm)) ;
