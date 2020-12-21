@@ -1,1 +1,1 @@
-rm *.o *.c *.h *.json BIOMD171 *.mat *.makefile *.log *.libs *_init.xml
+rm *.o *.c *.h *.json BIOMD171 *.makefile *.log *.libs *_init.xml
