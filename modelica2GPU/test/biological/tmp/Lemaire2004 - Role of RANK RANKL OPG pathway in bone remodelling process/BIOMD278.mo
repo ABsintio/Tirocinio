@@ -19,7 +19,7 @@ model BIOMD278 "Lemaire2004 - Role of RANK RANKL OPG pathway in bone remodelling
     parameter Real f0 = 0.05;
     parameter Real I_L = 0.0;
     parameter Real I_O = 0.0;
-    parameter Real I_P = 0.0;
+    parameter Real I_P = 10.0;
     parameter Real K = 10.0;
     parameter Real k1 = 0.01;
     parameter Real k2 = 10.0;
