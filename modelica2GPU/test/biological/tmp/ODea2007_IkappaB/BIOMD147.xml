@@ -1,0 +1,4589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD147"
+  modelIdentifier="BIOMD147"
+  guid="{db72b0fd-3963-44cb-b887-4bd6cfa0b6c2}"
+  generationDateAndTime="2020-12-22T16:02:10"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="24"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="IKK"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IKK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBaIKK"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBaIKK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBaIKKNFkB"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBaNFkB_cytoplasm"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBaNFkB_nucleus"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBa_cytoplasm"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBa_mRNA"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBa_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBa_nucleus"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBa_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBbIKK"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBbIKK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBbIKKNFkB"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBbNFkB_cytoplasm"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBbNFkB_nucleus"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBb_cytoplasm"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBb_mRNA"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBb_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBb_nucleus"  valueReference="14" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBb_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBeIKK"  valueReference="15" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBeIKK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBeIKKNFkB"  valueReference="16" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBeNFkB_cytoplasm"  valueReference="17" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBeNFkB_nucleus"  valueReference="18" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBe_cytoplasm"  valueReference="19" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBe_mRNA"  valueReference="20" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBe_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IkBe_nucleus"  valueReference="21" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBe_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFkB_cytoplasm"  valueReference="22" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NFkB_nucleus"  valueReference="23" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFkB_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(IKK)"  valueReference="24" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IKK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBaIKK)"  valueReference="25" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBaIKK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBaIKKNFkB)"  valueReference="26" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBaNFkB_cytoplasm)"  valueReference="27" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBaNFkB_nucleus)"  valueReference="28" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBa_cytoplasm)"  valueReference="29" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBa_mRNA)"  valueReference="30" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBa_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBa_nucleus)"  valueReference="31" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBa_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBbIKK)"  valueReference="32" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBbIKK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBbIKKNFkB)"  valueReference="33" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBbNFkB_cytoplasm)"  valueReference="34" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBbNFkB_nucleus)"  valueReference="35" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBb_cytoplasm)"  valueReference="36" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBb_mRNA)"  valueReference="37" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBb_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBb_nucleus)"  valueReference="38" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBb_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBeIKK)"  valueReference="39" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBeIKK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBeIKKNFkB)"  valueReference="40" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBeNFkB_cytoplasm)"  valueReference="41" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBeNFkB_nucleus)"  valueReference="42" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBe_cytoplasm)"  valueReference="43" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBe_mRNA)"  valueReference="44" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBe_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IkBe_nucleus)"  valueReference="45" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IkBe_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFkB_cytoplasm)"  valueReference="46" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NFkB_nucleus)"  valueReference="47" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NFkB_nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Total_IkBalpha"  valueReference="48" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Total_IkBalpha"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Total_IkBbeta"  valueReference="49" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Total_IkBbeta"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Total_IkBeps"  valueReference="50" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Total_IkBeps"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="a1_int_ai"  valueReference="51" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.35" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a1_int_ai"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a2_int_bi"  valueReference="52" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.36" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a2_int_bi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a3_int_ei"  valueReference="53" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.54" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a3_int_ei"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a4_1_int_an"  valueReference="54" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a4_1_int_an"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a4_2_int_an_n"  valueReference="55" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a4_2_int_an_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a4_3_int_2ain"  valueReference="56" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a4_3_int_2ain"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a5_1_int_bn"  valueReference="57" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a5_1_int_bn"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a5_2_int_bn_n"  valueReference="58" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a5_2_int_bn_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a5_3_int_2bin"  valueReference="59" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a5_3_int_2bin"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a6_1_int_en"  valueReference="60" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a6_1_int_en"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a6_2_int_en_n"  valueReference="61" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a6_2_int_en_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a6_3_int_2ein"  valueReference="62" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="30.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a6_3_int_2ein"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a7_int_2ani"  valueReference="63" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="11.1" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a7_int_2ani"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a8_int_2bni"  valueReference="64" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.88" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a8_int_2bni"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a9_int_2eni"  valueReference="65" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="4.2" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a9_int_2eni"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="cytoplasm"  valueReference="66" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="cytoplasm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d1_1_int_ai"  valueReference="67" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.075" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d1_1_int_ai"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d1_2_int_2ani"  valueReference="68" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.075" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d1_2_int_2ani"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d2_1_int_bi"  valueReference="69" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.105" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d2_1_int_bi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d2_2_int_2bni"  valueReference="70" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.105" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d2_2_int_2bni"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d3_1_int_ei"  valueReference="71" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.105" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d3_1_int_ei"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d3_2_int_2eni"  valueReference="72" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.105" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d3_2_int_2eni"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d4_1_int_an"  valueReference="73" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d4_1_int_an"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d4_2_int_an_n"  valueReference="74" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d4_2_int_an_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d4_3_int_2ain"  valueReference="75" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d4_3_int_2ain"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d5_1_int_bn"  valueReference="76" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d5_1_int_bn"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d5_2_int_bn_n"  valueReference="77" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d5_2_int_bn_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d5_3_int_2bin"  valueReference="78" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d5_3_int_2bin"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d6_1_int_en"  valueReference="79" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d6_1_int_en"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d6_2_int_en_n"  valueReference="80" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d6_2_int_en_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="d6_3_int_2ein"  valueReference="81" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="d6_3_int_2ein"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg1_c_deg_a"  valueReference="82" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.12" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg1_c_deg_a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg1_n_deg_a_n"  valueReference="83" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.12" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg1_n_deg_a_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg2_c_deg_b"  valueReference="84" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.18" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg2_c_deg_b"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg2_n_deg_b_n"  valueReference="85" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.18" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg2_n_deg_b_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg3_c_deg_e"  valueReference="86" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.18" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg3_c_deg_e"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg3_n_deg_e_n"  valueReference="87" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.18" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg3_n_deg_e_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg4_c_deg_an"  valueReference="88" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg4_c_deg_an"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg4_n_deg_an_n"  valueReference="89" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg4_n_deg_an_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg5_c_deg_bn"  valueReference="90" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg5_c_deg_bn"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg5_n_deg_bn_n"  valueReference="91" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg5_n_deg_bn_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg6_c_deg_en"  valueReference="92" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg6_c_deg_en"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="deg6_n_deg_en_n"  valueReference="93" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="deg6_n_deg_en_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1_1_loc_n"  valueReference="94" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0048" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1_1_loc_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1_2_loc_n"  valueReference="95" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.4" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1_2_loc_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k2_a_loc_an"  valueReference="96" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.828" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k2_a_loc_an"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k2_b_loc_bn"  valueReference="97" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.414" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k2_b_loc_bn"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k2_e_loc_en"  valueReference="98" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.414" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k2_e_loc_en"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k_IKK_deg_IKK_deg"  valueReference="99" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k_IKK_deg_IKK_deg"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="nucleus"  valueReference="100" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="nucleus"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r1_deg_ai"  valueReference="101" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.07199999999999999" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r1_deg_ai"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r2_deg_bi"  valueReference="102" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.024" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r2_deg_bi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r3_deg_ei"  valueReference="103" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.036" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r3_deg_ei"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r4_deg_ain"  valueReference="104" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.36" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r4_deg_ain"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r5_deg_bin"  valueReference="105" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.12" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r5_deg_bin"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r6_deg_ein"  valueReference="106" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.18" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r6_deg_ein"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tp1a_loc_a"  valueReference="107" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.018" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tp1a_loc_a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tp1b_loc_b"  valueReference="108" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.018" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tp1b_loc_b"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tp1e_loc_e"  valueReference="109" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.018" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tp1e_loc_e"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tp2a_loc_a"  valueReference="110" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.012" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tp2a_loc_a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tp2b_loc_b"  valueReference="111" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.012" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tp2b_loc_b"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tp2e_loc_e"  valueReference="112" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.012" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tp2e_loc_e"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr1a_tsl_a"  valueReference="113" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.2448" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr1a_tsl_a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr1b_tsl_b"  valueReference="114" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.2448" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr1b_tsl_b"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr1e_tsl_e"  valueReference="115" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.2448" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr1e_tsl_e"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr2a_i_itxn_a"  valueReference="116" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.98" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr2a_i_itxn_a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr2a_txn_a"  valueReference="117" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0001848" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr2a_txn_a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr2b_txn_b"  valueReference="118" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="4.272e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr2b_txn_b"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr2e_txn_e"  valueReference="119" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.048e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr2e_txn_e"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr3a_mdeg_a"  valueReference="120" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0168" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr3a_mdeg_a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr3b_mdeg_b"  valueReference="121" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0168" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr3b_mdeg_b"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tr3e_mdeg_e"  valueReference="122" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0168" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tr3e_mdeg_e"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a1_int_ai"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.35</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a2_int_bi"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.36</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a3_int_ei"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.54</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a4_1_int_an"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a4_2_int_an_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a4_3_int_2ain"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a5_1_int_bn"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a5_2_int_bn_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a5_3_int_2bin"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a6_1_int_en"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a6_2_int_en_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a6_3_int_2ein"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>30.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a7_int_2ani"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>11.1</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a8_int_2bni"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.88</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a9_int_2eni"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>4.2</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="cytoplasm"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d1_1_int_ai"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.075</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d1_2_int_2ani"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.075</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d2_1_int_bi"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.105</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d2_2_int_2bni"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.105</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d3_1_int_ei"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.105</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d3_2_int_2eni"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.105</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d4_1_int_an"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d4_2_int_an_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d4_3_int_2ain"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d5_1_int_bn"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d5_2_int_bn_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d5_3_int_2bin"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d6_1_int_en"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d6_2_int_en_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="d6_3_int_2ein"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg1_c_deg_a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.12</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg1_n_deg_a_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.12</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg2_c_deg_b"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.18</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg2_n_deg_b_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.18</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg3_c_deg_e"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.18</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg3_n_deg_e_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.18</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg4_c_deg_an"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg4_n_deg_an_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg5_c_deg_bn"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg5_n_deg_bn_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg6_c_deg_en"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="deg6_n_deg_en_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1_1_loc_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0048</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1_2_loc_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.4</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k2_a_loc_an"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.828</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k2_b_loc_bn"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.414</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k2_e_loc_en"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.414</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k_IKK_deg_IKK_deg"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="nucleus"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r1_deg_ai"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.07199999999999999</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r2_deg_bi"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.024</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r3_deg_ei"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.036</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r4_deg_ain"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.36</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r5_deg_bin"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.12</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r6_deg_ein"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.18</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tp1a_loc_a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.018</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tp1b_loc_b"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.018</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tp1e_loc_e"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.018</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tp2a_loc_a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.012</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tp2b_loc_b"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.012</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tp2e_loc_e"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.012</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr1a_tsl_a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.2448</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr1b_tsl_b"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.2448</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr1e_tsl_e"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.2448</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr2a_i_itxn_a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.98</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr2a_txn_a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0001848</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr2b_txn_b"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>4.272e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr2e_txn_e"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.048e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr3a_mdeg_a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0168</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr3b_mdeg_b"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0168</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tr3e_mdeg_e"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0168</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBeIKK"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a3_int_ei"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IKK"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="d6_3_int_2ein"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBeIKK"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="a6_3_int_2ein"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d3_1_int_ei"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="r3_deg_ei"/>
+                  </exp:Identifier>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a9_int_2eni"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IKK"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="a6_3_int_2ein"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBeIKK"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Sub>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="d6_3_int_2ein"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d3_2_int_2eni"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="r6_deg_ein"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="nucleus"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a6_2_int_en_n"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBe_nucleus"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Sub>
+                <exp:Sub>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k2_e_loc_en"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d6_2_int_en_n"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="deg6_n_deg_en_n"/>
+                </exp:Identifier>
+              </exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytoplasm"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="a6_1_int_en"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="d6_1_int_en"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k2_e_loc_en"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytoplasm"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d3_2_int_2eni"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="a9_int_2eni"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IKK"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="deg6_c_deg_en"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBe_nucleus"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytoplasm"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tp1e_loc_e"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="d6_2_int_en_n"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBe_nucleus"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="tp2e_loc_e"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="deg3_n_deg_e_n"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="a6_2_int_en_n"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tr1e_tsl_e"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBe_mRNA"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytoplasm"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d3_1_int_ei"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBeIKK"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d6_1_int_en"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+                      </exp:Identifier>
+                      <exp:Sub>
+                        <exp:Mul>
+                            <exp:Neg>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="a3_int_ei"/>
+                              </exp:Identifier>
+                            </exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="IKK"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="deg3_c_deg_e"/>
+                        </exp:Identifier>
+                      </exp:Sub>
+                    </exp:Mul>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="a6_1_int_en"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Mul>
+                  </exp:Sub>
+                </exp:Add>
+              </exp:Add>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="nucleus"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="tp2e_loc_e"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBe_nucleus"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="cytoplasm"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="tp1e_loc_e"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBe_mRNA"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="nucleus"/>
+          </exp:Identifier>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="tr2e_txn_e"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tr3e_mdeg_e"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBe_mRNA"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBb_mRNA"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="nucleus"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tr1b_tsl_b"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBb_mRNA"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tr2b_txn_b"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Sub>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="tr1b_tsl_b"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="tr3b_mdeg_b"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBb_mRNA"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tr1b_tsl_b"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBb_mRNA"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="tp2b_loc_b"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBb_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytoplasm"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d5_1_int_bn"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+                    </exp:Identifier>
+                    <exp:Sub>
+                      <exp:Sub>
+                          <exp:Neg>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="deg2_c_deg_b"/>
+                            </exp:Identifier>
+                          </exp:Neg>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="a5_1_int_bn"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                      </exp:Sub>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="tp1b_loc_b"/>
+                      </exp:Identifier>
+                    </exp:Sub>
+                  </exp:Mul>
+                  <exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="d2_1_int_bi"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IkBbIKK"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="a2_int_bi"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="IKK"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Mul>
+                  </exp:Sub>
+                </exp:Add>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBb_nucleus"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytoplasm"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tp1b_loc_b"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="d5_2_int_bn_n"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBb_nucleus"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="tp2b_loc_b"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="deg2_n_deg_b_n"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="a5_2_int_bn_n"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k2_b_loc_bn"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytoplasm"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="a5_1_int_bn"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="d5_1_int_bn"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="deg5_c_deg_bn"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d2_2_int_2bni"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="a8_int_2bni"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IKK"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="nucleus"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a5_2_int_bn_n"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBb_nucleus"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Sub>
+                <exp:Sub>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="deg5_n_deg_bn_n"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d5_2_int_bn_n"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k2_b_loc_bn"/>
+                </exp:Identifier>
+              </exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a5_3_int_2bin"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBbIKK"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="a8_int_2bni"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IKK"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Sub>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="d2_2_int_2bni"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d5_3_int_2bin"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="r5_deg_bin"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBbIKK"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a2_int_bi"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IKK"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Sub>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="d2_1_int_bi"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="r2_deg_bi"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBbIKK"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Sub>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d5_3_int_2bin"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="a5_3_int_2bin"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBbIKK"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFkB_nucleus"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="deg4_n_deg_an_n"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="deg5_n_deg_bn_n"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytoplasm"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k1_2_loc_n"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="deg6_n_deg_en_n"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d4_2_int_an_n"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="d5_2_int_bn_n"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="d6_2_int_en_n"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                      <exp:Sub>
+                        <exp:Sub>
+                          <exp:Sub>
+                            <exp:Mul>
+                                <exp:Neg>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="k1_1_loc_n"/>
+                                  </exp:Identifier>
+                                </exp:Neg>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="a5_2_int_bn_n"/>
+                              </exp:Identifier>
+                              <exp:Mul>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="IkBb_nucleus"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                                </exp:Identifier>
+                              </exp:Mul>
+                            </exp:Mul>
+                          </exp:Sub>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="a4_2_int_an_n"/>
+                            </exp:Identifier>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="IkBa_nucleus"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                          </exp:Mul>
+                        </exp:Sub>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="a6_2_int_en_n"/>
+                          </exp:Identifier>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="IkBe_nucleus"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                        </exp:Mul>
+                      </exp:Sub>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IKK"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="r1_deg_ai"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBaIKK"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="r4_deg_ain"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="r5_deg_bin"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="r2_deg_bi"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBbIKK"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="r3_deg_ei"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IkBeIKK"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="r6_deg_ein"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="d1_1_int_ai"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="IkBaIKK"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="d1_2_int_2ani"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                          <exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="d2_2_int_2bni"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                            <exp:Add>
+                              <exp:Mul>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="d2_1_int_bi"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="IkBbIKK"/>
+                                </exp:Identifier>
+                              </exp:Mul>
+                              <exp:Add>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="d3_1_int_ei"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="IkBeIKK"/>
+                                  </exp:Identifier>
+                                </exp:Mul>
+                                <exp:Add>
+                                  <exp:Mul>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="d3_2_int_2eni"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+                                    </exp:Identifier>
+                                  </exp:Mul>
+                                  <exp:Sub>
+                                    <exp:Sub>
+                                      <exp:Sub>
+                                        <exp:Sub>
+                                          <exp:Sub>
+                                            <exp:Sub>
+                                              <exp:Mul>
+                                                  <exp:Neg>
+                                                    <exp:Identifier>
+                                                      <exp:QualifiedNamePart name="k_IKK_deg_IKK_deg"/>
+                                                    </exp:Identifier>
+                                                  </exp:Neg>
+                                                <exp:Identifier>
+                                                  <exp:QualifiedNamePart name="IKK"/>
+                                                </exp:Identifier>
+                                              </exp:Mul>
+                                              <exp:Mul>
+                                                <exp:Identifier>
+                                                  <exp:QualifiedNamePart name="a3_int_ei"/>
+                                                </exp:Identifier>
+                                                <exp:Mul>
+                                                  <exp:Identifier>
+                                                    <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+                                                  </exp:Identifier>
+                                                  <exp:Identifier>
+                                                    <exp:QualifiedNamePart name="IKK"/>
+                                                  </exp:Identifier>
+                                                </exp:Mul>
+                                              </exp:Mul>
+                                            </exp:Sub>
+                                            <exp:Mul>
+                                              <exp:Identifier>
+                                                <exp:QualifiedNamePart name="a8_int_2bni"/>
+                                              </exp:Identifier>
+                                              <exp:Mul>
+                                                <exp:Identifier>
+                                                  <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+                                                </exp:Identifier>
+                                                <exp:Identifier>
+                                                  <exp:QualifiedNamePart name="IKK"/>
+                                                </exp:Identifier>
+                                              </exp:Mul>
+                                            </exp:Mul>
+                                          </exp:Sub>
+                                          <exp:Mul>
+                                            <exp:Identifier>
+                                              <exp:QualifiedNamePart name="a1_int_ai"/>
+                                            </exp:Identifier>
+                                            <exp:Mul>
+                                              <exp:Identifier>
+                                                <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+                                              </exp:Identifier>
+                                              <exp:Identifier>
+                                                <exp:QualifiedNamePart name="IKK"/>
+                                              </exp:Identifier>
+                                            </exp:Mul>
+                                          </exp:Mul>
+                                        </exp:Sub>
+                                        <exp:Mul>
+                                          <exp:Identifier>
+                                            <exp:QualifiedNamePart name="a7_int_2ani"/>
+                                          </exp:Identifier>
+                                          <exp:Mul>
+                                            <exp:Identifier>
+                                              <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+                                            </exp:Identifier>
+                                            <exp:Identifier>
+                                              <exp:QualifiedNamePart name="IKK"/>
+                                            </exp:Identifier>
+                                          </exp:Mul>
+                                        </exp:Mul>
+                                      </exp:Sub>
+                                      <exp:Mul>
+                                        <exp:Identifier>
+                                          <exp:QualifiedNamePart name="a9_int_2eni"/>
+                                        </exp:Identifier>
+                                        <exp:Mul>
+                                          <exp:Identifier>
+                                            <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+                                          </exp:Identifier>
+                                          <exp:Identifier>
+                                            <exp:QualifiedNamePart name="IKK"/>
+                                          </exp:Identifier>
+                                        </exp:Mul>
+                                      </exp:Mul>
+                                    </exp:Sub>
+                                    <exp:Mul>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="a2_int_bi"/>
+                                      </exp:Identifier>
+                                      <exp:Mul>
+                                        <exp:Identifier>
+                                          <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+                                        </exp:Identifier>
+                                        <exp:Identifier>
+                                          <exp:QualifiedNamePart name="IKK"/>
+                                        </exp:Identifier>
+                                      </exp:Mul>
+                                    </exp:Mul>
+                                  </exp:Sub>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Add>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytoplasm"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="deg4_c_deg_an"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="r4_deg_ain"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="r5_deg_bin"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="deg5_c_deg_bn"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="deg6_c_deg_en"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="r6_deg_ein"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="d4_1_int_an"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                          <exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="d4_3_int_2ain"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+                              </exp:Identifier>
+                            </exp:Mul>
+                            <exp:Add>
+                              <exp:Mul>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="d5_3_int_2bin"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+                                </exp:Identifier>
+                              </exp:Mul>
+                              <exp:Add>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="d5_1_int_bn"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+                                  </exp:Identifier>
+                                </exp:Mul>
+                                <exp:Sub>
+                                  <exp:Sub>
+                                    <exp:Sub>
+                                      <exp:Mul>
+                                          <exp:Neg>
+                                            <exp:Identifier>
+                                              <exp:QualifiedNamePart name="a4_1_int_an"/>
+                                            </exp:Identifier>
+                                          </exp:Neg>
+                                        <exp:Mul>
+                                          <exp:Identifier>
+                                            <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+                                          </exp:Identifier>
+                                          <exp:Identifier>
+                                            <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                                          </exp:Identifier>
+                                        </exp:Mul>
+                                      </exp:Mul>
+                                      <exp:Mul>
+                                        <exp:Identifier>
+                                          <exp:QualifiedNamePart name="a5_3_int_2bin"/>
+                                        </exp:Identifier>
+                                        <exp:Mul>
+                                          <exp:Identifier>
+                                            <exp:QualifiedNamePart name="IkBbIKK"/>
+                                          </exp:Identifier>
+                                          <exp:Identifier>
+                                            <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                                          </exp:Identifier>
+                                        </exp:Mul>
+                                      </exp:Mul>
+                                    </exp:Sub>
+                                    <exp:Mul>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="a4_3_int_2ain"/>
+                                      </exp:Identifier>
+                                      <exp:Mul>
+                                        <exp:Identifier>
+                                          <exp:QualifiedNamePart name="IkBaIKK"/>
+                                        </exp:Identifier>
+                                        <exp:Identifier>
+                                          <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                                        </exp:Identifier>
+                                      </exp:Mul>
+                                    </exp:Mul>
+                                  </exp:Sub>
+                                  <exp:Mul>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="a5_1_int_bn"/>
+                                    </exp:Identifier>
+                                    <exp:Mul>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+                                      </exp:Identifier>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                                      </exp:Identifier>
+                                    </exp:Mul>
+                                  </exp:Mul>
+                                </exp:Sub>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k1_1_loc_n"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytoplasm"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d6_1_int_en"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d6_3_int_2ein"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Sub>
+                    <exp:Sub>
+                      <exp:Mul>
+                          <exp:Neg>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k1_2_loc_n"/>
+                            </exp:Identifier>
+                          </exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="a6_1_int_en"/>
+                        </exp:Identifier>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                      </exp:Mul>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="a6_3_int_2ein"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="IkBeIKK"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Mul>
+                  </exp:Sub>
+                </exp:Add>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a7_int_2ani"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IKK"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="a4_3_int_2ain"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBaIKK"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Sub>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="d4_3_int_2ain"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d1_2_int_2ani"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="r4_deg_ain"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="nucleus"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a4_2_int_an_n"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBa_nucleus"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Sub>
+                <exp:Sub>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k2_a_loc_an"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d4_2_int_an_n"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="deg4_n_deg_an_n"/>
+                </exp:Identifier>
+              </exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytoplasm"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="a4_1_int_an"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="d4_1_int_an"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="nucleus"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k2_a_loc_an"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytoplasm"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d1_2_int_2ani"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="a7_int_2ani"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IKK"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="deg4_c_deg_an"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBaIKK"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a1_int_ai"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IKK"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="d4_3_int_2ain"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaIKK"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="a4_3_int_2ain"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d1_1_int_ai"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="r1_deg_ai"/>
+                  </exp:Identifier>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBa_nucleus"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="cytoplasm"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tp1a_loc_a"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="d4_2_int_an_n"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBa_nucleus"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="tp2a_loc_a"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="deg1_n_deg_a_n"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="a4_2_int_an_n"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="nucleus"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="tr1a_tsl_a"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBa_mRNA"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="cytoplasm"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="d1_1_int_ai"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBaIKK"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="d4_1_int_an"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+                      </exp:Identifier>
+                      <exp:Sub>
+                        <exp:Mul>
+                            <exp:Neg>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="a1_int_ai"/>
+                              </exp:Identifier>
+                            </exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="IKK"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="deg1_c_deg_a"/>
+                        </exp:Identifier>
+                      </exp:Sub>
+                    </exp:Mul>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="a4_1_int_an"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Mul>
+                  </exp:Sub>
+                </exp:Add>
+              </exp:Add>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="nucleus"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="tp2a_loc_a"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBa_nucleus"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="cytoplasm"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="tp1a_loc_a"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBa_mRNA"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="nucleus"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="tr2a_txn_a"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="tr1a_tsl_a"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBa_mRNA"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="tr2a_i_itxn_a"/>
+                  </exp:Identifier>
+                  <exp:Pow>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NFkB_nucleus"/>
+                    </exp:Identifier>
+                    <exp:RealLiteral>2.0</exp:RealLiteral>
+                  </exp:Pow>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="tr3a_mdeg_a"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="tr1a_tsl_a"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBa_mRNA"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Total_IkBeps"/>
+        </exp:Identifier>
+        <exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IkBe_nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBeIKK"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Add>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Total_IkBbeta"/>
+        </exp:Identifier>
+        <exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IkBb_nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBbIKK"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Add>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Total_IkBalpha"/>
+        </exp:Identifier>
+        <exp:Add>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IkBa_nucleus"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IkBaIKK"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Add>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Total_IkBalpha"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Total_IkBbeta"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Total_IkBeps"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBeIKK"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBeIKKNFkB"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBeNFkB_nucleus"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBeNFkB_cytoplasm"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBe_nucleus"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBe_cytoplasm"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBe_mRNA"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBb_mRNA"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBb_cytoplasm"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBb_nucleus"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBbNFkB_cytoplasm"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.03</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBbNFkB_nucleus"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBbIKKNFkB"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBbIKK"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFkB_nucleus"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IKK"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.001</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NFkB_cytoplasm"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBaIKKNFkB"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBaNFkB_nucleus"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBaNFkB_cytoplasm"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.06</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBaIKK"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBa_nucleus"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBa_cytoplasm"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IkBa_mRNA"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
