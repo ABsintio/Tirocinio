@@ -13,7 +13,7 @@ csv_file = args.csv
 csv_data = pd.read_csv(csv_file)
 
 # Prendiamo i nomi delle species con gli indici corrispettivi che utilizzeremo per il plotting
-variables_to_plot = ["_5mTHF","THF","DHF","_5_10_CH2THF","_5_10_CHTHF","_10fTHF","Ser","Gly","dUMP","GAR","AICAR","HCOOH","NADPH","Hcy"]
+variables_to_plot = ["5mTHF","THF","DHF","5_10_CH2THF","5_10_CHTHF","10fTHF","Ser","Gly","dUMP","GAR","AICAR","HCOOH","NADPH","Hcy"]
 species_tuple = [(idx, specie) for idx, specie in enumerate(csv_data.head(0)) if specie in variables_to_plot and specie != "time"]
 
 # Creiamo un array numpy per salvare i dati estrapolati dal CSV
@@ -24,8 +24,8 @@ time = data_numpy[:, 0]
 
 # Prendiamo i valori a tuple di quattro i quali formeranno un singolo plot
 plot_number = 1
-for i in range(0, len(species_tuple), 4):
-    current_vars = species_tuple[i:i+4]
+for i in range(0, len(species_tuple), 1):
+    current_vars = species_tuple[i:i+1]
     plt.figure(figsize=[15.0, 8.0])
     for j, var in current_vars:
         plt.plot(time, data_numpy[:, j], marker="_", label=var)
