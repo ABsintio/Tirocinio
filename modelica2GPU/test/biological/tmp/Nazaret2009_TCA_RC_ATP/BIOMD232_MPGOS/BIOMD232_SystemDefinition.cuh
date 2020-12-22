@@ -74,7 +74,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     ACC[0]=0.0; //$cse1
     ACC[1]=1.0; //$cse2
     ACC[2]=0.0; //$cse3
-    ACC[3]=4.16; //ADP
+    ACC[3]=4.16 - 3.536; //ADP
     ACC[4]=0.0; //ATPcrit
     ACC[5]=0.0; //DeltaGtransport
     ACC[6]=0.0; //JANT
