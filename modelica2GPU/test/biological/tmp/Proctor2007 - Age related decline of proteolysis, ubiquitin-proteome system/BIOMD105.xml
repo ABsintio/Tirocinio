@@ -1,0 +1,5036 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD105"
+  modelIdentifier="BIOMD105"
+  guid="{03b65fd5-2ec7-4d02-8f42-1f66a1b1cec3}"
+  generationDateAndTime="2020-12-22T19:36:33"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="39"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="ADP"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ADP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="AMP"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AMP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ATP"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ATP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="AggP"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AggP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="AggP_Proteasome"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AggP_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="DUB"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="DUB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="E1"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="E1_Ub"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E1_Ub"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="E2"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="E2_Ub"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E2_Ub"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="E3"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="E3_MisP"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E3_MisP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub2"  valueReference="14" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub3"  valueReference="15" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub4"  valueReference="16" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub4_Proteasome"  valueReference="17" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub5"  valueReference="18" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub5_Proteasome"  valueReference="19" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub6"  valueReference="20" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub6_Proteasome"  valueReference="21" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub7"  valueReference="22" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub7"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub7_Proteasome"  valueReference="23" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub8"  valueReference="24" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="MisP_Ub8_Proteasome"  valueReference="25" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NatP"  valueReference="26" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NatP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Proteasome"  valueReference="27" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ROS"  valueReference="28" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ROS"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="SeqAggP"  valueReference="29" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="SeqAggP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Source"  valueReference="30" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Source"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Ub"  valueReference="31" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ub"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="degUb4"  valueReference="32" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="degUb5"  valueReference="33" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="degUb6"  valueReference="34" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="degUb7"  valueReference="35" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb7"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="degUb8"  valueReference="36" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="refNatP"  valueReference="37" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="refNatP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="totMisP"  valueReference="38" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="totMisP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(ADP)"  valueReference="39" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ADP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(AMP)"  valueReference="40" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AMP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(ATP)"  valueReference="41" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ATP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(AggP)"  valueReference="42" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AggP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(AggP_Proteasome)"  valueReference="43" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AggP_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(DUB)"  valueReference="44" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="DUB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(E1)"  valueReference="45" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(E1_Ub)"  valueReference="46" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E1_Ub"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(E2)"  valueReference="47" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(E2_Ub)"  valueReference="48" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E2_Ub"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(E3)"  valueReference="49" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(E3_MisP)"  valueReference="50" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E3_MisP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP)"  valueReference="51" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub)"  valueReference="52" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub2)"  valueReference="53" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub3)"  valueReference="54" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub4)"  valueReference="55" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub4_Proteasome)"  valueReference="56" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub5)"  valueReference="57" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub5_Proteasome)"  valueReference="58" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub6)"  valueReference="59" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub6_Proteasome)"  valueReference="60" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub7)"  valueReference="61" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub7"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub7_Proteasome)"  valueReference="62" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub8)"  valueReference="63" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(MisP_Ub8_Proteasome)"  valueReference="64" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NatP)"  valueReference="65" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NatP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Proteasome)"  valueReference="66" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Proteasome"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(ROS)"  valueReference="67" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ROS"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(SeqAggP)"  valueReference="68" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="SeqAggP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Source)"  valueReference="69" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Source"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Ub)"  valueReference="70" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ub"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(degUb4)"  valueReference="71" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(degUb5)"  valueReference="72" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(degUb6)"  valueReference="73" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(degUb7)"  valueReference="74" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb7"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(degUb8)"  valueReference="75" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="degUb8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(refNatP)"  valueReference="76" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="refNatP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(totMisP)"  valueReference="77" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="totMisP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="cytosol"  valueReference="78" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="cytosol"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1"  valueReference="79" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k2"  valueReference="80" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2e-06" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k3"  valueReference="81" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="4e-06" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k61"  valueReference="82" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.7e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k61"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k61r"  valueReference="83" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0002" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k61r"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k62"  valueReference="84" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0002" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k62"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k63"  valueReference="85" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k63"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k64"  valueReference="86" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k64"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k65"  valueReference="87" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k65"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k66"  valueReference="88" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k66"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k67"  valueReference="89" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k67"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k68"  valueReference="90" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k68"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k69"  valueReference="91" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k69"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k71"  valueReference="92" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1e-08" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k71"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k72"  valueReference="93" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1e-08" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k72"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k73"  valueReference="94" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k73"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k74"  valueReference="95" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k74"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="cytosol"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2e-06</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>4e-06</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k61"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.7e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k61r"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0002</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k62"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0002</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k63"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k64"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k65"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k66"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k67"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k68"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k69"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k71"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1e-08</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k72"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1e-08</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k73"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k74"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="ADP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="AMP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="AggP_Proteasome"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k74"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="AggP"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Proteasome"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="SeqAggP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k73"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="AggP"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="AggP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k71"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:RealLiteral>0.5</exp:RealLiteral>
+                  <exp:Add>
+                    <exp:RealLiteral>-1.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="AggP"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k72"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:RealLiteral>0.5</exp:RealLiteral>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:RealLiteral>-1.0</exp:RealLiteral>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Mul>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub2"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:RealLiteral>-1.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub2"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub3"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:RealLiteral>-1.0</exp:RealLiteral>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                          </exp:Add>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub4"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:RealLiteral>-1.0</exp:RealLiteral>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub4"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                          </exp:Mul>
+                          <exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub5"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:RealLiteral>-1.0</exp:RealLiteral>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                </exp:Identifier>
+                              </exp:Add>
+                            </exp:Mul>
+                            <exp:Add>
+                              <exp:Mul>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:RealLiteral>-1.0</exp:RealLiteral>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                  </exp:Identifier>
+                                </exp:Add>
+                              </exp:Mul>
+                              <exp:Add>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:RealLiteral>-1.0</exp:RealLiteral>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Mul>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:RealLiteral>-1.0</exp:RealLiteral>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Mul>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub2"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub3"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub4"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub5"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                  </exp:Identifier>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Mul>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:RealLiteral>2.0</exp:RealLiteral>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="AggP"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub2"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub3"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub4"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                    </exp:Identifier>
+                                    <exp:Add>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                      </exp:Identifier>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                      </exp:Identifier>
+                                    </exp:Add>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Mul>
+                    </exp:Mul>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub2"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub4"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:Add>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub2"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub4"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Mul>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub4"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Mul>
+                          <exp:Add>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub4"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Mul>
+                            <exp:Add>
+                              <exp:Mul>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Mul>
+                              <exp:Add>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Mul>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                  </exp:Identifier>
+                                </exp:Mul>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Add>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="AggP"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k73"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k72"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub2"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub4"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub3"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Mul>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k74"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Proteasome"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k71"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="AggP"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="refNatP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k3"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="totMisP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k2"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="NatP"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="ROS"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="degUb8"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k69"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ATP"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:RealLiteral>5000.0</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ATP"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="degUb7"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k69"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ATP"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:RealLiteral>5000.0</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ATP"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="degUb6"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k69"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ATP"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:RealLiteral>5000.0</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ATP"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="degUb5"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k69"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ATP"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:RealLiteral>5000.0</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ATP"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="degUb4"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="k69"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ATP"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:RealLiteral>5000.0</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ATP"/>
+                </exp:Identifier>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Source"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="ATP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k67"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub8"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Proteasome"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                  <exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k68"/>
+                    </exp:Identifier>
+                  </exp:Neg>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k69"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="ATP"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k67"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub7"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Proteasome"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k68"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k69"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="ATP"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k67"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub6"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Proteasome"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k68"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k69"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="ATP"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k67"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub5"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Proteasome"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k68"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k69"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="ATP"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k67"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub4"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Proteasome"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k68"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k69"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="ATP"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub8"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k65"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub7"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub8"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Mul>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k66"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="DUB"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k67"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Proteasome"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k72"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub8"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:RealLiteral>-1.0</exp:RealLiteral>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="AggP"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub2"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub3"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub4"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub7"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k65"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub6"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k66"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub8"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub7"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                    <exp:Sub>
+                      <exp:Mul>
+                          <exp:Neg>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k72"/>
+                            </exp:Identifier>
+                          </exp:Neg>
+                        <exp:Add>
+                          <exp:RealLiteral>-1.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub7"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k67"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Proteasome"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k65"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="E2_Ub"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k66"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="DUB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k72"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub7"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="AggP"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub2"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub4"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                  </exp:Identifier>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub6"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k65"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub5"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k66"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub7"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub6"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                    <exp:Sub>
+                      <exp:Mul>
+                          <exp:Neg>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k72"/>
+                            </exp:Identifier>
+                          </exp:Neg>
+                        <exp:Add>
+                          <exp:RealLiteral>-1.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub6"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k67"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Proteasome"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k65"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="E2_Ub"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k66"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="DUB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k72"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub6"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="AggP"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub2"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub4"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                  </exp:Identifier>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub5"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k65"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub4"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k66"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub6"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                    <exp:Sub>
+                      <exp:Mul>
+                          <exp:Neg>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k72"/>
+                            </exp:Identifier>
+                          </exp:Neg>
+                        <exp:Add>
+                          <exp:RealLiteral>-1.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub5"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k67"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Proteasome"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k65"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="E2_Ub"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k66"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="DUB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k72"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub5"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="AggP"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub2"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub4"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                  </exp:Identifier>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub4"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k65"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub3"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k66"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub5"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub4"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Sub>
+                    <exp:Sub>
+                      <exp:Mul>
+                          <exp:Neg>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k72"/>
+                            </exp:Identifier>
+                          </exp:Neg>
+                        <exp:Add>
+                          <exp:RealLiteral>-1.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub4"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k67"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Proteasome"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k65"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="E2_Ub"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k66"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="DUB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k72"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub4"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="AggP"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub2"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub5"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                  </exp:Identifier>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub3"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k65"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub2"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k66"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub4"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k68"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="DUB"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Sub>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub3"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k65"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="E2_Ub"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k66"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="DUB"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Sub>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k72"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub3"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:RealLiteral>-1.0</exp:RealLiteral>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub3"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="AggP"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub2"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub4"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                    </exp:Identifier>
+                                    <exp:Add>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                      </exp:Identifier>
+                                      <exp:Add>
+                                        <exp:Identifier>
+                                          <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                        </exp:Identifier>
+                                        <exp:Identifier>
+                                          <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                        </exp:Identifier>
+                                      </exp:Add>
+                                    </exp:Add>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Mul>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub2"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k65"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP_Ub"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k66"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub3"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub2"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Mul>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k65"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="E2_Ub"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k66"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="DUB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k72"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub2"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>-1.0</exp:RealLiteral>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub2"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="AggP"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub3"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub4"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                    </exp:Identifier>
+                                    <exp:Add>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                      </exp:Identifier>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                      </exp:Identifier>
+                                    </exp:Add>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP_Ub"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k64"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E3_MisP"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k66"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub2"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Mul>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k65"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="E2_Ub"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k66"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="DUB"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Sub>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k72"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>-1.0</exp:RealLiteral>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="AggP"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub2"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub3"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub4"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub5"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                    </exp:Identifier>
+                                    <exp:Add>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                      </exp:Identifier>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                      </exp:Identifier>
+                                    </exp:Add>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="E3_MisP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k61"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E3"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+                <exp:Neg>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k61r"/>
+                  </exp:Identifier>
+                </exp:Neg>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E3_MisP"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k64"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E2_Ub"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E3_MisP"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="E2_Ub"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k63"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E1_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2_Ub"/>
+              </exp:Identifier>
+              <exp:Sub>
+                <exp:Mul>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k65"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub2"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k64"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="E3_MisP"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k65"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E2_Ub"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub3"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub4"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub5"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub6"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub7"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="E1_Ub"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k62"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E1"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ub"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="ATP"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k63"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E1_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="ROS"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Proteasome"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k68"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k69"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="ATP"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k69"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ATP"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                  <exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k67"/>
+                    </exp:Identifier>
+                  </exp:Neg>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub4"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub5"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub6"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub7"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub8"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k74"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="AggP"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Proteasome"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="DUB"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="DUB"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k66"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub6"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub5"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub4"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub2"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k68"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Mul>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k68"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Mul>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k66"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub6"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub5"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub4"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub3"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub2"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                    </exp:Identifier>
+                                    <exp:Identifier>
+                                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                    </exp:Identifier>
+                                  </exp:Add>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Mul>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k68"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Mul>
+                  </exp:Sub>
+                </exp:Add>
+              </exp:Add>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k68"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="DUB"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="E3"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k61r"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="E3_MisP"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k64"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E2_Ub"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E3_MisP"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k61"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="MisP"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E3"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="E2"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="E2_Ub"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k64"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E3_MisP"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k65"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub2"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k65"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E2_Ub"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub3"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub4"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub5"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub6"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub7"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k63"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E2"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E1_Ub"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="E1"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k63"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E2"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E1_Ub"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k62"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E1"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ub"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="ATP"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>5000.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="ATP"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ub"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="DUB"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k66"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub7"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub6"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub5"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub4"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub3"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub2"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k68"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k68"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="DUB"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k69"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:RealLiteral>4.0</exp:RealLiteral>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+                      </exp:Identifier>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="ATP"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:RealLiteral>5000.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="ATP"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Div>
+                    </exp:Mul>
+                  </exp:Mul>
+                  <exp:Add>
+                    <exp:Mul>
+                      <exp:RealLiteral>5.0</exp:RealLiteral>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+                        </exp:Identifier>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="ATP"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:RealLiteral>5000.0</exp:RealLiteral>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="ATP"/>
+                            </exp:Identifier>
+                          </exp:Add>
+                        </exp:Div>
+                      </exp:Mul>
+                    </exp:Mul>
+                    <exp:Add>
+                      <exp:Mul>
+                        <exp:RealLiteral>6.0</exp:RealLiteral>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+                          </exp:Identifier>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="ATP"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:RealLiteral>5000.0</exp:RealLiteral>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="ATP"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                          </exp:Div>
+                        </exp:Mul>
+                      </exp:Mul>
+                      <exp:Mul>
+                        <exp:RealLiteral>7.0</exp:RealLiteral>
+                        <exp:Mul>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+                          </exp:Identifier>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="ATP"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:RealLiteral>5000.0</exp:RealLiteral>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="ATP"/>
+                              </exp:Identifier>
+                            </exp:Add>
+                          </exp:Div>
+                        </exp:Mul>
+                      </exp:Mul>
+                    </exp:Add>
+                  </exp:Add>
+                </exp:Add>
+              </exp:Mul>
+              <exp:Sub>
+                <exp:Mul>
+                  <exp:RealLiteral>8.0</exp:RealLiteral>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k69"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+                      </exp:Identifier>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="ATP"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:RealLiteral>5000.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="ATP"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Div>
+                    </exp:Mul>
+                  </exp:Mul>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k62"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="E1"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Ub"/>
+                      </exp:Identifier>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="ATP"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:RealLiteral>5000.0</exp:RealLiteral>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="ATP"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Div>
+                    </exp:Mul>
+                  </exp:Mul>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="MisP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k2"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="NatP"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="ROS"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k61r"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="E3_MisP"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k66"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP_Ub"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="DUB"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Sub>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="MisP"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Sub>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k3"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k61"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="E3"/>
+                        </exp:Identifier>
+                      </exp:Mul>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k71"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:RealLiteral>-1.0</exp:RealLiteral>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="AggP"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Mul>
+                  </exp:Sub>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k72"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="MisP"/>
+                    </exp:Identifier>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="MisP_Ub"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="MisP_Ub2"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="MisP_Ub3"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="MisP_Ub4"/>
+                            </exp:Identifier>
+                            <exp:Add>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="MisP_Ub5"/>
+                              </exp:Identifier>
+                              <exp:Add>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="MisP_Ub6"/>
+                                </exp:Identifier>
+                                <exp:Add>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub7"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="MisP_Ub8"/>
+                                  </exp:Identifier>
+                                </exp:Add>
+                              </exp:Add>
+                            </exp:Add>
+                          </exp:Add>
+                        </exp:Add>
+                      </exp:Add>
+                    </exp:Add>
+                  </exp:Mul>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NatP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="k1"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Source"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k3"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="MisP"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k2"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NatP"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="ROS"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="AggP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Source"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="ATP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>10000.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub8_Proteasome"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub7_Proteasome"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub6_Proteasome"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub5_Proteasome"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub4_Proteasome"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub8"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub7"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub6"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub5"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub4"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub3"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP_Ub"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="E3_MisP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="E2_Ub"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="E1_Ub"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="ROS"/>
+        </exp:Identifier>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Proteasome"/>
+        </exp:Identifier>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="DUB"/>
+        </exp:Identifier>
+        <exp:RealLiteral>200.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="E3"/>
+        </exp:Identifier>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="E2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="E1"/>
+        </exp:Identifier>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Ub"/>
+        </exp:Identifier>
+        <exp:RealLiteral>500.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="MisP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NatP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>500.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="AggP_Proteasome"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="SeqAggP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="refNatP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="totMisP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="degUb8"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="degUb7"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="degUb6"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="degUb5"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="degUb4"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="AMP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1000.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="ADP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1000.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>

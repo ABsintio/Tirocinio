@@ -15,7 +15,7 @@ using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 1;
+const int NT   = 10000;
 const int SD   = 6;
 const int NCP  = 1;
 const int NSP  = 16;
@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 26;
 const int NIA  = 0;
-const int NDO  = 100000;
+const int NDO  = 100;
 
 
 void FillSolverObject(
@@ -197,7 +197,7 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
-    Solver.SolverOption(TimeStepGrowLimit,1.0);
+    Solver.SolverOption(TimeStepGrowLimit,5.0);
 
     Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
