@@ -85,6 +85,7 @@ MPGOS_Model_SystemDefinition = """
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Functions.cuh"
 
 %s
 
@@ -267,7 +268,7 @@ MPGOS_ModelFileDefinition = """
 """
 
 
-#--------------------------# DEFINIZIONE DEI PATTERN PER IL FILE CHE DESCRIVE IL MODELLO    # --------------------------#
+#--------------------------# DEFINIZIONE DEI PATTERN PER IL FILE CHE DESCRIVE IL MAKEFILE    # --------------------------#
 
 
 MPGOS_MakeFile = """
@@ -283,6 +284,34 @@ clean:
 \trm -f {modelname}.exe
 \trm -f *.txt
 \trm -f *.csv
+"""
+
+
+#--------------------------# DEFINIZIONE DEI PATTERN PER IL FILE CHE DESCRIVE LE FUNZIONI    # --------------------------#
+
+
+FUNCTION_PATTERN_FILE = """
+#ifndef %s_FUNCTIONS_H
+#define %s_FUNCTIONS_H
+
+#include <iostream>
+#include "SingleSystem_PerThread_Interface.cuh"
+
+#define PRECISION double
+
+PRECISION picewise(PRECISION *values, bool *conditions, size_t n) {
+    int true_index = 0;
+    for (;true_index < n; true_index++){
+        if (conditions[true_index]) {
+            break;
+        }
+    }
+    return values[true_index];
+}
+
+%s
+
+#endif
 """
 
 
@@ -598,11 +627,12 @@ class SystemDefinitionBuilder:
 
 class Builder:
     """ Classe principale che richiama le due classi SystemDefinitionBuilder e ModelBuilder """
-    def __init__(self, model_file_paramsdict, abstract_model, workindir, logger):
+    def __init__(self, model_file_paramsdict, abstract_model, workindir, logger, functions_list):
         self.abstract_model    = abstract_model
         self.workingdir        = workindir
         self.logger            = logger
         self.modelparams_dict  = model_file_paramsdict
+        self.functions_list    = functions_list
         # START LOG
         msg = "Chiamata alla classe Builder"
         self.logger.info(msg, msg)
@@ -611,6 +641,7 @@ class Builder:
         self.sysdeffile = self.newdir + f"/{self.abstract_model.model_name}_SystemDefinition.cuh"
         self.modeldeffile = self.newdir + f"/{self.abstract_model.model_name}.cu"
         self.makefile = self.newdir + "/makefile"
+        self.functions_file = self.newdir + "/Functions.cuh"
         # Creo il builder per il file di definizione del sistema
         self.systemdef_builder = SystemDefinitionBuilder(self.abstract_model, self.logger)
 
@@ -696,6 +727,36 @@ class Builder:
         return MPGOS_MakeFile
 
     
+    @notifier(
+        NOTIFICATION,
+        "Creazione del file functions.cuh.",
+        "Formattazione del contenuto del file functions.cuh",
+        "Creazione del file functions.cuh",
+        "Terminata formattazione del contenuto del file functions.cuh"
+    )
+    def createMPGOS_Functions_file(self):
+        # START LOG
+        msg = f"Creazione del file function.cuh"
+        self.logger.debug(msg, msg)
+        # END LOG
+        global FUNCTION_PATTERN_FILE
+        perFunction_format = "%s %s(%s){\n%s\n}"
+        file_content = []
+        input_format = "{type} {name}"
+        types_map = {"Real": "PRECISION", "Boolean": "bool", "Integer": "int"}
+        for func_name, func_obj in self.functions_list.items():
+            return_type = types_map[func_obj.output[1]]
+            inputs = ",".join([input_format.format(type=types_map[x[1]],name=x[0]) for x in func_obj.inputs])
+            body_operations = "\n".join([f"    {return_type} {func_obj.output[0]} = 0.0;"] + ["    " + x.__str__() for x in func_obj.assign_list] + [f"    return {func_obj.output[0]};"])
+            file_content.append(perFunction_format % (return_type, func_name, inputs, body_operations))
+        # START LOG
+        msg = f"Terminata formattazione del file function.cuh"
+        self.logger.debug(msg, msg)
+        # END LOG
+        return FUNCTION_PATTERN_FILE % (self.abstract_model.model_name, self.abstract_model.model_name, "\n".join(file_content))
+
+
+    
     def save_makefile(self):
         """ Crea il contenuto e lo salva nel MakeFile """
         # START LOG
@@ -706,7 +767,22 @@ class Builder:
         with open(self.makefile, mode="w") as stream:
             stream.write(file_content)
         # START LOG
-        msg = "Termianto salvataggio el file MakeFile"
+        msg = "Termianto salvataggio del file MakeFile"
+        self.logger.debug(msg, msg)
+        # END LOG
+
+
+    def save_functions_file(self):
+        """ Crea il contenuto e lo salva nel file .cuh con tutte le funzioni """
+        # START LOG
+        msg = "Salvataggio del file functions.cuh"
+        self.logger.debug(msg, msg)
+        # END LOG
+        file_content = self.createMPGOS_Functions_file()
+        with open(self.functions_file, mode="w") as stream:
+            stream.write(file_content)
+        # START LOG
+        msg = "Termianto salvataggio del file function.cuh"
         self.logger.debug(msg, msg)
         # END LOG
 
@@ -723,3 +799,4 @@ class Builder:
         self.save_sysdef()
         self.save_modeldef()
         self.save_makefile()
+        self.save_functions_file()

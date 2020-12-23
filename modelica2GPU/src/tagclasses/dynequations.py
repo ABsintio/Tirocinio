@@ -454,7 +454,7 @@ class FunctionCall:
     
     def _parsefuncall_tag(self):
         """ Parsa il tag <exp:FunctionCall> ... <exp:FunctionCall> """
-        fun_name = QualifiedName(self.fun_call_tag[0], self.variables_dict).__str__() # Prendo il nome della funzione chiamata
+        fun_name = QualifiedName(self.fun_call_tag[0], self.variables_dict).__str__().split(".")[-1]
         # Prendo gli input della funzione
         inputs_var = []
         for x in self.fun_call_tag[1]:
@@ -477,10 +477,11 @@ class FunctionCall:
 
 class When:
     """ Classe che rappresenta un tag <equ:When> ... </equ:When> """
-    def __init__(self, when_tag, variables_dict, event_conditions):
+    def __init__(self, when_tag, variables_dict, event_conditions, functions):
         self.when_tag = when_tag
         self.variables_dict = variables_dict
         self.event_conditions = [x[1] for x in event_conditions]
+        self.functions_dict = functions
         self.condition, self.equation = self._parsewhen_tag()
 
     @staticmethod
@@ -518,7 +519,7 @@ class When:
         identifier = identifier if identifier != -1 else len(self.event_conditions)
         condition = (identifier, str(condition))
         # Una volta parsate le condizioni posso parsare l'equazione interna.
-        equation = _parsetag_eq(self.when_tag[1], self.variables_dict)
+        equation = _parsetag_eq(self.when_tag[1], self.variables_dict, self.functions_dict)
         return condition, equation
     
     def __str__(self): return f"if (IDX == {self.condition[0]})" + "{\n" + f"\t    {self.equation}\n" + "    }"
@@ -639,53 +640,3 @@ def _parsetag_eq(tag, variables_dict, function_dict=dict()):
             _parsetag_eq(sub_element[0], variables_dict, function_dict=function_dict), 
             _parsetag_eq(sub_element[1], variables_dict, function_dict=function_dict)
             )
-
-
-# ----------------------------------------- # CLASSI PER IL PARSE DELLE FUNZIONI  # ----------------------------------------- #
-
-
-class Function:
-    """ Classe che rappresenta una funzione definita dall'utente estrapolata da <fun:Function> ... </fun:Function> """
-    def __init__(self, name, inputs, output, algorithm):
-        self.name = name        # Nome della funzione
-        self.inputs = inputs    # Inputs come coppia (nome, tipo)
-        self.output = output    # Output come coppia singola (nome, tipo)
-        self.alg = algorithm    # L'algoritmo come sequenza di assign (senza loop, senza if annidati e senza nient'altro)
-    
-    def __str__(self): return f"{self.name}(" + ",".join([x[0] for x in self.inputs]) + ")" 
-    
-    def _forcpp(self): return self.name + f"(output={self.output}, inputs={self.inputs}) do\n\t{self.alg}\ndone"
-
-    def setinput(self, inputs): self.inputs = inputs
-
-
-class Assign(BinaryOperator):
-    """ classe che rappresenta il tag <fun:Assign> ... </fun:Assign> """
-    def __init__(self, l, r):
-        super().__init__(l, r)
-    
-    def __str__(self): return self.left.__str__() + "=" + self.right.__str__() + ";"
-
-
-# Faccio l'update dell'insieme delle classi per gli operatori
-OPERATOR_CLASSES['{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Assign'] = (Assign, 0)
-
-
-# ----------------------------------------- # FUNZIONE PER IL PARSING DELLE FUNZIONI # ----------------------------------------- #
-        
-
-def _parsetag_fun(tag, variables_dict):
-    """ Parsa una singola funzione e crea un'istanza di tipo Function """
-    fun_name = QualifiedName(tag[0]).__str__()                                     # Prima prendo il nome della funzione
-    output_var_name = (QualifiedName(tag[1][0]).__str__(), tag[1].attrib['type'])  # Poi prendo l'unica variabil di output
-    # Poi parso tutte le variabili di input
-    inputs_var = []
-    for input_tag in tag.iter("{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}InputVariable"):
-        inputs_var.append((QualifiedName(input_tag[0]).__str__(), input_tag.attrib['type']))
-    # Infine parso l'algoritmo
-    assign_list = []
-    alg_tag = tag.find("{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Algorithm")
-    for assign_tag in alg_tag:
-        assign_list.append(Assign(Identifier(assign_tag[0]), _parsetag_eq(assign_tag[1][0], variables_dict)))
-    algorithm = "\n".join([x.__str__() for x in assign_list])
-    return Function(fun_name, inputs_var, output_var_name, algorithm)

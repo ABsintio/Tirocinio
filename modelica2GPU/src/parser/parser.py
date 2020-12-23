@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from tagclasses import dynequations, algorithms, variables
+from tagclasses import dynequations, algorithms, variables, functions
 import exceptions.builtExceptions
 import sys # temporane per eseguire i test
 from utils.logger import *
@@ -189,7 +189,7 @@ class Parser:
         """ Parsa le equazioni """
         for x in root:
             if x.tag == f"{dynequations.EQUATION_NS}Equation":
-                eq = dynequations._parsetag_eq(x, variables_dict)
+                eq = dynequations._parsetag_eq(x, variables_dict, self.userdefined_func)
                 # Se la parte sinistra dell'equazione ha associata una variable $PRE
                 # allora devo creare una seconda equazione, nella quale alla variabile
                 # $PRE viene associato il valore corrente della variabile lhs
@@ -227,7 +227,7 @@ class Parser:
         for x in root:
             if x.tag == f"{dynequations.EQUATION_NS}When" or x.tag == f"{dynequations.EQUATION_NS}ElseWhen":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
-                when_eq = dynequations.When(x, variables_dict, self.event_conditions)
+                when_eq = dynequations.When(x, variables_dict, self.event_conditions, self.userdefined_func)
                 # Se la parte sinistra dell'equazione ha associata una variable $PRE
                 # allora devo creare una seconda equazione, nella quale alla variabile
                 # $PRE viene associato il valore corrente della variabile lhs
@@ -325,7 +325,7 @@ class Parser:
         # END LOG
         functionlist_rottag = Parser.getTagElementByName(f"{dynequations.FUNCTIONS_NS}FunctionsList", self.root)
         for x in functionlist_rottag:
-            fun = dynequations._parsetag_fun(x, variables_dict)
+            fun = functions._parsetag_fun(x, variables_dict)
             self.userdefined_func[fun.name] = fun
 
 
@@ -333,7 +333,7 @@ class Parser:
         """ Parsa tutti gli altri tag a parte quello dell'When degli algoritmi """
         for x in assign_tag:
             if x.tag == f"{algorithms.FUNCTIONS_NS}Assign":
-                algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func)
+                algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func, self.userdefined_func)
                 # Controllo, perchè per qualche assurdo motivo succede, che se l'assegnamento è
                 # del tipo x = pre(x) allora la variabile pre(x) esista, se non esiste allora
                 # l'assegnamento non è valido.
@@ -369,7 +369,7 @@ class Parser:
         """ Parsa il tag <fun:When> """
         for x in when_tag:
             if x.tag == f"{algorithms.FUNCTIONS_NS}When":
-                algo = algorithms.WhenAlgorithm(x, variables_dict)
+                algo = algorithms.WhenAlgorithm(x, variables_dict, self.userdefined_func)
                 self.algorithms_dict["when"].append(algo)
                 condition = algo.condition
                 conditions = re.finditer(r"(ACC|sPAR|X|ACCi)\[[0-9]+\]", condition.__str__())

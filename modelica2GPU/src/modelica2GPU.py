@@ -56,7 +56,7 @@ def createXML(workingdir, modelfilename, omlibrary):
         # Controllo che la directory per la libreria di modelica installata sia vera
         assert os.path.isdir(omlibrary) is not None, "Non esistono versioni di modelica installate nel sistema"
         # Creo la stringa per la compilazione
-        compile_string = "omc +s --simCodeTarget=XML {model} {others} --preOptModules-=removeSimpleEquations {modelicalib}".format(
+        compile_string = "omc +s --simCodeTarget=XML {model} {others} --preOptModules-=removeSimpleEquations --postOptModules-=wrapFunctionCalls {modelicalib}".format(
             model=modelfilename,
             others=" ".join([x for x in os.listdir(".") if x.endswith(".mo") and x != modelfilename]),
             modelicalib=omlibrary.replace(" ", "\ ") + "package.mo"
@@ -335,9 +335,9 @@ try:
         xml_parser.dynamic_equations['events'],
         xml_parser.algorithms_dict, xml_parser.unique_dict, m2g_logger
     ) # Creo una versione astratta del modello
-
+    
     # Creo il builder ed infine costruisco i tre file: Model.cu, Model_SystemDefinition.cuh, makefile
-    cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger)
+    cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger, xml_parser.userdefined_func)
     cpp_builder.builfiles()
 
     # START LOG

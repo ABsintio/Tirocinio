@@ -44,9 +44,10 @@ class Expression(UnaryOperator):
 
 class WhenAlgorithm:
     """ classe che rappresenta il tag <fun:When>"""
-    def __init__(self, when_tag, variables_dict):
+    def __init__(self, when_tag, variables_dict, functions):
         self.when_tag = when_tag
         self.variables_dict = variables_dict
+        self.functions_dict = functions
         self.condition, self.assignements = self._parsewhen_tag()
     
 
@@ -61,7 +62,7 @@ class WhenAlgorithm:
         # assegnamenti che ci sono al suo interno vengono inseriti tutti insieme.
         statements = []
         for assign_tag in self.when_tag[1]:
-            assign = _parsealgorithm_tag(assign_tag, self.variables_dict)
+            assign = _parsealgorithm_tag(assign_tag, self.variables_dict, self.functions_dict)
             # Se esiste il $PRE della variabile corrente alla sinistra dell'assegnamento 
             # allora devo aggiornarlo con il valore corrente.
             try:
