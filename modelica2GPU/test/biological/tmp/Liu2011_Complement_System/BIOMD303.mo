@@ -17,7 +17,7 @@ model BIOMD303 "Liu2011_Complement_System"
 	input Real Km;
         output Real y;
     algorithm
-        y =  k * E * S / (Km + S);
+        y :=  k * E * S / (Km + S);
     end function_1;
 
 
