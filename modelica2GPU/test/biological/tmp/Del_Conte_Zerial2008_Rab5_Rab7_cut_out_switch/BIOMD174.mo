@@ -15,7 +15,7 @@ model BIOMD174 "Del_Conte_Zerial2008_Rab5_Rab7_cut_out_switch"
 	input Real R;
         output Real y;
     algorithm
-        y =  kh * R;
+        y :=  kh * R;
     end hydrolysis;
 
 
@@ -27,7 +27,7 @@ model BIOMD174 "Del_Conte_Zerial2008_Rab5_Rab7_cut_out_switch"
 	input Real kf;
         output Real y;
     algorithm
-        y =  ke * r / (1 + exp((kg - R) * kf));
+        y :=  ke * r / (1 + exp((kg - R) * kf));
     end sig_act;
 
 
@@ -39,7 +39,7 @@ model BIOMD174 "Del_Conte_Zerial2008_Rab5_Rab7_cut_out_switch"
 	input Real kg;
         output Real y;
     algorithm
-        y =  r * ke * R^h / (kg + R^h);
+        y :=  r * ke * R^h / (kg + R^h);
     end hill_act;
 
 
@@ -48,7 +48,7 @@ model BIOMD174 "Del_Conte_Zerial2008_Rab5_Rab7_cut_out_switch"
 	input Real r;
         output Real y;
     algorithm
-        y =  kminus1 * r;
+        y :=  kminus1 * r;
     end extraction;
 
 
@@ -61,7 +61,7 @@ model BIOMD174 "Del_Conte_Zerial2008_Rab5_Rab7_cut_out_switch"
 	input Real kf;
         output Real y;
     algorithm
-        y =  r * (ke * t / (100 + t)) / (1 + exp((kg - R) * kf));
+        y :=  r * (ke * t / (100 + t)) / (1 + exp((kg - R) * kf));
     end sig_act_t;
 
 
@@ -102,8 +102,8 @@ equation
 
     der(r5) = (endosome * K1_0) + (endosome * sig_act(ke_6, R5, kg_6, R7, kf_6)) + (endosome * hydrolysis(kh_8, R5)) - (endosome * sig_act_t(r5, ke_1, time, kg_1, R5, kf_1)) - (endosome * extraction(kminus1_2, r5));
     der(R5) = (endosome * sig_act_t(r5, ke_1, time, kg_1, R5, kf_1)) - (endosome * sig_act(ke_6, R5, kg_6, R7, kf_6)) - (endosome * hydrolysis(kh_8, R5));
-    der(r7) = (endosome * K1_3) + (endosome * hydrolysis(kh_9, R7)) - (endosome * h_4ill_act(r7, ke_4, R7, h_4, kg_4)) - (endosome * sig_act(ke_5, r7, kg_5, R5, kf_5)) - (endosome * extraction(kminus1_7, r7));
-    der(R7) = (endosome * h_4ill_act(r7, ke_4, R7, h_4, kg_4)) + (endosome * sig_act(ke_5, r7, kg_5, R5, kf_5)) - (endosome * hydrolysis(kh_9, R7));
+    der(r7) = (endosome * K1_3) + (endosome * hydrolysis(kh_9, R7)) - (endosome * hill_act(r7, ke_4, R7, h_4, kg_4)) - (endosome * sig_act(ke_5, r7, kg_5, R5, kf_5)) - (endosome * extraction(kminus1_7, r7));
+    der(R7) = (endosome * hill_act(r7, ke_4, R7, h_4, kg_4)) + (endosome * sig_act(ke_5, r7, kg_5, R5, kf_5)) - (endosome * hydrolysis(kh_9, R7));
 
 
 
