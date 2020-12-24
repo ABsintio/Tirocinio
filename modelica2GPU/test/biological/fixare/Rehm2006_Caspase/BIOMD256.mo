@@ -8,8 +8,15 @@ model BIOMD256 "Rehm2006_Caspase"
         algorithm
             y := x^power;
     end pow;
-
-
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
     parameter Real k3 = 6.0;
     parameter Real k4 = 12.0;
@@ -76,34 +83,6 @@ model BIOMD256 "Rehm2006_Caspase"
     parameter Real cell = 1.0;
     parameter Real mito = 1.0;
 
-    Real PC3;
-    Real XIAP;
-    Real C9;
-    Real PC9;
-    Real C3;
-    Real C9P;
-    Real XIAP_C3;
-    Real XIAP_C9;
-    Real XIAP_C9_C3;
-    Real XIAP_p2frag;
-    Real XIAP_p2frag_C3;
-    Real BIR12;
-    Real BIR12_C3;
-    Real BIR3R;
-    Real BIR3R_C9;
-    Real BIR3R_p2frag;
-    Real XIAP_2SMAC;
-    Real BIR12_SMAC;
-    Real BIR3R_SMAC;
-    Real SMAC;
-    Real APAF1;
-    Real XIAP_p2frag_2SMAC;
-    Real Substrate;
-    Real ClvgPrds;
-    Real SMAC_mito;
-    Real CytC_mit;
-    Real CytC_cell;
-    
     Real k1(start=0.000468);
     Real k1r(start=0.0039);
     Real k2(start=0.0007308);
@@ -142,6 +121,34 @@ model BIOMD256 "Rehm2006_Caspase"
     Real CytC_tot(start=10.0);
     Real APAF1_tot(start=3.372);
 
+    Real PC3;
+    Real XIAP;
+    Real C9;
+    Real PC9;
+    Real C3;
+    Real C9P;
+    Real XIAP_C3;
+    Real XIAP_C9;
+    Real XIAP_C9_C3;
+    Real XIAP_p2frag;
+    Real XIAP_p2frag_C3;
+    Real BIR12;
+    Real BIR12_C3;
+    Real BIR3R;
+    Real BIR3R_C9;
+    Real BIR3R_p2frag;
+    Real XIAP_2SMAC;
+    Real BIR12_SMAC;
+    Real BIR3R_SMAC;
+    Real SMAC;
+    Real APAF1;
+    Real XIAP_p2frag_2SMAC;
+    Real Substrate;
+    Real ClvgPrds;
+    Real SMAC_mito;
+    Real CytC_mit;
+    Real CytC_cell;
+
 initial equation
     PC3 = 0.12;
     XIAP = 0.063;
@@ -172,7 +179,7 @@ initial equation
     CytC_cell = 0.0;
 
 equation
-    apo_lim = piecewise(PC9, lt(PC9, APAF1), APAF1);
+    apo_lim = piecewise(PC9, (PC9 < APAF1), APAF1);
     SMAC_norm = SMAC / XIAP_ini;
     XIAP_2SMAC_norm = XIAP_2SMAC / XIAP_ini;
     C9norm = C9 / C9_tot;
@@ -192,8 +199,8 @@ equation
     BIR3R_p2frag_norm = BIR3R_p2frag / XIAP_ini;
     der(PC3) = (cell * (k1 - k1r * PC3)) - (cell * k3 * C9 * PC3) - (cell * k5 * C9P * PC3) - (cell * k6 * PC3 * C3);
     der(XIAP) = (cell * (k2 - k2r * XIAP)) + (cell * k25 * XIAP_p2frag) - (cell * (k7 * C3 * XIAP - k7r * XIAP_C3)) - (cell * k11 * C3 * XIAP) - (cell * (k21 * C9 * XIAP - k21r * XIAP_C9)) - (cell * (k26 * XIAP * SMAC * SMAC - k26r * XIAP_2SMAC));
-    der(C9) = (cell * k3 * C9 * PC3) + (cell * (k27 * XIAP_C9 * SMAC * SMAC - k27r * XIAP_2SMAC * C9)) + (cell * (k29 * XIAP_C9_C3 * SMAC * SMAC - k29r * XIAP_2SMAC * C3 * C9)) + (cell * (k33 * BIR3R_C9 * SMAC - k33r * BIR3R_SMAC * C9)) + (cell * apo_lim * ln(2) / th_Apop) - (cell * k3 * C9 * PC3) - (cell * k4 * C9 * C3) - (cell * (k21 * C9 * XIAP - k21r * XIAP_C9)) - (cell * (k22 * C9 * XIAP_C3 - k22r * XIAP_C9_C3)) - (cell * (k23 * C9 * BIR3R - k23r * BIR3R_C9)) - (cell * k36 * C9);
-    der(PC9) =  - (cell * apo_lim * ln(2) / th_Apop);
+    der(C9) = (cell * k3 * C9 * PC3) + (cell * (k27 * XIAP_C9 * SMAC * SMAC - k27r * XIAP_2SMAC * C9)) + (cell * (k29 * XIAP_C9_C3 * SMAC * SMAC - k29r * XIAP_2SMAC * C3 * C9)) + (cell * (k33 * BIR3R_C9 * SMAC - k33r * BIR3R_SMAC * C9)) + (cell * apo_lim * log(2) / th_Apop) - (cell * k3 * C9 * PC3) - (cell * k4 * C9 * C3) - (cell * (k21 * C9 * XIAP - k21r * XIAP_C9)) - (cell * (k22 * C9 * XIAP_C3 - k22r * XIAP_C9_C3)) - (cell * (k23 * C9 * BIR3R - k23r * BIR3R_C9)) - (cell * k36 * C9);
+    der(PC9) =  - (cell * apo_lim * log(2) / th_Apop);
     der(C3) = (cell * k3 * C9 * PC3) + (cell * k4 * C9 * C3) + (cell * k5 * C9P * PC3) + (2.0 * cell * k6 * PC3 * C3) + (cell * k11 * C3 * XIAP) + (cell * k12 * C3 * XIAP_C9) + (cell * k13 * C3 * XIAP_C3) + (cell * k14 * C3 * XIAP_p2frag) + (cell * k15 * C3 * XIAP_p2frag_C3) + (cell * k16 * C3 * XIAP_C9_C3) + (cell * k17 * C3 * XIAP_2SMAC) + (cell * k18 * C3 * XIAP_C9_C3) + (cell * k19 * C3 * XIAP_C9) + (cell * k20 * C3 * BIR3R_C9) + (cell * (k28 * XIAP_C3 * SMAC * SMAC - k28r * XIAP_2SMAC * C3)) + (cell * (k29 * XIAP_C9_C3 * SMAC * SMAC - k29r * XIAP_2SMAC * C3 * C9)) + (cell * (k32 * BIR12_C3 * SMAC - k32r * BIR12_SMAC * C3)) + (cell * k53 * C3 * Substrate) - (cell * k4 * C9 * C3) - (cell * k6 * PC3 * C3) - (cell * (k7 * C3 * XIAP - k7r * XIAP_C3)) - (cell * (k8 * C3 * XIAP_C9 - k8r * XIAP_C9_C3)) - (cell * (k9 * C3 * XIAP_p2frag - k9r * XIAP_p2frag_C3)) - (cell * (k10 * C3 * BIR12 - k10r * BIR12_C3)) - (cell * k11 * C3 * XIAP) - (cell * k12 * C3 * XIAP_C9) - (cell * k13 * C3 * XIAP_C3) - (cell * k14 * C3 * XIAP_p2frag) - (cell * k15 * C3 * XIAP_p2frag_C3) - (cell * k16 * C3 * XIAP_C9_C3) - (cell * k17 * C3 * XIAP_2SMAC) - (cell * k18 * C3 * XIAP_C9_C3) - (cell * k19 * C3 * XIAP_C9) - (cell * k20 * C3 * BIR3R_C9) - (cell * k37 * C3) - (cell * k53 * C3 * Substrate);
     der(C9P) = (cell * k4 * C9 * C3) + (cell * k5 * C9P * PC3) + (cell * k18 * C3 * XIAP_C9_C3) + (cell * k19 * C3 * XIAP_C9) + (cell * k20 * C3 * BIR3R_C9) - (cell * k5 * C9P * PC3) - (cell * k35 * C9P);
     der(XIAP_C3) = (cell * (k7 * C3 * XIAP - k7r * XIAP_C3)) - (cell * k13 * C3 * XIAP_C3) - (cell * (k22 * C9 * XIAP_C3 - k22r * XIAP_C9_C3)) - (cell * (k28 * XIAP_C3 * SMAC * SMAC - k28r * XIAP_2SMAC * C3)) - (cell * k38 * XIAP_C3);
@@ -209,14 +216,14 @@ equation
     der(XIAP_2SMAC) = (cell * (k26 * XIAP * SMAC * SMAC - k26r * XIAP_2SMAC)) + (cell * (k27 * XIAP_C9 * SMAC * SMAC - k27r * XIAP_2SMAC * C9)) + (cell * (k28 * XIAP_C3 * SMAC * SMAC - k28r * XIAP_2SMAC * C3)) + (cell * (k29 * XIAP_C9_C3 * SMAC * SMAC - k29r * XIAP_2SMAC * C3 * C9)) - (cell * k17 * C3 * XIAP_2SMAC) - (cell * k44 * XIAP_2SMAC);
     der(BIR12_SMAC) = (cell * k17 * C3 * XIAP_2SMAC) + (cell * (k30 * BIR12 * SMAC - k30r * BIR12_SMAC)) + (cell * (k32 * BIR12_C3 * SMAC - k32r * BIR12_SMAC * C3)) - (cell * k47 * BIR12_SMAC);
     der(BIR3R_SMAC) = (cell * k17 * C3 * XIAP_2SMAC) + (cell * (k31 * BIR3R * SMAC - k31r * BIR3R_SMAC)) + (cell * (k33 * BIR3R_C9 * SMAC - k33r * BIR3R_SMAC * C9)) - (cell * k48 * BIR3R_SMAC);
-    der(SMAC) = (cell * SMAC_mito * ln(2) / th_SMAC) - (2.0 * cell * (k26 * XIAP * SMAC * SMAC - k26r * XIAP_2SMAC)) - (2.0 * cell * (k27 * XIAP_C9 * SMAC * SMAC - k27r * XIAP_2SMAC * C9)) - (2.0 * cell * (k28 * XIAP_C3 * SMAC * SMAC - k28r * XIAP_2SMAC * C3)) - (2.0 * cell * (k29 * XIAP_C9_C3 * SMAC * SMAC - k29r * XIAP_2SMAC * C3 * C9)) - (cell * (k30 * BIR12 * SMAC - k30r * BIR12_SMAC)) - (cell * (k31 * BIR3R * SMAC - k31r * BIR3R_SMAC)) - (cell * (k32 * BIR12_C3 * SMAC - k32r * BIR12_SMAC * C3)) - (cell * (k33 * BIR3R_C9 * SMAC - k33r * BIR3R_SMAC * C9)) - (2.0 * cell * (k34 * XIAP_p2frag * SMAC * SMAC - k34r * XIAP_p2frag_2SMAC)) - (cell * k52 * SMAC);
-    der(APAF1) =  - (cell * apo_lim * ln(2) / th_Apop);
+    der(SMAC) = (cell * SMAC_mito * log(2) / th_SMAC) - (2.0 * cell * (k26 * XIAP * SMAC * SMAC - k26r * XIAP_2SMAC)) - (2.0 * cell * (k27 * XIAP_C9 * SMAC * SMAC - k27r * XIAP_2SMAC * C9)) - (2.0 * cell * (k28 * XIAP_C3 * SMAC * SMAC - k28r * XIAP_2SMAC * C3)) - (2.0 * cell * (k29 * XIAP_C9_C3 * SMAC * SMAC - k29r * XIAP_2SMAC * C3 * C9)) - (cell * (k30 * BIR12 * SMAC - k30r * BIR12_SMAC)) - (cell * (k31 * BIR3R * SMAC - k31r * BIR3R_SMAC)) - (cell * (k32 * BIR12_C3 * SMAC - k32r * BIR12_SMAC * C3)) - (cell * (k33 * BIR3R_C9 * SMAC - k33r * BIR3R_SMAC * C9)) - (2.0 * cell * (k34 * XIAP_p2frag * SMAC * SMAC - k34r * XIAP_p2frag_2SMAC)) - (cell * k52 * SMAC);
+    der(APAF1) =  - (cell * apo_lim * log(2) / th_Apop);
     der(XIAP_p2frag_2SMAC) = (cell * (k34 * XIAP_p2frag * SMAC * SMAC - k34r * XIAP_p2frag_2SMAC)) - (cell * k43 * XIAP_p2frag_2SMAC);
     der(Substrate) =  - (cell * k53 * C3 * Substrate);
     der(ClvgPrds) = (cell * k53 * C3 * Substrate) ;
-    der(SMAC_mito) =  - (cell * SMAC_mito * ln(2) / th_SMAC);
-    der(CytC_mit) =  - (cell * CytC_mit * ln(2) / th_CytC);
-    der(CytC_cell) = (cell * CytC_mit * ln(2) / th_CytC) ;
+    der(SMAC_mito) =  - (cell * SMAC_mito * log(2) / th_SMAC);
+    der(CytC_mit) =  - (cell * CytC_mit * log(2) / th_CytC);
+    der(CytC_cell) = (cell * CytC_mit * log(2) / th_CytC) ;
     der(k1)=0.0;
     der(k1r)=0.0;
     der(k2)=0.0;

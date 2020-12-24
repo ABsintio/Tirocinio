@@ -338,6 +338,7 @@ class SBMLTranslator:
         for param in self.model.parameters:
             if not param in self.model.rate_rules_dict and not self.model.parameters[param].constant and \
                 not param in self.model.assignment_rules:
+                self.model.rate_rules_dict[param] = RateRule(param, "0.0")
                 lines.append(line_code.format(var=param))
         return lines
     

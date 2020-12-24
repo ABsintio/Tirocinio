@@ -13,7 +13,7 @@ csv_file = args.csv
 csv_data = pd.read_csv(csv_file)
 
 # Prendiamo i nomi delle species con gli indici corrispettivi che utilizzeremo per il plotting
-variables_to_plot = ["PC3","XIAP","C9","PC9","C3","C9P","XIAP_C3","XIAP_C9","XIAP_C9_C3","XIAP_p2frag","XIAP_p2frag_C3","BIR12","BIR12_C3","BIR3R","BIR3R_C9","BIR3R_p2frag","XIAP_2SMAC","BIR12_SMAC","BIR3R_SMAC","SMAC","APAF1","XIAP_p2frag_2SMAC","Substrate","ClvgPrds","SMAC_mito","CytC_mit","CytC_cell"]
+variables_to_plot = ["PC3","XIAP","C9","PC9","C3","C9P","XIAP_C3","XIAP_C9","XIAP_C9_C3","XIAP_p2frag","XIAP_p2frag_C3","BIR12","BIR12_C3","BIR3R","BIR3R_C9","BIR3R_p2frag","XIAP_2SMAC","BIR12_SMAC","BIR3R_SMAC","SMAC","APAF1","XIAP_p2frag_2SMAC","Substrate","ClvgPrds","SMAC_mito","CytC_mit","CytC_cell","k1","k1r","k2","k2r","k38","k39","k40","k43","k44","k46","k48","k50","k51","XIAP_ini","C9_tot","C3_tot","SMAC_tot","CytC_tot","APAF1_tot"]
 species_tuple = [(idx, specie) for idx, specie in enumerate(csv_data.head(0)) if specie in variables_to_plot and specie != "time"]
 
 # Creiamo un array numpy per salvare i dati estrapolati dal CSV

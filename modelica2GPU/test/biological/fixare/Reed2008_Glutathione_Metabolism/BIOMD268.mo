@@ -16,7 +16,7 @@ model BIOMD268 "Reed2008_Glutathione_Metabolism"
 	input Real S;
         output Real y;
     algorithm
-        y =  Vmax * S / (Km + S);
+        y :=  Vmax * S / (Km + S);
     end MM;
 
 
@@ -28,7 +28,7 @@ model BIOMD268 "Reed2008_Glutathione_Metabolism"
 	input Real S2;
         output Real y;
     algorithm
-        y =  Vmax * S1 * S2 / ((Km1 + S1) * (Km2 + S2));
+        y :=  Vmax * S1 * S2 / ((Km1 + S1) * (Km2 + S2));
     end MM_twosubst;
 
 
