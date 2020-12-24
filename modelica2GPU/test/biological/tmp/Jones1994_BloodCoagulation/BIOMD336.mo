@@ -16,7 +16,7 @@ model BIOMD336 "Jones1994_BloodCoagulation"
 	input Real compartment_1;
         output Real y;
     algorithm
-        y =  (compartment_1 * abs(I - VIIIa_IXa) + (I - VIIIa_IXa)) / compartment_1;
+        y :=  (compartment_1 * abs(I - VIIIa_IXa) + (I - VIIIa_IXa)) / compartment_1;
     end function_4_VIIIa_IXa_degradation_2;
 
 

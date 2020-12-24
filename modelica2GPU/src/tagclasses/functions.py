@@ -1,5 +1,6 @@
 from tagclasses.dynequations import *
 from tagclasses.dynequations import _parsetag_eq
+import re
 
 
 # ----------------------------------------- # CLASSI PER IL PARSE DELLE FUNZIONI  # ----------------------------------------- #
@@ -39,7 +40,7 @@ OPERATOR_CLASSES['{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Assign']
 # ----------------------------------------- # FUNZIONE PER IL PARSING DELLE FUNZIONI # ----------------------------------------- #
         
 
-def _parsetag_fun(tag, variables_dict):
+def _parsetag_fun(tag, variables_dict, MPGOSparam_dict):
     """ Parsa una singola funzione e crea un'istanza di tipo Function """
     fun_name = QualifiedName(tag[0]).__str__().split(".")[-1]                      # Prima prendo il nome della funzione
     output_var_name = (QualifiedName(tag[1][0]).__str__(), tag[1].attrib['type'])  # Poi prendo l'unica variabil di output
@@ -51,5 +52,16 @@ def _parsetag_fun(tag, variables_dict):
     assign_list = []
     alg_tag = tag.find("{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Algorithm")
     for assign_tag in alg_tag:
-        assign_list.append(Equation(Identifier(assign_tag[0]), _parsetag_eq(assign_tag[1][0], variables_dict)))
+        equation = _parsetag_eq(assign_tag[1][0], variables_dict)
+
+        # Controlliamo che l'equazione parsata non abbia variabili sPAR, ACC oppure X o ACCi
+        # In quanto potrebbe accadere che la definizione di funzione contenga variabili realmente 
+        # esistenti nel modello e che quindi vengano tradotte. Se succede questo allora le 
+        # ritraduciamo con il loro nome originale.
+        involved_vars = re.finditer(r"(ACC|sPAR|X|ACCi)\[[0-9]+\]", equation.__str__())
+        for var in involved_vars:
+            var_name = MPGOSparam_dict[var.group()].nome
+            print(equation, var_name)
+            equation = equation.__str__().replace(var.group(), var_name)
+        assign_list.append(Equation(Identifier(assign_tag[0]), equation))
     return Function(fun_name, inputs_var, output_var_name, assign_list)

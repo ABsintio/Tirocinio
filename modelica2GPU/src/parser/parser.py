@@ -317,7 +317,7 @@ class Parser:
         return MPGOSparameter_dict
 
     
-    def parse_userdefined_function(self, variables_dict):
+    def parse_userdefined_function(self, variables_dict, MPGOSparam_dict):
         """ Esegue il parsing delle funzioni definite dall'utente trattate con il tag <fun:FunctionCall> """
         # START LOG
         msg = "Parsing delle funzioni definite dall'utente"
@@ -325,7 +325,7 @@ class Parser:
         # END LOG
         functionlist_rottag = Parser.getTagElementByName(f"{dynequations.FUNCTIONS_NS}FunctionsList", self.root)
         for x in functionlist_rottag:
-            fun = functions._parsetag_fun(x, variables_dict)
+            fun = functions._parsetag_fun(x, variables_dict, MPGOSparam_dict)
             self.userdefined_func[fun.name] = fun
 
 
@@ -426,7 +426,7 @@ class Parser:
                 
         # Parso tutte le altre cose ed intanto formatto le variabili
         MPGOSparams_dict = self.parse_initial_equations(unique_dict, MPGOSparams_dict)
-        self.parse_userdefined_function(unique_dict)
+        self.parse_userdefined_function(unique_dict, MPGOSparams_dict)
         MPGOSparams_dict = self.parse_dynamic_equations(unique_dict, MPGOSparams_dict)
         MPGOSparams_dict = self.parse_algorithm(unique_dict, MPGOSparams_dict) 
         # Ordino anche le equazioni when che vanno in equations
