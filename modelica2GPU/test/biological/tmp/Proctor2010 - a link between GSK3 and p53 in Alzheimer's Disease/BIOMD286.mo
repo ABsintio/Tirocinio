@@ -9,6 +9,15 @@ model BIOMD286 "Proctor2010 - a link between GSK3 and p53 in Alzheimer's Disease
             y := x^power;
     end pow;
 
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
 
     parameter Real ksynp53mRNA = 0.001;
@@ -193,7 +202,7 @@ initial equation
     Sink = 0.0;
 
 equation
-    IR = piecewise(25, and(geq(t, 3600), leq(t, 3660)), 0);
+    IR = piecewise(25, ((time >= 3600) and (time <= 3660)), 0);
     tot_mdm2 = Mdm2 + Mdm2_p53 + Mdm2_P + Mdm2_p53_Ub + Mdm2_p53_Ub2 + Mdm2_p53_Ub3 + Mdm2_p53_Ub4 + Mdm2_P1_p53_Ub4 + Mdm2_Ub + Mdm2_Ub2 + Mdm2_Ub3 + Mdm2_Ub4 + Mdm2_P_Ub + Mdm2_P_Ub2 + Mdm2_P_Ub3 + Mdm2_P_Ub4 + Mdm2_Ub4_Proteasome + Mdm2_P_Ub4_Proteasome;
     tot_p53 = p53 + Mdm2_p53 + p53_P + Mdm2_p53_Ub + Mdm2_p53_Ub2 + Mdm2_p53_Ub3 + Mdm2_p53_Ub4 + Mdm2_P1_p53_Ub4 + p53_Ub4_Proteasome;
     der(Mdm2) = (ksynMdm2 * Mdm2_mRNA) + (krelMdm2p53 * Mdm2_p53) + (kactDUBMdm2 * Mdm2_Ub * Mdm2DUB) + (kbinProt * Mdm2_P1_p53_Ub4 * Proteasome) + (kdephosMdm2 * Mdm2_P) - (kbinMdm2p53 * p53 * Mdm2) - (kMdm2Ub * Mdm2 * E2_Ub) - (kphosMdm2 * Mdm2 * ATMA);
