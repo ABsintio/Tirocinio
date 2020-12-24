@@ -17,7 +17,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real Auxin;
         output Real y;
     algorithm
-        y =  (k3 + k3a * X) * Auxin;
+        y :=  (k3 + k3a * X) * Auxin;
     end function_1;
 
 
@@ -27,7 +27,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k1;
         output Real y;
     algorithm
-        y =  k1a / (1 + X / k1);
+        y :=  k1a / (1 + X / k1);
     end function_2;
 
 
@@ -41,7 +41,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k2c;
         output Real y;
     algorithm
-        y =  k2 + k2a * (ET / (1 + CK / k2b)) * (PLSp / (k2c + PLSp));
+        y :=  k2 + k2a * (ET / (1 + CK / k2b)) * (PLSp / (k2c + PLSp));
     end function_3;
 
 
@@ -51,7 +51,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real Ra;
         output Real y;
     algorithm
-        y =  k4 * Auxin * Ra;
+        y :=  k4 * Auxin * Ra;
     end function_4;
 
 
@@ -62,7 +62,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k6a;
         output Real y;
     algorithm
-        y =  k6 * Ra_star / (1 + ET / k6a);
+        y :=  k6 * Ra_star / (1 + ET / k6a);
     end function_6;
 
 
@@ -71,7 +71,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real PLSm;
         output Real y;
     algorithm
-        y =  k7 * PLSm;
+        y :=  k7 * PLSm;
     end function_7;
 
 
@@ -80,7 +80,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real PLSm;
         output Real y;
     algorithm
-        y =  k8 * PLSm;
+        y :=  k8 * PLSm;
     end function_8;
 
 
@@ -89,7 +89,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real PLSp;
         output Real y;
     algorithm
-        y =  k9 * PLSp;
+        y :=  k9 * PLSp;
     end function_9;
 
 
@@ -100,7 +100,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real Re;
         output Real y;
     algorithm
-        y =  (k10 + k10a * PLSp) * Re;
+        y :=  (k10 + k10a * PLSp) * Re;
     end function_10;
 
 
@@ -110,7 +110,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k11;
         output Real y;
     algorithm
-        y =  k11 * Re_star * ET;
+        y :=  k11 * Re_star * ET;
     end function_12;
 
 
@@ -121,7 +121,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k12a;
         output Real y;
     algorithm
-        y =  k12 + k12a * Auxin * CK;
+        y :=  k12 + k12a * Auxin * CK;
     end function_13;
 
 
@@ -130,7 +130,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k13;
         output Real y;
     algorithm
-        y =  k13 * ET;
+        y :=  k13 * ET;
     end function_15;
 
 
@@ -140,7 +140,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real CTR1;
         output Real y;
     algorithm
-        y =  k14 * Re_star * CTR1;
+        y :=  k14 * Re_star * CTR1;
     end function_16;
 
 
@@ -149,7 +149,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k15;
         output Real y;
     algorithm
-        y =  k15 * CTR1_star;
+        y :=  k15 * CTR1_star;
     end function_17;
 
 
@@ -159,7 +159,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k18;
         output Real y;
     algorithm
-        y =  k18a / (1 + Auxin / k18);
+        y :=  k18a / (1 + Auxin / k18);
     end function_20;
 
 
@@ -169,7 +169,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k16a;
         output Real y;
     algorithm
-        y =  k16 - k16a * CTR1_star;
+        y :=  k16 - k16a * CTR1_star;
     end function_18;
 
 
@@ -178,7 +178,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k17;
         output Real y;
     algorithm
-        y =  k17 * X;
+        y :=  k17 * X;
     end function_19;
 
 
@@ -187,7 +187,7 @@ model BIOMD269 "Liu2010_Hormonal_Crosstalk_Arabidopsis"
 	input Real k19;
         output Real y;
     algorithm
-        y =  k19 * CK;
+        y :=  k19 * CK;
     end function_21;
 
 
