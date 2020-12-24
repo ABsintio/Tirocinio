@@ -8,6 +8,16 @@ model BIOMD279 "Komarova2005_PTHaction_OsteoclastOsteoblastCoupling"
         algorithm
             y := x^power;
     end pow;
+    
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
 
 
@@ -39,8 +49,8 @@ initial equation
     z = 100.0;
 
 equation
-    y1 = piecewise(x1 - x1_bar, gt(x1, x1_bar), 0);
-    y2 = piecewise(x2 - x2_bar, gt(x2, x2_bar), 0);
+    y1 = piecewise(x1 - x1_bar, (x1 > x1_bar), 0);
+    y2 = piecewise(x2 - x2_bar, (x2 > x2_bar), 0);
     x1_bar = pow(beta1 / alpha1, (1 - g22) / gamma) * pow(beta2 / alpha2, g21 / gamma);
     x2_bar = pow(beta1 / alpha1, g12 / gamma) * pow(beta2 / alpha2, (1 - g11) / gamma);
     gamma = g12 * g21 - (1 - g11) * (1 - g22);
