@@ -9,7 +9,14 @@ model BIOMD263 "Fujita2010_Akt_Signalling_NGF"
             y := x^power;
     end pow;
 
-
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
     parameter Real pTrkA_scaleFactor = 0.848783474941268;
     parameter Real pAkt_scaleFactor = 2.42381211094508;
@@ -66,7 +73,7 @@ equation
     pS6_total = pS6 * pS6_scaleFactor;
     pAkt_total = (pAkt + pAkt_S6) * pAkt_scaleFactor;
     pTrkA_total = (pTrkA + pTrkA_Akt) * pTrkA_scaleFactor;
-    NGF = NGF_conc_step + piecewise(NGF_conc_pulse, leq(time, pulse_time), 0) + NGF_conc_ramp * time / ramp_time;
+    NGF = NGF_conc_step + piecewise(NGF_conc_pulse, time <= pulse_time, 0) + NGF_conc_ramp * time / ramp_time;
     der(TrkA) = (Cell * TrkA_turnover * pro_TrkA) - (Cell * (k1_0 * NGF * TrkA - k2_0 * NGF_TrkA)) - (Cell * TrkA_turnover * TrkA);
     der(pTrkA) = (Cell * k1_2 * pTrkA_Akt) + (Cell * k1_9 * NGF_TrkA) - (Cell * (k1_1 * pTrkA * Akt - k2_1 * pTrkA_Akt)) - (Cell * k1_3 * pTrkA);
     der(pTrkA_Akt) = (Cell * (k1_1 * pTrkA * Akt - k2_1 * pTrkA_Akt)) - (Cell * k1_2 * pTrkA_Akt);
