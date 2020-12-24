@@ -295,11 +295,10 @@ FUNCTION_PATTERN_FILE = """
 #define %s_FUNCTIONS_H
 
 #include <iostream>
-#include "SingleSystem_PerThread_Interface.cuh"
 
 #define PRECISION double
 
-PRECISION picewise(PRECISION *values, bool *conditions, size_t n) {
+__device__ PRECISION picewise(PRECISION *values, bool *conditions, size_t n) {
     int true_index = 0;
     for (;true_index < n; true_index++){
         if (conditions[true_index]) {
@@ -740,14 +739,15 @@ class Builder:
         self.logger.debug(msg, msg)
         # END LOG
         global FUNCTION_PATTERN_FILE
-        perFunction_format = "%s %s(%s){\n%s\n}"
+        perFunction_format = "__device__ %s %s(%s){\n%s\n}"
         file_content = []
         input_format = "{type} {name}"
         types_map = {"Real": "PRECISION", "Boolean": "bool", "Integer": "int"}
         for func_name, func_obj in self.functions_list.items():
             return_type = types_map[func_obj.output[1]]
             inputs = ",".join([input_format.format(type=types_map[x[1]],name=x[0]) for x in func_obj.inputs])
-            body_operations = "\n".join([f"    {return_type} {func_obj.output[0]} = 0.0;"] + ["    " + x.__str__() for x in func_obj.assign_list] + [f"    return {func_obj.output[0]};"])
+            body_operations = "\n".join([f"    {return_type} {func_obj.output[0]} = 0.0;"] + \
+                ["    " + x.__str__() for x in func_obj.assign_list] + [f"    return {func_obj.output[0]};"])
             file_content.append(perFunction_format % (return_type, func_name, inputs, body_operations))
         # START LOG
         msg = f"Terminata formattazione del file function.cuh"
