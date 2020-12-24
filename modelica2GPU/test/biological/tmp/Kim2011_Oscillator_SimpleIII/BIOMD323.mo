@@ -17,7 +17,7 @@ model BIOMD323 "Kim2011_Oscillator_SimpleIII"
 	input Real substrate;
         output Real y;
     algorithm
-        y =  V / (Shalve^h + substrate^h);
+        y :=  V / (Shalve^h + substrate^h);
     end function_1;
 
 
@@ -26,7 +26,7 @@ model BIOMD323 "Kim2011_Oscillator_SimpleIII"
 	input Real beta;
         output Real y;
     algorithm
-        y =  x / beta / (1 + x / beta);
+        y :=  x / beta / (1 + x / beta);
     end function_3;
 
 
