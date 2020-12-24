@@ -9,6 +9,15 @@ model BIOMD238 "Overgaard2007_PDmodel_IL21"
             y := x^power;
     end pow;
 
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
 
     parameter Real T_a = 21.0;
@@ -84,7 +93,7 @@ equation
     T_night = T_b - delta_T / 2;
     M_night_baseline = (kb + kinc * (T_night - T_b)) * (T_night - T_a);
     M_night = (1 - f_prime) * M_night_baseline + f_prime * M_day;
-    M_c = piecewise(M_night, and(geq(tprime / 3600, t_night), lt(tprime / 3600, t_day)), M_day);
+    M_c = piecewise(M_night, ((tprime / 3600 >= t_night) and (tprime / 3600 < t_day)), M_day);
     f2_drug = 0;
     k = kb + kinc * (T - T_b * (1 + pEtot * BR)) + f2_drug;
     X1 = (time - tdose1) / 24;
@@ -92,12 +101,12 @@ equation
     X3 = (time - tdose3) / 24;
     Kf = Nf / Tf;
     Ks = Ns / Ts;
-    gNsTs1 = piecewise(pow(Ks, Ns) / 6 * exp(-Ks * X1) * pow(X1, Ns - 1), gt(X1, 0), 0);
-    gNsTs2 = piecewise(pow(Ks, Ns) / 6 * exp(-Ks * X2) * pow(X2, Ns - 1), gt(X2, 0), 0);
-    gNsTs3 = piecewise(pow(Ks, Ns) / 6 * exp(-Ks * X3) * pow(X3, Ns - 1), gt(X3, 0), 0);
-    gNfTf1 = piecewise(pow(Kf, Nf) / 6 * exp(-Kf * X1) * pow(X1, Nf - 1), gt(X1, 0), 0);
-    gNfTf2 = piecewise(pow(Kf, Nf) / 6 * exp(-Kf * X2) * pow(X2, Nf - 1), gt(X2, 0), 0);
-    gNfTf3 = piecewise(pow(Kf, Nf) / 6 * exp(-Kf * X3) * pow(X3, Nf - 1), gt(X3, 0), 0);
+    gNsTs1 = piecewise(pow(Ks, Ns) / 6 * exp(-Ks * X1) * pow(X1, Ns - 1), (X1 > 0), 0);
+    gNsTs2 = piecewise(pow(Ks, Ns) / 6 * exp(-Ks * X2) * pow(X2, Ns - 1), (X2 > 0), 0);
+    gNsTs3 = piecewise(pow(Ks, Ns) / 6 * exp(-Ks * X3) * pow(X3, Ns - 1), (X3 > 0), 0);
+    gNfTf1 = piecewise(pow(Kf, Nf) / 6 * exp(-Kf * X1) * pow(X1, Nf - 1), (X1 > 0), 0);
+    gNfTf2 = piecewise(pow(Kf, Nf) / 6 * exp(-Kf * X2) * pow(X2, Nf - 1), (X2 > 0), 0);
+    gNfTf3 = piecewise(pow(Kf, Nf) / 6 * exp(-Kf * X3) * pow(X3, Nf - 1), (X3 > 0), 0);
     E_slow = AMT_dose * pEs2 * (gNsTs1 + gNsTs2 + gNsTs3);
     E_fast = pEf2 * (gNfTf1 + gNfTf2 + gNfTf3);
     der(M) = -km * (M - M_c);
