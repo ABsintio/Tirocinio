@@ -8,7 +8,15 @@ model BIOMD262 "Fujita2010_Akt_Signalling_EGF"
         algorithm
             y := x^power;
     end pow;
-
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
 
     parameter Real pEGFR_scaleFactor = 0.000181734813832032;
@@ -63,7 +71,7 @@ initial equation
     EGF_EGFR = 0.0;
 
 equation
-    EGF = EGF_conc_step + piecewise(EGF_conc_impulse, leq(time, pulse_time), 0) + EGF_conc_ramp * time / ramp_time;
+    EGF = EGF_conc_step + piecewise(EGF_conc_impulse, time <= pulse_time, 0) + EGF_conc_ramp * time / ramp_time;
     pEGFR_total = (pEGFR + pEGFR_Akt) * pEGFR_scaleFactor;
     pAkt_total = (pAkt + pAkt_S6) * pAkt_scaleFactor;
     pS6_total = pS6 * pS6_scaleFactor;

@@ -298,16 +298,6 @@ FUNCTION_PATTERN_FILE = """
 
 #define PRECISION double
 
-__device__ PRECISION picewise(PRECISION *values, bool *conditions, size_t n) {
-    int true_index = 0;
-    for (;true_index < n; true_index++){
-        if (conditions[true_index]) {
-            break;
-        }
-    }
-    return values[true_index];
-}
-
 %s
 
 #endif
