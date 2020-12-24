@@ -8,22 +8,22 @@
 
 #define PI 3.14159265358979323846
 
-#include "BIOMD279_SystemDefinition.cuh"
+#include "BIOMD329_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 3;
 const int NCP  = 1;
-const int NSP  = 11;
+const int NSP  = 13;
 const int NISP = 0;
-const int NE   = 2;
-const int NA   = 5;
+const int NE   = 0;
+const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -73,25 +73,22 @@ void SaveData(
 	
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
-        DataFile.width(Width); DataFile << "X_x1" << ',';
-        DataFile.width(Width); DataFile << "X_x2" << ',';
-        DataFile.width(Width); DataFile << "X_z" << ',';
-        DataFile.width(Width); DataFile << "sPAR_Compartment" << ',';
-        DataFile.width(Width); DataFile << "sPAR_alpha1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_alpha2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_beta1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_beta2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_g11" << ',';
-        DataFile.width(Width); DataFile << "sPAR_g12" << ',';
-        DataFile.width(Width); DataFile << "sPAR_g21" << ',';
-        DataFile.width(Width); DataFile << "sPAR_g22" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k2" << ',';
-        DataFile.width(Width); DataFile << "ACC_gamma" << ',';
-        DataFile.width(Width); DataFile << "ACC_x1_bar" << ',';
-        DataFile.width(Width); DataFile << "ACC_x2_bar" << ',';
-        DataFile.width(Width); DataFile << "ACC_y1" << ',';
-        DataFile.width(Width); DataFile << "ACC_y2" << ',';
+        DataFile.width(Width); DataFile << "X_a" << ',';
+        DataFile.width(Width); DataFile << "X_b" << ',';
+        DataFile.width(Width); DataFile << "X_c" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Km_2" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Km_3" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Km_5" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Km_7" << ',';
+        DataFile.width(Width); DataFile << "sPAR_V_2" << ',';
+        DataFile.width(Width); DataFile << "sPAR_V_3" << ',';
+        DataFile.width(Width); DataFile << "sPAR_V_5" << ',';
+        DataFile.width(Width); DataFile << "sPAR_V_7" << ',';
+        DataFile.width(Width); DataFile << "sPAR_compartment" << ',';
+        DataFile.width(Width); DataFile << "sPAR_constant_1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_constant_4" << ',';
+        DataFile.width(Width); DataFile << "sPAR_constant_6" << ',';
+        DataFile.width(Width); DataFile << "sPAR_v_0" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
@@ -107,11 +104,8 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 8) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 9) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 10) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 2) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 3) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 4) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 11) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 12) << ',';
 
         DataFile << '\n';
     }
@@ -144,14 +138,12 @@ int main() {
     Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
 
-    Solver.SolverOption(EventDirection, 0, 0);
-    Solver.SolverOption(EventDirection, 1, 0);
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
-    Solver.SolverOption(AbsoluteTolerance, 0, 1e-08);
-    Solver.SolverOption(AbsoluteTolerance, 1, 1e-08);
-    Solver.SolverOption(AbsoluteTolerance, 2, 1e-10);
+    Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 1, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 2, 1e-06);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
     Solver.SolverOption(RelativeTolerance, 1, 1e-06);
@@ -160,7 +152,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD279.csv" );
+    DataFile.open ( "BIOMD329.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    

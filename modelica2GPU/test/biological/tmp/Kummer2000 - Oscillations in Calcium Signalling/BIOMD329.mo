@@ -14,7 +14,7 @@ model BIOMD329 "Kummer2000 - Oscillations in Calcium Signalling"
         	input Real v;
         output Real y;
     algorithm
-        y =  v;
+        y :=  v;
     end Constant_flux__irreversible;
 
 
@@ -24,7 +24,7 @@ model BIOMD329 "Kummer2000 - Oscillations in Calcium Signalling"
 	input Real V;
         output Real y;
     algorithm
-        y =  V * substrate / (Km + substrate);
+        y :=  V * substrate / (Km + substrate);
     end Henri_Michaelis_Menten__irreversible;
 
 
@@ -35,16 +35,16 @@ model BIOMD329 "Kummer2000 - Oscillations in Calcium Signalling"
 	input Real Km;
         output Real y;
     algorithm
-        y =  V * E * S / (Km + S);
+        y :=  V * E * S / (Km + S);
     end Irr_Michaelis_Menten__enzyme__userdefined;
 
 
     function linear_activation
-        	input Real constant;
+        	input Real constante;
 	input Real Activator;
         output Real y;
     algorithm
-        y =  constant * Activator;
+        y :=  constante * Activator;
     end linear_activation;
 
 
@@ -75,7 +75,7 @@ initial equation
 
 equation
 
-    der(a) = (compartment * Constant_flux__irrev_0ersible(v_0)) + (compartment * linear_activation(constant_1, a)) - (compartment * Irr_Michaelis_Menten__enzyme__userdefined(V_2, b, a, Km_2)) - (compartment * Irr_Michaelis_Menten__enzyme__userdefined(V_3, c, a, Km_3));
+    der(a) = (compartment * Constant_flux__irreversible(v_0)) + (compartment * linear_activation(constant_1, a)) - (compartment * Irr_Michaelis_Menten__enzyme__userdefined(V_2, b, a, Km_2)) - (compartment * Irr_Michaelis_Menten__enzyme__userdefined(V_3, c, a, Km_3));
     der(b) = (compartment * linear_activation(constant_4, a)) - (compartment * Henri_Michaelis_Menten__irreversible(b, Km_5, V_5));
     der(c) = (compartment * linear_activation(constant_6, a)) - (compartment * Henri_Michaelis_Menten__irreversible(c, Km_7, V_7));
 
