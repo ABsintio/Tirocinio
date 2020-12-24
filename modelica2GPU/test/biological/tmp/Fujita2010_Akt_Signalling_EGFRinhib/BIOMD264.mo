@@ -9,7 +9,14 @@ model BIOMD264 "Fujita2010_Akt_Signalling_EGFRinhib"
             y := x^power;
     end pow;
 
-
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
     parameter Real pEGFR_scaleFactor = 0.000181735;
     parameter Real pAkt_scaleFactor = 60.0588;
@@ -73,7 +80,7 @@ initial equation
 equation
     pAkt_total = (pAkt + pAkt_S6) * pAkt_scaleFactor;
     pEGFR_total = (pEGFR + pEGFR_Akt) * pEGFR_scaleFactor;
-    EGF = EGF_conc_step + piecewise(EGF_conc_pulse, leq(time, pulse_time), 0) + EGF_conc_ramp * time / ramp_time;
+    EGF = EGF_conc_step + piecewise(EGF_conc_pulse, time <= pulse_time, 0) + EGF_conc_ramp * time / ramp_time;
     pS6_total = pS6 * pS6_scaleFactor;
     der(EGFR) = (Cell * EGFR_turnover * pro_EGFR) - (Cell * (EGF_binding_kf * EGF * EGFR - EGF_binding_kb * EGF_EGFR)) - (Cell * EGFR_turnover * EGFR) - (Cell * (inhibitor_binding_kf * Inhibitor * EGFR - inhibitor_binding_kb * EGFR_i));
     der(pEGFR) = (Cell * k1_2 * pEGFR_Akt) + (Cell * k1_9 * EGF_EGFR) - (Cell * (k1_1 * pEGFR * Akt - k2_1 * pEGFR_Akt)) - (Cell * k1_3 * pEGFR);
