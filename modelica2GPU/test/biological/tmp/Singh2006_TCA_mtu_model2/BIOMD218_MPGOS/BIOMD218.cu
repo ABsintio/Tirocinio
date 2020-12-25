@@ -8,22 +8,22 @@
 
 #define PI 3.14159265358979323846
 
-#include "BIOMD219_SystemDefinition.cuh"
+#include "BIOMD218_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 13;
 const int NCP  = 1;
-const int NSP  = 71;
+const int NSP  = 67;
 const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -92,7 +92,6 @@ void SaveData(
         DataFile.width(Width); DataFile << "sPAR_Kakg_icd1_SYN" << ',';
         DataFile.width(Width); DataFile << "sPAR_Kakg_icd2_ICD2" << ',';
         DataFile.width(Width); DataFile << "sPAR_Kakg_icd2_SYN" << ',';
-        DataFile.width(Width); DataFile << "sPAR_Kakg_kdh_KDH" << ',';
         DataFile.width(Width); DataFile << "sPAR_Kakg_kgd_KGD" << ',';
         DataFile.width(Width); DataFile << "sPAR_Kcit_acn_ACN" << ',';
         DataFile.width(Width); DataFile << "sPAR_Kcit_cs_CS" << ',';
@@ -115,7 +114,6 @@ void SaveData(
         DataFile.width(Width); DataFile << "sPAR_Kmal_ms_MS" << ',';
         DataFile.width(Width); DataFile << "sPAR_Koaa_cs_CS" << ',';
         DataFile.width(Width); DataFile << "sPAR_Koaa_mdh_MDH" << ',';
-        DataFile.width(Width); DataFile << "sPAR_Ksca_kdh_KDH" << ',';
         DataFile.width(Width); DataFile << "sPAR_Ksca_scas_ScAS" << ',';
         DataFile.width(Width); DataFile << "sPAR_Kssa_kgd_KGD" << ',';
         DataFile.width(Width); DataFile << "sPAR_Kssa_ssadh_SSADH" << ',';
@@ -133,7 +131,6 @@ void SaveData(
         DataFile.width(Width); DataFile << "sPAR_Vf_icd2_SYN" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vf_icl1_ICL1" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vf_icl2_ICL2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_Vf_kdh_KDH" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vf_kgd_KGD" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vf_mdh_MDH" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vf_ms_MS" << ',';
@@ -149,7 +146,6 @@ void SaveData(
         DataFile.width(Width); DataFile << "sPAR_Vr_icd2_SYN" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vr_icl1_ICL1" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vr_icl2_ICL2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_Vr_kdh_KDH" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vr_kgd_KGD" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vr_mdh_MDH" << ',';
         DataFile.width(Width); DataFile << "sPAR_Vr_ms_MS" << ',';
@@ -238,10 +234,6 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 64) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 65) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 66) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 67) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 68) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 69) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 70) << ',';
 
         DataFile << '\n';
     }
@@ -308,7 +300,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD219.csv" );
+    DataFile.open ( "BIOMD218.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
