@@ -262,7 +262,7 @@ class SBMLModel:
 
     def create_rate_rule(self):
         for specie_id, specie_obj in self.species.items():
-            if specie_id not in self.rate_rules_dict:
+            if specie_id not in self.rate_rules_dict and specie_id not in self.assignment_rules.keys():
                 rate_rule = RateRule(specie_id, "0.0")
                 if not specie_obj.constant and not specie_obj.boundary_condition:
                     reactant_partial = self.create_sum_from_reactant(specie_id, specie_obj)

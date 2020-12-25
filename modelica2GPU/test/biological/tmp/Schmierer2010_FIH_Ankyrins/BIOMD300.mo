@@ -14,7 +14,7 @@ model BIOMD300 "Schmierer2010_FIH_Ankyrins"
         	input Real v;
         output Real y;
     algorithm
-        y =  v;
+        y :=  v;
     end function_1;
 
 
@@ -27,7 +27,7 @@ model BIOMD300 "Schmierer2010_FIH_Ankyrins"
 	input Real HP;
         output Real y;
     algorithm
-        y =  Htot * kcatPH * Ptot * O2 / (1 + O2) / (KdPH + Ptot + HP);
+        y :=  Htot * kcatPH * Ptot * O2 / (1 + O2) / (KdPH + Ptot + HP);
     end function_2;
 
 
@@ -41,7 +41,7 @@ model BIOMD300 "Schmierer2010_FIH_Ankyrins"
 	input Real KcatFH;
         output Real y;
     algorithm
-        y =  H * KcatFH * Ftot * O2 / (alpha + O2) / (KiFH + Ftot + HF);
+        y :=  H * KcatFH * Ftot * O2 / (alpha + O2) / (KiFH + Ftot + HF);
     end vFH;
 
 
@@ -56,7 +56,7 @@ model BIOMD300 "Schmierer2010_FIH_Ankyrins"
 	input Real KcatFH;
         output Real y;
     algorithm
-        y =  A * KcatFH * Ftot * O2 / (alpha + O2) / (KiFA + A + gamma * (Atot - A));
+        y :=  A * KcatFH * Ftot * O2 / (alpha + O2) / (KiFA + A + gamma * (Atot - A));
     end vFA;
 
 
@@ -69,7 +69,7 @@ model BIOMD300 "Schmierer2010_FIH_Ankyrins"
 	input Real HP;
         output Real y;
     algorithm
-        y =  H * kcatPH * Ptot * O2 / (1 + O2) / (KdPH + Ptot + HP);
+        y :=  H * kcatPH * Ptot * O2 / (1 + O2) / (KdPH + Ptot + HP);
     end function_3;
 
 
