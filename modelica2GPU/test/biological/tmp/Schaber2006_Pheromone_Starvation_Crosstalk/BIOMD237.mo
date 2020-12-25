@@ -8,6 +8,16 @@ model BIOMD237 "Schaber2006_Pheromone_Starvation_Crosstalk"
         algorithm
             y := x^power;
     end pow;
+    
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
 
 
@@ -116,8 +126,8 @@ initial equation
     FREP = 0.0;
 
 equation
-    alpha = alphastim * piecewise(alphaA * (1 - exp(-(time - alphat) / alphas)), and(geq(time, alphat), leq(time, alphae)), piecewise(alphaA * exp(-(time - alphat) / alphas), geq(time, alphae), 0));
-    beta = betastim * betaA * piecewise(1 - exp(-(time - betat) / betas), and(geq(time, betat), leq(time, betae)), piecewise(exp(-(time - betae) / betas), gt(time, betae), 0));
+    alpha = alphastim * piecewise(alphaA * (1 - exp(-(time - alphat) / alphas)), ((time >= alphat) and (time <= alphae)), piecewise(alphaA * exp(-(time - alphat) / alphas), (time >= alphae), 0));
+    beta = betastim * betaA * piecewise(1 - exp(-(time - betat) / betas), ((time >= betat) and (time <= betae)), piecewise(exp(-(time - betae) / betas), (time > betae), 0));
     der(Ste5) = (compartment * k27 * Ste5Ste11) - (compartment * k1 * Ste5 * Ste11) - (compartment * k7 * Ste5Ste11GbgP);
     der(Ste11) = (compartment * k14 * Ste11P) + (compartment * k27 * Ste5Ste11) - (compartment * k1 * Ste5 * Ste11) - (compartment * k13 * Ste11 * beta);
     der(Ste5Ste11) = (compartment * k1 * Ste5 * Ste11) - (compartment * k2 * Ste5Ste11 * Gbg * alpha) - (compartment * k27 * Ste5Ste11);
