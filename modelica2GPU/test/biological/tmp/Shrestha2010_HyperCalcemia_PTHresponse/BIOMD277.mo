@@ -8,6 +8,15 @@ model BIOMD277 "Shrestha2010_HyperCalcemia_PTHresponse"
         algorithm
             y := x^power;
     end pow;
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
 
 
@@ -47,7 +56,7 @@ initial equation
 equation
     lambda_Ca = (A - B) / (1 + pow(Ca / S, m_Ca)) + B;
     m_Ca = m1 / (1 + exp(-beta * (R - Ca))) + m2;
-    Ca = piecewise(Ca0, lt(time, t0), Ca0 + Ca1 * (1 - exp(-alpha * (time - t0))));
+    Ca = piecewise(Ca0, (time < t0), Ca0 + Ca1 * (1 - exp(-alpha * (time - t0))));
     S = Ca0_baseline * pow(-(x1_n * B - lambda_2 * x2_n) / (x1_n * A - lambda_2 * x2_n), 1 / m_Ca);
     k = lambda_2 * x2_n + lambda_1 * x1_n;
     A = lambda_1 * lambda_2 * x2_max / (k - lambda_2 * x2_max);
