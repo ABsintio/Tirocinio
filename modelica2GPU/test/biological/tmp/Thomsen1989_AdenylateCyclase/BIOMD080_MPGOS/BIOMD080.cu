@@ -8,14 +8,14 @@
 
 #define PI 3.14159265358979323846
 
-#include "BIOMD082_SystemDefinition.cuh"
+#include "BIOMD080_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 10;
 const int NCP  = 1;
 const int NSP  = 11;
@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -73,6 +73,7 @@ void SaveData(
 	
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
+        DataFile.width(Width); DataFile << "X_D" << ',';
         DataFile.width(Width); DataFile << "X_DR" << ',';
         DataFile.width(Width); DataFile << "X_DRG" << ',';
         DataFile.width(Width); DataFile << "X_DRG_GDP" << ',';
@@ -81,19 +82,18 @@ void SaveData(
         DataFile.width(Width); DataFile << "X_GTP" << ',';
         DataFile.width(Width); DataFile << "X_G_GDP" << ',';
         DataFile.width(Width); DataFile << "X_G_GTP" << ',';
-        DataFile.width(Width); DataFile << "X_Recptor" << ',';
-        DataFile.width(Width); DataFile << "X_agonist" << ',';
+        DataFile.width(Width); DataFile << "X_R" << ',';
         DataFile.width(Width); DataFile << "sPAR_cell" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k10_reaction_3" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k1_Forming" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k2_reaction_1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k3_reaction_2" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k4_reaction_3" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k5_reaction_4" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k6_reaction_5" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k7_Forming" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k8_reaction_1" << ',';
-        DataFile.width(Width); DataFile << "sPAR_k9_reaction_2" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k10_Reaction_4" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k1_Reaction_1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k2_Reaction_2" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k3_Reaction_3" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k4_Reaction_4" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k5_Reaction_5" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k6_Reaction_6" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k7_Reaction_1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k8_Reaction_2" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k9_Reaction_3" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
@@ -151,16 +151,16 @@ int main() {
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
-    Solver.SolverOption(AbsoluteTolerance, 0, 1e-13);
+    Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 1, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 2, 1e-15);
-    Solver.SolverOption(AbsoluteTolerance, 3, 1e-15);
+    Solver.SolverOption(AbsoluteTolerance, 2, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 3, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 4, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 5, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 6, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 7, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 8, 1e-08);
-    Solver.SolverOption(AbsoluteTolerance, 9, 1e-08);
+    Solver.SolverOption(AbsoluteTolerance, 8, 1e-13);
+    Solver.SolverOption(AbsoluteTolerance, 9, 1e-13);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
     Solver.SolverOption(RelativeTolerance, 1, 1e-06);
@@ -176,7 +176,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD082.csv" );
+    DataFile.open ( "BIOMD080.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
