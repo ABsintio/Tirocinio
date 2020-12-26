@@ -14,7 +14,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real tod;
         output Real y;
     algorithm
-        y =  ceil(sin(pi * tod / 12) / 2);
+        y :=  ceil(sin(pi * tod / 12) / 2);
     end LD1212;
 
 
@@ -23,7 +23,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real acc;
         output Real y;
     algorithm
-        y =  acc_rate * acc;
+        y :=  acc_rate * acc;
     end function_2;
 
 
@@ -31,7 +31,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real tod;
         output Real y;
     algorithm
-        y =  LD1212(tod);
+        y :=  LD1212(tod);
     end light;
 
 
@@ -39,7 +39,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real t;
         output Real y;
     algorithm
-        y =  1 + 0 * t;
+        y :=  1 + 0 * t;
     end transcription;
 
 
@@ -47,7 +47,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real t;
         output Real y;
     algorithm
-        y =  0 * t;
+        y :=  0 * t;
     end ox_toc1;
 
 
@@ -55,7 +55,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real t;
         output Real y;
     algorithm
-        y =  1 + 0 * t;
+        y :=  1 + 0 * t;
     end copies_toc1;
 
 
@@ -63,7 +63,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real t;
         output Real y;
     algorithm
-        y =  1 + 0 * t;
+        y :=  1 + 0 * t;
     end copies_cca1;
 
 
@@ -71,7 +71,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real t;
         output Real y;
     algorithm
-        y =  0 * t;
+        y :=  0 * t;
     end ox_cca1;
 
 
@@ -79,7 +79,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real t;
         output Real y;
     algorithm
-        y =  1 + 0 * t;
+        y :=  1 + 0 * t;
     end translation;
 
 
@@ -87,7 +87,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
         	input Real t;
         output Real y;
     algorithm
-        y =  1 + 0 * t;
+        y :=  1 + 0 * t;
     end proteasome;
 
 
@@ -97,7 +97,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real mrna;
         output Real y;
     algorithm
-        y =  translation(t) * T * mrna;
+        y :=  translation(t) * T * mrna;
     end Translation;
 
 
@@ -108,7 +108,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real level;
         output Real y;
     algorithm
-        y =  proteasome(t) * (light(t) * D_l + (1 - light(t)) * D_d) * level;
+        y :=  proteasome(t) * (light(t) * D_l + (1 - light(t)) * D_d) * level;
     end function_4;
 
 
@@ -119,7 +119,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real level;
         output Real y;
     algorithm
-        y =  (light(t) * Di_l + (1 - light(t)) * Di_d) * level;
+        y :=  (light(t) * Di_l + (1 - light(t)) * Di_d) * level;
     end function_5;
 
 
@@ -134,7 +134,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real L_toc1;
         output Real y;
     algorithm
-        y =  rep_pTOC1 * transcription(t) * (L_toc1 + R_toc1_acc * acc) / (1 + L_toc1 + R_toc1_acc * acc + (R_toc1_cca1 * cca1_n)^H_toc1_cca1);
+        y :=  rep_pTOC1 * transcription(t) * (L_toc1 + R_toc1_acc * acc) / (1 + L_toc1 + R_toc1_acc * acc + (R_toc1_cca1 * cca1_n)^H_toc1_cca1);
     end function_7;
 
 
@@ -149,7 +149,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real L_toc1;
         output Real y;
     algorithm
-        y =  rep_TOC1 * transcription(t) * copies_toc1(t) * (L_toc1 + R_toc1_acc * acc) / (1 + L_toc1 + R_toc1_acc * acc + (R_toc1_cca1 * cca1_n)^H_toc1_cca1);
+        y :=  rep_TOC1 * transcription(t) * copies_toc1(t) * (L_toc1 + R_toc1_acc * acc) / (1 + L_toc1 + R_toc1_acc * acc + (R_toc1_cca1 * cca1_n)^H_toc1_cca1);
     end function_8;
 
 
@@ -162,7 +162,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real rep_pCCA1;
         output Real y;
     algorithm
-        y =  rep_pCCA1 * transcription(t) * (toc1_2 * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 / ((toc1_2 * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 + 1);
+        y :=  rep_pCCA1 * transcription(t) * (toc1_2 * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 / ((toc1_2 * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 + 1);
     end function_9;
 
 
@@ -175,7 +175,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real rep_CCA1;
         output Real y;
     algorithm
-        y =  rep_CCA1 * transcription(t) * copies_cca1(t) * (toc1_2 * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 / ((toc1_2 * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 + 1);
+        y :=  rep_CCA1 * transcription(t) * copies_cca1(t) * (toc1_2 * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 / ((toc1_2 * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 + 1);
     end function_10;
 
 
@@ -185,7 +185,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real tf;
         output Real y;
     algorithm
-        y =  (1 + reporter * (effcopies - 1)) * tf;
+        y :=  (1 + reporter * (effcopies - 1)) * tf;
     end tf_output;
 
 
@@ -194,7 +194,7 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real t;
         output Real y;
     algorithm
-        y =  acc_rate * light(t);
+        y :=  acc_rate * light(t);
     end function_1;
 
 
@@ -208,11 +208,9 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real L_toc1;
 	input Real rep_CCA1;
 	input Real effcopies_cca1_LHY7;
-	input Real transcription(t) * (ox_toc1(t) + copies_toc1(t) * (L_toc1 + R_toc1_acc * acc) / (1 + L_toc1 + R_toc1_acc * acc + (R_toc1_cca1 * tf_output(rep_CCA1;
-	input Real effcopies_cca1_LHY7;
         output Real y;
     algorithm
-        y =  cca1_n))^H_toc1_cca1));
+        y :=  transcription(t) * (ox_toc1(t) + copies_toc1(t) * (L_toc1 + R_toc1_acc * acc) / (1 + L_toc1 + R_toc1_acc * acc + (R_toc1_cca1 * (tf_output * rep_CCA1 * effcopies_cca1_LHY7 * cca1_n))^H_toc1_cca1));
     end function_3;
 
 
@@ -224,13 +222,9 @@ model BIOMD350 "Troein2011_ClockCircuit_OstreococcusTauri"
 	input Real H_cca1_toc1;
 	input Real rep_TOC1;
 	input Real effcopies_toc1_TOC8;
-	input Real transcription(t) * (ox_cca1(t) + copies_cca1(t) * (tf_output(rep_TOC1;
-	input Real effcopies_toc1_TOC8;
-	input Real toc1_2) * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 / ((tf_output(rep_TOC1;
-	input Real effcopies_toc1_TOC8;
         output Real y;
     algorithm
-        y =  toc1_2) * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 + 1));
+        y := transcription(t) * (ox_cca1(t) + copies_cca1(t) * (tf_output * rep_TOC1 * effcopies_toc1_TOC8 * toc1_2) * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 / ((tf_output * rep_TOC1 * effcopies_toc1_TOC8 * toc1_2) * (light(t) * R_cca1_toc1_2_l + (1 - light(t)) * R_cca1_toc1_2_d))^H_cca1_toc1 + 1));
     end function_6;
 
 

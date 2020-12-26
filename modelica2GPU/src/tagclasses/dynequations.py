@@ -476,9 +476,10 @@ class FunctionCall:
             return class_op(*inputs_var)
         except exceptions.builtExceptions.OperatorNotFoundException:
             pass
-        fun = self.fun_dict[fun_name]
-        fun.setinput(inputs_var)
-        return fun
+        return f"{fun_name}(" + ",".join([x for x in inputs_var]) + ")" 
+        #fun = self.fun_dict[fun_name]
+        #fun.setinput(inputs_var)
+        #return fun
     
     def __str__(self): return self._parsefuncall_tag().__str__()
 

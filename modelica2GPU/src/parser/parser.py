@@ -325,7 +325,7 @@ class Parser:
         # END LOG
         functionlist_rottag = Parser.getTagElementByName(f"{dynequations.FUNCTIONS_NS}FunctionsList", self.root)
         for x in functionlist_rottag:
-            fun = functions._parsetag_fun(x, variables_dict, MPGOSparam_dict)
+            fun = functions._parsetag_fun(x, variables_dict, MPGOSparam_dict, self.userdefined_func)
             self.userdefined_func[fun.name] = fun
 
 

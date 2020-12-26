@@ -9,17 +9,24 @@ model BIOMD195 "Tyson2001_Cell_Cycle_Regulation"
             y := x^power;
     end pow;
 
-
     function GK
         	input Real A1;
 	input Real A2;
 	input Real A3;
 	input Real A4;
-	input Real 2 * A4 * A1 / ((A2 - A1) + A3 * A2 + A4 * A1 + root(2;
         output Real y;
     algorithm
-        y =  ((A2 - A1) + A3 * A2 + A4 * A1)^2 - 4 * (A2 - A1) * A4 * A1));
+        y :=  2 * A4 * A1 / ((A2 - A1) + A3 * A2 + A4 * A1 + root(2, ((A2 - A1) + A3 * A2 + A4 * A1)^2 - 4 * (A2 - A1) * A4 * A1));
     end GK;
+    
+    function root
+        input Real degree;
+        input Real x;
+        output Real y;
+        algorithm
+            y := y^(1/degree);
+    end root;
+
 
 
     parameter Real k1 = 0.04;
@@ -93,7 +100,7 @@ equation
     der(Cdc20a) = (k7 * IEP * (Cdc20t - Cdc20a) / (J7 + Cdc20t - Cdc20a)) - (k8 * Mad * Cdc20a / (J8 + Cdc20a)) - (k6 * Cdc20a);
     der(Cdh1) = ((k3p + k3pp * Cdc20a) * (1 - Cdh1) / (J3 + 1 - Cdh1)) - ((k4p * SK * Cdh1 + k4 * m * CycB * Cdh1) / (J4 + Cdh1));
     der(m) = (mu * m * (1 - m / mmax)) ;
-    der(Cdc20t) = (k5p + k5pp * (CycB * m / J5)^n / (1 + (CycB * m / J5)^n)) - (k6 * Cdc20t);
+    der(Cdc20t) = (k5p + k5pp * pow(CycB * m / J5, n) / (1 + pow(CycB * m / J5, n))) - (k6 * Cdc20t);
     der(IEP) = (k9 * m * CycB * (1 - IEP)) - (k10 * IEP);
     der(CKIt) = (k11) - (k12p * CKIt) - (k12pp * SK * CKIt) - (k12ppp * m * CycB * CKIt);
     der(SK) = (k13 * TF) - (k14 * SK);

@@ -519,8 +519,11 @@ class SBMLExtrapolator:
         for func in self.model.getListOfFunctionDefinitions():
             function_id = func.getId()
             function_mathml = libsbml.formulaToL3String(func.getMath())[7:-1]
+            print(function_mathml)
             input_params = [x.strip() for x in function_mathml.split(",")[:-1]]
+            print(input_params)
             math_formula = function_mathml.split(",")[-1]
+            print(math_formula)
             self.function_dict[function_id] = Function(function_id, input_params, math_formula)
 
     def getinit_assignment(self):
