@@ -9,6 +9,8 @@ model BIOMD198 "Stone1996 - activation of soluble guanylate cyclase by nitric ox
             y := x^power;
     end pow;
 
+
+
     parameter Real k1 = 700.0;
     parameter Real k2 = 800.0;
     parameter Real k3 = 850.0;

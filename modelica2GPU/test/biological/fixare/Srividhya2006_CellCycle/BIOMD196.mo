@@ -14,7 +14,7 @@ model BIOMD196 "Srividhya2006_CellCycle"
         	input Real k1;
         output Real y;
     algorithm
-        y =  k1;
+        y :=  k1;
     end Mass_Action_0;
 
 
@@ -24,7 +24,7 @@ model BIOMD196 "Srividhya2006_CellCycle"
 	input Real S2;
         output Real y;
     algorithm
-        y =  k1 * S1 * S2;
+        y :=  k1 * S1 * S2;
     end Mass_Action_2;
 
 
@@ -33,7 +33,7 @@ model BIOMD196 "Srividhya2006_CellCycle"
 	input Real S1;
         output Real y;
     algorithm
-        y =  k1 * S1;
+        y :=  k1 * S1;
     end Mass_Action_1;
 
 

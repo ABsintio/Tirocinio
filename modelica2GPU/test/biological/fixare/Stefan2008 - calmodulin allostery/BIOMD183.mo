@@ -16,7 +16,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species;
         output Real y;
     algorithm
-        y =  species * ka * b^(1 / 2);
+        y :=  species * ka * b^(1 / 2);
     end transition1_R_T;
 
 
@@ -26,7 +26,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_18;
         output Real y;
     algorithm
-        y =  species_18 * parameter_10 / parameter_11^(1 / 2);
+        y :=  species_18 * parameter_10 / parameter_11^(1 / 2);
     end function_1;
 
 
@@ -36,7 +36,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_19;
         output Real y;
     algorithm
-        y =  species_19 * parameter_10 / parameter_12^(1 / 2);
+        y :=  species_19 * parameter_10 / parameter_12^(1 / 2);
     end function_2;
 
 
@@ -47,7 +47,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_6;
         output Real y;
     algorithm
-        y =  species_6 * parameter_9 * (parameter_11 * parameter_12)^(1 / 2);
+        y :=  species_6 * parameter_9 * (parameter_11 * parameter_12)^(1 / 2);
     end function_5;
 
 
@@ -57,7 +57,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_20;
         output Real y;
     algorithm
-        y =  species_20 * parameter_10 / parameter_13^(1 / 2);
+        y :=  species_20 * parameter_10 / parameter_13^(1 / 2);
     end function_3;
 
 
@@ -68,7 +68,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_7;
         output Real y;
     algorithm
-        y =  species_7 * parameter_9 * (parameter_11 * parameter_13)^(1 / 2);
+        y :=  species_7 * parameter_9 * (parameter_11 * parameter_13)^(1 / 2);
     end function_6;
 
 
@@ -79,7 +79,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_8;
         output Real y;
     algorithm
-        y =  species_8 * parameter_9 * (parameter_11 * parameter_14)^(1 / 2);
+        y :=  species_8 * parameter_9 * (parameter_11 * parameter_14)^(1 / 2);
     end function_7;
 
 
@@ -89,7 +89,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_21;
         output Real y;
     algorithm
-        y =  species_21 * parameter_10 / parameter_14^(1 / 2);
+        y :=  species_21 * parameter_10 / parameter_14^(1 / 2);
     end function_4;
 
 
@@ -100,7 +100,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_24;
         output Real y;
     algorithm
-        y =  species_24 * parameter_10 / (parameter_11 * parameter_14)^(1 / 2);
+        y :=  species_24 * parameter_10 / (parameter_11 * parameter_14)^(1 / 2);
     end function_13;
 
 
@@ -111,7 +111,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_25;
         output Real y;
     algorithm
-        y =  species_25 * parameter_10 / (parameter_12 * parameter_13)^(1 / 2);
+        y :=  species_25 * parameter_10 / (parameter_12 * parameter_13)^(1 / 2);
     end function_14;
 
 
@@ -122,7 +122,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_26;
         output Real y;
     algorithm
-        y =  species_26 * parameter_10 / (parameter_12 * parameter_14)^(1 / 2);
+        y :=  species_26 * parameter_10 / (parameter_12 * parameter_14)^(1 / 2);
     end function_15;
 
 
@@ -133,7 +133,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_27;
         output Real y;
     algorithm
-        y =  species_27 * parameter_10 / (parameter_13 * parameter_14)^(1 / 2);
+        y :=  species_27 * parameter_10 / (parameter_13 * parameter_14)^(1 / 2);
     end function_16;
 
 
@@ -145,7 +145,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_12;
         output Real y;
     algorithm
-        y =  species_12 * parameter_9 * (parameter_11 * parameter_12 * parameter_13)^(1 / 2);
+        y :=  species_12 * parameter_9 * (parameter_11 * parameter_12 * parameter_13)^(1 / 2);
     end function_17;
 
 
@@ -157,7 +157,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_13;
         output Real y;
     algorithm
-        y =  species_13 * parameter_9 * (parameter_11 * parameter_12 * parameter_14)^(1 / 2);
+        y :=  species_13 * parameter_9 * (parameter_11 * parameter_12 * parameter_14)^(1 / 2);
     end function_18;
 
 
@@ -169,7 +169,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_14;
         output Real y;
     algorithm
-        y =  species_14 * parameter_9 * (parameter_11 * parameter_13 * parameter_14)^(1 / 2);
+        y :=  species_14 * parameter_9 * (parameter_11 * parameter_13 * parameter_14)^(1 / 2);
     end function_19;
 
 
@@ -181,7 +181,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_15;
         output Real y;
     algorithm
-        y =  species_15 * parameter_9 * (parameter_12 * parameter_13 * parameter_14)^(1 / 2);
+        y :=  species_15 * parameter_9 * (parameter_12 * parameter_13 * parameter_14)^(1 / 2);
     end function_20;
 
 
@@ -192,7 +192,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_9;
         output Real y;
     algorithm
-        y =  species_9 * parameter_9 * (parameter_12 * parameter_13)^(1 / 2);
+        y :=  species_9 * parameter_9 * (parameter_12 * parameter_13)^(1 / 2);
     end function_8;
 
 
@@ -203,7 +203,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_10;
         output Real y;
     algorithm
-        y =  species_10 * parameter_9 * (parameter_12 * parameter_14)^(1 / 2);
+        y :=  species_10 * parameter_9 * (parameter_12 * parameter_14)^(1 / 2);
     end function_9;
 
 
@@ -214,7 +214,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_11;
         output Real y;
     algorithm
-        y =  species_11 * parameter_9 * (parameter_13 * parameter_14)^(1 / 2);
+        y :=  species_11 * parameter_9 * (parameter_13 * parameter_14)^(1 / 2);
     end function_10;
 
 
@@ -225,7 +225,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_22;
         output Real y;
     algorithm
-        y =  species_22 * parameter_10 / (parameter_11 * parameter_12)^(1 / 2);
+        y :=  species_22 * parameter_10 / (parameter_11 * parameter_12)^(1 / 2);
     end function_11;
 
 
@@ -236,7 +236,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_23;
         output Real y;
     algorithm
-        y =  species_23 * parameter_10 / (parameter_11 * parameter_13)^(1 / 2);
+        y :=  species_23 * parameter_10 / (parameter_11 * parameter_13)^(1 / 2);
     end function_12;
 
 
@@ -248,7 +248,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_28;
         output Real y;
     algorithm
-        y =  species_28 * parameter_10 / (parameter_11 * parameter_12 * parameter_13)^(1 / 2);
+        y :=  species_28 * parameter_10 / (parameter_11 * parameter_12 * parameter_13)^(1 / 2);
     end function_21;
 
 
@@ -260,7 +260,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_29;
         output Real y;
     algorithm
-        y =  species_29 * parameter_10 / (parameter_11 * parameter_12 * parameter_14)^(1 / 2);
+        y :=  species_29 * parameter_10 / (parameter_11 * parameter_12 * parameter_14)^(1 / 2);
     end function_22;
 
 
@@ -272,7 +272,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_30;
         output Real y;
     algorithm
-        y =  species_30 * parameter_10 / (parameter_11 * parameter_13 * parameter_14)^(1 / 2);
+        y :=  species_30 * parameter_10 / (parameter_11 * parameter_13 * parameter_14)^(1 / 2);
     end function_23;
 
 
@@ -284,7 +284,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_31;
         output Real y;
     algorithm
-        y =  species_31 * parameter_10 / (parameter_12 * parameter_13 * parameter_14)^(1 / 2);
+        y :=  species_31 * parameter_10 / (parameter_12 * parameter_13 * parameter_14)^(1 / 2);
     end function_24;
 
 
@@ -297,7 +297,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_16;
         output Real y;
     algorithm
-        y =  species_16 * parameter_9 * (parameter_11 * parameter_12 * parameter_13 * parameter_14)^(1 / 2);
+        y :=  species_16 * parameter_9 * (parameter_11 * parameter_12 * parameter_13 * parameter_14)^(1 / 2);
     end function_25;
 
 
@@ -310,7 +310,7 @@ model BIOMD183 "Stefan2008 - calmodulin allostery"
 	input Real species_32;
         output Real y;
     algorithm
-        y =  species_32 * parameter_10 / (parameter_11 * parameter_12 * parameter_13 * parameter_14)^(1 / 2);
+        y :=  species_32 * parameter_10 / (parameter_11 * parameter_12 * parameter_13 * parameter_14)^(1 / 2);
     end function_26;
 
 

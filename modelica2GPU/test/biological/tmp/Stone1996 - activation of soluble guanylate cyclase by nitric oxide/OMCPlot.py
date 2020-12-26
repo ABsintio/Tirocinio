@@ -13,7 +13,7 @@ csv_file = args.csv
 csv_data = pd.read_csv(csv_file)
 
 # Prendiamo i nomi delle species con gli indici corrispettivi che utilizzeremo per il plotting
-variables_to_plot = ["NO","sGCfast","NO_sGCfast","NO_sGCfast_6coord","NO_sGCfast_5coord","sGCslow","NO_sGCslow","NO_sGCslow_6coord","NO_sGCslow_6coord_NO_int","NO_sGCslow_5coord","NO_sGC_5coord_tot","sGC_inact_tot"]
+variables_to_plot = ["NO","sGCfast","NO_sGCfast","NO_sGCfast_6coord","NO_sGCfast_5coord","sGCslow","NO_sGCslow","NO_sGCslow_6coord","NO_sGCslow_6coord_NO_int","NO_sGCslow_5coord"]
 species_tuple = [(idx, specie) for idx, specie in enumerate(csv_data.head(0)) if specie in variables_to_plot and specie != "time"]
 
 # Creiamo un array numpy per salvare i dati estrapolati dal CSV
@@ -33,3 +33,4 @@ for i in range(0, len(species_tuple), 4):
     plt.legend(loc="upper left")
     plt.savefig("OMCPlot" + str(plot_number) + ".png")
     plot_number += 1
+    plt.close()
