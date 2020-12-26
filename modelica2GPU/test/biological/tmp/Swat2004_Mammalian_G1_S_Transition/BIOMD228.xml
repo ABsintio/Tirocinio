@@ -1,0 +1,1851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD228"
+  modelIdentifier="BIOMD228"
+  guid="{2a085302-8692-4a46-930d-a1545b6c5440}"
+  generationDateAndTime="2020-12-26T20:45:42"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="9"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="AP1"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AP1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CycDa"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CycDa"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CycDi"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CycDi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CycEa"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CycEa"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CycEi"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CycEi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="E2F1"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E2F1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="pRB"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="pRB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="pRBp"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="pRBp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="pRBpp"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="pRBpp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(AP1)"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AP1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(CycDa)"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CycDa"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(CycDi)"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CycDi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(CycEa)"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CycEa"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(CycEi)"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CycEi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(E2F1)"  valueReference="14" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E2F1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(pRB)"  valueReference="15" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="pRB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(pRBp)"  valueReference="16" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="pRBp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(pRBpp)"  valueReference="17" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="pRBpp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Fm"  valueReference="18" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.005" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Fm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J11"  valueReference="19" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J11"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J12"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J12"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J13"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.002" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J13"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J15"  valueReference="22" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J15"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J18"  valueReference="23" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.6" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J18"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J61"  valueReference="24" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J61"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J62"  valueReference="25" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="8.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J62"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J63"  valueReference="26" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J63"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J65"  valueReference="27" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J65"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J68"  valueReference="28" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="7.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J68"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km1"  valueReference="29" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km2"  valueReference="30" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="4.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km4"  valueReference="31" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.3" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Km9"  valueReference="32" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.005" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Km9"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a"  valueReference="33" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.04" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="cell"  valueReference="34" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="cell"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k1"  valueReference="35" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k16"  valueReference="36" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.4" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k16"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k2"  valueReference="37" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.6" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k23"  valueReference="38" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.3" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k23"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k25"  valueReference="39" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.9" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k25"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k28"  valueReference="40" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.06" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k28"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k3"  valueReference="41" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k34"  valueReference="42" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.04" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k34"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k43"  valueReference="43" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k43"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k61"  valueReference="44" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.3" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k61"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k67"  valueReference="45" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.7" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k67"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k76"  valueReference="46" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.1" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k76"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k89"  valueReference="47" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.07000000000000001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k89"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k98"  valueReference="48" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k98"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kp"  valueReference="49" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_AP1"  valueReference="50" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_AP1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_CycDa"  valueReference="51" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.03" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_CycDa"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_CycDi"  valueReference="52" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.023" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_CycDi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_CycEa"  valueReference="53" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_CycEa"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_CycEi"  valueReference="54" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.06" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_CycEi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_E2F1"  valueReference="55" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.1" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_E2F1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_pRB"  valueReference="56" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.005" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_pRB"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_pRBp"  valueReference="57" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.06" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_pRBp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi_pRBpp"  valueReference="58" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.04" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi_pRBpp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Fm"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.005</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J11"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J12"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J13"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.002</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J15"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J18"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.6</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J61"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J62"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>8.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J63"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J65"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="J68"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>7.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>4.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km4"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.3</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Km9"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.005</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.04</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="cell"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k16"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.4</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.6</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k23"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.3</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k25"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.9</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k28"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.06</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k34"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.04</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k43"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k61"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.3</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k67"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.7</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k76"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k89"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.07000000000000001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k98"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kp"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_AP1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_CycDa"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.03</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_CycDi"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.023</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_CycEa"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_CycEi"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.06</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_E2F1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_pRB"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.005</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_pRBp"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.06</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="phi_pRBpp"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.04</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CycEa"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k89"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CycEi"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CycEa"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km9"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="CycEa"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Sub>
+                  <exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k98"/>
+                    </exp:Identifier>
+                  </exp:Neg>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi_CycEa"/>
+                </exp:Identifier>
+              </exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CycEa"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CycEi"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k28"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E2F1"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="J18"/>
+                  </exp:Identifier>
+                  <exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="J68"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="J18"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="pRB"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="J68"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="pRBp"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Mul>
+                  </exp:Div>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k98"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CycEa"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CycEi"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Mul>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k89"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="CycEa"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Km9"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="CycEa"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Div>
+                  </exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="phi_CycEi"/>
+                  </exp:Identifier>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="pRBpp"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k67"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="pRBp"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CycEa"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Sub>
+                  <exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k76"/>
+                    </exp:Identifier>
+                  </exp:Neg>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi_pRBpp"/>
+                </exp:Identifier>
+              </exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="pRBpp"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="AP1"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Fm"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k25"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="E2F1"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="J15"/>
+                    </exp:Identifier>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="J65"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="J15"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="pRB"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="J65"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="pRBp"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                    </exp:Div>
+                  </exp:Mul>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi_AP1"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="AP1"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CycDa"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k34"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CycDi"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CycDa"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Km4"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="CycDa"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Sub>
+                  <exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k43"/>
+                    </exp:Identifier>
+                  </exp:Neg>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi_CycDa"/>
+                </exp:Identifier>
+              </exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CycDa"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CycDi"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k3"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="AP1"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k23"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="E2F1"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="J13"/>
+                    </exp:Identifier>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="J63"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="J13"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="pRB"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="J63"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="pRBp"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                    </exp:Div>
+                  </exp:Mul>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Add>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="k43"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CycDa"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CycDi"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Mul>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="k34"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="CycDa"/>
+                        </exp:Identifier>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km4"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="CycDa"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Div>
+                    </exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="phi_CycDi"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="E2F1"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="kp"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k2"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Add>
+                    <exp:Pow>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="a"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>2.0</exp:RealLiteral>
+                    </exp:Pow>
+                    <exp:Pow>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="E2F1"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>2.0</exp:RealLiteral>
+                    </exp:Pow>
+                  </exp:Add>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="J12"/>
+                    </exp:Identifier>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="J62"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Mul>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="J12"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="pRB"/>
+                            </exp:Identifier>
+                          </exp:Add>
+                          <exp:Add>
+                            <exp:Pow>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Km2"/>
+                              </exp:Identifier>
+                              <exp:RealLiteral>2.0</exp:RealLiteral>
+                            </exp:Pow>
+                            <exp:Pow>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="E2F1"/>
+                              </exp:Identifier>
+                              <exp:RealLiteral>2.0</exp:RealLiteral>
+                            </exp:Pow>
+                          </exp:Add>
+                        </exp:Mul>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="J62"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="pRBp"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                    </exp:Div>
+                  </exp:Mul>
+                </exp:Mul>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi_E2F1"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E2F1"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="pRBp"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k16"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="pRB"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CycDa"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k76"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="pRBpp"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Sub>
+                <exp:Mul>
+                    <exp:Neg>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="pRBp"/>
+                      </exp:Identifier>
+                    </exp:Neg>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k61"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="k67"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="CycEa"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Add>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="phi_pRBp"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="pRBp"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="pRB"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="cell"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="k1"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="E2F1"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="J11"/>
+                  </exp:Identifier>
+                  <exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="J61"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Mul>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="J11"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="pRB"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Km1"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="E2F1"/>
+                          </exp:Identifier>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:Add>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="J61"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="pRBp"/>
+                        </exp:Identifier>
+                      </exp:Add>
+                    </exp:Mul>
+                  </exp:Div>
+                </exp:Mul>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="k61"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="pRBp"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="pRB"/>
+                </exp:Identifier>
+                <exp:Sub>
+                  <exp:Mul>
+                      <exp:Neg>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="k16"/>
+                        </exp:Identifier>
+                      </exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="CycDa"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="phi_pRB"/>
+                  </exp:Identifier>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CycEa"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CycEi"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="pRBpp"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="AP1"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CycDa"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CycDi"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="E2F1"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="pRBp"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="pRB"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
