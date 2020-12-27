@@ -17,7 +17,7 @@ model BIOMD306 "Tyson2003_Activator_Inhibitor"
 	input Real J2;
         output Real y;
     algorithm
-        y =  2 * v1 * J2 / ((v2 - v1) + J1 * v2 + J2 * v1 + (((v2 - v1) + J1 * v2 + J2 * v1)^2 - 4 * (v2 - v1) * v1 * J2)^(1 / 2));
+        y :=  2 * v1 * J2 / ((v2 - v1) + J1 * v2 + J2 * v1 + (((v2 - v1) + J1 * v2 + J2 * v1)^2 - 4 * (v2 - v1) * v1 * J2)^(1 / 2));
     end goldbeter_koshland;
 
 
