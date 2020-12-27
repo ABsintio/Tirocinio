@@ -9,6 +9,13 @@ model BIOMD246 "Vasalou2010_Pacemaker_Neuron_SCN"
             y := x^power;
     end pow;
 
+    
+    function sqrt
+        input Real x;
+        output Real y;
+        algorithm
+            y := x^(1/2);
+    end sqrt;
 
 
     parameter Real v_vo = 0.09;
@@ -152,7 +159,7 @@ model BIOMD246 "Vasalou2010_Pacemaker_Neuron_SCN"
     Real f_r(start=0.0);
     Real beta(start=0.0);
     Real v_sPc(start=0.0);
-    Real E_Na(start=0.0);
+    Real E_Na_0(start=0.0);
     Real E_K(start=0.0);
     Real E_L(start=0.0);
     Real E_Ca(start=0.0);
