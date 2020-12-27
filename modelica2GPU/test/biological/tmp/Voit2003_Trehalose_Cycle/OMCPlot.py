@@ -24,8 +24,8 @@ time = data_numpy[:, 0]
 
 # Prendiamo i valori a tuple di quattro i quali formeranno un singolo plot
 plot_number = 1
-for i in range(0, len(species_tuple), 4):
-    current_vars = species_tuple[i:i+4]
+for i in range(0, len(species_tuple), 1):
+    current_vars = species_tuple[i:i+1]
     plt.figure(figsize=[15.0, 8.0])
     for j, var in current_vars:
         plt.plot(time, data_numpy[:, j], marker="_", label=var)

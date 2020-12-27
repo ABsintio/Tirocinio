@@ -9,11 +9,29 @@ model BIOMD266 "Voit2003_Trehalose_Cycle"
             y := x^power;
     end pow;
 
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
+    
+    
+    function eq
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := (x == y);
+    end eq;
 
 
     parameter Real heat_shock = 0.0;
     parameter Real cell = 1.0;
-    parameter Real external = 1.0;
+    parameter Real external_ = 1.0;
 
     Real X8(start=0.0);
     Real X9(start=0.0);
