@@ -9,7 +9,14 @@ model BIOMD302 "Wang1996_Synaptic_Inhibition_Two_Neuron"
             y := x^power;
     end pow;
 
-
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
     parameter Real Cm = 1.0;
     parameter Real gL = 0.1;
@@ -31,26 +38,26 @@ model BIOMD302 "Wang1996_Synaptic_Inhibition_Two_Neuron"
     Real tau_0(start=0.0);
     Real I_Na_post(start=0.0);
     Real m_inf_post(start=0.0);
-    Real h_post(start=alpha_h_post / (beta_h_post + alpha_h_post));
+    Real h_post(start=0.0);
     Real V_post(start=-64.0);
     Real alpha_m_post(start=0.0);
     Real beta_m_post(start=0.0);
     Real alpha_h_post(start=0.0);
     Real beta_h_post(start=0.0);
     Real I_K_post(start=0.0);
-    Real n_post(start=alpha_n_post / (beta_n_post + alpha_n_post));
+    Real n_post(start=0.0);
     Real alpha_n_post(start=0.0);
     Real beta_n_post(start=0.0);
     Real I_L_post(start=0.0);
     Real I_syn(start=0.0);
-    Real s(start=alpha * F / (beta + alpha * F));
+    Real s(start=0.0);
     Real F(start=0.0);
     Real V_pre(start=-64.0);
     Real I_app_pre(start=0.0);
     Real I_Na_pre(start=0.0);
     Real m_inf_pre(start=0.0);
-    Real h_pre(start=alpha_h_pre / (beta_h_pre + alpha_h_pre));
-    Real n_pre(start=alpha_n_pre / (beta_n_pre + alpha_n_pre));
+    Real h_pre(start=0.0);
+    Real n_pre(start=0.0);
     Real alpha_n_pre(start=0.0);
     Real beta_n_pre(start=0.0);
     Real alpha_h_pre(start=0.0);
@@ -79,7 +86,7 @@ equation
     I_L_post = gL * (V_post - E_L);
     I_syn = g_syn * s * (V_post - E_syn);
     F = 1 / (1 + exp(-(V_pre - theta_syn) / 2));
-    I_app_pre = piecewise(2, and(geq(time, 10), leq(time, 20)), 0);
+    I_app_pre = piecewise(2, ((time >= 10) and (time <= 20)), 0);
     I_Na_pre = gNa * pow(m_inf_pre, 3) * h_pre * (V_pre - E_Na);
     m_inf_pre = alpha_m_pre / (alpha_m_pre + beta_m_pre);
     alpha_n_pre = -0.01 * (V_pre + 34) / (exp(-0.1 * (V_pre + 34)) - 1);
