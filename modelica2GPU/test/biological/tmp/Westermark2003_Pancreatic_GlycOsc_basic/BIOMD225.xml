@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD225"
+  modelIdentifier="BIOMD225"
+  guid="{1068240a-d266-4923-847f-4b4a4d622773}"
+  generationDateAndTime="2020-12-27T22:17:49"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="4"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="FBP"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="FBP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="G3P"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="G3P"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="G6P_F6P"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="G6P_F6P"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="GLC"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="GLC"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(FBP)"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="FBP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(G3P)"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="G3P"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(G6P_F6P)"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="G6P_F6P"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(GLC)"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="GLC"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="F6P"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="F6P"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vfba"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vfba"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vgk"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vgk"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vpfk"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vpfk"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="KeqGPI"  valueReference="12" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.3" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="KeqGPI"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Sfba"  valueReference="13" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.005" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Sfba"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Sgk"  valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="8.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Sgk"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Spfk"  valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="4.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Spfk"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vfba_min"  valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="25.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vfba_min"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vgk_min"  valueReference="17" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="10.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vgk_min"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vpfk_min"  valueReference="18" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="100.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vpfk_min"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Xpfk"  valueReference="19" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Xpfk"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="alpha"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="alpha"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="comp"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="comp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="dw_per_ml"  valueReference="22" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.3333" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="dw_per_ml"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="hGK"  valueReference="23" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.7" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="hGK"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="hact"  valueReference="24" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="hact"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="hpfk"  valueReference="25" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="hpfk"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="hx"  valueReference="26" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="hx"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="min_to_sec"  valueReference="27" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="60.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="min_to_sec"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="sigcorr"  valueReference="28" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="sigcorr"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="KeqGPI"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.3</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Sfba"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.005</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Sgk"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>8.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Spfk"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>4.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Vfba_min"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>25.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Vgk_min"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Vpfk_min"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>100.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Xpfk"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="alpha"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="comp"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="dw_per_ml"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.3333</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="hGK"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.7</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="hact"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="hpfk"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="hx"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="min_to_sec"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>60.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="sigcorr"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vfba"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Vfba_min"/>
+          </exp:Identifier>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="dw_per_ml"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="min_to_sec"/>
+            </exp:Identifier>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vpfk"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Vpfk_min"/>
+          </exp:Identifier>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="dw_per_ml"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="min_to_sec"/>
+            </exp:Identifier>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vgk"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Vgk_min"/>
+          </exp:Identifier>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="dw_per_ml"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="min_to_sec"/>
+            </exp:Identifier>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="G3P"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="F6P"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="G6P_F6P"/>
+          </exp:Identifier>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="KeqGPI"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:RealLiteral>1.0</exp:RealLiteral>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="KeqGPI"/>
+              </exp:Identifier>
+            </exp:Add>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="FBP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="comp"/>
+          </exp:Identifier>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Vpfk"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Pow>
+                  <exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="F6P"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Spfk"/>
+                    </exp:Identifier>
+                  </exp:Div>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="hpfk"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Sub>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="hact"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="hpfk"/>
+                        </exp:Identifier>
+                      </exp:Sub>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="FBP"/>
+                        </exp:Identifier>
+                        <exp:Mul>
+                          <exp:Add>
+                            <exp:RealLiteral>1.0</exp:RealLiteral>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="FBP"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Sfba"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                          </exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Sfba"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                      </exp:Div>
+                    </exp:Mul>
+                  </exp:Add>
+                </exp:Pow>
+                <exp:Add>
+                  <exp:Pow>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="F6P"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Spfk"/>
+                      </exp:Identifier>
+                    </exp:Div>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="hpfk"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Sub>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="hact"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="hpfk"/>
+                          </exp:Identifier>
+                        </exp:Sub>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="FBP"/>
+                          </exp:Identifier>
+                          <exp:Mul>
+                            <exp:Add>
+                              <exp:RealLiteral>1.0</exp:RealLiteral>
+                              <exp:Div>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="FBP"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Sfba"/>
+                                </exp:Identifier>
+                              </exp:Div>
+                            </exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Sfba"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                        </exp:Div>
+                      </exp:Mul>
+                    </exp:Add>
+                  </exp:Pow>
+                  <exp:Div>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Pow>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="FBP"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Xpfk"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="hx"/>
+                        </exp:Identifier>
+                      </exp:Pow>
+                    </exp:Add>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Mul>
+                        <exp:Pow>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="alpha"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="hpfk"/>
+                            </exp:Identifier>
+                            <exp:Mul>
+                              <exp:Sub>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="hact"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="hpfk"/>
+                                </exp:Identifier>
+                              </exp:Sub>
+                              <exp:Div>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="FBP"/>
+                                </exp:Identifier>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="Sfba"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                                    <exp:Div>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="FBP"/>
+                                      </exp:Identifier>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="Sfba"/>
+                                      </exp:Identifier>
+                                    </exp:Div>
+                                  </exp:Add>
+                                </exp:Mul>
+                              </exp:Div>
+                            </exp:Mul>
+                          </exp:Add>
+                        </exp:Pow>
+                        <exp:Pow>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="FBP"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Xpfk"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="hx"/>
+                          </exp:Identifier>
+                        </exp:Pow>
+                      </exp:Mul>
+                    </exp:Add>
+                  </exp:Div>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Vfba"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="FBP"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Sfba"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="FBP"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Sfba"/>
+                      </exp:Identifier>
+                    </exp:Div>
+                  </exp:Add>
+                </exp:Mul>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="G6P_F6P"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="comp"/>
+          </exp:Identifier>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Vgk"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Pow>
+                  <exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="GLC"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Sgk"/>
+                    </exp:Identifier>
+                  </exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="hGK"/>
+                  </exp:Identifier>
+                </exp:Pow>
+                <exp:Add>
+                  <exp:RealLiteral>1.0</exp:RealLiteral>
+                  <exp:Pow>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="GLC"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Sgk"/>
+                      </exp:Identifier>
+                    </exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="hGK"/>
+                    </exp:Identifier>
+                  </exp:Pow>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Vpfk"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Pow>
+                  <exp:Div>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="F6P"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Spfk"/>
+                    </exp:Identifier>
+                  </exp:Div>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="hpfk"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:Sub>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="hact"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="hpfk"/>
+                        </exp:Identifier>
+                      </exp:Sub>
+                      <exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="FBP"/>
+                        </exp:Identifier>
+                        <exp:Mul>
+                          <exp:Add>
+                            <exp:RealLiteral>1.0</exp:RealLiteral>
+                            <exp:Div>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="FBP"/>
+                              </exp:Identifier>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Sfba"/>
+                              </exp:Identifier>
+                            </exp:Div>
+                          </exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Sfba"/>
+                          </exp:Identifier>
+                        </exp:Mul>
+                      </exp:Div>
+                    </exp:Mul>
+                  </exp:Add>
+                </exp:Pow>
+                <exp:Add>
+                  <exp:Pow>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="F6P"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Spfk"/>
+                      </exp:Identifier>
+                    </exp:Div>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="hpfk"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:Sub>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="hact"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="hpfk"/>
+                          </exp:Identifier>
+                        </exp:Sub>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="FBP"/>
+                          </exp:Identifier>
+                          <exp:Mul>
+                            <exp:Add>
+                              <exp:RealLiteral>1.0</exp:RealLiteral>
+                              <exp:Div>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="FBP"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Sfba"/>
+                                </exp:Identifier>
+                              </exp:Div>
+                            </exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Sfba"/>
+                            </exp:Identifier>
+                          </exp:Mul>
+                        </exp:Div>
+                      </exp:Mul>
+                    </exp:Add>
+                  </exp:Pow>
+                  <exp:Div>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Pow>
+                        <exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="FBP"/>
+                          </exp:Identifier>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Xpfk"/>
+                          </exp:Identifier>
+                        </exp:Div>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="hx"/>
+                        </exp:Identifier>
+                      </exp:Pow>
+                    </exp:Add>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Mul>
+                        <exp:Pow>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="alpha"/>
+                          </exp:Identifier>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="hpfk"/>
+                            </exp:Identifier>
+                            <exp:Mul>
+                              <exp:Sub>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="hact"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="hpfk"/>
+                                </exp:Identifier>
+                              </exp:Sub>
+                              <exp:Div>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="FBP"/>
+                                </exp:Identifier>
+                                <exp:Mul>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="Sfba"/>
+                                  </exp:Identifier>
+                                  <exp:Add>
+                                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                                    <exp:Div>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="FBP"/>
+                                      </exp:Identifier>
+                                      <exp:Identifier>
+                                        <exp:QualifiedNamePart name="Sfba"/>
+                                      </exp:Identifier>
+                                    </exp:Div>
+                                  </exp:Add>
+                                </exp:Mul>
+                              </exp:Div>
+                            </exp:Mul>
+                          </exp:Add>
+                        </exp:Pow>
+                        <exp:Pow>
+                          <exp:Div>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="FBP"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Xpfk"/>
+                            </exp:Identifier>
+                          </exp:Div>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="hx"/>
+                          </exp:Identifier>
+                        </exp:Pow>
+                      </exp:Mul>
+                    </exp:Add>
+                  </exp:Div>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="GLC"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vfba"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vgk"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vpfk"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="FBP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.00063612</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="G6P_F6P"/>
+        </exp:Identifier>
+        <exp:RealLiteral>3.71728</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="GLC"/>
+        </exp:Identifier>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="G3P"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
