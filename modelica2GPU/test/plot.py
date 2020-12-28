@@ -58,7 +58,7 @@ class Test:
     
     def plotCPUvsGPU(self):
         if any(self.cpus_time) and any(self.gpus_time):
-            plot_name = "CPUvsGPU"
+            plot_name = "CPUvsGPU_" + self.modelname[:-3]
             xs = [1, 10, 100, 1000, 10000]
             cpus = [math.log10(x) for x in self.cpus_time]
             gpus = [math.log10(x) for x in self.gpus_time]
@@ -102,7 +102,7 @@ def parseXML():
 ts = parseXML()
 for test in ts:
     print("Getting Test number: " + test.test_id)
-    out = open(os.path.join(test.workdir, "out"), mode="w")
+    out = open(os.path.join(test.workdir, "out_" + test.modelname[:-3]), mode="w")
     print(test, file=out)
     out.close()
     test.plotCPUvsGPU()
