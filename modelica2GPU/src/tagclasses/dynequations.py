@@ -277,8 +277,22 @@ class Abs(UnaryOperator):
 
     def __str__(self): return f"abs({self.value.__str__()})"
 
-
 # ----------------------------------------- # CLASSI CHE DEFINISCONO ALTRI TAG GENERICI # ----------------------------------------------- #
+
+
+class Max:
+    """ Rappresenta l'operatore di massimo """
+    def __init__(self, function_dict, max_tag, variables_dict):
+        self.max_tag = max_tag
+        self.values = self.get_values(variables_dict, function_dict)
+        
+    def get_values(self, variabile_dict, functions_dict):
+        values = []
+        for child in self.max_tag:
+            values.append(_parsetag_eq(child, variabile_dict, functions_dict))
+        return values
+
+    def __str__(self): return "max(%s)" % (",".join([str(x) for x in self.values]))
 
 
 class Equation(BinaryOperator):
@@ -477,9 +491,6 @@ class FunctionCall:
         except exceptions.builtExceptions.OperatorNotFoundException:
             pass
         return f"{fun_name}(" + ",".join([x for x in inputs_var]) + ")" 
-        #fun = self.fun_dict[fun_name]
-        #fun.setinput(inputs_var)
-        #return fun
     
     def __str__(self): return self._parsefuncall_tag().__str__()
 
@@ -600,7 +611,8 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}QualifiedName"  : (QualifiedName,    2),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,     4),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,              2),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sample"         : (Sample,           5)
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sample"         : (Sample,           5),
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Max"            : (Max,              7)
 }
 
 
@@ -639,7 +651,7 @@ def _parsetag_eq(tag, variables_dict, function_dict=dict()):
     else:
         class_op, arity = getoperatorclass(tag.tag)
         if arity == 2: return class_op(tag, variables_dict)
-        if arity in [3, 4, 5, 6]: 
+        if arity in [3, 4, 5, 6, 7]: 
             x = class_op(function_dict, tag, variables_dict)
             if arity == 5: # Allora è stato chiamato il sample
                 variables_dict[x.new_var.qualifiedName] = x.new_var

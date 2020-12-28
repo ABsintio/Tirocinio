@@ -8,6 +8,19 @@ model BIOMD342 "Zi2011_TGF-beta_Pathway"
         algorithm
             y := x^power;
     end pow;
+    
+    
+    function compareReal
+        input Real a, b;
+        input Real absTol = 1e-10;
+        input Real relTol = 1e-5;
+        output Boolean equal;
+        protected 
+            Real diff;
+        algorithm
+            diff := abs(a - b);
+            equal := diff < absTol or diff <= max(abs(b), abs(a)) * relTol;
+    end compareReal;
 
 
 
@@ -48,7 +61,7 @@ model BIOMD342 "Zi2011_TGF-beta_Pathway"
     Real totalSmad2c(start=60.6);
     Real totalSmad2n(start=28.5);
     Real medium_TGF_beta_amount(start=0.0);
-    Real TGF_beta_dose_mol_per_cell(start=TGF_beta_ex * 1e-9 * Vmed * 6e23);
+    Real TGF_beta_dose_mol_per_cell(start=30040000000000.0);
     Real koff_ns(start=2.03306);
 
     Real TGF_beta_ex;
@@ -97,7 +110,7 @@ initial equation
     empty_degraded = 0.0;
 
 equation
-    Vmed = 2e-3 / (1e6 * exp(log(1.45) * time / 1440));
+    //Vmed = 2e-3 / (1e6 * exp(log(1.45) * time / 1440));
     totalNumPSmad2 = (PSmad2c + PSmad2_PSmad2_c * 2 + PSmad2_Smad4_c) * 2.3 * 602 + (PSmad2n + PSmad2_PSmad2_n * 2 + PSmad2_Smad4_n) * 602;
     totalNuclearPSmad2 = PSmad2n + 2 * PSmad2_PSmad2_n + PSmad2_Smad4_n;
     totalNumT1R = (T1R_surf + T1R_endo + LRC_surf + LRC_endo) * 2.3 * 602;
@@ -118,11 +131,11 @@ equation
     der(Smad2n) = (Vcyt * kimp_Smad2 * Smad2c) + (Vnuc * kdepho_Smad2 * PSmad2n) - (Vnuc * kexp_Smad2 * Smad2n);
     der(Smad4c) = (Vnuc * kexp_Smad4 * Smad4n) - (Vcyt * kimp_Smad4 * Smad4c) - (Vcyt * (kon_Smads * PSmad2c * Smad4c - koff_Smads * PSmad2_Smad4_c));
     der(Smad4n) = (Vcyt * kimp_Smad4 * Smad4c) + (Vnuc * (koff_Smads * PSmad2_Smad4_n - kon_Smads * PSmad2n * Smad4n)) - (Vnuc * kexp_Smad4 * Smad4n);
-    der(PSmad2c) = (Vcyt * kpho_Smad2 * Smad2c * LRC_endo) + (Vnuc * kexp_Smad2 * PSmad2n) - (Vcyt * kimp_Smad2 * PSmad2c) - (Vcyt * (kon_Smads * PSmad2c * Smad4c - koff_Smads * PSmad2_Smad4_c)) - (2.0 * Vcyt * (kon_Smads * PSmad2c^2 - koff_Smads * PSmad2_PSmad2_c));
-    der(PSmad2_PSmad2_c) = (Vcyt * (kon_Smads * PSmad2c^2 - koff_Smads * PSmad2_PSmad2_c)) - (Vcyt * kimp_Smads * PSmad2_PSmad2_c);
+    der(PSmad2c) = (Vcyt * kpho_Smad2 * Smad2c * LRC_endo) + (Vnuc * kexp_Smad2 * PSmad2n) - (Vcyt * kimp_Smad2 * PSmad2c) - (Vcyt * (kon_Smads * PSmad2c * Smad4c - koff_Smads * PSmad2_Smad4_c)) - (2.0 * Vcyt * (kon_Smads * pow(PSmad2c, 2) - koff_Smads * PSmad2_PSmad2_c));
+    der(PSmad2_PSmad2_c) = (Vcyt * (kon_Smads * pow(PSmad2c, 2) - koff_Smads * PSmad2_PSmad2_c)) - (Vcyt * kimp_Smads * PSmad2_PSmad2_c);
     der(PSmad2_Smad4_c) = (Vcyt * (kon_Smads * PSmad2c * Smad4c - koff_Smads * PSmad2_Smad4_c)) - (Vcyt * kimp_Smads * PSmad2_Smad4_c);
-    der(PSmad2n) = (Vcyt * kimp_Smad2 * PSmad2c) + (Vnuc * (koff_Smads * PSmad2_Smad4_n - kon_Smads * PSmad2n * Smad4n)) + (2.0 * Vnuc * (koff_Smads * PSmad2_PSmad2_n - kon_Smads * PSmad2n^2)) - (Vnuc * kexp_Smad2 * PSmad2n) - (Vnuc * kdepho_Smad2 * PSmad2n);
-    der(PSmad2_PSmad2_n) = (Vcyt * kimp_Smads * PSmad2_PSmad2_c) - (Vnuc * (koff_Smads * PSmad2_PSmad2_n - kon_Smads * PSmad2n^2));
+    der(PSmad2n) = (Vcyt * kimp_Smad2 * PSmad2c) + (Vnuc * (koff_Smads * PSmad2_Smad4_n - kon_Smads * PSmad2n * Smad4n)) + (2.0 * Vnuc * (koff_Smads * PSmad2_PSmad2_n - kon_Smads * pow(PSmad2n, 2))) - (Vnuc * kexp_Smad2 * PSmad2n) - (Vnuc * kdepho_Smad2 * PSmad2n);
+    der(PSmad2_PSmad2_n) = (Vcyt * kimp_Smads * PSmad2_PSmad2_c) - (Vnuc * (koff_Smads * PSmad2_PSmad2_n - kon_Smads * pow(PSmad2n, 2)));
     der(PSmad2_Smad4_n) = (Vcyt * kimp_Smads * PSmad2_Smad4_c) - (Vnuc * (koff_Smads * PSmad2_Smad4_n - kon_Smads * PSmad2n * Smad4n));
     der(TGF_beta_endo) = (Vcyt * kdiss_LRC * LRC_endo) - (Vcyt * kdeg_TGF_beta * TGF_beta_endo);
     der(TGF_beta_ns) = (Vmed * (kon_ns * TGF_beta_ex - koff_ns * TGF_beta_ns)) ;
@@ -130,7 +143,7 @@ equation
     der(empty_degraded) = 0.0;
     der(TGF_beta_dose_mol_per_cell)=0.0;
 
-    when (stimulation_type == 2) and (time == single_pulse_duration) then
+    when (stimulation_type == 2) and compareReal(time, single_pulse_duration) then
         reinit(TGF_beta_ex,0);
     end when;
 

@@ -13,7 +13,7 @@ csv_file = args.csv
 csv_data = pd.read_csv(csv_file)
 
 # Prendiamo i nomi delle species con gli indici corrispettivi che utilizzeremo per il plotting
-variables_to_plot = ["TGF_beta_ex","T1R_surf","T1R_endo","T2R_surf","T2R_endo","LRC_surf","LRC_endo","Smad2c","Smad2n","Smad4c","Smad4n","PSmad2c","PSmad2_PSmad2_c","PSmad2_Smad4_c","PSmad2n","PSmad2_PSmad2_n","PSmad2_Smad4_n","TGF_beta_endo","TGF_beta_ns","AA","empty_degraded"]
+variables_to_plot = ["TGF_beta_ex","T1R_surf","T1R_endo","T2R_surf","T2R_endo","LRC_surf","LRC_endo","Smad2c","Smad2n","Smad4c","Smad4n","PSmad2c","PSmad2_PSmad2_c","PSmad2_Smad4_c","PSmad2n","PSmad2_PSmad2_n","PSmad2_Smad4_n","TGF_beta_endo","TGF_beta_ns","AA","empty_degraded","TGF_beta_dose_mol_per_cell"]
 species_tuple = [(idx, specie) for idx, specie in enumerate(csv_data.head(0)) if specie in variables_to_plot and specie != "time"]
 
 # Creiamo un array numpy per salvare i dati estrapolati dal CSV
