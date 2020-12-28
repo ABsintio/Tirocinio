@@ -8,22 +8,22 @@
 
 #define PI 3.14159265358979323846
 
-#include "BIOMD093_SystemDefinition.cuh"
+#include "BIOMD094_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 34;
 const int NCP  = 1;
-const int NSP  = 74;
+const int NSP  = 72;
 const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -108,7 +108,6 @@ void SaveData(
         DataFile.width(Width); DataFile << "X_mRNAc" << ',';
         DataFile.width(Width); DataFile << "X_mRNAn" << ',';
         DataFile.width(Width); DataFile << "sPAR_cytoplasm" << ',';
-        DataFile.width(Width); DataFile << "sPAR_ka_v24" << ',';
         DataFile.width(Width); DataFile << "sPAR_kb_v1" << ',';
         DataFile.width(Width); DataFile << "sPAR_kb_v11" << ',';
         DataFile.width(Width); DataFile << "sPAR_kb_v13" << ',';
@@ -118,7 +117,6 @@ void SaveData(
         DataFile.width(Width); DataFile << "sPAR_kb_v2" << ',';
         DataFile.width(Width); DataFile << "sPAR_kb_v20" << ',';
         DataFile.width(Width); DataFile << "sPAR_kb_v22" << ',';
-        DataFile.width(Width); DataFile << "sPAR_kb_v24" << ',';
         DataFile.width(Width); DataFile << "sPAR_kb_v29" << ',';
         DataFile.width(Width); DataFile << "sPAR_kb_v3" << ',';
         DataFile.width(Width); DataFile << "sPAR_kb_v30" << ',';
@@ -288,8 +286,6 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 69) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 70) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 71) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 72) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 73) << ',';
 
         DataFile << '\n';
     }
@@ -398,7 +394,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD093.csv" );
+    DataFile.open ( "BIOMD094.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
