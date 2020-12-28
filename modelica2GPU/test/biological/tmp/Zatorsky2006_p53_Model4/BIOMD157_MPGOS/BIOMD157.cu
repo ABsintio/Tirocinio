@@ -8,22 +8,22 @@
 
 #define PI 3.14159265358979323846
 
-#include "BIOMD159_SystemDefinition.cuh"
+#include "BIOMD157_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 3;
 const int NCP  = 1;
-const int NSP  = 8;
+const int NSP  = 9;
 const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -77,12 +77,13 @@ void SaveData(
         DataFile.width(Width); DataFile << "X_y" << ',';
         DataFile.width(Width); DataFile << "X_y0" << ',';
         DataFile.width(Width); DataFile << "sPAR_alpha_0" << ',';
+        DataFile.width(Width); DataFile << "sPAR_alpha_k" << ',';
         DataFile.width(Width); DataFile << "sPAR_alpha_x" << ',';
-        DataFile.width(Width); DataFile << "sPAR_alpha_xy" << ',';
         DataFile.width(Width); DataFile << "sPAR_alpha_y" << ',';
         DataFile.width(Width); DataFile << "sPAR_beta_x" << ',';
         DataFile.width(Width); DataFile << "sPAR_beta_y" << ',';
         DataFile.width(Width); DataFile << "sPAR_compartment" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k" << ',';
         DataFile.width(Width); DataFile << "sPAR_psi" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
@@ -96,6 +97,7 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 5) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 6) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 7) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 8) << ',';
 
         DataFile << '\n';
     }
@@ -142,7 +144,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD159.csv" );
+    DataFile.open ( "BIOMD157.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
