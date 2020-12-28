@@ -1,0 +1,7 @@
+loadModel(Modelica);
+loadFile("CascadedFirstOrder.mo");
+getErrorString();
+simulate(CascadedFirstOrder, stopTime=10.0);
+getErrorString();
+plot({x[1],x[2],x[3]}, externalWindow=true);
+getErrorString();

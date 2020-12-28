@@ -1,0 +1,7 @@
+loadModel(Modelica);
+loadFile("ManyEvents.mo");
+getErrorString();
+simulate(ManyEvents, stopTime=10.0);
+getErrorString();
+plot({x[1],x[2],x[3],x[4],x[5]}, externalWindow=true);
+getErrorString();
