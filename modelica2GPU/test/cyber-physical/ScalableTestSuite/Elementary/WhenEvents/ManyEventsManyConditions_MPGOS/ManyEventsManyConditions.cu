@@ -8,22 +8,22 @@
 
 #define PI 3.14159265358979323846
 
-#include "ManyEvents_SystemDefinition.cuh"
+#include "ManyEventsManyConditions_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 5;
 const int NCP  = 1;
 const int NSP  = 0;
 const int NISP = 2;
-const int NE   = 5;
-const int NA   = 15;
-const int NIA  = 0;
-const int NDO  = 100;
+const int NE   = 6;
+const int NA   = 20;
+const int NIA  = 2;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -81,10 +81,15 @@ void SaveData(
         DataFile.width(Width); DataFile << "sPARi_M" << ',';
         DataFile.width(Width); DataFile << "sPARi_N" << ',';
         DataFile.width(Width); DataFile << "ACC_$whenCondition1" << ',';
+        DataFile.width(Width); DataFile << "ACC_$whenCondition10" << ',';
         DataFile.width(Width); DataFile << "ACC_$whenCondition2" << ',';
         DataFile.width(Width); DataFile << "ACC_$whenCondition3" << ',';
         DataFile.width(Width); DataFile << "ACC_$whenCondition4" << ',';
         DataFile.width(Width); DataFile << "ACC_$whenCondition5" << ',';
+        DataFile.width(Width); DataFile << "ACC_$whenCondition6" << ',';
+        DataFile.width(Width); DataFile << "ACC_$whenCondition7" << ',';
+        DataFile.width(Width); DataFile << "ACC_$whenCondition8" << ',';
+        DataFile.width(Width); DataFile << "ACC_$whenCondition9" << ',';
         DataFile.width(Width); DataFile << "ACC_e[1]" << ',';
         DataFile.width(Width); DataFile << "ACC_e[2]" << ',';
         DataFile.width(Width); DataFile << "ACC_e[3]" << ',';
@@ -95,6 +100,8 @@ void SaveData(
         DataFile.width(Width); DataFile << "ACC_$PRE.e[3]" << ',';
         DataFile.width(Width); DataFile << "ACC_$PRE.e[4]" << ',';
         DataFile.width(Width); DataFile << "ACC_$PRE.e[5]" << ',';
+        DataFile.width(Width); DataFile << "ACCi_v" << ',';
+        DataFile.width(Width); DataFile << "ACCi_$PRE.v" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
@@ -118,6 +125,13 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 12) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 13) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 14) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 15) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 16) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 17) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 18) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 19) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 0) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, 1) << ',';
 
         DataFile << '\n';
     }
@@ -145,7 +159,7 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
-    Solver.SolverOption(TimeStepGrowLimit, 5.0);
+    Solver.SolverOption(TimeStepGrowLimit, 1.0);
 
     Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
@@ -173,7 +187,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "ManyEvents.csv" );
+    DataFile.open ( "ManyEventsManyConditions.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    

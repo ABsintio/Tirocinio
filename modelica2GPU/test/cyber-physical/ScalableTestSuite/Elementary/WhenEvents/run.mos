@@ -1,7 +1,9 @@
 loadModel(Modelica);
-loadFile("ManyEvents.mo");
+loadFile("package.mo");getErrorString();
+loadFile("ManyEvents.mo");getErrorString();
+loadFile("ManyEventsManyConditions.mo");
 getErrorString();
-simulate(ManyEvents, stopTime=10.0);
+simulate(WhenEvents.ManyEventsManyConditions, stopTime=1.0);
 getErrorString();
-plot({x[1],x[2],x[3],x[4],x[5]}, externalWindow=true);
+plot({x[1],x[2],x[3],x[4],x[5],v}, externalWindow=true);
 getErrorString();

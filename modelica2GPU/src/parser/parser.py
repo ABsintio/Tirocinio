@@ -225,9 +225,11 @@ class Parser:
     def parse_when(self, root, variables_dict, MPGOSparams_dict):
         """ Parsa le when equations"""
         for x in root:
+            print(x.tag)
             if x.tag == f"{dynequations.EQUATION_NS}When" or x.tag == f"{dynequations.EQUATION_NS}ElseWhen":
                 # Parsing degli eventi. Uno per equazione presente nel blocco When
                 when_eq = dynequations.When(x, variables_dict, self.event_conditions, self.userdefined_func)
+                print(when_eq)
                 # Se la parte sinistra dell'equazione ha associata una variable $PRE
                 # allora devo creare una seconda equazione, nella quale alla variabile
                 # $PRE viene associato il valore corrente della variabile lhs

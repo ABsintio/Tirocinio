@@ -1,3 +1,4 @@
+within WhenEvents;
 model ManyEvents
     parameter Integer N = 5;
     parameter Integer M = N;
