@@ -1,6 +1,8 @@
 
 loadModel(Modelica);
+loadFile("package.mo");
 loadFile("ManyEvents.mo");
+loadFile("ManyEventsManyConditions.mo");
 getErrorString();
-buildModel(ManyEvents, stopTime=10.0);
+buildModel(WhenEvents.ManyEventsManyConditions, stopTime=10.0);
 getErrorString();

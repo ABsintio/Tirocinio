@@ -1,7 +1,7 @@
 model CascadedFirstOrder
     parameter Integer N = 10;
-    parameter Modelica.SIunits.Time T = 1;
-    final parameter Modelica.SIunits.Time tau = T / N;
+    parameter Real Ti = 1;
+    parameter Real tau = Ti / N;
     Real x[N](each start=0, each fixed=true);
 equation
     tau*der(x[1]) = 1 - x[1];
