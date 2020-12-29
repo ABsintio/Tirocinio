@@ -5,7 +5,7 @@ loadModel(Modelica);getErrorString();
 loadFile("package.mo");getErrorString();
 loadFile("CascadedFirstOrder.mo");getErrorString();
 loadFile("CascadedFirstOrder_N_{n_var}.mo");getErrorString();
-simulate(SimpleODE.CascadedFirstOrder_N_100, stopTime=2.0);getErrorString();
+simulate(SimpleODE.CascadedFirstOrder_N_100, stopTime=2.0,outputFormat="csv");getErrorString();
 """
 
 PLOT_S = "plot({%s}, externalWindow=true);getErrorString();"
