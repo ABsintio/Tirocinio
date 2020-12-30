@@ -1,0 +1,1665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD354"
+  modelIdentifier="BIOMD354"
+  guid="{15ba59e9-b7af-446f-9d03-9f5394793bd4}"
+  generationDateAndTime="2020-12-30T15:52:07"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="6"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="CaI"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CaI"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CaM"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CaM"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CaO"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CaO"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="CaS"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CaS"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IP3"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IP3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="g"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="g"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(CaI)"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CaI"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(CaM)"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CaM"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(CaO)"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CaO"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(CaS)"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CaS"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IP3)"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IP3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(g)"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="g"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="A"  valueReference="12" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="A"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="B"  valueReference="13" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.266" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="B"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="D"  valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="D"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="E"  valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="E"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="ER_store"  valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="ER_store"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="F"  valueReference="17" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.018" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="F"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="L"  valueReference="18" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="L"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="PMleak"  valueReference="19" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0346" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="PMleak"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="R"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="R"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="cytosol"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="cytosol"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k2"  valueReference="22" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.175" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kIP3R"  valueReference="23" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.175" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kIP3R"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="kSTIM"  valueReference="24" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="kSTIM"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mitochondria"  valueReference="25" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mitochondria"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mw004dcb62_da5f_41c7_a7bd_033574894f48"  valueReference="26" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.02" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mw004dcb62_da5f_41c7_a7bd_033574894f48"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mw3a93c3a6_623a_44fe_84e9_a47823defd1f"  valueReference="27" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.2" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mw3a93c3a6_623a_44fe_84e9_a47823defd1f"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mw78dd80b8_e003_4c62_81d1_547d001767af"  valueReference="28" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.13" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mw78dd80b8_e003_4c62_81d1_547d001767af"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mw886be93a_22c7_4966_a1fa_113afd832ae3"  valueReference="29" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.03" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mw886be93a_22c7_4966_a1fa_113afd832ae3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mwc714c217_c8fd_4024_912c_681cd6931f59"  valueReference="30" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.03" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mwc714c217_c8fd_4024_912c_681cd6931f59"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mwc8d6bdb5_59d4_43fa_b96d_7426f4857e0d"  valueReference="31" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.6" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mwc8d6bdb5_59d4_43fa_b96d_7426f4857e0d"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mwd21d3f76_d133_4053_8e44_02a538657e0a"  valueReference="32" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.013" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mwd21d3f76_d133_4053_8e44_02a538657e0a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mwd90ce3ea_f8d5_4f0a_8093_e39a2d3dbf33"  valueReference="33" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.005" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mwd90ce3ea_f8d5_4f0a_8093_e39a2d3dbf33"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="mwf998b218_be11_4aa4_81ae_41141861fb42"  valueReference="34" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="mwf998b218_be11_4aa4_81ae_41141861fb42"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="outside"  valueReference="35" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="outside"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="A"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="B"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.266</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="D"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="E"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="ER_store"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="F"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.018</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="L"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="PMleak"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0346</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="R"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="cytosol"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.175</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kIP3R"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.175</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="kSTIM"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mitochondria"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mw004dcb62_da5f_41c7_a7bd_033574894f48"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.02</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mw3a93c3a6_623a_44fe_84e9_a47823defd1f"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.2</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mw78dd80b8_e003_4c62_81d1_547d001767af"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.13</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mw886be93a_22c7_4966_a1fa_113afd832ae3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.03</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mwc714c217_c8fd_4024_912c_681cd6931f59"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.03</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mwc8d6bdb5_59d4_43fa_b96d_7426f4857e0d"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.6</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mwd21d3f76_d133_4053_8e44_02a538657e0a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.013</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mwd90ce3ea_f8d5_4f0a_8093_e39a2d3dbf33"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.005</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="mwf998b218_be11_4aa4_81ae_41141861fb42"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="outside"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CaO"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CaM"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="mw886be93a_22c7_4966_a1fa_113afd832ae3"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD354"/>
+                  <exp:QualifiedNamePart name="pow"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CaI"/>
+                  </exp:Identifier>
+                  <exp:RealLiteral>4.0</exp:RealLiteral>
+                </exp:Arguments>
+              </exp:FunctionCall>
+              <exp:Add>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD354"/>
+                    <exp:QualifiedNamePart name="pow"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="CaI"/>
+                    </exp:Identifier>
+                    <exp:RealLiteral>4.0</exp:RealLiteral>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD354"/>
+                    <exp:QualifiedNamePart name="pow"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="mwc8d6bdb5_59d4_43fa_b96d_7426f4857e0d"/>
+                    </exp:Identifier>
+                    <exp:RealLiteral>4.0</exp:RealLiteral>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="mwc714c217_c8fd_4024_912c_681cd6931f59"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="L"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Sub>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="g"/>
+                      </exp:Identifier>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="A"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD354"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="IP3"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>2.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                        <exp:Div>
+                          <exp:FunctionCall>
+                            <exp:Name>
+                              <exp:QualifiedNamePart name="BIOMD354"/>
+                              <exp:QualifiedNamePart name="pow"/>
+                            </exp:Name>
+                            <exp:Arguments>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="CaI"/>
+                              </exp:Identifier>
+                              <exp:RealLiteral>2.0</exp:RealLiteral>
+                            </exp:Arguments>
+                          </exp:FunctionCall>
+                          <exp:Mul>
+                            <exp:Add>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="IP3"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="kIP3R"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                            </exp:Add>
+                            <exp:Add>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="CaI"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="mw78dd80b8_e003_4c62_81d1_547d001767af"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                            </exp:Add>
+                          </exp:Mul>
+                        </exp:Div>
+                      </exp:Mul>
+                    </exp:Mul>
+                  </exp:Mul>
+                </exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CaS"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="mwd90ce3ea_f8d5_4f0a_8093_e39a2d3dbf33"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CaM"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:RealLiteral>0.01</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CaM"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CaS"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="B"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD354"/>
+                  <exp:QualifiedNamePart name="pow"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CaI"/>
+                  </exp:Identifier>
+                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                </exp:Arguments>
+              </exp:FunctionCall>
+              <exp:Add>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD354"/>
+                    <exp:QualifiedNamePart name="pow"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="CaI"/>
+                    </exp:Identifier>
+                    <exp:RealLiteral>2.0</exp:RealLiteral>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD354"/>
+                    <exp:QualifiedNamePart name="pow"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="k2"/>
+                    </exp:Identifier>
+                    <exp:RealLiteral>2.0</exp:RealLiteral>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Add>
+                <exp:RealLiteral>-1.0</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="mwc714c217_c8fd_4024_912c_681cd6931f59"/>
+                </exp:Identifier>
+              </exp:Add>
+              <exp:Mul>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="L"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Sub>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="g"/>
+                      </exp:Identifier>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="A"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD354"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="IP3"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>2.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                        <exp:Div>
+                          <exp:FunctionCall>
+                            <exp:Name>
+                              <exp:QualifiedNamePart name="BIOMD354"/>
+                              <exp:QualifiedNamePart name="pow"/>
+                            </exp:Name>
+                            <exp:Arguments>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="CaI"/>
+                              </exp:Identifier>
+                              <exp:RealLiteral>2.0</exp:RealLiteral>
+                            </exp:Arguments>
+                          </exp:FunctionCall>
+                          <exp:Mul>
+                            <exp:Add>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="IP3"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="kIP3R"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                            </exp:Add>
+                            <exp:Add>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="CaI"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="mw78dd80b8_e003_4c62_81d1_547d001767af"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                            </exp:Add>
+                          </exp:Mul>
+                        </exp:Div>
+                      </exp:Mul>
+                    </exp:Mul>
+                  </exp:Mul>
+                </exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CaS"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="mwc714c217_c8fd_4024_912c_681cd6931f59"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="L"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Sub>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="g"/>
+                      </exp:Identifier>
+                    </exp:Sub>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="A"/>
+                      </exp:Identifier>
+                      <exp:Mul>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD354"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="IP3"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>2.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                        <exp:Div>
+                          <exp:FunctionCall>
+                            <exp:Name>
+                              <exp:QualifiedNamePart name="BIOMD354"/>
+                              <exp:QualifiedNamePart name="pow"/>
+                            </exp:Name>
+                            <exp:Arguments>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="CaI"/>
+                              </exp:Identifier>
+                              <exp:RealLiteral>2.0</exp:RealLiteral>
+                            </exp:Arguments>
+                          </exp:FunctionCall>
+                          <exp:Mul>
+                            <exp:Add>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="CaI"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="mw78dd80b8_e003_4c62_81d1_547d001767af"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                            </exp:Add>
+                            <exp:Add>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="IP3"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                              <exp:FunctionCall>
+                                <exp:Name>
+                                  <exp:QualifiedNamePart name="BIOMD354"/>
+                                  <exp:QualifiedNamePart name="pow"/>
+                                </exp:Name>
+                                <exp:Arguments>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="kIP3R"/>
+                                  </exp:Identifier>
+                                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                                </exp:Arguments>
+                              </exp:FunctionCall>
+                            </exp:Add>
+                          </exp:Mul>
+                        </exp:Div>
+                      </exp:Mul>
+                    </exp:Mul>
+                  </exp:Mul>
+                </exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CaS"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Mul>
+          </exp:Sub>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="g"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="E"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD354"/>
+                  <exp:QualifiedNamePart name="pow"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CaI"/>
+                  </exp:Identifier>
+                  <exp:RealLiteral>4.0</exp:RealLiteral>
+                </exp:Arguments>
+              </exp:FunctionCall>
+              <exp:Div>
+                <exp:Sub>
+                  <exp:RealLiteral>1.0</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="g"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Add>
+                  <exp:FunctionCall>
+                    <exp:Name>
+                      <exp:QualifiedNamePart name="BIOMD354"/>
+                      <exp:QualifiedNamePart name="pow"/>
+                    </exp:Name>
+                    <exp:Arguments>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="CaI"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>4.0</exp:RealLiteral>
+                    </exp:Arguments>
+                  </exp:FunctionCall>
+                  <exp:FunctionCall>
+                    <exp:Name>
+                      <exp:QualifiedNamePart name="BIOMD354"/>
+                      <exp:QualifiedNamePart name="pow"/>
+                    </exp:Name>
+                    <exp:Arguments>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="mwf998b218_be11_4aa4_81ae_41141861fb42"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>4.0</exp:RealLiteral>
+                    </exp:Arguments>
+                  </exp:FunctionCall>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="F"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="g"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IP3"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="R"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CaI"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="D"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IP3"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CaI"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Sub>
+              <exp:RealLiteral>1.0</exp:RealLiteral>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="mwc714c217_c8fd_4024_912c_681cd6931f59"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Mul>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="L"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:Sub>
+                    <exp:RealLiteral>1.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="g"/>
+                    </exp:Identifier>
+                  </exp:Sub>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="A"/>
+                    </exp:Identifier>
+                    <exp:Mul>
+                      <exp:FunctionCall>
+                        <exp:Name>
+                          <exp:QualifiedNamePart name="BIOMD354"/>
+                          <exp:QualifiedNamePart name="pow"/>
+                        </exp:Name>
+                        <exp:Arguments>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="IP3"/>
+                          </exp:Identifier>
+                          <exp:RealLiteral>2.0</exp:RealLiteral>
+                        </exp:Arguments>
+                      </exp:FunctionCall>
+                      <exp:Div>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD354"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="CaI"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>2.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                        <exp:Mul>
+                          <exp:Add>
+                            <exp:FunctionCall>
+                              <exp:Name>
+                                <exp:QualifiedNamePart name="BIOMD354"/>
+                                <exp:QualifiedNamePart name="pow"/>
+                              </exp:Name>
+                              <exp:Arguments>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="CaI"/>
+                                </exp:Identifier>
+                                <exp:RealLiteral>2.0</exp:RealLiteral>
+                              </exp:Arguments>
+                            </exp:FunctionCall>
+                            <exp:FunctionCall>
+                              <exp:Name>
+                                <exp:QualifiedNamePart name="BIOMD354"/>
+                                <exp:QualifiedNamePart name="pow"/>
+                              </exp:Name>
+                              <exp:Arguments>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="mw78dd80b8_e003_4c62_81d1_547d001767af"/>
+                                </exp:Identifier>
+                                <exp:RealLiteral>2.0</exp:RealLiteral>
+                              </exp:Arguments>
+                            </exp:FunctionCall>
+                          </exp:Add>
+                          <exp:Add>
+                            <exp:FunctionCall>
+                              <exp:Name>
+                                <exp:QualifiedNamePart name="BIOMD354"/>
+                                <exp:QualifiedNamePart name="pow"/>
+                              </exp:Name>
+                              <exp:Arguments>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="IP3"/>
+                                </exp:Identifier>
+                                <exp:RealLiteral>2.0</exp:RealLiteral>
+                              </exp:Arguments>
+                            </exp:FunctionCall>
+                            <exp:FunctionCall>
+                              <exp:Name>
+                                <exp:QualifiedNamePart name="BIOMD354"/>
+                                <exp:QualifiedNamePart name="pow"/>
+                              </exp:Name>
+                              <exp:Arguments>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="kIP3R"/>
+                                </exp:Identifier>
+                                <exp:RealLiteral>2.0</exp:RealLiteral>
+                              </exp:Arguments>
+                            </exp:FunctionCall>
+                          </exp:Add>
+                        </exp:Mul>
+                      </exp:Div>
+                    </exp:Mul>
+                  </exp:Mul>
+                </exp:Mul>
+              </exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CaS"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Add>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="mw004dcb62_da5f_41c7_a7bd_033574894f48"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="PMleak"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:FunctionCall>
+                    <exp:Name>
+                      <exp:QualifiedNamePart name="BIOMD354"/>
+                      <exp:QualifiedNamePart name="pow"/>
+                    </exp:Name>
+                    <exp:Arguments>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="kSTIM"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>8.0</exp:RealLiteral>
+                    </exp:Arguments>
+                  </exp:FunctionCall>
+                  <exp:Add>
+                    <exp:FunctionCall>
+                      <exp:Name>
+                        <exp:QualifiedNamePart name="BIOMD354"/>
+                        <exp:QualifiedNamePart name="pow"/>
+                      </exp:Name>
+                      <exp:Arguments>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="CaS"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>8.0</exp:RealLiteral>
+                      </exp:Arguments>
+                    </exp:FunctionCall>
+                    <exp:FunctionCall>
+                      <exp:Name>
+                        <exp:QualifiedNamePart name="BIOMD354"/>
+                        <exp:QualifiedNamePart name="pow"/>
+                      </exp:Name>
+                      <exp:Arguments>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="kSTIM"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>8.0</exp:RealLiteral>
+                      </exp:Arguments>
+                    </exp:FunctionCall>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Add>
+            </exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="mwd90ce3ea_f8d5_4f0a_8093_e39a2d3dbf33"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="CaM"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>0.01</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="CaM"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+              <exp:Sub>
+                <exp:Mul>
+                  <exp:FunctionCall>
+                    <exp:Name>
+                      <exp:QualifiedNamePart name="BIOMD354"/>
+                      <exp:QualifiedNamePart name="pow"/>
+                    </exp:Name>
+                    <exp:Arguments>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="CaI"/>
+                      </exp:Identifier>
+                      <exp:RealLiteral>2.0</exp:RealLiteral>
+                    </exp:Arguments>
+                  </exp:FunctionCall>
+                  <exp:Sub>
+                    <exp:Div>
+                        <exp:Neg>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="B"/>
+                          </exp:Identifier>
+                        </exp:Neg>
+                      <exp:Add>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD354"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="CaI"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>2.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD354"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="k2"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>2.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                      </exp:Add>
+                    </exp:Div>
+                    <exp:Div>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="mwd21d3f76_d133_4053_8e44_02a538657e0a"/>
+                      </exp:Identifier>
+                      <exp:Add>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD354"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="CaI"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>2.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                        <exp:FunctionCall>
+                          <exp:Name>
+                            <exp:QualifiedNamePart name="BIOMD354"/>
+                            <exp:QualifiedNamePart name="pow"/>
+                          </exp:Name>
+                          <exp:Arguments>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="mw3a93c3a6_623a_44fe_84e9_a47823defd1f"/>
+                            </exp:Identifier>
+                            <exp:RealLiteral>2.0</exp:RealLiteral>
+                          </exp:Arguments>
+                        </exp:FunctionCall>
+                      </exp:Add>
+                    </exp:Div>
+                  </exp:Sub>
+                </exp:Mul>
+                <exp:Mul>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="mw886be93a_22c7_4966_a1fa_113afd832ae3"/>
+                  </exp:Identifier>
+                  <exp:Div>
+                    <exp:FunctionCall>
+                      <exp:Name>
+                        <exp:QualifiedNamePart name="BIOMD354"/>
+                        <exp:QualifiedNamePart name="pow"/>
+                      </exp:Name>
+                      <exp:Arguments>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="CaI"/>
+                        </exp:Identifier>
+                        <exp:RealLiteral>4.0</exp:RealLiteral>
+                      </exp:Arguments>
+                    </exp:FunctionCall>
+                    <exp:Add>
+                      <exp:FunctionCall>
+                        <exp:Name>
+                          <exp:QualifiedNamePart name="BIOMD354"/>
+                          <exp:QualifiedNamePart name="pow"/>
+                        </exp:Name>
+                        <exp:Arguments>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="CaI"/>
+                          </exp:Identifier>
+                          <exp:RealLiteral>4.0</exp:RealLiteral>
+                        </exp:Arguments>
+                      </exp:FunctionCall>
+                      <exp:FunctionCall>
+                        <exp:Name>
+                          <exp:QualifiedNamePart name="BIOMD354"/>
+                          <exp:QualifiedNamePart name="pow"/>
+                        </exp:Name>
+                        <exp:Arguments>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="mwc8d6bdb5_59d4_43fa_b96d_7426f4857e0d"/>
+                          </exp:Identifier>
+                          <exp:RealLiteral>4.0</exp:RealLiteral>
+                        </exp:Arguments>
+                      </exp:FunctionCall>
+                    </exp:Add>
+                  </exp:Div>
+                </exp:Mul>
+              </exp:Sub>
+            </exp:Add>
+          </exp:Add>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CaM"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CaS"/>
+        </exp:Identifier>
+        <exp:RealLiteral>2.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="g"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.002</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IP3"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CaI"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.05</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CaO"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1000.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD354"/>
+        <exp:QualifiedNamePart name="pow"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="power"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Pow>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="x"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="power"/>
+              </exp:Identifier>
+            </exp:Pow>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
