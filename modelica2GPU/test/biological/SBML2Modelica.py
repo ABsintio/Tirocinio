@@ -27,6 +27,15 @@ model {model_name} "{name}"
         algorithm
             y := x^power;
     end pow;
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
 
 {functions}
 
