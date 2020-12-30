@@ -17,6 +17,14 @@ model BIOMD351 "Vernoux2011_AuxinSignaling_AuxinSingleStepInput"
         algorithm
             z := if condition then x else y;
     end piecewise;
+    
+    function gt
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := (x > y);
+    end gt;
 
 
 
