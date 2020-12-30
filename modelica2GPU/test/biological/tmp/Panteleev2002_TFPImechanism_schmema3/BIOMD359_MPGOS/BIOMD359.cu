@@ -8,14 +8,14 @@
 
 #define PI 3.14159265358979323846
 
-#include "BIOMD360_SystemDefinition.cuh"
+#include "BIOMD359_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 9;
 const int NCP  = 1;
 const int NSP  = 16;
@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -182,7 +182,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD360.csv" );
+    DataFile.open ( "BIOMD359.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
