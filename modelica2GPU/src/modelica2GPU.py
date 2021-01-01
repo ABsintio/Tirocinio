@@ -63,7 +63,7 @@ def createXML(workingdir, modelfilename, omlibrary):
         )
         result = subprocess.run(compile_string, check=True, shell=True)
         os.chdir(cwd)
-        return os.path.join(workingdir, modelfilename.replace("mo", "xml"))
+        return os.path.join(workingdir, modelfilename[:-2] + "xml")
     except subprocess.CalledProcessError:
         tmp_logger.error("Non è stato possibile creare l'XML", "Non è stato possibile creare l'XML")
     except Exception as e:

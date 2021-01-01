@@ -15,7 +15,7 @@ def wrapTime(f):
         print(f"simulationTime: {(end - start)*1000}ms")
     return wrapper
 
-os.system("omc build_400.mos > out")
+os.system("omc build_10.mos > out")
 
 
 def simulate(i):
