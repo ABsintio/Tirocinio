@@ -1,0 +1,245 @@
+
+model BIOMD397 "Sivakumar2011_WntSignalingPathway"
+
+    function pow
+        input  Real x;
+        input  Real power;
+        output Real y;
+        algorithm
+            y := x^power;
+    end pow;
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
+
+
+
+    parameter Real kass_r1 = 0.784;
+    parameter Real kdiss_r1 = 0.82;
+    parameter Real kass_r5 = 1.15;
+    parameter Real kdiss_r5 = 0.92;
+    parameter Real kass_r47 = 1.31;
+    parameter Real kdiss_r47 = 0.81;
+    parameter Real kass_r48 = 0.85;
+    parameter Real kdiss_r48 = 1.36;
+    parameter Real kass_r54 = 0.8;
+    parameter Real kdiss_r54 = 1.7;
+    parameter Real kass_r58 = 1.74;
+    parameter Real kdiss_r58 = 0.25;
+    parameter Real kass_r63 = 1.77;
+    parameter Real kdiss_r63 = 0.61;
+    parameter Real kass_r64 = 1.29;
+    parameter Real kdiss_r64 = 0.72;
+    parameter Real kass_r65 = 1.8;
+    parameter Real kdiss_r65 = 0.004;
+    parameter Real kass_r66 = 1.99;
+    parameter Real kdiss_r66 = 0.036;
+    parameter Real kass_r68 = 2.0;
+    parameter Real kass_r88 = 0.2;
+    parameter Real kdiss_r88 = 1.09;
+    parameter Real kass_r90 = 0.27;
+    parameter Real kdiss_r90 = 1.028;
+    parameter Real kass_r91 = 0.36;
+    parameter Real kdiss_r91 = 1.16;
+    parameter Real kass_r92 = 0.58;
+    parameter Real kdiss_r92 = 0.92;
+    parameter Real kass_r96 = 1.45;
+    parameter Real kdiss_r96 = 0.183;
+    parameter Real kass_r98 = 1.97;
+    parameter Real kdiss_r98 = 1.09;
+    parameter Real kass_r99 = 0.51;
+    parameter Real kdiss_r99 = 0.854;
+    parameter Real kass_r102 = 0.163;
+    parameter Real kdiss_r102 = 1.65;
+    parameter Real kass_r103 = 0.45;
+    parameter Real kdiss_r103 = 1.277;
+    parameter Real kass_r105 = 0.48;
+    parameter Real kdiss_r105 = 1.62;
+    parameter Real kass_r106 = 0.05;
+    parameter Real kdiss_r106 = 1.13;
+    parameter Real kass_r107 = 0.91;
+    parameter Real kdiss_r107 = 1.056;
+    parameter Real kass_r104_s30 = 0.39;
+    parameter Real kdiss_r104_s30 = 1.278;
+    parameter Real kass_r85_s30 = 0.7;
+    parameter Real kdiss_r85_s30 = 0.649;
+    parameter Real kass_re65 = 1.68;
+    parameter Real kass_re64 = 0.83;
+    parameter Real kass_r86_s37 = 0.87;
+    parameter Real kdiss_r86_s37 = 1.32;
+    parameter Real kass_r67 = 0.86;
+    parameter Real kdiss_r67 = 0.7;
+    parameter Real kI_r86_s304 = 1.43;
+    parameter Real default = 1.0;
+    parameter Real c1 = 1.0;
+    parameter Real c3 = 1.0;
+    parameter Real c4 = 1.0;
+
+
+
+    Real s5;
+    Real s16;
+    Real s1;
+    Real s27;
+    Real s28;
+    Real s30;
+    Real s31;
+    Real s32;
+    Real s33;
+    Real s37;
+    Real s46;
+    Real s75;
+    Real s101;
+    Real s102;
+    Real s107;
+    Real s121;
+    Real s155;
+    Real s164;
+    Real s171;
+    Real s172;
+    Real s173;
+    Real s170;
+    Real s195;
+    Real s174;
+    Real s239;
+    Real s36;
+    Real s123;
+    Real s129;
+    Real s159;
+    Real s232;
+    Real s176;
+    Real s179;
+    Real s183;
+    Real s188;
+    Real s245;
+    Real s252;
+    Real s268;
+    Real s260;
+    Real s270;
+    Real s275;
+    Real s278;
+    Real s286;
+    Real s288;
+    Real s292;
+    Real s61;
+    Real s259;
+    Real s266;
+    Real s267;
+    Real s304;
+    Real s305;
+
+initial equation
+    s5 = 0.0;
+    s16 = 0.0;
+    s1 = 3.0;
+    s27 = 0.0;
+    s28 = 3.0;
+    s30 = 1.0;
+    s31 = 3.0;
+    s32 = 1.0;
+    s33 = 0.0;
+    s37 = 0.0;
+    s46 = 1.0;
+    s75 = 3.0;
+    s101 = 0.0;
+    s102 = 3.0;
+    s107 = 3.0;
+    s121 = 4.0;
+    s155 = 0.0;
+    s164 = 0.0;
+    s171 = 2.0;
+    s172 = 2.0;
+    s173 = 2.0;
+    s170 = 2.0;
+    s195 = 0.0;
+    s174 = 4.0;
+    s239 = 5.0;
+    s36 = 5.0;
+    s123 = 0.0;
+    s129 = 0.0;
+    s159 = 0.0;
+    s232 = 0.0;
+    s176 = 0.0;
+    s179 = 0.0;
+    s183 = 0.0;
+    s188 = 0.0;
+    s245 = 0.0;
+    s252 = 5.0;
+    s268 = 1.0;
+    s260 = 0.0;
+    s270 = 0.0;
+    s275 = 0.0;
+    s278 = 0.0;
+    s286 = 0.0;
+    s288 = 0.0;
+    s292 = 0.0;
+    s61 = 2.0;
+    s259 = 0.0;
+    s266 = 0.0;
+    s267 = 0.0;
+    s304 = 0.5;
+    s305 = 0.0;
+
+equation
+
+    der(s5) = (kass_r107 * s239 - kdiss_r107 * s5) - (kass_r1 * s5 * s1 - kdiss_r1 * s16);
+    der(s16) = (kass_r1 * s5 * s1 - kdiss_r1 * s16) - (kass_r5 * s28 * s16 - kdiss_r5 * s27);
+    der(s1) =  - (kass_r1 * s5 * s1 - kdiss_r1 * s16);
+    der(s27) = (kass_r5 * s28 * s16 - kdiss_r5 * s27) ;
+    der(s28) =  - (kass_r5 * s28 * s16 - kdiss_r5 * s27);
+    der(s30) = (kass_r106 * s286 - kdiss_r106 * s30) ;
+    der(s31) =  - (kass_r102 * s286 * s31 - kdiss_r102 * s288);
+    der(s32) =  - (s30 * (kass_r104_s30 * s107 * s32 - kdiss_r104_s30 * s286 * s33)) - (s30 * (kass_r85_s30 * s129 * s32 - kdiss_r85_s30 * s245 * s33)) - (kI_r86_s304 / (kI_r86_s304 + s304) * s37 * (kass_r86_s37 * s245 * s32 * s32 * s32 - kdiss_r86_s37 * s252 * s33 * s33 * s33)) - (kI_r86_s304 / (kI_r86_s304 + s304) * s37 * (kass_r86_s37 * s245 * s32 * s32 * s32 - kdiss_r86_s37 * s252 * s33 * s33 * s33)) - (kI_r86_s304 / (kI_r86_s304 + s304) * s37 * (kass_r86_s37 * s245 * s32 * s32 * s32 - kdiss_r86_s37 * s252 * s33 * s33 * s33));
+    der(s33) = (s30 * (kass_r104_s30 * s107 * s32 - kdiss_r104_s30 * s286 * s33)) + (s30 * (kass_r85_s30 * s129 * s32 - kdiss_r85_s30 * s245 * s33)) + (kI_r86_s304 / (kI_r86_s304 + s304) * s37 * (kass_r86_s37 * s245 * s32 * s32 * s32 - kdiss_r86_s37 * s252 * s33 * s33 * s33)) + (kI_r86_s304 / (kI_r86_s304 + s304) * s37 * (kass_r86_s37 * s245 * s32 * s32 * s32 - kdiss_r86_s37 * s252 * s33 * s33 * s33)) + (kI_r86_s304 / (kI_r86_s304 + s304) * s37 * (kass_r86_s37 * s245 * s32 * s32 * s32 - kdiss_r86_s37 * s252 * s33 * s33 * s33)) ;
+    der(s37) = (kass_r105 * s292 - kdiss_r105 * s37) ;
+    der(s46) =  - (kass_r48 * s123 * s46 - kdiss_r48 * s129);
+    der(s75) =  - (kass_r54 * s123 * s75 - kdiss_r54 * s159);
+    der(s101) = (kass_r98 * s275 - kdiss_r98 * s101 * s278) ;
+    der(s102) =  - (kass_r103 * s288 * s102 - kdiss_r103 * s292);
+    der(s107) =  - (s30 * (kass_r104_s30 * s107 * s32 - kdiss_r104_s30 * s286 * s33));
+    der(s121) =  - (kass_r47 * s121 * s36 - kdiss_r47 * s123);
+    der(s155) = (kass_r91 * s266 - kdiss_r91 * s155 * s267) ;
+    der(s164) = (kass_r99 * s278 - kdiss_r99 * s164 * s270) ;
+    der(s171) =  - (kass_r65 * s179 * s171 - kdiss_r65 * s183);
+    der(s172) =  - (kass_r67 * s188 * s172 - kdiss_r67 * s305);
+    der(s173) =  - (kass_r66 * s183 * s173 - kdiss_r66 * s188);
+    der(s170) =  - (kass_r64 * s176 * s170 - kdiss_r64 * s179);
+    der(s195) = (kass_r68 * s305) ;
+    der(s174) =  - (kass_r63 * s174 * s232 - kdiss_r63 * s176);
+    der(s239) =  - (kass_r107 * s239 - kdiss_r107 * s5);
+    der(s36) =  - (kass_r47 * s121 * s36 - kdiss_r47 * s123) - (kass_r58 * s36 - kdiss_r58 * s232);
+    der(s123) = (kass_r47 * s121 * s36 - kdiss_r47 * s123) - (kass_r48 * s123 * s46 - kdiss_r48 * s129) - (kass_r54 * s123 * s75 - kdiss_r54 * s159);
+    der(s129) = (kass_r48 * s123 * s46 - kdiss_r48 * s129) - (s30 * (kass_r85_s30 * s129 * s32 - kdiss_r85_s30 * s245 * s33));
+    der(s159) = (kass_r54 * s123 * s75 - kdiss_r54 * s159) - (kass_r96 * s159 * s268 - kdiss_r96 * s275);
+    der(s232) = (kass_r58 * s36 - kdiss_r58 * s232) + (kass_re65 * s260) + (kass_re64 * s270) - (kass_r63 * s174 * s232 - kdiss_r63 * s176);
+    der(s176) = (kass_r63 * s174 * s232 - kdiss_r63 * s176) - (kass_r64 * s176 * s170 - kdiss_r64 * s179);
+    der(s179) = (kass_r64 * s176 * s170 - kdiss_r64 * s179) - (kass_r65 * s179 * s171 - kdiss_r65 * s183);
+    der(s183) = (kass_r65 * s179 * s171 - kdiss_r65 * s183) - (kass_r66 * s183 * s173 - kdiss_r66 * s188);
+    der(s188) = (kass_r66 * s183 * s173 - kdiss_r66 * s188) - (kass_r67 * s188 * s172 - kdiss_r67 * s305);
+    der(s245) = (s30 * (kass_r85_s30 * s129 * s32 - kdiss_r85_s30 * s245 * s33)) - (kI_r86_s304 / (kI_r86_s304 + s304) * s37 * (kass_r86_s37 * s245 * s32 * s32 * s32 - kdiss_r86_s37 * s252 * s33 * s33 * s33));
+    der(s252) = (kI_r86_s304 / (kI_r86_s304 + s304) * s37 * (kass_r86_s37 * s245 * s32 * s32 * s32 - kdiss_r86_s37 * s252 * s33 * s33 * s33)) - (kass_r88 * s252 * s61 - kdiss_r88 * s259);
+    der(s268) =  - (kass_r90 * s259 * s268 - kdiss_r90 * s266) - (kass_r96 * s159 * s268 - kdiss_r96 * s275);
+    der(s260) = (kass_r92 * s267 - kdiss_r92 * s61 * s260) - (kass_re65 * s260);
+    der(s270) = (kass_r99 * s278 - kdiss_r99 * s164 * s270) - (kass_re64 * s270);
+    der(s275) = (kass_r96 * s159 * s268 - kdiss_r96 * s275) - (kass_r98 * s275 - kdiss_r98 * s101 * s278);
+    der(s278) = (kass_r98 * s275 - kdiss_r98 * s101 * s278) - (kass_r99 * s278 - kdiss_r99 * s164 * s270);
+    der(s286) = (s30 * (kass_r104_s30 * s107 * s32 - kdiss_r104_s30 * s286 * s33)) - (kass_r102 * s286 * s31 - kdiss_r102 * s288) - (kass_r106 * s286 - kdiss_r106 * s30);
+    der(s288) = (kass_r102 * s286 * s31 - kdiss_r102 * s288) - (kass_r103 * s288 * s102 - kdiss_r103 * s292);
+    der(s292) = (kass_r103 * s288 * s102 - kdiss_r103 * s292) - (kass_r105 * s292 - kdiss_r105 * s37);
+    der(s61) = (kass_r92 * s267 - kdiss_r92 * s61 * s260) - (kass_r88 * s252 * s61 - kdiss_r88 * s259);
+    der(s259) = (kass_r88 * s252 * s61 - kdiss_r88 * s259) - (kass_r90 * s259 * s268 - kdiss_r90 * s266);
+    der(s266) = (kass_r90 * s259 * s268 - kdiss_r90 * s266) - (kass_r91 * s266 - kdiss_r91 * s155 * s267);
+    der(s267) = (kass_r91 * s266 - kdiss_r91 * s155 * s267) - (kass_r92 * s267 - kdiss_r92 * s61 * s260);
+    der(s304) = 0.0;
+    der(s305) = (kass_r67 * s188 * s172 - kdiss_r67 * s305) - (kass_r68 * s305);
+
+
+
+
+end BIOMD397;
