@@ -16,7 +16,7 @@ with open(filename, mode="r", encoding="utf-8") as f:
 
 npvalues = np.array(values)
 times = npvalues[:, 0]
-vars = [npvalues[:, i] for i in range(1, 159)]
+vars = [npvalues[:, i] for i in range(1, 319)]
 
 plot_number = 1
 idx = 0
