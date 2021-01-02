@@ -60,6 +60,13 @@ model BIOMD386 "Arnold2011_Sharkey2007_RuBisCO-CalvinCycle"
     algorithm
         y :=  ((Vc + Vj - abs(Vc - Vj)) / 2 + Vp - abs((Vc + Vj - abs(Vc - Vj)) / 2 - Vp)) / 2;
     end carboxylation;
+    
+    function sqrt
+        input Real x;
+        output Real y;
+        algorithm
+            y := x^(1/2);
+    end sqrt;
 
 
     parameter Real Rp = 3.2;
