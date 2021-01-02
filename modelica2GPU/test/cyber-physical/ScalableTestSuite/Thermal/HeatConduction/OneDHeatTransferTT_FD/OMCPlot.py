@@ -10,7 +10,7 @@ parser.add_argument("-c", "--csv", help="Path relativo o assoluto del file CSV c
 parser.add_argument("-m", "--model", help="Il nome del modello")
 args = parser.parse_args()
 csv_file = args.csv
-dimension = args.dimension
+dimension = args.dimension - 1
 model_name = args.model
 
 # Apriamo e leggiamo il CSV in input
@@ -30,6 +30,7 @@ times = data[:, 0]
 plot_number = 1
 for i in range(0, dimension, 4):
     current_vars = head[i:i+4]
+    if current_vars == []: break
     plt.figure(figsize=[15.0, 8.0])
     for idx, var in current_vars:
         plt.plot(times, data[:, idx], marker="_", label=var)

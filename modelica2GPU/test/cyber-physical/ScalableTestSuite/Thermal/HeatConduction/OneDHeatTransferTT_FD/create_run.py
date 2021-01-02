@@ -3,6 +3,7 @@ import sys
 S = """
 loadModel(Modelica);
 getErrorString();
+loadFile("../package.mo");
 loadFile("package.mo");
 getErrorString();
 loadFile("OneDHeatTransferTT_FD_model.mo");

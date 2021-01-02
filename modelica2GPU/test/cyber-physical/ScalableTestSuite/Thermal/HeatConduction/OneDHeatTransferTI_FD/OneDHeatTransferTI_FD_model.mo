@@ -1,5 +1,5 @@
-within HeatConduction;
-model OneDHeatTransferTI_FD
+within HeatConduction.OneDHeatTransferTI_FD;
+model OneDHeatTransferTI_FD_model
   "One end at a fixed temperature, one end is insulated; implemented by FD method"
   parameter Real L "Length";
   parameter Integer N = 2 "number of nodes";
@@ -20,4 +20,4 @@ equation
     der(T[i]) = lambda * ((T[i + 1] - T[i]) / dx + ((-T[i]) + T[i - 1]) / dx) / cp / rho / dx;
   end for;
   der(T[1]) = lambda * ((T[2] - T[1]) / dx) / cp / rho / dx;
-end OneDHeatTransferTI_FD;
+end OneDHeatTransferTI_FD_model;
