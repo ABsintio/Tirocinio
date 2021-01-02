@@ -60,6 +60,13 @@ model BIOMD387 "Arnold2011_Damour2007_RuBisCO-CalvinCycle"
     algorithm
         y :=  (S1 / Rp) * (R / Nt) * Vc;
     end PGA_consumption;
+    
+    function sqrt
+        input Real x;
+        output Real y;
+        algorithm
+            y := x^(1/2);
+    end sqrt;
 
     parameter Real Rp = 3.2;
     parameter Real Nt = 0.5;

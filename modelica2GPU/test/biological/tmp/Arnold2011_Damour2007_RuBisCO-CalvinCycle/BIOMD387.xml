@@ -1,0 +1,1513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD387"
+  modelIdentifier="BIOMD387"
+  guid="{d577cf71-6102-4e9c-a62c-73d387412285}"
+  generationDateAndTime="2021-01-02T18:36:01"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="6"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="CO2"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="24.50000000000009" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CO2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NADPH"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NADPH"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="O2"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="21000.00000000002" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="O2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="PGA"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="PGA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="RuBP"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="RuBP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="starch"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="starch"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(CO2)"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="CO2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(NADPH)"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NADPH"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(O2)"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="O2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(PGA)"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="PGA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(RuBP)"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="RuBP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(starch)"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="starch"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Cst"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.999136712846952" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Cst"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Gamma"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="4.29040862748855" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Gamma"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="J"  valueReference="14" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="3.64863790509821" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="J"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NADP"  valueReference="15" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NADP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vc"  valueReference="16" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.822489884906092" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vj"  valueReference="17" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.675554869049198" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vj"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vp"  valueReference="18" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.942054655190967" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="phi"  valueReference="19" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.025590660664217" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="phi"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Jmax"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="142.047003854271" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Jmax"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Kc"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="26.7125313821435" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Kc"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Ko"  valueReference="22" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="187891.032274486" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ko"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Nt"  valueReference="23" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Nt"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Q"  valueReference="24" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1000.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Q"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Rp"  valueReference="25" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.2" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Rp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="TPU"  valueReference="26" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.259027750094988" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="TPU"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Vcmax"  valueReference="27" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.91141270310584" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Vcmax"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="a"  valueReference="28" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0434" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="a"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="alpha"  valueReference="29" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.24" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="alpha"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="chloroplast"  valueReference="30" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="chloroplast"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Jmax"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>142.047003854271</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Kc"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>26.7125313821435</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Ko"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>187891.032274486</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Nt"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Q"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1000.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Rp"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.2</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="TPU"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.259027750094988</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Vcmax"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.91141270310584</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="a"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0434</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="alpha"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.24</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="chloroplast"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="RuBP"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="starch"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="O2"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="CO2"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NADP"/>
+        </exp:Identifier>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Nt"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NADPH"/>
+          </exp:Identifier>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vc"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Vcmax"/>
+          </exp:Identifier>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="CO2"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CO2"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Kc"/>
+                </exp:Identifier>
+              </exp:Add>
+              <exp:Add>
+                <exp:RealLiteral>1.0</exp:RealLiteral>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="O2"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Ko"/>
+                  </exp:Identifier>
+                </exp:Div>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="phi"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.21</exp:RealLiteral>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="O2"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Kc"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CO2"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Ko"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Cst"/>
+        </exp:Identifier>
+        <exp:Exp>
+          <exp:Mul>
+            <exp:RealLiteral>-0.0398</exp:RealLiteral>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="starch"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="a"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Exp>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="J"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.02769230769230769</exp:RealLiteral>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Cst"/>
+            </exp:Identifier>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="alpha"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Q"/>
+                </exp:Identifier>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD387"/>
+                    <exp:QualifiedNamePart name="sqrt"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Add>
+                      <exp:RealLiteral>1.0</exp:RealLiteral>
+                      <exp:FunctionCall>
+                        <exp:Name>
+                          <exp:QualifiedNamePart name="BIOMD387"/>
+                          <exp:QualifiedNamePart name="pow"/>
+                        </exp:Name>
+                        <exp:Arguments>
+                          <exp:Mul>
+                            <exp:RealLiteral>0.9</exp:RealLiteral>
+                            <exp:Mul>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="alpha"/>
+                              </exp:Identifier>
+                              <exp:Div>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Q"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Jmax"/>
+                                </exp:Identifier>
+                              </exp:Div>
+                            </exp:Mul>
+                          </exp:Mul>
+                          <exp:RealLiteral>2.0</exp:RealLiteral>
+                        </exp:Arguments>
+                      </exp:FunctionCall>
+                    </exp:Add>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Gamma"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.0002043051727375498</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="O2"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vp"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>3.0</exp:RealLiteral>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="TPU"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:RealLiteral>1.0</exp:RealLiteral>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Gamma"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CO2"/>
+                </exp:Identifier>
+              </exp:Div>
+            </exp:Sub>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vj"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.25</exp:RealLiteral>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="J"/>
+            </exp:Identifier>
+            <exp:Div>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="CO2"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="CO2"/>
+                </exp:Identifier>
+                <exp:Mul>
+                  <exp:RealLiteral>2.0</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Gamma"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+            </exp:Div>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="PGA"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="chloroplast"/>
+          </exp:Identifier>
+          <exp:Add>
+            <exp:Mul>
+              <exp:RealLiteral>2.0</exp:RealLiteral>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD387"/>
+                  <exp:QualifiedNamePart name="carboxylation"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Vc"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Vj"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Vp"/>
+                  </exp:Identifier>
+                </exp:Arguments>
+              </exp:FunctionCall>
+            </exp:Mul>
+            <exp:Sub>
+              <exp:Mul>
+                <exp:RealLiteral>1.5</exp:RealLiteral>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD387"/>
+                    <exp:QualifiedNamePart name="oxygenation"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="phi"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vc"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vj"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vp"/>
+                    </exp:Identifier>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+              </exp:Mul>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD387"/>
+                  <exp:QualifiedNamePart name="PGA_consumption"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="PGA"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Rp"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NADPH"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Nt"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Vcmax"/>
+                  </exp:Identifier>
+                </exp:Arguments>
+              </exp:FunctionCall>
+            </exp:Sub>
+          </exp:Add>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="NADPH"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="chloroplast"/>
+            </exp:Identifier>
+            <exp:FunctionCall>
+              <exp:Name>
+                <exp:QualifiedNamePart name="BIOMD387"/>
+                <exp:QualifiedNamePart name="NADPH_production"/>
+              </exp:Name>
+              <exp:Arguments>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="J"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="NADP"/>
+                </exp:Identifier>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Nt"/>
+                </exp:Identifier>
+              </exp:Arguments>
+            </exp:FunctionCall>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-2.0</exp:RealLiteral>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="chloroplast"/>
+              </exp:Identifier>
+              <exp:Add>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD387"/>
+                    <exp:QualifiedNamePart name="carboxylation"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vc"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vj"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vp"/>
+                    </exp:Identifier>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD387"/>
+                    <exp:QualifiedNamePart name="oxygenation"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="phi"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vc"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vj"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vp"/>
+                    </exp:Identifier>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CO2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>24.50000000000009</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="O2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>21000.00000000002</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Cst"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.999136712846952</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Gamma"/>
+        </exp:Identifier>
+        <exp:RealLiteral>4.29040862748855</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="J"/>
+        </exp:Identifier>
+        <exp:RealLiteral>3.64863790509821</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vc"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.822489884906092</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vj"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.675554869049198</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Vp"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.942054655190967</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="phi"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.025590660664217</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="starch"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="O2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>21000.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="CO2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>24.5</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NADPH"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.21</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="PGA"/>
+        </exp:Identifier>
+        <exp:RealLiteral>2.4</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="RuBP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>2.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD387"/>
+        <exp:QualifiedNamePart name="NADPH_production"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="j"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="S1"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Nt"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Mul>
+              <exp:RealLiteral>0.5</exp:RealLiteral>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="j"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="S1"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Nt"/>
+                  </exp:Identifier>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD387"/>
+        <exp:QualifiedNamePart name="PGA_consumption"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="S1"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Rp"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="R"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Nt"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Vc"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="S1"/>
+              </exp:Identifier>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="R"/>
+                </exp:Identifier>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Vc"/>
+                  </exp:Identifier>
+                  <exp:Mul>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Rp"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Nt"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Mul>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD387"/>
+        <exp:QualifiedNamePart name="carboxylation"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Vc"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Vj"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Vp"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Add>
+              <exp:Mul>
+                <exp:RealLiteral>0.25</exp:RealLiteral>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Vc"/>
+                  </exp:Identifier>
+                  <exp:Sub>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vj"/>
+                    </exp:Identifier>
+                    <exp:Abs>
+                      <exp:Sub>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Vc"/>
+                        </exp:Identifier>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Vj"/>
+                        </exp:Identifier>
+                      </exp:Sub>
+                    </exp:Abs>
+                  </exp:Sub>
+                </exp:Add>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:RealLiteral>0.5</exp:RealLiteral>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Vp"/>
+                  </exp:Identifier>
+                  <exp:Abs>
+                    <exp:Sub>
+                      <exp:Mul>
+                        <exp:RealLiteral>0.5</exp:RealLiteral>
+                        <exp:Add>
+                          <exp:Identifier>
+                            <exp:QualifiedNamePart name="Vc"/>
+                          </exp:Identifier>
+                          <exp:Sub>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Vj"/>
+                            </exp:Identifier>
+                            <exp:Abs>
+                              <exp:Sub>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Vc"/>
+                                </exp:Identifier>
+                                <exp:Identifier>
+                                  <exp:QualifiedNamePart name="Vj"/>
+                                </exp:Identifier>
+                              </exp:Sub>
+                            </exp:Abs>
+                          </exp:Sub>
+                        </exp:Add>
+                      </exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Vp"/>
+                      </exp:Identifier>
+                    </exp:Sub>
+                  </exp:Abs>
+                </exp:Sub>
+              </exp:Mul>
+            </exp:Add>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD387"/>
+        <exp:QualifiedNamePart name="oxygenation"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="phi"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Vc"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Vj"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="Vp"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Mul>
+              <exp:RealLiteral>0.5</exp:RealLiteral>
+              <exp:Mul>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="phi"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:Mul>
+                    <exp:RealLiteral>0.5</exp:RealLiteral>
+                    <exp:Add>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Vc"/>
+                      </exp:Identifier>
+                      <exp:Sub>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Vj"/>
+                        </exp:Identifier>
+                        <exp:Abs>
+                          <exp:Sub>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Vc"/>
+                            </exp:Identifier>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Vj"/>
+                            </exp:Identifier>
+                          </exp:Sub>
+                        </exp:Abs>
+                      </exp:Sub>
+                    </exp:Add>
+                  </exp:Mul>
+                  <exp:Sub>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Vp"/>
+                    </exp:Identifier>
+                    <exp:Abs>
+                      <exp:Sub>
+                        <exp:Mul>
+                          <exp:RealLiteral>0.5</exp:RealLiteral>
+                          <exp:Add>
+                            <exp:Identifier>
+                              <exp:QualifiedNamePart name="Vc"/>
+                            </exp:Identifier>
+                            <exp:Sub>
+                              <exp:Identifier>
+                                <exp:QualifiedNamePart name="Vj"/>
+                              </exp:Identifier>
+                              <exp:Abs>
+                                <exp:Sub>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="Vc"/>
+                                  </exp:Identifier>
+                                  <exp:Identifier>
+                                    <exp:QualifiedNamePart name="Vj"/>
+                                  </exp:Identifier>
+                                </exp:Sub>
+                              </exp:Abs>
+                            </exp:Sub>
+                          </exp:Add>
+                        </exp:Mul>
+                        <exp:Identifier>
+                          <exp:QualifiedNamePart name="Vp"/>
+                        </exp:Identifier>
+                      </exp:Sub>
+                    </exp:Abs>
+                  </exp:Sub>
+                </exp:Add>
+              </exp:Mul>
+            </exp:Mul>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD387"/>
+        <exp:QualifiedNamePart name="pow"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="power"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Pow>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="x"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="power"/>
+              </exp:Identifier>
+            </exp:Pow>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD387"/>
+        <exp:QualifiedNamePart name="sqrt"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Pow>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="x"/>
+              </exp:Identifier>
+              <exp:RealLiteral>0.5</exp:RealLiteral>
+            </exp:Pow>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
