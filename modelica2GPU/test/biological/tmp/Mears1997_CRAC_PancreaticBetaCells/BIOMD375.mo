@@ -18,6 +18,22 @@ model BIOMD375 "Mears1997_CRAC_PancreaticBetaCells"
             z := if condition then x else y;
     end piecewise;
 
+    
+    function gt
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := x > y;
+    end gt;
+    
+    function lt
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := x < y;
+    end lt;
 
 
     parameter Real Cm = 6158.0;
@@ -101,7 +117,7 @@ equation
     tau_n = 9.09 / (1 + exp((V_membrane + 15) / 6));
     i_K = g_K * n * (V_membrane - V_K);
     n_infinity = 1 / (1 + exp((-15 - V_membrane) / 6));
-    g_K_ATP = piecewise(2000, and(gt(time, 60000), lt(time, 660000)), 150);
+    g_K_ATP = piecewise(2000, gt(time, 60000) and lt(time, 660000), 150);
     i_K_ATP = g_K_ATP * (V_membrane - V_K);
     m_f_infinity = 1 / (1 + exp((-20 - V_membrane) / 7.5));
     i_Ca_f = g_Ca_f * m_f_infinity * (V_membrane - V_Ca);
