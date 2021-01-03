@@ -144,9 +144,9 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     X[0]=0.1; //Ca
     X[1]=10000.0; //Gd
     X[2]=0.0; //Gt
-    X[3]=0.0; //IP3
+    X[3]=0.015; //IP3
     X[4]=90.90000000000001; //P
-    X[5]=0.0; //Pc
+    X[5]=9.09; //Pc
     X[6]=0.0; //Pcg
     X[7]=0.0; //Pg
     X[8]=13.9; //R
