@@ -17,7 +17,23 @@ model BIOMD400 "Cooling2007_IP3transients_CardiacMyocyte"
         algorithm
             z := if condition then x else y;
     end piecewise;
-
+    
+    function lt
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := x < y;
+    end lt;
+    
+    
+    function geq
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := x >= y;
+    end geq;
 
 
     parameter Real Ls = 0.1;
@@ -122,7 +138,7 @@ equation
     J14 = kf14 * Pc * PIP2 / (Km14 / Cpc + PIP2);
     J15 = kf15 * Pcg * PIP2 / (Km15 / Cpc + PIP2);
     J7 = kf7 * Gt;
-    L = piecewise(Ls / (1 + exp(-80 * (time - ts - 0.05))), and(lt(time, ts + 0.15), geq(time, ts)), Ls, geq(time, ts + 0.15), 0);
+    L = piecewise(Ls / (1 + exp(-80 * (time - ts - 0.05))), lt(time, ts + 0.15) and geq(time, ts), piecewise(Ls, geq(time, ts + 0.15), 0));
     kr1 = kf1 * Kd1;
     J1 = kf1 * R * L - kr1 * Rl;
     kr2 = kf2 * Kd2;
@@ -139,7 +155,7 @@ equation
     der(IP3) = Cpc * (J14 + J15) - J16;
     der(Gd) = J7 + J13 + J12 - (J2 + J3);
     der(Gt) = J6 - (J7 + J9 + J10);
-    der(Ca) = Cpc * -1 * (J8 + J11);
+    der(Ca) = Cpc * (-1) * (J8 + J11);
     der(R) = -1 * (J1 + J2);
     der(Rl) = J1 + J6 - J3;
     der(Rg) = J2 - J4;
