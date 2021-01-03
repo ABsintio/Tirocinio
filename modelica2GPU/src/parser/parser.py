@@ -155,6 +155,14 @@ class Parser:
 
         return xs, x_dict, fs, f_dict
 
+    
+    def create_cPAR(self):
+        pass
+
+
+    def create_cPARi(self):
+        pass
+
 
     @notifier(
         NOTIFICATION,
