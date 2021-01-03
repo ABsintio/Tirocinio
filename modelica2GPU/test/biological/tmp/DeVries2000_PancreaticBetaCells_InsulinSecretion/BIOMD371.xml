@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD371"
+  modelIdentifier="BIOMD371"
+  guid="{fd2b6549-d4a5-46f2-86d4-039cafd42be3}"
+  generationDateAndTime="2021-01-03T18:58:57"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="3"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="V_membrane"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="-65.00000000000007" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V_membrane"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="n"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.05000000000000036" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="s"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.02500000000000018" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="s"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(V_membrane)"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V_membrane"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(n)"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(s)"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="s"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="i_Ca"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="-7.4446678508483" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="i_Ca"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="i_K"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="5.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="i_K"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="i_K_ATP"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="6.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="i_K_ATP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="i_s"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="1.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="i_s"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="m_infinity"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0229773699100256" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="m_infinity"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="n_infinity"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.000189405943825186" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="n_infinity"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="s_infinity"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.00460957217937421" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="s_infinity"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Compartment"  valueReference="13" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Compartment"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V_Ca"  valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="25.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V_Ca"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V_K"  valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="-75.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V_K"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V_m"  valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="-20.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V_m"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V_n"  valueReference="17" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="-17.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="V_s"  valueReference="18" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="-22.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="V_s"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="g_Ca"  valueReference="19" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.6" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="g_Ca"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="g_K"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="10.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="g_K"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="g_K_ATP"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.2" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="g_K_ATP"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="g_s"  valueReference="22" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="4.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="g_s"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="lamda"  valueReference="23" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.8" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="lamda"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="p"  valueReference="24" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="p"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tau_membrane"  valueReference="25" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="20.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tau_membrane"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tau_potassium_current_n_gate"  valueReference="26" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="20.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tau_potassium_current_n_gate"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tau_s"  valueReference="27" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="20000.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tau_s"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="theta_m"  valueReference="28" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="12.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="theta_m"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="theta_n"  valueReference="29" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.6" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="theta_n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="theta_s"  valueReference="30" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="8.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="theta_s"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Compartment"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="V_Ca"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>25.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="V_K"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>-75.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="V_m"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>-20.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="V_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>-17.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="V_s"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>-22.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="g_Ca"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.6</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="g_K"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>10.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="g_K_ATP"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.2</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="g_s"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>4.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="lamda"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.8</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="p"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tau_membrane"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>20.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tau_potassium_current_n_gate"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>20.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tau_s"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>20000.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="theta_m"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>12.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="theta_n"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.6</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="theta_s"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>8.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i_K_ATP"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="g_K_ATP"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="p"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V_membrane"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V_K"/>
+              </exp:Identifier>
+            </exp:Sub>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="s_infinity"/>
+        </exp:Identifier>
+        <exp:Div>
+          <exp:RealLiteral>1.0</exp:RealLiteral>
+          <exp:Add>
+            <exp:RealLiteral>1.0</exp:RealLiteral>
+            <exp:Exp>
+              <exp:Div>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="V_s"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="V_membrane"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="theta_s"/>
+                </exp:Identifier>
+              </exp:Div>
+            </exp:Exp>
+          </exp:Add>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="s"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Div>
+          <exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="s_infinity"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="s"/>
+            </exp:Identifier>
+          </exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="tau_s"/>
+          </exp:Identifier>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i_s"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="g_s"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="s"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V_membrane"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V_K"/>
+              </exp:Identifier>
+            </exp:Sub>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="n_infinity"/>
+        </exp:Identifier>
+        <exp:Div>
+          <exp:RealLiteral>1.0</exp:RealLiteral>
+          <exp:Add>
+            <exp:RealLiteral>1.0</exp:RealLiteral>
+            <exp:Exp>
+              <exp:Div>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="V_n"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="V_membrane"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="theta_n"/>
+                </exp:Identifier>
+              </exp:Div>
+            </exp:Exp>
+          </exp:Add>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="n"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="lamda"/>
+          </exp:Identifier>
+          <exp:Div>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="n_infinity"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="n"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="tau_potassium_current_n_gate"/>
+            </exp:Identifier>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i_K"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="g_K"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="n"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V_membrane"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V_K"/>
+              </exp:Identifier>
+            </exp:Sub>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="m_infinity"/>
+        </exp:Identifier>
+        <exp:Div>
+          <exp:RealLiteral>1.0</exp:RealLiteral>
+          <exp:Add>
+            <exp:RealLiteral>1.0</exp:RealLiteral>
+            <exp:Exp>
+              <exp:Div>
+                <exp:Sub>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="V_m"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="V_membrane"/>
+                  </exp:Identifier>
+                </exp:Sub>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="theta_m"/>
+                </exp:Identifier>
+              </exp:Div>
+            </exp:Exp>
+          </exp:Add>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i_Ca"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="g_Ca"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="m_infinity"/>
+            </exp:Identifier>
+            <exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V_membrane"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="V_Ca"/>
+              </exp:Identifier>
+            </exp:Sub>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="V_membrane"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Div>
+          <exp:Sub>
+            <exp:Sub>
+              <exp:Sub>
+                  <exp:Neg>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="i_s"/>
+                    </exp:Identifier>
+                  </exp:Neg>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="i_K_ATP"/>
+                </exp:Identifier>
+              </exp:Sub>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="i_Ca"/>
+              </exp:Identifier>
+            </exp:Sub>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="i_K"/>
+            </exp:Identifier>
+          </exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="tau_membrane"/>
+          </exp:Identifier>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V_membrane"/>
+        </exp:Identifier>
+        <exp:RealLiteral>-65.00000000000007</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="n"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.05000000000000036</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="s"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.02500000000000018</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i_Ca"/>
+        </exp:Identifier>
+        <exp:RealLiteral>-7.4446678508483</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i_K"/>
+        </exp:Identifier>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i_K_ATP"/>
+        </exp:Identifier>
+        <exp:RealLiteral>6.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="i_s"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="m_infinity"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0229773699100256</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="n_infinity"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.000189405943825186</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="s_infinity"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.00460957217937421</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="s"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.025</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="n"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.05</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="V_membrane"/>
+        </exp:Identifier>
+        <exp:RealLiteral>-65.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
