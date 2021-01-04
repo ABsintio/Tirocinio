@@ -17,6 +17,14 @@ model BIOMD398 "Sivakumar2011_NeuralStemCellDifferentiation_Crosstalk"
         algorithm
             z := if condition then x else y;
     end piecewise;
+    
+    
+    function sqrt
+        input Real x;
+        output Real y;
+        algorithm
+            y := x^(1/2);
+    end sqrt;
 
 
 
