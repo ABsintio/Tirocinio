@@ -103,8 +103,6 @@ MPGOS_Model_Macro = """
 #include <string>
 #include <fstream>
 
-#define PI 3.14159265358979323846
-
 #include "{model_sysdef_file}"
 #include "SingleSystem_PerThread_Interface.cuh"
 
@@ -315,7 +313,8 @@ class ModelBuilder:
                        model_name,        # Nome del modello
                        logger,            # oggetto di tipo utils.logger.Logger
                        odes,              # Lista di tutte le ODE del sistema
-                       variables          # Lista di tutte le variabili del sistema
+                       variables,         # Lista di tutte le variabili del sistema
+                       n_events           # Numero di eventi presenti del modello
                 ):
         self.sysdef_filename   = sysdef_filename
         self.config_dict       = config_dict
@@ -326,6 +325,7 @@ class ModelBuilder:
         self.variables         = variables
         self.variables_dict    = {x.nome.replace(".", "_"): x for x in self.variables}
         self.samples           =  any(filter(lambda x: "sample" in x.nome, self.variables_dict.values()))
+        self.nevents           = n_events
         # START LOG
         msg = "Chiamata alla classe ModelBuilder"
         self.logger.info(msg, msg)
@@ -346,7 +346,7 @@ class ModelBuilder:
             systemDimension=int(self.config_dict['numberOfContinuousState']), 
             numberOfSharedParameter=len(list(filter(lambda x: isinstance(x, sPAR), self.variables))),
             numberOfIntegerSharedParameter=len(list(filter(lambda x: isinstance(x, sPARi), self.variables))),
-            numberOfEvents=len(self.config_dict['eventDirection']) if self.config_dict['eventDirection'] is not None else 0,
+            numberOfEvents=self.nevents,
             numberOfAccessories=len(list(filter(lambda x: isinstance(x, ACC), self.variables))),
             numberOfIntegerAccessories=len(list(filter(lambda x: isinstance(x, ACCi), self.variables))),
             numberOfDenseOutput=self.config_dict['numberOfDenseOutput']
@@ -405,7 +405,7 @@ class ModelBuilder:
         maxTimeStep = self.config_dict['maximumTimeStep']
         minTimeStep = self.config_dict['minimumTimeStep']
         event_str = " "*4 + "Solver.SolverOption(EventDirection, %d, %d);\n"
-        eventDirections = "".join([event_str % (x, y) for x, y in enumerate(self.config_dict['eventDirection'])])
+        eventDirections = "".join([event_str % (x, y) for x, y in enumerate(self.config_dict['eventDirection'])]) if self.nevents > 0 else ""
         denseOutputMiniumumTimeStep = self.config_dict['denseOutputMinimumTimeStep']
         denseOutputSaveFrequency = self.config_dict['denseOutputSaveFrequency']
         abs_tolerance = " "*4 + "Solver.SolverOption(AbsoluteTolerance, %d, %s);\n"
@@ -616,12 +616,13 @@ class SystemDefinitionBuilder:
 
 class Builder:
     """ Classe principale che richiama le due classi SystemDefinitionBuilder e ModelBuilder """
-    def __init__(self, model_file_paramsdict, abstract_model, workindir, logger, functions_list):
+    def __init__(self, model_file_paramsdict, abstract_model, workindir, logger, functions_list, nevents):
         self.abstract_model    = abstract_model
         self.workingdir        = workindir
         self.logger            = logger
         self.modelparams_dict  = model_file_paramsdict
         self.functions_list    = functions_list
+        self.nevents           = nevents
         # START LOG
         msg = "Chiamata alla classe Builder"
         self.logger.info(msg, msg)
@@ -637,7 +638,7 @@ class Builder:
         # Creo il builder per il file di definizione del modello e di settaggio delle opzioni MPGOS
         self.model_builder = ModelBuilder(
             self.sysdeffile, self.modelparams_dict, self.abstract_model.init['initial'],
-            self.abstract_model.model_name, self.logger, self.abstract_model.odes, self.abstract_model.variables
+            self.abstract_model.model_name, self.logger, self.abstract_model.odes, self.abstract_model.variables, self.nevents
         )
 
 

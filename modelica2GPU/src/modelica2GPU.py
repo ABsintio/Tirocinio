@@ -337,7 +337,7 @@ try:
     ) # Creo una versione astratta del modello
     
     # Creo il builder ed infine costruisco i tre file: Model.cu, Model_SystemDefinition.cuh, makefile
-    cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger, xml_parser.userdefined_func)
+    cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger, xml_parser.userdefined_func, xml_parser.nevents)
     cpp_builder.builfiles()
 
     # START LOG

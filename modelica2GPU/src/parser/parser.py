@@ -27,6 +27,7 @@ class Parser:
         self.unique_dict       = dict()
         self.event_conditions  = []
         self.sampler           = []
+        self.nevents           = 0
         # START LOG
         msg = "Chiamata alla classe Parser"
         self.logger.info(msg, msg)
@@ -266,6 +267,7 @@ class Parser:
                     if when_eq.condition[1] not in self.event_conditions:
                         self.event_conditions.append(when_eq.condition)
                     self.dynamic_equations["events"]['when'].append(when_eq)
+                    self.nevents += 1
                 else:
                     # Se invece la parte destra della condizione è di tipo sample allora
                     # devo prendere l'equazione che sarebbe dovuto essere dell'evento e
