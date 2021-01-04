@@ -1,0 +1,4 @@
+within HeatExchanger.CounterCurrentHeatExchangerEquations;
+model CounterCurrentHeatExchangerEquations_N_80
+	extends CounterCurrentHeatExchangerEquations_N_10(N=80);
+end CounterCurrentHeatExchangerEquations_N_80;

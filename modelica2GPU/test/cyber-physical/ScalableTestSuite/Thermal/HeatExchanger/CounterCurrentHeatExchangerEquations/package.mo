@@ -1,0 +1,4 @@
+within HeatExchanger;
+package CounterCurrentHeatExchangerEquations
+
+end CounterCurrentHeatExchangerEquations;
