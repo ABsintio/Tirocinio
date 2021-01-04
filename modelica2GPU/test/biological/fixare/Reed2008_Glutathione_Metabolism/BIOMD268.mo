@@ -30,6 +30,28 @@ model BIOMD268 "Reed2008_Glutathione_Metabolism"
     algorithm
         y :=  Vmax * S1 * S2 / ((Km1 + S1) * (Km2 + S2));
     end MM_twosubst;
+    
+    function piecewise_3
+        input Real x;
+        input Boolean cond_x;
+        input Real y;
+        input Boolean cond_y;
+        input Real z;
+        input Boolean cond_z;
+        input Real q;
+        output Real t;
+        algorithm
+            t := if cond_x then x elseif cond_y then y elseif cond_z then z else q;
+    end piecewise_3;
+    
+    
+    function leq
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := (x <= y);
+    end leq;
 
 
     parameter Real V_gshHb = 150.0;
@@ -295,7 +317,7 @@ equation
     V_oGly_b = aa_input * V_oGly_b_basal;
     V_oGlu_b = aa_input * V_oGlu_b_basal;
     daytime = time - 24 * floor(time / 24);
-    aa_input = piecewise(breakfast, and(leq(7, daytime), leq(daytime, 10)), lunch, and(leq(12, daytime), leq(daytime, 15)), dinner, and(leq(18, daytime), leq(daytime, 21)), fasting);
+    aa_input = piecewise_3(breakfast, leq(7, daytime) and leq(daytime, 10), lunch, leq(12, daytime) and leq(daytime, 15), dinner, leq(18, daytime) and leq(daytime, 21), fasting);
     der(GAR) = 0.0;
     der(NADPH) = 0.0;
     der(BET) = 0.0;

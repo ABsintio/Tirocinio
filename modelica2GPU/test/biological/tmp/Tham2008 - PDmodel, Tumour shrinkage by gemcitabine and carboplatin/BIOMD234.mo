@@ -8,6 +8,27 @@ model BIOMD234 "Tham2008 - PDmodel, Tumour shrinkage by gemcitabine and carbopla
         algorithm
             y := x^power;
     end pow;
+    
+    
+    function piecewise_2
+        input Real x;
+        input Boolean cond_x;
+        input Real y;
+        input Boolean cond_y;
+        input Real q;
+        output Real t;
+        algorithm
+            t := if cond_x then x elseif cond_y then y else q;
+    end piecewise_2;
+    
+    
+    function lt
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := (x < y);
+    end lt;
 
 
 
@@ -38,7 +59,7 @@ initial equation
     Ce = 0.0;
 
 equation
-    Exposure = piecewise(Dose, and(lt(time, Cycle_Int * N_Cycle), lt(Dose_Int1, rem_time), lt(rem_time, Dose_Length)), Dose, and(lt(time, Cycle_Int * N_Cycle), lt(Dose_Int2, rem_time), lt(rem_time, Dose_Int2 + Dose_Length)), 0);
+    Exposure = piecewise_2(Dose, lt(time, Cycle_Int * N_Cycle) and lt(Dose_Int1, rem_time) and lt(rem_time, Dose_Length), Dose, lt(time, Cycle_Int * N_Cycle) and lt(Dose_Int2, rem_time)and lt(rem_time, Dose_Int2 + Dose_Length), 0);
     rem_time = (time * conversion_factor - floor(time * conversion_factor / (Cycle_Int * conversion_factor)) * Cycle_Int * conversion_factor) / conversion_factor;
     Keq = log(2) / Teq;
     Effect = 1 - Ce / (AE50 + Ce);

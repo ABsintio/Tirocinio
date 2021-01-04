@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD234"
+  modelIdentifier="BIOMD234"
+  guid="{0c6715ce-a863-4b99-b17a-5c27d426a3a5}"
+  generationDateAndTime="2021-01-05T00:49:03"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="2"
+  numberOfEventIndicators="1"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.1"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="Ce"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ce"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Size"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="6.66" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Size"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(Ce)"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Ce"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(Size)"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Size"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="Effect"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Effect"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Exposure"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Exposure"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Keq"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Keq"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Kover"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Kover"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="RateIn"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="RateIn"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="rem_time"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="rem_time"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="AE50"  valueReference="10" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="10600.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="AE50"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="COMpartment"  valueReference="11" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="COMpartment"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Cycle_Int"  valueReference="12" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Cycle_Int"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Dose"  valueReference="13" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5203.84" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Dose"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Dose_Int1"  valueReference="14" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Dose_Int1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Dose_Int2"  valueReference="15" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Dose_Int2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Dose_Length"  valueReference="16" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.44359" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Dose_Length"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="N_Cycle"  valueReference="17" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="N_Cycle"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Size_0"  valueReference="18" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6.66" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Size_0"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="T_Turnover"  valueReference="19" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="21.8" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="T_Turnover"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="Teq"  valueReference="20" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="7.67" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="Teq"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="conversion_factor"  valueReference="21" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="604800.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="conversion_factor"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="AE50"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>10600.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="COMpartment"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Cycle_Int"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Dose"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5203.84</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Dose_Int1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Dose_Int2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Dose_Length"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.44359</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="N_Cycle"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Size_0"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6.66</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="T_Turnover"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>21.8</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="Teq"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>7.67</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="conversion_factor"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>604800.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Kover"/>
+        </exp:Identifier>
+        <exp:Div>
+          <exp:RealLiteral>1.0</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="T_Turnover"/>
+          </exp:Identifier>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="RateIn"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Size_0"/>
+          </exp:Identifier>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Kover"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Keq"/>
+        </exp:Identifier>
+        <exp:Div>
+          <exp:RealLiteral>0.6931471805599453</exp:RealLiteral>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Teq"/>
+          </exp:Identifier>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="rem_time"/>
+        </exp:Identifier>
+        <exp:Sub>
+          <exp:Time>time</exp:Time>
+          <exp:Mul>
+            <exp:floor>
+              <exp:Div>
+                <exp:Time>time</exp:Time>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Cycle_Int"/>
+                </exp:Identifier>
+              </exp:Div>
+              <exp:IntegerLiteral>0</exp:IntegerLiteral>
+            </exp:floor>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Cycle_Int"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Exposure"/>
+        </exp:Identifier>
+        <exp:FunctionCall>
+          <exp:Name>
+            <exp:QualifiedNamePart name="BIOMD234"/>
+            <exp:QualifiedNamePart name="piecewise_2"/>
+          </exp:Name>
+          <exp:Arguments>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Dose"/>
+            </exp:Identifier>
+            <exp:And>
+              <exp:And>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD234"/>
+                    <exp:QualifiedNamePart name="lt"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Time>time</exp:Time>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Cycle_Int"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="N_Cycle"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD234"/>
+                    <exp:QualifiedNamePart name="lt"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Dose_Int1"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="rem_time"/>
+                    </exp:Identifier>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+              </exp:And>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD234"/>
+                  <exp:QualifiedNamePart name="lt"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="rem_time"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="Dose_Length"/>
+                  </exp:Identifier>
+                </exp:Arguments>
+              </exp:FunctionCall>
+            </exp:And>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Dose"/>
+            </exp:Identifier>
+            <exp:And>
+              <exp:And>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD234"/>
+                    <exp:QualifiedNamePart name="lt"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Time>time</exp:Time>
+                    <exp:Mul>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="Cycle_Int"/>
+                      </exp:Identifier>
+                      <exp:Identifier>
+                        <exp:QualifiedNamePart name="N_Cycle"/>
+                      </exp:Identifier>
+                    </exp:Mul>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+                <exp:FunctionCall>
+                  <exp:Name>
+                    <exp:QualifiedNamePart name="BIOMD234"/>
+                    <exp:QualifiedNamePart name="lt"/>
+                  </exp:Name>
+                  <exp:Arguments>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Dose_Int2"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="rem_time"/>
+                    </exp:Identifier>
+                  </exp:Arguments>
+                </exp:FunctionCall>
+              </exp:And>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD234"/>
+                  <exp:QualifiedNamePart name="lt"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="rem_time"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Dose_Int2"/>
+                    </exp:Identifier>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="Dose_Length"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Arguments>
+              </exp:FunctionCall>
+            </exp:And>
+            <exp:RealLiteral>0.0</exp:RealLiteral>
+          </exp:Arguments>
+        </exp:FunctionCall>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Ce"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Exposure"/>
+          </exp:Identifier>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Ce"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Keq"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Effect"/>
+        </exp:Identifier>
+        <exp:Sub>
+          <exp:RealLiteral>1.0</exp:RealLiteral>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Ce"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="AE50"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Ce"/>
+              </exp:Identifier>
+            </exp:Add>
+          </exp:Div>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Size"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:Sub>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="RateIn"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Effect"/>
+              </exp:Identifier>
+            </exp:Mul>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Kover"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="Size"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Sub>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="Size"/>
+          </exp:Identifier>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Size"/>
+        </exp:Identifier>
+        <exp:RealLiteral>6.66</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Effect"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Exposure"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Keq"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Kover"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="RateIn"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="rem_time"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Size"/>
+        </exp:Identifier>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="$START"/>
+          <exp:QualifiedNamePart name="Size"/>
+        </exp:Identifier>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="rem_time"/>
+        </exp:Identifier>
+        <exp:Sub>
+          <exp:Time>time</exp:Time>
+          <exp:Mul>
+            <exp:floor>
+              <exp:Div>
+                <exp:Time>time</exp:Time>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="Cycle_Int"/>
+                </exp:Identifier>
+              </exp:Div>
+            </exp:floor>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="Cycle_Int"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Sub>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="Ce"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD234"/>
+        <exp:QualifiedNamePart name="lt"/>
+      </fun:Name>
+      <fun:OutputVariable type="Boolean">
+        <fun:Name>
+          <exp:QualifiedNamePart name="z"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="z"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:LogLt>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="x"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="y"/>
+              </exp:Identifier>
+            </exp:LogLt>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD234"/>
+        <exp:QualifiedNamePart name="piecewise_2"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="t"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Boolean">
+        <fun:Name>
+          <exp:QualifiedNamePart name="cond_x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Boolean">
+        <fun:Name>
+          <exp:QualifiedNamePart name="cond_y"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="q"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="t"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <fun:If>
+              <fun:Condition>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="cond_x"/>
+                </exp:Identifier>
+              </fun:Condition>
+              <fun:Statements>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="x"/>
+                </exp:Identifier>
+              </fun:Statements>
+              <fun:Else>
+                <fun:If>
+                  <fun:Condition>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="cond_y"/>
+                    </exp:Identifier>
+                  </fun:Condition>
+                  <fun:Statements>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="y"/>
+                    </exp:Identifier>
+                  </fun:Statements>
+                  <fun:Else>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="q"/>
+                    </exp:Identifier>
+                  </fun:Else>
+                </fun:If>
+              </fun:Else>
+            </fun:If>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
