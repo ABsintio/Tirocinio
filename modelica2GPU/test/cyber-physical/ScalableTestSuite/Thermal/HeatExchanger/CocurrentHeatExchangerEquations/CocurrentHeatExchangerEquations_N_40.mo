@@ -1,0 +1,4 @@
+within HeatExchanger.CocurrentHeatExchangerEquations;
+model CocurrentHeatExchangerEquations_N_40
+	extends CocurrentHeatExchangerEquations_N_10(N=40);
+end CocurrentHeatExchangerEquations_N_40;
