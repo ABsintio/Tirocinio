@@ -6,8 +6,6 @@
 #include <string>
 #include <fstream>
 
-#define PI 3.14159265358979323846
-
 #include "TransmissionLineEquations_N_20_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
@@ -20,7 +18,7 @@ const int SD   = 40;
 const int NCP  = 1;
 const int NSP  = 9;
 const int NISP = 1;
-const int NE   = 1;
+const int NE   = 0;
 const int NA   = 2;
 const int NIA  = 0;
 const int NDO  = 100000;
@@ -36,7 +34,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 4e-06);
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 4e-06);  
 
         // Settaggio dei valori iniziali degli ActualState
  
@@ -210,7 +208,6 @@ int main() {
     Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
 
-    Solver.SolverOption(EventDirection, 0, 0);
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
