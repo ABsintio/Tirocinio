@@ -1,5 +1,5 @@
 within HeatExchanger.CocurrentHeatExchangerEquations;
-model CocurrentHeatExchangerEquations
+model CocurrentHeatExchangerEquations_model
   "cocurrent heat exchanger implemented by equations"
   parameter Real L "length of the channels";
   parameter Integer N "number of nodes";
@@ -50,4 +50,4 @@ equation
   end for;
   QtotA = sum(QA);
   QtotB = sum(QB);
-end CocurrentHeatExchangerEquations;
+end CocurrentHeatExchangerEquations_model;
