@@ -4,7 +4,8 @@ import os
 import multiprocessing
 import sys
 
-model_name = sys.argv[-1]
+model_name = sys.argv[-2]
+build_file = sys.argv[-1]
 
 def wrapTime(f):
     @wraps(f)
@@ -15,7 +16,7 @@ def wrapTime(f):
         print(f"simulationTime: {(end - start)*1000}ms")
     return wrapper
 
-os.system("omc build_10.mos > out")
+os.system(f"omc {build_file} > out")
 
 
 def simulate(i):
@@ -45,5 +46,5 @@ while k <= 10000:
     k *= 10
     
     
-os.system("rm out")
+#os.system("rm out")
 os.system(f"rm *.o *.c *.h *.json {model_name} *.makefile *.log *.libs *_init.xml")
