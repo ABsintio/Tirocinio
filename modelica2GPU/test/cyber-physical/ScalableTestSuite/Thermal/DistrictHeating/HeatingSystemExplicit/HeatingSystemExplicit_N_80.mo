@@ -1,0 +1,4 @@
+within DistrictHeating.HeatingSystemExplicit;
+model HeatingSystemExplicit_N_80
+	extends HeatingSystemExplicit_model(N=80);
+end HeatingSystemExplicit_N_80;

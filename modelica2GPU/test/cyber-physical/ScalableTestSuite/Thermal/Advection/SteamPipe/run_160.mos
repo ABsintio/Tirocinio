@@ -1,0 +1,12 @@
+
+loadModel(Modelica);
+getErrorString();
+loadFile("../package.mo");
+loadFile("package.mo");
+getErrorString();
+loadFile("SteamPipe_model.mo");
+getErrorString();
+loadFile("SteamPipe_N_160.mo");
+getErrorString();
+buildModel(Advection.SteamPipe.SteamPipe_N_160, stopTime=20, interval=4e-03, tolerance=1e-008, outputFormat="csv");
+getErrorString();

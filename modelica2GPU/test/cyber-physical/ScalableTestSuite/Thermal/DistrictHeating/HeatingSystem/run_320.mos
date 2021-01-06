@@ -1,0 +1,13 @@
+
+loadModel(Modelica);
+getErrorString();
+loadFile("../package.mo");
+loadFile("Functions.mo");
+loadFile("package.mo");
+getErrorString();
+loadFile("HeatingSystem_model.mo");
+getErrorString();
+loadFile("HeatingSystem_N_320.mo");
+getErrorString();
+simulate(DistrictHeating.HeatingSystem.HeatingSystem_N_320, stopTime=432000.0, outputFormat="csv", interval=20);
+getErrorString();
