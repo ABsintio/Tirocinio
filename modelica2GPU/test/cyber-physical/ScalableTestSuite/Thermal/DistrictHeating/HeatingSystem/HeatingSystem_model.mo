@@ -1,8 +1,7 @@
 within DistrictHeating.HeatingSystem;
 model HeatingSystem_model
-
   "Declarative model of a heating system - continuous-time dynamics"
-  constant Real pi = Modelica.Constants.pi;
+  parameter Real pi = 3.141592653589793;
   parameter Integer N = 3 "Number of heated units";
   parameter Real Cu[N] = (ones(N) + linspace(0,1.348,N))*1e7
     "Heat capacity of heated units";

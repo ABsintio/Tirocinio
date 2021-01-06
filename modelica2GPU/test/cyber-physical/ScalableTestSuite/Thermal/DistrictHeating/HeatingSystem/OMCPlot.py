@@ -10,7 +10,7 @@ parser.add_argument("-c", "--csv", help="Path relativo o assoluto del file CSV c
 parser.add_argument("-m", "--model", help="Il nome del modello")
 args = parser.parse_args()
 csv_file = args.csv
-dimension = 3 * args.dimension
+dimension = 2 * args.dimension + 2
 model_name = args.model
 
 # Apriamo e leggiamo il CSV in input
