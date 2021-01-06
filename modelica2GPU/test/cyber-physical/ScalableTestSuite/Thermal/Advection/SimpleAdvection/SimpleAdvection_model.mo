@@ -1,4 +1,5 @@
-model SimpleAdvection "Basic thermal advection model with uniform speed"
+within Advection.SimpleAdvection;
+model SimpleAdvection_model "Basic thermal advection model with uniform speed"
   parameter Integer N = 2 "Number of nodes";
   parameter Real Tstart[N]=ones(N)*300
     "Start value of the temperature distribution";
@@ -17,4 +18,4 @@ equation
   T[1] = Tin;
   T[N] = Tout;
   Ttilde = T[2:N];
-end SimpleAdvection;
+end SimpleAdvection_model;

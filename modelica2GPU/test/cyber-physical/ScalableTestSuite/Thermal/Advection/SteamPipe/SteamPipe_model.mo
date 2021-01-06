@@ -1,4 +1,5 @@
-model SteamPipe
+within Advection.SteamPipe;
+model SteamPipe_model
   "Detailed thermal advection model with thermal expansion effects using IF97 water vapour"
   parameter Integer N = 10 "Number of nodes";
   parameter Real Vtot = 1 "Total volume";
@@ -61,4 +62,4 @@ equation
   w_out_pipe = w_out[N];
   h_in_pipe = h_in[1];
   h_out_pipe = h[N];
-end SteamPipe;
+end SteamPipe_model;

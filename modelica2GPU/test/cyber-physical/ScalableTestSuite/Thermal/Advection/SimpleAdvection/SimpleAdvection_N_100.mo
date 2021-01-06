@@ -1,10 +1,10 @@
 within Advection.SimpleAdvection;
 model SimpleAdvection_N_100
-  extends SimpleAdvection(
+  extends SimpleAdvection_model(
     N = 100,
-    Tin = 300 + dT*(0.5*tanh((time-t0)/dt)+0.5),
+    Tin = 300 + dT*(0.5*tanh((time - t0)/dt)+0.5),
     u = 1 + sin(time*2*pi*f));
-  constant Real pi = Modelica.Constants.pi;
+  parameter Real pi = 3.141592653589793;
   parameter Real t0 = 2
     "Instant of smooth step temperature increase at inlet";
   parameter Real dt = 0.1

@@ -11,7 +11,7 @@ loadFile("SimpleAdvection_model.mo");
 getErrorString();
 loadFile("SimpleAdvection_N_{n_var}.mo");
 getErrorString();
-buildModel(Advection.SimpleAdvection.SimpleAdvection_N_{n_var}, stopTime=20, outputFormat="csv");
+simulate(Advection.SimpleAdvection.SimpleAdvection_N_{n_var}, stopTime=20, outputFormat="csv");
 getErrorString();
 """
 
