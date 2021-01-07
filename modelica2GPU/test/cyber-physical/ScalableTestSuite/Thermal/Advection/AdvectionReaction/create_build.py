@@ -7,11 +7,11 @@ getErrorString();
 loadFile("../package.mo");
 loadFile("package.mo");
 getErrorString();
-loadFile("AdvectionRaeaction_model.mo");
+loadFile("AdvectionReaction_model.mo");
 getErrorString();
-loadFile("AdvectionRaeaction_N_{n_var}.mo");
+loadFile("AdvectionReaction_N_{n_var}.mo");
 getErrorString();
-buildModel(Advection.AdvectionRaeaction.AdvectionRaeaction_N_{n_var}, stopTime=1);
+buildModel(Advection.AdvectionReaction.AdvectionReaction_N_{n_var}, stopTime=1);
 getErrorString();
 """
 
