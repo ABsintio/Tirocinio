@@ -5,13 +5,17 @@ import argparse
 import os
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-n", "--dimension", help="La dimensione del sistema", type=int)
+parser.add_argument("-n", "--dimensionN", help="La dimensione del sistema N", type=int)
+parser.add_argument("-m", "--dimensionM", help="La dimensione del sistema M", type=int)
 parser.add_argument("-c", "--csv", help="Path relativo o assoluto del file CSV contenente i dati")
-parser.add_argument("-m", "--model", help="Il nome del modello")
+parser.add_argument("-mo", "--model", help="Il nome del modello")
 args = parser.parse_args()
 csv_file = args.csv
-dimension = args.dimension + 1
+dimension_n = args.dimensionN
+dimension_m = args.dimensionM
 model_name = args.model
+
+tot_dim = 1 + dimension_n * dimension_m + 8 * dimension_n
 
 # Apriamo e leggiamo il CSV in input
 csv_data = pd.read_csv(csv_file)
@@ -22,13 +26,13 @@ except Exception:
     pass
 os.chdir(f"OMCPlot_{model_name}")
 
-head = [(x + 1, y) for x, y in enumerate(np.array(csv_data.head(0).columns)[1:dimension])]
+head = [(x + 1, y) for x, y in enumerate(np.array(csv_data.head(0).columns)[1:tot_dim + 1])]
 data = np.array(csv_data)
 
 times = data[:, 0]
 
 plot_number = 1
-for i in range(0, dimension, 4):
+for i in range(0, tot_dim + 1, 4):
     current_vars = head[i:i+4]
     if current_vars == []: break
     plt.figure(figsize=[15.0, 8.0])

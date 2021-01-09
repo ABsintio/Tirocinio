@@ -7,18 +7,25 @@ getErrorString();
 loadFile("../package.mo");
 loadFile("package.mo");
 getErrorString();
-loadFile("Generator_model.mo");
+loadFile("Generator.mo");
 getErrorString();
 loadFile("PowerSystem_model.mo");
 getErrorString();
-buildModel(ConceptualPowerSystem.Generator.Generator_N_{n_var}, stopTime=1);
+loadFile("TwoGeneratorConstantLoad.mo");
+getErrorString();
+loadFile("TwoGeneratorStepLoad.mo");
+getErrorString();
+loadFile("PowerSystemStepLoad_N_{n_var}_M_{m_var}.mo");
+getErrorString();
+buildModel(ConceptualPowerSystem.PowerSystem.PowerSystemStepLoad_N_{n_var}_M_{m_var}, stopTime=200);
 getErrorString();
 """
 
 def create_build_mos():
-	n_var = sys.argv[-1]
-	mode = "x" if not os.path.exists(os.path.join(os.getcwd(), f"build_{n_var}.mos")) else "w"
-	with open(f"build_{n_var}.mos", mode=mode) as f:
-		f.write(S.format(n_var=n_var))
+	n_var = sys.argv[-2]
+	m_var = sys.argv[-1]
+	mode = "x" if not os.path.exists(os.path.join(os.getcwd(), f"build_{n_var}_{m_var}.mos")) else "w"
+	with open(f"build_{n_var}_{m_var}.mos", mode=mode) as f:
+		f.write(S.format(n_var=n_var, m_var=m_var))
 
 create_build_mos()

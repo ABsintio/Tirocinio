@@ -1,6 +1,7 @@
 within Advection.SteamPipe;
-model SteamPipe_model
-  "Detailed thermal advection model with thermal expansion effects using IF97 water vapour"
+model SteamPipe_model "Detailed thermal advection model with thermal expansion effects using IF97 water vapour"
+  import SI = Modelica.SIunits;
+  replaceable package Medium = Modelica.Media.Water.StandardWater;
   parameter Integer N = 10 "Number of nodes";
   parameter Real Vtot = 1 "Total volume";
   parameter Real w_nom = 2 "Nominal mass flow rate";

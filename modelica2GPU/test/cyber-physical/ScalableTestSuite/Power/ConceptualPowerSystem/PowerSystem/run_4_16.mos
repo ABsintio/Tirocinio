@@ -1,0 +1,18 @@
+
+loadModel(Modelica);
+getErrorString();
+loadFile("../package.mo");
+loadFile("package.mo");
+getErrorString();
+loadFile("Generator.mo");
+getErrorString();
+loadFile("PowerSystem_model.mo");
+getErrorString();
+loadFile("TwoGeneratorConstantLoad.mo");
+getErrorString();
+loadFile("TwoGeneratorStepLoad.mo");
+getErrorString();
+loadFile("PowerSystemStepLoad_N_4_M_16.mo");
+getErrorString();
+simulate(ConceptualPowerSystem.PowerSystem.PowerSystemStepLoad_N_4_M_16, stopTime=200, outputFormat="csv");
+getErrorString();
