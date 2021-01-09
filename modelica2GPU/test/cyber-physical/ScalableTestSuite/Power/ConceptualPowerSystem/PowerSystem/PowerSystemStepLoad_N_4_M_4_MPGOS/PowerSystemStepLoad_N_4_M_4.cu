@@ -13,7 +13,7 @@ using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 1;
+const int NT   = 10000;
 const int SD   = 49;
 const int NCP  = 1;
 const int NSP  = 83;
@@ -21,7 +21,7 @@ const int NISP = 6;
 const int NE   = 0;
 const int NA   = 122;
 const int NIA  = 0;
-const int NDO  = 2000000.0;
+const int NDO  = 100;
 
 
 void FillSolverObject(
@@ -627,10 +627,10 @@ int main() {
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
-    Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 1, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 2, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 3, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 0, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 1, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 2, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 3, 1e-07);
     Solver.SolverOption(AbsoluteTolerance, 4, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 5, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 6, 1e-06);
