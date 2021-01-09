@@ -313,16 +313,8 @@ class QualifiedName:
     def _parse_qnp(self):
         """ Parsa i tag <exp:QualifiedNamePart> sia auto-chiusi che con <exp:ArraySubscripts> """
         qualified_name_parts = []
-        for qnp in list(self.id_tag_element):
-            name = qnp.attrib['name']
-            if list(qnp):
-                indexes = []
-                roottag_indexes = qnp[0]
-                for x in list(roottag_indexes):
-                    indexes.append(_parsetag_eq(x[0], self.variables_dict).__str__())
-                # In caso parsiamo solo array semplici del tipo x[<index>]
-                name += "[" + ",".join(indexes) + "]"
-            qualified_name_parts.append(name)
+        for tag in list(self.id_tag_element):
+            qualified_name_parts.append(QualifiedNamePart(tag, self.variables_dict).__str__())
         return qualified_name_parts
     
     def __str__(self): 
@@ -343,6 +335,28 @@ class QualifiedName:
             self.variables_dict[string] = pre_var
         return self.variables_dict[string].createMPGOSname() if self.variables_dict is not None and string in self.variables_dict \
                else string
+
+
+class QualifiedNamePart:
+    def __init__(self, qnp_tag, variables_dict):
+        self.qnp_tag = qnp_tag
+        self.variables_dict = variables_dict
+    
+    def _get_name(self):
+        name = self.qnp_tag.attrib['name']
+        if list(self.qnp_tag):
+            for tag in list(self.qnp_tag):
+                if tag.tag == f"{EXPRESSION_NS}ArraySubscripts":
+                    indexes = []
+                    for x in list(tag):
+                        indexes.append(_parsetag_eq(x[0], self.variables_dict).__str__())
+                    name += "[" + ",".join(indexes) + "]"
+                elif tag.tag == f"{EXPRESSION_NS}QualifiedNamePart":
+                    name += "." + QualifiedNamePart(tag, self.variables_dict).__str__()
+        return name
+    
+    def __str__(self):
+        return self._get_name()
 
 
 class Identifier(QualifiedName):

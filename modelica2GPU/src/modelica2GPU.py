@@ -57,6 +57,7 @@ def createXML(workingdir, modelfilename, omlibrary):
         assert os.path.isdir(omlibrary) is not None, "Non esistono versioni di modelica installate nel sistema"
         # Creo la stringa per la compilazione
         compile_string = "omc +s --simCodeTarget=XML {model} {others} --preOptModules-=removeSimpleEquations --postOptModules-=wrapFunctionCalls --evaluateFinalParameters=true Modelica".format(
+            model=modelfilename,
             others=" ".join([x for x in os.listdir(".") if x.endswith(".mo") and x != modelfilename]),
             modelicalib=omlibrary.replace(" ", "\ ") + "package.mo"
         )
