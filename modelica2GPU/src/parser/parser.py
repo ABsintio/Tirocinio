@@ -197,7 +197,7 @@ class Parser:
     def parse_equation(self, root, variables_dict, MPGOSparams_dict):
         """ Parsa le equazioni """
         for x in root:
-            if x.tag == f"{dynequations.EQUATION_NS}Equation":
+            if x.tag == f"{dynequations.EQUATION_NS}Equation" and list(x[0]):
                 eq = dynequations._parsetag_eq(x, variables_dict, self.userdefined_func)
                 # Se la parte sinistra dell'equazione ha associata una variable $PRE
                 # allora devo creare una seconda equazione, nella quale alla variabile
