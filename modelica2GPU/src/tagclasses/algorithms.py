@@ -89,3 +89,4 @@ def _parsealgorithm_tag(tag, variables_dict, function_dict=dict()):
     """ Parsing degli algoritmi """
     if tag.tag == f"{FUNCTIONS_NS}Assign": return Assign(tag, variables_dict, function_dict)
     if tag.tag == f"{FUNCTIONS_NS}Expression": return _parsetag_eq(tag[0], variables_dict, function_dict)
+    if tag.tag == f"{FUNCTIONS_NS}Assertion": return _parsetag_eq(tag, variables_dict, function_dict)

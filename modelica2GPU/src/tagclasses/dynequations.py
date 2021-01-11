@@ -565,6 +565,23 @@ class When:
     def setequation(self, new_equation): self.equation = new_equation
 
 
+class Assertion:
+    """ Classe che descrive l'operatore di assertion(<condizione>, "messaggio") """
+    def __init__(self, functions_dict, assert_tag, variables_dict):
+        self.assert_tag = assert_tag
+        self.variables_dict = variables_dict
+        self.functions_dict = functions_dict
+    
+    def _parse_tag(self):
+        # Prendiamo la condizione
+        condition_tag = self.assert_tag[0]
+        return _parsetag_eq(condition_tag[0], self.variables_dict, self.functions_dict)
+    
+    def __str__(self): 
+        condition = self._parse_tag()
+        return f"if (! {condition})" + "{\n\tUDT = 1;\n}"
+
+
 # ----------------------------------------- # FUNZIONE DI SELEZIONE DELLA CLASSE  # ----------------------------------------- #
 
 
@@ -628,7 +645,8 @@ OPERATOR_CLASSES = {
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}FunctionCall"   : (FunctionCall,     4),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Der"            : (Der,              2),
     "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Sample"         : (Sample,           5),
-    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Max"            : (Max,              7)
+    "{https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd}Max"            : (Max,              7),
+    "{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Assertion"        : (Assertion,        8)
 }
 
 
@@ -667,7 +685,7 @@ def _parsetag_eq(tag, variables_dict, function_dict=dict()):
     else:
         class_op, arity = getoperatorclass(tag.tag)
         if arity == 2: return class_op(tag, variables_dict)
-        if arity in [3, 4, 5, 6, 7]: 
+        if arity in [3, 4, 5, 6, 7, 8]: 
             x = class_op(function_dict, tag, variables_dict)
             if arity == 5: # Allora è stato chiamato il sample
                 variables_dict[x.new_var.qualifiedName] = x.new_var

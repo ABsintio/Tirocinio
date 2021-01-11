@@ -199,36 +199,45 @@ class Parser:
         for x in root:
             if x.tag == f"{dynequations.EQUATION_NS}Equation" and list(x[0]):
                 eq = dynequations._parsetag_eq(x, variables_dict, self.userdefined_func)
-                # Se la parte sinistra dell'equazione ha associata una variable $PRE
-                # allora devo creare una seconda equazione, nella quale alla variabile
-                # $PRE viene associato il valore corrente della variabile lhs
-                pre = None
-                # Controllo l'esistenze della variabile $PRE associata
-                var = MPGOSparams_dict[eq.left.__str__()]
-                for k, v in MPGOSparams_dict.items():
-                    if "$PRE." + var.nome == v.nome:
-                        pre = k
-                if pre is not None:
-                    self.dynamic_equations['equations'].append(dynequations.Equation(pre, eq.left))
-                # Se la parte destra dell'equazione è di tipo Sample
-                # allora controllo se l'attributo new_var della parte destra
-                # sia pari a None oppure no. Questo perché se non è pari a 
-                # None allora devo aggiungere una nuova equazione.
-                if isinstance(eq.right, dynequations.Sample):
-                    self.dynamic_equations['equations'].append(eq)
-                    # Nel momento in cui l'equazione considera la variabile whenCondition
-                    # come una condizione su un evento che neanche viene considerato dal
-                    # compilatore gli andiamo a cambiare nome in sampleCondition
-                    old_name = MPGOSparams_dict[str(eq.left)].nome
-                    MPGOSparams_dict[str(eq.left)].setname(old_name.replace("when", "sample"))
-                    MPGOSparams_dict[eq.right.new_var.createMPGOSname()] = eq.right.new_var
-                    # Inserisco l'equazione per l'aggiornamento del contatore del sampler negli eventi other
-                    self.dynamic_equations['equations'].append(dynequations.Equation(
-                        eq.right.new_var.createMPGOSname(),
-                        "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(eq.left),lhs=eq.right.new_var.createMPGOSname())
-                    ))
-                else:
-                    self.dynamic_equations['equations'].append(eq)
+                print(eq)
+                # Se accade che la parte sinistra sia un literal, quindi un numero o una stringa o un booleano
+                # allora non deve essere inserito come equazione e l'eccezione che viene lanciata nel momento
+                # in cui andiamo a cercare la variabile nel dizionario la catturiamo ma non facciamo niente.
+                try:
+                    # Se la parte sinistra dell'equazione ha associata una variable $PRE
+                    # allora devo creare una seconda equazione, nella quale alla variabile
+                    # $PRE viene associato il valore corrente della variabile lhs
+                    pre = None
+                    # Controllo l'esistenze della variabile $PRE associata
+                    var = MPGOSparams_dict[eq.left.__str__()]
+                    for k, v in MPGOSparams_dict.items():
+                        if "$PRE." + var.nome == v.nome:
+                            pre = k
+                    if pre is not None:
+                        self.dynamic_equations['equations'].append(dynequations.Equation(pre, eq.left))
+                    # Se la parte destra dell'equazione è di tipo Sample
+                    # allora controllo se l'attributo new_var della parte destra
+                    # sia pari a None oppure no. Questo perché se non è pari a 
+                    # None allora devo aggiungere una nuova equazione.
+                    if isinstance(eq.right, dynequations.Sample):
+                        self.dynamic_equations['equations'].append(eq)
+                        # Nel momento in cui l'equazione considera la variabile whenCondition
+                        # come una condizione su un evento che neanche viene considerato dal
+                        # compilatore gli andiamo a cambiare nome in sampleCondition
+                        old_name = MPGOSparams_dict[str(eq.left)].nome
+                        MPGOSparams_dict[str(eq.left)].setname(old_name.replace("when", "sample"))
+                        MPGOSparams_dict[eq.right.new_var.createMPGOSname()] = eq.right.new_var
+                        # Inserisco l'equazione per l'aggiornamento del contatore del sampler negli eventi other
+                        self.dynamic_equations['equations'].append(dynequations.Equation(
+                            eq.right.new_var.createMPGOSname(),
+                            "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(eq.left),lhs=eq.right.new_var.createMPGOSname())
+                        ))
+                    else:
+                        self.dynamic_equations['equations'].append(eq)
+                except KeyError:
+                    continue
+                except AttributeError:
+                    continue
 
 
     def parse_when(self, root, variables_dict, MPGOSparams_dict):
@@ -310,20 +319,28 @@ class Parser:
             # Controlliamo che non siano tag vuoti, ossia <equ:Equation><exp:Sub></exp:Sub></equ:Equation>
             if list(x[0]) and x[0][0].tag != f"{dynequations.EQUATION_NS}Equation":
                 ieqs = dynequations._parsetag_eq(x, variables_dict)
-                # Se la variabile non esiste nel dizionario di tutte le
-                # variabili (solitamente le variabili non esistenti sono i $PRE)
-                # la aggiungi con valore iniziale pari a None ed in caso cambi il right di ieqs.
-                if str(ieqs.left) not in MPGOSparameter_dict:
-                    associated_var = [x for x in variables_dict.values() if x.id == ieqs.left.indexs]
-                    MPGOSparameter_dict[str(ieqs.left)] = associated_var[-1]
-                var = MPGOSparameter_dict[ieqs.left.__str__()]
-                # Se il valore iniziale di una variabile è $START allora vuol dire che 
-                # nel modello Modelica non ha alcun valore iniziale. Di conseguenza lo
-                # lasciamo None di modo che il valore iniziale pari a 0 venga
-                # impostato durante la creazione del modello.
-                if var.init is None and not str(ieqs.right).startswith("$START"):
-                    self.initial_equations.append(ieqs)
-                    var.setivalue(ieqs.right)
+                # Se accade che la parte sinistra sia un literal, quindi un numero o una stringa o un booleano
+                # allora non deve essere inserito come variabile e l'eccezione che viene lanciata nel momento
+                # in cui andiamo a cercare la variabile nel dizionario la catturiamo ma non facciamo niente.
+                try:
+                    # Se la variabile non esiste nel dizionario di tutte le
+                    # variabili (solitamente le variabili non esistenti sono i $PRE)
+                    # la aggiungi con valore iniziale pari a None ed in caso cambi il right di ieqs.
+                    if str(ieqs.left) not in MPGOSparameter_dict:
+                        associated_var = [x for x in variables_dict.values() if x.id == ieqs.left.indexs]
+                        MPGOSparameter_dict[str(ieqs.left)] = associated_var[-1]
+                    var = MPGOSparameter_dict[ieqs.left.__str__()]
+                    # Se il valore iniziale di una variabile è $START allora vuol dire che 
+                    # nel modello Modelica non ha alcun valore iniziale. Di conseguenza lo
+                    # lasciamo None di modo che il valore iniziale pari a 0 venga
+                    # impostato durante la creazione del modello.
+                    if var.init is None and not str(ieqs.right).startswith("$START"):
+                        self.initial_equations.append(ieqs)
+                        var.setivalue(ieqs.right)
+                except KeyError:
+                    continue
+                except AttributeError:
+                    continue
         return MPGOSparameter_dict
 
     
@@ -343,7 +360,7 @@ class Parser:
         """ Parsa tutti gli altri tag a parte quello dell'When degli algoritmi """
         for x in assign_tag:
             if x.tag == f"{algorithms.FUNCTIONS_NS}Assign":
-                algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func, self.userdefined_func)
+                algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func)
                 # Controllo, perchè per qualche assurdo motivo succede, che se l'assegnamento è
                 # del tipo x = pre(x) allora la variabile pre(x) esista, se non esiste allora
                 # l'assegnamento non è valido.
@@ -372,6 +389,9 @@ class Parser:
                                 algo.right.new_var.createMPGOSname(),
                                 "{cond} ? 1 + {lhs} : {lhs}".format(cond=str(algo.left),lhs=algo.right.new_var.createMPGOSname())
                             ))
+            elif x.tag == f"{algorithms.FUNCTIONS_NS}Assertion":
+                algo = algorithms._parsealgorithm_tag(x, variables_dict, self.userdefined_func)
+                self.algorithms_dict['when'].append(algo)
         return MPGOSparams_dict
                 
     
