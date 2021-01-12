@@ -199,7 +199,6 @@ class Parser:
         for x in root:
             if x.tag == f"{dynequations.EQUATION_NS}Equation" and list(x[0]):
                 eq = dynequations._parsetag_eq(x, variables_dict, self.userdefined_func)
-                print(eq)
                 # Se accade che la parte sinistra sia un literal, quindi un numero o una stringa o un booleano
                 # allora non deve essere inserito come equazione e l'eccezione che viene lanciata nel momento
                 # in cui andiamo a cercare la variabile nel dizionario la catturiamo ma non facciamo niente.
