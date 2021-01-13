@@ -1,0 +1,4 @@
+within HeatConduction.OneDHeatTransferTT_Modelica;
+model OneDHeatTransferTT_Modelica_N_40
+  extends OneDHeatTransferTT_Modelica_N_10(N = 40);
+end OneDHeatTransferTT_Modelica_N_40;
