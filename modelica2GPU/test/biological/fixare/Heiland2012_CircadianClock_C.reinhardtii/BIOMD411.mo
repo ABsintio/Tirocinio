@@ -151,7 +151,7 @@ initial equation
     species_12 = 1.0;
 
 equation
-    T2 = 296 + parameter_4 / 2 * sin(2 * pi * time / parameter_5);
+    T2 = 296 + parameter_4 / 2 * sin(2 * Modelica.Constants.pi * time / parameter_5);
     parameter_6 = 50000;
     parameter_7 = 84000;
     der(s2) = 0.0;
