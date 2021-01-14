@@ -18,6 +18,13 @@ model BIOMD406 "Moriya2011_CellCycle_FissionYeast"
             z := if condition then x else y;
     end piecewise;
 
+    
+    function sqrt
+        input Real x;
+        output Real y;
+        algorithm
+            y := x^(1/2);
+    end sqrt;
 
 
     parameter Real ksc18_dash = 0.075;
