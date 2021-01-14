@@ -35,7 +35,7 @@ def runTest(i):
         simulate(i)
     else:
         with multiprocessing.Pool(processes=num_process) as pool:
-            results = pool.map(simulate, list(range(i)))
+            results = pool.map_async(simulate, list(range(i)))
             results.wait()
 
 k = 1
