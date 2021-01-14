@@ -18,6 +18,22 @@ model BIOMD403 "Ayati2010_BoneRemodelingDynamics_WithTumour+DrugTreatment"
             z := if condition then x else y;
     end piecewise;
 
+    
+    function gt
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := (x > y);
+    end gt;
+    
+    function geq
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := (x >= y);
+    end geq;
 
 
     parameter Real alpha1 = 3.0;
