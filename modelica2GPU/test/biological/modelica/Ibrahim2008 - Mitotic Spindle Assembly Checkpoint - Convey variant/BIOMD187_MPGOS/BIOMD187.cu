@@ -15,7 +15,7 @@ using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 13;
 const int NCP  = 1;
 const int NSP  = 16;
@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 1;
 const int NA   = 1;
 const int NIA  = 0;
-const int NDO  = 1000;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -170,19 +170,19 @@ int main() {
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
-    Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 1, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 2, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 3, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 0, 1e-08);
+    Solver.SolverOption(AbsoluteTolerance, 1, 1e-08);
+    Solver.SolverOption(AbsoluteTolerance, 2, 1e-08);
+    Solver.SolverOption(AbsoluteTolerance, 3, 1e-08);
     Solver.SolverOption(AbsoluteTolerance, 4, 1e-20);
-    Solver.SolverOption(AbsoluteTolerance, 5, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 6, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 7, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 8, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 9, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 10, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 11, 1e-06);
-    Solver.SolverOption(AbsoluteTolerance, 12, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 5, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 6, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 7, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 8, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 9, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 10, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 11, 1e-07);
+    Solver.SolverOption(AbsoluteTolerance, 12, 1e-07);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
     Solver.SolverOption(RelativeTolerance, 1, 1e-06);
