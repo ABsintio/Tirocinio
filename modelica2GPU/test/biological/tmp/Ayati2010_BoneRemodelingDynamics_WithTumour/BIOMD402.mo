@@ -17,6 +17,15 @@ model BIOMD402 "Ayati2010_BoneRemodelingDynamics_WithTumour"
         algorithm
             z := if condition then x else y;
     end piecewise;
+    
+    
+    function gt
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := (x > y);
+    end gt;
 
 
 
