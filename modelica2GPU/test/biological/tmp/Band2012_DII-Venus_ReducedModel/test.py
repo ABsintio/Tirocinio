@@ -30,7 +30,7 @@ def simulate(i):
 
 @wrapTime
 def runTest(i):
-    num_process = i if i < 1000 else 100
+    num_process = i if i < 1000 else 800
     if i == 1:
         simulate(i)
     else:
