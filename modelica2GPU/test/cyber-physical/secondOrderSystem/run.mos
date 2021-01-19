@@ -1,6 +1,4 @@
 loadModel(Modelica);
 loadFile("SecondOrderSystemInitParams.mo");
-simulate(SecondOrderSystemInitParams, stopTime=5);
-getErrorString();
-plot({phi1, phi2, omega1, omega2}, externalWindow=true);
+simulate(SecondOrderSystemInitParams, stopTime=5, outputFormat="csv");
 getErrorString();

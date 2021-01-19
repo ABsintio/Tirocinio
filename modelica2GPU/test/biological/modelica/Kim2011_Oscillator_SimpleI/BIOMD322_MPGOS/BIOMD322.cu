@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 50000;
+const int NDO  = 5000000;
 
 
 void FillSolverObject(

@@ -1,7 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD009.mo");
 getErrorString();
-simulate(BIOMD009, stopTime=100.0);
-getErrorString();
-plot({K_PP_norm, KK_PP_norm, KKK_P_norm, rel_K_PP_max}, externalWindow=true);
+simulate(BIOMD009, stopTime=100.0, outputFormat="csv");
 getErrorString();

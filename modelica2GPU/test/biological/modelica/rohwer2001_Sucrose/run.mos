@@ -1,9 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD023.mo");
 getErrorString();
-simulate(BIOMD023, stopTime=100.0);
-getErrorString();
-plot({Fru, Glc}, externalWindow=true);
-getErrorString();
-plot({HexP, Suc6P, Suc}, externalWindow=true);
+simulate(BIOMD023, stopTime=100.0, outputFormat="csv");
 getErrorString();

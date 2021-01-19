@@ -13,17 +13,17 @@
 
 using namespace std;
 
-#define SOLVER RK4 // Runge-Kutta Order 4th
+#define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 2;
+const int SD   = 1;
 const int NCP  = 1;
 const int NSP  = 5;
 const int NISP = 0;
 const int NE   = 1;
 const int NA   = 1;
 const int NIA  = 1;
-const int NDO  = 1000;
+const int NDO  = 1000000;
 
 
 void FillSolverObject(
@@ -98,7 +98,7 @@ void SaveData(
 
 int main() {
     int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
-    int blockSize        = 64; // Numero di Thread per blocchi
+    int blockSize        = 512; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
     ListCUDADevices();
@@ -117,6 +117,8 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
+    Solver.SolverOption(TimeStepGrowLimit, 1.0);
+    Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
     Solver.SolverOption(EventDirection, 0, 0);
 

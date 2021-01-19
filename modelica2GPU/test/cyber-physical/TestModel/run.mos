@@ -8,8 +8,8 @@ loadFile("Constants.mo");
 loadFile("Functions.mo"); 
 loadFile("Parameters.mo"); 
 
-simulate(TestModel.MyModel, stopTime=10);
+simulate(TestModel.MyModel, stopTime=3.38, outputFormat="csv");
 getErrorString();
 
-plot({TestModel.MyModel.myclass.x, TestModel.MyModel.myclass.y}, externalWindow=true);
+plot({myclass.x, myclass.y}, externalWindow=true);
 getErrorString();

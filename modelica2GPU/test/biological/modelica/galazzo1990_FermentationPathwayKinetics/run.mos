@@ -1,7 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD063.mo");
 getErrorString();
-simulate(BIOMD063, stopTime=5.0);
-getErrorString();
-plot({Glci, ATP, G6P, FDP, PEP}, externalWindow=true);
+simulate(BIOMD063, stopTime=5.0, outputFormat="csv");
 getErrorString();

@@ -9,5 +9,4 @@ BIOMD354.exe: BIOMD354.cu
 
 clean:
 	rm -f BIOMD354.exe
-	rm -f *.txt
 	rm -f *.csv

@@ -1,11 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD069.mo");
 getErrorString();
-simulate(BIOMD069, stopTime=10.0);
-getErrorString();
-plot({srci, srco, srca, srcc}, externalWindow=true);
-getErrorString();
-//plot({CSK_cytoplasm, PTP, PTP_pY789}, externalWindow=true);
-//getErrorString();
-plot({Cbp_P_CSK, Cbp, Cbp_P}, externalWindow=true);
+simulate(BIOMD069, stopTime=10.0, outputFormat="csv");
 getErrorString();

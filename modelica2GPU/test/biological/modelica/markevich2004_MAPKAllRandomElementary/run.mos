@@ -1,9 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD030.mo");
 getErrorString();
-simulate(BIOMD030, stopTime=10.0);
-getErrorString();
-plot({M, MpY, MpT, Mpp, MAPKK, MKP, MpY_MAPKK, MpT_MAPKK}, externalWindow=true);
-getErrorString();
-plot({Mpp_MKP_Y, Mpp_MKP_T, MpY_MKP_Y, MpY_MKP_T}, externalWindow=true);
+simulate(BIOMD030, stopTime=10.0, outputFormat="csv");
 getErrorString();

@@ -1,7 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD068.mo");
 getErrorString();
-simulate(BIOMD068, stopTime=100.0, simflags="-s=rungekuttaSsc");
-getErrorString();
-plot({Phser}, externalWindow=true);
+simulate(BIOMD068, stopTime=100.0, outputFormat="csv");
 getErrorString();

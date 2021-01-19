@@ -15,7 +15,7 @@ using namespace std;
 
 #define SOLVER RKCK45
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 7;
 const int NCP  = 1;
 const int NSP  = 17;
@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 1;
 const int NIA  = 0;
-const int NDO  = 100;
+const int NDO  = 1000000;
 
 
 void FillSolverObject(

@@ -2,9 +2,5 @@ loadModel(Modelica);
 loadFile("SecondOrderSystem.mo");
 loadFile("PulseCounting.mo");
 
-simulate(PulseCounting, stopTime=5);
-getErrorString();
-plot({omega1, omega1_measured}, externalWindow=true);
-getErrorString();
-plot({count}, externalWindow=true);
+simulate(PulseCounting, stopTime=5, outputFormat="csv");
 getErrorString();

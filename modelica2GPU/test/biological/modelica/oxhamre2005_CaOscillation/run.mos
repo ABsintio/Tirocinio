@@ -1,7 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD047.mo");
 getErrorString();
-simulate(BIOMD047, stopTime=100.0);
-getErrorString();
-plot({CaER, Ca_Cyt, p3}, externalWindow=true);
+simulate(BIOMD047, stopTime=100.0, outputFormat="csv");
 getErrorString();

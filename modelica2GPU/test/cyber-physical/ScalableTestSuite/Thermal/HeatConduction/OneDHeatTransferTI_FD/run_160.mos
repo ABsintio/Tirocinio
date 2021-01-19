@@ -1,11 +1,12 @@
 
 loadModel(Modelica);
 getErrorString();
+loadFile("../package.mo");
 loadFile("package.mo");
 getErrorString();
 loadFile("OneDHeatTransferTI_FD.mo");
 getErrorString();
 loadFile("OneDHeatTransferTI_FD_N_160.mo");
 getErrorString();
-simulate(HeatConduction.OneDHeatTransferTI_FD_N_160, stopTime=350.0,outputFormat="csv");
+simulate(HeatConduction.OneDHeatTransferTI_FD.OneDHeatTransferTI_FD_N_160, stopTime=350.0,outputFormat="csv");
 getErrorString();

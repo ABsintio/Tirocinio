@@ -108,13 +108,13 @@ MPGOS_Model_Macro = """
 
 using namespace std;
 
-#define SOLVER {solver} // Runge-Kutta Order 4th
+#define SOLVER {solver}
 #define PRECISION double
 const int NT   = {numberOfThreads};
 const int SD   = {systemDimension};
 const int NCP  = 1;
-const int NSP  = {numberOfSharedParameter};
-const int NISP = {numberOfIntegerSharedParameter};
+const int NSP  = 0;
+const int NISP = 0;
 const int NE   = {numberOfEvents};
 const int NA   = {numberOfAccessories};
 const int NIA  = {numberOfIntegerAccessories};
@@ -233,28 +233,13 @@ void FillSolverObject(
         Solver.SetHost(ProblemNumber, TimeDomain, 0, %s);
         Solver.SetHost(ProblemNumber, TimeDomain, 1, %s);  
 
-        // Settaggio dei valori iniziali degli ActualState
-%s 
-
         Solver.SetHost(ProblemNumber, ActualTime, 0.0);
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
         Solver.SetHost(ProblemNumber, DenseIndex, 0 );
 
-        // Settaggio dei valori iniziali per ACC (se presenti)
-%s
-
-        // Settaggio dei valori iniziali per ACCi (se presenti)
-%s
-		
         ProblemNumber++;
         k_begin++;
     }
-
-    // Settaggio dei valori iniziali per sPAR (se presenti)
-%s
-
-    // Settaggio dei valori iniziali per sPARi (se presenti)
-%s
 }
 """
 
@@ -343,9 +328,7 @@ class ModelBuilder:
             model_sysdef_file=self.sysdef_filename.split("/")[-1],
             solver="RKCK45" if not self.samples else "RK4",
             numberOfThreads=self.config_dict['numberOfThreads'],
-            systemDimension=int(self.config_dict['numberOfContinuousState']), 
-            numberOfSharedParameter=len(list(filter(lambda x: isinstance(x, sPAR), self.variables))),
-            numberOfIntegerSharedParameter=len(list(filter(lambda x: isinstance(x, sPARi), self.variables))),
+            systemDimension=int(self.config_dict['numberOfContinuousState']),
             numberOfEvents=self.nevents,
             numberOfAccessories=len(list(filter(lambda x: isinstance(x, ACC), self.variables))),
             numberOfIntegerAccessories=len(list(filter(lambda x: isinstance(x, ACCi), self.variables))),
@@ -363,23 +346,17 @@ class ModelBuilder:
         # END LOG
         str2format_title  = " "*8 + "DataFile.width(Width); DataFile << \"{name}\" << ',';"
         params_list = [[x for x in self.variables if isinstance(x, X)],
-                       [x for x in self.variables if isinstance(x, sPAR)],
-                       [x for x in self.variables if isinstance(x, sPARi)],
                        [x for x in self.variables if isinstance(x, ACC)],
                        [x for x in self.variables if isinstance(x, ACCi)]]
         title_field = "\n".join([str2format_title.format(name=f"{x.__class__.__name__}_{x.nome}") for y in params_list for x in y])
         actualstategh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, {id}) << ',';"
         actual_state      = "\n".join([actualstategh_str.format(id=i) for i, _ in enumerate(params_list[0])])
-        spargh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, {id}) << ',';"
-        spar       = "\n".join([spargh_str.format(id=i) for i, _ in enumerate(params_list[1])])
-        sparigh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(IntegerSharedParameters, {id}) << ',';"
-        spari       = "\n".join([sparigh_str.format(id=i) for i, _ in enumerate(params_list[2])])
         accgh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, {id}) << ',';"
-        acc       = "\n".join([accgh_str.format(id=i) for i, _ in enumerate(params_list[3])])
+        acc       = "\n".join([accgh_str.format(id=i) for i, _ in enumerate(params_list[1])])
         accigh_str = " "*8 + "DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, IntegerAccessories, {id}) << ',';"
-        acci       = "\n".join([accigh_str.format(id=i) for i, _ in enumerate(params_list[4])])
+        acci       = "\n".join([accigh_str.format(id=i) for i, _ in enumerate(params_list[2])])
         total_str = ""
-        for param in [actual_state, spar, spari, acc, acci]:
+        for param in [actual_state, acc, acci]:
             if param != "": total_str += param + "\n"
         MPGOS_SaveDataFunction = MPGOS_SaveDataFunction % (
             title_field,
@@ -442,19 +419,8 @@ class ModelBuilder:
         # Prendo i valori per i time domain
         timeDomainStart = self.config_dict['timeDomainStart']
         timeDomainEnd   = self.config_dict['timeDomainEnd']
-        # Creo le inizializzazioni per gli ActualState
-        state_str = self.build_FSOstr(" "*8 + "Solver.SetHost(ProblemNumber, ActualState, %d, %s);", X)
-        # Creo le inizializzazioni per gli accessories ACC
-        acc_str = self.build_FSOstr(" "*8 + "Solver.SetHost(ProblemNumber, Accessories, %d, %s);", ACC)
-        # Creo le inizializzazioni per gli accessories ACCi
-        acci_str = self.build_FSOstr(" "*8 + "Solver.SetHost(ProblemNumber, IntegerAccessories, %d, %s);", ACCi)
-        # Creo le inizializzazioni per i parametri sPAR
-        spar_str = self.build_FSOstr(" "*4 + "Solver.SetHost(SharedParameters, %d, %s);", sPAR)
-        # Creo le inizializzazioni per i parametri sPARi
-        spari_str = self.build_FSOstr(" "*4 + "Solver.SetHost(IntegerSharedParameters, %d, %s);", sPARi)
-
         MPGOS_FillFunction_Definition = MPGOS_FillFunction_Definition % (
-            timeDomainStart, timeDomainEnd, state_str, acc_str, acci_str, spar_str, spari_str
+            timeDomainStart, timeDomainEnd
         )
         return MPGOS_FillFunction_Definition
     

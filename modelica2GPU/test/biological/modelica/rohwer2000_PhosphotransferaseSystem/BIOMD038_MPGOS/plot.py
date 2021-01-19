@@ -16,41 +16,19 @@ with open(filename, mode="r", encoding="utf-8") as f:
 
 npvalues = np.array(values)
 times = npvalues[:, 0]
-x0 = npvalues[:, 1]
-x16 = npvalues[:, 17]
-x7 = npvalues[:, 8]
-x11 = npvalues[:, 12]
-x12 = npvalues[:, 13]
-x1 = npvalues[:, 2]
+vars = [npvalues[:, i] for i in range(1, 18)]
 
-
-plt.plot(times, x0, marker="_", label="EI")
-plt.plot(times, x16, marker="_", label="PyrP")
-plt.plot(times, x7, marker="_", label="EIP")
-plt.plot(times, x11, marker="_", label="HPr")
-plt.plot(times, x12, marker="_", label="HPrP")
-plt.plot(times, x1, marker="_", label="EIIA")
-
-plt.ylabel("concentrazioni")
-plt.xlabel("Time [s]")
-plt.legend(loc="upper left")
-plt.show()
-
-x13 = npvalues[:, 14]
-x2 = npvalues[:, 3]
-x4 = npvalues[:, 5]
-x3 = npvalues[:, 4]
-x5 = npvalues[:, 6]
-x6 = npvalues[:, 7]
-
-plt.plot(times, x13, marker="_", label="HPrPIIA")
-plt.plot(times, x2, marker="_", label="EIIAP")
-plt.plot(times, x4, marker="_", label="EIICB")
-plt.plot(times, x3, marker="_", label="EIIAPIICB")
-plt.plot(times, x5, marker="_", label="EIICBP")
-plt.plot(times, x6, marker="_", label="EIICBPGlc")
-
-plt.ylabel("concentrazioni")
-plt.xlabel("Time [s]")
-plt.legend(loc="upper left")
-plt.show()
+plot_number = 1
+idx = 0
+for i in range(0, len(vars), 4):
+    print(i)
+    plott = vars[i:i+4]
+    plt.figure(figsize=[15.0, 8.0])
+    for x in plott:
+        plt.plot(times, x, marker="_", label=f"x{idx}")
+        idx += 1
+    plt.xlabel("Time [s]")
+    plt.legend(loc="upper left")
+    plt.savefig(f"MPGOSPlot{plot_number}")
+    plt.close()
+    plot_number += 1

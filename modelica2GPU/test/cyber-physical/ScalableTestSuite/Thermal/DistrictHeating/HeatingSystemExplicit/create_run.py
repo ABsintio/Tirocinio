@@ -12,7 +12,7 @@ loadFile("HeatingSystemExplicit_model.mo");
 getErrorString();
 loadFile("HeatingSystemExplicit_N_{n_var}.mo");
 getErrorString();
-simulate(DistrictHeating.HeatingSystemExplicit.HeatingSystemExplicit_N_{n_var}, stopTime=432000.0, outputFormat="csv", interval=20);
+simulate(DistrictHeating.HeatingSystemExplicit.HeatingSystemExplicit_N_{n_var}, stopTime=20000, outputFormat="csv");
 getErrorString();
 """
 

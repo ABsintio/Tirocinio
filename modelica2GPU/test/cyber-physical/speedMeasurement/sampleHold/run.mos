@@ -4,7 +4,5 @@ loadFile("SecondOrderSystem.mo");
 getErrorString();
 loadFile("SampleAndHold.mo");
 getErrorString();
-simulate(SampleAndHold, stopTime=5);
-getErrorString();
-plot({omega1, omega1_measured}, externalWindow=true);
+simulate(SampleAndHold, stopTime=5, outputFormat="csv");
 getErrorString();

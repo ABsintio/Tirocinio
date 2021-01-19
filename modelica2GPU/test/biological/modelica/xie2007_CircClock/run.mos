@@ -1,9 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD160.mo");
 getErrorString();
-simulate(BIOMD160, stopTime=70.0);
-getErrorString();
-plot({VRI, CLK, PDP, PER, TIM}, externalWindow=true);
-getErrorString();
-plot({vrim, pdpm, perm, clkm}, externalWindow=true);
+simulate(BIOMD160, stopTime=70.0, outputFormat="csv");
 getErrorString();

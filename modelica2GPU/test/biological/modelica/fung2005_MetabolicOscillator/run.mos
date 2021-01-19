@@ -1,9 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD067.mo");
 getErrorString();
-simulate(BIOMD067, stopTime=200.0);
-getErrorString();
-plot({AcCoA, AcP, OAc, HOAc}, externalWindow=true);
-getErrorString();
-plot({LacI, Acs, Pta}, externalWindow=true);
+simulate(BIOMD067, stopTime=200.0, outputFormat="csv");
 getErrorString();

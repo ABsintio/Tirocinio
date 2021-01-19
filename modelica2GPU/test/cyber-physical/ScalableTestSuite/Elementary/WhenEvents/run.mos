@@ -3,7 +3,5 @@ loadFile("package.mo");getErrorString();
 loadFile("ManyEvents.mo");getErrorString();
 loadFile("ManyEventsManyConditions.mo");
 getErrorString();
-simulate(WhenEvents.ManyEventsManyConditions, stopTime=1.0,simflags="-s=rungekuttaSsc");
-getErrorString();
-plot({x[1],x[2],x[3],x[4],x[5],v}, externalWindow=true);
+simulate(WhenEvents.ManyEventsManyConditions, stopTime=1.0, outputFormat="csv");
 getErrorString();

@@ -1,7 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD010.mo");
 getErrorString();
-simulate(BIOMD010, stopTime=800.0);
-getErrorString();
-plot({MKKK, MKKK_P, MKK, MKK_P, MKK_PP, MAPK, MAPK_P, MAPK_PP}, externalWindow=true);
+simulate(BIOMD010, stopTime=800.0, outputFormat="csv");
 getErrorString();

@@ -76,7 +76,7 @@ class Model:
         for k, value in variables_dict.items():
             varname, ivalue = value.nome, str(value.init)
             # In caso troviamo dei "." facciamo il replace con "_"
-            if value.category != VariableCategory.DERIVATIVE:
+            if value.category != VariableCategory.DERIVATIVE and not isinstance(value, sPAR):
                 if ivalue == "None":
                     # Controllo che non ci siano variabili con valori iniziali None
                     # Se queste variabili sono presenti, il valore sarà impostato a 0

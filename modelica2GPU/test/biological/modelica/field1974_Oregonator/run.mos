@@ -1,7 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD040.mo");
 getErrorString();
-simulate(BIOMD040, stopTime=100.0);
-getErrorString();
-plot({Br, Ce, HBrO2}, externalWindow=true);
+simulate(BIOMD040, stopTime=100.0, outputFormat="csv");
 getErrorString();

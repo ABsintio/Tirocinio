@@ -17,11 +17,16 @@ with open(filename, mode="r", encoding="utf-8") as f:
 npvalues = np.array(values)
 times = npvalues[:, 0]
 x0    = npvalues[:, 1]
-#x1    = npvalues[:, 2]
+x1    = npvalues[:, 2]
 
 plt.plot(times, x0, marker="_", label="X0")
-#plt.plot(times, x1, marker="_", label="X1")
-plt.ylabel("X0, X1")
+plt.ylabel("X0")
+plt.xlabel("Time [s]")
+plt.legend(loc="upper left")
+plt.show()
+
+plt.plot(times, x1, marker="_", label="X1")
+plt.ylabel("X1")
 plt.xlabel("Time [s]")
 plt.legend(loc="upper left")
 plt.show()

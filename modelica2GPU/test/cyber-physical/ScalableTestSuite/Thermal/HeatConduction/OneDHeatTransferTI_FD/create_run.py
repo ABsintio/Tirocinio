@@ -3,13 +3,14 @@ import sys
 S = """
 loadModel(Modelica);
 getErrorString();
+loadFile("../package.mo");
 loadFile("package.mo");
 getErrorString();
 loadFile("OneDHeatTransferTI_FD.mo");
 getErrorString();
 loadFile("OneDHeatTransferTI_FD_N_{n_var}.mo");
 getErrorString();
-simulate(HeatConduction.OneDHeatTransferTI_FD_N_{n_var}, stopTime=350.0,outputFormat="csv");
+simulate(HeatConduction.OneDHeatTransferTI_FD.OneDHeatTransferTI_FD_N_{n_var}, stopTime=350.0,outputFormat="csv");
 getErrorString();
 """
 

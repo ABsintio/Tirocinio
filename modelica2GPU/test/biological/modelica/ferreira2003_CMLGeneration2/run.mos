@@ -1,13 +1,5 @@
 loadModel(Modelica);
 loadFile("BIOMD053.mo");
 getErrorString();
-simulate(BIOMD053, stopTime=50.0);
-getErrorString();
-//plot({Glucose}, externalWindow=true);
-//getErrorString();
-//plot({Lysine}, externalWindow=true);
-//getErrorString();
-plot({Schiff}, externalWindow=true);
-getErrorString();
-plot({Amadori, Glyoxal, CML}, externalWindow=true);
+simulate(BIOMD053, stopTime=50.0, outputFormat="csv");
 getErrorString();

@@ -13,7 +13,7 @@ using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 19;
 const int NCP  = 1;
 const int NSP  = 48;
@@ -21,7 +21,7 @@ const int NISP = 1;
 const int NE   = 0;
 const int NA   = 173;
 const int NIA  = 0;
-const int NDO  = 1500;
+const int NDO  = 1500000;
 
 
 void FillSolverObject(
