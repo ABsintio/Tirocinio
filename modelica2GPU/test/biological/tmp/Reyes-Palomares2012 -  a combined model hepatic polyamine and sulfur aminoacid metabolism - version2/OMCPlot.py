@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5ee121beace0933d957f50455cf41144096e1e7de85252c8de837f40b2af266b
-size 1669
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-c", "--csv", help="Path relativo o assoluto del file CSV contenente i dati")
+args = parser.parse_args()
+csv_file = args.csv
+
+# Apriamo e leggiamo il CSV in input
+csv_data = pd.read_csv(csv_file)
+
+# Prendiamo i nomi delle species con gli indici corrispettivi che utilizzeremo per il plotting
+variables_to_plot = ["parameter_1","parameter_2","parameter_3","parameter_4","b_gly","b_glu","b_cys","b_gsg","b_gsh","GAR","NADPH","BET","DUMP","H2O2","c_thf","c_5mf","c_2cf","c_1cf","c_10f","c_dhf","aic","c_glu","c_cys","glc","c_gly","c_gsg","c_gsh","cyt","hcy","c_ser","sah","sam","met","c_coo","species_1","species_2","species_3","species_4","species_5","species_6","species_7","species_8","species_9","CO","m_thf","m_2cf","m_1cf","m_10f","m_ser","m_gly","m_coo","Fol","HCHO","src","dmg"]
+species_tuple = [(idx, specie) for idx, specie in enumerate(csv_data.head(0)) if specie in variables_to_plot and specie != "time"]
+
+# Creiamo un array numpy per salvare i dati estrapolati dal CSV
+data_numpy = np.array(csv_data)
+
+# Prendiamo la colonna del tempo
+time = data_numpy[:, 0]
+
+# Prendiamo i valori a tuple di quattro i quali formeranno un singolo plot
+plot_number = 1
+for i in range(0, len(species_tuple), 4):
+    current_vars = species_tuple[i:i+4]
+    plt.figure(figsize=[15.0, 8.0])
+    for j, var in current_vars:
+        plt.plot(time, data_numpy[:, j], marker="_", label=var)
+    plt.xlabel("Time")
+    plt.legend(loc="upper left")
+    plt.savefig("OMCPlot" + str(plot_number) + ".png")
+    plot_number += 1
+    plt.close()

@@ -61,7 +61,6 @@ def _parsetag_fun(tag, variables_dict, MPGOSparam_dict, functions_dict=dict()):
         involved_vars = re.finditer(r"(ACC|sPAR|X|ACCi)\[[0-9]+\]", equation.__str__())
         for var in involved_vars:
             var_name = MPGOSparam_dict[var.group()].nome
-            print(equation, var_name)
             equation = equation.__str__().replace(var.group(), var_name)
         assign_list.append(Equation(Identifier(assign_tag[0]), equation))
     return Function(fun_name, inputs_var, output_var_name, assign_list)
