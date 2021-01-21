@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fed20eec4837107812da9f61191c494e50f4951514b80f1a06fad3c8541afce5
-size 275
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s[%(process)d] - %(levelname)s : %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    stream: ext://sys.stdout
+loggers:
+  root:
+    handlers:
+    - console
+    level: DEBUG
+version: 1
