@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 
-#include "BIOMD455_SystemDefinition.cuh"
+#include "BIOMD456_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
@@ -14,14 +14,14 @@ using namespace std;
 #define SOLVER RKCK45
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 9;
+const int SD   = 11;
 const int NCP  = 1;
 const int NSP  = 0;
 const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 1000000;
+const int NDO  = 100000;
 
 
 void FillSolverObject(
@@ -59,12 +59,14 @@ void SaveData(
         DataFile.width(Width); DataFile << "X_x1" << ',';
         DataFile.width(Width); DataFile << "X_x2" << ',';
         DataFile.width(Width); DataFile << "X_x3" << ',';
+        DataFile.width(Width); DataFile << "X_x4" << ',';
         DataFile.width(Width); DataFile << "X_y1" << ',';
         DataFile.width(Width); DataFile << "X_y2" << ',';
         DataFile.width(Width); DataFile << "X_y3" << ',';
         DataFile.width(Width); DataFile << "X_y4" << ',';
         DataFile.width(Width); DataFile << "X_y5" << ',';
-        DataFile.width(Width); DataFile << "X_y6" << ',';
+        DataFile.width(Width); DataFile << "X_y7" << ',';
+        DataFile.width(Width); DataFile << "X_y8" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
@@ -75,6 +77,8 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 6) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 7) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 8) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 9) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 10) << ',';
 
         DataFile << '\n';
     }
@@ -119,6 +123,8 @@ int main() {
     Solver.SolverOption(AbsoluteTolerance, 6, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 7, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 8, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 9, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 10, 1e-06);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
     Solver.SolverOption(RelativeTolerance, 1, 1e-06);
@@ -129,11 +135,13 @@ int main() {
     Solver.SolverOption(RelativeTolerance, 6, 1e-06);
     Solver.SolverOption(RelativeTolerance, 7, 1e-06);
     Solver.SolverOption(RelativeTolerance, 8, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 9, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 10, 1e-06);
    
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD455.csv" );
+    DataFile.open ( "BIOMD456.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
