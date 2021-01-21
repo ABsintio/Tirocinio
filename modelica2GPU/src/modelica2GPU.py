@@ -196,7 +196,7 @@ def get_modelica2GPU_configuration(config_file):
         genXML = m2g_conf['generateXML']
         xmlfile = createXML(m2g_conf['workingdir'], m2g_conf['modelfilename'], m2g_conf['omlibrary']) if genXML else m2g_conf['xml']
         notifier, filelogger = m2g_conf['notifier'], m2g_conf['filelogger']
-        modelname = xmlfile.split(".")[0].split("/")[-1]
+        modelname = m2g_conf['modelfilename'][:-3]
         event_num, state_num = getnumevents(xmlfile), getnumstate(xmlfile)
         builder_options = [builder_config['MPGOSsourcedir']]
         device = None
