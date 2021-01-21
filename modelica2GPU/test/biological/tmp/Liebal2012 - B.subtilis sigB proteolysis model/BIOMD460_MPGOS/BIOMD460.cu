@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 
-#include "BIOMD459_SystemDefinition.cuh"
+#include "BIOMD460_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
@@ -21,7 +21,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100000;
+const int NDO  = 1000000;
 
 
 void FillSolverObject(
@@ -34,7 +34,7 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 1000.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 10000.0);  
 
         Solver.SetHost(ProblemNumber, ActualTime, 0.0);
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
@@ -113,7 +113,7 @@ int main() {
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD459.csv" );
+    DataFile.open ( "BIOMD460.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
