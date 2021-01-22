@@ -310,8 +310,4 @@ equation
     der(Sink) = 0.0;
     der(kproteff)=0.0;
 
-    when time >= 345600 then
-        reinit(antiAb,50);
-    end when;
-
 end BIOMD488;
