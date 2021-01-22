@@ -1,12 +1,10 @@
-
-
 #include <iostream>
 #include <vector>
 #include <iomanip>
 #include <string>
 #include <fstream>
 
-#include "BIOMD488_SystemDefinition.cuh"
+#include "BIOMD494_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
@@ -14,14 +12,14 @@ using namespace std;
 #define SOLVER RKCK45
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 70;
+const int SD   = 80;
 const int NCP  = 1;
 const int NSP  = 0;
 const int NISP = 0;
-const int NE   = 0;
-const int NA   = 1;
+const int NE   = 2;
+const int NA   = 4;
 const int NIA  = 0;
-const int NDO  = 100000;
+const int NDO  = 10000000;
 
 
 void FillSolverObject(
@@ -56,77 +54,90 @@ void SaveData(
 	
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
-        DataFile.width(Width); DataFile << "X_ADP" << ',';
-        DataFile.width(Width); DataFile << "X_AMP" << ',';
-        DataFile.width(Width); DataFile << "X_ATMA" << ',';
-        DataFile.width(Width); DataFile << "X_ATMI" << ',';
-        DataFile.width(Width); DataFile << "X_ATP" << ',';
-        DataFile.width(Width); DataFile << "X_Abeta" << ',';
-        DataFile.width(Width); DataFile << "X_AbetaDimer" << ',';
-        DataFile.width(Width); DataFile << "X_AbetaDimer_antiAb" << ',';
-        DataFile.width(Width); DataFile << "X_AbetaPlaque" << ',';
-        DataFile.width(Width); DataFile << "X_AbetaPlaque_GliaA" << ',';
-        DataFile.width(Width); DataFile << "X_Abeta_antiAb" << ',';
-        DataFile.width(Width); DataFile << "X_AggAbeta_Proteasome" << ',';
-        DataFile.width(Width); DataFile << "X_AggTau" << ',';
-        DataFile.width(Width); DataFile << "X_AggTau_Proteasome" << ',';
-        DataFile.width(Width); DataFile << "X_DUB" << ',';
-        DataFile.width(Width); DataFile << "X_E1" << ',';
-        DataFile.width(Width); DataFile << "X_E1_Ub" << ',';
+        DataFile.width(Width); DataFile << "X_AF1" << ',';
+        DataFile.width(Width); DataFile << "X_AF2" << ',';
+        DataFile.width(Width); DataFile << "X_AF3" << ',';
+        DataFile.width(Width); DataFile << "X_AF4" << ',';
+        DataFile.width(Width); DataFile << "X_Ago_R_a" << ',';
+        DataFile.width(Width); DataFile << "X_Ago_R_i" << ',';
+        DataFile.width(Width); DataFile << "X_Ago_c" << ',';
+        DataFile.width(Width); DataFile << "X_Ago_d" << ',';
+        DataFile.width(Width); DataFile << "X_Ant_R" << ',';
+        DataFile.width(Width); DataFile << "X_Ant_c" << ',';
+        DataFile.width(Width); DataFile << "X_Ant_d" << ',';
+        DataFile.width(Width); DataFile << "X_Ant_p" << ',';
         DataFile.width(Width); DataFile << "X_E2" << ',';
-        DataFile.width(Width); DataFile << "X_E2_Ub" << ',';
-        DataFile.width(Width); DataFile << "X_GSK3b" << ',';
-        DataFile.width(Width); DataFile << "X_GSK3b_p53" << ',';
-        DataFile.width(Width); DataFile << "X_GSK3b_p53_P" << ',';
-        DataFile.width(Width); DataFile << "X_GliaA" << ',';
-        DataFile.width(Width); DataFile << "X_GliaI" << ',';
-        DataFile.width(Width); DataFile << "X_GliaM1" << ',';
-        DataFile.width(Width); DataFile << "X_GliaM2" << ',';
-        DataFile.width(Width); DataFile << "X_IR" << ',';
-        DataFile.width(Width); DataFile << "X_MT_Tau" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2DUB" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_P" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_P1_p53_Ub4" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_P_Ub" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_P_Ub2" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_P_Ub3" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_P_Ub4" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_P_Ub4_Proteasome" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_Ub" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_Ub2" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_Ub3" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_Ub4" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_Ub4_Proteasome" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_mRNA" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_p53" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_p53_Ub" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_p53_Ub2" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_p53_Ub3" << ',';
-        DataFile.width(Width); DataFile << "X_Mdm2_p53_Ub4" << ',';
-        DataFile.width(Width); DataFile << "X_NFT" << ',';
-        DataFile.width(Width); DataFile << "X_PP1" << ',';
-        DataFile.width(Width); DataFile << "X_Proteasome" << ',';
-        DataFile.width(Width); DataFile << "X_Proteasome_Tau" << ',';
-        DataFile.width(Width); DataFile << "X_ROS" << ',';
-        DataFile.width(Width); DataFile << "X_Sink" << ',';
-        DataFile.width(Width); DataFile << "X_Source" << ',';
-        DataFile.width(Width); DataFile << "X_Tau" << ',';
-        DataFile.width(Width); DataFile << "X_Tau_P1" << ',';
-        DataFile.width(Width); DataFile << "X_Tau_P2" << ',';
-        DataFile.width(Width); DataFile << "X_Ub" << ',';
-        DataFile.width(Width); DataFile << "X_antiAb" << ',';
-        DataFile.width(Width); DataFile << "X_damDNA" << ',';
-        DataFile.width(Width); DataFile << "X_degAbetaGlia" << ',';
-        DataFile.width(Width); DataFile << "X_disaggPlaque1" << ',';
-        DataFile.width(Width); DataFile << "X_disaggPlaque2" << ',';
-        DataFile.width(Width); DataFile << "X_kproteff" << ',';
-        DataFile.width(Width); DataFile << "X_p53" << ',';
-        DataFile.width(Width); DataFile << "X_p53DUB" << ',';
-        DataFile.width(Width); DataFile << "X_p53_P" << ',';
-        DataFile.width(Width); DataFile << "X_p53_Ub4_Proteasome" << ',';
-        DataFile.width(Width); DataFile << "X_p53_mRNA" << ',';
+        DataFile.width(Width); DataFile << "X_FSH_R" << ',';
+        DataFile.width(Width); DataFile << "X_FSH_bld" << ',';
+        DataFile.width(Width); DataFile << "X_FSH_pit" << ',';
+        DataFile.width(Width); DataFile << "X_GnRH" << ',';
+        DataFile.width(Width); DataFile << "X_GnRH_R_a" << ',';
+        DataFile.width(Width); DataFile << "X_GnRH_R_i" << ',';
+        DataFile.width(Width); DataFile << "X_InhA" << ',';
+        DataFile.width(Width); DataFile << "X_InhA_delay" << ',';
+        DataFile.width(Width); DataFile << "X_InhB" << ',';
+        DataFile.width(Width); DataFile << "X_LH_Pit" << ',';
+        DataFile.width(Width); DataFile << "X_LH_R" << ',';
+        DataFile.width(Width); DataFile << "X_LH_bld" << ',';
+        DataFile.width(Width); DataFile << "X_Lut1" << ',';
+        DataFile.width(Width); DataFile << "X_Lut2" << ',';
+        DataFile.width(Width); DataFile << "X_Lut3" << ',';
+        DataFile.width(Width); DataFile << "X_Lut4" << ',';
+        DataFile.width(Width); DataFile << "X_OvF" << ',';
+        DataFile.width(Width); DataFile << "X_P4" << ',';
+        DataFile.width(Width); DataFile << "X_PrF" << ',';
+        DataFile.width(Width); DataFile << "X_R_FSH" << ',';
+        DataFile.width(Width); DataFile << "X_R_FSH_des" << ',';
+        DataFile.width(Width); DataFile << "X_R_Foll" << ',';
+        DataFile.width(Width); DataFile << "X_R_GnRH_a" << ',';
+        DataFile.width(Width); DataFile << "X_R_GnRH_i" << ',';
+        DataFile.width(Width); DataFile << "X_R_LH" << ',';
+        DataFile.width(Width); DataFile << "X_R_LH_des" << ',';
+        DataFile.width(Width); DataFile << "X_Sc1" << ',';
+        DataFile.width(Width); DataFile << "X_Sc2" << ',';
+        DataFile.width(Width); DataFile << "X_csa1_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_s102" << ',';
+        DataFile.width(Width); DataFile << "X_s106" << ',';
+        DataFile.width(Width); DataFile << "X_s107" << ',';
+        DataFile.width(Width); DataFile << "X_s108" << ',';
+        DataFile.width(Width); DataFile << "X_s113" << ',';
+        DataFile.width(Width); DataFile << "X_s114" << ',';
+        DataFile.width(Width); DataFile << "X_s115" << ',';
+        DataFile.width(Width); DataFile << "X_s116" << ',';
+        DataFile.width(Width); DataFile << "X_s33" << ',';
+        DataFile.width(Width); DataFile << "X_s38" << ',';
+        DataFile.width(Width); DataFile << "X_s62" << ',';
+        DataFile.width(Width); DataFile << "X_s64" << ',';
+        DataFile.width(Width); DataFile << "X_s66" << ',';
+        DataFile.width(Width); DataFile << "X_s67" << ',';
+        DataFile.width(Width); DataFile << "X_s69" << ',';
+        DataFile.width(Width); DataFile << "X_s71" << ',';
+        DataFile.width(Width); DataFile << "X_s72" << ',';
+        DataFile.width(Width); DataFile << "X_s74" << ',';
+        DataFile.width(Width); DataFile << "X_s76" << ',';
+        DataFile.width(Width); DataFile << "X_s78" << ',';
+        DataFile.width(Width); DataFile << "X_s82" << ',';
+        DataFile.width(Width); DataFile << "X_s85" << ',';
+        DataFile.width(Width); DataFile << "X_s87" << ',';
+        DataFile.width(Width); DataFile << "X_s92" << ',';
+        DataFile.width(Width); DataFile << "X_s93" << ',';
+        DataFile.width(Width); DataFile << "X_s94" << ',';
+        DataFile.width(Width); DataFile << "X_s95" << ',';
+        DataFile.width(Width); DataFile << "X_sa1_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa28_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa31_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa35_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa3_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa52_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa53_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa61_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa75_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa78_degraded" << ',';
+        DataFile.width(Width); DataFile << "X_sa86_degraded" << ',';
+        DataFile.width(Width); DataFile << "ACC_freq" << ',';
+        DataFile.width(Width); DataFile << "ACC_mass" << ',';
         DataFile.width(Width); DataFile << "ACC_$whenCondition1" << ',';
+        DataFile.width(Width); DataFile << "ACC_$whenCondition2" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
@@ -198,7 +209,20 @@ void SaveData(
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 67) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 68) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 69) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 70) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 71) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 72) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 73) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 74) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 75) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 76) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 77) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 78) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 79) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 2) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 3) << ',';
 
         DataFile << '\n';
     }
@@ -230,6 +254,9 @@ int main() {
 
     Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
+
+    Solver.SolverOption(EventDirection, 0, 0);
+    Solver.SolverOption(EventDirection, 1, 0);
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
@@ -303,6 +330,16 @@ int main() {
     Solver.SolverOption(AbsoluteTolerance, 67, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 68, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 69, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 70, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 71, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 72, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 73, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 74, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 75, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 76, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 77, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 78, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 79, 1e-06);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
     Solver.SolverOption(RelativeTolerance, 1, 1e-06);
@@ -374,11 +411,21 @@ int main() {
     Solver.SolverOption(RelativeTolerance, 67, 1e-06);
     Solver.SolverOption(RelativeTolerance, 68, 1e-06);
     Solver.SolverOption(RelativeTolerance, 69, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 70, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 71, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 72, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 73, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 74, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 75, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 76, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 77, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 78, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 79, 1e-06);
    
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BIOMD488.csv" );
+    DataFile.open ( "BIOMD494.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
