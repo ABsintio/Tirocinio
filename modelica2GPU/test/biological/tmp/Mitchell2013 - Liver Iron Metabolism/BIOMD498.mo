@@ -151,6 +151,15 @@ model BIOMD498 "Mitchell2013 - Liver Iron Metabolism"
     algorithm
         y :=  basal + a * M^n / (K^n + M^n) + a1 * M1 / (K1 + M1);
     end function_11;
+    
+    
+    function lt
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := (x < y);
+    end lt;
 
 
     parameter Real a_0 = 2.0;

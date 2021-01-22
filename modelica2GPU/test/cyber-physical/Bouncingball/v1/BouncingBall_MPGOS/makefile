@@ -10,3 +10,4 @@ BouncingBall.exe: BouncingBall.cu
 clean:
 	rm -f BouncingBall.exe
 	rm -f *.txt
+	rm -f *.csv

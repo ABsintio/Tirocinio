@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Functions.cuh"
 
 
 template<class Precision> __forceinline__ __device__ void PerThread_OdeFunction(
@@ -33,7 +34,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_ActionAfterE
     Precision* cPAR, Precision* sPAR, int*       sPARi, Precision* ACC, int* ACCi
 ) {
     if (IDX == 0){
-	    X[1]=((-(sPAR[0])) * ACC[1]);
+	    X[1]=(-0.8 * ACC[1]);
     }
 
 }
@@ -55,9 +56,7 @@ template<class Precision> __forceinline__ __device__ void PerThread_Initializati
     T     = TD[0];
     DOIDX = 0;
     ACC[0]=0.0; //$whenCondition1
-    sPAR[0]=0.8; //e
-    sPAR[1]=1.0; //h0
-    X[0]=sPAR[1]; //h
+    X[0]=1.0; //h
     X[1]=0.0; //v
     ACC[1]=0.0; //$PRE.v
 

@@ -6,19 +6,17 @@
 #include <string>
 #include <fstream>
 
-#define PI 3.14159265358979323846
-
 #include "BouncingBall_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
-#define SOLVER RKCK45 // Runge-Kutta Order 4th
+#define SOLVER RKCK45
 #define PRECISION double
 const int NT   = 1;
 const int SD   = 2;
 const int NCP  = 1;
-const int NSP  = 2;
+const int NSP  = 0;
 const int NISP = 0;
 const int NE   = 1;
 const int NA   = 2;
@@ -36,30 +34,15 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 3.0);  
-
-        // Settaggio dei valori iniziali degli ActualState
- 
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 100.0);  
 
         Solver.SetHost(ProblemNumber, ActualTime, 0.0);
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
         Solver.SetHost(ProblemNumber, DenseIndex, 0 );
 
-        // Settaggio dei valori iniziali per ACC (se presenti)
-
-
-        // Settaggio dei valori iniziali per ACCi (se presenti)
-
-		
         ProblemNumber++;
         k_begin++;
     }
-
-    // Settaggio dei valori iniziali per sPAR (se presenti)
-
-
-    // Settaggio dei valori iniziali per sPARi (se presenti)
-
 }
 
 
@@ -75,15 +58,11 @@ void SaveData(
     {
         DataFile.width(Width); DataFile << "X_h" << ',';
         DataFile.width(Width); DataFile << "X_v" << ',';
-        DataFile.width(Width); DataFile << "sPAR_e" << ',';
-        DataFile.width(Width); DataFile << "sPAR_h0" << ',';
         DataFile.width(Width); DataFile << "ACC_$whenCondition1" << ',';
         DataFile.width(Width); DataFile << "ACC_$PRE.v" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 0) << ',';
-        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 1) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
 
@@ -94,7 +73,7 @@ void SaveData(
 
 int main() {
     int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
-    int blockSize        = 64; // Numero di Thread per blocchi
+    int blockSize        = 512; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
     ListCUDADevices();
@@ -113,7 +92,7 @@ int main() {
     Solver.SolverOption(ActiveNumberOfThreads, NT);
     Solver.SolverOption(MaximumTimeStep, 1000000.0);
     Solver.SolverOption(MinimumTimeStep, 1e-14);
-    Solver.SolverOption(TimeStepGrowLimit, 1.0);
+    Solver.SolverOption(TimeStepGrowLimit, 5.0);
 
     Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 

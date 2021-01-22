@@ -273,9 +273,9 @@ class Parser:
                     # le funzioni C++ per gli eventi in quanto si dovrà utilizzare il 
                     # vettore EF (event function) e quindi devo tenere il conto di quanti eventi trovo
                     if when_eq.condition[1] not in self.event_conditions:
-                        self.event_conditions.append(when_eq.condition)
+                        self.event_conditions.append(when_eq.condition[1])
+                        self.nevents += 1
                     self.dynamic_equations["events"]['when'].append(when_eq)
-                    self.nevents += 1
                 else:
                     # Se invece la parte destra della condizione è di tipo sample allora
                     # devo prendere l'equazione che sarebbe dovuto essere dell'evento e
