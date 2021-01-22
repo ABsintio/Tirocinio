@@ -1,0 +1,248 @@
+
+model BIOMD477 "Mol2013 - Immune Signal Transduction in Leishmaniasis"
+
+    function pow
+        input  Real x;
+        input  Real power;
+        output Real y;
+        algorithm
+            y := x^power;
+    end pow;
+    
+    function piecewise
+        input Real x;
+        input Boolean condition;
+        input Real y;
+        output Real z;
+        algorithm
+            z := if condition then x else y;
+    end piecewise;
+
+
+
+    parameter Real mw826aae9f_9728_4bbb_a11b_60578912218b_0 = 1.2;
+    parameter Real mw6834a7ac_63c4_4741_b0fc_069c665f1de2_1 = 1.18;
+    parameter Real mw56211dd8_6a88_465e_bed2_f603bf8c5b52_2 = 0.6;
+    parameter Real mw0733f43b_b430_40c4_8b93_1555a4bdbaa1_2 = 0.6;
+    parameter Real mwf89fc9a4_ad1e_4e59_8a06_4b8dc2cc84a7_3 = 0.28;
+    parameter Real mwaad66a38_26d2_41fc_9261_79c57500a6d4_3 = 1.5;
+    parameter Real mwbf5d43e3_e386_4b05_997d_4e70cbff9498_4 = 0.15;
+    parameter Real mw5fdc2487_13a9_449a_b90c_95446ddf7f37_4 = 1.3;
+    parameter Real mw9ac53fed_0388_4261_b457_030cd631fa0e_5 = 0.1;
+    parameter Real mwd4bfd4cc_6fd4_4b3b_980d_547ce2740b7e_5 = 2.2;
+    parameter Real mwa68f7af3_30af_4fa0_9290_9e005c875763_6 = 1.4;
+    parameter Real mwa7160f91_3c68_402a_b3bd_acd8490c5d2d_7 = 0.56;
+    parameter Real mw2b6193d2_d588_46b7_8463_ce7bc30e1575_7 = 1.3;
+    parameter Real mw31c3bf7d_10cd_412a_9a76_0fb66845c18d_8 = 0.6;
+    parameter Real mw37ac6d2c_1be9_4998_a9c5_8761d3e0ba0f_8 = 0.2;
+    parameter Real mw8adff9cb_4657_413f_a2bd_100d4aa53076_9 = 0.98;
+    parameter Real mwc9cf88fa_c525_4372_80e1_c72b1cc758f1_9 = 0.15;
+    parameter Real mwafa60fbe_9272_468d_94e7_b82b985f938c_10 = 0.61;
+    parameter Real mw1a1570ff_e786_473f_860b_2e7694acfcc2_11 = 1.14;
+    parameter Real mwf88d190e_a505_4f7e_ac8d_e43997c74b9c_11 = 0.62;
+    parameter Real mw2b1ea101_d4a1_42e9_a70f_cb8026911ed5_12 = 0.08;
+    parameter Real mw9d622ba3_b43b_4101_bef8_c964c2f158a0_12 = 0.99;
+    parameter Real mw107b07de_5145_436d_9fd7_e4e2103106d7_13 = 1.2;
+    parameter Real mwd51a525a_5fea_42c6_a8fd_40429ee627cf_13 = 0.02;
+    parameter Real mw286a7792_09c4_443e_98f4_a68f66a1f380_14 = 1.0;
+    parameter Real mw2a0659f9_eab8_4ada_8f82_23068b9986eb_15 = 1.5;
+    parameter Real mw13b39522_0751_4041_a78e_871cd5d81592_15 = 0.2;
+    parameter Real mw6e048357_d06d_4522_bb79_a91c4f53bda7_16 = 0.6;
+    parameter Real mw4c0ee457_fb1c_48fa_a0b7_ff10d632d1e0_17 = 2.0;
+    parameter Real mw5aa11378_86b4_45f6_aea1_27208e47e559_18 = 0.72;
+    parameter Real mw36ee8f87_d06f_4d16_ac13_f4075b56c6f4_19 = 0.55;
+    parameter Real mwf0b9efb6_f0e9_4704_b5b1_dec2a68c3321_20 = 0.48;
+    parameter Real mwf5a1613b_fb22_43b0_b95a_2c18ecbcedd8_21 = 0.5;
+    parameter Real mw85a8c1da_f29f_4dcf_a515_bf9f9921240b_21 = 0.2;
+    parameter Real mw1c3fcb1f_0b90_46dd_b13a_2950fb9e18ae_22 = 0.2;
+    parameter Real mw8a65d230_2abb_478d_ab8a_6719d972483d_22 = 0.01;
+    parameter Real mw5990b7f9_7d15_4306_9047_6237ecf066ca_23 = 0.9;
+    parameter Real mwc29ba5b1_b0e7_4fa1_9e46_a4c0bdbdacc4_23 = 0.2;
+    parameter Real mwd2f6a3b7_5a74_4d77_b40c_1a6713b98554_24 = 0.42;
+    parameter Real mw75017b10_387d_43e4_9fb1_fed7ce6bd490_25 = 0.3;
+    parameter Real mw251bb80a_5527_4b9c_9834_99556d4e824a_25 = 0.01;
+    parameter Real mw6ac279a2_23fe_4e48_a910_2a94ef61244c_26 = 0.1;
+    parameter Real mw0e1c63a9_8b8a_4ec7_9608_0059208d992f_26 = 0.01;
+    parameter Real mwcad6928f_259d_4125_987e_977e0c40ef7d_27 = 1.5;
+    parameter Real mw1670fb0f_e301_4b7a_93d4_35fe7f504e92_27 = 0.03;
+    parameter Real mw1a4dcdaf_ff4b_41a9_ac1d_79fd2d942260_28 = 0.6;
+    parameter Real mwb3751ef8_2226_4ec3_9ac9_f92f5771a1a4_29 = 0.0002;
+    parameter Real mw244e346b_4442_45db_864e_0442ceca94d1_29 = 0.5;
+    parameter Real mw18e075a4_dde4_42be_9315_e0e90d461b99_30 = 0.6;
+    parameter Real mw6d4dc2a5_6fe8_4d80_93f4_b9f438b6eb0e_30 = 1.0;
+    parameter Real mweaee0b65_7c40_4c9e_bd70_c5454eeb41fa_31 = 0.9;
+    parameter Real mw84020ddc_e419_4aa4_ab12_e84989ad461d_31 = 0.3;
+    parameter Real mw9d566811_669e_4b95_8452_c4853f54a2de_32 = 0.35;
+    parameter Real mw99befd62_975f_49e1_bfaf_22a482ce44ea_33 = 1.2;
+    parameter Real mwb38e4258_82d9_4b48_8059_eccf9fd6f8e3_33 = 0.2;
+    parameter Real mw78df1f4c_2a96_4d8f_a009_c19ba0ec406a_34 = 0.2;
+    parameter Real mw6a74caa7_9d44_449b_854b_c1678b36ac1d_34 = 0.8;
+    parameter Real mw3690266b_c916_4ba1_a98a_b589dc75c1cd_35 = 0.8;
+    parameter Real mwb69d510c_dcde_4bfb_9e4a_89954f6a7bf5_35 = 1.5;
+    parameter Real mwb336e12c_0e62_4fff_94c0_2771b1a19065_36 = 0.2;
+    parameter Real mw661c7759_2bd3_4c93_bb0a_823bb37b9820_37 = 0.299;
+    parameter Real mw883852ed_c433_4dec_baa0_386309fc085c_38 = 0.24;
+    parameter Real mw6069097b_159a_4bcf_a591_e496d06cf0a9_38 = 1.2;
+    parameter Real mw78a1e67e_883c_497f_86a6_f85da783010e_39 = 0.2;
+    parameter Real mw5d6cf9c6_4dc0_4fe6_9afc_da397fe896b2_39 = 1.5;
+    parameter Real mw26de6022_cc14_484b_a172_db4173a1ccaa_40 = 0.7;
+    parameter Real mw7e75e47c_6d88_49fb_a9c4_9154f12cc4d5_40 = 1.5;
+    parameter Real mw2f1f65d1_5633_4625_b2b7_0eb267eac293_41 = 0.4;
+    parameter Real mw0b0869f4_26bb_4d13_9124_b2c1b28e3ae1_41 = 1.5;
+    parameter Real mw234b354b_eb7b_4af6_a678_9339f6b5eb8d_42 = 0.01;
+    parameter Real mw18baeb4d_ad18_4c22_95c4_2ada0f618c65_42 = 1.8;
+    parameter Real mw66285193_607e_42b6_b726_c2409a2ce563_43 = 1.0;
+    parameter Real mwa4c28075_8524_4874_aee5_c38231bfbaae_43 = 1.5;
+    parameter Real mw9a480703_d4bb_4de8_8975_13a18205ce53_44 = 0.19;
+    parameter Real mwbad3f510_fbca_4aa7_a4c2_5c1b47297802_45 = 2.35;
+    parameter Real mw4d5fd70d_8603_4056_adfa_5af26d657455_45 = 1.0;
+    parameter Real mw2fa0d3fe_4e99_49d2_a339_089198589a1e_45 = 0.43;
+    parameter Real mw2b132eeb_ce2a_4a53_8c22_c102ebd2edb9_46 = 1.1;
+    parameter Real mwdeab2870_570e_4b2c_b73d_84c1ad8c2262_47 = 1.0;
+    parameter Real mw4945db3d_e20c_4870_b96b_6fb98c4b12f6_47 = 1.0;
+    parameter Real mw0f1ee85e_95a3_42c7_94ae_71f36061aaf0_48 = 1.0;
+    parameter Real mw933afd80_4eff_4c6c_967b_d15b2244e55d_48 = 1.0;
+    parameter Real mw0cba5a10_f303_4c95_aaf1_b6f942374d31 = 1.0;
+    parameter Real mwa5ac95a5_d135_4de0_bce2_093ac2c172db = 1.0;
+
+
+
+    Real mw4d2e70a7_f499_461d_ae18_bc53b365b091;
+    Real mw8cc67de0_64e6_428f_ab09_4c2825cc172c;
+    Real mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa;
+    Real mw2dc73059_a841_48d5_b4bd_3ac24d94c42e;
+    Real mw136c8391_14f4_4a28_83a3_35cc74a2e040;
+    Real mw7204ab72_2ee5_4b92_b420_2583dacc4343;
+    Real mw6939cefe_e7ff_4a3f_b45b_a9234d1b5573;
+    Real mwf8cfed1b_6fcf_4cba_bc30_b44490814a7a;
+    Real mw702be69a_eb4f_425e_87c7_ef7d85254536;
+    Real mwbee11634_55df_4a3f_998a_634dfaf46fd7;
+    Real mw805b55df_cc91_4227_bb52_930e961b682c;
+    Real mwb71eb539_dca6_47ab_8df5_430d84af0bfb;
+    Real mwa5d6f7e4_dc4d_4931_91ce_1e78e7b2f195;
+    Real mw4079e13c_446e_4aa2_9ec4_233583833d02;
+    Real mwe5fade7d_1715_4bb1_843f_923da8ecddf1;
+    Real mw262497ec_3d54_4367_bfe3_76a9c57497cb;
+    Real mw8bffd47e_34de_4738_81bf_7a39a40b3ae8;
+    Real mw308b75ec_28b7_4d97_92e2_51a8ce04116a;
+    Real mw75377e12_e23d_44b3_9823_5fac9b23edc8;
+    Real mw67d0cf04_d6a7_4725_a869_098a96a3350d;
+    Real mw46ee629a_dd6b_4163_9da1_2614bb1d74bc;
+    Real mw0be0d193_fd6b_4824_8928_dbade8b5c99c;
+    Real mw280197c8_98de_43f0_bf01_0f332a1ab689;
+    Real mw9a5baf6d_0285_4ad3_9499_059c553d9cf6;
+    Real mw05469f51_73f7_4ba1_9f1a_bce5fea143c2;
+    Real mwf20834c8_a115_460b_859c_4e3ca1ffd953;
+    Real mwb4633da9_f9d6_4ad8_a7e5_da075c830e17;
+    Real mw9bb804c9_3e4e_4684_9f6b_4e6f6706a58e;
+    Real mw64453fc5_a275_4bba_84f0_2af249b31514;
+    Real mw323a57b4_8e59_4116_9ad1_fe547b89c858;
+    Real mw173d8585_5817_4b4c_932a_cf7d673680ac;
+    Real mw32c21c39_237b_4d4c_bb5d_117cb30ce68a;
+    Real mw3832f277_aef2_4f1d_87af_abc2a3c1a7d5;
+    Real mw13651143_feb5_49a5_adab_9105c2647446;
+    Real mw8a358487_b18b_42df_a646_cd75eb5bfcc2;
+    Real mwd9e7a9b9_6f1b_4bbc_afa5_6cb192b62ce8;
+    Real mwfed5a135_c91b_4d20_91b2_3a61723544dd;
+    Real mw97345a67_a8e8_42aa_8e62_69e9d2b6cf45;
+    Real mw5c67812a_17f5_43cf_8acb_9bde272c1911;
+    Real mw1f12e5bc_ebbc_4347_b6b7_5cd1740ac69a;
+    Real mwda4716f1_ae00_4149_aec3_12531380425a;
+    Real mw17ae9adc_54ab_407b_a34d_8413a3a10cc6;
+    Real mwc844b7c0_98f5_4d0d_8f0c_00dfe8b54e6d;
+
+initial equation
+    mw4d2e70a7_f499_461d_ae18_bc53b365b091 = 1.5;
+    mw8cc67de0_64e6_428f_ab09_4c2825cc172c = 1.3;
+    mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa = 1.3;
+    mw2dc73059_a841_48d5_b4bd_3ac24d94c42e = 0.8;
+    mw136c8391_14f4_4a28_83a3_35cc74a2e040 = 1.5;
+    mw7204ab72_2ee5_4b92_b420_2583dacc4343 = 1.4;
+    mw6939cefe_e7ff_4a3f_b45b_a9234d1b5573 = 1.2;
+    mwf8cfed1b_6fcf_4cba_bc30_b44490814a7a = 1.4;
+    mw702be69a_eb4f_425e_87c7_ef7d85254536 = 1.2;
+    mwbee11634_55df_4a3f_998a_634dfaf46fd7 = 1.2;
+    mw805b55df_cc91_4227_bb52_930e961b682c = 1.5;
+    mwb71eb539_dca6_47ab_8df5_430d84af0bfb = 0.9;
+    mwa5d6f7e4_dc4d_4931_91ce_1e78e7b2f195 = 1.5;
+    mw4079e13c_446e_4aa2_9ec4_233583833d02 = 1.5;
+    mwe5fade7d_1715_4bb1_843f_923da8ecddf1 = 0.85;
+    mw262497ec_3d54_4367_bfe3_76a9c57497cb = 1.0;
+    mw8bffd47e_34de_4738_81bf_7a39a40b3ae8 = 1.1;
+    mw308b75ec_28b7_4d97_92e2_51a8ce04116a = 1.3;
+    mw75377e12_e23d_44b3_9823_5fac9b23edc8 = 1.1;
+    mw67d0cf04_d6a7_4725_a869_098a96a3350d = 0.8;
+    mw46ee629a_dd6b_4163_9da1_2614bb1d74bc = 1.5;
+    mw0be0d193_fd6b_4824_8928_dbade8b5c99c = 1.6;
+    mw280197c8_98de_43f0_bf01_0f332a1ab689 = 1.3;
+    mw9a5baf6d_0285_4ad3_9499_059c553d9cf6 = 1.6;
+    mw05469f51_73f7_4ba1_9f1a_bce5fea143c2 = 1.45;
+    mwf20834c8_a115_460b_859c_4e3ca1ffd953 = 0.9;
+    mwb4633da9_f9d6_4ad8_a7e5_da075c830e17 = 1.5;
+    mw9bb804c9_3e4e_4684_9f6b_4e6f6706a58e = 1.6;
+    mw64453fc5_a275_4bba_84f0_2af249b31514 = 1.2;
+    mw323a57b4_8e59_4116_9ad1_fe547b89c858 = 0.3;
+    mw173d8585_5817_4b4c_932a_cf7d673680ac = 1.2;
+    mw32c21c39_237b_4d4c_bb5d_117cb30ce68a = 1.2;
+    mw3832f277_aef2_4f1d_87af_abc2a3c1a7d5 = 1.6;
+    mw13651143_feb5_49a5_adab_9105c2647446 = 1.1;
+    mw8a358487_b18b_42df_a646_cd75eb5bfcc2 = 0.2;
+    mwd9e7a9b9_6f1b_4bbc_afa5_6cb192b62ce8 = 0.6;
+    mwfed5a135_c91b_4d20_91b2_3a61723544dd = 0.91;
+    mw97345a67_a8e8_42aa_8e62_69e9d2b6cf45 = 0.8;
+    mw5c67812a_17f5_43cf_8acb_9bde272c1911 = 0.5;
+    mw1f12e5bc_ebbc_4347_b6b7_5cd1740ac69a = 0.0;
+    mwda4716f1_ae00_4149_aec3_12531380425a = 0.0;
+    mw17ae9adc_54ab_407b_a34d_8413a3a10cc6 = 0.0;
+    mwc844b7c0_98f5_4d0d_8f0c_00dfe8b54e6d = 0.0;
+
+equation
+
+    der(mw4d2e70a7_f499_461d_ae18_bc53b365b091) = (mw2b132eeb_ce2a_4a53_8c22_c102ebd2edb9_46 * mwc844b7c0_98f5_4d0d_8f0c_00dfe8b54e6d) - (mw826aae9f_9728_4bbb_a11b_60578912218b_0 * mw4d2e70a7_f499_461d_ae18_bc53b365b091);
+    der(mw8cc67de0_64e6_428f_ab09_4c2825cc172c) = (mw826aae9f_9728_4bbb_a11b_60578912218b_0 * mw4d2e70a7_f499_461d_ae18_bc53b365b091) - (mw6834a7ac_63c4_4741_b0fc_069c665f1de2_1 * mw8cc67de0_64e6_428f_ab09_4c2825cc172c);
+    der(mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa) = (mw6834a7ac_63c4_4741_b0fc_069c665f1de2_1 * mw8cc67de0_64e6_428f_ab09_4c2825cc172c) - (mw0733f43b_b430_40c4_8b93_1555a4bdbaa1_2 * mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa / (mw56211dd8_6a88_465e_bed2_f603bf8c5b52_2 + mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa)) - (mwf89fc9a4_ad1e_4e59_8a06_4b8dc2cc84a7_3 * mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa / (mwaad66a38_26d2_41fc_9261_79c57500a6d4_3 + mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa)) - (mw9d622ba3_b43b_4101_bef8_c964c2f158a0_12 * mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa / (mw2b1ea101_d4a1_42e9_a70f_cb8026911ed5_12 + mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa));
+    der(mw2dc73059_a841_48d5_b4bd_3ac24d94c42e) = (mw5fdc2487_13a9_449a_b90c_95446ddf7f37_4 * mw136c8391_14f4_4a28_83a3_35cc74a2e040 / (mwbf5d43e3_e386_4b05_997d_4e70cbff9498_4 + mw136c8391_14f4_4a28_83a3_35cc74a2e040)) - (mw2b6193d2_d588_46b7_8463_ce7bc30e1575_7 * mw2dc73059_a841_48d5_b4bd_3ac24d94c42e / (mwa7160f91_3c68_402a_b3bd_acd8490c5d2d_7 + mw2dc73059_a841_48d5_b4bd_3ac24d94c42e));
+    der(mw136c8391_14f4_4a28_83a3_35cc74a2e040) = (mw0733f43b_b430_40c4_8b93_1555a4bdbaa1_2 * mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa / (mw56211dd8_6a88_465e_bed2_f603bf8c5b52_2 + mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa)) + (mwf5a1613b_fb22_43b0_b95a_2c18ecbcedd8_21 * mw308b75ec_28b7_4d97_92e2_51a8ce04116a / (mw85a8c1da_f29f_4dcf_a515_bf9f9921240b_21 + mw308b75ec_28b7_4d97_92e2_51a8ce04116a)) - (mw5fdc2487_13a9_449a_b90c_95446ddf7f37_4 * mw136c8391_14f4_4a28_83a3_35cc74a2e040 / (mwbf5d43e3_e386_4b05_997d_4e70cbff9498_4 + mw136c8391_14f4_4a28_83a3_35cc74a2e040));
+    der(mw7204ab72_2ee5_4b92_b420_2583dacc4343) = (mw2b6193d2_d588_46b7_8463_ce7bc30e1575_7 * mw2dc73059_a841_48d5_b4bd_3ac24d94c42e / (mwa7160f91_3c68_402a_b3bd_acd8490c5d2d_7 + mw2dc73059_a841_48d5_b4bd_3ac24d94c42e)) + (mw99befd62_975f_49e1_bfaf_22a482ce44ea_33 * mwb4633da9_f9d6_4ad8_a7e5_da075c830e17 / (mwb38e4258_82d9_4b48_8059_eccf9fd6f8e3_33 + mwb4633da9_f9d6_4ad8_a7e5_da075c830e17)) - (mwd4bfd4cc_6fd4_4b3b_980d_547ce2740b7e_5 * mw7204ab72_2ee5_4b92_b420_2583dacc4343 / (mw9ac53fed_0388_4261_b457_030cd631fa0e_5 + mw7204ab72_2ee5_4b92_b420_2583dacc4343));
+    der(mw6939cefe_e7ff_4a3f_b45b_a9234d1b5573) = (mwd4bfd4cc_6fd4_4b3b_980d_547ce2740b7e_5 * mw7204ab72_2ee5_4b92_b420_2583dacc4343 / (mw9ac53fed_0388_4261_b457_030cd631fa0e_5 + mw7204ab72_2ee5_4b92_b420_2583dacc4343)) - (mwa68f7af3_30af_4fa0_9290_9e005c875763_6 * mw6939cefe_e7ff_4a3f_b45b_a9234d1b5573);
+    der(mwf8cfed1b_6fcf_4cba_bc30_b44490814a7a) = (mwf89fc9a4_ad1e_4e59_8a06_4b8dc2cc84a7_3 * mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa / (mwaad66a38_26d2_41fc_9261_79c57500a6d4_3 + mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa)) - (mw31c3bf7d_10cd_412a_9a76_0fb66845c18d_8 * mwf8cfed1b_6fcf_4cba_bc30_b44490814a7a / (mw37ac6d2c_1be9_4998_a9c5_8761d3e0ba0f_8 + mwf8cfed1b_6fcf_4cba_bc30_b44490814a7a));
+    der(mw702be69a_eb4f_425e_87c7_ef7d85254536) = (mw31c3bf7d_10cd_412a_9a76_0fb66845c18d_8 * mwf8cfed1b_6fcf_4cba_bc30_b44490814a7a / (mw37ac6d2c_1be9_4998_a9c5_8761d3e0ba0f_8 + mwf8cfed1b_6fcf_4cba_bc30_b44490814a7a)) + (mw75017b10_387d_43e4_9fb1_fed7ce6bd490_25 * mw308b75ec_28b7_4d97_92e2_51a8ce04116a / (mw251bb80a_5527_4b9c_9834_99556d4e824a_25 + mw308b75ec_28b7_4d97_92e2_51a8ce04116a)) + (mw2f1f65d1_5633_4625_b2b7_0eb267eac293_41 * mw173d8585_5817_4b4c_932a_cf7d673680ac / (mw0b0869f4_26bb_4d13_9124_b2c1b28e3ae1_41 + mw173d8585_5817_4b4c_932a_cf7d673680ac)) - (mw8adff9cb_4657_413f_a2bd_100d4aa53076_9 * mw702be69a_eb4f_425e_87c7_ef7d85254536 / (mwc9cf88fa_c525_4372_80e1_c72b1cc758f1_9 + mw702be69a_eb4f_425e_87c7_ef7d85254536));
+    der(mwbee11634_55df_4a3f_998a_634dfaf46fd7) = (mw8adff9cb_4657_413f_a2bd_100d4aa53076_9 * mw702be69a_eb4f_425e_87c7_ef7d85254536 / (mwc9cf88fa_c525_4372_80e1_c72b1cc758f1_9 + mw702be69a_eb4f_425e_87c7_ef7d85254536)) - (mwafa60fbe_9272_468d_94e7_b82b985f938c_10 * mwbee11634_55df_4a3f_998a_634dfaf46fd7);
+    der(mw805b55df_cc91_4227_bb52_930e961b682c) = (mw9d622ba3_b43b_4101_bef8_c964c2f158a0_12 * mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa / (mw2b1ea101_d4a1_42e9_a70f_cb8026911ed5_12 + mw6ee00a71_ab68_454b_b1cd_60c1ebd19cfa)) - (mw107b07de_5145_436d_9fd7_e4e2103106d7_13 * mw805b55df_cc91_4227_bb52_930e961b682c / (mwd51a525a_5fea_42c6_a8fd_40429ee627cf_13 + mw805b55df_cc91_4227_bb52_930e961b682c));
+    der(mwb71eb539_dca6_47ab_8df5_430d84af0bfb) = (mwcad6928f_259d_4125_987e_977e0c40ef7d_27 * mw46ee629a_dd6b_4163_9da1_2614bb1d74bc / (mw1670fb0f_e301_4b7a_93d4_35fe7f504e92_27 + mw46ee629a_dd6b_4163_9da1_2614bb1d74bc)) - (mw286a7792_09c4_443e_98f4_a68f66a1f380_14 * mwb71eb539_dca6_47ab_8df5_430d84af0bfb);
+    der(mwa5d6f7e4_dc4d_4931_91ce_1e78e7b2f195) =  - (mw6e048357_d06d_4522_bb79_a91c4f53bda7_16 * mwa5d6f7e4_dc4d_4931_91ce_1e78e7b2f195);
+    der(mw4079e13c_446e_4aa2_9ec4_233583833d02) = (mw6e048357_d06d_4522_bb79_a91c4f53bda7_16 * mwa5d6f7e4_dc4d_4931_91ce_1e78e7b2f195) - (mw4c0ee457_fb1c_48fa_a0b7_ff10d632d1e0_17 * mw4079e13c_446e_4aa2_9ec4_233583833d02);
+    der(mwe5fade7d_1715_4bb1_843f_923da8ecddf1) = (mw4c0ee457_fb1c_48fa_a0b7_ff10d632d1e0_17 * mw4079e13c_446e_4aa2_9ec4_233583833d02) - (mw5aa11378_86b4_45f6_aea1_27208e47e559_18 * mwe5fade7d_1715_4bb1_843f_923da8ecddf1);
+    der(mw262497ec_3d54_4367_bfe3_76a9c57497cb) = (mw5aa11378_86b4_45f6_aea1_27208e47e559_18 * mwe5fade7d_1715_4bb1_843f_923da8ecddf1) - (mw36ee8f87_d06f_4d16_ac13_f4075b56c6f4_19 * mw262497ec_3d54_4367_bfe3_76a9c57497cb);
+    der(mw8bffd47e_34de_4738_81bf_7a39a40b3ae8) = (mw36ee8f87_d06f_4d16_ac13_f4075b56c6f4_19 * mw262497ec_3d54_4367_bfe3_76a9c57497cb) - (mwf0b9efb6_f0e9_4704_b5b1_dec2a68c3321_20 * mw8bffd47e_34de_4738_81bf_7a39a40b3ae8);
+    der(mw308b75ec_28b7_4d97_92e2_51a8ce04116a) = (mwf0b9efb6_f0e9_4704_b5b1_dec2a68c3321_20 * mw8bffd47e_34de_4738_81bf_7a39a40b3ae8) - (mwf5a1613b_fb22_43b0_b95a_2c18ecbcedd8_21 * mw308b75ec_28b7_4d97_92e2_51a8ce04116a / (mw85a8c1da_f29f_4dcf_a515_bf9f9921240b_21 + mw308b75ec_28b7_4d97_92e2_51a8ce04116a)) - (mw1c3fcb1f_0b90_46dd_b13a_2950fb9e18ae_22 * mw308b75ec_28b7_4d97_92e2_51a8ce04116a / (mw8a65d230_2abb_478d_ab8a_6719d972483d_22 + mw308b75ec_28b7_4d97_92e2_51a8ce04116a)) - (mw75017b10_387d_43e4_9fb1_fed7ce6bd490_25 * mw308b75ec_28b7_4d97_92e2_51a8ce04116a / (mw251bb80a_5527_4b9c_9834_99556d4e824a_25 + mw308b75ec_28b7_4d97_92e2_51a8ce04116a)) - (mw6ac279a2_23fe_4e48_a910_2a94ef61244c_26 * mw308b75ec_28b7_4d97_92e2_51a8ce04116a / (mw0e1c63a9_8b8a_4ec7_9608_0059208d992f_26 + mw308b75ec_28b7_4d97_92e2_51a8ce04116a));
+    der(mw75377e12_e23d_44b3_9823_5fac9b23edc8) = (mw1c3fcb1f_0b90_46dd_b13a_2950fb9e18ae_22 * mw308b75ec_28b7_4d97_92e2_51a8ce04116a / (mw8a65d230_2abb_478d_ab8a_6719d972483d_22 + mw308b75ec_28b7_4d97_92e2_51a8ce04116a)) + (mw26de6022_cc14_484b_a172_db4173a1ccaa_40 * mw32c21c39_237b_4d4c_bb5d_117cb30ce68a / (mw7e75e47c_6d88_49fb_a9c4_9154f12cc4d5_40 + mw32c21c39_237b_4d4c_bb5d_117cb30ce68a)) - (mw5990b7f9_7d15_4306_9047_6237ecf066ca_23 * mw75377e12_e23d_44b3_9823_5fac9b23edc8 / (mwc29ba5b1_b0e7_4fa1_9e46_a4c0bdbdacc4_23 + mw75377e12_e23d_44b3_9823_5fac9b23edc8));
+    der(mw67d0cf04_d6a7_4725_a869_098a96a3350d) = (mw5990b7f9_7d15_4306_9047_6237ecf066ca_23 * mw75377e12_e23d_44b3_9823_5fac9b23edc8 / (mwc29ba5b1_b0e7_4fa1_9e46_a4c0bdbdacc4_23 + mw75377e12_e23d_44b3_9823_5fac9b23edc8)) - (mwd2f6a3b7_5a74_4d77_b40c_1a6713b98554_24 * mw67d0cf04_d6a7_4725_a869_098a96a3350d);
+    der(mw46ee629a_dd6b_4163_9da1_2614bb1d74bc) = (mw107b07de_5145_436d_9fd7_e4e2103106d7_13 * mw805b55df_cc91_4227_bb52_930e961b682c / (mwd51a525a_5fea_42c6_a8fd_40429ee627cf_13 + mw805b55df_cc91_4227_bb52_930e961b682c)) + (mw6ac279a2_23fe_4e48_a910_2a94ef61244c_26 * mw308b75ec_28b7_4d97_92e2_51a8ce04116a / (mw0e1c63a9_8b8a_4ec7_9608_0059208d992f_26 + mw308b75ec_28b7_4d97_92e2_51a8ce04116a)) - (mwcad6928f_259d_4125_987e_977e0c40ef7d_27 * mw46ee629a_dd6b_4163_9da1_2614bb1d74bc / (mw1670fb0f_e301_4b7a_93d4_35fe7f504e92_27 + mw46ee629a_dd6b_4163_9da1_2614bb1d74bc));
+    der(mw0be0d193_fd6b_4824_8928_dbade8b5c99c) =  - (mw1a4dcdaf_ff4b_41a9_ac1d_79fd2d942260_28 * mw0be0d193_fd6b_4824_8928_dbade8b5c99c);
+    der(mw280197c8_98de_43f0_bf01_0f332a1ab689) = (mw1a4dcdaf_ff4b_41a9_ac1d_79fd2d942260_28 * mw0be0d193_fd6b_4824_8928_dbade8b5c99c) - (mwb3751ef8_2226_4ec3_9ac9_f92f5771a1a4_29 * mw280197c8_98de_43f0_bf01_0f332a1ab689 / (mw244e346b_4442_45db_864e_0442ceca94d1_29 + mw280197c8_98de_43f0_bf01_0f332a1ab689)) - (mw78df1f4c_2a96_4d8f_a009_c19ba0ec406a_34 * mw280197c8_98de_43f0_bf01_0f332a1ab689 / (mw6a74caa7_9d44_449b_854b_c1678b36ac1d_34 + mw280197c8_98de_43f0_bf01_0f332a1ab689)) - (mw661c7759_2bd3_4c93_bb0a_823bb37b9820_37 * mw280197c8_98de_43f0_bf01_0f332a1ab689) - (mw234b354b_eb7b_4af6_a678_9339f6b5eb8d_42 * mw280197c8_98de_43f0_bf01_0f332a1ab689 / (mw18baeb4d_ad18_4c22_95c4_2ada0f618c65_42 + mw280197c8_98de_43f0_bf01_0f332a1ab689));
+    der(mw9a5baf6d_0285_4ad3_9499_059c553d9cf6) = (mwb3751ef8_2226_4ec3_9ac9_f92f5771a1a4_29 * mw280197c8_98de_43f0_bf01_0f332a1ab689 / (mw244e346b_4442_45db_864e_0442ceca94d1_29 + mw280197c8_98de_43f0_bf01_0f332a1ab689)) - (mw18e075a4_dde4_42be_9315_e0e90d461b99_30 * mw9a5baf6d_0285_4ad3_9499_059c553d9cf6 / (mw6d4dc2a5_6fe8_4d80_93f4_b9f438b6eb0e_30 + mw9a5baf6d_0285_4ad3_9499_059c553d9cf6));
+    der(mw05469f51_73f7_4ba1_9f1a_bce5fea143c2) = (mw18e075a4_dde4_42be_9315_e0e90d461b99_30 * mw9a5baf6d_0285_4ad3_9499_059c553d9cf6 / (mw6d4dc2a5_6fe8_4d80_93f4_b9f438b6eb0e_30 + mw9a5baf6d_0285_4ad3_9499_059c553d9cf6)) - (mweaee0b65_7c40_4c9e_bd70_c5454eeb41fa_31 * mw05469f51_73f7_4ba1_9f1a_bce5fea143c2 / (mw84020ddc_e419_4aa4_ab12_e84989ad461d_31 + mw05469f51_73f7_4ba1_9f1a_bce5fea143c2));
+    der(mwf20834c8_a115_460b_859c_4e3ca1ffd953) = (mweaee0b65_7c40_4c9e_bd70_c5454eeb41fa_31 * mw05469f51_73f7_4ba1_9f1a_bce5fea143c2 / (mw84020ddc_e419_4aa4_ab12_e84989ad461d_31 + mw05469f51_73f7_4ba1_9f1a_bce5fea143c2)) - (mw9d566811_669e_4b95_8452_c4853f54a2de_32 * mwf20834c8_a115_460b_859c_4e3ca1ffd953);
+    der(mwb4633da9_f9d6_4ad8_a7e5_da075c830e17) = (mw9d566811_669e_4b95_8452_c4853f54a2de_32 * mwf20834c8_a115_460b_859c_4e3ca1ffd953) - (mw99befd62_975f_49e1_bfaf_22a482ce44ea_33 * mwb4633da9_f9d6_4ad8_a7e5_da075c830e17 / (mwb38e4258_82d9_4b48_8059_eccf9fd6f8e3_33 + mwb4633da9_f9d6_4ad8_a7e5_da075c830e17)) - (mwdeab2870_570e_4b2c_b73d_84c1ad8c2262_47 * mwb4633da9_f9d6_4ad8_a7e5_da075c830e17 / (mw4945db3d_e20c_4870_b96b_6fb98c4b12f6_47 + mwb4633da9_f9d6_4ad8_a7e5_da075c830e17)) - (mw0f1ee85e_95a3_42c7_94ae_71f36061aaf0_48 * mwb4633da9_f9d6_4ad8_a7e5_da075c830e17 / (mw933afd80_4eff_4c6c_967b_d15b2244e55d_48 + mwb4633da9_f9d6_4ad8_a7e5_da075c830e17));
+    der(mw9bb804c9_3e4e_4684_9f6b_4e6f6706a58e) = (mw78df1f4c_2a96_4d8f_a009_c19ba0ec406a_34 * mw280197c8_98de_43f0_bf01_0f332a1ab689 / (mw6a74caa7_9d44_449b_854b_c1678b36ac1d_34 + mw280197c8_98de_43f0_bf01_0f332a1ab689)) - (mw3690266b_c916_4ba1_a98a_b589dc75c1cd_35 * mw9bb804c9_3e4e_4684_9f6b_4e6f6706a58e / (mwb69d510c_dcde_4bfb_9e4a_89954f6a7bf5_35 + mw9bb804c9_3e4e_4684_9f6b_4e6f6706a58e));
+    der(mw64453fc5_a275_4bba_84f0_2af249b31514) = (mw3690266b_c916_4ba1_a98a_b589dc75c1cd_35 * mw9bb804c9_3e4e_4684_9f6b_4e6f6706a58e / (mwb69d510c_dcde_4bfb_9e4a_89954f6a7bf5_35 + mw9bb804c9_3e4e_4684_9f6b_4e6f6706a58e)) - (mwb336e12c_0e62_4fff_94c0_2771b1a19065_36 * mw64453fc5_a275_4bba_84f0_2af249b31514);
+    der(mw323a57b4_8e59_4116_9ad1_fe547b89c858) = (mw661c7759_2bd3_4c93_bb0a_823bb37b9820_37 * mw280197c8_98de_43f0_bf01_0f332a1ab689) - (mw883852ed_c433_4dec_baa0_386309fc085c_38 * mw323a57b4_8e59_4116_9ad1_fe547b89c858 / (mw6069097b_159a_4bcf_a591_e496d06cf0a9_38 + mw323a57b4_8e59_4116_9ad1_fe547b89c858));
+    der(mw173d8585_5817_4b4c_932a_cf7d673680ac) = (mw883852ed_c433_4dec_baa0_386309fc085c_38 * mw323a57b4_8e59_4116_9ad1_fe547b89c858 / (mw6069097b_159a_4bcf_a591_e496d06cf0a9_38 + mw323a57b4_8e59_4116_9ad1_fe547b89c858)) + (mwdeab2870_570e_4b2c_b73d_84c1ad8c2262_47 * mwb4633da9_f9d6_4ad8_a7e5_da075c830e17 / (mw4945db3d_e20c_4870_b96b_6fb98c4b12f6_47 + mwb4633da9_f9d6_4ad8_a7e5_da075c830e17)) - (mw78a1e67e_883c_497f_86a6_f85da783010e_39 * mw173d8585_5817_4b4c_932a_cf7d673680ac / (mw5d6cf9c6_4dc0_4fe6_9afc_da397fe896b2_39 + mw173d8585_5817_4b4c_932a_cf7d673680ac)) - (mw2f1f65d1_5633_4625_b2b7_0eb267eac293_41 * mw173d8585_5817_4b4c_932a_cf7d673680ac / (mw0b0869f4_26bb_4d13_9124_b2c1b28e3ae1_41 + mw173d8585_5817_4b4c_932a_cf7d673680ac));
+    der(mw32c21c39_237b_4d4c_bb5d_117cb30ce68a) = (mw78a1e67e_883c_497f_86a6_f85da783010e_39 * mw173d8585_5817_4b4c_932a_cf7d673680ac / (mw5d6cf9c6_4dc0_4fe6_9afc_da397fe896b2_39 + mw173d8585_5817_4b4c_932a_cf7d673680ac)) + (mw0f1ee85e_95a3_42c7_94ae_71f36061aaf0_48 * mwb4633da9_f9d6_4ad8_a7e5_da075c830e17 / (mw933afd80_4eff_4c6c_967b_d15b2244e55d_48 + mwb4633da9_f9d6_4ad8_a7e5_da075c830e17)) - (mw26de6022_cc14_484b_a172_db4173a1ccaa_40 * mw32c21c39_237b_4d4c_bb5d_117cb30ce68a / (mw7e75e47c_6d88_49fb_a9c4_9154f12cc4d5_40 + mw32c21c39_237b_4d4c_bb5d_117cb30ce68a));
+    der(mw3832f277_aef2_4f1d_87af_abc2a3c1a7d5) = (mw234b354b_eb7b_4af6_a678_9339f6b5eb8d_42 * mw280197c8_98de_43f0_bf01_0f332a1ab689 / (mw18baeb4d_ad18_4c22_95c4_2ada0f618c65_42 + mw280197c8_98de_43f0_bf01_0f332a1ab689)) - (mw66285193_607e_42b6_b726_c2409a2ce563_43 * mw3832f277_aef2_4f1d_87af_abc2a3c1a7d5 / (mwa4c28075_8524_4874_aee5_c38231bfbaae_43 + mw3832f277_aef2_4f1d_87af_abc2a3c1a7d5));
+    der(mw13651143_feb5_49a5_adab_9105c2647446) = (mw66285193_607e_42b6_b726_c2409a2ce563_43 * mw3832f277_aef2_4f1d_87af_abc2a3c1a7d5 / (mwa4c28075_8524_4874_aee5_c38231bfbaae_43 + mw3832f277_aef2_4f1d_87af_abc2a3c1a7d5)) - (mw9a480703_d4bb_4de8_8975_13a18205ce53_44 * mw13651143_feb5_49a5_adab_9105c2647446);
+    der(mw8a358487_b18b_42df_a646_cd75eb5bfcc2) = (mwa68f7af3_30af_4fa0_9290_9e005c875763_6 * mw6939cefe_e7ff_4a3f_b45b_a9234d1b5573) - (mwbad3f510_fbca_4aa7_a4c2_5c1b47297802_45 * pow(mw8a358487_b18b_42df_a646_cd75eb5bfcc2, mw4d5fd70d_8603_4056_adfa_5af26d657455_45) / (mw2fa0d3fe_4e99_49d2_a339_089198589a1e_45 + pow(mw8a358487_b18b_42df_a646_cd75eb5bfcc2, mw4d5fd70d_8603_4056_adfa_5af26d657455_45)));
+    der(mwd9e7a9b9_6f1b_4bbc_afa5_6cb192b62ce8) = (mwafa60fbe_9272_468d_94e7_b82b985f938c_10 * mwbee11634_55df_4a3f_998a_634dfaf46fd7) - (mw1a1570ff_e786_473f_860b_2e7694acfcc2_11 * mwd9e7a9b9_6f1b_4bbc_afa5_6cb192b62ce8 / (mwf88d190e_a505_4f7e_ac8d_e43997c74b9c_11 + mwd9e7a9b9_6f1b_4bbc_afa5_6cb192b62ce8));
+    der(mwfed5a135_c91b_4d20_91b2_3a61723544dd) = (mw1a1570ff_e786_473f_860b_2e7694acfcc2_11 * mwd9e7a9b9_6f1b_4bbc_afa5_6cb192b62ce8 / (mwf88d190e_a505_4f7e_ac8d_e43997c74b9c_11 + mwd9e7a9b9_6f1b_4bbc_afa5_6cb192b62ce8)) ;
+    der(mw97345a67_a8e8_42aa_8e62_69e9d2b6cf45) = (mw286a7792_09c4_443e_98f4_a68f66a1f380_14 * mwb71eb539_dca6_47ab_8df5_430d84af0bfb) - (mw2a0659f9_eab8_4ada_8f82_23068b9986eb_15 * mw97345a67_a8e8_42aa_8e62_69e9d2b6cf45 / (mw13b39522_0751_4041_a78e_871cd5d81592_15 + mw97345a67_a8e8_42aa_8e62_69e9d2b6cf45));
+    der(mw5c67812a_17f5_43cf_8acb_9bde272c1911) = (mw2a0659f9_eab8_4ada_8f82_23068b9986eb_15 * mw97345a67_a8e8_42aa_8e62_69e9d2b6cf45 / (mw13b39522_0751_4041_a78e_871cd5d81592_15 + mw97345a67_a8e8_42aa_8e62_69e9d2b6cf45)) ;
+    der(mw1f12e5bc_ebbc_4347_b6b7_5cd1740ac69a) = (mwd2f6a3b7_5a74_4d77_b40c_1a6713b98554_24 * mw67d0cf04_d6a7_4725_a869_098a96a3350d) ;
+    der(mwda4716f1_ae00_4149_aec3_12531380425a) = (mwb336e12c_0e62_4fff_94c0_2771b1a19065_36 * mw64453fc5_a275_4bba_84f0_2af249b31514) ;
+    der(mw17ae9adc_54ab_407b_a34d_8413a3a10cc6) = (mw9a480703_d4bb_4de8_8975_13a18205ce53_44 * mw13651143_feb5_49a5_adab_9105c2647446) ;
+    der(mwc844b7c0_98f5_4d0d_8f0c_00dfe8b54e6d) = (mwbad3f510_fbca_4aa7_a4c2_5c1b47297802_45 * pow(mw8a358487_b18b_42df_a646_cd75eb5bfcc2, mw4d5fd70d_8603_4056_adfa_5af26d657455_45) / (mw2fa0d3fe_4e99_49d2_a339_089198589a1e_45 + pow(mw8a358487_b18b_42df_a646_cd75eb5bfcc2, mw4d5fd70d_8603_4056_adfa_5af26d657455_45))) - (mw2b132eeb_ce2a_4a53_8c22_c102ebd2edb9_46 * mwc844b7c0_98f5_4d0d_8f0c_00dfe8b54e6d);
+
+
+
+
+end BIOMD477;
