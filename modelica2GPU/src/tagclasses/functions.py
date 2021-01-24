@@ -53,7 +53,6 @@ def _parsetag_fun(tag, variables_dict, MPGOSparam_dict, functions_dict=dict()):
     alg_tag = tag.find("{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Algorithm")
     for assign_tag in alg_tag:
         equation = _parsetag_eq(assign_tag[1][0], variables_dict, functions_dict)
-
         # Controlliamo che l'equazione parsata non abbia variabili sPAR, ACC oppure X o ACCi
         # In quanto potrebbe accadere che la definizione di funzione contenga variabili realmente 
         # esistenti nel modello e che quindi vengano tradotte. Se succede questo allora le 

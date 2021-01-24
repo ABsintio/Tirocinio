@@ -283,6 +283,8 @@ FUNCTION_PATTERN_FILE = """
 
 %s
 
+%s
+
 #endif
 """
 
@@ -697,7 +699,9 @@ class Builder:
         # END LOG
         global FUNCTION_PATTERN_FILE
         perFunction_format = "__device__ %s %s(%s){\n%s\n}"
+        perFunction_prototype_format = "__device__ %s %s(%s);"
         file_content = []
+        file_content_prototype = []
         input_format = "{type} {name}"
         types_map = {"Real": "PRECISION", "Boolean": "bool", "Integer": "int"}
         for func_name, func_obj in self.functions_list.items():
@@ -706,11 +710,13 @@ class Builder:
             body_operations = "\n".join([f"    {return_type} {func_obj.output[0]} = 0.0;"] + \
                 ["    " + x.__str__() for x in func_obj.assign_list] + [f"    return {func_obj.output[0]};"])
             file_content.append(perFunction_format % (return_type, func_name, inputs, body_operations))
+            file_content_prototype.append(perFunction_prototype_format % (return_type, func_name, inputs))
         # START LOG
         msg = f"Terminata formattazione del file function.cuh"
         self.logger.debug(msg, msg)
         # END LOG
-        return FUNCTION_PATTERN_FILE % (self.abstract_model.model_name, self.abstract_model.model_name, "\n".join(file_content))
+        return FUNCTION_PATTERN_FILE % (self.abstract_model.model_name, self.abstract_model.model_name, 
+                                        "\n".join(file_content_prototype), "\n".join(file_content))
 
 
     

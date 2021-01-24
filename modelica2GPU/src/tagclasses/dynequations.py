@@ -494,17 +494,18 @@ class FunctionCall:
         # Prendo gli input della funzione
         inputs_var = []
         for x in self.fun_call_tag[1]:
-            class_op, arity = getoperatorclass(x.tag)
+            # class_op, arity = getoperatorclass(x.tag)
             el = _parsetag_eq(x, self.variables_dict)
             inputs_var.append(el.__str__())
         # Controllo che la funzione non sia builtin (ad es. pow, sin, cos, tan, ...)
         try:
-            name = fun_name.split(".")[-1].capitalize()
-            class_op, _ = getoperatorclass(f"{EXPRESSION_NS}{name}")
-            return class_op(*inputs_var)
+            if not fun_name in self.fun_dict:
+                name = fun_name.capitalize()
+                class_op, _ = getoperatorclass(f"{EXPRESSION_NS}{name}")
+                return class_op(*inputs_var)
         except exceptions.builtExceptions.OperatorNotFoundException:
             pass
-        return f"{fun_name}(" + ",".join([x for x in inputs_var]) + ")" 
+        return f"{fun_name}(" + ",".join([x for x in inputs_var]) + ")"
     
     def __str__(self): return self._parsefuncall_tag().__str__()
 
