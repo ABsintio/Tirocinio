@@ -1,5 +1,5 @@
-from tagclasses.dynequations import *
-from tagclasses.dynequations import _parsetag_eq
+from tagclasses.algorithms import *
+from tagclasses.algorithms import _parsealgorithm_tag
 import re
 
 
@@ -25,18 +25,6 @@ class Function:
     def setinput(self, inputs): self.MPGOS_inputs = inputs
 
 
-class Assign(BinaryOperator):
-    """ classe che rappresenta il tag <fun:Assign> ... </fun:Assign> """
-    def __init__(self, l, r):
-        super().__init__(l, r)
-    
-    def __str__(self): return self.left.__str__() + "=" + self.right.__str__() + ";"
-
-
-# Faccio l'update dell'insieme delle classi per gli operatori
-OPERATOR_CLASSES['{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Assign'] = (Assign, 0)
-
-
 # ----------------------------------------- # FUNZIONE PER IL PARSING DELLE FUNZIONI # ----------------------------------------- #
         
 
@@ -52,7 +40,8 @@ def _parsetag_fun(tag, variables_dict, MPGOSparam_dict, functions_dict=dict()):
     assign_list = []
     alg_tag = tag.find("{https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd}Algorithm")
     for assign_tag in alg_tag:
-        equation = _parsetag_eq(assign_tag[1][0], variables_dict, functions_dict)
+        equation = _parsealgorithm_tag(assign_tag, variables_dict, functions_dict)
+        
         # Controlliamo che l'equazione parsata non abbia variabili sPAR, ACC oppure X o ACCi
         # In quanto potrebbe accadere che la definizione di funzione contenga variabili realmente 
         # esistenti nel modello e che quindi vengano tradotte. Se succede questo allora le 
@@ -61,5 +50,7 @@ def _parsetag_fun(tag, variables_dict, MPGOSparam_dict, functions_dict=dict()):
         for var in involved_vars:
             var_name = MPGOSparam_dict[var.group()].nome
             equation = equation.__str__().replace(var.group(), var_name)
-        assign_list.append(Equation(Identifier(assign_tag[0]), equation))
+            
+        assign_list.append(equation)
+
     return Function(fun_name, inputs_var, output_var_name, assign_list)

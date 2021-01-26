@@ -1,0 +1,2110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenModelicaModelDescription
+  xmlns:exp="https://svn.jmodelica.org/trunk/XML/daeExpressions.xsd"
+  xmlns:equ="https://svn.jmodelica.org/trunk/XML/daeEquations.xsd"
+  xmlns:fun="https://svn.jmodelica.org/trunk/XML/daeFunctions.xsd"
+  xmlns:opt="https://svn.jmodelica.org/trunk/XML/daeOptimization.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="1.0"
+  modelName="BIOMD528"
+  modelIdentifier="BIOMD528"
+  guid="{a6b28e7f-8cc6-4c11-8f35-4beff3cd6840}"
+  generationDateAndTime="2021-01-25T20:11:52"
+  variableNamingConvention="structured"
+  numberOfContinuousStates="13"
+  numberOfEventIndicators="0"
+  >
+  
+  <VendorAnnotations>
+    <Tool name="OpenModelica Compiler OpenModelica 1.16.2"> </Tool>
+  </VendorAnnotations>
+
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1e-06" />
+
+  <ModelVariables>
+    <ScalarVariable name="IFNa_env"  valueReference="0" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IFNa_env"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IFNa_mRNA"  valueReference="1" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IFNa_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IFNb_env"  valueReference="2" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IFNb_env"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IFNb_mRNA"  valueReference="3" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IFNb_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IRF7Pn"  valueReference="4" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRF7Pn"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IRF7m"  valueReference="5" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRF7m"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="SOCS1m"  valueReference="6" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="SOCS1m"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="STAT"  valueReference="7" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="STAT"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="STATP2n"  valueReference="8" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="STATP2n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="STATm"  valueReference="9" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="STATm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="TNFam"  valueReference="10" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="TNFam"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="TNFenv"  valueReference="11" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="TNFenv"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="w"  valueReference="12" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="w"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>state</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="der(IFNa_env)"  valueReference="13" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IFNa_env"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IFNa_mRNA)"  valueReference="14" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IFNa_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IFNb_env)"  valueReference="15" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IFNb_env"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IFNb_mRNA)"  valueReference="16" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IFNb_mRNA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IRF7Pn)"  valueReference="17" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRF7Pn"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(IRF7m)"  valueReference="18" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IRF7m"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(SOCS1m)"  valueReference="19" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="SOCS1m"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(STAT)"  valueReference="20" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="STAT"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(STATP2n)"  valueReference="21" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="STATP2n"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(STATm)"  valueReference="22" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="STATm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(TNFam)"  valueReference="23" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="TNFam"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(TNFenv)"  valueReference="24" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="TNFenv"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="der(w)"  valueReference="25" variability="continuous" causality="internal" alias="noAlias">
+      <Real     />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="w"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>derivative</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="IC1"  valueReference="26" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IC1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IC2"  valueReference="27" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IC2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="IC2ifa"  valueReference="28" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="IC2ifa"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NS"  valueReference="29" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NS"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="TJ"  valueReference="30" variability="continuous" causality="internal" alias="noAlias">
+      <Real start="0.0" fixed="false"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="TJ"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>algebraic</VariableCategory>
+    </ScalarVariable> 
+    <ScalarVariable name="C"  valueReference="31" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="500000.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="C"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K17"  valueReference="32" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.002" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K17"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K19"  valueReference="33" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.004" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K19"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K2"  valueReference="34" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.002" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K20"  valueReference="35" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0005999999999999999" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K20"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K3"  valueReference="36" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0043" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K5"  valueReference="37" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.01" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="K9"  valueReference="38" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="780.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="K9"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="NA"  valueReference="39" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6.023e+23" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="NA"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="TJtot"  valueReference="40" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="TJtot"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="bm"  valueReference="41" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="6.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="bm"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="c2"  valueReference="42" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="c2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="compartment"  valueReference="43" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="compartment"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="default"  valueReference="44" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="default"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="delta"  valueReference="45" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0003" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="delta"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="delta1"  valueReference="46" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.1" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="delta1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="delta2"  valueReference="47" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.4" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="delta2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k11"  valueReference="48" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.00036" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k11"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k12"  valueReference="49" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="360.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k12"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k14"  valueReference="50" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.204e-07" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k14"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k15"  valueReference="51" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="3.6e-08" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k15"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k16"  valueReference="52" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.36" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k16"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k26"  valueReference="53" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.360085" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k26"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k28"  valueReference="54" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="360.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k28"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="k8"  valueReference="55" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0036" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="k8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="n1"  valueReference="56" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="n1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="n2"  valueReference="57" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="n2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="n3"  valueReference="58" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="5.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="n3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r0"  valueReference="59" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r0"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r1"  valueReference="60" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.0001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r3"  valueReference="61" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1e-07" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r4"  valueReference="62" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1e-05" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="r5"  valueReference="63" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="r5"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="rmax20"  valueReference="64" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="rmax20"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="sp"  valueReference="65" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.3" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="sp"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="sv"  valueReference="66" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.1" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="sv"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tao1"  valueReference="67" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.5" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tao1"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tao12"  valueReference="68" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tao12"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tao13"  valueReference="69" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="15.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tao13"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tao3"  valueReference="70" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.5600000000000001" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tao3"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tao4"  valueReference="71" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="0.46" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tao4"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tao6"  valueReference="72" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="1.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tao6"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tao8"  valueReference="73" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tao8"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="tao9"  valueReference="74" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="2.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="tao9"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="vmax17"  valueReference="75" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="72000.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="vmax17"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="vmax19"  valueReference="76" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="154800.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="vmax19"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+
+    <ScalarVariable name="vmax2"  valueReference="77" variability="parameter" causality="parameter" alias="noAlias">
+      <Real start="72000.0" fixed="true"    />
+      <QualifiedName>
+        <exp:QualifiedNamePart name="vmax2"/>
+      </QualifiedName>
+    <isLinearTimedVariables>
+      <TimePoint index="0" isLinear="true"/>
+    </isLinearTimedVariables>
+      <VariableCategory>independentParameter</VariableCategory>
+    </ScalarVariable> 
+  </ModelVariables>
+
+  <equ:BindingEquations>
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="C"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>500000.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K17"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.002</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K19"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.004</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.002</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K20"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0005999999999999999</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0043</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K5"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.01</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="K9"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>780.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="NA"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6.023e+23</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="TJtot"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="bm"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>6.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="c2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="compartment"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="default"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="delta"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0003</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="delta1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="delta2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.4</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k11"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.00036</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k12"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>360.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k14"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.204e-07</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k15"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>3.6e-08</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k16"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.36</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k26"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.360085</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k28"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>360.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="k8"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0036</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="n1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="n2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="n3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>5.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r0"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.0001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1e-07</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r4"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1e-05</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="r5"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="rmax20"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="sp"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.3</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="sv"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tao1"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.5</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tao12"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tao13"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>15.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tao3"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.5600000000000001</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tao4"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>0.46</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tao6"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tao8"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="tao9"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>2.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="vmax17"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>72000.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="vmax19"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>154800.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+
+    <equ:BindingEquation>
+      <equ:Parameter>
+        <exp:QualifiedNamePart name="vmax2"/>
+      </equ:Parameter>
+      <equ:BindingExp>
+        <exp:RealLiteral>72000.0</exp:RealLiteral>
+      </equ:BindingExp>
+    </equ:BindingEquation>
+  </equ:BindingEquations>
+
+  <equ:DynamicEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="w"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="STAT"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:RealLiteral>360.0</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="STATm"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-0.04620981203732968</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="STAT"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="TNFenv"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:RealLiteral>0.0001285073883446787</exp:RealLiteral>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="TNFam"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:RealLiteral>0.004</exp:RealLiteral>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="TNFam"/>
+              </exp:Identifier>
+            </exp:Add>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IFNa_env"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:RealLiteral>5.977087829985058e-05</exp:RealLiteral>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IFNa_mRNA"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:RealLiteral>0.002</exp:RealLiteral>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IFNa_mRNA"/>
+              </exp:Identifier>
+            </exp:Add>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IFNb_env"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:RealLiteral>5.977087829985058e-05</exp:RealLiteral>
+          <exp:Div>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IFNb_mRNA"/>
+            </exp:Identifier>
+            <exp:Add>
+              <exp:RealLiteral>0.002</exp:RealLiteral>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IFNb_mRNA"/>
+              </exp:Identifier>
+            </exp:Add>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="TJ"/>
+        </exp:Identifier>
+        <exp:Mul>
+          <exp:RealLiteral>0.0001</exp:RealLiteral>
+          <exp:Div>
+            <exp:Add>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IFNb_env"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IFNa_env"/>
+              </exp:Identifier>
+            </exp:Add>
+            <exp:Mul>
+              <exp:Add>
+                <exp:RealLiteral>1.0</exp:RealLiteral>
+                <exp:Mul>
+                  <exp:RealLiteral>2600000.0</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="SOCS1m"/>
+                  </exp:Identifier>
+                </exp:Mul>
+              </exp:Add>
+              <exp:Add>
+                <exp:RealLiteral>0.0043</exp:RealLiteral>
+                <exp:Add>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IFNb_env"/>
+                  </exp:Identifier>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="IFNa_env"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Add>
+            </exp:Mul>
+          </exp:Div>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="STATP2n"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:RealLiteral>0.005</exp:RealLiteral>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="TJ"/>
+              </exp:Identifier>
+              <exp:Div>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="STAT"/>
+                </exp:Identifier>
+                <exp:Add>
+                  <exp:RealLiteral>0.01</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="STAT"/>
+                  </exp:Identifier>
+                </exp:Add>
+              </exp:Div>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-1.237762822428474</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="STATP2n"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IC2ifa"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IFNa_mRNA"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:RealLiteral>0.36</exp:RealLiteral>
+            <exp:Mul>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IRF7Pn"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="IC2ifa"/>
+              </exp:Identifier>
+            </exp:Mul>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-0.3465735902799726</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IFNa_mRNA"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IC2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>1.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRF7m"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:RealLiteral>0.00036</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="STATP2n"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:RealLiteral>3.204e-07</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IRF7Pn"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IC2"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-0.6931471805599453</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IRF7m"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NS"/>
+        </exp:Identifier>
+        <exp:Div>
+          <exp:FunctionCall>
+            <exp:Name>
+              <exp:QualifiedNamePart name="BIOMD528"/>
+              <exp:QualifiedNamePart name="pow"/>
+            </exp:Name>
+            <exp:Arguments>
+              <exp:Time>time</exp:Time>
+              <exp:RealLiteral>5.0</exp:RealLiteral>
+            </exp:Arguments>
+          </exp:FunctionCall>
+          <exp:Add>
+            <exp:RealLiteral>7776.0</exp:RealLiteral>
+            <exp:FunctionCall>
+              <exp:Name>
+                <exp:QualifiedNamePart name="BIOMD528"/>
+                <exp:QualifiedNamePart name="pow"/>
+              </exp:Name>
+              <exp:Arguments>
+                <exp:Time>time</exp:Time>
+                <exp:RealLiteral>5.0</exp:RealLiteral>
+              </exp:Arguments>
+            </exp:FunctionCall>
+          </exp:Add>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IC1"/>
+        </exp:Identifier>
+        <exp:Div>
+          <exp:Add>
+            <exp:RealLiteral>1.0</exp:RealLiteral>
+            <exp:Mul>
+              <exp:RealLiteral>0.3</exp:RealLiteral>
+              <exp:FunctionCall>
+                <exp:Name>
+                  <exp:QualifiedNamePart name="BIOMD528"/>
+                  <exp:QualifiedNamePart name="pow"/>
+                </exp:Name>
+                <exp:Arguments>
+                  <exp:Mul>
+                    <exp:RealLiteral>10.0</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="NS"/>
+                    </exp:Identifier>
+                  </exp:Mul>
+                  <exp:RealLiteral>1.0</exp:RealLiteral>
+                </exp:Arguments>
+              </exp:FunctionCall>
+            </exp:Mul>
+          </exp:Add>
+          <exp:Add>
+            <exp:RealLiteral>1.0</exp:RealLiteral>
+            <exp:FunctionCall>
+              <exp:Name>
+                <exp:QualifiedNamePart name="BIOMD528"/>
+                <exp:QualifiedNamePart name="pow"/>
+              </exp:Name>
+              <exp:Arguments>
+                <exp:Mul>
+                  <exp:RealLiteral>10.0</exp:RealLiteral>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="NS"/>
+                  </exp:Identifier>
+                </exp:Mul>
+                <exp:RealLiteral>1.0</exp:RealLiteral>
+              </exp:Arguments>
+            </exp:FunctionCall>
+          </exp:Add>
+        </exp:Div>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IFNb_mRNA"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:RealLiteral>0.001</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IC1"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:RealLiteral>3.6e-08</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IRF7Pn"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IC2"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-0.2772588722239781</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IFNb_mRNA"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="SOCS1m"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:RealLiteral>1e-07</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IC1"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:RealLiteral>0.0036</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="STATP2n"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IC2"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-1.506841696869446</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="SOCS1m"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="IRF7Pn"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Mul>
+          <exp:RealLiteral>360.0</exp:RealLiteral>
+          <exp:Mul>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IC1"/>
+            </exp:Identifier>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IRF7m"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Mul>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="TNFam"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:RealLiteral>0.0001</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IC1"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:RealLiteral>0.001</exp:RealLiteral>
+                <exp:Div>
+                  <exp:Identifier>
+                    <exp:QualifiedNamePart name="TNFenv"/>
+                  </exp:Identifier>
+                  <exp:Add>
+                    <exp:RealLiteral>0.0005999999999999999</exp:RealLiteral>
+                    <exp:Identifier>
+                      <exp:QualifiedNamePart name="TNFenv"/>
+                    </exp:Identifier>
+                  </exp:Add>
+                </exp:Div>
+              </exp:Mul>
+            </exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IC2"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-0.3465735902799726</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="TNFam"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Der>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="STATm"/>
+          </exp:Identifier>
+        </exp:Der>
+        <exp:Add>
+          <exp:Mul>
+            <exp:Add>
+              <exp:Mul>
+                <exp:RealLiteral>1e-05</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="IC1"/>
+                </exp:Identifier>
+              </exp:Mul>
+              <exp:Mul>
+                <exp:RealLiteral>0.360085</exp:RealLiteral>
+                <exp:Identifier>
+                  <exp:QualifiedNamePart name="STATP2n"/>
+                </exp:Identifier>
+              </exp:Mul>
+            </exp:Add>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="IC2"/>
+            </exp:Identifier>
+          </exp:Mul>
+          <exp:Mul>
+            <exp:RealLiteral>-0.6931471805599453</exp:RealLiteral>
+            <exp:Identifier>
+              <exp:QualifiedNamePart name="STATm"/>
+            </exp:Identifier>
+          </exp:Mul>
+        </exp:Add>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:DynamicEquations>
+
+  <equ:InitialEquations>
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IC1"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IC2"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IC2ifa"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="NS"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="TJ"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="STAT"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.1</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="STATm"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="TNFenv"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="TNFam"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IFNa_env"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IFNa_mRNA"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IRF7Pn"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IRF7m"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="SOCS1m"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="STATP2n"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IFNb_env"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="IFNb_mRNA"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+         
+      </exp:Sub>
+    </equ:Equation>  
+    <equ:Equation>
+      <exp:Sub>
+        <exp:Identifier>
+          <exp:QualifiedNamePart name="w"/>
+        </exp:Identifier>
+        <exp:RealLiteral>0.0</exp:RealLiteral>
+      </exp:Sub>
+    </equ:Equation>  
+  </equ:InitialEquations>
+
+  <fun:Algorithm>
+  </fun:Algorithm>
+
+  <fun:RecordsList>
+  </fun:RecordsList>
+
+  <fun:FunctionsList>
+    <fun:Function>
+      <fun:Name>
+        <exp:QualifiedNamePart name="BIOMD528"/>
+        <exp:QualifiedNamePart name="pow"/>
+      </fun:Name>
+      <fun:OutputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="y"/>
+        </fun:Name>
+      </fun:OutputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="x"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:InputVariable type="Real">
+        <fun:Name>
+          <exp:QualifiedNamePart name="power"/>
+        </fun:Name>
+      </fun:InputVariable>
+      <fun:Algorithm>
+        <fun:Assign>
+          <exp:Identifier>
+            <exp:QualifiedNamePart name="y"/>
+          </exp:Identifier>
+          <fun:Expression>
+            <exp:Pow>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="x"/>
+              </exp:Identifier>
+              <exp:Identifier>
+                <exp:QualifiedNamePart name="power"/>
+              </exp:Identifier>
+            </exp:Pow>
+          </fun:Expression>
+        </fun:Assign>
+      </fun:Algorithm>
+    </fun:Function> 
+  </fun:FunctionsList>
+
+
+</OpenModelicaModelDescription>
