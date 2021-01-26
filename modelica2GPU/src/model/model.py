@@ -29,6 +29,7 @@ class Model:
         self.init       = Model.getinit(variables_dict, logger)            # Prendo le equazioni iniziali
         self.odes       = Model.getODE(equations, self.init, variables_dict, logger)  # Crea il sistema di ODE
         self.events     = events['when']                                     # Prendo gli eventi
+        self.event_strings = self.group_events(events['when'])
         # Prendo le altre equazioni rimanenti
         self.othereq    = Model.getOtherEq(
             algorithms["assign"], equations + events['other'], 
@@ -95,7 +96,8 @@ class Model:
                 # una volta ottenute tutte le variabili e creati i corrispettivi MPGOSname, possiamo 
                 # settare il nuovo valore iniziale in linea con la politica di valutazione delle variabili di MPGOs.
                 if not re.match(r"[-]?\d+\.*\d*", ivalue.strip()) and ivalue.strip() not in variables_dict.keys() and \
-                    ivalue.strip() != "T" and not isinstance(value.init, UnaryOperator) and not isinstance(value.init, BinaryOperator):
+                    ivalue.strip() != "T" and not isinstance(value.init, UnaryOperator) and not isinstance(value.init, BinaryOperator) and \
+                    not isinstance(value.init, FunctionCall):
                     # Trovare la variabile referenziata
                     ref = name_var_dict[ivalue.strip()]
                     value.setivalue(ref.createMPGOSname())
@@ -162,6 +164,18 @@ class Model:
             return new_init_eq if new_init_eq != [] else self.init['initialization']
         return None
 
+    def group_events(self, events):
+        event_dict = {e.condition[1]: (e.condition[0], []) for e in events}
+        for event in events:
+            event_eq = event.equation
+            event_condition = event.condition[1]
+            event_dict[event_condition][1].append(event_eq)
+        event_str = "if (IDX == %d){\n%s\n}"
+        event_strings = []
+        for v in event_dict.values():
+            equations = "\n".join([f"\t    {equation.__str__()}" for equation in v[1]])
+            event_strings.append(event_str % (v[0], equations))
+        return event_strings
     
     @staticmethod
     def get_var_by_lhsinit(initial_equation, variables_dict, tipo):

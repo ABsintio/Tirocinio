@@ -509,7 +509,7 @@ class SystemDefinitionBuilder:
         # END LOG
         global MPGOS_PerThread_ActionAfterEventDetection
         MPGOS_PerThread_ActionAfterEventDetection = MPGOS_PerThread_ActionAfterEventDetection % (
-            Var.createMPGOScodeline(self.abstract_model.events))
+            Var.createMPGOScodeline(self.abstract_model.event_strings))
         return MPGOS_PerThread_ActionAfterEventDetection
 
 

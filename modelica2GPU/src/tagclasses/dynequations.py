@@ -515,7 +515,7 @@ class When:
     def __init__(self, when_tag, variables_dict, event_conditions, functions):
         self.when_tag = when_tag
         self.variables_dict = variables_dict
-        self.event_conditions = [x[1] for x in event_conditions]
+        self.event_conditions = [x for x in event_conditions]
         self.functions_dict = functions
         self.condition, self.equation = self._parsewhen_tag()
 
