@@ -18,6 +18,22 @@ model BIOMD578 "Invergo2014 - Phototransduction cascade in mouse rod cells"
             z := if condition then x else y;
     end piecewise;
 
+    
+    function geq
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := x >= y;
+    end geq;
+    
+    function leq
+        input Real x;
+        input Real y;
+        output Boolean z;
+        algorithm
+            z := x <= y;
+    end leq;
 
 
     parameter Real Rtot = 100000000.0;
@@ -289,7 +305,7 @@ equation
     dur = flashDur;
     del = flashDel;
     preflash = piecewise(premag, leq(time, predur), 0);
-    testflash = piecewise(mag, and(geq(time, del), leq(time, del + dur)), 0);
+    testflash = piecewise(mag, (geq(time, del) and leq(time, del + dur)), 0);
     stimulus = background + preflash + testflash + otherstimulus;
     numConcFactor = 1 / (6.022e5 * Vcyto);
     kRK1_1 = kRK1_0 * exp(-omega);
@@ -318,7 +334,7 @@ equation
     Ca2_frac = (Ca2_free - Ca2_0) / (Ca2dark - Ca2_0);
     J = 2 / (2 + fCa) * pow(cGMP / cGMPdark, ncg) * Jdark + fCa / (fCa + 2) * Ca2_frac * Jdark;
     deltaJ = Jdark - J;
-    der(Ca2_free) = -v_r33 - v_r34 + v_r35 - 2 * v_r30 * numConcFactor;
+    der(Ca2_free) = -(k1 * (eT - Ca2_buff) * Ca2_free - k2 * Ca2_buff) - (gammaCa * (Ca2_free - Ca2_0)) + (1000000.0 * fCa * Jdark / (2 + fCa) * F * Vcyto * pow(cGMP / cGMPdark, ncg)) - 2 * (kRec1 * RecT * Ca2_free - kRec2 * RecR_Ca) * numConcFactor;
     der(Arr) = (kA3 * R1_Arr) + (kA3 * R2_Arr) + (kA3 * R3_Arr) + (kA3 * R4_Arr) + (kA3 * R5_Arr) + (kA3 * R6_Arr) - (kA1_1 * Arr * R1 - kA2 * R1_Arr) - (kA1_2 * Arr * R2 - kA2 * R2_Arr) - (kA1_3 * Arr * R3 - kA2 * R3_Arr) - (kA1_4 * Arr * R4 - kA2 * R4_Arr) - (kA1_5 * Arr * R5 - kA2 * R5_Arr) - (kA1_6 * Arr * R6 - kA2 * R6_Arr) - (2.0 * kA4 * Arr * Arr - kA5 * Arr_di);
     der(Arr_di) = (kA4 * Arr * Arr - kA5 * Arr_di) - (2.0 * kA4 * Arr_di * Arr_di - kA5 * Arr_tetra);
     der(Arr_tetra) = (kA4 * Arr_di * Arr_di - kA5 * Arr_tetra) ;
