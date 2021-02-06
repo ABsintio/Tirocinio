@@ -4,10 +4,9 @@ def calculate_percentage(err_list, threshold):
 
 errors = []
 
-with open("result.txt", mode="r") as f:
+with open("rmse.dat", mode="r") as f:
 	while (line := f.readline()):
-		splitted_line = line.split(" ")
-		errors.append(float(splitted_line[-1][:-1]))
+		errors.append(float(line[:-1]))
 		
 i = 0
 while i <= 10:
