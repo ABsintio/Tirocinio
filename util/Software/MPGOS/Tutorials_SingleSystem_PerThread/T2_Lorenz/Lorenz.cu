@@ -31,11 +31,11 @@ void SaveData(ProblemSolver<NT,SD,NCP,NSP,NISP,NE,NA,NIA,NDO,SOLVER,PRECISION>&,
 int main()
 {
 	int NumberOfProblems = NT;
-	int BlockSize        = 64;
+	int BlockSize        = 512;
 	
 	ListCUDADevices();
 	
-	int MajorRevision  = 3;
+	int MajorRevision  = 7;
 	int MinorRevision  = 5;
 	int SelectedDevice = SelectDeviceByClosestRevision(MajorRevision, MinorRevision);
 	
@@ -75,7 +75,7 @@ int main()
 		cout << "Simulation time / 1000 RK4 step: " << 1000.0*(SimulationEnd-SimulationStart) / CLOCKS_PER_SEC / 10 << "ms" << endl;
 		cout << "Ensemble size:                   " << NT << endl << endl;
 		
-	//SaveData(ScanLorenz, NT);
+	SaveData(ScanLorenz, NT);
 	
 	cout << "Test finished!" << endl;
 }
