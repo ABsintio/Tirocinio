@@ -18,9 +18,16 @@ for tag in root:
     model_name = tag[0].attrib['value'][:-3]
     id_test = int(tag.attrib['id'])
     test_dict[model_name] = id_test
+    
+residuals = []
 
 for key in test_dict.keys():
     try:
         print(result_dict[key][-1])
+        residuals.append(key)
     except KeyError:
         pass
+    
+for key, value in result_dict.items():
+    if not key in residuals:
+        print(value[-1])
