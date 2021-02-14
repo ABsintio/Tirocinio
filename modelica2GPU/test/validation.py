@@ -119,8 +119,8 @@ class Validation:
 
 
 if __name__ == "__main__":
-    v = Validation("dir.txt")
-    #v.validate()
-    v.build_table_from_file("result.txt")
+    v = Validation("tmp_dir.txt")
+    v.validate()
+    #v.build_table_from_file("result.txt")
     #v.show_table()
-    v.show_percentage()
+    #v.show_percentage()
