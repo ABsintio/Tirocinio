@@ -2,6 +2,9 @@ import json
 import matplotlib.pyplot as plt 
 import numpy as np 
 import sys
+import os
+import os.path as path
+import re
 
 
 class PlotGenerator:
@@ -60,9 +63,67 @@ class PlotGenerator:
             plt.savefig("T1w10000_on_T10000w10000.png")
         plt.show()
 
+    def getnumvars(self):
+        vars = []
+        for v in self.data.values():
+            modelname = v['model']
+            wdir = v['w_dir']
+            cu_path = path.join(wdir, f"{modelname}_MPGOS")
+
+            with open(f"{cu_path}/{modelname}.cu", mode="r") as f:
+                file_content = f.read()
+
+                re_SD = re.compile("const int SD   = \d+")
+                re_NA = re.compile("const int NA   = \d+")
+                re_NIA = re.compile("const int NIA  = \d+")
+                match_SD = re.findall(re_SD, file_content)[0]
+                match_NA = re.findall(re_NA, file_content)[0]
+                match_NIA = re.findall(re_NIA, file_content)[0]
+
+                tot_var = int(match_SD.split()[-1]) + \
+                          int(match_NA.split()[-1]) + \
+                          int(match_NIA.split() [-1])
+
+                vars.append(tot_var)
+
+        return vars
+
+    def vars_distribution(self):
+        num_vars = np.array(self.getnumvars())
+        id_tests = np.array(list(map(int, self.data.keys())))
+
+        plt.figure(figsize=[15.0, 8.0])
+        plt.scatter(id_tests, num_vars, marker="o", label="Number of variables distribution")
+        plt.xlabel("Test ID")
+        plt.ylabel("Variables number")
+        plt.legend(loc="upper left")
+
+        if self.save_fig:
+            plt.savefig("Variables_Number.png")
+
+        plt.show()
+
+    def vars_histogram(self):
+        lista = self.getnumvars()
+        num_vars = np.array(lista)
+
+        plt.figure(figsize=[15.0, 8.0])
+        plt.hist(num_vars, bins='auto', color="g", label="N° vars frequency", density=True)
+        plt.xlabel("Variable number")
+        plt.ylabel("Frequency")
+        plt.legend(loc="upper left")
+
+        if self.save_fig:
+            plt.savefig("variables_number_frequency.png")
+
+        plt.show()
+
 
 if __name__ == '__main__':
     json_f = sys.argv[-1]
     plotgen = PlotGenerator(json_f)
     plotgen.load_wsimtime()
-    plotgen.speedup_T1w10000_on_T10000w10000()
+    # plotgen.speedup_T10000_on_T1()
+    # plotgen.speedup_T1w10000_on_T10000w10000()
+    # plotgen.vars_distribution()
+    # plotgen.vars_histogram()
