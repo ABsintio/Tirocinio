@@ -225,7 +225,13 @@
         <successfulTranslation value="true" />
         <spentTraslationTime value="2.510ms" />
         <MPGOScompilation value="true" />
-        <simulations>All failed both in MGPOS and Modelica at time=3.89e00</simulations>
+        <simulations>
+            <simulation value="01" cpu="30.793ms" gpu="6.113ms" />
+            <simulation value="10" cpu="109.339ms" gpu="6.949ms" />
+            <simulation value="100" cpu="774.744ms" gpu="15.462ms" />
+            <simulation value="1000" cpu="6854.171ms" gpu="82.754ms" />
+            <simulation value="10000" cpu="63488.810ms" gpu="802.931ms" />
+        </simulations>
         
         
     </test>
@@ -540,8 +546,11 @@
         <spentTraslationTime value="2.066ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            Tempo simulazione GPU maggiore del tempo di simulazione su CPU.
-            Suggerito cambio di parametri nel setting della simulazione.
+            <simulation value="01" cpu="37.313ms" gpu="15765.100ms" />
+            <simulation value="10" cpu="150.569ms" gpu="15886.100ms" />
+            <simulation value="100" cpu="1014.157ms" gpu="28664.100ms" />
+            <simulation value="1000" cpu="9526.419ms" gpu="32858.100ms" />
+            <simulation value="10000" cpu="89269.350ms" gpu="212071.00ms" />
         </simulations>
         
         
@@ -585,8 +594,6 @@
         <spentTraslationTime value="1.430ms" />
         <MPGOScompilation value="true" />
         <simulations>
-            Tempo simulazione GPU maggiore del tempo di simulazione su CPU.
-            Suggerito cambio di parametri nel setting della simulazione.
         </simulations>
         
         
@@ -2213,7 +2220,11 @@
         <spentTraslationTime value="0.555s" />
         <MPGOScompilation value="true" />
         <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
-            GPU time &gt; CPU time
+            <simulation value="01" cpu="39.435ms" gpu="30305.300ms" />
+            <simulation value="10" cpu="170.922ms" gpu="32326.100ms" />
+            <simulation value="100" cpu="924.667ms" gpu="51821.200ms" />
+            <simulation value="1000" cpu="8301.094ms" gpu="199960.000ms" />
+            <simulation value="10000" cpu="79843.518ms" gpu="204137.000ms" />
         </simulations>
         
         
@@ -2545,7 +2556,6 @@
         <spentTraslationTime value="0.581s" />
         <MPGOScompilation value="true" />
         <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
-            GPU time &gt; CPU time
         </simulations>
         
         
@@ -5200,7 +5210,7 @@
     </test>
     <test id="353">
         <modelname value="BIOMD423.mo" />
-        <workingdir value="biological/modelica/Muraro2011_Cytokinin-Auxin_CrossRegulation/" />
+        <workingdir value="biological/modelica/Nyman2012_InsulinSignalling/" />
         <successfulTranslation value="true" />
         <spentTraslationTime value="2.388s" />
         <MPGOScompilation value="true" />
@@ -5293,7 +5303,7 @@
     </test>
     <test id="360">
         <modelname value="BIOMD419.mo" />
-        <workingdir value="biological/modelica/Ratushny2012_SPF/" />
+        <workingdir value="biological/modelica/Ratushny2012_SPF_I/" />
         <successfulTranslation value="true" />
         <spentTraslationTime value="2.505s" />
         <MPGOScompilation value="true" />
@@ -5725,10 +5735,10 @@
         </simulations>
     </test>
     <test id="399">
-        <modelname value="BIOMD486.mo" />
-        <workingdir value="biological/modelica/Cao2013 - Application of ABSIS method in the reversible isomerization model/" />
+        <modelname value="BIOMD477.mo" />
+        <workingdir value="biological/modelica/Mol2013 - Immune Signal Transduction in Leishmaniasis/" />
         <successfulTranslation value="true" />
-        <spentTraslationTime value="2.339s" />
+        <spentTraslationTime value="2.570s" />
         <MPGOScompilation value="true" />
         <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
             <simulation value="01" cpu="69.320ms" gpu="461.877ms" />
@@ -6085,7 +6095,7 @@
     </test>
     <test id="430">
         <modelname value="BIOMD543.mo" />
-        <workingdir value="biological/modelica/Qi2013 - IL-6 and IFN crosstalk model/" />
+        <workingdir value="biological/modelica/Qi2013 - IL-6 and IFN crosstalk model (non-competitive)/" />
         <successfulTranslation value="true" />
         <spentTraslationTime value="3.656s" />
         <MPGOScompilation value="true" />
@@ -6140,7 +6150,7 @@
         </simulations>
     </test>
     <test id="434">
-        <modelname value="BIOMD548.mo" />
+        <modelname value="BIOMD533.mo" />
         <workingdir value="biological/modelica/Steckmann2012 - Amyloid beta-protein fibrillogenesis (kinetics of secondary structure conversion)/" />
         <successfulTranslation value="true" />
         <spentTraslationTime value="2.402s" />
@@ -6328,6 +6338,128 @@
         <spentTraslationTime value="2.654s" />
         <MPGOScompilation value="true" />
         <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="449">
+        <modelname value="HeatingSystem_N_5.mo" />
+        <workingdir value="cyber-physical/ScalableTestSuite/Thermal/DistrictHeating/HeatingSystem/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="3.048s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="450">
+        <modelname value="HeatingSystem_N_10.mo" />
+        <workingdir value="cyber-physical/ScalableTestSuite/Thermal/DistrictHeating/HeatingSystem/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="2.804s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="HeatingSystem_N_20.mo" />
+        <workingdir value="cyber-physical/ScalableTestSuite/Thermal/DistrictHeating/HeatingSystem/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="2.946s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="HeatingSystemExplicit_N_5.mo" />
+        <workingdir value="cyber-physical/ScalableTestSuite/Thermal/DistrictHeating/HeatingSystem/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="2.625s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="HeatingSystemExplicit_N_10.mo" />
+        <workingdir value="cyber-physical/ScalableTestSuite/Thermal/DistrictHeating/HeatingSystem/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="2.686s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="HeatingSystemExplicit_N_20.mo" />
+        <workingdir value="cyber-physical/ScalableTestSuite/Thermal/DistrictHeating/HeatingSystem/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="2.844s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="ChatteringControl.mo" />
+        <workingdir value="cyber-physical/Hysteresis/chatteringControl/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.801s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="BIOMD005.mo" />
+        <workingdir value="biological/modelica/tyson1991_CellCycle6Var/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.306s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="BIOMD100.mo" />
+        <workingdir value="biological/modelica/Rozi2003_GlycogenPhosphorylase_Activation/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="0.551s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="BIOMD256.mo" />
+        <workingdir value="biological/modelica/Rehm2006_Caspase/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.319s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="BIOMD001.mo" />
+        <workingdir value="biological/modelica/edelstein1996_EPSPAChEvent/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.507s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="BIOMD362.mo" />
+        <workingdir value="biological/modelica/Butenas2004_BloodCoagulation/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="1.620s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+        </simulations>
+    </test>
+    <test id="451">
+        <modelname value="BIOMD545.mo" />
+        <workingdir value="biological/modelica/Ouyang2014 - photomorphogenic UV-B signalling network/" />
+        <successfulTranslation value="true" />
+        <spentTraslationTime value="2.472s" />
+        <MPGOScompilation value="true" />
+        <simulations description="TimeStepGrowLimit=5.0;blockSize=512">
+            <simulation value="01" cpu="24.941ms" gpu="794.722ms" />
+            <simulation value="10" cpu="92.732ms" gpu="793.532ms" />
+            <simulation value="100" cpu="828.552ms" gpu="1255.020ms" />
+            <simulation value="1000" cpu="7224.469ms" gpu="4732.870ms" />
+            <simulation value="10000" cpu="71066.828ms" gpu="4984.400ms" />
         </simulations>
     </test>
 </tests>

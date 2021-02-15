@@ -119,7 +119,7 @@ class Validation:
 
 
 if __name__ == "__main__":
-    v = Validation("tmp_dir.txt")
+    v = Validation("tmp")
     v.validate()
     #v.build_table_from_file("result.txt")
     #v.show_table()
