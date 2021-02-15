@@ -1,46 +1,68 @@
-import xml.etree.ElementTree as ET
-import os
+import json
+import matplotlib.pyplot as plt 
+import numpy as np 
+import sys
 
-tests = "tests.xml"
-dir_f = "result.txt"
 
-dirs = []
-models = []
+class PlotGenerator:
+    def __init__(self, json_file, save_fig=True):
+        self.tot = json.load(open(json_file, mode="r"))
+        self.save_fig = save_fig
 
-with open(dir_f, mode="r") as f:
-    while (line := f.readline()):
-        splitted_lines = line.split(" ")
-        dirs.append(" ".join(splitted_lines[1:-1]))
-        models.append(splitted_lines[0])
+    def load_wsimtime(self):
+        data = dict()
+        for k, v in self.tot.items():
+            if v['simulations (msec)']:
+                data[k] = v
+        self.data = data
 
-present = not_present = []
-count_p = count_np = 0
-count_n = 0
-tot = []
+    def speedup_T10000_on_T1(self):
+        sp = []
+        id_test = []
+        for k, v in self.data.items():
+            id_test.append(int(k))
+            sp.append(v['simulations (msec)'][-1][-1] / v['simulations (msec)'][0][-1])
 
-root = ET.parse(tests).getroot()
-for tag in root:
-    prefix = "/home/yorunoomo/Scrivania/modelica2GPU/test/"
-    workingdir = os.path.join(prefix, tag[1].attrib['value'])[:-1]
-    if workingdir in dirs:
-        present.append(workingdir)
-        tot.append(tag[0].attrib['value'])
-        count_p += 1
-    else:
-        not_present.append(workingdir)
-        count_np += 1
-    
-    if not list(tag[5]):
-        #print(workingdir)
-        count_n += 1
+        asc_media = []
+        for i, _ in enumerate(id_test):
+            asc_media.append(sum(sp[:i]) / (i + 1))
 
-print(f"present: {count_p}")
-print(f"not present: {count_np}")
+        speedup = np.array(sp)
+        plt.figure(figsize=[15.0, 8.0])
+        plt.scatter(id_test, speedup, marker="o", label="T(10000)/T(1)")
+        plt.plot(id_test, asc_media, label="Tmedio", color="orange")
+        plt.xlabel("ID Test")
+        plt.ylabel("Speedup")
+        plt.legend(loc="upper left")
+        if self.save_fig:
+            plt.savefig("T10000_on_T1.png")
+        plt.show()
 
-print(f"Worst time: {(count_n + 12) * 100 / count_p}, {count_n + 12}")
+    def speedup_T1w10000_on_T10000w10000(self):
+        sp = []
+        id_test = []
+        for k, v in self.data.items():
+            id_test.append(int(k))
+            sp.append(v['simulations (msec)'][0][-1] * 10**4 / v['simulations (msec)'][-1][-1])
 
-i = 0
-for model in models:
-    if model + ".mo" not in tot:
-        print(model, dirs[i])
-    i += 1
+        asc_media = []
+        for i, _ in enumerate(id_test):
+            asc_media.append(sum(sp[:i]) / (i + 1))
+
+        speedup = np.array(sp)
+        plt.figure(figsize=[15.0, 8.0])
+        plt.scatter(id_test, speedup, marker="o", label="T10000(1)/T10000(10000)")
+        plt.plot(id_test, asc_media, label="Tmedio", color="orange")
+        plt.xlabel("ID Test")
+        plt.ylabel("Speedup")
+        plt.legend(loc="upper left")
+        if self.save_fig:
+            plt.savefig("T1w10000_on_T10000w10000.png")
+        plt.show()
+
+
+if __name__ == '__main__':
+    json_f = sys.argv[-1]
+    plotgen = PlotGenerator(json_f)
+    plotgen.load_wsimtime()
+    plotgen.speedup_T1w10000_on_T10000w10000()
