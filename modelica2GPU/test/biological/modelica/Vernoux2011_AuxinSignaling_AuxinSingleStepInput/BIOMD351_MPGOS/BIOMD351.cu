@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 4;
 const int NIA  = 0;
-const int NDO  = 1000000;
+const int NDO  = 100;
 
 
 void FillSolverObject(
@@ -141,7 +141,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = 3*NT; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 512; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA

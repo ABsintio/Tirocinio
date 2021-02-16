@@ -530,7 +530,6 @@ class When:
         a, b = identifier_list[0], identifier_list[1]
         index = 2
         condition = Or(Identifier(a, variables_dict), Identifier(b, variables_dict))
-        print(identifier_list)
         while index < len(identifier_list):
             a, b = condition, identifier_list[index]
             condition = Or(a, Identifier(b, variables_dict))

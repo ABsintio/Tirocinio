@@ -13,7 +13,7 @@ using namespace std;
 
 #define SOLVER RKCK45
 #define PRECISION double
-const int NT   = 10000;
+const int NT   = 1;
 const int SD   = 3;
 const int NCP  = 1;
 const int NSP  = 0;

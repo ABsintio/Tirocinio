@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 100000;
+const int NDO  = 1000;
 
 
 void FillSolverObject(
@@ -103,7 +103,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = 10000*NT; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 512; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
@@ -177,9 +177,9 @@ int main() {
 	
     DataFile.close();
     
-    Solver.Print(DenseOutput, 0);
-    Solver.Print(ActualState);
-    Solver.Print(ActualTime);
+    //Solver.Print(DenseOutput, 0);
+    //Solver.Print(ActualState);
+    //Solver.Print(ActualTime);
 	
     cout << "Test finished!" << endl;
 

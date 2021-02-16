@@ -55,7 +55,6 @@ class Model:
         for eq in equations_list:
             var = variables_dict[eq.left.__str__()]
             if not re.match(r"\$whenCondition\d+", var.nome):
-                print(eq)
                 odes.append(eq)
             # Se la variabile parte sinistra dell'equazione non ha un valore iniziale allora inseriamo
             # tale equazione come valore iniziale nella funzione PerThread_Initialization
