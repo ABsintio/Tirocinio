@@ -1,7 +1,8 @@
+set terminal wxt font 'Helvetica,15'
 set table "result.dat"
-set title "Distribuzione di densità di probabilità degli RMSE"
-set xlabel "RMSE"
-set ylabel "P(RMSE)"
+
+set xlabel "MRMSE"
+set ylabel "f(MRMSE)"
 set autoscale
 plot "rmse.dat" smooth kdensity t "PDF"
 unset table
