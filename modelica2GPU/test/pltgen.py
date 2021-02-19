@@ -9,7 +9,7 @@ import re
 from copy import deepcopy
 
 
-plt.rcParams.update({'font.size': 6})
+plt.rcParams.update({'font.size': 10})
 
 
 class PlotGenerator:
@@ -247,9 +247,14 @@ class PlotGenerator:
 
 	def plot_RMSE_on_variables_wrange(self):
 		ranged_list_vars, ranged_list_rmse = self.get_wrange_rmse_vars(major=False)
+
+		medio = []
+		for i in range(len(ranged_list_rmse)):
+			medio.append(ranged_list_rmse[i] if i == 0 else medio[i - 1] + ranged_list_rmse[i] / (i + 1))
 		
 		plt.figure(figsize=[15.0, 8.0])
 		plt.plot(ranged_list_vars, ranged_list_rmse, marker="o", label="RMSE(medio)/variabili")
+		plt.plot(ranged_list_vars, medio, label="Valore medio")
 		plt.title("Dipendenza errore-dimensione del sistema")
 		plt.xlabel("Range numero variabili (ampiezza al più 10)")
 		plt.ylabel("RMSE medio per ampiezza")
@@ -262,9 +267,14 @@ class PlotGenerator:
 
 	def plot_RMSE_on_variables_wrange_woutMajor(self, thr=1):
 		ranged_list_vars, ranged_list_rmse = self.get_wrange_rmse_vars(major=True, threshold=thr)
+
+		medio = []
+		for i in range(len(ranged_list_rmse)):
+			medio.append(ranged_list_rmse[i] if i == 0 else medio[i - 1] + ranged_list_rmse[i] / (i + 1))
 		
 		plt.figure(figsize=[15.0, 8.0])
 		plt.plot(ranged_list_vars, ranged_list_rmse, marker="o", label="RMSE(medio)/variabili")
+		plt.plot(ranged_list_vars, medio, label="Valore medio")
 		plt.title(f"Dipendenza errore-dimensione del sistema senza RMSE > {thr}")
 		plt.xlabel("Range numero variabili (ampiezza al più 10)")
 		plt.ylabel("RMSE medio per ampiezza")
@@ -314,6 +324,94 @@ class PlotGenerator:
 			except IndexError:
 				break
 
+	def save_rmse_on_vars_wrange_woutMajor(self, outputfile="rmse_var_woutmajor.dat", thr=1):
+		with open(outputfile, mode="w") as f:
+			f.write("\n".join([f"{x} {y}" for x, y in zip(*self.get_wrange_rmse_vars(major=True, threshold=thr))]))
+
+	def mrmse_var_wrange10onvar(self, outputfile="mrmse_var_wrange10onvar.dat"):
+		ordered_list = sorted(list(zip(self.getnumvars(), self.getRMSE())), key=lambda x: x[0])
+		num_vars = list(map(lambda x: x[0], ordered_list))
+		rmses = list(map(lambda x: x[1], ordered_list))
+
+		mrmse_ranged = []
+		num_var_ranged = []
+		i = 0
+		p = 1
+		while True:
+			num_var_ranged.append(f"R{p}")
+			if i + 10 < len(num_vars):
+				mrmse_ranged.append(sum(rmses[i:i+10])/10)
+				i += 10
+			else:
+				scarto = len(num_vars) - i
+				mrmse_ranged.append(sum(rmses[i:i + scarto])/(i + scarto))
+				break
+
+			p += 1
+
+
+		medio = []
+		for j in range(len(mrmse_ranged)):
+			medio.append(mrmse_ranged[j] if j == 0 else sum(mrmse_ranged[:j+1])/(j + 1))
+
+		# with open(outputfile, mode="w") as f:
+			# f.write("\n".join([f"{x} {y} {z}" for x, y, z in zip(num_var_ranged, mrmse_ranged, medio)]))
+
+		plt.plot(num_var_ranged, mrmse_ranged, marker="o", color="m", label="MRMSE(medio)/range")
+		plt.plot(num_var_ranged, medio, color="c", label="Valore medio")
+		plt.xlabel("Range di ampiezza 10 delle dimensioni")
+		plt.ylabel("MRMSE medio per range")
+		plt.legend(loc="upper right")
+		plt.show()
+
+	def save_mrmse_var_range(self, outputfile="mrmse_var_range.dat"):
+		ranged_list_vars, ranged_list_rmse = self.get_wrange_rmse_vars(major=False)
+
+		medio = []
+		for i in range(len(ranged_list_rmse)):
+			medio.append(ranged_list_rmse[i] if i == 0 else medio[i - 1] + ranged_list_rmse[i] / (i + 1))
+
+		with open(outputfile, mode="w") as f:
+			f.write("\n".join([f"R{idx + 1} {x[1]} {x[2]}" for idx, x in enumerate(zip(ranged_list_vars, ranged_list_rmse, medio))]))
+
+	def mrmse_var_wrange10onvar_woutMajor(self, outputfile="mrmse_var_wrange10onvar_woutMajor.dat"):
+		ordered_list = sorted(list(zip(self.getnumvars(), self.getRMSE())), key=lambda x: x[0])
+		num_vars = list(map(lambda x: x[0], ordered_list))
+		rmses = list(map(lambda x: x[1], ordered_list))
+
+		self.remove_rmse_major(rmses, num_vars, 1)
+
+		mrmse_ranged = []
+		num_var_ranged = []
+		i = 0
+		p = 1
+		while True:
+			num_var_ranged.append(f"R{p}")
+			if i + 10 < len(num_vars):
+				mrmse_ranged.append(sum(rmses[i:i+10])/10)
+				i += 10
+			else:
+				scarto = len(num_vars) - i
+				mrmse_ranged.append(sum(rmses[i:i + scarto])/(i + scarto))
+				break
+
+			p += 1
+
+
+		medio = []
+		for j in range(len(mrmse_ranged)):
+			medio.append(mrmse_ranged[j] if j == 0 else sum(mrmse_ranged[:j+1])/(j + 1))
+
+		# with open(outputfile, mode="w") as f:
+			# f.write("\n".join([f"{x} {y} {z}" for x, y, z in zip(num_var_ranged, mrmse_ranged, medio)]))
+
+		plt.plot(num_var_ranged, mrmse_ranged, marker="o", color="m", label="MRMSE(medio)/range")
+		plt.plot(num_var_ranged, medio, color="c", label="Valore medio")
+		plt.xlabel("Range di ampiezza 10 delle dimensioni")
+		plt.ylabel("MRMSE medio per range")
+		plt.legend(loc="upper right")
+		plt.show()
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
@@ -335,4 +433,8 @@ if __name__ == '__main__':
     # plotgen.save_speedup1()
     # plotgen.getnumvars()
     # plotgen.plot_RMSE_on_variables_wrange()
-    plotgen.plot_RMSE_on_variables_wrange_woutMajor()
+    # plotgen.plot_RMSE_on_variables_wrange_woutMajor()
+    # plotgen.save_rmse_on_vars_wrange_woutMajor()
+    # plotgen.mrmse_var_wrange10onvar()
+    # plotgen.save_mrmse_var_range()
+    plotgen.mrmse_var_wrange10onvar_woutMajor()
