@@ -79,13 +79,15 @@ class PlotGenerator:
 
 	    speedup = np.array(sp)
 	    plt.figure(figsize=[15.0, 8.0])
-	    plt.scatter(id_test, speedup, marker="o", label="T(10000)/T(1)")
-	    plt.plot(id_test, asc_media, label="Tmedio", color="orange")
-	    plt.xlabel("ID Test")
+	    plt.scatter(id_test, speedup, marker="o", label="T(10000)/T(1)", color="m")
+	    plt.plot(id_test, asc_media, label="Tmedio", color="c")
+	    plt.xlabel("N° Test")
 	    plt.ylabel("Speedup")
 	    plt.legend(loc="upper left")
-	    if self.save_fig:
-	        plt.savefig("T10000_on_T1.png")
+
+	    # if self.save_fig:
+	    	#plt.savefig("T10000OnT1.png")
+
 	    plt.show()
 
 	def get_speedup2(self):
@@ -422,10 +424,10 @@ if __name__ == '__main__':
     json_f = sys.argv[-2]
     rmse_f = sys.argv[-1]
 
-    plotgen = PlotGenerator(json_f, rmse_f, save_fig=False, load_rmse=False)
+    plotgen = PlotGenerator(json_f, rmse_f, save_fig=True, load_rmse=False)
     # plotgen.update_json()
-    # plotgen.speedup_T10000_on_T1()
-    plotgen.speedup_T1w10000_on_T10000w10000()
+    plotgen.speedup_T10000_on_T1()
+    # plotgen.speedup_T1w10000_on_T10000w10000()
     # plotgen.vars_distribution()
     # plotgen.vars_histogram()
     # plotgen.speedup1_and_variables()
