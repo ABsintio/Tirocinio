@@ -94,7 +94,7 @@ class PlotGenerator:
 
 	    for k, v in self.data.items():
 	        id_test.append(int(k))
-	        sp.append(v['simulations (msec)'][0][-1] * 10**4 / v['simulations (msec)'][-1][-1])
+	        sp.append(v['serialTime'] / v['simulations (msec)'][-1][-1])
 
 	    return sp, id_test
 
@@ -107,13 +107,15 @@ class PlotGenerator:
 
 	    speedup = np.array(sp)
 	    plt.figure(figsize=[15.0, 8.0])
-	    plt.scatter(id_test, speedup, marker="o", label="T10000(1)/T10000(10000)")
-	    plt.plot(id_test, asc_media, label="Tmedio", color="orange")
-	    plt.xlabel("ID Test")
+	    plt.scatter(id_test, speedup, marker="o", label="T(1)/T(10000)", color="m")
+	    plt.plot(id_test, asc_media, label="Tmedio", color="cyan")
+	    plt.xlabel("N° Test")
 	    plt.ylabel("Speedup")
 	    plt.legend(loc="upper left")
+
 	    if self.save_fig:
 	        plt.savefig("T1w10000_on_T10000w10000.png")
+
 	    plt.show()
 
 	def getnumvars(self, total=False):
@@ -423,7 +425,7 @@ if __name__ == '__main__':
     plotgen = PlotGenerator(json_f, rmse_f, save_fig=False, load_rmse=False)
     # plotgen.update_json()
     # plotgen.speedup_T10000_on_T1()
-    # plotgen.speedup_T1w10000_on_T10000w10000()
+    plotgen.speedup_T1w10000_on_T10000w10000()
     # plotgen.vars_distribution()
     # plotgen.vars_histogram()
     # plotgen.speedup1_and_variables()
@@ -431,10 +433,11 @@ if __name__ == '__main__':
     # plotgen.rmse_on_variables()
     # plotgen.save_rmse()
     # plotgen.save_speedup1()
+    # plotgen.save_speedup2()
     # plotgen.getnumvars()
     # plotgen.plot_RMSE_on_variables_wrange()
     # plotgen.plot_RMSE_on_variables_wrange_woutMajor()
     # plotgen.save_rmse_on_vars_wrange_woutMajor()
     # plotgen.mrmse_var_wrange10onvar()
     # plotgen.save_mrmse_var_range()
-    plotgen.mrmse_var_wrange10onvar_woutMajor()
+    # plotgen.mrmse_var_wrange10onvar_woutMajor()

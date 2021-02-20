@@ -6,22 +6,22 @@
 #include <string>
 #include <fstream>
 
-#include "BouncingBall_SystemDefinition.cuh"
+#include "BIOMD401_SystemDefinition.cuh"
 #include "SingleSystem_PerThread_Interface.cuh"
 
 using namespace std;
 
-#define SOLVER RKCK45
+#define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
 const int NT   = 1;
-const int SD   = 2;
+const int SD   = 3;
 const int NCP  = 1;
-const int NSP  = 0;
+const int NSP  = 11;
 const int NISP = 0;
-const int NE   = 1;
-const int NA   = 2;
+const int NE   = 0;
+const int NA   = 5;
 const int NIA  = 0;
-const int NDO  = 100000;
+const int NDO  = 5000000;
 
 
 void FillSolverObject(
@@ -34,15 +34,30 @@ void FillSolverObject(
     int ProblemNumber = 0;
     while (k_begin < k_end) {
         Solver.SetHost(ProblemNumber, TimeDomain, 0, 0.0);
-        Solver.SetHost(ProblemNumber, TimeDomain, 1, 100.0);  
+        Solver.SetHost(ProblemNumber, TimeDomain, 1, 500.0);  
+
+        // Settaggio dei valori iniziali degli ActualState
+ 
 
         Solver.SetHost(ProblemNumber, ActualTime, 0.0);
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
         Solver.SetHost(ProblemNumber, DenseIndex, 0 );
 
+        // Settaggio dei valori iniziali per ACC (se presenti)
+
+
+        // Settaggio dei valori iniziali per ACCi (se presenti)
+
+		
         ProblemNumber++;
         k_begin++;
     }
+
+    // Settaggio dei valori iniziali per sPAR (se presenti)
+
+
+    // Settaggio dei valori iniziali per sPARi (se presenti)
+
 }
 
 
@@ -56,15 +71,45 @@ void SaveData(
 	
     for (int tid=0; tid<NumberOfThreads; tid++)
     {
-        DataFile.width(Width); DataFile << "X_h" << ',';
-        DataFile.width(Width); DataFile << "X_v" << ',';
-        DataFile.width(Width); DataFile << "ACC_$whenCondition1" << ',';
-        DataFile.width(Width); DataFile << "ACC_$PRE.v" << ',';
+        DataFile.width(Width); DataFile << "X_B" << ',';
+        DataFile.width(Width); DataFile << "X_C" << ',';
+        DataFile.width(Width); DataFile << "X_z" << ',';
+        DataFile.width(Width); DataFile << "sPAR_Compartment" << ',';
+        DataFile.width(Width); DataFile << "sPAR_alpha1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_alpha2" << ',';
+        DataFile.width(Width); DataFile << "sPAR_beta1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_beta2" << ',';
+        DataFile.width(Width); DataFile << "sPAR_g11" << ',';
+        DataFile.width(Width); DataFile << "sPAR_g12" << ',';
+        DataFile.width(Width); DataFile << "sPAR_g21" << ',';
+        DataFile.width(Width); DataFile << "sPAR_g22" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k1" << ',';
+        DataFile.width(Width); DataFile << "sPAR_k2" << ',';
+        DataFile.width(Width); DataFile << "ACC_B_bar" << ',';
+        DataFile.width(Width); DataFile << "ACC_C_bar" << ',';
+        DataFile.width(Width); DataFile << "ACC_gamma" << ',';
+        DataFile.width(Width); DataFile << "ACC_y1" << ',';
+        DataFile.width(Width); DataFile << "ACC_y2" << ',';
         DataFile.width(Width); DataFile << endl;
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 1) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, ActualState, 2) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 0) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 1) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 2) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 3) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 4) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 5) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 6) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 7) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 8) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 9) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(SharedParameters, 10) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 0) << ',';
         DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 1) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 2) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 3) << ',';
+        DataFile.width(Width); DataFile << Solver.GetHost<PRECISION>(tid, Accessories, 4) << ',';
 
         DataFile << '\n';
     }
@@ -72,7 +117,7 @@ void SaveData(
 
 
 int main() {
-    int NumberOfProblems = NT; // Numero di problemi da risolvere, uno per thread
+    int NumberOfProblems = 10000*NT; // Numero di problemi da risolvere, uno per thread
     int blockSize        = 512; // Numero di Thread per blocchi
     
     // Listing dei Device CUDA
@@ -97,20 +142,21 @@ int main() {
     Solver.SolverOption(TimeStepShrinkLimit, 0.2);
 
 
-    Solver.SolverOption(EventDirection, 0, 0);
 
     Solver.SolverOption(DenseOutputMinimumTimeStep, 0.0);
     Solver.SolverOption(DenseOutputSaveFrequency, 1);
     Solver.SolverOption(AbsoluteTolerance, 0, 1e-06);
     Solver.SolverOption(AbsoluteTolerance, 1, 1e-06);
+    Solver.SolverOption(AbsoluteTolerance, 2, 1e-06);
 
     Solver.SolverOption(RelativeTolerance, 0, 1e-06);
     Solver.SolverOption(RelativeTolerance, 1, 1e-06);
+    Solver.SolverOption(RelativeTolerance, 2, 1e-06);
    
     
     int NumberOfSimulationLaunches = NumberOfProblems / NT + (NumberOfProblems % NT == 0 ? 0:1);
     ofstream DataFile;
-    DataFile.open ( "BouncingBall.csv" );
+    DataFile.open ( "BIOMD401.csv" );
     clock_t SimulationStart = clock();
     clock_t TransientStart;
     clock_t TransientEnd;    
