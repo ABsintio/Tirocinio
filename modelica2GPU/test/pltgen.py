@@ -9,7 +9,7 @@ import re
 from copy import deepcopy
 
 
-plt.rcParams.update({'font.size': 10})
+plt.rcParams.update({'font.size': 15})
 
 
 class PlotGenerator:
@@ -96,7 +96,8 @@ class PlotGenerator:
 
 	    for k, v in self.data.items():
 	        id_test.append(int(k))
-	        sp.append(v['serialTime'] / v['simulations (msec)'][-1][-1])
+	        overhead = 1e4*v['simulations (msec)'][-1][-1] - v['serialTime']
+	        sp.append(1e4 / (overhead / v['serialTime'] + 1))
 
 	    return sp, id_test
 
@@ -119,6 +120,34 @@ class PlotGenerator:
 	        plt.savefig("T1w10000_on_T10000w10000.png")
 
 	    plt.show()
+
+	def get_speedup3(self):
+		sp = []
+		id_test = []
+
+		for k, v in self.data.items():
+			id_test.append(int(k))
+			overhead = 10*v['simulations (msec)'][1][-1] - v['serialTimePer10']
+			sp.append(10 / (overhead / v['serialTimePer10'] + 1))
+
+		return sp, id_test
+
+	def speedup_T1w10_on_T10e10(self):
+		sp, id_test = self.get_speedup3()
+
+		asc_media = []
+		for i, _ in enumerate(id_test):
+			asc_media.append(sum(sp[:i]) / (i + 1))
+
+		speedup = np.array(sp)
+		plt.figure(figsize=[15.0, 8.0])
+		plt.scatter(id_test, speedup, marker="o", label="T(1)/T(10)", color="m")
+		plt.plot(id_test, asc_media, label="Tmedio", color="cyan")
+		plt.xlabel("N° Test")
+		plt.ylabel("Speedup")
+		plt.legend(loc="upper left")
+		plt.show()
+	    
 
 	def getnumvars(self, total=False):
 	    vars = []
@@ -424,9 +453,9 @@ if __name__ == '__main__':
     json_f = sys.argv[-2]
     rmse_f = sys.argv[-1]
 
-    plotgen = PlotGenerator(json_f, rmse_f, save_fig=True, load_rmse=False)
+    plotgen = PlotGenerator(json_f, rmse_f, save_fig=False, load_rmse=False)
     # plotgen.update_json()
-    plotgen.speedup_T10000_on_T1()
+    # plotgen.speedup_T10000_on_T1()
     # plotgen.speedup_T1w10000_on_T10000w10000()
     # plotgen.vars_distribution()
     # plotgen.vars_histogram()
@@ -443,3 +472,4 @@ if __name__ == '__main__':
     # plotgen.mrmse_var_wrange10onvar()
     # plotgen.save_mrmse_var_range()
     # plotgen.mrmse_var_wrange10onvar_woutMajor()
+    plotgen.speedup_T1w10_on_T10e10()

@@ -28,7 +28,7 @@ def execute_run(w_dir, modelname):
 	load_text = open(f"{modelname}.cu", mode="r").read()
 	load_text = load_text.replace(
 		"int NumberOfProblems = NT",
-		"int NumberOfProblems = 10000*NT")
+		"int NumberOfProblems = 10*NT")
 
 	new_file = f"{modelname}_1.cu"
 	with open(new_file, mode="x") as s:
@@ -67,17 +67,16 @@ def execute_run(w_dir, modelname):
 
 
 tests = json.load(open("tests.json", mode="r"))
-tot_time = []
 
 for k, v in tests.items():
-	v['serialTime'] = ""
+	v['serialTimePer10'] = ""
 	if v['simulations (msec)']:
-		exec_time = v['simulations (msec)'][0][2] * 10e4
-		if v['simulations (msec)'][0][2] < 1:
-			mpgos_dir = os.path.join(v['w_dir'], f"{v['model']}_MPGOS")
-			exec_time = execute_run(mpgos_dir, v['model'])
-			print(f"Execution time: {exec_time}")
-		v['serialTime'] = exec_time
+		tot_time = v['simulations (msec)'][0][-1] * 10
+		if not v['simulations (msec)'][0][-1] > 1:
+			tot_time = execute_run(os.path.join(v['w_dir'], f"{v['model']}_MPGOS"), v['model'])
+			print(tot_time)
+		v['serialTimePer10'] = tot_time
+
 
 with open("tests.json", mode="w") as f:
-	json.dump(tests, f)
+    json.dump(tests, f)
