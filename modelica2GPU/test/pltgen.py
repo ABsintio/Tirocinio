@@ -96,8 +96,7 @@ class PlotGenerator:
 
 	    for k, v in self.data.items():
 	        id_test.append(int(k))
-	        overhead = 1e4*v['simulations (msec)'][-1][-1] - v['serialTime']
-	        sp.append(1e4 / (overhead / v['serialTime'] + 1))
+	        sp.append(1e4 * v['simulations (msec)'][0][-1] / v['simulations (msec)'][-1][-1])
 
 	    return sp, id_test
 
@@ -127,8 +126,9 @@ class PlotGenerator:
 
 		for k, v in self.data.items():
 			id_test.append(int(k))
-			overhead = 10*v['simulations (msec)'][1][-1] - v['serialTimePer10']
-			sp.append(10 / (overhead / v['serialTimePer10'] + 1))
+			sp.append(10 * v['simulations (msec)'][0][-1] / v['simulations (msec)'][1][-1])
+			if 10 * v['simulations (msec)'][0][-1] / v['simulations (msec)'][1][-1] > 60:
+				print(k)
 
 		return sp, id_test
 
@@ -445,6 +445,74 @@ class PlotGenerator:
 		plt.legend(loc="upper right")
 		plt.show()
 
+	def get_speedup100(self):
+		sp = []
+		id_test = []
+
+		for k, v in self.data.items():
+			id_test.append(int(k))
+			sp.append(100 * v['simulations (msec)'][0][-1] / v['simulations (msec)'][2][-1])
+
+		return sp, id_test
+
+	def get_speedup1000(self):
+		sp = []
+		id_test = []
+
+		for k, v in self.data.items():
+			id_test.append(int(k))
+			sp.append(1000 * v['simulations (msec)'][0][-1] / v['simulations (msec)'][3][-1])
+
+		return sp, id_test
+
+	def generate_allspeedupandefficienty(self):
+		with open("speedup_efficiency.dat", mode="w") as f:
+			sp10, _ = self.get_speedup3()
+			sp100, _ = self.get_speedup100()
+			sp1000, _ = self.get_speedup1000()
+			sp10000, _ = self.get_speedup2()
+
+			ef10 = list(map(lambda x: x / 10, sp10))
+			ef100 = list(map(lambda x: x / 100, sp100))
+			ef1000 = list(map(lambda x: x / 1000, sp1000))
+			ef10000 = list(map(lambda x: x / 10000, sp10000))
+
+			num_vars = self.getnumvars(total=False)
+
+			s = ""
+			i = 1
+			for x, y, z, t, q, n, m, o in zip(sp10, sp100, sp1000, sp10000, ef10, ef100, ef1000, ef10000):
+				s += "\\textbf{%d} " % (i) + "%.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f" % (
+					x, y, z, t, q, m, n, o) + "\n"
+				i += 1
+
+			f.write(s)
+
+	@staticmethod
+	def create_table_forLaTeX_for_speedup():
+		with open("speedup_efficiency.dat", mode="r") as f:
+			lines = []
+			while (l := f.readline()):
+				lines.append(" & ".join([x for x in l[:-1].split(" ")]))
+
+			s = "    " + "\\\\\n    \\hline\n    ".join(lines)
+			print(s)
+
+	def plot_speedup_efficency_on_istances(self):
+		matrix = []
+		with open("speedup_efficiency.dat") as f:
+			while (l := f.readline()):
+				matrix.append([float(x) for x in l.split(" ")[2:]])
+
+		x = ["10", "100", "1000", "10000"]
+		for row in matrix:
+			#plt.plot(x, row[:-4], marker="o", color="m")
+			plt.plot(x, row[4:], marker="x", color="c")
+
+		plt.show()
+
+
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
@@ -472,4 +540,8 @@ if __name__ == '__main__':
     # plotgen.mrmse_var_wrange10onvar()
     # plotgen.save_mrmse_var_range()
     # plotgen.mrmse_var_wrange10onvar_woutMajor()
-    plotgen.speedup_T1w10_on_T10e10()
+    # plotgen.speedup_T1w10_on_T10e10()
+    plotgen.generate_allspeedupandefficienty()
+    plotgen.create_table_forLaTeX_for_speedup()
+    # plotgen.plot_speedup_efficency_on_istances()
+    # plotgen.get_speedup3()

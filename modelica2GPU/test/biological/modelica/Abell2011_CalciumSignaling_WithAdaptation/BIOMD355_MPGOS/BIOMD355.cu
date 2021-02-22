@@ -15,7 +15,7 @@ using namespace std;
 
 #define SOLVER RKCK45 // Runge-Kutta Order 4th
 #define PRECISION double
-const int NT   = 1;
+const int NT   = 10000;
 const int SD   = 9;
 const int NCP  = 1;
 const int NSP  = 26;
@@ -23,7 +23,7 @@ const int NISP = 0;
 const int NE   = 0;
 const int NA   = 0;
 const int NIA  = 0;
-const int NDO  = 1000000;
+const int NDO  = 100;
 
 
 void FillSolverObject(
@@ -43,6 +43,7 @@ void FillSolverObject(
 
         Solver.SetHost(ProblemNumber, ActualTime, 0.0);
         Solver.SetHost(ProblemNumber, ControlParameters, 0, 0.0);
+        
         Solver.SetHost(ProblemNumber, DenseIndex, 0 );
 
         // Settaggio dei valori iniziali per ACC (se presenti)
@@ -236,10 +237,7 @@ int main() {
     cout << endl;
 	
     DataFile.close();
-    
     Solver.Print(DenseOutput, 0);
-    Solver.Print(ActualState);
-    Solver.Print(ActualTime);
 	
     cout << "Test finished!" << endl;
 

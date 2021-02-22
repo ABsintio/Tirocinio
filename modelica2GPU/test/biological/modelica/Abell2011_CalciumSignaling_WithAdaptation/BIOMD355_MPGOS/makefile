@@ -1,6 +1,6 @@
 
 INCL_DIR = -I/home/yorunoomo/Scrivania/Tirocinio/util/Software/MPGOS/SourceCodes/
-CMPL_OPT = -O3 --std=c++11 --ptxas-options=-v --gpu-architecture=sm_75 -lineinfo -w -maxrregcount=80
+CMPL_OPT = -O3 --std=c++11 --ptxas-options=-v --gpu-architecture=sm_75 -lineinfo -w -maxrregcount=32
 
 all: BIOMD355.exe
 
@@ -10,3 +10,4 @@ BIOMD355.exe: BIOMD355.cu
 clean:
 	rm -f BIOMD355.exe
 	rm -f *.csv
+	rm -f *.txt
