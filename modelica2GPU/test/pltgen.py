@@ -477,11 +477,9 @@ class PlotGenerator:
 			ef1000 = list(map(lambda x: x / 1000, sp1000))
 			ef10000 = list(map(lambda x: x / 10000, sp10000))
 
-			num_vars = self.getnumvars(total=False)
-
 			s = ""
 			i = 1
-			for x, y, z, t, q, n, m, o in zip(sp10, sp100, sp1000, sp10000, ef10, ef100, ef1000, ef10000):
+			for x, y, z, t, q, m, n, o in zip(sp10, sp100, sp1000, sp10000, ef10, ef100, ef1000, ef10000):
 				s += "\\textbf{%d} " % (i) + "%.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f" % (
 					x, y, z, t, q, m, n, o) + "\n"
 				i += 1
