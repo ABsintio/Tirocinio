@@ -9,7 +9,7 @@ import re
 from copy import deepcopy
 
 
-plt.rcParams.update({'font.size': 15})
+plt.rcParams.update({'font.size': 12})
 
 
 class PlotGenerator:
@@ -511,6 +511,134 @@ class PlotGenerator:
 
 		plt.show()
 
+	def speedup10_on_var_range(self):
+		ordered_list = sorted(list(zip(self.getnumvars(), self.get_speedup3()[0])), key=lambda x: x[0])
+		num_vars = list(map(lambda x: x[0], ordered_list))
+		sp10 = list(map(lambda x: x[1], ordered_list))
+		print(sp10[-10:])
+
+		num_var_ranged = []
+		sp10_ranged = []
+		i = 0
+		p = 0
+		while True:
+			num_var_ranged.append(f"R{p}")
+			if i + 10 < len(sp10):
+				sp10_ranged.append(sum(sp10[i:i+10]) / 10)
+				i += 10
+			else:
+				scarto = len(sp10) - i
+				sp10_ranged.append(sum(sp10[i:i + scarto]) / (scarto))
+				break
+
+			p += 1
+
+		medio = []
+		for j in range(len(sp10_ranged)):
+			medio.append(sp10_ranged[j] if j == 0 else sum(sp10_ranged[:j+1])/(j + 1))
+
+		plt.plot(num_var_ranged, sp10_ranged, marker="o", color="m", label="Speedup medio per range")
+		plt.plot(num_var_ranged, medio, color="c", label="Valore medio")
+		plt.xlabel("Range di ampiezza 10 delle dimensioni")
+		plt.ylabel("Speedup (p = 10) medio")
+		plt.legend(loc="upper right")
+		plt.show()
+
+	def speedup100_on_var_range(self):
+		ordered_list = sorted(list(zip(self.getnumvars(), self.get_speedup100()[0])), key=lambda x: x[0])
+		num_vars = list(map(lambda x: x[0], ordered_list))
+		sp100 = list(map(lambda x: x[1], ordered_list))
+
+		num_var_ranged = []
+		sp100_ranged = []
+		i = 0
+		p = 0
+		while True:
+			num_var_ranged.append(f"R{p}")
+			if i + 10 < len(sp100):
+				sp100_ranged.append(sum(sp100[i:i+10]) / 10)
+				i += 10
+			else:
+				scarto = len(sp100) - i
+				sp100_ranged.append(sum(sp100[i:i + scarto]) / (scarto))
+				break
+
+			p += 1
+
+		medio = []
+		for j in range(len(sp100_ranged)):
+			medio.append(sp100_ranged[j] if j == 0 else sum(sp100_ranged[:j+1])/(j + 1))
+
+		plt.plot(num_var_ranged, sp100_ranged, marker="o", color="m", label="Speedup medio per range")
+		plt.plot(num_var_ranged, medio, color="c", label="Valore medio")
+		plt.xlabel("Range di ampiezza 10 delle dimensioni")
+		plt.ylabel("Speedup (p = 100) medio")
+		plt.legend(loc="upper right")
+		plt.show()
+
+	def speedup1000_on_var_range(self):
+		ordered_list = sorted(list(zip(self.getnumvars(), self.get_speedup1000()[0])), key=lambda x: x[0])
+		num_vars = list(map(lambda x: x[0], ordered_list))
+		sp1000 = list(map(lambda x: x[1], ordered_list))
+
+		num_var_ranged = []
+		sp1000_ranged = []
+		i = 0
+		p = 0
+		while True:
+			num_var_ranged.append(f"R{p}")
+			if i + 10 < len(sp1000):
+				sp1000_ranged.append(sum(sp1000[i:i+10]) / 10)
+				i += 10
+			else:
+				scarto = len(sp1000) - i
+				sp1000_ranged.append(sum(sp1000[i:i + scarto]) / (scarto))
+				break
+
+			p += 1
+
+		medio = []
+		for j in range(len(sp1000_ranged)):
+			medio.append(sp1000_ranged[j] if j == 0 else sum(sp1000_ranged[:j+1])/(j + 1))
+
+		plt.plot(num_var_ranged, sp1000_ranged, marker="o", color="m", label="Speedup medio per range")
+		plt.plot(num_var_ranged, medio, color="c", label="Valore medio")
+		plt.xlabel("Range di ampiezza 10 delle dimensioni")
+		plt.ylabel("Speedup (p = 1000) medio")
+		plt.legend(loc="upper right")
+		plt.show()
+
+	def speedup10000_on_var_range(self):
+		ordered_list = sorted(list(zip(self.getnumvars(), self.get_speedup2()[0])), key=lambda x: x[0])
+		num_vars = list(map(lambda x: x[0], ordered_list))
+		sp1000 = list(map(lambda x: x[1], ordered_list))
+
+		num_var_ranged = []
+		sp1000_ranged = []
+		i = 0
+		p = 0
+		while True:
+			num_var_ranged.append(f"R{p}")
+			if i + 10 < len(sp1000):
+				sp1000_ranged.append(sum(sp1000[i:i+10]) / 10)
+				i += 10
+			else:
+				scarto = len(sp1000) - i
+				sp1000_ranged.append(sum(sp1000[i:i + scarto]) / (scarto))
+				break
+
+			p += 1
+
+		medio = []
+		for j in range(len(sp1000_ranged)):
+			medio.append(sp1000_ranged[j] if j == 0 else sum(sp1000_ranged[:j+1])/(j + 1))
+
+		plt.plot(num_var_ranged, sp1000_ranged, marker="o", color="m", label="Speedup medio per range")
+		plt.plot(num_var_ranged, medio, color="c", label="Valore medio")
+		plt.xlabel("Range di ampiezza 10 delle dimensioni")
+		plt.ylabel("Speedup (p = 10000) medio")
+		plt.legend(loc="upper right")
+		plt.show()
 
 
 
@@ -541,7 +669,8 @@ if __name__ == '__main__':
     # plotgen.save_mrmse_var_range()
     # plotgen.mrmse_var_wrange10onvar_woutMajor()
     # plotgen.speedup_T1w10_on_T10e10()
-    plotgen.generate_allspeedupandefficienty()
-    plotgen.create_table_forLaTeX_for_speedup()
+    # plotgen.generate_allspeedupandefficienty()
+    # plotgen.create_table_forLaTeX_for_speedup()
     # plotgen.plot_speedup_efficency_on_istances()
     # plotgen.get_speedup3()
+    plotgen.speedup10000_on_var_range()
