@@ -311,55 +311,51 @@ def get_modelica2GPU_configuration(config_file):
         tmp_logger.error(msg, msg)
         sys.exit(1)
 
-
-
 # Questo va chiamato prima invece
 config_dict, m2g_logger = get_modelica2GPU_configuration(config_m2g)
 del tmp_logger
-
 coloredlogs.install(level="DEBUG", logger=m2g_logger.clogger)
 
+if __name__ == "__main__":
+	try:
+	    # Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro per il notifier
+	    from parser.parser import *
+	    from builder.builder import *
+	    from model.model import *
 
-try:
-    # Ovviamente questi moduli devono essere chiamati dopo in quanto devo settare il parametro per il notifier
-    from parser.parser import *
-    from builder.builder import *
-    from model.model import *
+	    xml_parser = Parser(config_dict['xmlfile'], m2g_logger) # Creo un oggetto Parser
+	    xml_parser.parseXML() # Eseguo il parsing
+	    abstract_model = Model(
+	        config_dict['modelname'],
+	        xml_parser.dynamic_equations['equations'],
+	        xml_parser.dynamic_equations['events'],
+	        xml_parser.algorithms_dict, xml_parser.unique_dict, m2g_logger
+	    ) # Creo una versione astratta del modello
+	    
+	    # Creo il builder ed infine costruisco i tre file: Model.cu, Model_SystemDefinition.cuh, makefile
+	    cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger, xml_parser.userdefined_func, xml_parser.nevents)
+	    cpp_builder.builfiles()
 
+	    # START LOG
+	    end = time.time()
+	    msg = f"Operazione di traduzione terminata con successo in {end - start}s."
+	    m2g_logger.debug(msg, msg)
+	    n = Notifier("modelica2GPU")
+	    n.setupforsimple("Modelica2GPU Notification", "Operazione di traduzione terminata con successo")
+	    n.show()
+	    # END LOG
+	except Exception as e:
+	    msg = f"modelica2GPU ha riscontrato il seguente errore. {e.args[0]}. Per favore controlla che l'XML sia ben formattato!"
+	    m2g_logger.error(msg, msg)
+	    sys.exit(1)
+	finally:
+	    m2g_logger.remove_logger()
 
-    xml_parser = Parser(config_dict['xmlfile'], m2g_logger) # Creo un oggetto Parser
-    xml_parser.parseXML() # Eseguo il parsing
-    abstract_model = Model(
-        config_dict['modelname'],
-        xml_parser.dynamic_equations['equations'],
-        xml_parser.dynamic_equations['events'],
-        xml_parser.algorithms_dict, xml_parser.unique_dict, m2g_logger
-    ) # Creo una versione astratta del modello
-    
-    # Creo il builder ed infine costruisco i tre file: Model.cu, Model_SystemDefinition.cuh, makefile
-    cpp_builder = Builder(config_dict, abstract_model, config_dict['workingdir'], m2g_logger, xml_parser.userdefined_func, xml_parser.nevents)
-    cpp_builder.builfiles()
-
-    # START LOG
-    end = time.time()
-    msg = f"Operazione di traduzione terminata con successo in {end - start}s."
-    m2g_logger.debug(msg, msg)
-    n = Notifier("modelica2GPU")
-    n.setupforsimple("Modelica2GPU Notification", "Operazione di traduzione terminata con successo")
-    n.show()
-    # END LOG
-except Exception as e:
-    msg = f"modelica2GPU ha riscontrato il seguente errore. {e.args[0]}. Per favore controlla che l'XML sia ben formattato!"
-    m2g_logger.error(msg, msg)
-    sys.exit(1)
-finally:
-    m2g_logger.remove_logger()
-
-print("\n\n\033[1;32;40mMESSAGGIO DA MODELICA2GPU")
-print("\033[1;32;40mDurante l'operazione modelica2GPU non riscontrato alcun errore rilevante.")
-print("\033[1;32;40mTutti i file sono stati salvati nella directory indicata nel file di configurazione: \n")
-print(f"    \033[1;32;40m{config_dict['workingdir']}{config_dict['modelname']}_MPGOS\n")
-print("\033[1;32;40mIl file di log è presente nella working directory sotto la voce 'log'")
-print("\033[1;32;40mAdesso è possibile compilare i file Cpp, con il comando 'make all' e simulare il modello\n")
-print("\033[1;32;40mSi ringrazia l'utente per aver provato modelica2GPU\n")
-print("\033[1;32;40mCordiali saluti, X\n\n")
+	print("\n\n\033[1;32;40mMESSAGGIO DA MODELICA2GPU")
+	print("\033[1;32;40mDurante l'operazione modelica2GPU non riscontrato alcun errore rilevante.")
+	print("\033[1;32;40mTutti i file sono stati salvati nella directory indicata nel file di configurazione: \n")
+	print(f"    \033[1;32;40m{config_dict['workingdir']}{config_dict['modelname']}_MPGOS\n")
+	print("\033[1;32;40mIl file di log è presente nella working directory sotto la voce 'log'")
+	print("\033[1;32;40mAdesso è possibile compilare i file Cpp, con il comando 'make all' e simulare il modello\n")
+	print("\033[1;32;40mSi ringrazia l'utente per aver provato modelica2GPU\n")
+	print("\033[1;32;40mCordiali saluti, X\n\n")
