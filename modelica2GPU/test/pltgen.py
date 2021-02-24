@@ -9,7 +9,7 @@ import re
 from copy import deepcopy
 
 
-plt.rcParams.update({'font.size': 12})
+plt.rcParams.update({'font.size': 15})
 
 
 class PlotGenerator:
@@ -467,7 +467,7 @@ class PlotGenerator:
 
 	def generate_allspeedupandefficienty(self):
 		with open("speedup_efficiency.dat", mode="w") as f:
-			sp10, _ = self.get_speedup3()
+			sp10, id_test = self.get_speedup3()
 			sp100, _ = self.get_speedup100()
 			sp1000, _ = self.get_speedup1000()
 			sp10000, _ = self.get_speedup2()
@@ -478,9 +478,9 @@ class PlotGenerator:
 			ef10000 = list(map(lambda x: x / 10000, sp10000))
 
 			s = ""
-			i = 1
+			i = 0
 			for x, y, z, t, q, m, n, o in zip(sp10, sp100, sp1000, sp10000, ef10, ef100, ef1000, ef10000):
-				s += "\\textbf{%d} " % (i) + "%.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f" % (
+				s += "\\textbf{%d} " % (id_test[i]) + "%.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f" % (
 					x, y, z, t, q, m, n, o) + "\n"
 				i += 1
 
@@ -631,6 +631,7 @@ class PlotGenerator:
 		for j in range(len(sp1000_ranged)):
 			medio.append(sp1000_ranged[j] if j == 0 else sum(sp1000_ranged[:j+1])/(j + 1))
 
+		plt.figure(figsize=[20.0, 7.0])
 		plt.plot(num_var_ranged, sp1000_ranged, marker="o", color="m", label="Speedup medio per range")
 		plt.plot(num_var_ranged, medio, color="c", label="Valore medio")
 		plt.xlabel("Range di ampiezza 10 delle dimensioni")
@@ -638,6 +639,82 @@ class PlotGenerator:
 		plt.legend(loc="upper right")
 		plt.show()
 
+	def create_speedup_efficiency_per_test(self):
+		current_dir = os.getcwd()
+		os.chdir("plots")
+
+		for k, v in self.data.items():
+			print(f"Plotting for Test: {k} ...")
+
+			i = 10
+			speedups = []
+			efficienies = []
+			for sim in v['simulations (msec)'][1:]:
+				speedup = i * v['simulations (msec)'][0][-1] / sim[-1]
+				efficiency = speedup / i
+				i *= 10
+
+				speedups.append(speedup)
+				efficienies.append(efficiency)
+
+			x_axis = ["10", "100", "1000", "10000"]
+			plt.figure(figsize=[20.0, 7.0])
+			plt.plot(x_axis, speedups, color="m", marker="o", label="Speedup")
+			plt.xlabel("Istanze di simulazione")
+			plt.ylabel("Speedup")
+			plt.legend(loc="upper right")
+			plt.savefig(f"test_{k}_speedup.png")
+
+			plt.figure(figsize=[20.0, 7.0])
+			plt.plot(x_axis, efficienies, color="c", marker="o", label="Efficienza")
+			plt.xlabel("Istanze di simulazione")
+			plt.ylabel("Efficienza")
+			plt.legend(loc="upper right")
+			plt.savefig(f"test_{k}_efficiency.png")
+
+		os.chdir(current_dir)
+
+
+	def cpu_gpu_table(self):
+		s = ""
+		for k, v in self.data.items():
+			cpu = []
+			gpu = []
+			for sim in v['simulations (msec)'][1:]:
+				cpu.append(sim[-2] / 1000)
+				gpu.append(sim[-1] / 1000)
+
+			s += "    \\textbf{%s} & " % (k) + " & ".join(["%.2f & %.2f" % (x, y) for x, y in zip(cpu, gpu)]) + "\\\\\n    \\hline\n"
+
+		print(s)
+
+	def plot_cpu_gpu_error(self):
+		cpus = [[], [], [], [], []]
+		gpus = [[], [], [], [], []]
+		ks = []
+		for k, v in self.data.items():
+
+			i = 0
+			for sim in v['simulations (msec)']:
+				cpus[i].append(sim[-2] / 1000)
+				gpus[i].append(sim[-1] / 1000)
+				i += 1
+
+			ks.append(int(k))
+
+		for j, values in enumerate(cpus):
+			np_cpu = np.array(values)
+			np_gpu = np.array(gpus[j])
+			rate = np_cpu / np_gpu
+
+			with open(f"CPU_GPU_{10 ** j}.dat", mode="w") as f:
+				f.write("\n".join([f"{x}" for x in rate]))
+
+			plt.plot(ks, rate, color="m", label="CPU/GPU")
+			plt.xlabel("Test ID")
+			plt.ylabel(f"Rapporto tempo di CPU su GPU (p = {10 ** j})")
+			plt.legend(loc="upper left")
+			plt.show()
 
 
 if __name__ == '__main__':
@@ -671,4 +748,7 @@ if __name__ == '__main__':
     # plotgen.create_table_forLaTeX_for_speedup()
     # plotgen.plot_speedup_efficency_on_istances()
     # plotgen.get_speedup3()
-    plotgen.speedup10000_on_var_range()
+    # plotgen.speedup10000_on_var_range()
+    # plotgen.create_speedup_efficiency_per_test()
+    # plotgen.cpu_gpu_table()
+    plotgen.plot_cpu_gpu_error()
