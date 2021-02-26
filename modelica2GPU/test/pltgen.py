@@ -9,7 +9,7 @@ import re
 from copy import deepcopy
 
 
-plt.rcParams.update({'font.size': 15})
+plt.rcParams.update({'font.size': 12})
 
 
 class PlotGenerator:
@@ -717,8 +717,8 @@ class PlotGenerator:
 			plt.show()
 
 	def cpu_gpu_var_range(self):
-		def create_range(rates):
-			num_vars = getnumvars()
+		def create_range(rates, f):
+			num_vars = f()
 			ordered_list = sorted(list(zip(rates, num_vars)), key=lambda x: x[1])
 			ordered_vars = list(map(lambda x: x[1], ordered_list))
 			ordered_rates = list(map(lambda x: x[0], ordered_list))
@@ -758,12 +758,26 @@ class PlotGenerator:
 
 			ks.append(int(k))
 
+		i = 0
 		for cpu, gpu in zip(cpus, gpus):
 			cpu_np = np.array(cpu)
 			gpu_np = np.array(gpu)
 
 			rates = cpu_np / gpu_np
-			ranged_var, ranged_rates, medio = create_range(rates)
+			ranged_var, ranged_rates, medio = create_range(rates, self.getnumvars)
+
+			ranged_var_np = np.array(ranged_var)
+			ranged_rates_np = np.array(ranged_rates)
+			medio_np = np.array(medio)
+
+			plt.plot(ranged_var_np, ranged_rates_np, marker="o", color="m", label=f"TCPU({10**i})/TGPU({10**i})")
+			plt.plot(ranged_var_np, medio_np, color="c", label="Valore medio")
+			plt.xlabel("Range di ampiezza 10 delle dimensioni")
+			plt.ylabel("Rapporto CPU/GPU medio")
+			plt.legend(loc="upper right")
+			plt.show()
+
+			i += 1
 			
 
 
@@ -802,4 +816,5 @@ if __name__ == '__main__':
     # plotgen.speedup10000_on_var_range()
     # plotgen.create_speedup_efficiency_per_test()
     # plotgen.cpu_gpu_table()
-    plotgen.plot_cpu_gpu_error()
+    # plotgen.plot_cpu_gpu_error()
+    plotgen.cpu_gpu_var_range()
