@@ -716,6 +716,57 @@ class PlotGenerator:
 			plt.legend(loc="upper left")
 			plt.show()
 
+	def cpu_gpu_var_range(self):
+		def create_range(rates):
+			num_vars = getnumvars()
+			ordered_list = sorted(list(zip(rates, num_vars)), key=lambda x: x[1])
+			ordered_vars = list(map(lambda x: x[1], ordered_list))
+			ordered_rates = list(map(lambda x: x[0], ordered_list))
+
+			ranged_vars = []
+			ranged_rates = []
+			i = 0
+			p = 0
+			while True:
+				ranged_vars.append(f"R{p}")
+				if i + 10 <= len(ordered_rates):
+					ranged_rates.append(sum(ordered_rates[i:i+10]) / 10)
+					i += 10
+				else:
+					scarto = len(ordered_rates) - i
+					ranged_rates.append(sum(ordered_rates[i:i+scarto]) / scarto)
+					break
+
+				p += 1
+
+			medio = []
+			for j in range(len(ranged_rates)):
+				medio.append(ranged_rates[j] if j == 0 else sum(ranged_rates[:j+1])/(j + 1))
+
+			return ranged_vars, ranged_rates, medio
+
+		cpus = [[], [], [], [], []]
+		gpus = [[], [], [], [], []]
+		ks = []
+		for k, v in self.data.items():
+
+			i = 0
+			for sim in v['simulations (msec)']:
+				cpus[i].append(sim[-2] / 1000)
+				gpus[i].append(sim[-1] / 1000)
+				i += 1
+
+			ks.append(int(k))
+
+		for cpu, gpu in zip(cpus, gpus):
+			cpu_np = np.array(cpu)
+			gpu_np = np.array(gpu)
+
+			rates = cpu_np / gpu_np
+			ranged_var, ranged_rates, medio = create_range(rates)
+			
+
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
