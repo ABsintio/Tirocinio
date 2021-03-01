@@ -365,11 +365,12 @@ class Identifier(QualifiedName):
         super().__init__(id_tag_element, variables_dict)
 
 
-class Der(QualifiedName):
+class Der:
     """ Rappresenta l'operatore di derivazione e quindi il tag <exp:Der>...</exp:Der> """
     def __init__(self, der_tag_element, variables_dict=None):
-        super().__init__(der_tag_element[0], None)
-        self.super_str = super().__str__()
+        
+        self.super_str = Der(der_tag_element[0], variables_dict).__str__() if der_tag_element[0].tag == f"{EXPRESSION_NS}Der" else \
+            QualifiedName(der_tag_element[0], None).__str__()
         self.variables_dict = variables_dict
 
     def __str__(self): 
