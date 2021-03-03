@@ -126,9 +126,9 @@ class PlotGenerator:
 
 		for k, v in self.data.items():
 			speedup = 10 * v['simulations (msec)'][0][-1] / v['simulations (msec)'][1][-1]
-			if not speedup > 10:
-				id_test.append(int(k))
-				sp.append(speedup)
+			#if not speedup > 10:
+			id_test.append(int(k))
+			sp.append(speedup)
 
 		return sp, id_test
 
@@ -172,6 +172,8 @@ class PlotGenerator:
 	                      int(match_NIA.split() [-1])
 
 	            vars.append(tot_var)
+
+	            print(tot_var)
 
 	    return vars
 
@@ -718,6 +720,31 @@ class PlotGenerator:
 			plt.legend(loc="upper left")
 			plt.show()
 
+	@staticmethod
+	def create_range(vars, l):
+		i = 0
+		ranged_vars = []
+		ranged_l = []
+		start = vars[0]
+		start_idx = 0
+		num_range = 1
+		while i < len(vars):
+			if vars[i] > start + 10:
+				ranged_vars.append(f"R{num_range}")
+				ranged_l.append(sum(l[start_idx:i]) / (i - start_idx))
+				start_idx = i
+				num_range += 1
+				start = vars[i]
+
+			i += 1
+
+		medio = []
+		for i in range(len(ranged_vars)):
+			medio.append(ranged_l[i] if i == 0 else sum(ranged_l[:i + 1]) / (i + 1))
+
+		return ranged_vars, ranged_l, medio
+
+
 	def cpu_gpu_var_range(self):
 		def create_range(rates, f):
 			num_vars = f()
@@ -725,27 +752,7 @@ class PlotGenerator:
 			ordered_vars = list(map(lambda x: x[1], ordered_list))
 			ordered_rates = list(map(lambda x: x[0], ordered_list))
 
-			ranged_vars = []
-			ranged_rates = []
-			i = 0
-			p = 0
-			while True:
-				ranged_vars.append(f"R{p}")
-				if i + 10 <= len(ordered_rates):
-					ranged_rates.append(sum(ordered_rates[i:i+10]) / 10)
-					i += 10
-				else:
-					scarto = len(ordered_rates) - i
-					ranged_rates.append(sum(ordered_rates[i:i+scarto]) / scarto)
-					break
-
-				p += 1
-
-			medio = []
-			for j in range(len(ranged_rates)):
-				medio.append(ranged_rates[j] if j == 0 else sum(ranged_rates[:j+1])/(j + 1))
-
-			return ranged_vars, ranged_rates, medio
+			return PlotGenerator.create_range(ordered_vars, ordered_rates)
 
 		cpus = [[], [], [], [], []]
 		gpus = [[], [], [], [], []]
@@ -772,7 +779,7 @@ class PlotGenerator:
 			ranged_rates_np = np.array(ranged_rates)
 			medio_np = np.array(medio)
 
-			plt.plot(ranged_var_np, ranged_rates_np, marker="o", color="m", label=f"TCPU({10**i})/TGPU({10**i})")
+			plt.plot(ranged_var_np, ranged_rates_np, marker="o", color="m", label=f"TCPU(10^{i})/TGPU(10^{i})")
 			plt.plot(ranged_var_np, medio_np, color="c", label="Valore medio")
 			plt.xlabel("Range di ampiezza 10 delle dimensioni")
 			plt.ylabel("Rapporto CPU/GPU medio")
@@ -803,7 +810,7 @@ if __name__ == '__main__':
     # plotgen.save_rmse()
     # plotgen.save_speedup1()
     # plotgen.save_speedup2()
-    # plotgen.getnumvars()
+    plotgen.getnumvars()
     # plotgen.plot_RMSE_on_variables_wrange()
     # plotgen.plot_RMSE_on_variables_wrange_woutMajor()
     # plotgen.save_rmse_on_vars_wrange_woutMajor()
@@ -811,7 +818,7 @@ if __name__ == '__main__':
     # plotgen.save_mrmse_var_range()
     # plotgen.mrmse_var_wrange10onvar_woutMajor()
     # plotgen.speedup_T1w10_on_T10e10()
-    plotgen.generate_allspeedupandefficienty()
+    # plotgen.generate_allspeedupandefficienty()
     # plotgen.create_table_forLaTeX_for_speedup()
     # plotgen.plot_speedup_efficency_on_istances()
     # plotgen.get_speedup3()
@@ -820,3 +827,5 @@ if __name__ == '__main__':
     # plotgen.cpu_gpu_table()
     # plotgen.plot_cpu_gpu_error()
     # plotgen.cpu_gpu_var_range()
+
+    # plotgen.create_range()

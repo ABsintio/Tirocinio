@@ -53,19 +53,21 @@ class Validation:
     @staticmethod
     def calculate_RMSE(times, times_csv, expected_values, given_values, n):
         rmse = 0
+        j = 1
         for i in range(n):
             value2 = np.interp(times[i], times_csv, expected_values)
             value1 = given_values[i]
-            rmse += abs(value2 - value1) ** 2
+            value = abs((value2 - value1) / max(value2, 1e-3))
+            rmse += value
         return rmse / n
 
     @staticmethod
     def calculate_RMSEtot(times, times_csv, X_bar, X, n, m):
         rmse_tot = 0
         for j in range(m - 1):
-            result = math.sqrt(Validation.calculate_RMSE(times, times_csv, X_bar[:, j + 1], X[:, j + 1], n))
+            result = Validation.calculate_RMSE(times, times_csv, X_bar[:, j + 1], X[:, j + 1], n)
             rmse_tot += (result)
-        return rmse_tot / m  
+        return rmse_tot / m
 
     @staticmethod
     def validate_model(txt_file, csv_file):
@@ -120,7 +122,7 @@ class Validation:
 
 if __name__ == "__main__":
     v = Validation("dir.txt")
-    #v.validate()
-    v.build_table_from_file("result.txt")
+    v.validate()
+    #v.build_table_from_file("result.txt")
     #v.show_table()
-    v.show_percentage()
+    #v.show_percentage()
