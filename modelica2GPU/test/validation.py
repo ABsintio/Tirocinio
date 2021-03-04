@@ -57,7 +57,7 @@ class Validation:
         for i in range(n):
             value2 = np.interp(times[i], times_csv, expected_values)
             value1 = given_values[i]
-            value = abs((value2 - value1) / max(value2, 1e-3))
+            value = ((value2 - value1) / (abs(value2) + 1e-3))**2
             rmse += value
         return rmse / n
 
@@ -65,7 +65,7 @@ class Validation:
     def calculate_RMSEtot(times, times_csv, X_bar, X, n, m):
         rmse_tot = 0
         for j in range(m - 1):
-            result = Validation.calculate_RMSE(times, times_csv, X_bar[:, j + 1], X[:, j + 1], n)
+            result = math.sqrt(Validation.calculate_RMSE(times, times_csv, X_bar[:, j + 1], X[:, j + 1], n))
             rmse_tot += (result)
         return rmse_tot / m
 
