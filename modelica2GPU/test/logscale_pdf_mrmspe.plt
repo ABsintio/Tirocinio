@@ -1,4 +1,6 @@
 set terminal qt font "Helvetica, 15"
-set xlabel "MRMSEP"
-set ylabel "f(MRMSEP)"
+set xlabel "log10(MRMSPE)"
+set ylabel "f(MRMSPE)"
+set logscale x
 plot "new_mrmspe.dat" smooth kdensity t "PDF"
+unset logscale

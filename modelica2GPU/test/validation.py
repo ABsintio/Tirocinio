@@ -52,12 +52,14 @@ class Validation:
 
     @staticmethod
     def calculate_RMSE(times, times_csv, expected_values, given_values, n):
+        print("RMSPE")
         rmse = 0
         j = 1
         for i in range(n):
             value2 = np.interp(times[i], times_csv, expected_values)
             value1 = given_values[i]
             value = ((value2 - value1) / (abs(value2) + 1e-3))**2
+            print(value)
             rmse += value
         return rmse / n
 
@@ -65,7 +67,9 @@ class Validation:
     def calculate_RMSEtot(times, times_csv, X_bar, X, n, m):
         rmse_tot = 0
         for j in range(m - 1):
+            print("MRMSPE")
             result = math.sqrt(Validation.calculate_RMSE(times, times_csv, X_bar[:, j + 1], X[:, j + 1], n))
+            print(result)
             rmse_tot += (result)
         return rmse_tot / m
 
@@ -84,13 +88,14 @@ class Validation:
 
     def validate(self):
         for model_name, dirs in self.dir_list.items():
-            csv_dir, txt_dir = dirs
-            csv_file = os.path.join(csv_dir, f"{model_name}_res.csv")
-            txt_file = os.path.join(txt_dir, "DenseOutput_0.txt")
-            mse_tot = Validation.validate_model(txt_file, csv_file)
-            self.table.add_row(model_name, csv_dir, "%.18f" % mse_tot, str(mse_tot < 1.0))
-            self.results.append((model_name, csv_dir, "%.18f" % mse_tot, str(mse_tot < 1.0)))
-            print(model_name, csv_dir, mse_tot)
+            if model_name == "BIOMD009":
+                csv_dir, txt_dir = dirs
+                csv_file = os.path.join(csv_dir, f"{model_name}_res.csv")
+                txt_file = os.path.join(txt_dir, "DenseOutput_0.txt")
+                mse_tot = Validation.validate_model(txt_file, csv_file)
+                self.table.add_row(model_name, csv_dir, "%.18f" % mse_tot, str(mse_tot < 1.0))
+                self.results.append((model_name, csv_dir, "%.18f" % mse_tot, str(mse_tot < 1.0)))
+                print(model_name, csv_dir, mse_tot)
 
     def build_table_from_file(self, result_file):
         lista = []
