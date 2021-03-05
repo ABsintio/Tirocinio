@@ -8,5 +8,6 @@ with open("new_mrmspe.dat") as f:
         mrmspes.append(float(l))
 
 sns.kdeplot(np.array(mrmspes), cumulative="True")
-plt.xlim([0, 1])
+plt.xscale("log")
+plt.grid(True)
 plt.show()

@@ -1,14 +1,10 @@
-set terminal wxt font "Helvetica, 15"
+set terminal qt font "Helvetica, 15"
 set xlabel "log10(MRMSPE)"
 set ylabel "F(MRMSPE)"
-set xrange [0.1:90]
+set xrange [:]
 set logscale x
-set mytics
-set grid
-set autoscale xfixmax
-plot "new_mrmspe.dat" using 1:(norm($1)) smooth cnorm t "CDF"
+set grid back lc rgb "#939597"
+plot "new_mrmspe.dat" using 1:(norm($1)) smooth cnorm t "CDF" lw 2
 unset logscale
 unset xrange
-unset mytics
-unset autoscale
 unset grid
