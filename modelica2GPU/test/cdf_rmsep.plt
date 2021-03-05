@@ -1,4 +1,4 @@
-set terminal qt font "Helvetica, 15"
+set terminal wxt font "Helvetica, 15"
 set xlabel "MRMSEP"
 set ylabel "F(MRMSEP)"
 set xrange [-1:90]
