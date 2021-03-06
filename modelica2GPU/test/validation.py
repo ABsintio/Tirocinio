@@ -52,14 +52,14 @@ class Validation:
 
     @staticmethod
     def calculate_RMSE(times, times_csv, expected_values, given_values, n):
-        print("RMSPE")
+        #print("RMSPE")
         rmse = 0
         j = 1
         for i in range(n):
             value2 = np.interp(times[i], times_csv, expected_values)
             value1 = given_values[i]
             value = ((value2 - value1) / (abs(value2) + 1e-3))**2
-            print(value)
+            #print(value)
             rmse += value
         return rmse / n
 
@@ -67,9 +67,9 @@ class Validation:
     def calculate_RMSEtot(times, times_csv, X_bar, X, n, m):
         rmse_tot = 0
         for j in range(m - 1):
-            print("MRMSPE")
+            #print("MRMSPE")
             result = math.sqrt(Validation.calculate_RMSE(times, times_csv, X_bar[:, j + 1], X[:, j + 1], n))
-            print(result)
+            #print(result)
             rmse_tot += (result)
         return rmse_tot / m
 
@@ -88,7 +88,7 @@ class Validation:
 
     def validate(self):
         for model_name, dirs in self.dir_list.items():
-            if model_name == "BIOMD009":
+            if model_name == "BIOMD006":
                 csv_dir, txt_dir = dirs
                 csv_file = os.path.join(csv_dir, f"{model_name}_res.csv")
                 txt_file = os.path.join(txt_dir, "DenseOutput_0.txt")
