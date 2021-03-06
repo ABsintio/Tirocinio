@@ -1,0 +1,5 @@
+set terminal wxt font "Helvetica, 15"
+set xlabel "S(n)"
+set ylabel "F(S(n))"
+set grid back ls 12 lc rgb "#939597"
+plot "gnuplot_speedup.dat" using 1:2 smooth cnorm lw 2 t "PDF"

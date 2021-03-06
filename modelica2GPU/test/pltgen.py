@@ -173,8 +173,6 @@ class PlotGenerator:
 
 	            vars.append(tot_var)
 
-	            print(tot_var)
-
 	    return vars
 
 	def vars_distribution(self):
@@ -514,35 +512,17 @@ class PlotGenerator:
 		plt.show()
 
 	def speedup10_on_var_range(self):
-		ordered_list = sorted(list(zip(self.getnumvars(), self.get_speedup3()[0])), key=lambda x: x[0])
+		ordered_list = sorted(list(zip(self.getnumvars(), self.get_speedup2()[0])), key=lambda x: x[0])
 		num_vars = list(map(lambda x: x[0], ordered_list))
 		sp10 = list(map(lambda x: x[1], ordered_list))
-		print(sp10[-10:])
 
-		num_var_ranged = []
-		sp10_ranged = []
-		i = 0
-		p = 0
-		while True:
-			num_var_ranged.append(f"R{p}")
-			if i + 10 < len(sp10):
-				sp10_ranged.append(sum(sp10[i:i+10]) / 10)
-				i += 10
-			else:
-				scarto = len(sp10) - i
-				sp10_ranged.append(sum(sp10[i:i + scarto]) / (scarto))
-				break
+		num_var_ranged, sp10_ranged, medio = PlotGenerator.create_range(num_vars, sp10)
 
-			p += 1
-
-		medio = []
-		for j in range(len(sp10_ranged)):
-			medio.append(sp10_ranged[j] if j == 0 else sum(sp10_ranged[:j+1])/(j + 1))
-
+		plt.grid(True)
 		plt.plot(num_var_ranged, sp10_ranged, marker="o", color="m", label="Speedup medio per range")
 		plt.plot(num_var_ranged, medio, color="c", label="Valore medio")
 		plt.xlabel("Range di ampiezza 10 delle dimensioni")
-		plt.ylabel("Speedup (p = 10) medio")
+		plt.ylabel("Speedup medio")
 		plt.legend(loc="upper right")
 		plt.show()
 
@@ -660,21 +640,25 @@ class PlotGenerator:
 
 				speedups.append(speedup)
 				efficienies.append(efficiency)
+			if k in ["20", "60", "166"]:
+				x_axis = ["10", "100", "1000", "10000"]
+				plt.grid(True)
+				#plt.figure(figsize=[20.0, 7.0])
+				plt.plot(x_axis, speedups, color="m", marker="o", label="Speedup")
+				plt.xlabel("Istanze di simulazione")
+				plt.ylabel("Speedup")
+				plt.legend(loc="upper left")
+				plt.show()
+				#plt.savefig(f"test_{k}_speedup.png")
 
-			x_axis = ["10", "100", "1000", "10000"]
-			plt.figure(figsize=[20.0, 7.0])
-			plt.plot(x_axis, speedups, color="m", marker="o", label="Speedup")
-			plt.xlabel("Istanze di simulazione")
-			plt.ylabel("Speedup")
-			plt.legend(loc="upper right")
-			plt.savefig(f"test_{k}_speedup.png")
-
-			plt.figure(figsize=[20.0, 7.0])
-			plt.plot(x_axis, efficienies, color="c", marker="o", label="Efficienza")
-			plt.xlabel("Istanze di simulazione")
-			plt.ylabel("Efficienza")
-			plt.legend(loc="upper right")
-			plt.savefig(f"test_{k}_efficiency.png")
+				plt.grid(True)
+				#plt.figure(figsize=[20.0, 7.0])
+				plt.plot(x_axis, efficienies, color="c", marker="o", label="Efficienza")
+				plt.xlabel("Istanze di simulazione")
+				plt.ylabel("Efficienza")
+				plt.legend(loc="upper right")
+				plt.show()
+				#plt.savefig(f"test_{k}_efficiency.png")
 
 		os.chdir(current_dir)
 
@@ -779,6 +763,7 @@ class PlotGenerator:
 			ranged_rates_np = np.array(ranged_rates)
 			medio_np = np.array(medio)
 
+			plt.grid(True)
 			plt.plot(ranged_var_np, ranged_rates_np, marker="o", color="m", label=f"TCPU(10^{i})/TGPU(10^{i})")
 			plt.plot(ranged_var_np, medio_np, color="c", label="Valore medio")
 			plt.xlabel("Range di ampiezza 10 delle dimensioni")
@@ -787,8 +772,35 @@ class PlotGenerator:
 			plt.show()
 
 			i += 1
-			
 
+	def get_mrmspe(self):
+		mrmspes = []
+		for k, v in self.tot.items():
+			mrmspes.append(v['mrmspe'])
+
+		return mrmspes
+
+
+	def create_mrmspe_on_range(self):
+		num_vars = self.getnumvars(total=True)
+		mrmspes = self.get_mrmspe()
+		ordered_list = sorted(list(zip(mrmspes, num_vars)), key=lambda x: x[1])
+		ordered_vars = list(map(lambda x: x[1], ordered_list))
+		ordered_mrmspes = list(map(lambda x: x[0], ordered_list))
+
+		ranged_vars, ranged_mrmspes, medio = PlotGenerator.create_range(ordered_vars, ordered_mrmspes)
+
+		ranged_var_np = np.array(ranged_vars)
+		ranged_mrmspes_np = np.array(ranged_mrmspes)
+		medio_np = np.array(medio)
+
+		plt.grid(True)
+		plt.plot(ranged_var_np, ranged_mrmspes_np, marker="o", color="m", label="MRMSPE")
+		plt.plot(ranged_var_np, medio, color="c", label="Valore medio")
+		plt.xlabel("Range di ampiezza 10 delle dimensioni")
+		plt.ylabel("MRMSPE medio")
+		plt.legend(loc="upper right")
+		plt.show()
 
 
 if __name__ == '__main__':
@@ -810,7 +822,7 @@ if __name__ == '__main__':
     # plotgen.save_rmse()
     # plotgen.save_speedup1()
     # plotgen.save_speedup2()
-    plotgen.getnumvars()
+    # plotgen.getnumvars()
     # plotgen.plot_RMSE_on_variables_wrange()
     # plotgen.plot_RMSE_on_variables_wrange_woutMajor()
     # plotgen.save_rmse_on_vars_wrange_woutMajor()
@@ -823,9 +835,11 @@ if __name__ == '__main__':
     # plotgen.plot_speedup_efficency_on_istances()
     # plotgen.get_speedup3()
     # plotgen.speedup10000_on_var_range()
-    # plotgen.create_speedup_efficiency_per_test()
+    plotgen.create_speedup_efficiency_per_test()
     # plotgen.cpu_gpu_table()
     # plotgen.plot_cpu_gpu_error()
     # plotgen.cpu_gpu_var_range()
 
     # plotgen.create_range()
+    # plotgen.create_mrmspe_on_range()
+    # plotgen.speedup10_on_var_range()

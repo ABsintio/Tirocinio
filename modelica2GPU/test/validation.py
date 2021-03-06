@@ -40,6 +40,7 @@ class Validation:
                 if os.path.isfile(os.path.join(lines[i + 1][:-1], "DenseOutput_0.txt")):
                     directorys.append([lines[i][:-1], lines[i + 1][:-1]])
                     model_names.append(lines[i + 1].split("/")[-1][:-7])
+                    
             self.dir_list = dict(zip(model_names, directorys))
 
         self.table.add_column("MODEL NAME", style="green")
@@ -88,14 +89,13 @@ class Validation:
 
     def validate(self):
         for model_name, dirs in self.dir_list.items():
-            if model_name == "BIOMD006":
-                csv_dir, txt_dir = dirs
-                csv_file = os.path.join(csv_dir, f"{model_name}_res.csv")
-                txt_file = os.path.join(txt_dir, "DenseOutput_0.txt")
-                mse_tot = Validation.validate_model(txt_file, csv_file)
-                self.table.add_row(model_name, csv_dir, "%.18f" % mse_tot, str(mse_tot < 1.0))
-                self.results.append((model_name, csv_dir, "%.18f" % mse_tot, str(mse_tot < 1.0)))
-                print(model_name, csv_dir, mse_tot)
+            csv_dir, txt_dir = dirs
+            csv_file = os.path.join(csv_dir, f"{model_name}_res.csv")
+            txt_file = os.path.join(txt_dir, "DenseOutput_0.txt")
+            mse_tot = Validation.validate_model(txt_file, csv_file)
+            self.table.add_row(model_name, csv_dir, "%.18f" % mse_tot, str(mse_tot < 1.0))
+            self.results.append((model_name, csv_dir, "%.18f" % mse_tot, str(mse_tot < 1.0)))
+            print(model_name, csv_dir, mse_tot)
 
     def build_table_from_file(self, result_file):
         lista = []
@@ -126,7 +126,7 @@ class Validation:
 
 
 if __name__ == "__main__":
-    v = Validation("dir.txt")
+    v = Validation("tmp")
     v.validate()
     #v.build_table_from_file("result.txt")
     #v.show_table()
