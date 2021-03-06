@@ -1,4 +1,4 @@
-set terminal qt font "Helvetica, 15"
+set terminal wxt font "Helvetica, 15"
 set xlabel "log10(MRMSPE)"
 set ylabel "f(MRMSPE)"
 set logscale x
