@@ -1,5 +1,5 @@
 set terminal qt font "Helvetica, 15"
-set xlabel "log10(MRMSPE)"
+set xlabel "MRMSPE"
 set ylabel "f(MRMSPE)"
 set logscale x
 set grid back ls 12 lc rgb "#939597" 
