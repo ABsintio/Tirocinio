@@ -126,9 +126,9 @@ class PlotGenerator:
 
 		for k, v in self.data.items():
 			speedup = 10 * v['simulations (msec)'][0][-1] / v['simulations (msec)'][1][-1]
-			#if not speedup > 10:
-			id_test.append(int(k))
-			sp.append(speedup)
+			if not speedup > 10:
+                                id_test.append(int(k))
+                                sp.append(speedup)
 
 		return sp, id_test
 
@@ -830,12 +830,12 @@ if __name__ == '__main__':
     # plotgen.save_mrmse_var_range()
     # plotgen.mrmse_var_wrange10onvar_woutMajor()
     # plotgen.speedup_T1w10_on_T10e10()
-    # plotgen.generate_allspeedupandefficienty()
+    plotgen.generate_allspeedupandefficienty()
     # plotgen.create_table_forLaTeX_for_speedup()
     # plotgen.plot_speedup_efficency_on_istances()
     # plotgen.get_speedup3()
     # plotgen.speedup10000_on_var_range()
-    plotgen.create_speedup_efficiency_per_test()
+    # plotgen.create_speedup_efficiency_per_test()
     # plotgen.cpu_gpu_table()
     # plotgen.plot_cpu_gpu_error()
     # plotgen.cpu_gpu_var_range()
