@@ -61,7 +61,7 @@ end {model_name};
 
 RUN_MOS = """
 loadModel(Modelica);
-loadFile("{model_name}.mo");
+loadFile("{file_name}.mo");
 getErrorString();
 simulate({model_name}, stopTime=100.0, outputFormat="csv");
 getErrorString();
@@ -70,7 +70,7 @@ getErrorString();
 
 BUILD_MOS = """
 loadModel(Modelica);
-loadFile("{model_name}.mo");
+loadFile("{file_name}.mo");
 getErrorString();
 buildModel({model_name}, stopTime=100.0);
 getErrorString();
@@ -366,8 +366,8 @@ class SBMLTranslator:
         zeroder_list = "\n".join(self.getzeroder_modelica_code())
         function_list = "\n".join(self.getfunction_modelica_code())
         return MODELICA_CODE.format(
-            model_name=self.filename,
-            name=self.model.name,
+            model_name="_".join(self.model.name.split()),
+            name=self.filename,
             constant_parameters=constant_parameter_list,
             variable_parameters=variable_parameter_list,
             species=species_list,
@@ -585,19 +585,19 @@ def create_run_mos(output_directory, sbml_model, file_name):
         stream = open(os.path.join(output_directory, "run.mos"), mode="x")
     except FileExistsError:
         stream = open(os.path.join(output_directory, "run.mos"), mode="w")
-    stream.write(RUN_MOS.format(model_name=model_name))
+    stream.write(RUN_MOS.format(file_name=file_name, model_name=sbml_model.name))
     stream.flush()
     stream.close()
     print(f"Created run.mos file into -> {output_directory}/run.mos")
 
 
-def create_build_mos(output_directory, file_name):
+def create_build_mos(output_directory, sbml_model, file_name):
     global BUILD_MOS
     try:
         stream = open(os.path.join(output_directory, "build.mos"), mode="x")
     except FileExistsError:
         stream = open(os.path.join(output_directory, "build.mos"), mode="w")
-    stream.write(BUILD_MOS.format(model_name=file_name))
+    stream.write(BUILD_MOS.format(file_name=file_name, model_name=sbml_model.name))
     stream.flush()
     stream.close()
     print(f"Created build.mos file into -> {output_directory}/build.mos")
@@ -653,7 +653,7 @@ def run(file, output_directory):
         pass
     save_modelica(modelica_translation, modelica_file) # Salviamo il modello creato in un file Modelica
     create_run_mos(save_directory, sbmlmodel, filename) # Creiamo il file run.mos per il plotting del risultato della simulazione
-    create_build_mos(save_directory, filename) # Creiamo il file build.mos per fare il build del modello e costruire l'esegubile per il testing
+    create_build_mos(save_directory, sbmlmodel, filename) # Creiamo il file build.mos per fare il build del modello e costruire l'esegubile per il testing
     create_clear_sh(save_directory, filename)
     create_omcplot_py(save_directory, ",".join(['"' + x + '"' for x in sbmlmodel.rate_rules_dict.keys()]))
 
