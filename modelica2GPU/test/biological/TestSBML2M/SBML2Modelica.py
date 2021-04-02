@@ -55,6 +55,9 @@ equation
 
 {events}
 
+algorithm
+{assignment}
+
 end {model_name};
 """
 
@@ -124,6 +127,8 @@ def obj2str(obj):
 class Specie:
     def __init__(self, nome, compartment, ivalue, constant, boundary_condition):
         self.nome = nome
+        self.conc_name = self.nome + "_conc"
+        self.amount_name = self.nome + "_amount"
         self.compartment = compartment
         self.ivalue = ivalue
         self.constant = constant
@@ -307,7 +312,7 @@ class SBMLTranslator:
             if param_obj.constant:
                 lines.append(line_code.format(param_name=param_id, param_value=param_obj.value))
         for comp_id in self.model.compartments:
-            lines.append(line_code.format(param_name=comp_id, param_value="1.0"))
+            lines.append(line_code.format(param_name=comp_id, param_value=self.model.compartments[comp_id].size))
         return lines
 
     def getvariable_parameter_modelica_code(self):
@@ -353,6 +358,10 @@ class SBMLTranslator:
     
     def getfunction_modelica_code(self):
         return [func_definition.build_modelica_function()  for func_definition in self.model.function_list.values()]
+
+    def get_algorithm_section(self):
+        line_code = " "*4 + "{spec} := {spec} / {comp};"
+        return [line_code.format(spec=x.nome, comp=x.compartment.nome) for _, x in self.model.species.items()]
     
     def SBML_into_Modelica(self):
         global MODELICA_CODE
@@ -365,6 +374,7 @@ class SBMLTranslator:
         events_list = "\n".join(self.getevents_modelica_code())
         zeroder_list = "\n".join(self.getzeroder_modelica_code())
         function_list = "\n".join(self.getfunction_modelica_code())
+        algorithm_list = "\n".join(self.get_algorithm_section())
         return MODELICA_CODE.format(
             model_name="_".join(self.model.name.split()),
             name=self.filename,
@@ -376,7 +386,8 @@ class SBMLTranslator:
             assignment_rules=assignmentrules_list,
             rate_rules=raterules_list,
             zero_der=zeroder_list,
-            functions=function_list
+            functions=function_list,
+            assignment=algorithm_list
         )
 
 
