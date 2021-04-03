@@ -10,7 +10,7 @@ import math
 FUNCTION_FORMAT = """
     function {function_name}
         {inputs}
-        output Real y;
+        output Real {output};
     algorithm
         {math}
     end {function_name};
@@ -37,6 +37,25 @@ model {model_name} "{name}"
             z := if condition then x else y;
     end piecewise;
 
+    function eq
+        input  Real x1;
+        input  Real x2;
+        output Boolean y;
+        algorithm
+            y := abs(x1 - x2) / max(abs(x1), 1.0E-4) < Modelica.Constants.eps;
+    end eq;
+
+    function factorial
+        input  Real n;
+        output Real y;
+        algorithm
+            if eq(n, 0) then
+                y := 1;
+            else
+                y := n * factorial(n - 1);
+            end if;
+    end factorial;
+
 {functions}
 
 {constant_parameters}
@@ -49,6 +68,7 @@ initial equation
 {initial_equations}
 
 equation
+{algebraic_rule}
 {assignment_rules}
 {rate_rules}
 {zero_der}
@@ -154,11 +174,12 @@ class Specie:
     
 
 class Compartment:
-    def __init__(self, nome, size, volume, unit):
+    def __init__(self, nome, size, volume, unit, constant):
         self.nome = nome
         self.size = size
         self.volume = volume
         self.unit = unit
+        self.constant = constant
 
     def __str__(self):
         return obj2str(self)
@@ -209,6 +230,14 @@ class RateRule(Rule):
     def __init__(self, lhs, rhs):
         super().__init__(f"der({lhs})", rhs)
 
+class RateRuleNonDer(Rule):
+    def __init__(self, lhs, rhs):
+        super().__init__(f"{lhs}", rhs)
+
+class AlgebricRule(Rule):
+    def __init__(self, lhs, rhs):
+        super().__init__(lhs, rhs)
+
 
 class Event:
     def __init__(self, id, trigger_condition, event_assignments):
@@ -229,8 +258,8 @@ class Function:
     def build_modelica_function(self):
         global FUNCTION_FORMAT
         input_string = "\n".join([f"\tinput Real {x};" for x in self.inputs])
-        math = f"y := {self.math_formula};"
-        return FUNCTION_FORMAT.format(function_name=self.name,inputs=input_string,math=math)
+        math = f"output_{self.name} := {self.math_formula};"
+        return FUNCTION_FORMAT.format(function_name=self.name,inputs=input_string,math=math,output=f"output_{self.name}")
     
     def __str__(self):
         return obj2str(self)
@@ -245,7 +274,8 @@ class SBMLModel:
                        reactions,
                        rate_rules,
                        event_list,
-                       function_list
+                       function_list,
+                       algebraic_rule
                 ):
         self.name = name
         self.compartments = compartmnents
@@ -256,7 +286,9 @@ class SBMLModel:
         self.rate_rules_dict = rate_rules
         self.event_list = event_list
         self.function_list = function_list
+        self.algebraic_rule = algebraic_rule
         self.create_rate_rule()
+        self.add_to_rate_rule()
 
     def create_sum_from_reactant(self, specie_name, specie_obj):
         formula_list = []
@@ -276,15 +308,21 @@ class SBMLModel:
 
     def create_rate_rule(self):
         for specie_id, specie_obj in self.species.items():
-            if specie_id not in self.rate_rules_dict and specie_id not in self.assignment_rules.keys():
-                rate_rule = RateRule(specie_id, "0.0")
-                if not specie_obj.constant and not specie_obj.boundary_condition:
+            if specie_obj.amount_name not in self.rate_rules_dict:
+                rate_rule = RateRule(specie_obj.amount_name, "0.0")
+                if not specie_obj.constant and not specie_obj.boundary_condition and specie_id not in self.assignment_rules.keys():
                     reactant_partial = self.create_sum_from_reactant(specie_id, specie_obj)
                     reactant_formula = "- " + reactant_partial if reactant_partial != "" else reactant_partial
                     product_formula = self.create_sum_from_products(specie_id, specie_obj)
                     total_formula = f"{product_formula} {reactant_formula}"
-                    rate_rule = RateRule(specie_id, total_formula if total_formula.strip() != "" else "0.0")
-                self.rate_rules_dict[specie_id] = rate_rule
+                    rate_rule = RateRule(specie_obj.amount_name, total_formula if total_formula.strip() != "" else "0.0")
+                self.rate_rules_dict[specie_obj.amount_name] = rate_rule
+        
+    def add_to_rate_rule(self):
+        for specie_id, specie_obj in self.species.items():
+            if specie_id not in self.assignment_rules.keys() and not specie_id in self.rate_rules_dict:
+                assign_rule = RateRuleNonDer(specie_id, specie_obj.conc_name)
+                self.rate_rules_dict[specie_id] = assign_rule
 
     def getconstant_parameter(self):
         return [param for k, param in self.parameters if k not in self.assignment_rules.keys()]
@@ -311,8 +349,9 @@ class SBMLTranslator:
         for param_id, param_obj in self.model.parameters.items():
             if param_obj.constant:
                 lines.append(line_code.format(param_name=param_id, param_value=param_obj.value))
-        for comp_id in self.model.compartments:
-            lines.append(line_code.format(param_name=comp_id, param_value=self.model.compartments[comp_id].size))
+        for comp_id, comp in self.model.compartments.items():
+            if comp.constant:
+                lines.append(line_code.format(param_name=comp_id, param_value=self.model.compartments[comp_id].size))
         return lines
 
     def getvariable_parameter_modelica_code(self):
@@ -322,14 +361,27 @@ class SBMLTranslator:
             if not param_obj.constant:
                 ivalue = param_obj.value if isinstance(param_obj.value, str) or (not math.isnan(param_obj.value)) else "0.0"
                 lines.append(line_code.format(param_name=param_id, ivalue=ivalue))
+        for comp_id, comp in self.model.compartments.items():
+            if not comp.constant:
+                lines.append(line_code.format(param_name=comp_id, ivalue=self.model.compartments[comp_id].size))
         return lines
 
     def getspecies_modelica_code(self):
-        return [f"    Real {name};" for name in self.model.species]
+        return [f"    Real {name};" for name in self.model.species] + \
+               [f"    Real {sp.amount_name};" for sp in self.model.species.values()] + \
+               [f"    Real {sp.conc_name};" for sp in self.model.species.values()]
 
     def getinitialequation_modelica_code(self):
-        return [f"    {name} = {species.ivalue};" for name, species in self.model.species.items() if isinstance(species.ivalue, str) or (not math.isnan(species.ivalue) and name not in self.model.assignment_rules.keys())]
-    
+        lista = []
+        for sp in self.model.species.values():
+            s = "    {conc_name} = ({value} / {comp_nome});".format(
+                conc_name=sp.conc_name,
+                value=sp.ivalue if str(sp.ivalue) != "nan" else "0",
+                comp_nome=sp.compartment.nome
+            )
+            lista.append(s)
+        return lista
+
     def getraterules_modelica_code(self):
         return [f"    {rate_rule.lhs} = {rate_rule.rhs};" for rate_rule in self.model.rate_rules_dict.values() if rate_rule.lhs[4:-1] not in self.model.assignment_rules.keys()]
 
@@ -360,8 +412,12 @@ class SBMLTranslator:
         return [func_definition.build_modelica_function()  for func_definition in self.model.function_list.values()]
 
     def get_algorithm_section(self):
-        line_code = " "*4 + "{spec} := {spec} / {comp};"
-        return [line_code.format(spec=x.nome, comp=x.compartment.nome) for _, x in self.model.species.items()]
+        line_code = " "*4 + "{spec_conc} := {spec_amnt} / {comp};"
+        return [line_code.format(spec_conc=x.conc_name, spec_amnt=x.amount_name, comp=x.compartment.nome) for _, x in self.model.species.items()]
+
+    def get_algebraic_rule(self):
+        line_code = " "*4 + "{lhs} = {rhs};"
+        return [line_code.format(lhs=x.lhs,rhs=x.rhs) for x in self.model.algebraic_rule]
     
     def SBML_into_Modelica(self):
         global MODELICA_CODE
@@ -375,6 +431,7 @@ class SBMLTranslator:
         zeroder_list = "\n".join(self.getzeroder_modelica_code())
         function_list = "\n".join(self.getfunction_modelica_code())
         algorithm_list = "\n".join(self.get_algorithm_section())
+        algebraic_list = "\n".join(self.get_algebraic_rule())
         return MODELICA_CODE.format(
             model_name="_".join(self.model.name.split()),
             name=self.filename,
@@ -387,7 +444,8 @@ class SBMLTranslator:
             rate_rules=raterules_list,
             zero_der=zeroder_list,
             functions=function_list,
-            assignment=algorithm_list
+            assignment=algorithm_list,
+            algebraic_rule=algebraic_list
         )
 
 
@@ -416,9 +474,10 @@ class SBMLExtrapolator:
         for comp in self.model.getListOfCompartments():
             self.comp_dict[comp.getId()] = Compartment(
                 comp.getId(), # Nome
-                comp.getSize(), # Taglia
+                comp.getSize() if str(comp.getSize()) != "nan" else 1, # Taglia
                 comp.getVolume(), # Volume
-                comp.getUnits() # Unità di misura
+                comp.getUnits(), # Unità di misura
+                comp.getConstant()
             )
 
     def getspecies(self):
@@ -446,6 +505,7 @@ class SBMLExtrapolator:
     def getrules(self):
         self._assignment_rule()
         self._rate_rule()
+        self._algebric_rules()
 
     def _assignment_rule(self):
         self.assignment_dict = dict()
@@ -460,9 +520,29 @@ class SBMLExtrapolator:
         for rule in self.model.getListOfRules():
             if isinstance(rule, libsbml.RateRule):
                 formula = rule.getFormula()
-                self.rate_dict[rule.getVariable()] = RateRule(
-                    rule.getVariable(), formula
+                var = rule.getVariable()
+                if var in self.parameter_dict:
+                    lhs = self.parameter_dict[var].nome
+                elif var in self.species_dict:
+                    lhs = self.species_dict[rule.getVariable()].amount_name
+                elif var in self.comp_dict:
+                    lhs = self.comp_dict[var].nome
+                self.rate_dict[lhs] = RateRule(
+                    lhs, formula
                 )
+    
+    def _algebric_rules(self):
+        self.algebric_rule = list()
+        for rule in self.model.getListOfRules():
+            if isinstance(rule, libsbml.AlgebraicRule):
+                formula = rule.getFormula()
+                var = rule.getVariable()
+                lhs = rule.getVariable()
+                if lhs:
+                    lhs = self.parameter_dict[var].nome if var in self.parameter_dict else self.species_dict[rule.getVariable()].amount_name
+                    self.algebric_rule.append(AlgebricRule(lhs, formula))
+                else:
+                    self.algebric_rule.append(AlgebricRule(formula, 0))
 
     def getreactions(self):
         self.reaction_dict = dict()
@@ -531,7 +611,7 @@ class SBMLExtrapolator:
             # Dal momento che gli and e gli or sono rappresentati come && e || allora li 
             # sostituiamo con and e or i quali sono leggibili da modelica.
             when_condition = when_condition.replace("&&", "and").replace("||", "or")
-            event_assignments = [f"reinit({ass.getId()},{libsbml.formulaToL3String(ass.getMath())})" for ass in event.getListOfEventAssignments()]
+            event_assignments = [f"reinit({self.species_dict[ass.getId()].amount_name},{libsbml.formulaToL3String(ass.getMath())})" for ass in event.getListOfEventAssignments()]
             self.event_dict[event_id] = Event(event_id, when_condition, event_assignments)
     
     def getfunctions(self):
@@ -649,7 +729,8 @@ def run(file, output_directory):
         sbmlext.reaction_dict,
         sbmlext.rate_dict,
         sbmlext.event_dict,
-        sbmlext.function_dict
+        sbmlext.function_dict,
+        sbmlext.algebric_rule
     )
     final_index = -5 if file.endswith(".sbml") else -4
     filename = file.split("/")[-1][:final_index]

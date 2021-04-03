@@ -8,8 +8,8 @@ import xml.etree.ElementTree as ETree
 from libsbml import readSBML
 
 #sbml2modelica = "java -Djava.library.path=/usr/local/lib  -cp .:/usr/local/share/java/libsbmlj.jar -jar /home/filippo/eclipse-workspace/SBML2Modelica/SBML2Modelica.jar"
-sbml2modelica = "java -jar /home/filippo/eclipse-workspace/SBML2Modelica/SBML2Modelica.jar"
-log_file = "/home/filippo/eclipse-workspace/SBML2Modelica/log.dat"
+sbml2modelica = "java -jar /home/lmriccardo/Scrivania/Tirocinio/util/Software/sbml2Modelica/SBML2Modelica.jar"
+log_file = "/tmp/log.dat"
 MATCH_EPSILON   = 1e-8
 NEXT_EPSILON    = 1e-9
 
@@ -55,11 +55,12 @@ def compile_modelica(out_dir, modelica_id, start, stop, step_size):
     os.system('make -j4 -f {0}.makefile'.format(modelica_id))
     tree = ETree.parse("{0}_init.xml".format(modelica_id))
     root = tree.getroot()
-    root.getchildren()[0].attrib['stepSize'] = step_size
-    root.getchildren()[0].attrib['stopTime'] = stop
-    root.getchildren()[0].attrib['startTime'] = start
-    root.getchildren()[0].attrib['outputFormat'] = 'csv'
-    root.getchildren()[0].attrib['solver'] = 'euler'#'dassl'
+    child = list(root)[0]
+    child.attrib['stepSize'] = step_size
+    child.attrib['stopTime'] = stop
+    child.attrib['startTime'] = start
+    child.attrib['outputFormat'] = 'csv'
+    child.attrib['solver'] = 'euler'#'dassl'
     tree.write("{0}_init.xml".format(modelica_id))
     os.chdir(cwd)
 
@@ -74,11 +75,11 @@ def save_results(out_dir, modelica_id, model_id, variables, modelica_variables, 
     os.chdir(out_dir)
 
     res = pd.read_csv("{0}_res.csv".format(modelica_id))
-    print "File loaded."
+    #print "File loaded."
     res[variables] = res[modelica_variables]
-    print "Variables renamed."
+    #print "Variables renamed."
     res = res[['time'] + variables]
-    print "Time added. Current variables number: " + str(len(res.columns))
+    #print "Time added. Current variables number: " + str(len(res.columns))
     # res['future'] = res['time'].shift(-1)
     # to_drop = res[res['future'] - res['time'] < 0.5 * step_size].index
     # res.drop(to_drop, inplace=True)
@@ -86,7 +87,7 @@ def save_results(out_dir, modelica_id, model_id, variables, modelica_variables, 
     start = res['time'][0]
     end = res['time'][len(res) - 1]
     time = np.arange(start, end + step_size, step_size)
-    print "linspace computed."
+    #print "linspace computed."
     to_drop = list()
     for i in range(len(res)):
         if i > 0:
@@ -100,14 +101,14 @@ def save_results(out_dir, modelica_id, model_id, variables, modelica_variables, 
                 break
         if not found:
             to_drop.append(i)
-    print "List of indices to drop created."
+    #print "List of indices to drop created."
     res.drop(to_drop, inplace=True)
-    print "Indices dropped."
+    #print "Indices dropped."
     res[res > 1e59] = 'INF'
     res[res < -1e59] = '-INF'
-    print "Ininifty values reformatted."
+    #print "Ininifty values reformatted."
     res.to_csv('../{0}.csv'.format(model_id), index=False)
-    print "Results saved."
+    #print "Results saved."
 
     os.chdir(cwd)
 
@@ -126,6 +127,8 @@ def main(argc, argv):
     settings = os.path.join(argv[1], argv[2], "{}-settings.txt".format(argv[2]))
     model = os.path.join(argv[1], argv[2], "{}-model.m".format(argv[2]))
     sbml = os.path.join(argv[1], argv[2], "{0}-sbml-l{1}v{2}.xml".format(argv[2], argv[4], argv[5]))
+    
+    print(test_dir, sbml, out_dir)
 
     doc = readSBML(sbml)
     m = doc.getModel()
@@ -155,10 +158,10 @@ def main(argc, argv):
     if type(conc) is str:
         conc = [conc]
 
-    print os.system('{0} {1} {2} --log {3}'.format(sbml2modelica, sbml, out_dir, log_file))
+    print(os.system('{0} {1} {2} --log {3}'.format(sbml2modelica, sbml, out_dir, log_file)))
     compile_modelica(out_dir, modelica_id, start, horizon, step_size)
     simulate(out_dir, modelica_id)
-    print modelica_varnames(variables, amnt, conc, sbml)
+    #print modelica_varnames(variables, amnt, conc, sbml)
     save_results(out_dir, modelica_id, argv[2], variables, modelica_varnames(variables, amnt, conc, sbml), float(step_size))
     #clean_out_dir(out_dir)
 
