@@ -58,6 +58,7 @@ initial equation
 
 equation
 
+
     der(S1_amount) = (compartment * k2 * S2) - (compartment * k1 * S1);
     der(S2_amount) = (compartment * k1 * S1) - (compartment * k2 * S2);
     S1 = S1_conc;

@@ -1,1 +1,0 @@
-rm *.o *.c *.h *.json 00068-sbml-l2v5 *.makefile *.log *.libs *_init.xml

@@ -130,9 +130,10 @@ class Test:
                 to_drop.append(i)
         print("List of indices to drop created ...")
 
-        okay_v = [x for x in list(res.columns) if x.startswith("der")] # Prendo il nome delle colonne che iniziano per der
+        # okay_v = [x for x in list(res.columns) if x.startswith("der")] # Prendo il nome delle colonne che iniziano per der
+        drop_v = [x for x in list(res.columns) if not x in self.simul_conf['vars']]
         res.drop(to_drop, inplace=True)        # Droppo dal CSV gli indici recuperati precedentemente
-        res.drop(okay_v, axis=1, inplace=True) # Droppo le colonne che non voglio
+        res.drop(drop_v, axis=1, inplace=True) # Droppo le colonne che non voglio
         print("Indices and columns dropped...")
 
         print(res.head())
